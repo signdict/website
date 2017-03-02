@@ -1,5 +1,7 @@
 # SignDict.org
 
+[![Slack invite](https://img.shields.io/badge/Slack-Invite-green.svg)](https://signdict-slack-invite.herokuapp.com/)
+
 Here we will work on SignDict. A sign language dictionary
 where everyone can add new signs using their webcam. With
 this unique crowdsourcing approach we together can create
