@@ -13,5 +13,5 @@ that much to see here.
 This project is government funded by the [German Federal Ministry of Education and Research](http://bmbf.de)
 and is part of the 1st batch of the [prototype fund](http://prototypefund.de).
 
-![Prototype Fund Logo](http://prototypefund.de)
-![Logo of the German Federal Ministry of Education and Research](http://bmbf.de)
+![Logo of the German Federal Ministry of Education and Research](images/support-bmbf.png)
+![Prototype Fund Logo](images/support-prototype.png)
