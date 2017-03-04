@@ -1,0 +1,33 @@
+<h2>Show video</h2>
+
+<ul>
+
+  <li>
+    <strong>State:</strong>
+    <%= @video.state %>
+  </li>
+
+  <li>
+    <strong>Copyright:</strong>
+    <%= @video.copyright %>
+  </li>
+
+  <li>
+    <strong>License:</strong>
+    <%= @video.license %>
+  </li>
+
+  <li>
+    <strong>Original href:</strong>
+    <%= @video.original_href %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @video.type %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: video_path(@conn, :edit, @video) %>
+<%= link "Back", to: video_path(@conn, :index) %>
