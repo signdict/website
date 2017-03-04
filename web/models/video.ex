@@ -19,8 +19,8 @@ defmodule SignDict.Video do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href, :type])
-    |> validate_state()
     |> validate_required([:state, :copyright, :license, :original_href, :type])
+    |> validate_state()
   end
 
   def valid_state?(state) do
@@ -29,6 +29,7 @@ defmodule SignDict.Video do
     end)
   end
 
+  # Makes sure that the video-state is in the list of possible states.
   defp validate_state(changeset) do
     if changeset && changeset.valid? do
       state = get_field(changeset, :state)
@@ -42,6 +43,8 @@ defmodule SignDict.Video do
       else
         changeset
       end
+    else
+      changeset
     end
   end
 end
