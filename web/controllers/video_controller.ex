@@ -1,6 +1,5 @@
 defmodule SignDict.VideoController do
   use SignDict.Web, :controller
-
   alias SignDict.Video
 
   def index(conn, _params) do

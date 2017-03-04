@@ -2,7 +2,7 @@ defmodule SignDict.VideoControllerTest do
   use SignDict.ConnCase
 
   alias SignDict.Video
-  @valid_attrs %{copyright: "some content", license: "some content", original_href: "some content", state: "some content", type: "some content"}
+  @valid_attrs %{copyright: "some content", license: "some content", original_href: "some content", state: "uploaded", type: "some content"}
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn} do
