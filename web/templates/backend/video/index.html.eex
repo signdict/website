@@ -22,13 +22,13 @@
       <td><%= video.type %></td>
 
       <td class="text-right">
-        <%= link "Show", to: video_backend_path(@conn, :show, video), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: video_backend_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: video_backend_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: backend_video_path(@conn, :show, video), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: backend_video_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: backend_video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New video", to: video_backend_path(@conn, :new) %>
+<%= link "New video", to: backend_video_path(@conn, :new) %>
