@@ -24,15 +24,14 @@ defmodule SignDict.VideoTest do
   end
 
   test "checks if a state is valid" do
-    assert Video.valid_state?("uploaded")
-    assert Video.valid_state?("transcoded")
-    assert Video.valid_state?("waiting_for_review")
-    assert Video.valid_state?("published")
-    assert Video.valid_state?("deleted")
+    Enum.each(~w(uploaded transcoded waiting_for_review published deleted), fn s ->
+      assert Video.valid_state?(s)
+    end)
   end
 
   test "checks if a state is invalid" do
-    refute Video.valid_state?("not_uploaded")
-    refute Video.valid_state?("random_state")
+    Enum.each(~w(not_uploaded random_state blah PUBLISHED), fn s ->
+      refute Video.valid_state?(s)
+    end)
   end
 end
