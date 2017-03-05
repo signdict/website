@@ -19,8 +19,10 @@ defmodule SignDict.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SignDict do
-  #   pipe_through :api
-  # end
+  # Backend functions. Only accessible to logged in admin users.
+  scope "/backend", SignDict.Backend, as: :backend do
+    pipe_through :browser # TODO: insert plug for admin users only here
+
+    resources "/videos", VideoController
+  end
 end
