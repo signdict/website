@@ -17,11 +17,12 @@ defmodule SignDict.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/videos", VideoController
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SignDict do
-  #   pipe_through :api
-  # end
+  # Backend functions. Only accessible to logged in admin users.
+  scope "/backend", SignDict do
+    pipe_through :browser # TODO: insert plug for admin users only here
+
+    resources "/videos", VideoController
+  end
 end
