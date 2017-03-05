@@ -20,9 +20,9 @@ defmodule SignDict.Router do
   end
 
   # Backend functions. Only accessible to logged in admin users.
-  scope "/backend", SignDict do
+  scope "/backend", SignDict.Backend, as: :backend do
     pipe_through :browser # TODO: insert plug for admin users only here
 
-    resources "/videos", VideoBackendController
+    resources "/videos", VideoController
   end
 end
