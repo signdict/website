@@ -1,4 +1,4 @@
-defmodule SignDict.VideoController do
+defmodule SignDict.VideoBackendController do
   use SignDict.Web, :controller
   alias SignDict.Video
 
@@ -19,7 +19,7 @@ defmodule SignDict.VideoController do
       {:ok, _video} ->
         conn
         |> put_flash(:info, "Video created successfully.")
-        |> redirect(to: video_path(conn, :index))
+        |> redirect(to: video_backend_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,7 +44,7 @@ defmodule SignDict.VideoController do
       {:ok, video} ->
         conn
         |> put_flash(:info, "Video updated successfully.")
-        |> redirect(to: video_path(conn, :show, video))
+        |> redirect(to: video_backend_path(conn, :show, video))
       {:error, changeset} ->
         render(conn, "edit.html", video: video, changeset: changeset)
     end
@@ -59,6 +59,6 @@ defmodule SignDict.VideoController do
 
     conn
     |> put_flash(:info, "Video deleted successfully.")
-    |> redirect(to: video_path(conn, :index))
+    |> redirect(to: video_backend_path(conn, :index))
   end
 end

@@ -23,6 +23,6 @@ defmodule SignDict.Router do
   scope "/backend", SignDict do
     pipe_through :browser # TODO: insert plug for admin users only here
 
-    resources "/videos", VideoController
+    resources "/videos", VideoBackendController
   end
 end
