@@ -21,7 +21,7 @@ you would expect it to be:
 
 ```
 mix deps.get
-mix ecto setup
+mix ecto.setup
 mix phoenix.server
 ```
 
