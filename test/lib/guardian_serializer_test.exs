@@ -22,7 +22,8 @@ defmodule SignDict.GuardianSerializerTest do
     test "it returns the user when given a correct user id" do
       user = insert :user
       result = GuardianSerializer.from_token("User:#{user.id}")
-      assert result == {:ok, user}
+      email = user.email
+      assert {:ok, %SignDict.User{email: ^email}} = result
     end
 
     test "it returns :error when not given a user id" do
