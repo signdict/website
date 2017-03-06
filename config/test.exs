@@ -17,3 +17,6 @@ config :sign_dict, SignDict.Repo,
   database: "signdict_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Make crypto a bit faster for tests
+config :comeonin, :bcrypt_log_rounds, 1
