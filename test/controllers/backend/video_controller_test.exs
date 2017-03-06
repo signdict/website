@@ -4,7 +4,10 @@ defmodule SignDict.Backend.VideoControllerTest do
   import SignDict.Factory
 
   alias SignDict.Video
-  @valid_attrs %{copyright: "some content", license: "some content", original_href: "some content", state: "uploaded", type: "some content"}
+  @valid_attrs %{
+    copyright: "some content", license: "some content",
+    original_href: "some content", state: "uploaded", type: "some content"
+  }
   @invalid_attrs %{}
 
   test "it redirects when no user logged in", %{conn: conn} do
@@ -78,7 +81,8 @@ defmodule SignDict.Backend.VideoControllerTest do
     video = Repo.insert! %Video{}
     conn = conn
            |> guardian_login(insert(:user))
-           |> put(backend_video_path(conn, :update, video), video: @invalid_attrs)
+           |> put(backend_video_path(conn, :update, video),
+                  video: @invalid_attrs)
     assert html_response(conn, 200) =~ "Edit video"
   end
 

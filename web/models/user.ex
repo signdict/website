@@ -21,7 +21,8 @@ defmodule SignDict.User do
   """
   def register_changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :password, :password_confirmation, :name, :biography])
+    |> cast(params, [:email, :password, :password_confirmation,
+                     :name, :biography])
     |> validate_required([:email, :password, :password_confirmation, :name])
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 8)

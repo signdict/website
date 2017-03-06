@@ -6,6 +6,7 @@ defmodule SignDict.SessionController do
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
   alias SignDict.User
+  alias Guardian.Plug
 
   def new(conn, _params) do
     render conn, "new.html"
@@ -17,12 +18,13 @@ defmodule SignDict.SessionController do
     |> render("new.html")
   end
 
-  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+  def create(conn, %{"session" => %{"email" => email,
+                                    "password" => password}}) do
     case verify_credentials(email, password) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Successfully signed in")
-        |> Guardian.Plug.sign_in(user)
+        |> Plug.sign_in(user)
         |> redirect(to: page_path(conn, :index))
       {:error, _reason} ->
         conn
@@ -33,7 +35,7 @@ defmodule SignDict.SessionController do
 
   def delete(conn, _params) do
     conn
-    |> Guardian.Plug.sign_out()
+    |> Plug.sign_out()
     |> put_flash(:info, "Successfully signed out")
     |> redirect(to: "/")
   end

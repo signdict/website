@@ -1,4 +1,4 @@
-defmodule SignDict.AuthHandler do
+defmodule SignDict.GuardianErrorHandler do
   @moduledoc """
   """
   use SignDict.Web, :controller
