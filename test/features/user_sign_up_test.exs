@@ -11,6 +11,8 @@ defmodule SignDict.UserSignUpTest do
       # |> find(Query.css(".user-name"))
       |> text
 
+    # TODO: finish this
+
     # assert first_employee == "Chris"
   end
 end

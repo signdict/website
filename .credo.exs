@@ -5,8 +5,8 @@
       name: "default",
       color: true,
       files: %{
-        included: ["lib/", "src/", "web/", "apps/", "test/"],
-        excluded: []
+        included: ["lib/", "src/", "web/", "apps/"],
+        excluded: [~r"/_build/", ~r"/deps/"]
       },
       checks: [
         {Credo.Check.Readability.Specs, false},
