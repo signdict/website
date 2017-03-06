@@ -24,9 +24,7 @@ defmodule SignDict.Video do
   end
 
   def valid_state?(state) do
-    Enum.any?(@states, fn s ->
-      state == s
-    end)
+    @states |> Enum.member?(state)
   end
 
   # Makes sure that the video-state is in the list of possible states.
