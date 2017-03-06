@@ -1,7 +1,12 @@
+
 defmodule SignDict.Endpoint do
   use Phoenix.Endpoint, otp_app: :sign_dict
 
   socket "/socket", SignDict.UserSocket
+
+  if Application.get_env(:your_app, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
 
   # Serve at "/" the static files from "priv/static" directory.
   #

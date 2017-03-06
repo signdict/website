@@ -16,6 +16,7 @@ defmodule SignDict.Router do
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
+    plug SignDict.CurrentUser
   end
 
   pipeline :auth do
@@ -23,7 +24,7 @@ defmodule SignDict.Router do
   end
 
   scope "/", SignDict do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :browser_session]
 
     resources "/users", UserController, only: [:new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
