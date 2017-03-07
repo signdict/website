@@ -9,7 +9,7 @@ env:
 
 before_install:
   - "phantomjs --version"
-  - "export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
+  - "npm install -g phantomjs"
   - "phantomjs --version"
 
 before_script:
