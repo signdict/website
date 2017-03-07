@@ -4,7 +4,7 @@ defmodule SignDict.Endpoint do
 
   socket "/socket", SignDict.UserSocket
 
-  if Application.get_env(:your_app, :sql_sandbox) do
+  if Application.get_env(:sign_dict, :sql_sandbox) do
     plug Phoenix.Ecto.SQL.Sandbox
   end
 
