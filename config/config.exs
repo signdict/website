@@ -31,6 +31,9 @@ config :guardian, Guardian,
   secret_key: "ogqsU0chmc/6sNe2piXqwHpGldTcZUXhql6HNQusM2kLQOZI/0dm0oz7xlVW3VmJ",
   serializer: SignDict.GuardianSerializer
 
+# For now the default is german. We might want to
+# do something smarter later where we detect the language
+# sent from the browser to set a reasonable default
 config :sign_dict, SignDict.Gettext, default_locale: "de"
 
 # Import environment specific config. This must remain at the bottom

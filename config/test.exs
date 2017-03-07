@@ -24,3 +24,7 @@ config :sign_dict, SignDict.Repo,
 config :comeonin, :bcrypt_log_rounds, 1
 
 config :wallaby, screenshot_on_failure: true
+
+# Using english locale for tests, this makes it
+# easier for non german speaking people
+config :sign_dict, SignDict.Gettext, default_locale: "en"
