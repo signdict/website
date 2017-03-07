@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello SignDict!</title>
+    <title><%= gettext("Hello SignDict!") %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -18,14 +18,14 @@
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
               <li>
-                <%= link "Sign out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
+                <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete" %>
               </li>
             <% else %>
               <li>
-                <%= link "Register", to: user_path(@conn, :new) %>
+                <%= link gettext("Register"), to: user_path(@conn, :new) %>
               </li>
               <li>
-                <%= link "Sign in", to: session_path(@conn, :new) %>
+                <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
               </li>
             <% end %>
           </ul>

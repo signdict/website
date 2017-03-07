@@ -1,39 +1,39 @@
 <%= form_for @changeset, user_path(@conn, :create), [class: "user-form"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext("Oops, something went wrong! Please check the errors below.") %></p>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
+    <%= label f, :email, gettext("user.email"), class: "control-label" %>
     <%= text_input f, :email, class: "form-control" %>
     <%= error_tag f, :email %>
   </div>
 
   <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
+    <%= label f, :password, gettext("user.password"), class: "control-label" %>
     <%= password_input f, :password, class: "form-control" %>
     <%= error_tag f, :password %>
   </div>
 
   <div class="form-group">
-    <%= label f, :password_confirmation, class: "control-label" %>
+    <%= label f, :password_confirmation, gettext("user.password_confirmation"), class: "control-label" %>
     <%= password_input f, :password_confirmation, class: "form-control" %>
     <%= error_tag f, :password_confirmation %>
   </div>
 
   <div class="form-group">
-    <%= label f, :name, class: "control-label" %>
+    <%= label f, :name, gettext("user.name"), class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
   </div>
 
   <div class="form-group">
-    <%= label f, :biography, class: "control-label" %>
-    <%= text_input f, :biography, class: "form-control" %>
+    <%= label f, :biography, gettext("user.biography"), class: "control-label" %>
+    <%= textarea f, :biography, class: "form-control" %>
     <%= error_tag f, :biography %>
   </div>
 
-  <%= submit "Register", class: "btn btn-primary" %>
+  <%= submit gettext("Register"), class: "btn btn-primary" %>
 <% end %>

@@ -17,7 +17,7 @@ defmodule SignDict.UserController do
     case result do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, "Registration successful")
+        |> put_flash(:info, gettext("Registration successful"))
         |> redirect(to: session_path(conn, :new))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset

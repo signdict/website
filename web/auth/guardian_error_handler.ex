@@ -5,7 +5,7 @@ defmodule SignDict.GuardianErrorHandler do
 
   def unauthenticated(conn, _params) do
     conn
-    |> put_flash(:error, "Authentication required")
+    |> put_flash(:error, gettext("Authentication required"))
     |> redirect(to: session_path(conn, :new))
   end
 end

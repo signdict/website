@@ -14,7 +14,7 @@ defmodule SignDict.SessionController do
 
   def create(conn, %{"session" => %{"email" => "", "password" => ""}}) do
     conn
-    |> put_flash(:error, "Please fill in an email address and password")
+    |> put_flash(:error, gettext("Please fill in an email address and password"))
     |> render("new.html")
   end
 
@@ -23,12 +23,12 @@ defmodule SignDict.SessionController do
     case verify_credentials(email, password) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Successfully signed in")
+        |> put_flash(:info, gettext("Successfully signed in"))
         |> Plug.sign_in(user)
         |> redirect(to: page_path(conn, :index))
       {:error, _reason} ->
         conn
-        |> put_flash(:error, "Invalid email address or password")
+        |> put_flash(:error, gettext("Invalid email address or password"))
         |> render("new.html")
     end
   end
@@ -36,7 +36,7 @@ defmodule SignDict.SessionController do
   def delete(conn, _params) do
     conn
     |> Plug.sign_out()
-    |> put_flash(:info, "Successfully signed out")
+    |> put_flash(:info, gettext("Successfully signed out"))
     |> redirect(to: "/")
   end
 
@@ -49,7 +49,7 @@ defmodule SignDict.SessionController do
     case Repo.get_by(User, email: email) do
       nil ->
         dummy_checkpw()
-        {:error, "User with email '#{email}' not found"}
+        {:error, gettext("Invalid email address or password")}
       user ->
         {:ok, user}
     end
