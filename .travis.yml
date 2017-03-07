@@ -11,6 +11,7 @@ cache:
   directories:
     — /home/travis/.rvm/
     - travis_phantomjs
+    - node_modules
 
 before_install:
   # Upgrade PhantomJS to v2.1.1.
