@@ -25,7 +25,7 @@ defmodule SignDict.UserSignUpTest do
     |> assert_alert("Successfully signed in")
     |> visit("/")
     |> click(Query.link("Sign out"))
-    |> click(Query.link("Sign in"))
+    |> click(Query.link("Sign out"))
   end
 
   defp assert_alert(page, text) do
