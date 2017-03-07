@@ -3,13 +3,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th>State</th>
-      <th>Copyright</th>
-      <th>License</th>
-      <th>Original href</th>
-      <th>Type</th>
-
-      <th></th>
+      <th scope='col'>State</th>
+      <th scope='col'>Copyright</th>
+      <th scope='col'>License</th>
+      <th scope='col'>Original href</th>
+      <th scope='col'>Type</th>
+      <th scope='col' style='text-align: right'>Actions</th>
     </tr>
   </thead>
   <tbody>
