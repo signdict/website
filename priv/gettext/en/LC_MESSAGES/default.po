@@ -73,20 +73,22 @@ msgstr ""
 
 #: web/templates/user/new.html.eex:33
 msgid "user.biography"
-msgstr ""
+msgstr "Biography"
 
-#: web/templates/session/new.html.eex:3 web/templates/user/new.html.eex:9
+#: web/templates/session/new.html.eex:3 web/templates/session/new.html.eex:4
+#: web/templates/user/new.html.eex:9
 msgid "user.email"
-msgstr ""
+msgstr "Email"
 
 #: web/templates/user/new.html.eex:27
 msgid "user.name"
-msgstr ""
+msgstr "Name"
 
-#: web/templates/session/new.html.eex:8 web/templates/user/new.html.eex:15
+#: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
+#: web/templates/user/new.html.eex:15
 msgid "user.password"
-msgstr ""
+msgstr "Password"
 
 #: web/templates/user/new.html.eex:21
 msgid "user.password_confirmation"
-msgstr ""
+msgstr "Password confirmation"

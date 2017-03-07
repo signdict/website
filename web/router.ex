@@ -7,6 +7,7 @@ defmodule SignDict.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug SignDict.Plug.Locale
   end
 
   pipeline :api do
@@ -16,7 +17,7 @@ defmodule SignDict.Router do
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
-    plug SignDict.CurrentUser
+    plug SignDict.Plug.CurrentUser
   end
 
   pipeline :auth do

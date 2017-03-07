@@ -28,6 +28,13 @@
                 <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
               </li>
             <% end %>
+            <li>
+              <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
+                <a href="?locale=en">EN</a>
+              <% else %>
+                <a href="?locale=de">DE</a>
+              <% end %>
+            </li>
           </ul>
         </nav>
         <span class="logo"></span>

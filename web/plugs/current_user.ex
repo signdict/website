@@ -1,4 +1,4 @@
-defmodule SignDict.CurrentUser do
+defmodule SignDict.Plug.CurrentUser do
   import Plug.Conn
   import Guardian.Plug
 
