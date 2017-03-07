@@ -24,3 +24,6 @@ priv/static/
 config/prod.secret.exs
 
 .mix_tasks
+
+# wallaby stores screenshots here
+screenshots/
