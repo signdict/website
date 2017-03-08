@@ -36,6 +36,10 @@ config :guardian, Guardian,
 # sent from the browser to set a reasonable default
 config :sign_dict, SignDict.Gettext, default_locale: "de"
 
+config :canary, repo: SignDict.Repo,
+  unauthorized_handler: {SignDict.GuardianErrorHandler, :handle_unauthorized},
+  not_found_handler: {SignDict.GuardianErrorHandler, :handle_resource_not_found}
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
