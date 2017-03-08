@@ -1,0 +1,20 @@
+<h2>Change your password</h2>
+
+<%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user], fn f -> %>
+  <%= hidden_input f, :password_reset_token, value: @password_reset_token %>
+  <%= hidden_input f, :email, value: @email %>
+
+  <div>
+    <%= label f, :password, class: "sentinel control-label" %><br />
+    <%= password_input f, :password, class: "sentinel form-control" %>
+  </div>
+
+  <div>
+    <%= label f, :password_confirmation, class: "sentinel control-label" %><br />
+    <%= password_input f, :password_confirmation, class: "sentinel form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= submit "Change my password" %>
+  </div>
+<% end %>

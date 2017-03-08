@@ -15,6 +15,9 @@ defmodule SignDict.User do
 
     field :role, :string
 
+    field :password_reset_token, :string
+    field :password_reset_uncrypted, :string, virtual: true
+
     timestamps()
   end
 
@@ -31,6 +34,16 @@ defmodule SignDict.User do
     |> validate_confirmation(:password)
     |> hash_password()
     |> unique_constraint(:email)
+  end
+
+  def reset_password_changeset(struct) do
+    unencrypted_token = SecureRandom.urlsafe_base64(32)
+    encrypted_token = Bcrypt.hashpwsalt(unencrypted_token)
+
+    struct
+    |> change
+    |> put_change(:password_reset_uncrypted, unencrypted_token)
+    |> put_change(:password_reset_token, encrypted_token)
   end
 
   defp hash_password(%{valid?: false} = changeset), do: changeset
