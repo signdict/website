@@ -3,6 +3,8 @@ defmodule SignDict.ResetPasswordController do
 
   alias SignDict.Repo
   alias SignDict.User
+  alias SignDict.Email
+  alias SignDict.Mailer
 
   def new(conn, _params) do
     render(conn, "new.html", changeset: %User{})
@@ -18,7 +20,8 @@ defmodule SignDict.ResetPasswordController do
 
   def edit(conn, params)
   def edit(conn, %{"email" => email, "password_reset_token" => password_reset_token}) do
-    render(conn, "edit.html", password_reset_unencrypted: password_reset_token, email: email)
+    render(conn, "edit.html", password_reset_unencrypted: password_reset_token,
+                              email: email)
   end
   def edit(conn, _params) do
     conn
@@ -37,7 +40,8 @@ defmodule SignDict.ResetPasswordController do
        {:error, _user_changeset} ->
          conn
          |> put_flash(:error, gettext("Unable to change your password"))
-         |> render("edit.html", password_reset_unencrypted: password_reset_token, email: email)
+         |> render("edit.html", password_reset_unencrypted: password_reset_token,
+                                email: email)
     end
   end
   def update(conn, _params) do
@@ -50,8 +54,8 @@ defmodule SignDict.ResetPasswordController do
   defp send_password_reset_link_to_user(user) do
     user_changeset = User.create_reset_password_changeset(user)
     {:ok, user} = Repo.update(user_changeset)
-    mail = SignDict.Email.password_reset(user)
-    SignDict.Mailer.deliver_later(mail)
+    mail = Email.password_reset(user)
+    Mailer.deliver_later(mail)
   end
 
 end

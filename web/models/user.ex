@@ -2,6 +2,7 @@ defmodule SignDict.User do
   use SignDict.Web, :model
 
   alias Comeonin.Bcrypt
+  alias Ecto.Changeset
 
   schema "users" do
     field :email, :string
@@ -45,23 +46,27 @@ defmodule SignDict.User do
 
   def reset_password_changeset(struct, params) do
     struct
-    |> cast(params, [:password, :password_confirmation, :password_reset_unencrypted])
+    |> cast(params, [:password, :password_confirmation,
+                     :password_reset_unencrypted])
     |> validate_required([:password, :password_confirmation])
-    |> validate_token()
+    |> validate_token
     |> validate_confirmation(:password)
-    |> hash_password()
+    |> hash_password
   end
 
-  defp validate_token(changeset) do
-    {:ok, reset_unencrypted} = Ecto.Changeset.fetch_change(changeset, :password_reset_unencrypted)
-    {_, reset_encrypted}     = Ecto.Changeset.fetch_field(changeset, :password_reset_token)
+  defp validate_token(%{valid?: false} = changeset), do: changeset
+  defp validate_token(%{valid?: true} = changeset) do
+    {:ok, reset_unencrypted} =
+      Changeset.fetch_change(changeset, :password_reset_unencrypted)
+    {_, reset_encrypted}     =
+      Changeset.fetch_field(changeset, :password_reset_token)
     token_matches = Bcrypt.checkpw(reset_unencrypted, reset_encrypted)
     do_validate_token(token_matches, changeset)
   end
 
   defp do_validate_token(true, changeset), do: changeset
   defp do_validate_token(false, changeset) do
-    Ecto.Changeset.add_error changeset, :password_reset_token, "invalid"
+    Changeset.add_error changeset, :password_reset_token, "invalid"
   end
 
   defp hash_password(%{valid?: false} = changeset), do: changeset
