@@ -5,7 +5,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   import SignDict.Factory
 
   setup do
-    [user: insert(:user)]
+    [user: insert(:user, password_reset_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken"))]
   end
 
   test "renders form for new resources", %{conn: conn} do
@@ -27,7 +27,7 @@ defmodule SignDict.ResetPasswordControllerTest do
            |> post(reset_password_path(conn, :create), user: %{email: "wrong@example.com"})
     assert redirected_to(conn) == "/"
     assert get_flash(conn, :info) == "You'll receive an email with instructions about how to reset your password in a few minutes."
-    assert_no_emails_delivered
+    assert_no_emails_delivered()
   end
 
   test "shows the password edit form", %{conn: conn, user: user} do
@@ -43,14 +43,25 @@ defmodule SignDict.ResetPasswordControllerTest do
     assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
   end
 
-  # update
   test "fails to update if the token is wrong", %{conn: conn} do
+    conn = conn
+           |> put(reset_password_path(conn, :update), %{})
+    assert redirected_to(conn) == "/"
+    assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
   end
 
-  test "fails to update if the password does not match confirmation", %{conn: conn} do
+  test "fails to update if the password does not match confirmation", %{conn: conn, user: user} do
+    conn = conn
+           |> put(reset_password_path(conn, :update), %{user: %{email: user.email, password_reset_unencrypted: "wrong"}})
+    assert get_flash(conn, :error) == "Unable to change your password"
+    assert html_response(conn, 200) =~ "Change your password"
   end
 
-  test "updates the password if password, confirmation and token are correct", %{conn: conn} do
+  test "updates the password if password, confirmation and token are correct", %{conn: conn, user: user} do
+    conn = conn
+           |> put(reset_password_path(conn, :update), %{user: %{email: user.email, password_reset_unencrypted: "encryptedtoken"}})
+    assert get_flash(conn, :error) == "Unable to change your password"
+    assert html_response(conn, 200) =~ "Change your password"
   end
 
 end
