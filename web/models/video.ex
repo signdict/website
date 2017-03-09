@@ -1,7 +1,7 @@
 defmodule SignDict.Video do
   use SignDict.Web, :model
 
-  @states ~w(uploaded transcoded waiting_for_review published deleted)
+  @states ~w(created uploaded transcoded waiting_for_review published deleted)
 
   schema "videos" do
     field :state, :string

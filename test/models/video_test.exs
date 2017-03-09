@@ -23,7 +23,7 @@ defmodule SignDict.VideoTest do
     refute changeset.valid?
 
     [state: errmsg] = errors_on(%Video{}, attrs)
-    assert errmsg == "must be in the list of uploaded, transcoded, waiting_for_review, published, deleted"
+    assert errmsg == "must be in the list of created, uploaded, transcoded, waiting_for_review, published, deleted"
   end
 
   test "checks if a state is valid" do
