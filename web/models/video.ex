@@ -4,7 +4,7 @@ defmodule SignDict.Video do
   @states ~w(created uploaded transcoded waiting_for_review published deleted)
 
   schema "videos" do
-    field :state, :string
+    field :state, :string, default: "created"
     field :copyright, :string
     field :license, :string
     field :original_href, :string
