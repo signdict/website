@@ -13,6 +13,8 @@ defmodule SignDict.User do
     field :name, :string
     field :biography, :string
 
+    field :role, :string
+
     timestamps()
   end
 

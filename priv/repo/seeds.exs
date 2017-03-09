@@ -9,3 +9,12 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+SignDict.Repo.insert!(
+    %SignDict.User{
+      name: "Admin User",
+      email: "admin@example.com",
+      password_hash: Comeonin.Bcrypt.hashpwsalt("thepasswordisalie"),
+      role: "admin"
+    }
+)

@@ -21,9 +21,14 @@ you would expect it to be:
 
 ```
 mix deps.get
-mix ecto.setup
+mix ecto.create
+mix ecto.migrate
+mix run priv/repo/seeds.exs
 mix phoenix.server
 ```
+
+After that you have a running system with a default admin user called
+`admin@example.com` with the password `thepasswordisalie`.
 
 Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTRIBUTING.md)
 

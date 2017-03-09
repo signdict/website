@@ -34,6 +34,8 @@ defmodule SignDict.Web do
       import Ecto
       import Ecto.Query
 
+      import Canary.Plugs
+
       import SignDict.Router.Helpers
       import SignDict.Gettext
     end
