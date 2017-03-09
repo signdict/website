@@ -25,7 +25,7 @@ mix ecto.setup
 mix phoenix.server
 ```
 
-Before you contribute code, please make sure to read the [CONTRIBUTING.md](contributing.md)
+Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Funding
 
