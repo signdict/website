@@ -140,3 +140,7 @@ msgstr ""
 #: web/controllers/reset_password_controller.ex:15
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
+
+#: web/email.ex:9
+msgid "Your password reset link"
+msgstr ""

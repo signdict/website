@@ -140,3 +140,7 @@ msgstr "Leider konnte das Passwort nicht geändert werden"
 #: web/controllers/reset_password_controller.ex:15
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
+
+#: web/email.ex:9
+msgid "Your password reset link"
+msgstr "Dein Passwort Link"

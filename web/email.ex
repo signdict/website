@@ -1,10 +1,12 @@
 defmodule SignDict.Email do
   use Bamboo.Phoenix, view: SignDict.EmailView
 
+  import SignDict.Gettext
+
   def password_reset(user) do
     base_email()
     |> to(user)
-    |> subject("Your password reset link")
+    |> subject(gettext("Your password reset link"))
     |> assign(:user, user)
     |> render(String.to_atom("password_reset_#{Gettext.get_locale(SignDict.Gettext)}"))
   end
