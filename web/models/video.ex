@@ -1,7 +1,7 @@
 defmodule SignDict.Video do
   use SignDict.Web, :model
 
-  @states ~w(created uploaded transcoded waiting_for_review published deleted)
+  @states [:created, :uploaded, :transcoded, :waiting_for_review, :published, :deleted]
 
   schema "videos" do
     field :state, :string, default: "created"
@@ -23,9 +23,8 @@ defmodule SignDict.Video do
     |> validate_state()
   end
 
-  def valid_state?(state) do
-    @states |> Enum.member?(state)
-  end
+  def valid_state?(state) when is_atom(state), do: @states |> Enum.member?(state)
+  def valid_state?(state), do: valid_state?(String.to_atom(state))
 
   # Makes sure that the video-state is in the list of possible states.
   defp validate_state(changeset) do
