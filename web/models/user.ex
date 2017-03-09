@@ -46,6 +46,7 @@ defmodule SignDict.User do
   def reset_password_changeset(struct, params) do
     struct
     |> cast(params, [:password, :password_confirmation, :password_reset_unencrypted])
+    |> validate_required([:password, :password_confirmation])
     |> validate_token()
     |> validate_confirmation(:password)
     |> hash_password()

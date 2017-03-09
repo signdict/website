@@ -12,7 +12,7 @@ defmodule SignDict.ResetPasswordController do
     user = Repo.get_by(User, email: user["email"])
     send_password_reset_link_to_user(user)
     conn
-    |> put_flash(:info, "You'll receive an email with instructions about how to reset your password in a few minutes.")
+    |> put_flash(:info, gettext("You'll receive an email with instructions about how to reset your password in a few minutes."))
     |> redirect(to: "/")
   end
 
@@ -22,27 +22,27 @@ defmodule SignDict.ResetPasswordController do
   end
   def edit(conn, _params) do
     conn
-    |> put_flash(:error, "Invalid password reset link. Please try again.")
+    |> put_flash(:error, gettext("Invalid password reset link. Please try again."))
     |> redirect(to: "/")
   end
 
-  def update(conn, %{"user" => %{"email" => email, "password_reset_unencrypted" => password_reset_token}} = params) do
+  def update(conn, params = %{"user" => %{"email" => email, "password_reset_unencrypted" => password_reset_token}}) do
     user      = Repo.get_by(User, email: email)
     changeset = User.reset_password_changeset(user, params["user"])
     case Repo.update(changeset) do
        {:ok, _user_changeset} ->
          conn
-         |> put_flash(:info, "Password successfully changed")
+         |> put_flash(:info, gettext("Password successfully changed"))
          |> redirect(to: "/")
        {:error, _user_changeset} ->
          conn
-         |> put_flash(:error, "Unable to change your password")
+         |> put_flash(:error, gettext("Unable to change your password"))
          |> render("edit.html", password_reset_unencrypted: password_reset_token, email: email)
     end
   end
   def update(conn, _params) do
     conn
-    |> put_flash(:error, "Invalid password reset link. Please try again.")
+    |> put_flash(:error, gettext("Invalid password reset link. Please try again."))
     |> redirect(to: "/")
   end
 
@@ -50,7 +50,6 @@ defmodule SignDict.ResetPasswordController do
   defp send_password_reset_link_to_user(user) do
     user_changeset = User.create_reset_password_changeset(user)
     {:ok, user} = Repo.update(user_changeset)
-    IO.puts "user token added #{Ecto.Changeset.get_field user_changeset, :password_reset_unencrypted}"
     mail = SignDict.Email.password_reset(user)
     SignDict.Mailer.deliver_later(mail)
   end

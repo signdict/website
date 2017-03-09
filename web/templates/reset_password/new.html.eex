@@ -1,14 +1,14 @@
-<h2>Forgot your password?</h2>
+<h2><%= gettext("Forgot your password?") %></h2>
 
-<p>Enter your email address and we'll send you a link to reset your password.</p>
+<p><%= gettext("Enter your email address and we'll send you a link to reset your password.") %></p>
 
 <%= form_for @conn, reset_password_path(@conn, :create), [as: :user], fn f -> %>
-  <div class="field">
-    <%= label f, :email %><br />
+  <div class="form-group">
+    <%= label f, :email, gettext("user.email") %><br />
     <%= email_input f, :email %>
   </div>
 
   <div class="actions">
-    <%= submit "Send password reset instructions" %>
+    <%= submit gettext("Send password reset instructions"), class: "btn btn-primary" %>
   </div>
 <% end %>
