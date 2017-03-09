@@ -16,14 +16,11 @@ defmodule SignDict.User do
     field :role, :string
 
     field :password_reset_token, :string
-    field :password_reset_uncrypted, :string, virtual: true
+    field :password_reset_unencrypted, :string, virtual: true
 
     timestamps()
   end
 
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
   def register_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password, :password_confirmation,
@@ -36,14 +33,34 @@ defmodule SignDict.User do
     |> unique_constraint(:email)
   end
 
-  def reset_password_changeset(struct) do
+  def create_reset_password_changeset(struct) do
     unencrypted_token = SecureRandom.urlsafe_base64(32)
     encrypted_token = Bcrypt.hashpwsalt(unencrypted_token)
 
     struct
     |> change
-    |> put_change(:password_reset_uncrypted, unencrypted_token)
+    |> put_change(:password_reset_unencrypted, unencrypted_token)
     |> put_change(:password_reset_token, encrypted_token)
+  end
+
+  def reset_password_changeset(struct, params) do
+    struct
+    |> cast(params, [:password, :password_confirmation, :password_reset_unencrypted])
+    |> validate_token()
+    |> validate_confirmation(:password)
+    |> hash_password()
+  end
+
+  defp validate_token(changeset) do
+    {:ok, reset_unencrypted} = Ecto.Changeset.fetch_change(changeset, :password_reset_unencrypted)
+    {_, reset_encrypted}     = Ecto.Changeset.fetch_field(changeset, :password_reset_token)
+    token_matches = Bcrypt.checkpw(reset_unencrypted, reset_encrypted)
+    do_validate_token(token_matches, changeset)
+  end
+
+  defp do_validate_token(true, changeset), do: changeset
+  defp do_validate_token(false, changeset) do
+    Ecto.Changeset.add_error changeset, :password_reset_token, "invalid"
   end
 
   defp hash_password(%{valid?: false} = changeset), do: changeset

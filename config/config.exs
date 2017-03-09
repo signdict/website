@@ -40,7 +40,9 @@ config :canary, repo: SignDict.Repo,
   unauthorized_handler: {SignDict.GuardianErrorHandler, :handle_unauthorized},
   not_found_handler: {SignDict.GuardianErrorHandler, :handle_resource_not_found}
 
+config :sign_dict, SignDict.Mailer,
+  adapter: Bamboo.LocalAdapter
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
-
