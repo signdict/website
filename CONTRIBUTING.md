@@ -13,6 +13,10 @@ abide by its terms.**
 * Leave a comment that you want to work on this you ticket
 * We will assign it to you and assist if you have any questions
 * Start hacking
+* If you change text on the website, make sure to use gettext and
+  call `mix gettext.extract --merge` to update the i18n files. You
+  don't have to add all translations yourself, we will take care of
+  all languages you are not fluent in :wink:
 * Open a pull-request and work on a feature branch. During the work on your branch:
     * [Credo](https://github.com/rrrene/credo) will check for common code quality problems
     * A CI server provides feedback for your branch. We're using [Travis CI](http://travis-ci.org) to help us with this job.

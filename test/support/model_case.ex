@@ -58,7 +58,8 @@ defmodule SignDict.ModelCase do
       true
   """
   def errors_on(struct, data) do
-    struct.__struct__.changeset(struct, data)
+    changeset = struct.__struct__.changeset(struct, data)
+    changeset
     |> Ecto.Changeset.traverse_errors(&SignDict.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end

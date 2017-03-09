@@ -34,11 +34,11 @@ defmodule SignDict.Video do
     if changeset && changeset.valid? do
       state = get_field(changeset, :state)
 
-      unless valid_state?(state) do
-        error_msg ="must be in the list of " <> Enum.join(@states, ", ")
-        add_error(changeset, :state, error_msg)
-      else
+      if valid_state?(state) do
         changeset
+      else
+        error_msg = "must be in the list of " <> Enum.join(@states, ", ")
+        add_error(changeset, :state, error_msg)
       end
     else
       changeset

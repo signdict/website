@@ -2,11 +2,11 @@ defmodule SignDict.ErrorView do
   use SignDict.Web, :view
 
   def render("404.html", _assigns) do
-    "Page not found"
+    gettext("Page not found")
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    gettext("Internal server error")
   end
 
   # In case no render clause matches or no
