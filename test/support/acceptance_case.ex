@@ -11,6 +11,14 @@ defmodule SignUp.AcceptanceCase do
       import Ecto.Query
 
       import SignDict.Router.Helpers
+
+      def assert_alert(page, text) do
+        page
+        |> find(Wallaby.Query.css(".alert-info"), fn(notification) ->
+          assert notification
+          |> has_text?(text)
+        end)
+      end
     end
   end
 

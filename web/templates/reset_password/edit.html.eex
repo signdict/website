@@ -1,6 +1,6 @@
 <h2><%= gettext("Change your password") %></h2>
 
-<%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user], fn f -> %>
+<%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user, class: "password-reset-form"], fn f -> %>
   <%= hidden_input f, :password_reset_unencrypted, value: @password_reset_unencrypted %>
   <%= hidden_input f, :email, value: @email %>
 

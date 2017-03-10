@@ -2,7 +2,7 @@
 
 <p><%= gettext("Enter your email address and we'll send you a link to reset your password.") %></p>
 
-<%= form_for @conn, reset_password_path(@conn, :create), [as: :user], fn f -> %>
+<%= form_for @conn, reset_password_path(@conn, :create), [as: :user, class: "password-reset-form"], fn f -> %>
   <div class="form-group">
     <%= label f, :email, gettext("user.email") %><br />
     <%= email_input f, :email %>
