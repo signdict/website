@@ -29,6 +29,10 @@ defmodule SignDict.Router do
     forward "/sent_emails", Bamboo.EmailPreviewPlug
   end
 
+  pipeline :allowed_for_backend do
+    plug SignDict.Plug.AllowedForBackend
+  end
+
   scope "/", SignDict do
     pipe_through [:browser, :browser_session]
 
@@ -45,8 +49,7 @@ defmodule SignDict.Router do
 
   # Backend functions. Only accessible to logged in admin users.
   scope "/backend", SignDict.Backend, as: :backend do
-    pipe_through [:browser, :browser_session, :auth]
-    # TODO: insert plug for admin users only here
+    pipe_through [:browser, :browser_session, :auth, :allowed_for_backend]
 
     resources "/videos", VideoController
   end

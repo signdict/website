@@ -117,6 +117,7 @@ msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
 #: web/auth/guardian_error_handler.ex:16
+#: web/plugs/allowed_for_backend.ex:16
 msgid "Sadly you are not allowed to do this"
 msgstr "Leider darfst du dies nicht."
 

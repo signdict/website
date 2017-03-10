@@ -144,3 +144,7 @@ msgstr ""
 #: web/email.ex:9
 msgid "Your password reset link"
 msgstr ""
+
+#: web/plugs/allowed_for_backend.ex:16
+msgid "You are not allowed to do this."
+msgstr ""
