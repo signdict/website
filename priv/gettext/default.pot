@@ -14,7 +14,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:10
+#: web/templates/layout/app.html.eex:10 web/templates/layout/backend.html.eex:10
 msgid "Hello SignDict!"
 msgstr ""
 
@@ -43,7 +43,8 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:25 web/templates/user/new.html.eex:38
+#: web/templates/layout/app.html.eex:25 web/templates/layout/backend.html.eex:25
+#: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr ""
 
@@ -51,11 +52,11 @@ msgstr ""
 msgid "Registration successful"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:28
+#: web/templates/layout/app.html.eex:28 web/templates/layout/backend.html.eex:28
 msgid "Sign in"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:21
+#: web/templates/layout/app.html.eex:21 web/templates/layout/backend.html.eex:21
 msgid "Sign out"
 msgstr ""
 
@@ -124,20 +125,20 @@ msgstr ""
 msgid "Send password reset instructions"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:25
-#: web/controllers/reset_password_controller.ex:45
+#: web/controllers/reset_password_controller.ex:28
+#: web/controllers/reset_password_controller.ex:49
 msgid "Invalid password reset link. Please try again."
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:35
+#: web/controllers/reset_password_controller.ex:38
 msgid "Password successfully changed"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:39
+#: web/controllers/reset_password_controller.ex:42
 msgid "Unable to change your password"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:15
+#: web/controllers/reset_password_controller.ex:17
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
