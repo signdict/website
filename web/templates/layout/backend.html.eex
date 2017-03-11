@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= gettext("Hello SignDict!") %></title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <nav role="navigation">
+          <ul class="nav nav-pills pull-right">
+            <%= if @current_user do %>
+              <li>
+                <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link gettext("Register"), to: user_path(@conn, :new) %>
+              </li>
+              <li>
+                <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+              </li>
+            <% end %>
+            <li>
+              <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
+                <a href="?locale=en">EN</a>
+              <% else %>
+                <a href="?locale=de">DE</a>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+        <span class="logo"></span>
+      </header>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <div>
+        <%= link "Dashboard", to: backend_dashboard_path(@conn, :index) %>
+      </div>
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= if Mix.env != "prod" do %>
+      <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
+    <% end %>
+  </body>
+</html>
