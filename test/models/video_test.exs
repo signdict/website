@@ -90,19 +90,19 @@ defmodule SignDict.VideoTest do
 
       assert Video.current_state(v) == :created
 
-      Video.upload(v)
+      {:ok, v} = Video.upload(v)
       assert Video.current_state(v) == :uploaded
 
-      Video.transcode(v)
+      {:ok, v} = Video.transcode(v)
       assert Video.current_state(v) == :transcoded
 
-      Video.wait_for_review(v)
+      {:ok, v} = Video.wait_for_review(v)
       assert Video.current_state(v) == :waiting_for_review
 
-      Video.publish(v)
+      {:ok, v} = Video.publish(v)
       assert Video.current_state(v) == :published
 
-      Video.delete(v)
+      {:ok, v} = Video.delete(v)
       assert Video.current_state(v) == :deleted
     end
   end
