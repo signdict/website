@@ -1,0 +1,13 @@
+<%= form_for @conn, session_path(@conn, :create), [as: :session, class: 'login-form'], fn f -> %>
+  <div class="form-group">
+    <%= label f, :email, gettext("user.email"), class: "control-label" %>
+    <%= text_input f, :email, placeholder: gettext("user.email"), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password, gettext("user.password"), class: "control-label" %>
+    <%= password_input f, :password, placeholder: gettext("user.password"), class: "form-control" %>
+  </div>
+
+  <%= submit gettext("Log in"), class: "btn btn-primary" %>
+<% end %>

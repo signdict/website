@@ -19,9 +19,7 @@ defmodule SignDict.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {SignDict, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+    [mod: {SignDict, []}]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,6 +33,7 @@ defmodule SignDict.Mixfile do
     [{:phoenix, "~> 1.2.1"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
+     {:plug, "~> 1.3.3"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
@@ -43,7 +42,13 @@ defmodule SignDict.Mixfile do
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:state_mc, "~> 0.1.0"},
      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
-     {:excoveralls, "~> 0.6", only: :test}]
+     {:excoveralls, "~> 0.6", only: :test},
+     {:guardian, "~> 0.14.0"},
+     {:comeonin, "~> 2.6"},
+     {:ex_machina, "~> 2.0"},
+     {:wallaby, "~> 0.16.1"},
+     {:canary, "~> 1.1.0"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

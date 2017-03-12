@@ -3,7 +3,11 @@ defmodule SignDict.VideoTest do
 
   alias SignDict.Video
 
-  @valid_attrs %{copyright: "some content", license: "some content", original_href: "some content", state: "uploaded", type: "some content"}
+  @valid_attrs %{
+    copyright: "some content", license: "some content",
+    original_href: "some content", state: "uploaded",
+    type: "some content"
+  }
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
@@ -37,6 +41,13 @@ defmodule SignDict.VideoTest do
       Enum.each(~w(not_uploaded random_state blah PUBLISHED), fn s ->
         refute Video.valid_state?(s)
       end)
+    end
+
+    test "checks if a state is valid" do
+      Enum.each(~w(uploaded transcoded waiting_for_review published deleted),
+                fn s ->
+                  assert Video.valid_state?(s)
+                end)
     end
 
     test "the default state for a new video is 'created'" do

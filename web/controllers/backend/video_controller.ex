@@ -2,6 +2,8 @@ defmodule SignDict.Backend.VideoController do
   use SignDict.Web, :controller
   alias SignDict.Video
 
+  plug :load_and_authorize_resource, model: Video
+
   def index(conn, _params) do
     videos = Repo.all(Video)
     render(conn, "index.html", videos: videos)
@@ -25,19 +27,18 @@ defmodule SignDict.Backend.VideoController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    video = Repo.get!(Video, id)
-    render(conn, "show.html", video: video)
+  def show(conn, _params) do
+    render(conn, "show.html", video: conn.assigns.video)
   end
 
-  def edit(conn, %{"id" => id}) do
-    video = Repo.get!(Video, id)
+  def edit(conn, _params) do
+    video = conn.assigns.video
     changeset = Video.changeset(video)
     render(conn, "edit.html", video: video, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "video" => video_params}) do
-    video = Repo.get!(Video, id)
+  def update(conn, %{"id" => _id, "video" => video_params}) do
+    video = conn.assigns.video
     changeset = Video.changeset(video, video_params)
 
     case Repo.update(changeset) do
@@ -50,12 +51,10 @@ defmodule SignDict.Backend.VideoController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    video = Repo.get!(Video, id)
-
+  def delete(conn, _params) do
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    Repo.delete!(video)
+    Repo.delete!(conn.assigns.video)
 
     conn
     |> put_flash(:info, "Video deleted successfully.")
