@@ -48,5 +48,62 @@ defmodule SignDict.VideoTest do
 
       assert v.state == "created"
     end
+
+    test "allow transition from created to uploaded & deleted" do
+      v = %Video{}
+
+      assert Video.current_state(v) == :created
+      assert Video.can_upload?(v)
+      assert Video.can_delete?(v)
+    end
+
+    test "allow transition from uploaded to transcoded and deleted" do
+      v = %Video{state: "uploaded"}
+
+      assert Video.current_state(v) == :uploaded
+      assert Video.can_transcode?(v)
+      assert Video.can_delete?(v)
+    end
+
+    test "allow transition from transcoded to waiting_for_review and deleted" do
+      v = %Video{state: "transcoded"}
+
+      assert Video.current_state(v) == :transcoded
+      assert Video.can_wait_for_review?(v)
+      assert Video.can_delete?(v)
+    end
+
+    test "allow transition from waiting_for_review to published and deleted" do
+      v = %Video{state: "waiting_for_review"}
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_publish?(v)
+      assert Video.can_delete?(v)
+    end
+
+    test "the state traversal from start to end" do
+      attrs = Map.put(@valid_attrs, :state, "created")
+
+      v = %Video{}
+          |> Video.changeset(attrs)
+          |> Repo.insert!()
+
+      assert Video.current_state(v) == :created
+
+      Video.upload(v)
+      assert Video.current_state(v) == :uploaded
+
+      Video.transcode(v)
+      assert Video.current_state(v) == :transcoded
+
+      Video.wait_for_review(v)
+      assert Video.current_state(v) == :waiting_for_review
+
+      Video.publish(v)
+      assert Video.current_state(v) == :published
+
+      Video.delete(v)
+      assert Video.current_state(v) == :deleted
+    end
   end
 end

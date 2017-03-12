@@ -1,5 +1,8 @@
 defmodule SignDict.Video do
   use SignDict.Web, :model
+  import StateMc.EctoSm
+
+  alias SignDict.Repo
 
   @states [:created, :uploaded, :transcoded, :waiting_for_review, :published, :deleted]
 
@@ -11,6 +14,32 @@ defmodule SignDict.Video do
     field :type, :string
 
     timestamps()
+  end
+
+  statemc :state do
+    defstate @states
+
+    defevent :upload, %{from: [:created], to: :uploaded}, fn (changeset) ->
+      changeset |> Repo.update() # TODO: actually upload the file
+    end
+
+    defevent :transcode, %{from: [:uploaded], to: :transcoded}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :wait_for_review, %{from: [:transcoded], to: :waiting_for_review}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :publish, %{from: [:waiting_for_review], to: :published}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    # Allow deletion from every state:
+    defevent :delete, %{from: [:created, :uploaded, :transcoded,
+                                 :waiting_for_review, :published], to: :deleted}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
   end
 
   @doc """
