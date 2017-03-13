@@ -1,0 +1,29 @@
+<h2><%= gettext("Show user") %></h2>
+
+<ul>
+
+  <li>
+    <strong><%= gettext("user.email") %>:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong><%= gettext("user.name") %>:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
+    <strong><%= gettext("user.role") %>:</strong>
+    <%= @user.role %>
+  </li>
+
+  <li>
+    <strong><%= gettext("user.biography") %>:</strong>
+    <p>
+      <%= @user.biography %>
+    </p>
+  </li>
+</ul>
+
+<%= link gettext("Edit"), to: backend_user_path(@conn, :edit, @user) %>
+<%= link gettext("Back"), to: backend_user_path(@conn, :index) %>

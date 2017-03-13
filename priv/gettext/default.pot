@@ -14,7 +14,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:10
+#: web/templates/layout/app.html.eex:10 web/templates/layout/backend.html.eex:10
 msgid "Hello SignDict!"
 msgstr ""
 
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: web/templates/user/new.html.eex:4
+#: web/templates/backend/user/form.html.eex:4 web/templates/user/new.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -43,7 +43,8 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:25 web/templates/user/new.html.eex:38
+#: web/templates/layout/app.html.eex:25 web/templates/layout/backend.html.eex:25
+#: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr ""
 
@@ -51,11 +52,11 @@ msgstr ""
 msgid "Registration successful"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:28
+#: web/templates/layout/app.html.eex:28 web/templates/layout/backend.html.eex:28
 msgid "Sign in"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:21
+#: web/templates/layout/app.html.eex:21 web/templates/layout/backend.html.eex:21
 msgid "Sign out"
 msgstr ""
 
@@ -71,26 +72,36 @@ msgstr ""
 msgid "Welcome to %{name}"
 msgstr ""
 
+#: web/templates/backend/user/form.html.eex:27
+#: web/templates/backend/user/show.html.eex:21
 #: web/templates/user/new.html.eex:33
 msgid "user.biography"
 msgstr ""
 
+#: web/templates/backend/user/form.html.eex:9
+#: web/templates/backend/user/index.html.eex:6
+#: web/templates/backend/user/show.html.eex:6
 #: web/templates/reset_password/new.html.eex:7
 #: web/templates/session/new.html.eex:3 web/templates/session/new.html.eex:4
 #: web/templates/user/new.html.eex:9
 msgid "user.email"
 msgstr ""
 
+#: web/templates/backend/user/form.html.eex:15
+#: web/templates/backend/user/index.html.eex:7
+#: web/templates/backend/user/show.html.eex:11
 #: web/templates/user/new.html.eex:27
 msgid "user.name"
 msgstr ""
 
+#: web/templates/backend/user/form.html.eex:33
 #: web/templates/reset_password/edit.html.eex:8
 #: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
 #: web/templates/user/new.html.eex:15
 msgid "user.password"
 msgstr ""
 
+#: web/templates/backend/user/form.html.eex:39
 #: web/templates/reset_password/edit.html.eex:13
 #: web/templates/user/new.html.eex:21
 msgid "user.password_confirmation"
@@ -124,23 +135,101 @@ msgstr ""
 msgid "Send password reset instructions"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:25
-#: web/controllers/reset_password_controller.ex:45
+#: web/controllers/reset_password_controller.ex:28
+#: web/controllers/reset_password_controller.ex:49
 msgid "Invalid password reset link. Please try again."
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:35
+#: web/controllers/reset_password_controller.ex:38
 msgid "Password successfully changed"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:39
+#: web/controllers/reset_password_controller.ex:42
 msgid "Unable to change your password"
 msgstr ""
 
-#: web/controllers/reset_password_controller.ex:15
+#: web/controllers/reset_password_controller.ex:17
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
 #: web/email.ex:9
 msgid "Your password reset link"
+msgstr ""
+
+#: web/plugs/allowed_for_backend.ex:16
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:9
+msgid "Actions"
+msgstr ""
+
+#: web/templates/backend/user/edit.html.eex:6
+#: web/templates/backend/user/new.html.eex:6
+#: web/templates/backend/user/show.html.eex:29
+msgid "Back"
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:22
+msgid "Delete"
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:21
+#: web/templates/backend/user/show.html.eex:28
+msgid "Edit"
+msgstr ""
+
+#: web/templates/backend/user/edit.html.eex:1
+msgid "Edit User"
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:1
+msgid "Listing users"
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:29
+#: web/templates/backend/user/new.html.eex:1
+msgid "New user"
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:20
+msgid "Show"
+msgstr ""
+
+#: web/templates/backend/user/show.html.eex:1
+msgid "Show user"
+msgstr ""
+
+#: web/templates/backend/user/form.html.eex:45
+msgid "Submit"
+msgstr ""
+
+#: web/controllers/backend/user_controller.ex:23
+msgid "User created successfully."
+msgstr ""
+
+#: web/controllers/backend/user_controller.ex:58
+msgid "User deleted successfully."
+msgstr ""
+
+#: web/controllers/backend/user_controller.ex:47
+msgid "User updated successfully."
+msgstr ""
+
+#: web/templates/backend/user/form.html.eex:21
+#: web/templates/backend/user/index.html.eex:8
+#: web/templates/backend/user/show.html.eex:16
+msgid "user.role"
+msgstr ""
+
+#: web/templates/backend/dashboard/index.html.eex:5
+msgid "Users"
+msgstr ""
+
+#: web/templates/backend/dashboard/index.html.eex:4
+msgid "Videos"
+msgstr ""
+
+#: web/templates/backend/dashboard/index.html.eex:1
+msgid "Welcome to the dashboard"
 msgstr ""

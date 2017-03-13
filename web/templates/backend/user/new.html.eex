@@ -1,0 +1,6 @@
+<h2><%= gettext("New user") %></h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: backend_user_path(@conn, :create) %>
+
+<%= link gettext("Back"), to: backend_user_path(@conn, :index) %>

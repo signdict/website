@@ -4,6 +4,8 @@ defmodule SignDict.User do
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
 
+  @roles ~w(user admin)
+
   schema "users" do
     field :email, :string
 
@@ -22,16 +24,37 @@ defmodule SignDict.User do
     timestamps()
   end
 
+  def roles do
+    @roles
+  end
+
+  def admin_changeset(user, params \\ %{}) do
+    changeset = user
+                |> cast(params, [:email, :name, :biography, :password,
+                                 :password_confirmation, :role])
+                |> validate_required([:email, :name])
+                |> validate_format(:email, ~r/@/)
+                |> unique_constraint(:email)
+
+    if get_change(changeset, :password, "") != "" ||
+       get_change(changeset, :password_confirmation, "") != "" ||
+       user.password_hash == nil do
+      changeset
+      |> validate_required([:password, :password_confirmation])
+      |> validate_password
+    else
+      changeset
+    end
+  end
+
   def register_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password, :password_confirmation,
                      :name, :biography])
     |> validate_required([:email, :password, :password_confirmation, :name])
     |> validate_format(:email, ~r/@/)
-    |> validate_length(:password, min: 8)
-    |> validate_confirmation(:password)
-    |> hash_password()
     |> unique_constraint(:email)
+    |> validate_password
   end
 
   def create_reset_password_changeset(struct) do
@@ -50,8 +73,7 @@ defmodule SignDict.User do
                      :password_reset_unencrypted])
     |> validate_required([:password, :password_confirmation])
     |> validate_token
-    |> validate_confirmation(:password)
-    |> hash_password
+    |> validate_password
   end
 
   defp validate_token(%{valid?: false} = changeset), do: changeset
@@ -67,6 +89,13 @@ defmodule SignDict.User do
   defp do_validate_token(true, changeset), do: changeset
   defp do_validate_token(false, changeset) do
     Changeset.add_error changeset, :password_reset_token, "invalid"
+  end
+
+  defp validate_password(changeset) do
+    changeset
+    |> validate_length(:password, min: 8)
+    |> validate_confirmation(:password)
+    |> hash_password()
   end
 
   defp hash_password(%{valid?: false} = changeset), do: changeset
