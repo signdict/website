@@ -1,16 +1,45 @@
 defmodule SignDict.Video do
   use SignDict.Web, :model
+  import StateMc.EctoSm
 
-  @states ~w(uploaded transcoded waiting_for_review published deleted)
+  alias SignDict.Repo
+
+  @states [:created, :uploaded, :transcoded, :waiting_for_review, :published, :deleted]
 
   schema "videos" do
-    field :state, :string
+    field :state, :string, default: "created"
     field :copyright, :string
     field :license, :string
     field :original_href, :string
     field :type, :string
 
     timestamps()
+  end
+
+  statemc :state do
+    defstate @states
+
+    defevent :upload, %{from: [:created], to: :uploaded}, fn (changeset) ->
+      changeset |> Repo.update() # TODO: actually upload the file
+    end
+
+    defevent :transcode, %{from: [:uploaded], to: :transcoded}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :wait_for_review, %{from: [:transcoded], to: :waiting_for_review}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :publish, %{from: [:waiting_for_review], to: :published}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    # Allow deletion from every state:
+    defevent :delete, %{from: [:created, :uploaded, :transcoded,
+                                 :waiting_for_review, :published], to: :deleted}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
   end
 
   @doc """
@@ -23,11 +52,8 @@ defmodule SignDict.Video do
     |> validate_state()
   end
 
-  def valid_state?(state) do
-    Enum.any?(@states, fn s ->
-      state == s
-    end)
-  end
+  def valid_state?(state) when is_atom(state), do: @states |> Enum.member?(state)
+  def valid_state?(state), do: valid_state?(String.to_atom(state))
 
   # Makes sure that the video-state is in the list of possible states.
   defp validate_state(changeset) do

@@ -40,6 +40,7 @@ defmodule SignDict.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:credo, "~> 0.5", only: [:dev, :test]},
+     {:state_mc, "~> 0.1.0"},
      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
      {:excoveralls, "~> 0.6", only: :test},
      {:guardian, "~> 0.14.0"},
