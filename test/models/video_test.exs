@@ -43,13 +43,6 @@ defmodule SignDict.VideoTest do
       end)
     end
 
-    test "checks if a state is valid" do
-      Enum.each(~w(uploaded transcoded waiting_for_review published deleted),
-                fn s ->
-                  assert Video.valid_state?(s)
-                end)
-    end
-
     test "the default state for a new video is 'created'" do
       attrs = Map.delete(@valid_attrs, :state)
 
