@@ -32,6 +32,9 @@ After that you have a running system with a default admin user called
 
 Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTRIBUTING.md)
 
+In development mode `Bamboo` will not sent emails. Instead you can see what
+would have been sent out here: `http://localhost:4000/sent_emails`
+
 ## Funding
 
 This project is government funded by the [German Federal Ministry of Education and Research](http://bmbf.de)

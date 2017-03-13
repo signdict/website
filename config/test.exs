@@ -28,3 +28,6 @@ config :wallaby, screenshot_on_failure: true
 # Using english locale for tests, this makes it
 # easier for non german speaking people
 config :sign_dict, SignDict.Gettext, default_locale: "en"
+
+config :sign_dict, SignDict.Mailer,
+  adapter: Bamboo.TestAdapter

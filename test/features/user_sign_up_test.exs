@@ -31,11 +31,4 @@ defmodule SignDict.UserSignUpTest do
     # |> assert_alert("Successfully signed out")
   end
 
-  defp assert_alert(page, text) do
-    page
-    |> find(Query.css(".alert-info"), fn(notification) ->
-      assert notification
-      |> has_text?(text)
-    end)
-  end
 end

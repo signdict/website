@@ -44,10 +44,12 @@ defmodule SignDict.Mixfile do
      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
      {:excoveralls, "~> 0.6", only: :test},
      {:guardian, "~> 0.14.0"},
-     {:comeonin, "~> 2.6"},
+     {:comeonin, "~> 3.0"},
      {:ex_machina, "~> 2.0"},
      {:wallaby, "~> 0.16.1"},
-     {:canary, "~> 1.1.0"}
+     {:canary, "~> 1.1.0"},
+     {:secure_random, "~> 0.5"},
+     {:bamboo, "~> 0.8"}
    ]
   end
 

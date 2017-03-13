@@ -25,11 +25,20 @@ defmodule SignDict.Router do
          handler: SignDict.GuardianErrorHandler
   end
 
+  if Mix.env == :dev do
+    forward "/sent_emails", Bamboo.EmailPreviewPlug
+  end
+
   scope "/", SignDict do
     pipe_through [:browser, :browser_session]
 
-    resources "/users", UserController, only: [:new, :create]
+    resources "/users",    UserController, only: [:new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+
+    get "/password/new",  ResetPasswordController, :new
+    post "/password/new", ResetPasswordController, :create
+    get "/password/edit", ResetPasswordController, :edit
+    put "/password",      ResetPasswordController, :update
 
     get "/", PageController, :index
   end
