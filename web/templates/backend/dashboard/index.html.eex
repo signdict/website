@@ -1,6 +1,6 @@
-<h1>Welcome to the dashboard</h1>
+<h1><%= gettext("Welcome to the dashboard") %></h1>
 
 <ul>
-  <li><%= link "Videos", to: backend_video_path(@conn, :index) %></li>
-  <li><%= link "Users", to: backend_user_path(@conn, :index) %></li>
+  <li><%= link gettext("Videos"), to: backend_video_path(@conn, :index) %></li>
+  <li><%= link gettext("Users"), to: backend_user_path(@conn, :index) %></li>
 </ul>

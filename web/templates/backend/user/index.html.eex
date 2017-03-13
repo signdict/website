@@ -1,0 +1,29 @@
+<h2><%= gettext("Listing users") %></h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope='col'><%= gettext("user.email") %></th>
+      <th scope='col'><%= gettext("user.name") %></th>
+      <th scope='col'><%= gettext("user.role") %></th>
+      <th scope='col' style='text-align: right'><%= gettext("Actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%= user.role %></td>
+
+      <td class="text-right">
+        <%= link gettext("Show"), to: backend_user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Delete"), to: backend_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link gettext("New user"), to: backend_user_path(@conn, :new) %>
