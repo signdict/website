@@ -20,7 +20,7 @@
   <li>
     <strong><%= gettext("user.biography") %>:</strong>
     <p>
-      <%= @user.email %>
+      <%= @user.biography %>
     </p>
   </li>
 </ul>
