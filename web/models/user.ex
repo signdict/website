@@ -1,5 +1,8 @@
 defmodule SignDict.User do
+  import Exgravatar
+
   use SignDict.Web, :model
+  use Arc.Ecto.Schema
 
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
@@ -21,6 +24,8 @@ defmodule SignDict.User do
     field :password_reset_token, :string
     field :password_reset_unencrypted, :string, virtual: true
 
+    field :avatar, SignDict.Avatar.Type
+
     timestamps()
   end
 
@@ -28,10 +33,19 @@ defmodule SignDict.User do
     @roles
   end
 
+  def avatar_url(user)
+  def avatar_url(user = %SignDict.User{avatar: avatar}) when avatar != nil do
+    SignDict.Avatar.url({avatar, user}, :thumb)
+  end
+  def avatar_url(user) do
+    gravatar_url(user.email, s: 256)
+  end
+
   def changeset(user, params \\ %{}) do
     user
     |> cast(params, [:email, :name, :biography, :password,
                      :password_confirmation])
+    |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
     |> validate_password_if_present
@@ -40,6 +54,7 @@ defmodule SignDict.User do
   def admin_changeset(user, params \\ %{}) do
     user
     |> cast(params, [:email, :name, :biography, :password, :password_confirmation, :role])
+    |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
     |> validate_password_if_present

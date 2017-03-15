@@ -27,3 +27,6 @@ config/prod.secret.exs
 
 # wallaby stores screenshots here
 screenshots/
+
+# User file uploads
+uploads/

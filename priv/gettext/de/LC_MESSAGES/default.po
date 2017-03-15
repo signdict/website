@@ -76,7 +76,7 @@ msgstr "Willkommen zu %{name}"
 #: web/templates/backend/user/form.html.eex:27
 #: web/templates/backend/user/show.html.eex:21
 #: web/templates/user/edit.html.eex:21 web/templates/user/new.html.eex:33
-#: web/templates/user/show.html.eex:4
+#: web/templates/user/show.html.eex:6
 msgid "user.biography"
 msgstr "Biographie"
 
@@ -99,13 +99,13 @@ msgstr "Name"
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/reset_password/edit.html.eex:8
 #: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
-#: web/templates/user/edit.html.eex:27 web/templates/user/new.html.eex:15
+#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:15
 msgid "user.password"
 msgstr "Passwort"
 
 #: web/templates/backend/user/form.html.eex:39
 #: web/templates/reset_password/edit.html.eex:13
-#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:21
+#: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:21
 msgid "user.password_confirmation"
 msgstr "Passwort bestätigen"
 
@@ -178,7 +178,7 @@ msgstr "Löschen"
 
 #: web/templates/backend/user/index.html.eex:21
 #: web/templates/backend/user/show.html.eex:28
-#: web/templates/user/show.html.eex:13
+#: web/templates/user/show.html.eex:15
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -237,10 +237,18 @@ msgstr "Videos"
 msgid "Welcome to the dashboard"
 msgstr "Willkommen im Dashboard"
 
-#: web/templates/user/edit.html.eex:38
+#: web/templates/user/edit.html.eex:44
 msgid "Update"
 msgstr "Speichern"
 
 #: web/controllers/user_controller.ex:46
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
+
+#: web/templates/user/show.html.eex:3
+msgid "The avatar image of this user"
+msgstr "Das Bild des Nutzers"
+
+#: web/templates/user/edit.html.eex:27
+msgid "user.avatar"
+msgstr "Profilbild"
