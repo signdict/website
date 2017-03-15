@@ -1,0 +1,15 @@
+<h2><%= @user.name %></h2>
+
+<div>
+    <strong><%= gettext("user.biography") %>:</strong>
+    <p>
+      <%= @user.biography %>
+    </p>
+  </li>
+</div>
+
+<p>
+  <%= if Canada.Can.can? @current_user, :edit, @user do %>
+    <%= link gettext("Edit"), to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
+  <% end %>
+</p>

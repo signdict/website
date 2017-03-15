@@ -18,7 +18,10 @@
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
               <li>
-                <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete" %>
+                <%= link @current_user.name, to: user_path(@conn, :show, @current_user) %>
+              </li>
+              <li>
+                <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-default" %>
               </li>
             <% else %>
               <li>
