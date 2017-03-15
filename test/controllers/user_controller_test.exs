@@ -89,5 +89,13 @@ defmodule SignDict.UserControllerTest do
       assert redirected_to(conn) == user_path(conn, :show, user)
       assert Repo.get_by(SignDict.User, email: "elisa@example.com")
     end
+
+    test "rerenders the forms if you had errors", %{conn: conn} do
+      user = insert :user
+      conn = conn
+           |> guardian_login(user)
+           |> patch(user_path(conn, :update, user), user: %{email: "invalidemail"})
+      assert html_response(conn, 200) =~ "Email"
+    end
   end
 end
