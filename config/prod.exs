@@ -56,6 +56,8 @@ config :logger, level: :info
 #     config :sign_dict, SignDict.Endpoint, server: true
 #
 
+config :bugsnex, :opt_app, :sign_dict
+config :bugsnex, :repository_url, "https://github.com/signdict/website"
 config :bugsnex, :release_stage, "production"
 config :bugsnex, :use_logger, true
 config :bugsnex, :api_key, "DO_NOT_FORGET_TO_ADD_API_KEY_IN_SECRET.EXS"
