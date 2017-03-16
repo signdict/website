@@ -1,0 +1,37 @@
+<h1 class="c-heading"><%= gettext("Listing languages") %></h1>
+
+<table class="c-table c-table--striped">
+  <thead class="c-table__head">
+    <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("language.iso6393") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("language.short_name") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("language.long_name") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("language.default_locale") %></th>
+      <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
+    </tr>
+  </thead>
+  <tbody class="c-table__body">
+<%= for language <- @languages do %>
+    <tr class="c-table__row">
+      <td class="c-table__cell"><%= language.iso6393%></td>
+      <td class="c-table__cell"><%= language.short_name %></td>
+      <td class="c-table__cell"><%= language.long_name %></td>
+      <td class="c-table__cell"><%= language.default_locale %></td>
+
+      <td class="c-table__cell">
+        <div class="o-grid o-grid--no-gutter">
+          <div class="o-grid__cell t-action-buttons">
+            <%= link gettext("Show"), to: backend_language_path(@conn, :show, language), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: backend_language_path(@conn, :edit, language), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: backend_language_path(@conn, :delete, language), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+          </div>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link gettext("New language"), to: backend_language_path(@conn, :new), class: "c-button c-button--info" %>
+</p>

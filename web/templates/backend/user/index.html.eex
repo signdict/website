@@ -1,29 +1,38 @@
-<h2><%= gettext("Listing users") %></h2>
+<h1 class="c-heading"><%= gettext("Listing users") %></h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope='col'><%= gettext("user.email") %></th>
-      <th scope='col'><%= gettext("user.name") %></th>
-      <th scope='col'><%= gettext("user.role") %></th>
-      <th scope='col' style='text-align: right'><%= gettext("Actions") %></th>
+<table class="c-table c-table--striped">
+  <thead class="c-table__head">
+    <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("user.email") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("user.name") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("user.role") %></th>
+      <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="c-table__body">
 <%= for user <- @users do %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.name %></td>
-      <td><%= user.role %></td>
+    <tr class="c-table__row">
+      <td class="c-table__cell">
+        <%= img_tag SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, style: "margin-right: 0.5em" %>
+        <%= user.email %>
+      </td>
+      <td class="c-table__cell"><%= user.name %></td>
+      <td class="c-table__cell"><%= user.role %></td>
 
-      <td class="text-right">
-        <%= link gettext("Show"), to: backend_user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
-        <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
-        <%= link gettext("Delete"), to: backend_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      <td class="c-table__cell">
+        <div class="o-grid o-grid--no-gutter">
+          <div class="o-grid__cell t-action-buttons">
+            <%= link gettext("Show"), to: backend_user_path(@conn, :show, user), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, user), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: backend_user_path(@conn, :delete, user), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+          </div>
+        </div>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link gettext("New user"), to: backend_user_path(@conn, :new) %>
+<p>
+  <%= link gettext("New user"), to: backend_user_path(@conn, :new), class: "c-button c-button--info" %>
+</p>

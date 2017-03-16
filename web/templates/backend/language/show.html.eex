@@ -1,0 +1,33 @@
+<h1 class="c-heading"><%= gettext("Language") %></h1>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("language.iso6393") %></strong></div>
+    <div class="o-grid__cell"><%= @language.iso6393 %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("language.short_name") %></strong></div>
+    <div class="o-grid__cell"><%= @language.short_name %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("language.long_name") %></strong></div>
+    <div class="o-grid__cell"><%= @language.long_name %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("language.default_locale") %></strong></div>
+    <div class="o-grid__cell"><%= @language.default_locale %></div>
+  </div>
+</div>
+
+<p>
+  <%= link gettext("Edit"), to: backend_language_path(@conn, :edit, @language), class: "c-button" %>
+</p>

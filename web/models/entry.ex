@@ -28,4 +28,17 @@ defmodule SignDict.Entry do
   def with_language(query) do
     from q in query, preload: :language
   end
+
+  def types do
+    @types
+  end
+
+  def to_string(entry) do
+    if is_binary(entry.description) && String.trim(entry.description) != "" do
+      "#{entry.text} (#{entry.description})"
+    else
+      entry.text
+    end
+  end
+
 end

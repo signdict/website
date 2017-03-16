@@ -2,28 +2,27 @@ defmodule SignDict.Backend.VideoController do
   use SignDict.Web, :controller
   alias SignDict.Video
 
-  plug :load_and_authorize_resource, model: Video
+  plug :load_and_authorize_resource, model: Video, preload: [:entry, :user]
 
   def index(conn, _params) do
-    videos = Repo.all(Video)
-    render(conn, "index.html", videos: videos)
+    render(conn, "index.html", videos: conn.assigns.videos)
   end
 
-  def new(conn, _params) do
+  def new(conn, %{"entry_id" => entry_id}) do
     changeset = Video.changeset(%Video{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, entry_id: entry_id)
   end
 
-  def create(conn, %{"video" => video_params}) do
-    changeset = Video.changeset(%Video{}, video_params)
+  def create(conn, %{"entry_id" => entry_id, "video" => video_params}) do
+    changeset = Video.changeset(%Video{}, Map.merge(video_params, %{"entry_id" => entry_id, "user_id" => conn.assigns.current_user.id}))
 
     case Repo.insert(changeset) do
       {:ok, _video} ->
         conn
         |> put_flash(:info, "Video created successfully.")
-        |> redirect(to: backend_video_path(conn, :index))
+        |> redirect(to: backend_entry_path(conn, :show, entry_id))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, entry_id: entry_id)
     end
   end
 
@@ -37,7 +36,7 @@ defmodule SignDict.Backend.VideoController do
     render(conn, "edit.html", video: video, changeset: changeset)
   end
 
-  def update(conn, %{"id" => _id, "video" => video_params}) do
+  def update(conn, %{"entry_id" => entry_id, "id" => _id, "video" => video_params}) do
     video = conn.assigns.video
     changeset = Video.changeset(video, video_params)
 
@@ -45,9 +44,9 @@ defmodule SignDict.Backend.VideoController do
       {:ok, video} ->
         conn
         |> put_flash(:info, "Video updated successfully.")
-        |> redirect(to: backend_video_path(conn, :show, video))
+        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video))
       {:error, changeset} ->
-        render(conn, "edit.html", video: video, changeset: changeset)
+        render(conn, "edit.html", video: video, changeset: changeset, entry_id: entry_id)
     end
   end
 

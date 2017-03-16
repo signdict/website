@@ -1,6 +1,4 @@
 <h2>Edit video</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: backend_video_path(@conn, :update, @video) %>
-
-<%= link "Back", to: backend_video_path(@conn, :index) %>
+                        action: backend_entry_video_path(@conn, :update, @video.entry_id, @video) %>

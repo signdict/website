@@ -19,7 +19,7 @@ defmodule SignDict.Backend.DashboardControllerTest do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> get(backend_dashboard_path(conn, :index))
-    assert html_response(conn, 200) =~ "Dashboard"
+    assert html_response(conn, 200) =~ "dashboard"
   end
 
 end

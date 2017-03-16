@@ -14,7 +14,7 @@ defmodule SignDict.Factory do
   end
 
   def user_with_avatar_factory do
-    %{user_factory | avatar: "test/fixtures/images/avatar.png"}
+    %{user_factory() | avatar: "test/fixtures/images/avatar.png"}
   end
 
   def admin_user_factory do
@@ -42,12 +42,13 @@ defmodule SignDict.Factory do
       state: "created",
       copyright: "copyright",
       license: "license",
-      original_href: "original_href"
+      original_href: "original_href",
+      user: build(:user)
     }
   end
 
   def video_with_entry_factory do
-    %{video_factory | entry: build(:entry)}
+    %{video_factory() | entry: build(:entry)}
   end
 
   def entry_factory do
@@ -60,7 +61,7 @@ defmodule SignDict.Factory do
   end
 
   def entry_with_videos_factory do
-    %{ entry_factory | videos: build_list(4, :video) }
+    %{entry_factory() | videos: build_list(4, :video)}
   end
 
   def vote_factory do

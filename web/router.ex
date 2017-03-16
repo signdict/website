@@ -60,6 +60,10 @@ defmodule SignDict.Router do
     get "/", DashboardController, :index
 
     resources "/users",  UserController
-    resources "/videos", VideoController
+    resources "/languages", LanguageController
+    resources "/entries", EntryController do
+      resources "/videos", VideoController
+    end
+    resources "/videos", VideoController, only: [:index]
   end
 end

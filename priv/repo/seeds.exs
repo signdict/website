@@ -23,7 +23,8 @@ dgs = SignDict.Repo.insert!(
   %SignDict.Language{
     iso6393: "gsg",
     long_name: "Deutsche Gebärdensprache",
-    short_name: "DGS"
+    short_name: "DGS",
+    default_locale: "de"
   }
 )
 

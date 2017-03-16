@@ -1,6 +1,4 @@
-<h2><%= gettext("Edit User") %></h2>
+<h1 class="c-heading"><%= gettext("Edit user") %></h1>
 
 <%= render "form.html", changeset: @changeset,
                         action: backend_user_path(@conn, :update, @user) %>
-
-<%= link gettext("Back"), to: backend_user_path(@conn, :index) %>

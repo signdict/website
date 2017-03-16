@@ -52,7 +52,8 @@ defmodule SignDict.Video do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,
                      :user_id, :entry_id])
-    |> validate_required([:state, :copyright, :license, :original_href])
+    |> validate_required([:state, :copyright, :license, :original_href,
+                          :entry_id, :user_id])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
     |> validate_state()

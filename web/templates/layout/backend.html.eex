@@ -7,53 +7,46 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><%= gettext("Hello SignDict!") %></title>
+    <title><%= gettext("SignDict") %></title>
+    <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.0">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if @current_user do %>
-              <li>
-                <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete" %>
-              </li>
-            <% else %>
-              <li>
-                <%= link gettext("Register"), to: user_path(@conn, :new) %>
-              </li>
-              <li>
-                <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
-              </li>
-            <% end %>
-            <li>
-              <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
-                <a href="?locale=en">EN</a>
-              <% else %>
-                <a href="?locale=de">DE</a>
-              <% end %>
-            </li>
-          </ul>
+  <body class="c-text">
+    <nav class="c-nav c-nav--inline">
+      <a href="/" class="c-nav__item c-text--loud">SignDict</a>
+      <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
+        <a href="?locale=en" class="c-nav__item c-nav__item--right">EN</a>
+      <% else %>
+        <a href="?locale=de" class="c-nav__item c-nav__item--right">DE</a>
+      <% end %>
+
+      <%= if @current_user do %>
+        <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete", class: "c-nav__item c-nav__item--right" %>
+      <% else %>
+        <%= link gettext("Register"), to: user_path(@conn, :new), class: "c-nav__item c-nav__item--right" %>
+        <%= link gettext("Sign in"), to: session_path(@conn, :new), class: "c-nav__item c-nav__item--right" %>
+      <% end %>
+    </nav>
+    <div class="o-grid o-panel o-panel--nav-top">
+      <div class="o-grid__cell--width-15 o-grid__cell--hidden o-grid__cell--visible@large o-panel-container">
+        <nav class="c-nav c-nav--light o-panel">
+          <%= nav_active_link @conn, gettext("Dashboard"), backend_dashboard_path(@conn, :index)  %>
+          <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
+          <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
+          <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
+          <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>
         </nav>
-        <span class="logo"></span>
-      </header>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-      <div>
-        <%= link "Dashboard", to: backend_dashboard_path(@conn, :index) %>
       </div>
-      <main role="main">
+      <main class="o-grid__cell o-grid__cell--width-85@large o-panel-container">
         <%= render @view_module, @view_template, assigns %>
       </main>
+    </div>
 
-    </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= if Mix.env != "prod" do %>
       <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
     <% end %>
+
   </body>
 </html>

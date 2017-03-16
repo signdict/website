@@ -1,35 +1,35 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+    <div class="c-alert c-alert--error">
+      <%= gettext("Oops, something went wrong! Please check the errors below.") %>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :state, class: "control-label" %>
-    <%= text_input f, :state, class: "form-control" %>
-    <%= error_tag f, :state %>
+  <div class="o-form-element">
+    <%= label f, :state, gettext("video.state"), class: "c-label" %>
+    <%= select f, :state, SignDict.Video.states, class: "c-field #{class_for_error(f, :state)}" %>
+    <%= error_tag f, :state%>
   </div>
 
-  <div class="form-group">
-    <%= label f, :copyright, class: "control-label" %>
-    <%= text_input f, :copyright, class: "form-control" %>
-    <%= error_tag f, :copyright %>
+  <div class="o-form-element">
+    <%= label f, :copyright, gettext("video.copyright"), class: "c-label" %>
+    <%= text_input f, :copyright, class: "c-field #{class_for_error(f, :copyright)}" %>
+    <%= error_tag f, :copyright%>
   </div>
 
-  <div class="form-group">
-    <%= label f, :license, class: "control-label" %>
-    <%= text_input f, :license, class: "form-control" %>
-    <%= error_tag f, :license %>
+  <div class="o-form-element">
+    <%= label f, :license, gettext("video.license"), class: "c-label" %>
+    <%= text_input f, :license, class: "c-field #{class_for_error(f, :license)}" %>
+    <%= error_tag f, :license%>
   </div>
 
-  <div class="form-group">
-    <%= label f, :original_href, class: "control-label" %>
-    <%= text_input f, :original_href, class: "form-control" %>
-    <%= error_tag f, :original_href %>
+  <div class="o-form-element">
+    <%= label f, :original_href, gettext("video.original_href"), class: "c-label" %>
+    <%= text_input f, :original_href, class: "c-field #{class_for_error(f, :original_href)}" %>
+    <%= error_tag f, :original_href%>
   </div>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+  <div class="o-form-element">
+    <%= submit gettext("Submit"), class: "c-button" %>
   </div>
 <% end %>

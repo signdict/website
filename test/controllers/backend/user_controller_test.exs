@@ -54,11 +54,11 @@ defmodule SignDict.Backend.UserControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
+    user = insert :user
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> get(backend_user_path(conn, :show, user))
-    assert html_response(conn, 200) =~ "Show user"
+    assert html_response(conn, 200) =~ user.name
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
@@ -73,7 +73,7 @@ defmodule SignDict.Backend.UserControllerTest do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> get(backend_user_path(conn, :edit, user))
-    assert html_response(conn, 200) =~ "Edit User"
+    assert html_response(conn, 200) =~ "Edit user"
   end
 
   test "updates chosen resource and redirects when data is valid", %{conn: conn} do
@@ -92,7 +92,7 @@ defmodule SignDict.Backend.UserControllerTest do
            |> guardian_login(insert(:admin_user))
            |> put(backend_user_path(conn, :update, user),
                   user: @invalid_attrs)
-    assert html_response(conn, 200) =~ "Edit User"
+    assert html_response(conn, 200) =~ "Edit user"
   end
 
   test "deletes chosen resource", %{conn: conn} do

@@ -1,17 +1,22 @@
 defmodule SignDict.VideoTest do
+  import SignDict.Factory
   use SignDict.ModelCase
 
   alias SignDict.Video
 
-  @valid_attrs %{
-    copyright: "some content", license: "some content",
-    original_href: "some content", state: "uploaded",
-    type: "some content"
-  }
   @invalid_attrs %{}
 
+  defp valid_attributes do
+    %{
+      copyright: "some content", license: "some content",
+      original_href: "some content", state: "uploaded",
+      type: "some content",
+      user_id: user().id, entry_id: entry().id
+    }
+  end
+
   test "changeset with valid attributes" do
-    changeset = Video.changeset(%Video{}, @valid_attrs)
+    changeset = Video.changeset(%Video{}, valid_attributes())
     assert changeset.valid?
   end
 
@@ -22,7 +27,7 @@ defmodule SignDict.VideoTest do
 
   describe "Video state logic" do
     test "changeset with invalid state" do
-      attrs = Map.put(@valid_attrs, :state, "invalid_state")
+      attrs = Map.put(valid_attributes(), :state, "invalid_state")
 
       changeset = Video.changeset(%Video{}, attrs)
       refute changeset.valid?
@@ -44,7 +49,7 @@ defmodule SignDict.VideoTest do
     end
 
     test "the default state for a new video is 'created'" do
-      attrs = Map.delete(@valid_attrs, :state)
+      attrs = Map.delete(valid_attributes(), :state)
 
       v = %Video{}
           |> Video.changeset(attrs)
@@ -86,7 +91,7 @@ defmodule SignDict.VideoTest do
     end
 
     test "the state traversal from start to end" do
-      attrs = Map.put(@valid_attrs, :state, "created")
+      attrs = Map.put(valid_attributes(), :state, "created")
 
       v = %Video{}
           |> Video.changeset(attrs)
@@ -109,5 +114,13 @@ defmodule SignDict.VideoTest do
       {:ok, v} = Video.delete(v)
       assert Video.current_state(v) == :deleted
     end
+  end
+
+  def user do
+    insert :user
+  end
+
+  def entry do
+    insert :entry
   end
 end

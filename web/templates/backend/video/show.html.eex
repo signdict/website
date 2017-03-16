@@ -1,28 +1,47 @@
-<h2>Show video</h2>
+<h1 class="c-heading"><%= gettext("Video") %>: <%= SignDict.Entry.to_string @video.entry %></h1>
 
-<ul>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("Entry") %></strong></div>
+    <div class="o-grid__cell"><%= link SignDict.Entry.to_string(@video.entry), to: backend_entry_path(@conn, :show, @video.entry) %></div>
+  </div>
+</div>
 
-  <li>
-    <strong>State:</strong>
-    <%= @video.state %>
-  </li>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("User") %></strong></div>
+    <div class="o-grid__cell"><%= link @video.user.name, to: backend_user_path(@conn, :show, @video.user) %></div>
+  </div>
+</div>
 
-  <li>
-    <strong>Copyright:</strong>
-    <%= @video.copyright %>
-  </li>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.state") %></strong></div>
+    <div class="o-grid__cell"><%= @video.state %></div>
+  </div>
+</div>
 
-  <li>
-    <strong>License:</strong>
-    <%= @video.license %>
-  </li>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.copyright") %></strong></div>
+    <div class="o-grid__cell"><%= @video.copyright %></div>
+  </div>
+</div>
 
-  <li>
-    <strong>Original href:</strong>
-    <%= @video.original_href %>
-  </li>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.license") %></strong></div>
+    <div class="o-grid__cell"><%= @video.license %></div>
+  </div>
+</div>
 
-</ul>
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.original_href") %></strong></div>
+    <div class="o-grid__cell"><%= link @video.original_href, to: @video.original_href, target: "_blank", rel: "noopener" %></div>
+  </div>
+</div>
 
-<%= link "Edit", to: backend_video_path(@conn, :edit, @video) %>
-<%= link "Back", to: backend_video_path(@conn, :index) %>
+<p>
+  <%= link gettext("Edit"), to: backend_entry_video_path(@conn, :edit, @video.entry_id, @video), class: "c-button" %>
+</p>

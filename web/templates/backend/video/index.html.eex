@@ -1,31 +1,4 @@
-<h2>Listing videos</h2>
+<h1 class="c-heading"><%= gettext("Listing videos") %></h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope='col'>State</th>
-      <th scope='col'>Copyright</th>
-      <th scope='col'>License</th>
-      <th scope='col'>Original href</th>
-      <th scope='col' style='text-align: right'>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for video <- @videos do %>
-    <tr>
-      <td><%= video.state %></td>
-      <td><%= video.copyright %></td>
-      <td><%= video.license %></td>
-      <td><%= video.original_href %></td>
+<%= render SignDict.Backend.SharedView, "videos_table.html", conn: @conn, videos: @videos %>
 
-      <td class="text-right">
-        <%= link "Show", to: backend_video_path(@conn, :show, video), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: backend_video_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: backend_video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "New video", to: backend_video_path(@conn, :new) %>
