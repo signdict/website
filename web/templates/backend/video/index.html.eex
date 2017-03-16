@@ -7,7 +7,6 @@
       <th scope='col'>Copyright</th>
       <th scope='col'>License</th>
       <th scope='col'>Original href</th>
-      <th scope='col'>Type</th>
       <th scope='col' style='text-align: right'>Actions</th>
     </tr>
   </thead>
@@ -18,7 +17,6 @@
       <td><%= video.copyright %></td>
       <td><%= video.license %></td>
       <td><%= video.original_href %></td>
-      <td><%= video.type %></td>
 
       <td class="text-right">
         <%= link "Show", to: backend_video_path(@conn, :show, video), class: "btn btn-default btn-xs" %>

@@ -17,6 +17,11 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
+              <%= if SignDict.User.admin? @current_user do %>
+                <li>
+                  <%= link "Admin", to: backend_dashboard_path(@conn, :index) %>
+                </li>
+              <% end %>
               <li>
                 <%= link @current_user.name, to: user_path(@conn, :show, @current_user) %>
               </li>

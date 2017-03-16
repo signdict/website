@@ -30,12 +30,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :type, class: "control-label" %>
-    <%= text_input f, :type, class: "form-control" %>
-    <%= error_tag f, :type %>
-  </div>
-
-  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

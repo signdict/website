@@ -22,11 +22,6 @@
     <%= @video.original_href %>
   </li>
 
-  <li>
-    <strong>Type:</strong>
-    <%= @video.type %>
-  </li>
-
 </ul>
 
 <%= link "Edit", to: backend_video_path(@conn, :edit, @video) %>

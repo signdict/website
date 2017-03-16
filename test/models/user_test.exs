@@ -195,4 +195,14 @@ defmodule SignDict.UserTest do
       assert User.avatar_url(user) == "/uploads/user/avatars/thumb.png"
     end
   end
+
+  describe "User.admin?/1" do
+    test "for admins it returns true" do
+      assert User.admin?(%User{role: "admin"})
+    end
+
+    test "for non admins it returns false" do
+      refute User.admin?(%User{role: "user"})
+    end
+  end
 end

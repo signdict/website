@@ -27,4 +27,13 @@ defmodule SignDict.Factory do
       role: "admin"
     }
   end
+
+  def language_dgs_factory do
+    %SignDict.Language {
+      iso6393: "gsg",
+      long_name: "Deutsche Gebärdensprache",
+      short_name: "dgs",
+      default_locale: "DE"
+    }
+  end
 end
