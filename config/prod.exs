@@ -56,6 +56,10 @@ config :logger, level: :info
 #     config :sign_dict, SignDict.Endpoint, server: true
 #
 
+config :bugsnex, :release_stage, "production"
+config :bugsnex, :use_logger, true
+config :bugsnex, :api_key, "DO_NOT_FORGET_TO_ADD_API_KEY_IN_SECRET.EXS"
+
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"

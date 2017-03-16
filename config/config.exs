@@ -43,6 +43,11 @@ config :canary, repo: SignDict.Repo,
 config :sign_dict, SignDict.Mailer,
   adapter: Bamboo.LocalAdapter
 
+config :bugsnex, :opt_app, :sign_dict
+config :bugsnex, :repository_url, "https://github.com/signdict/website"
+config :bugsnex, :release_stage, "development"
+config :bugsnex, :use_logger, false
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

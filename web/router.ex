@@ -1,5 +1,6 @@
 defmodule SignDict.Router do
   use SignDict.Web, :router
+  use Bugsnex.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
