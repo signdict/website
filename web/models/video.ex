@@ -4,7 +4,8 @@ defmodule SignDict.Video do
 
   alias SignDict.Repo
 
-  @states [:created, :uploaded, :transcoded, :waiting_for_review, :published, :deleted]
+  @states [:created, :uploaded, :transcoded, :waiting_for_review,
+           :published, :deleted]
 
   schema "videos" do
     field :state, :string, default: "created"
@@ -29,24 +30,28 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :wait_for_review, %{from: [:transcoded], to: :waiting_for_review}, fn(changeset) ->
+    defevent :wait_for_review, %{from: [:transcoded],
+                                 to: :waiting_for_review}, fn(changeset) ->
       changeset |> Repo.update()
     end
 
-    defevent :publish, %{from: [:waiting_for_review], to: :published}, fn(changeset) ->
+    defevent :publish, %{from: [:waiting_for_review],
+                         to: :published}, fn(changeset) ->
       changeset |> Repo.update()
     end
 
     # Allow deletion from every state:
     defevent :delete, %{from: [:created, :uploaded, :transcoded,
-                                 :waiting_for_review, :published], to: :deleted}, fn(changeset) ->
+                               :waiting_for_review, :published],
+                        to: :deleted}, fn(changeset) ->
       changeset |> Repo.update()
     end
   end
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:state, :copyright, :license, :original_href, :user_id, :entry_id])
+    |> cast(params, [:state, :copyright, :license, :original_href,
+                     :user_id, :entry_id])
     |> validate_required([:state, :copyright, :license, :original_href])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
