@@ -49,7 +49,8 @@ defmodule SignDict.Mixfile do
      {:wallaby, "~> 0.16.1", only: :test},
      {:canary, "~> 1.1.0"},
      {:secure_random, "~> 0.5"},
-     {:bamboo, "~> 0.8"}
+     {:bamboo, "~> 0.8"},
+     {:bugsnex, "~> 0.2.1"}
    ]
   end
 
