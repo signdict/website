@@ -15,4 +15,15 @@ defmodule SignDict.LanguageTest do
     changeset = Language.changeset(%Language{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  describe "Language.name/1" do
+
+    test "returns the name from the struct if no translation is found" do
+      assert Language.name(%Language{iso6393: "gsg"}) == "German Sign Language"
+    end
+
+    test "returns the translated name if possible" do
+      assert Language.name(%Language{iso6393: "nop", long_name: "Not existing"}) == "Not existing"
+    end
+  end
 end
