@@ -44,7 +44,7 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/templates/layout/app.html.eex:30 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:25
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr "Registrieren"
@@ -53,16 +53,11 @@ msgstr "Registrieren"
 msgid "Registration successful"
 msgstr "Registierung erfolgreich"
 
-#: web/templates/layout/app.html.eex:31 web/templates/layout/backend.html.eex:28
+#: web/templates/layout/app.html.eex:36 web/templates/layout/backend.html.eex:28
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: web/templates/layout/app.html.eex:24 web/templates/layout/backend.html.eex:21
-#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:28
-msgid "Sign in"
-msgstr "Anmelden"
-
-#: web/templates/layout/app.html.eex:26 web/templates/layout/backend.html.eex:21
+#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:21
 msgid "Sign out"
 msgstr "Abmelden"
 
