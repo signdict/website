@@ -183,4 +183,16 @@ defmodule SignDict.UserTest do
       assert changeset.valid?
     end
   end
+
+  describe "User.avatar_url/1" do
+    test "it returns a gravatar url if no image is uploaded" do
+      user = build :user, email: "bodo@tasche.me"
+      assert User.avatar_url(user) == "https://secure.gravatar.com/avatar/f3c4a818db15623a3f4fd035d781e8ee?s=256"
+    end
+
+    test "it returns a user uploaded image if one was uploaded" do
+      user = build :user_with_avatar, email: "bodo@tasche.me"
+      assert User.avatar_url(user) == "/uploads/user/avatars/thumb.png"
+    end
+  end
 end

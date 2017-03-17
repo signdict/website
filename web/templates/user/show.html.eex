@@ -1,5 +1,7 @@
 <h2><%= @user.name %></h2>
 
+<%= img_tag SignDict.User.avatar_url(@user), alt: gettext("The avatar image of this user"), width: 64 %>
+
 <div>
     <strong><%= gettext("user.biography") %>:</strong>
     <p>

@@ -48,6 +48,9 @@ config :bugsnex, :repository_url, "https://github.com/signdict/website"
 config :bugsnex, :release_stage, "development"
 config :bugsnex, :use_logger, false
 
+config :arc,
+  storage: Arc.Storage.Local
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

@@ -50,7 +50,10 @@ defmodule SignDict.Mixfile do
      {:canary, "~> 1.1.0"},
      {:secure_random, "~> 0.5"},
      {:bamboo, "~> 0.8"},
-     {:bugsnex, "~> 0.2.1"}
+     {:bugsnex, "~> 0.2.1"},
+     {:arc, "~> 0.7.0"},
+     {:arc_ecto, "~> 0.6.0"},
+     {:exgravatar, "~> 2.0.0"}
    ]
   end
 

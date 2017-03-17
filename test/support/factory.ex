@@ -13,6 +13,10 @@ defmodule SignDict.Factory do
     }
   end
 
+  def user_with_avatar_factory do
+    %{user_factory | avatar: "test/fixtures/images/avatar.png"}
+  end
+
   def admin_user_factory do
     %SignDict.User{
       name: "Jane Smith",
