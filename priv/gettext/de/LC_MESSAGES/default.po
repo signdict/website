@@ -31,7 +31,8 @@ msgstr "Ungültige Email-Adresse oder Passwort"
 msgid "Log in"
 msgstr "Anmelden"
 
-#: web/templates/backend/user/form.html.eex:4 web/templates/user/new.html.eex:4
+#: web/templates/backend/user/form.html.eex:4 web/templates/user/edit.html.eex:4
+#: web/templates/user/new.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder."
 
@@ -43,20 +44,20 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/templates/layout/app.html.eex:25 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/app.html.eex:28 web/templates/layout/backend.html.eex:25
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr "Registrieren"
 
-#: web/controllers/user_controller.ex:20
+#: web/controllers/user_controller.ex:22
 msgid "Registration successful"
 msgstr "Registierung erfolgreich"
 
-#: web/templates/layout/app.html.eex:28 web/templates/layout/backend.html.eex:28
+#: web/templates/layout/app.html.eex:31 web/templates/layout/backend.html.eex:28
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: web/templates/layout/app.html.eex:21 web/templates/layout/backend.html.eex:21
+#: web/templates/layout/app.html.eex:24 web/templates/layout/backend.html.eex:21
 msgid "Sign out"
 msgstr "Abmelden"
 
@@ -74,7 +75,8 @@ msgstr "Willkommen zu %{name}"
 
 #: web/templates/backend/user/form.html.eex:27
 #: web/templates/backend/user/show.html.eex:21
-#: web/templates/user/new.html.eex:33
+#: web/templates/user/edit.html.eex:21 web/templates/user/new.html.eex:33
+#: web/templates/user/show.html.eex:4
 msgid "user.biography"
 msgstr "Biographie"
 
@@ -83,27 +85,27 @@ msgstr "Biographie"
 #: web/templates/backend/user/show.html.eex:6
 #: web/templates/reset_password/new.html.eex:7
 #: web/templates/session/new.html.eex:3 web/templates/session/new.html.eex:4
-#: web/templates/user/new.html.eex:9
+#: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:9
 msgid "user.email"
 msgstr "Email"
 
 #: web/templates/backend/user/form.html.eex:15
 #: web/templates/backend/user/index.html.eex:7
 #: web/templates/backend/user/show.html.eex:11
-#: web/templates/user/new.html.eex:27
+#: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:27
 msgid "user.name"
 msgstr "Name"
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/reset_password/edit.html.eex:8
 #: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
-#: web/templates/user/new.html.eex:15
+#: web/templates/user/edit.html.eex:27 web/templates/user/new.html.eex:15
 msgid "user.password"
 msgstr "Passwort"
 
 #: web/templates/backend/user/form.html.eex:39
 #: web/templates/reset_password/edit.html.eex:13
-#: web/templates/user/new.html.eex:21
+#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:21
 msgid "user.password_confirmation"
 msgstr "Passwort bestätigen"
 
@@ -176,6 +178,7 @@ msgstr "Löschen"
 
 #: web/templates/backend/user/index.html.eex:21
 #: web/templates/backend/user/show.html.eex:28
+#: web/templates/user/show.html.eex:13
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -233,3 +236,11 @@ msgstr "Videos"
 #: web/templates/backend/dashboard/index.html.eex:1
 msgid "Welcome to the dashboard"
 msgstr "Willkommen im Dashboard"
+
+#: web/templates/user/edit.html.eex:38
+msgid "Update"
+msgstr "Speichern"
+
+#: web/controllers/user_controller.ex:46
+msgid "Updated successfully."
+msgstr "Erfolgreich gespeichert"

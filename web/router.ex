@@ -38,7 +38,7 @@ defmodule SignDict.Router do
   scope "/", SignDict do
     pipe_through [:browser, :browser_session]
 
-    resources "/users",    UserController, only: [:new, :create]
+    resources "/users",    UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     get "/password/new",  ResetPasswordController, :new

@@ -28,32 +28,29 @@ defmodule SignDict.User do
     @roles
   end
 
-  def admin_changeset(user, params \\ %{}) do
-    changeset = user
-                |> cast(params, [:email, :name, :biography, :password,
-                                 :password_confirmation, :role])
-                |> validate_required([:email, :name])
-                |> validate_format(:email, ~r/@/)
-                |> unique_constraint(:email)
+  def changeset(user, params \\ %{}) do
+    user
+    |> cast(params, [:email, :name, :biography, :password,
+                     :password_confirmation])
+    |> validate_required([:email, :name])
+    |> validate_email
+    |> validate_password_if_present
+  end
 
-    if get_change(changeset, :password, "") != "" ||
-       get_change(changeset, :password_confirmation, "") != "" ||
-       user.password_hash == nil do
-      changeset
-      |> validate_required([:password, :password_confirmation])
-      |> validate_password
-    else
-      changeset
-    end
+  def admin_changeset(user, params \\ %{}) do
+    user
+    |> cast(params, [:email, :name, :biography, :password, :password_confirmation, :role])
+    |> validate_required([:email, :name])
+    |> validate_email
+    |> validate_password_if_present
   end
 
   def register_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password, :password_confirmation,
                      :name, :biography])
-    |> validate_required([:email, :password, :password_confirmation, :name])
-    |> validate_format(:email, ~r/@/)
-    |> unique_constraint(:email)
+    |> validate_required([:email, :name, :password, :password_confirmation])
+    |> validate_email
     |> validate_password
   end
 
@@ -89,6 +86,24 @@ defmodule SignDict.User do
   defp do_validate_token(true, changeset), do: changeset
   defp do_validate_token(false, changeset) do
     Changeset.add_error changeset, :password_reset_token, "invalid"
+  end
+
+  defp validate_email(changeset) do
+    changeset
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
+  end
+
+  defp validate_password_if_present(changeset) do
+    if get_change(changeset, :password, "") != "" ||
+       get_change(changeset, :password_confirmation, "") != "" ||
+       changeset.data.password_hash == nil do
+      changeset
+      |> validate_required([:password, :password_confirmation])
+      |> validate_password
+    else
+      changeset
+    end
   end
 
   defp validate_password(changeset) do

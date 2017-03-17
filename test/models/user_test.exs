@@ -5,6 +5,55 @@ defmodule SignDict.UserTest do
 
   alias SignDict.User
 
+  describe "User.changeset/2" do
+    @valid_attrs %{
+      email: "elisa@example.com",
+      password: "valid_password",
+      password_confirmation: "valid_password",
+      name: "some content",
+      biography: "some content"
+    }
+
+    test "is valid when adding all the fields" do
+      changeset = User.changeset(%User{}, @valid_attrs)
+      assert changeset.valid?
+    end
+
+    test "is invalid when password does not match" do
+      params = Map.put(@valid_attrs, :password_confirmation, "invalid_password")
+      changeset = User.changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
+    test "is invalid if email is wrong" do
+      params = Map.put(@valid_attrs, :email, "invalid_email")
+      changeset = User.changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
+    test "it hashes the password if it is given" do
+      changeset = User.changeset(%User{}, @valid_attrs)
+      assert Ecto.Changeset.fetch_field(changeset, :password_hash) != :error
+    end
+
+    test "it requires a password if the user is new" do
+      params = @valid_attrs
+               |> Map.delete(:password)
+               |> Map.delete(:password_confirmation)
+      changeset = User.changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
+    test "it does not require a password if the user is already stored in the database" do
+      user = insert :user
+      params = @valid_attrs
+               |> Map.delete(:password)
+               |> Map.delete(:password_confirmation)
+      changeset = User.changeset(user, params)
+      assert changeset.valid?
+    end
+  end
+
   describe "User.admin_changeset/2" do
     @valid_attrs %{
       email: "elisa@example.com",
