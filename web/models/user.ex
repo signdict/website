@@ -26,6 +26,8 @@ defmodule SignDict.User do
 
     field :avatar, SignDict.Avatar.Type
 
+    has_many :videos, SignDict.Video
+
     timestamps()
   end
 
@@ -39,6 +41,10 @@ defmodule SignDict.User do
   end
   def avatar_url(user) do
     gravatar_url(user.email, s: 256)
+  end
+
+  def admin?(struct) do
+    struct.role == "admin"
   end
 
   def changeset(user, params \\ %{}) do

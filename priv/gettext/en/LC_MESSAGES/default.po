@@ -44,7 +44,7 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:28 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:25
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr ""
@@ -53,11 +53,11 @@ msgstr ""
 msgid "Registration successful"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:31 web/templates/layout/backend.html.eex:28
+#: web/templates/layout/app.html.eex:36 web/templates/layout/backend.html.eex:28
 msgid "Sign in"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:24 web/templates/layout/backend.html.eex:21
+#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:21
 msgid "Sign out"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 #: web/templates/backend/user/index.html.eex:8
 #: web/templates/backend/user/show.html.eex:16
 msgid "user.role"
-msgstr ""
+msgstr "Role"
 
 #: web/templates/backend/dashboard/index.html.eex:5
 msgid "Users"
