@@ -36,4 +36,26 @@ defmodule SignDict.Factory do
       default_locale: "DE"
     }
   end
+
+  def video_factory do
+    %SignDict.Video {
+      state: "created",
+      copyright: "copyright",
+      license: "license",
+      original_href: "original_href"
+    }
+  end
+
+  def entry_factory do
+    %SignDict.Entry {
+      description: "some content",
+      text: "some content",
+      type: "word",
+      language: build(:language_dgs)
+    }
+  end
+
+  def entry_with_videos_factory do
+    %{ entry_factory | videos: build_list(4, :video) }
+  end
 end

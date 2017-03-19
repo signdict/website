@@ -1,0 +1,14 @@
+<div>
+  <h2><%= @entry.text %></h2>
+  <p><%= @entry.description %></p>
+  <p><%= @entry.type %></p>
+  <p>
+    <%= if @entry.language do %>
+      <%= @entry.language.long_name %></p>
+    <% end %>
+  <ul>
+    <%= for video <- @entry.videos do %>
+      <li><%= video.id %></li>
+    <% end %>
+  </ul>
+</div>
