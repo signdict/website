@@ -6,7 +6,7 @@ defmodule SignDict.SessionControllerTest do
     test "renders form for new resources", %{conn: conn} do
       conn = get(conn, session_path(conn, :new))
       assert html_response(conn, 200) =~ "Email"
-  end
+    end
   end
 
   describe "create/2" do

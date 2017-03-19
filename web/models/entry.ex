@@ -20,4 +20,12 @@ defmodule SignDict.Entry do
     |> validate_inclusion(:type, @types)
     |> foreign_key_constraint(:language_id)
   end
+
+  def with_videos(query) do
+    from q in query, preload: :videos
+  end
+
+  def with_language(query) do
+    from q in query, preload: :language
+  end
 end

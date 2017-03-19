@@ -17,4 +17,9 @@ defmodule SignDict.EntryTest do
     changeset = Entry.changeset(%Entry{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  test "changeset with invalid value for type attribute" do
+    changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{type: "somthing_invalid"}))
+    refute changeset.valid?
+  end
 end

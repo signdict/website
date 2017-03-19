@@ -46,6 +46,8 @@ defmodule SignDict.Router do
     get "/password/edit", ResetPasswordController, :edit
     put "/password",      ResetPasswordController, :update
 
+    resources "/entry",  EntryController, only: [:show]
+
     get "/", PageController, :index
   end
 
