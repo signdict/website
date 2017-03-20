@@ -7,7 +7,6 @@ defmodule SignDict.VoteController do
   alias SignDict.Video
 
   def create(conn, %{"video_id" => video_id}) do
-    IO.puts "creating"
     video = Video |> Repo.get!(video_id)
     changeset = Vote.changeset(%Vote{user_id: conn.assigns.current_user.id, video_id: video.id})
 
