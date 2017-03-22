@@ -34,7 +34,7 @@ defmodule SignDict.VoteController do
       case Repo.delete(vote) do
         {:ok, _vote} ->
           conn
-            |> put_flash(:info, "You voted reverted successfully")
+            |> put_flash(:info, "You vote was reverted successfully")
             |> redirect(to: entry_path(conn, :show, video.entry_id))
         {:error, changeset} ->
           conn

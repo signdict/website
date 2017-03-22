@@ -16,6 +16,18 @@ defmodule SignDict.VoteControllerTest do
       assert redirected_to(conn) == entry_path(conn, :show, video.entry)
     end
 
+    test "it can not create same vote more then once" do
+      video = insert(:video_with_entry)
+      user = insert(:user)
+      vote = insert(:vote, video: video, user: user)
+      conn = build_conn()
+               |> guardian_login(user)
+               |> post(vote_path(build_conn(), :create, video))
+      assert  Vote |> Repo.aggregate(:count, :id) == 1
+      assert Vote |> Repo.get(vote.id)
+      assert redirected_to(conn) == entry_path(conn, :show, video.entry)
+    end
+
     test "deletes existing vote" do
       video = insert(:video_with_entry)
       user = insert(:user)
