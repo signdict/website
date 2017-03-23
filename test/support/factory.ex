@@ -46,6 +46,10 @@ defmodule SignDict.Factory do
     }
   end
 
+  def video_with_entry_factory do
+    %{video_factory | entry: build(:entry)}
+  end
+
   def entry_factory do
     %SignDict.Entry {
       description: "some content",
@@ -57,5 +61,12 @@ defmodule SignDict.Factory do
 
   def entry_with_videos_factory do
     %{ entry_factory | videos: build_list(4, :video) }
+  end
+
+  def vote_factory do
+    %SignDict.Vote{
+      user: build(:user),
+      video: build(:video)
+    }
   end
 end

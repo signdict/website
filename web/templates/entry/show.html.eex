@@ -8,7 +8,15 @@
     <% end %>
   <ul>
     <%= for video <- @entry.videos do %>
-      <li><%= video.id %></li>
+      <li>
+        <%= video.id %>
+        <%= form_for @conn, vote_path(@conn, :create, video), [as: :vote], fn f -> %>
+          <div class="form-group">
+            <%= submit "up-vote", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <%= link "down-vote", to: vote_path(@conn, :delete, video), method: :delete, class: "btn btn-primary" %>
+      </li>
     <% end %>
   </ul>
 </div>
