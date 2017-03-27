@@ -14,7 +14,11 @@ defmodule SignDict.Backend.VideoController do
   end
 
   def create(conn, %{"entry_id" => entry_id, "video" => video_params}) do
-    changeset = Video.changeset(%Video{}, Map.merge(video_params, %{"entry_id" => entry_id, "user_id" => conn.assigns.current_user.id}))
+    changeset = Video.changeset(%Video{},
+                                Map.merge(video_params,
+                                          %{"entry_id" => entry_id,
+                                            "user_id" => conn.assigns.current_user.id
+                                          }))
 
     case Repo.insert(changeset) do
       {:ok, _video} ->
@@ -44,7 +48,8 @@ defmodule SignDict.Backend.VideoController do
       {:ok, video} ->
         conn
         |> put_flash(:info, "Video updated successfully.")
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video))
+        |> redirect(to: backend_entry_video_path(conn, :show,
+                                                 video.entry_id, video))
       {:error, changeset} ->
         render(conn, "edit.html", video: video, changeset: changeset, entry_id: entry_id)
     end

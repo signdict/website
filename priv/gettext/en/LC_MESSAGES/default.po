@@ -442,6 +442,10 @@ msgstr ""
 msgid "video.original_href"
 msgstr "Original URL"
 
-#: web/controllers/backend/entry_controller.ex:66
+#: web/controllers/backend/entry_controller.ex:68
 msgid "Entry deleted successfully."
+msgstr ""
+
+#: web/models/vote.ex:20
+msgid "Only one vote per video and user"
 msgstr ""

@@ -56,7 +56,8 @@ defmodule SignDict.Backend.EntryController do
         |> redirect(to: backend_entry_path(conn, :show, entry))
       {:error, changeset} ->
         languages = Repo.all(Language)
-        render(conn, "edit.html", entry: entry, changeset: changeset, languages: languages)
+        render(conn, "edit.html", entry: entry, changeset: changeset,
+               languages: languages)
     end
   end
 
