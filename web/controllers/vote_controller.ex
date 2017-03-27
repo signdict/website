@@ -15,7 +15,7 @@ defmodule SignDict.VoteController do
         conn
           |> put_flash(:info, "You voted successfully.")
           |> redirect(to: entry_path(conn, :show, video.entry_id))
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote failed.")
           |> redirect(to: entry_path(conn, :show, video.entry_id))
@@ -36,7 +36,7 @@ defmodule SignDict.VoteController do
           conn
             |> put_flash(:info, "You vote was reverted successfully")
             |> redirect(to: entry_path(conn, :show, video.entry_id))
-        {:error, changeset} ->
+        {:error, _changeset} ->
           conn
             |> put_flash(:error, "Your vote deletion failed.")
             |> redirect(to: entry_path(conn, :show, video.entry_id))
