@@ -10,7 +10,7 @@
     <%= for video <- @entry.videos do %>
       <li>
         <%= video.id %>
-        <%= form_for @conn, vote_path(@conn, :create, video), [as: :vote], fn f -> %>
+        <%= form_for @conn, vote_path(@conn, :create, video), [as: :vote], fn _f -> %>
           <div class="form-group">
             <%= submit "up-vote", class: "btn btn-primary" %>
           </div>

@@ -1,0 +1,35 @@
+<h1 class="c-heading"><%= gettext("Listing entries") %></h1>
+
+<table class="c-table c-table--striped">
+  <thead class="c-table__head">
+    <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("entry.text") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("entry.type") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("Language") %></th>
+      <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
+    </tr>
+  </thead>
+  <tbody class="c-table__body">
+<%= for entry <- @entries do %>
+    <tr class="c-table__row">
+      <td class="c-table__cell"><%= entry.text %></td>
+      <td class="c-table__cell"><%= entry.type %></td>
+      <td class="c-table__cell"><%= link SignDict.Language.name(entry.language), to: backend_language_path(@conn, :show, entry.language) %></div>
+
+      <td class="c-table__cell">
+        <div class="o-grid o-grid--no-gutter">
+          <div class="o-grid__cell t-action-buttons">
+            <%= link gettext("Show"), to: backend_entry_path(@conn, :show, entry), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, entry), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: backend_entry_path(@conn, :delete, entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+          </div>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link gettext("New entry"), to: backend_entry_path(@conn, :new), class: "c-button c-button--info" %>
+</p>

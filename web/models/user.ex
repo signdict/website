@@ -6,6 +6,7 @@ defmodule SignDict.User do
 
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
+  alias SignDict.Avatar
 
   @roles ~w(user admin)
 
@@ -37,11 +38,12 @@ defmodule SignDict.User do
 
   def avatar_url(user)
   def avatar_url(user = %SignDict.User{avatar: avatar}) when avatar != nil do
-    SignDict.Avatar.url({avatar, user}, :thumb)
+    Avatar.url({avatar, user}, :thumb)
   end
-  def avatar_url(user) do
+  def avatar_url(user = %SignDict.User{email: email}) when email != nil do
     gravatar_url(user.email, s: 256)
   end
+  def avatar_url(_user), do: ""
 
   def admin?(struct) do
     struct.role == "admin"
@@ -59,7 +61,8 @@ defmodule SignDict.User do
 
   def admin_changeset(user, params \\ %{}) do
     user
-    |> cast(params, [:email, :name, :biography, :password, :password_confirmation, :role])
+    |> cast(params, [:email, :name, :biography, :password,
+                     :password_confirmation, :role])
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email

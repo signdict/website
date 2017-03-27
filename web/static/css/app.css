@@ -1,1 +1,23 @@
 /* This file is for your main application css. */
+
+form.link {
+  display: inline;
+  margin-top: -2px;
+}
+
+.t-align-right {
+  text-align: right;
+}
+
+.t-action-buttons {
+  line-height: 2em;
+  margin-top: -0.3em;
+}
+
+.o-form-element {
+  padding: 0.5em 0;
+}
+
+.c-hint {
+  position: relative;
+}

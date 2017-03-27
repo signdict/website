@@ -5,8 +5,7 @@ defmodule SignDict.Backend.UserController do
   plug :load_and_authorize_resource, model: User
 
   def index(conn, _params) do
-    users = Repo.all(User)
-    render(conn, "index.html", users: users)
+    render(conn, "index.html", users: conn.assigns.users)
   end
 
   def new(conn, _params) do
@@ -28,7 +27,8 @@ defmodule SignDict.Backend.UserController do
   end
 
   def show(conn, _params) do
-    render(conn, "show.html", user: conn.assigns.user)
+    user = conn.assigns.user |> Repo.preload(videos: :entry)
+    render(conn, "show.html", user: user)
   end
 
   def edit(conn, _params) do

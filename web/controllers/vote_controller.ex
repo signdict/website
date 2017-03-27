@@ -8,14 +8,16 @@ defmodule SignDict.VoteController do
 
   def create(conn, %{"video_id" => video_id}) do
     video = Video |> Repo.get!(video_id)
-    changeset = Vote.changeset(%Vote{user_id: conn.assigns.current_user.id, video_id: video.id})
+    changeset = Vote.changeset(%Vote{
+                                 user_id: conn.assigns.current_user.id,
+                                 video_id: video.id})
 
     case Repo.insert(changeset) do
       {:ok, _vote} ->
         conn
           |> put_flash(:info, "You voted successfully.")
           |> redirect(to: entry_path(conn, :show, video.entry_id))
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote failed.")
           |> redirect(to: entry_path(conn, :show, video.entry_id))
@@ -24,23 +26,27 @@ defmodule SignDict.VoteController do
 
   def delete(conn, %{"video_id" => video_id}) do
     video = Video |> Repo.get!(video_id)
-    vote = Vote |> Repo.get_by(%{video_id: video.id, user_id: conn.assigns.current_user.id})
+    vote = Vote |> Repo.get_by(%{video_id: video.id,
+                                 user_id: conn.assigns.current_user.id})
+    do_delete(conn, video, vote)
+  end
 
-    unless vote do
-      conn
-        |> put_flash(:error, "Your vote could not be found.")
-        |> redirect(to: entry_path(conn, :show, video.entry_id))
-    else
-      case Repo.delete(vote) do
-        {:ok, _vote} ->
-          conn
-            |> put_flash(:info, "You vote was reverted successfully")
-            |> redirect(to: entry_path(conn, :show, video.entry_id))
-        {:error, changeset} ->
-          conn
-            |> put_flash(:error, "Your vote deletion failed.")
-            |> redirect(to: entry_path(conn, :show, video.entry_id))
-      end
+  defp do_delete(conn, video, vote)
+  defp do_delete(conn, video, vote) when is_nil(vote) do
+    conn
+    |> put_flash(:error, "Your vote could not be found.")
+    |> redirect(to: entry_path(conn, :show, video.entry_id))
+  end
+  defp do_delete(conn, video, vote) do
+    case Repo.delete(vote) do
+      {:ok, _vote} ->
+        conn
+          |> put_flash(:info, "You vote was reverted successfully")
+          |> redirect(to: entry_path(conn, :show, video.entry_id))
+      {:error, _changeset} ->
+        conn
+          |> put_flash(:error, "Your vote deletion failed.")
+          |> redirect(to: entry_path(conn, :show, video.entry_id))
     end
   end
 end

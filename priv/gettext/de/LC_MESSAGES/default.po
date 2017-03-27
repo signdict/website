@@ -14,7 +14,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr "Anmeldung benötigt"
 
-#: web/templates/layout/app.html.eex:10 web/templates/layout/backend.html.eex:10
+#: web/templates/layout/app.html.eex:10
 msgid "Hello SignDict!"
 msgstr "Hallo SignDict!"
 
@@ -31,8 +31,11 @@ msgstr "Ungültige Email-Adresse oder Passwort"
 msgid "Log in"
 msgstr "Anmelden"
 
-#: web/templates/backend/user/form.html.eex:4 web/templates/user/edit.html.eex:4
-#: web/templates/user/new.html.eex:4
+#: web/templates/backend/entry/form.html.eex:4
+#: web/templates/backend/language/form.html.eex:4
+#: web/templates/backend/user/form.html.eex:4
+#: web/templates/backend/video/form.html.eex:4
+#: web/templates/user/edit.html.eex:4 web/templates/user/new.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder."
 
@@ -44,7 +47,7 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:27
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr "Registrieren"
@@ -57,7 +60,7 @@ msgstr "Registierung erfolgreich"
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:21
+#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:25
 msgid "Sign out"
 msgstr "Abmelden"
 
@@ -73,8 +76,8 @@ msgstr "Erfolgreich abgemeldet"
 msgid "Welcome to %{name}"
 msgstr "Willkommen zu %{name}"
 
-#: web/templates/backend/user/form.html.eex:27
-#: web/templates/backend/user/show.html.eex:21
+#: web/templates/backend/user/form.html.eex:33
+#: web/templates/backend/user/show.html.eex:28
 #: web/templates/user/edit.html.eex:21 web/templates/user/new.html.eex:33
 #: web/templates/user/show.html.eex:6
 msgid "user.biography"
@@ -82,28 +85,27 @@ msgstr "Biographie"
 
 #: web/templates/backend/user/form.html.eex:9
 #: web/templates/backend/user/index.html.eex:6
-#: web/templates/backend/user/show.html.eex:6
+#: web/templates/backend/user/show.html.eex:14
 #: web/templates/reset_password/new.html.eex:7
 #: web/templates/session/new.html.eex:3 web/templates/session/new.html.eex:4
 #: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:9
 msgid "user.email"
 msgstr "Email"
 
-#: web/templates/backend/user/form.html.eex:15
+#: web/templates/backend/user/form.html.eex:21
 #: web/templates/backend/user/index.html.eex:7
-#: web/templates/backend/user/show.html.eex:11
 #: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:27
 msgid "user.name"
 msgstr "Name"
 
-#: web/templates/backend/user/form.html.eex:33
+#: web/templates/backend/user/form.html.eex:44
 #: web/templates/reset_password/edit.html.eex:8
 #: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
 #: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:15
 msgid "user.password"
 msgstr "Passwort"
 
-#: web/templates/backend/user/form.html.eex:39
+#: web/templates/backend/user/form.html.eex:50
 #: web/templates/reset_password/edit.html.eex:13
 #: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:21
 msgid "user.password_confirmation"
@@ -162,52 +164,56 @@ msgstr "Dein Passwort Link"
 msgid "You are not allowed to do this."
 msgstr "Leider darfst du dies nicht."
 
+#: web/templates/backend/entry/index.html.eex:9
+#: web/templates/backend/language/index.html.eex:10
+#: web/templates/backend/shared/videos_table.html.eex:14
 #: web/templates/backend/user/index.html.eex:9
 msgid "Actions"
 msgstr "Aktionen"
 
-#: web/templates/backend/user/edit.html.eex:6
-#: web/templates/backend/user/new.html.eex:6
-#: web/templates/backend/user/show.html.eex:29
-msgid "Back"
-msgstr "Zurück"
-
-#: web/templates/backend/user/index.html.eex:22
+#: web/templates/backend/entry/index.html.eex:24
+#: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/user/index.html.eex:27
 msgid "Delete"
 msgstr "Löschen"
 
-#: web/templates/backend/user/index.html.eex:21
-#: web/templates/backend/user/show.html.eex:28
+#: web/templates/backend/entry/index.html.eex:23
+#: web/templates/backend/entry/show.html.eex:25
+#: web/templates/backend/language/index.html.eex:25
+#: web/templates/backend/language/show.html.eex:32
+#: web/templates/backend/shared/videos_table.html.eex:35
+#: web/templates/backend/user/index.html.eex:26
+#: web/templates/backend/user/show.html.eex:34
+#: web/templates/backend/video/show.html.eex:46
 #: web/templates/user/show.html.eex:15
 msgid "Edit"
 msgstr "Bearbeiten"
-
-#: web/templates/backend/user/edit.html.eex:1
-msgid "Edit User"
-msgstr "Nutzer bearbeiten"
 
 #: web/templates/backend/user/index.html.eex:1
 msgid "Listing users"
 msgstr "Alle Nutzer"
 
-#: web/templates/backend/user/index.html.eex:29
+#: web/templates/backend/user/index.html.eex:37
 #: web/templates/backend/user/new.html.eex:1
 msgid "New user"
 msgstr "Neuer Nutzer"
 
-#: web/templates/backend/user/index.html.eex:20
+#: web/templates/backend/entry/index.html.eex:22
+#: web/templates/backend/language/index.html.eex:24
+#: web/templates/backend/shared/videos_table.html.eex:34
+#: web/templates/backend/user/index.html.eex:25
 msgid "Show"
 msgstr "Anzeigen"
 
-#: web/templates/backend/user/show.html.eex:1
-msgid "Show user"
-msgstr "Zeige Nutzer"
-
-#: web/templates/backend/user/form.html.eex:45
+#: web/templates/backend/entry/form.html.eex:33
+#: web/templates/backend/language/form.html.eex:33
+#: web/templates/backend/user/form.html.eex:57
+#: web/templates/backend/video/form.html.eex:33
 msgid "Submit"
 msgstr "Absenden"
 
-#: web/controllers/backend/user_controller.ex:23
+#: web/controllers/backend/user_controller.ex:22
 msgid "User created successfully."
 msgstr "Nutzer erfolgreich angelegt."
 
@@ -219,17 +225,19 @@ msgstr "Nutzer erfolgreich gelöscht."
 msgid "User updated successfully."
 msgstr "Nutzer erfolgreich aktualisiert."
 
-#: web/templates/backend/user/form.html.eex:21
+#: web/templates/backend/user/form.html.eex:27
 #: web/templates/backend/user/index.html.eex:8
-#: web/templates/backend/user/show.html.eex:16
+#: web/templates/backend/user/show.html.eex:21
 msgid "user.role"
 msgstr "Rolle"
 
-#: web/templates/backend/dashboard/index.html.eex:5
+#: web/templates/layout/backend.html.eex:35
 msgid "Users"
 msgstr "Nutzer"
 
-#: web/templates/backend/dashboard/index.html.eex:4
+#: web/templates/backend/entry/show.html.eex:28
+#: web/templates/backend/user/show.html.eex:37
+#: web/templates/layout/backend.html.eex:37
 msgid "Videos"
 msgstr "Videos"
 
@@ -245,10 +253,199 @@ msgstr "Speichern"
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
-#: web/templates/user/show.html.eex:3
+#: web/templates/backend/user/index.html.eex:16
+#: web/templates/backend/user/show.html.eex:7 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
 
+#: web/templates/backend/user/form.html.eex:15
+#: web/templates/backend/user/show.html.eex:5
 #: web/templates/user/edit.html.eex:27
 msgid "user.avatar"
 msgstr "Profilbild"
+
+#: web/controllers/backend/language_controller.ex:23
+msgid "Language created successfully."
+msgstr "Sprache erfolgreich angelegt."
+
+#: web/controllers/backend/language_controller.ex:58
+msgid "Language deleted successfully."
+msgstr "Sprache erfolgreich gelöscht."
+
+#: web/controllers/backend/language_controller.ex:47
+msgid "Language updated successfully."
+msgstr "Sprache erfolgreich aktualisiert."
+
+#: web/templates/layout/backend.html.eex:38
+msgid "Languages"
+msgstr "Sprachen"
+
+#: web/templates/backend/language/index.html.eex:36
+#: web/templates/backend/language/new.html.eex:1
+msgid "New language"
+msgstr "Neue Sprache"
+
+#: web/templates/backend/language/form.html.eex:27
+#: web/templates/backend/language/index.html.eex:9
+#: web/templates/backend/language/show.html.eex:26
+msgid "language.default_locale"
+msgstr "Standard Sprache der Weboberfläche"
+
+#: web/templates/backend/language/form.html.eex:9
+#: web/templates/backend/language/index.html.eex:6
+#: web/templates/backend/language/show.html.eex:5
+msgid "language.iso6393"
+msgstr "ISO 639-3"
+
+#: web/templates/backend/language/form.html.eex:21
+#: web/templates/backend/language/index.html.eex:8
+#: web/templates/backend/language/show.html.eex:19
+msgid "language.long_name"
+msgstr "Langer Name"
+
+#: web/templates/backend/language/form.html.eex:15
+#: web/templates/backend/language/index.html.eex:7
+#: web/templates/backend/language/show.html.eex:12
+msgid "language.short_name"
+msgstr "Abkürzung"
+
+#: web/templates/backend/user/form.html.eex:40
+msgid "Only enter a password if you want to change it"
+msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
+
+#: web/templates/backend/entry/index.html.eex:24
+#: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/user/index.html.eex:27
+msgid "Are you sure?"
+msgstr "Bist du sicher?"
+
+#: web/templates/layout/backend.html.eex:34
+msgid "Dashboard"
+msgstr ""
+
+#: web/templates/backend/language/edit.html.eex:1
+msgid "Edit language"
+msgstr "Bearbeite Sprache"
+
+#: web/templates/backend/entry/index.html.eex:8
+#: web/templates/backend/entry/show.html.eex:19
+#: web/templates/backend/language/show.html.eex:1
+msgid "Language"
+msgstr "Sprache"
+
+#: web/templates/backend/user/edit.html.eex:1
+msgid "Edit user"
+msgstr "Nutzer bearbeiten"
+
+#: web/templates/backend/entry/show.html.eex:1
+#: web/templates/backend/shared/videos_table.html.eex:5
+#: web/templates/backend/video/show.html.eex:5
+msgid "Entry"
+msgstr "Eintrag"
+
+#: web/templates/backend/language/index.html.eex:1
+msgid "Listing languages"
+msgstr "Alle Sprachen"
+
+#: web/templates/backend/video/index.html.eex:1
+msgid "Listing videos"
+msgstr "Alle Videos"
+
+#: web/templates/backend/entry/show.html.eex:33
+msgid "New video"
+msgstr "Neues Video"
+
+#: web/templates/backend/shared/videos_table.html.eex:8
+#: web/templates/backend/user/show.html.eex:1
+#: web/templates/backend/video/show.html.eex:12
+msgid "User"
+msgstr "Benutzer"
+
+#: web/templates/backend/shared/videos_table.html.eex:11
+#: web/templates/backend/video/form.html.eex:15
+#: web/templates/backend/video/show.html.eex:26
+msgid "video.copyright"
+msgstr "Urheberrecht"
+
+#: web/templates/backend/shared/videos_table.html.eex:12
+#: web/templates/backend/video/form.html.eex:21
+#: web/templates/backend/video/show.html.eex:33
+msgid "video.license"
+msgstr "Lizenz"
+
+#: web/templates/backend/shared/videos_table.html.eex:13
+msgid "video.orignal_href"
+msgstr "Quelle"
+
+#: web/templates/backend/shared/videos_table.html.eex:10
+#: web/templates/backend/video/form.html.eex:9
+#: web/templates/backend/video/show.html.eex:19
+msgid "video.state"
+msgstr "Status"
+
+#: web/templates/layout/backend.html.eex:36
+msgid "Entries"
+msgstr "Einträge"
+
+#: web/templates/layout/backend.html.eex:10
+msgid "SignDict"
+msgstr ""
+
+#: web/templates/backend/entry/index.html.eex:1
+msgid "Listing entries"
+msgstr "Alle Einträge"
+
+#: web/templates/backend/entry/index.html.eex:34
+#: web/templates/backend/entry/new.html.eex:1
+msgid "New entry"
+msgstr "Neuer Eintrag"
+
+#: web/templates/backend/entry/form.html.eex:9
+#: web/templates/backend/entry/index.html.eex:6
+msgid "entry.text"
+msgstr "Text"
+
+#: web/templates/backend/entry/form.html.eex:21
+#: web/templates/backend/entry/index.html.eex:7
+#: web/templates/backend/entry/show.html.eex:12
+msgid "entry.type"
+msgstr "Typ"
+
+#: web/templates/backend/entry/form.html.eex:15
+#: web/templates/backend/entry/show.html.eex:5
+msgid "entry.description"
+msgstr "Beschreibung"
+
+#: web/templates/backend/entry/edit.html.eex:1
+msgid "Edit entry"
+msgstr "Eintrag bearbeiten"
+
+#: web/controllers/backend/entry_controller.ex:26
+msgid "Entry created successfully."
+msgstr "Eintrag erfolgreich angelegt."
+
+#: web/controllers/backend/entry_controller.ex:55
+msgid "Entry updated successfully."
+msgstr "Eintrag erfolgreich aktualisiert."
+
+#: web/templates/backend/video/show.html.eex:1
+msgid "Video"
+msgstr "Video"
+
+#: web/templates/backend/entry/form.html.eex:27
+msgid "entry.language"
+msgstr "Sprache"
+
+#: web/templates/backend/video/form.html.eex:27
+#: web/templates/backend/video/show.html.eex:40
+msgid "video.original_href"
+msgstr "Orignal URL"
+
+#: web/controllers/backend/entry_controller.ex:68
+msgid "Entry deleted successfully."
+msgstr "Eintrag erfolgreich gelöscht."
+
+#: web/models/vote.ex:20
+msgid "Only one vote per video and user"
+msgstr "Nur eine Abstimmung pro Video und Benutzer"
