@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :sign_dict, :environment, :prod
+
 # For production, we configure the host to read the PORT
 # from the system environment. Therefore, you will need
 # to set PORT=80 before running your server.
@@ -13,8 +15,11 @@ use Mix.Config
 # which you typically run after static files are built.
 config :sign_dict, SignDict.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  url: [host: "beta.signdict.org", port: 80],
+  cache_static_manifest: "priv/static/manifest.json",
+  root: ".",
+  server: true,
+  version: Mix.Project.config[:version]
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -56,10 +61,19 @@ config :logger, level: :info
 #     config :sign_dict, SignDict.Endpoint, server: true
 #
 
+config :sign_dict, SignDict.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+config :sign_dict, SignDict.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_DATABASE"),
+  hostname: System.get_env("DB_HOSTNAME"),
+  pool_size: 20
+
+config :phoenix, :serve_endpoints, true
+
 config :bugsnex, :release_stage, "production"
 config :bugsnex, :use_logger, true
-config :bugsnex, :api_key, "DO_NOT_FORGET_TO_ADD_API_KEY_IN_SECRET.EXS"
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
+config :bugsnex, :api_key, System.get_env("BUGSNAG_API_KEY")

@@ -31,7 +31,7 @@ defmodule SignDict.Router do
     plug SignDict.Plug.AllowedForBackend
   end
 
-  if Mix.env == :dev do
+  if Application.get_env(:sign_dict, :environment) == :dev do
     forward "/sent_emails", Bamboo.EmailPreviewPlug
   end
 
