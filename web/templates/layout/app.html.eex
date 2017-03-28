@@ -57,7 +57,7 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <%= if Mix.env != "prod" do %>
+    <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
       <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
     <% end %>
   </body>

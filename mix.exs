@@ -3,7 +3,7 @@ defmodule SignDict.Mixfile do
 
   def project do
     [app: :sign_dict,
-     version: "0.0.1",
+     version: "0.0.#{committed_at()}",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -19,7 +19,10 @@ defmodule SignDict.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {SignDict, []}]
+    [
+      mod: {SignDict, []},
+      extra_applications: [:canada, :elixir_make]
+    ]
   end
 
   # Specifies which paths to compile per environment.
@@ -53,7 +56,8 @@ defmodule SignDict.Mixfile do
      {:bugsnex, "~> 0.3.0"},
      {:arc, "~> 0.7.0"},
      {:arc_ecto, "~> 0.6.0"},
-     {:exgravatar, "~> 2.0.0"}
+     {:exgravatar, "~> 2.0.0"},
+     {:distillery, "~> 1.3.1"}
    ]
   end
 
@@ -67,5 +71,9 @@ defmodule SignDict.Mixfile do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
      "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+  end
+
+  def committed_at do
+    System.cmd("git", ~w[log -1 --date=short --pretty=format:%ct]) |> elem(0)
   end
 end
