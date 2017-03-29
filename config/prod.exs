@@ -64,6 +64,8 @@ config :logger, level: :info
 config :sign_dict, SignDict.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
+config :sign_dict, :upload_path, "/home/bitboxer/deployments/sign_dict/uploads"
+
 config :sign_dict, SignDict.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: System.get_env("DB_USERNAME"),
