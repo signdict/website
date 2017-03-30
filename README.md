@@ -22,8 +22,8 @@ you would expect it to be:
 ```bash
 mix deps.get
 mix ecto.setup
-mix phoenix.server
 yarn
+mix phoenix.server
 ```
 
 After that you have a running system with a default admin user called
