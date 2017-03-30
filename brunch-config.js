@@ -59,6 +59,7 @@ exports.config = {
       processors: [
         require('autoprefixer')(['last 3 versions']),
         require('precss')(),
+        require('cssnano')()
       ]
     }
   },
