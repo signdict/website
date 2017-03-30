@@ -19,10 +19,11 @@ the most accurate sign language dictionary there is.
 SignDict uses Elixir and Phoenix. If you are used to both, the setup is as
 you would expect it to be:
 
-```
+```bash
 mix deps.get
 mix ecto.setup
 mix phoenix.server
+yarn
 ```
 
 After that you have a running system with a default admin user called
@@ -32,6 +33,8 @@ Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTR
 
 In development mode `Bamboo` will not sent emails. Instead you can see what
 would have been sent out here: `http://localhost:4000/sent_emails`
+
+This project is using [yarn](http://yarnjs.com/) for javascript dependency management.
 
 ## Deployment
 

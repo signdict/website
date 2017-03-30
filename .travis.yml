@@ -6,8 +6,10 @@ env:
  global:
    - MIX_ENV=test
    - PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
+   - TRAVIS_NODE_VERSION="6.10.1"
 
 cache:
+  yarn: true
   directories:
     — /home/travis/.rvm/
     - travis_phantomjs
@@ -21,10 +23,13 @@ before_install:
   - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi"
   - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
   - "phantomjs --version"
+  - nvm install $TRAVIS_NODE_VERSION
+  - npm install -g yarn
 
 before_script:
   - rvm install ruby-2.3.1
   - gem install pronto-credo
+  - yarn
 
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
