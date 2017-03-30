@@ -16,8 +16,10 @@ the most accurate sign language dictionary there is.
 
 ## Development setup
 
-SignDict uses Elixir and Phoenix. If you are used to both, the setup is as
-you would expect it to be:
+SignDict uses Elixir and Phoenix. Information on how
+to install Elixir can be found [here](http://elixir-lang.org/install.html).
+
+After you installed Elixir, the setup is as follows:
 
 ```bash
 mix deps.get
@@ -26,7 +28,7 @@ yarn
 mix phoenix.server
 ```
 
-After that you have a running system with a default admin user called
+With that you have a running system and a default admin user called
 `admin@example.com` with the password `thepasswordisalie`.
 
 Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTRIBUTING.md)
