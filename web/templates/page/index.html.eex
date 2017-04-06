@@ -69,18 +69,10 @@
       <%= gettext("Supporter") %>
     </h1>
     <p>
-      <a href="https://bmbf.de">
-        <img class="so-footer--sponsorlogo so-footer--bmbf" src="images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/>
-      </a>
-      <a href="https://prototypefund.de">
-        <img class="so-footer--sponsorlogo so-footer--prototype" src="images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/>
-      </a>
-      <a href="https://www.rrbone.net">
-        <img class="so-footer--sponsorlogo so-footer--rrbone" src="images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/>
-      </a>
-      <a href="https://zweitag.de">
-        <img class="so-footer--sponsorlogo so-footer--zweitag" src="images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/>
-      </a>
+      <a href="https://bmbf.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/></a>
+      <a href="https://prototypefund.de"><img class="so-footer--sponsorlogo so-footer--prototype" src="images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/></a>
+      <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
+      <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
     </p>
   </div>
 
@@ -98,12 +90,8 @@
           </ul>
         </div>
         <div class="o-grid__cell so-footer--links--social">
-          <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-          <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </a>
+          <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>"><i class="fa fa-github" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

@@ -51,6 +51,11 @@
   font-size: 1em;
   font-weight: 600;
   margin-left: 1em;
+  cursor: pointer;
+}
+
+.so-landing--search--submit:hover {
+  text-decoration: underline;
 }
 
 .so-landing--motivation {
@@ -77,6 +82,7 @@
   height:56%;
   margin-left: -0.4em;
   margin-right: -0.4em;
+  pointer-events: none;
 }
 
 .so-landing--motivation--text {
