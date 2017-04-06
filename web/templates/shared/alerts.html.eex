@@ -1,0 +1,7 @@
+<%= if get_flash(@conn, :info) do %>
+  <p class="sc-alert sc-alert--success" role="alert"><%= get_flash(@conn, :info) %></p>
+<% end %>
+<%= if get_flash(@conn, :error) do %>
+  <p class="sc-alert sc-alert--error" role="alert"><%= get_flash(@conn, :error) %></p>
+<% end %>
+

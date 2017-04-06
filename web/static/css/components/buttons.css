@@ -1,0 +1,6 @@
+.sc-button {
+  background-color: $highlight;
+  color: $dark_background;
+  padding: 1em 1.5em;
+  display: inline-block;
+}

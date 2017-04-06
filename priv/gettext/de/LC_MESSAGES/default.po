@@ -14,7 +14,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr "Anmeldung benötigt"
 
-#: web/templates/layout/app.html.eex:10
+#: web/templates/layout/app.html.eex:10 web/templates/layout/empty.html.eex:10
 msgid "Hello SignDict!"
 msgstr "Hallo SignDict!"
 
@@ -47,7 +47,8 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:27
+#: web/templates/layout/backend.html.eex:27
+#: web/templates/shared/navigation.html.eex:23
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr "Registrieren"
@@ -56,11 +57,13 @@ msgstr "Registrieren"
 msgid "Registration successful"
 msgstr "Registierung erfolgreich"
 
-#: web/templates/layout/app.html.eex:36 web/templates/layout/backend.html.eex:28
+#: web/templates/layout/backend.html.eex:28
+#: web/templates/shared/navigation.html.eex:26
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/backend.html.eex:25
+#: web/templates/shared/navigation.html.eex:19
 msgid "Sign out"
 msgstr "Abmelden"
 
@@ -71,10 +74,6 @@ msgstr "Erfolgreich angemeldet"
 #: web/controllers/session_controller.ex:39
 msgid "Successfully signed out"
 msgstr "Erfolgreich abgemeldet"
-
-#: web/templates/page/index.html.eex:2
-msgid "Welcome to %{name}"
-msgstr "Willkommen zu %{name}"
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
@@ -449,3 +448,91 @@ msgstr "Eintrag erfolgreich gelöscht."
 #: web/models/vote.ex:20
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
+
+#: web/templates/shared/navigation.html.eex:4
+msgid "About SignDict"
+msgstr "Über SignDict"
+
+#: web/templates/page/index.html.eex:7
+msgid "SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>"
+msgstr "SignDict is ein offenes Wörterbuch für Gebärdensprache. <strong>Jede:r ist eingeladen mitzumachen.</strong>"
+
+#: web/templates/page/index.html.eex:10
+msgid "Currenty %{humans} humans have added %{signs} signs"
+msgstr "Aktuell haben %{humans} Menschen %{signs} Gebärden beigetragen"
+
+#: web/templates/page/index.html.eex:94
+msgid "Contact"
+msgstr "Kontakt"
+
+#: web/templates/page/index.html.eex:49
+msgid "Curious?"
+msgstr "Neugierig?"
+
+#: web/templates/page/index.html.eex:93
+msgid "Imprint"
+msgstr "Impressum"
+
+#: web/templates/page/index.html.eex:30
+msgid "Language barrier"
+msgstr "Sprachbarriere"
+
+#: web/templates/page/index.html.eex:71
+msgid "Logo Bundesministerium für Bildung und Forschung"
+msgstr "Logo Bundesministerium für Bildung und Forschung"
+
+#: web/templates/page/index.html.eex:74
+msgid "Logo Prototype Fund"
+msgstr "Logo Prototype Fund"
+
+#: web/templates/page/index.html.eex:77
+msgid "Logo rrone"
+msgstr "Logo rrone"
+
+#: web/templates/page/index.html.eex:80
+msgid "Logo zweitag"
+msgstr "Logo zweitag"
+
+#: web/templates/page/index.html.eex:58
+msgid "Newsletter sign up"
+msgstr "Anmeldung zum Newsletter"
+
+#: web/templates/page/index.html.eex:37
+msgid "Our mission: to help understanding each other."
+msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
+
+#: web/templates/page/index.html.eex:20
+msgid "Search"
+msgstr "Suche"
+
+#: web/templates/page/index.html.eex:34
+msgid "SignDict believes..."
+msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gesellschaft ist. Um die Integration von gehörlosen Menschen zu fördern, bieten wir ein lebendiges Gebärdensprach-Wörterbuch, das jeden einlädt mitzumachen."
+
+#: web/templates/page/index.html.eex:89
+msgid "SignDict is a sign language dictionary where everyone can participate"
+msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
+
+#: web/templates/page/index.html.eex:101
+msgid "SignDict on Github"
+msgstr "SignDict auf Github"
+
+#: web/templates/page/index.html.eex:98
+msgid "SignDict on Twitter"
+msgstr "SignDict auf Twitter"
+
+#: web/templates/page/index.html.eex:67
+msgid "Supporter"
+msgstr "Unterstützer"
+
+#: web/templates/page/index.html.eex:55
+msgid "This page is still under construction and.."
+msgstr "Diese Seite ist noch im Aufbau und noch nicht alles ist Fertig. Willst du informiert werden, sobald es neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
+
+#: web/templates/page/index.html.eex:52
+msgid "Want to stay up to date?"
+msgstr "Willst du bei Neuigkeiten informiert werden?"
+
+#: web/templates/page/index.html.eex:19
+msgid "Enter word to search"
+msgstr "Wort nach dem gesucht werden soll"

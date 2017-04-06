@@ -1,0 +1,40 @@
+<header>
+  <div class="o-grid o-grid--no-gutter">
+    <div class="o-grid__cell o-grid__cell--width-30">
+      <a href='/imprint' class='st-imprint'><%= gettext("About SignDict")%></a>
+    </div>
+    <div class="o-grid__cell">
+      <nav role="navigation">
+        <ul class="sc-navigation">
+          <%= if @current_user do %>
+            <%= if SignDict.User.admin? @current_user do %>
+              <li class='sc-navigation-item'>
+                <%= link "Admin", to: backend_dashboard_path(@conn, :index) %>
+              </li>
+            <% end %>
+            <li class='sc-navigation-item'>
+              <%= link @current_user.name, to: user_path(@conn, :show, @current_user) %>
+            </li>
+            <li class='sc-navigation-item'>
+              <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-default" %>
+            </li>
+          <% else %>
+            <li class='sc-navigation-item'>
+              <%= link gettext("Register"), to: user_path(@conn, :new) %>
+            </li>
+            <li class='sc-navigation-item'>
+              <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+            </li>
+          <% end %>
+          <li class='sc-navigation-item'>
+            <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
+              <a href="?locale=en">EN</a>
+            <% else %>
+              <a href="?locale=de">DE</a>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

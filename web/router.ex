@@ -50,6 +50,8 @@ defmodule SignDict.Router do
     post "/video/:video_id/vote", VoteController, :create
     delete "/video/:video_id/vote", VoteController, :delete
 
+    get "/imprint", PageController, :imprint
+    get "/contact", PageController, :contact
     get "/", PageController, :index
   end
 

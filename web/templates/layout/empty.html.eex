@@ -12,16 +12,9 @@
     <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.0">
   </head>
 
-  <body>
-    <div class="o-container o-container--medium">
-      <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
-      <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+  <body class='sc-layout--empty'>
+    <%= render @view_module, @view_template, assigns %>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
-    </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
       <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
