@@ -19,7 +19,7 @@
   <div class='so-landing--search'>
     <form action="/search">
       <input class="so-landing--search--input" type="text" name="q" autofocus="true" aria-label="<%= gettext("Enter word to search") %>"/>
-      <input class="so-landing--search--submit" type="submit" value="<%= gettext("Search") %> &gt;" />
+      <input class="so-landing--search--submit" type="submit" value="<%= gettext("Search") %> &#8250;" />
     </form>
   </div>
 </div>
@@ -57,7 +57,7 @@
         <%= gettext("This page is still under construction and..") %>
       </p>
       <p class="so-landing--action--text-button">
-        <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %> &gt;</a>
+        <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %> &#8250;</a>
       </p>
     </div>
   </div>
@@ -92,6 +92,7 @@
         </div>
         <div class="o-grid__cell so-footer--links--center">
           <ul class="so-footer--links--list">
+            <li><a href='//blog.signdict.org'><%= gettext("Blog") %></a></li>
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/contact'><%= gettext("Contact") %></a></li>
           </ul>
