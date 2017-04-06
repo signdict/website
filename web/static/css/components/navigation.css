@@ -1,0 +1,15 @@
+.sc-navigation {
+  list-style: none;
+  text-align: right;
+  margin: 0px;
+  margin-bottom: 2em;
+}
+
+.sc-navigation-item {
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.st-imprint {
+  color: $deactive;
+}

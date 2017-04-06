@@ -14,7 +14,7 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:10
+#: web/templates/layout/app.html.eex:10 web/templates/layout/empty.html.eex:10
 msgid "Hello SignDict!"
 msgstr ""
 
@@ -47,7 +47,8 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:33 web/templates/layout/backend.html.eex:27
+#: web/templates/layout/backend.html.eex:27
+#: web/templates/shared/navigation.html.eex:23
 #: web/templates/user/new.html.eex:38
 msgid "Register"
 msgstr ""
@@ -56,11 +57,13 @@ msgstr ""
 msgid "Registration successful"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:36 web/templates/layout/backend.html.eex:28
+#: web/templates/layout/backend.html.eex:28
+#: web/templates/shared/navigation.html.eex:26
 msgid "Sign in"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:29 web/templates/layout/backend.html.eex:25
+#: web/templates/layout/backend.html.eex:25
+#: web/templates/shared/navigation.html.eex:19
 msgid "Sign out"
 msgstr ""
 
@@ -70,10 +73,6 @@ msgstr ""
 
 #: web/controllers/session_controller.ex:39
 msgid "Successfully signed out"
-msgstr ""
-
-#: web/templates/page/index.html.eex:2
-msgid "Welcome to %{name}"
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:33
@@ -448,4 +447,92 @@ msgstr ""
 
 #: web/models/vote.ex:20
 msgid "Only one vote per video and user"
+msgstr ""
+
+#: web/templates/shared/navigation.html.eex:4
+msgid "About SignDict"
+msgstr ""
+
+#: web/templates/page/index.html.eex:7
+msgid "SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>"
+msgstr ""
+
+#: web/templates/page/index.html.eex:10
+msgid "Currenty %{humans} humans have added %{signs} signs"
+msgstr ""
+
+#: web/templates/page/index.html.eex:94
+msgid "Contact"
+msgstr ""
+
+#: web/templates/page/index.html.eex:49
+msgid "Curious?"
+msgstr ""
+
+#: web/templates/page/index.html.eex:93
+msgid "Imprint"
+msgstr ""
+
+#: web/templates/page/index.html.eex:30
+msgid "Language barrier"
+msgstr ""
+
+#: web/templates/page/index.html.eex:71
+msgid "Logo Bundesministerium für Bildung und Forschung"
+msgstr ""
+
+#: web/templates/page/index.html.eex:74
+msgid "Logo Prototype Fund"
+msgstr ""
+
+#: web/templates/page/index.html.eex:77
+msgid "Logo rrone"
+msgstr ""
+
+#: web/templates/page/index.html.eex:80
+msgid "Logo zweitag"
+msgstr ""
+
+#: web/templates/page/index.html.eex:58
+msgid "Newsletter sign up"
+msgstr ""
+
+#: web/templates/page/index.html.eex:37
+msgid "Our mission: to help understanding each other."
+msgstr ""
+
+#: web/templates/page/index.html.eex:20
+msgid "Search"
+msgstr ""
+
+#: web/templates/page/index.html.eex:34
+msgid "SignDict believes..."
+msgstr "SignDict believes that communication is the key to an open society. To increase the integration of deaf we created a dictionary where everyone can participate in."
+
+#: web/templates/page/index.html.eex:89
+msgid "SignDict is a sign language dictionary where everyone can participate"
+msgstr ""
+
+#: web/templates/page/index.html.eex:101
+msgid "SignDict on Github"
+msgstr ""
+
+#: web/templates/page/index.html.eex:98
+msgid "SignDict on Twitter"
+msgstr ""
+
+#: web/templates/page/index.html.eex:67
+msgid "Supporter"
+msgstr ""
+
+#: web/templates/page/index.html.eex:55
+msgid "This page is still under construction and.."
+msgstr "This page is still under construction and not every feature is working yet. If you want to be informed when we add new things, subscribe to our newsletter."
+
+#: web/templates/page/index.html.eex:52
+msgid "Want to stay up to date?"
+msgstr ""
+
+#: web/templates/page/index.html.eex:19
+msgid "Enter word to search"
 msgstr ""

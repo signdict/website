@@ -1,36 +1,111 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+<div class="o-container o-container--medium">
+  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
+  <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+
+  <div class='so-landing--banner'>
+    <%= Brady.inline_svg("logo", class: "so-landing--banner--logo") %>
+    <div class='so-landing--banner--text'>
+      <p class='so-landing--banner--headline'>
+        <%= {:safe, gettext("SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>")} %>
+      </p>
+      <p class='so-landing--banner--stats'>
+        <%= gettext("Currenty %{humans} humans have added %{signs} signs", humans: @human_count, signs: @sign_count) %>
+      </p>
+    </div>
+  </div>
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
+<div class="o-container o-container--medium">
+  <div class='so-landing--search'>
+    <form action="/search">
+      <input class="so-landing--search--input" type="text" name="q" autofocus="true" aria-label="<%= gettext("Enter word to search") %>"/>
+      <input class="so-landing--search--submit" type="submit" value="<%= gettext("Search") %> &gt;" />
+    </form>
+  </div>
+</div>
+
+<div class="so-landing--motivation">
+  <div class="o-container o-container--medium so-landing--motivation--inner">
+    <%= Brady.inline_svg("hand-speechbubble", class: "so-landing--motivation--hand") %>
+    <h1 class="so-landing--motivation--header">
+      <span class="so-landing--motivation--header--inner">
+        <%= gettext("Language barrier") %>
+      </span>
+    </h1>
+    <div class="so-landing--motivation--text">
+      <%= text_to_html(gettext("SignDict believes...")) %>
+      <p>
+        <strong>
+          <%= gettext("Our mission: to help understanding each other.") %>
+        </strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="so-landing--action">
+  <div class="o-container o-container--medium">
+    <%= Brady.inline_svg("hands", class: "so-landing--action--image") %>
+    <div class="so-landing--action--text">
+      <p class="so-landing--action--text--beforeheadline">
+        <%= gettext("Curious?") %>
+      </p>
+      <h1 class="so-landing--action--text--headline">
+        <%= gettext("Want to stay up to date?") %>
+      </h1>
+      <p>
+        <%= gettext("This page is still under construction and..") %>
+      </p>
+      <p class="so-landing--action--text-button">
+        <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %> &gt;</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="so-footer">
+  <div class="o-container o-container--medium">
+    <h1 class="so-footer--sponsorheader">
+      <%= gettext("Supporter") %>
+    </h1>
+    <p>
+      <a href="https://bmbf.de">
+        <img class="so-footer--sponsorlogo so-footer--bmbf" src="images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/>
+      </a>
+      <a href="https://prototypefund.de">
+        <img class="so-footer--sponsorlogo so-footer--prototype" src="images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/>
+      </a>
+      <a href="https://www.rrbone.net">
+        <img class="so-footer--sponsorlogo so-footer--rrbone" src="images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/>
+      </a>
+      <a href="https://zweitag.de">
+        <img class="so-footer--sponsorlogo so-footer--zweitag" src="images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/>
+      </a>
+    </p>
   </div>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
+  <div class="so-footer--links">
+    <div class="o-container o-container--medium">
+      <div class="o-grid o-grid--no-gutter">
+        <div class="o-grid__cell so-footer--links--about">
+          <%= gettext("SignDict is a sign language dictionary where everyone can participate") %>
+        </div>
+        <div class="o-grid__cell so-footer--links--center">
+          <ul class="so-footer--links--list">
+            <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
+            <li><a href='/contact'><%= gettext("Contact") %></a></li>
+          </ul>
+        </div>
+        <div class="o-grid__cell so-footer--links--social">
+          <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>

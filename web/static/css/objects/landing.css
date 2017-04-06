@@ -1,0 +1,125 @@
+.so-landing--banner {
+  margin-top: 3em;
+}
+
+.so-landing--banner--logo {
+  fill: $highlight;
+  float: left;
+  width: 4em;
+  margin-top: 0.2em;
+}
+
+.so-landing--banner--headline {
+  font-size: 2.3em;
+  margin-bottom: 0;
+  line-height: 1.5em;
+}
+
+.so-landing--banner--text {
+  margin-left: 6em;
+}
+
+.so-landing--banner--stats {
+  color: $highlight;
+}
+
+.so-landing--search {
+  margin-top: 6em;
+  margin-left: -2em;
+  margin-right: -2em;
+  background-color: $highlight;
+  padding: 1.8em 2em;
+  z-index: 10;
+  position: relative;
+}
+
+.so-landing--search--input:focus {
+  outline: none;
+}
+
+.so-landing--search--input {
+  border: none;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  width: 85%;
+}
+
+.so-landing--search--submit {
+  border: none;
+  background-color: $highlight;
+  color: $accent;
+  font-size: 1em;
+  font-weight: 600;
+  margin-left: 1em;
+}
+
+.so-landing--motivation {
+  background-color: $dark_background;
+  color: $bright_font;
+  margin-top: -1em;
+  z-index: 1;
+}
+
+.so-landing--motivation--inner {
+  padding: 3em 0em;
+}
+
+.so-landing--motivation--header--inner {
+  position: relative;
+  font-weight: 400;
+}
+
+.so-landing--motivation--header--inner:before {
+  border-bottom: 8px solid $highlight;
+  position: absolute;
+  content: "";
+  width: 110%;
+  height:56%;
+  margin-left: -0.4em;
+  margin-right: -0.4em;
+}
+
+.so-landing--motivation--text {
+  margin-right: 15em;
+}
+
+.so-landing--motivation--hand {
+  float: right;
+  width: 10em;
+  height: auto;
+  margin: 3em 0;
+}
+
+.so-landing--motivation:after {
+  content: "";
+  display:block;
+  clear: both;
+}
+
+.so-landing--action {
+  padding-top: 3em;
+}
+
+.so-landing--action--image {
+  float: left;
+  width: 15em;
+  height: auto;
+  margin: 3em 0;
+}
+
+.so-landing--action--text {
+  margin-left: 18em;
+}
+
+.so-landing--action--text--beforeheadline {
+  color: $highlight;
+  margin-bottom: 0;
+}
+
+.so-landing--action--text--headline {
+  margin-top: 0.2em;
+}
+
+.so-landing--action--text-button {
+  margin-top: 1.5em;
+}
