@@ -39,6 +39,10 @@
   font-weight: 600;
   cursor: pointer;
   height: 100%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .so-landing--search--submit:hover {
@@ -116,17 +120,25 @@
 
   .so-landing--search {
     margin-top: 2em;
-    margin-left: -2em;
-    margin-right: -1em;
+    margin-left: -1em;
+    margin-right: -0.5em;
   }
 
   .so-landing--search--submit {
     margin-top: 1em;
+    padding: 0;
+  }
+
+  .o-grid__cell.so-landing--search--submit-cell {
+    /* this is a hack because sadly the no-gutter
+       css does not work in safari mobile */
+    padding-left: 0;
+    padding-right: 2;
   }
 
   .so-landing--motivation {
-    margin-left: -2em;
-    margin-right: -1em;
+    margin-left: -1em;
+    margin-right: -0.5em;
     padding-left: 2em;
     padding-right: 2em;
   }

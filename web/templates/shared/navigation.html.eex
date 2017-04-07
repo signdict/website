@@ -1,5 +1,5 @@
 <header>
-  <div class="o-grid o-grid--no-gutter o-grid--wrap">
+  <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium">
       <a href='/imprint' class='st-imprint'><%= gettext("About SignDict")%></a>
     </div>

@@ -30,7 +30,7 @@ body {
 
 @media all and (max-width: 48em) {
   .sc-layout--empty {
-    padding: 1em;
+    padding: 1em 0.5em;
   }
 }
 
