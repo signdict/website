@@ -46,7 +46,6 @@
 
 .so-footer--links--list {
   list-style: none;
-  margin: 0 0 0 3em;
   color: $deactive;
   font-size: 0.9em;
 }
@@ -54,4 +53,17 @@
 .so-footer--links--social {
   text-align: right;
   font-size: 2em;
+}
+
+
+@media all and (max-width: 48em) {
+  .so-footer--links--list {
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 48em) {
+  .so-footer--links--list {
+    margin: 0 0 0 3em;
+  }
 }

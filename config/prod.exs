@@ -79,6 +79,3 @@ config :phoenix, :serve_endpoints, true
 config :bugsnex, :release_stage, "production"
 config :bugsnex, :use_logger, true
 config :bugsnex, :api_key, System.get_env("BUGSNAG_API_KEY")
-
-config :brady, svg_path: "/home/bitboxer/sign_dict/web/static/svg"
-
