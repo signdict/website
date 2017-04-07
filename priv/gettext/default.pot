@@ -453,86 +453,102 @@ msgstr ""
 msgid "About SignDict"
 msgstr ""
 
-#: web/templates/page/index.html.eex:7
+#: web/templates/page/index.html.eex:13
 msgid "SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>"
 msgstr ""
 
-#: web/templates/page/index.html.eex:10
+#: web/templates/page/index.html.eex:16
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr ""
 
-#: web/templates/page/index.html.eex:94
+#: web/templates/page/index.html.eex:113
 msgid "Contact"
 msgstr ""
 
-#: web/templates/page/index.html.eex:49
+#: web/templates/page/index.html.eex:74
 msgid "Curious?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:93
+#: web/templates/page/index.html.eex:112
 msgid "Imprint"
 msgstr ""
 
-#: web/templates/page/index.html.eex:30
+#: web/templates/page/index.html.eex:45
 msgid "Language barrier"
 msgstr ""
 
-#: web/templates/page/index.html.eex:71
+#: web/templates/page/index.html.eex:96
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr ""
 
-#: web/templates/page/index.html.eex:74
+#: web/templates/page/index.html.eex:97
 msgid "Logo Prototype Fund"
 msgstr ""
 
-#: web/templates/page/index.html.eex:77
+#: web/templates/page/index.html.eex:98
 msgid "Logo rrone"
 msgstr ""
 
-#: web/templates/page/index.html.eex:80
+#: web/templates/page/index.html.eex:99
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:58
+#: web/templates/page/index.html.eex:83
 msgid "Newsletter sign up"
 msgstr ""
 
-#: web/templates/page/index.html.eex:37
+#: web/templates/page/index.html.eex:52
 msgid "Our mission: to help understanding each other."
 msgstr ""
 
-#: web/templates/page/index.html.eex:20
+#: web/templates/page/index.html.eex:32
 msgid "Search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:34
+#: web/templates/page/index.html.eex:49
 msgid "SignDict believes..."
 msgstr ""
 
-#: web/templates/page/index.html.eex:89
+#: web/templates/page/index.html.eex:107
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/page/index.html.eex:101
+#: web/templates/page/index.html.eex:118
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/page/index.html.eex:98
+#: web/templates/page/index.html.eex:117
 msgid "SignDict on Twitter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:67
+#: web/templates/page/index.html.eex:93
 msgid "Supporter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:55
+#: web/templates/page/index.html.eex:80
 msgid "This page is still under construction and.."
 msgstr ""
 
-#: web/templates/page/index.html.eex:52
+#: web/templates/page/index.html.eex:77
 msgid "Want to stay up to date?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:19
+#: web/templates/page/index.html.eex:29
 msgid "Enter word to search"
+msgstr ""
+
+#: web/templates/page/index.html.eex:58
+msgid "A hand with a speech bubble"
+msgstr ""
+
+#: web/templates/page/index.html.eex:111
+msgid "Blog"
+msgstr ""
+
+#: web/templates/page/index.html.eex:8
+msgid "SignDict Logo"
+msgstr ""
+
+#: web/templates/page/index.html.eex:69
+msgid "Two hands waving"
 msgstr ""

@@ -1,11 +1,11 @@
 <div class="o-container o-container--medium">
-  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
+  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: false %>
   <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
 
   <div class='so-landing--banner'>
     <div class="o-grid o-grid--wrap">
       <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-15@medium">
-        <img src='images/logo.svg' alt="SignDict Logo" class="so-landing--banner--logo"/>
+        <img src='images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-landing--banner--logo"/>
       </div>
       <div class="o-grid__cell">
         <div class='so-landing--banner--text'>
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="so-landing--motivation--hand o-grid__cell o-grid__cell--width-25@medium o-grid__cell--width-100">
-        <img src='images/hand-speechbubble.svg' class="so-landing--motivation--hand--image"/>
+        <img src='images/hand-speechbubble.svg' class="so-landing--motivation--hand--image" alt="<%= gettext("A hand with a speech bubble") %>"/>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
 
     <div class="o-grid o-grid--wrap">
       <div class="o-grid__cell o-grid__cell--width-40@medium o-grid__cell--width-100">
-        <img src='images/hands.svg' class="so-landing--action--image"/>
+        <img src='images/hands.svg' class="so-landing--action--image" alt="<%= gettext("Two hands waving") %>"/>
       </div>
       <div class="o-grid__cell">
         <div class="so-landing--action--text">

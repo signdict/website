@@ -1,6 +1,9 @@
 <header>
   <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium">
+      <%= if assigns[:logo] == nil || assigns[:logo] == true do %>
+        <a href="/"><img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="sc-navigation--logo"/></a>
+      <% end %>
       <a href='/imprint' class='st-imprint'><%= gettext("About SignDict")%></a>
     </div>
     <div class="o-grid__cell">
@@ -28,9 +31,9 @@
           <% end %>
           <li class='sc-navigation-item'>
             <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
-              <a href="?locale=en">EN</a>
+              <a href="?locale=en">English</a>
             <% else %>
-              <a href="?locale=de">DE</a>
+              <a href="?locale=de">Deutsch</a>
             <% end %>
           </li>
         </ul>
