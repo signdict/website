@@ -1,22 +1,12 @@
-.so-landing--banner {
-  margin-top: 3em;
-}
-
 .so-landing--banner--logo {
-  fill: $highlight;
-  float: left;
   width: 4em;
-  margin-top: 0.2em;
 }
 
 .so-landing--banner--headline {
+  margin-top: 0;
   font-size: 2.3em;
   margin-bottom: 0;
   line-height: 1.5em;
-}
-
-.so-landing--banner--text {
-  margin-left: 6em;
 }
 
 .so-landing--banner--stats {
@@ -24,9 +14,6 @@
 }
 
 .so-landing--search {
-  margin-top: 6em;
-  margin-left: -2em;
-  margin-right: -2em;
   background-color: $highlight;
   padding: 1.8em 2em;
   z-index: 10;
@@ -41,7 +28,7 @@
   border: none;
   font-size: 1em;
   padding: 0.5em 1em;
-  width: 85%;
+  width: 100%;
 }
 
 .so-landing--search--submit {
@@ -50,8 +37,8 @@
   color: $accent;
   font-size: 1em;
   font-weight: 600;
-  margin-left: 1em;
   cursor: pointer;
+  height: 100%;
 }
 
 .so-landing--search--submit:hover {
@@ -85,21 +72,14 @@
   pointer-events: none;
 }
 
-.so-landing--motivation--text {
-  margin-right: 15em;
+.so-landing--motivation--hand {
+  text-align: right;
 }
 
-.so-landing--motivation--hand {
-  float: right;
+.so-landing--motivation--hand--image {
   width: 10em;
   height: auto;
   margin: 3em 0;
-}
-
-.so-landing--motivation:after {
-  content: "";
-  display:block;
-  clear: both;
 }
 
 .so-landing--action {
@@ -107,14 +87,9 @@
 }
 
 .so-landing--action--image {
-  float: left;
   width: 15em;
   height: auto;
   margin: 3em 0;
-}
-
-.so-landing--action--text {
-  margin-left: 18em;
 }
 
 .so-landing--action--text--beforeheadline {
@@ -129,3 +104,48 @@
 .so-landing--action--text-button {
   margin-top: 1.5em;
 }
+
+@media all and (max-width: 48em) {
+  .so-landing--banner {
+    margin-top: 0em;
+  }
+
+  .so-landing--banner--logo {
+    margin-bottom: 1em;
+  }
+
+  .so-landing--search {
+    margin-top: 2em;
+    margin-left: -2em;
+    margin-right: -1em;
+  }
+
+  .so-landing--search--submit {
+    margin-top: 1em;
+  }
+
+  .so-landing--motivation {
+    margin-left: -2em;
+    margin-right: -1em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+@media all and (min-width: 48em) {
+  .so-landing--banner {
+    margin-top: 3em;
+  }
+
+  .so-landing--search {
+    margin-top: 6em;
+    margin-left: -2em;
+    margin-right: -2em;
+  }
+
+  .so-landing--search--submit {
+    margin-left: 1em;
+  }
+
+}
+

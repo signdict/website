@@ -1,14 +1,31 @@
 .sc-navigation {
   list-style: none;
-  text-align: right;
   margin: 0px;
   margin-bottom: 2em;
 }
 
-.sc-navigation-item {
-  display: inline-block;
-  margin-left: 1em;
+@media all and (max-width: 48em) {
+  .sc-navigation {
+    text-align: left;
+    padding: 0.5em 0;
+  }
+
+  .sc-navigation-item {
+    margin-left: 0em;
+  }
 }
+
+@media all and (min-width: 48em) {
+  .sc-navigation {
+    text-align: right;
+  }
+
+  .sc-navigation-item {
+    display: inline-block;
+    margin-left: 1em;
+  }
+}
+
 
 .st-imprint {
   color: $deactive;
