@@ -15,6 +15,7 @@ defmodule SignDict.UserSignUpTest do
     end)
     |> visit("/")
     |> click(Query.link("Sign out"))
+    |> visit("/")
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form
