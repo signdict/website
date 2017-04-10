@@ -1,14 +1,18 @@
-<h2><%= gettext("Forgot your password?") %></h2>
+<div class="o-grid">
+  <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
+    <h2><%= gettext("Forgot your password?") %></h2>
 
-<p><%= gettext("Enter your email address and we'll send you a link to reset your password.") %></p>
+    <p><%= gettext("Enter your email address and we'll send you a link to reset your password.") %></p>
 
-<%= form_for @conn, reset_password_path(@conn, :create), [as: :user, class: "password-reset-form"], fn f -> %>
-  <div class="form-group">
-    <%= label f, :email, gettext("user.email") %><br />
-    <%= email_input f, :email %>
+    <%= form_for @conn, reset_password_path(@conn, :create), [as: :user, class: "password-reset-form"], fn f -> %>
+      <div>
+        <%= label f, :email, gettext("user.email"), class: "sc-label" %>
+        <%= email_input f, :email, placeholder: gettext("user.email"), class: "sc-input" %>
+      </div>
+
+      <div class="sc-actions">
+        <%= submit gettext("Send password reset instructions"), class: "sc-button" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= submit gettext("Send password reset instructions"), class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

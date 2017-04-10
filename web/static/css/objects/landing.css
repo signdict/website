@@ -1,5 +1,5 @@
 .so-landing--banner--logo {
-  width: 4em;
+  width: 5em;
 }
 
 .so-landing--banner--headline {
@@ -26,6 +26,7 @@
 
 .so-landing--search--input {
   border: none;
+  border-radius: 0;
   font-size: 1em;
   padding: 0.5em 1em;
   width: 100%;

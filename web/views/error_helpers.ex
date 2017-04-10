@@ -10,7 +10,7 @@ defmodule SignDict.ErrorHelpers do
   """
   def error_tag(form, field) do
     if error = form.errors[field] do
-      content_tag :span, translate_error(error), class: "c-hint c-hint--static c-hint--error"
+      content_tag :span, translate_error(error), class: "sc-hint sc-hint--error"
     end
   end
 

@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <div class="o-container o-container--medium">
+    <div class="sc-main o-container o-container--medium">
       <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
       <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
 
@@ -22,6 +22,9 @@
       </main>
 
     </div> <!-- /container -->
+
+    <%= render SignDict.SharedView, "footer.html", conn: @conn %>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
       <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>

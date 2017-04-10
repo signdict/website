@@ -1,39 +1,45 @@
-<%= form_for @changeset, user_path(@conn, :create), [class: "user-form"], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="sc-alert sc-alert--error">
-      <%= gettext("Oops, something went wrong! Please check the errors below.") %>
-    </div>
-  <% end %>
+<div class="o-grid">
+  <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
+    <h1><%= gettext("Register") %></h1>
 
-  <div class="form-group">
-    <%= label f, :email, gettext("user.email"), class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
+    <p>
+      <%= gettext("We are happy that you want to help. Please enter your details below so that we can create your account.") %>
+    </p>
+
+    <%= form_for @changeset, user_path(@conn, :create), [class: "user-form"], fn f -> %>
+      <%= if @changeset.action do %>
+        <div class="sc-alert sc-alert--error">
+          <%= gettext("Oops, something went wrong! Please check the errors below.") %>
+        </div>
+      <% end %>
+
+      <div>
+        <%= label f, :name, gettext("user.name"), class: "sc-label" %>
+        <%= text_input f, :name, class: "sc-input", placeholder: gettext("user.name") %>
+        <%= error_tag f, :name %>
+      </div>
+
+      <div>
+        <%= label f, :email, gettext("user.email"), class: "sc-label" %>
+        <%= text_input f, :email, class: "sc-input", placeholder: gettext("user.email") %>
+        <%= error_tag f, :email %>
+      </div>
+
+      <div>
+        <%= label f, :password, gettext("user.password"), class: "sc-label" %>
+        <%= password_input f, :password, class: "sc-input", placeholder: gettext("user.password") %>
+        <%= error_tag f, :password %>
+      </div>
+
+      <div>
+        <%= label f, :password_confirmation, gettext("user.password_confirmation"), class: "sc-label" %>
+        <%= password_input f, :password_confirmation, class: "sc-input", placeholder: gettext("user.password_confirmation") %>
+        <%= error_tag f, :password_confirmation %>
+      </div>
+
+      <div class="sc-actions">
+        <%= submit gettext("Register"), class: "sc-button" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= label f, :password, gettext("user.password"), class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :password_confirmation, gettext("user.password_confirmation"), class: "control-label" %>
-    <%= password_input f, :password_confirmation, class: "form-control" %>
-    <%= error_tag f, :password_confirmation %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :name, gettext("user.name"), class: "control-label" %>
-    <%= text_input f, :name, class: "form-control" %>
-    <%= error_tag f, :name %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :biography, gettext("user.biography"), class: "control-label" %>
-    <%= textarea f, :biography, class: "form-control" %>
-    <%= error_tag f, :biography %>
-  </div>
-
-  <%= submit gettext("Register"), class: "btn btn-primary" %>
-<% end %>
+</div>

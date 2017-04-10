@@ -1,11 +1,11 @@
 <div class="o-container o-container--medium">
-  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
+  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: false %>
   <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
 
   <div class='so-landing--banner'>
     <div class="o-grid o-grid--wrap">
       <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-15@medium">
-        <img src='images/logo.svg' alt="SignDict Logo" class="so-landing--banner--logo"/>
+        <img src='images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-landing--banner--logo"/>
       </div>
       <div class="o-grid__cell">
         <div class='so-landing--banner--text'>
@@ -25,7 +25,7 @@
   <div class='so-landing--search'>
     <form action="/search">
       <div class="o-grid o-grid--wrap">
-        <div class="o-grid__cell--width-85@medium o-grid__cell--width-100">
+        <div class="o-grid__cell--width-80@medium o-grid__cell--width-100">
           <input class="so-landing--search--input" type="text" name="q" autofocus="true" aria-label="<%= gettext("Enter word to search") %>"/>
         </div>
         <div class="o-grid__cell so-landing--search--submit-cell">
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="so-landing--motivation--hand o-grid__cell o-grid__cell--width-25@medium o-grid__cell--width-100">
-        <img src='images/hand-speechbubble.svg' class="so-landing--motivation--hand--image"/>
+        <img src='images/hand-speechbubble.svg' class="so-landing--motivation--hand--image" alt="<%= gettext("A hand with a speech bubble") %>"/>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
 
     <div class="o-grid o-grid--wrap">
       <div class="o-grid__cell o-grid__cell--width-40@medium o-grid__cell--width-100">
-        <img src='images/hands.svg' class="so-landing--action--image"/>
+        <img src='images/hands.svg' class="so-landing--action--image" alt="<%= gettext("Two hands waving") %>"/>
       </div>
       <div class="o-grid__cell">
         <div class="so-landing--action--text">
@@ -87,37 +87,4 @@
   </div>
 </div>
 
-<div class="so-footer">
-  <div class="o-container o-container--medium">
-    <h1 class="so-footer--sponsorheader">
-      <%= gettext("Supporter") %>
-    </h1>
-    <p>
-      <a href="https://bmbf.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/></a>
-      <a href="https://prototypefund.de"><img class="so-footer--sponsorlogo so-footer--prototype" src="images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/></a>
-      <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
-      <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
-    </p>
-  </div>
-
-  <div class="so-footer--links">
-    <div class="o-container o-container--medium">
-      <div class="o-grid o-grid--wrap">
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--about">
-          <%= gettext("SignDict is a sign language dictionary where everyone can participate") %>
-        </div>
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--center">
-          <ul class="so-footer--links--list">
-            <li><a href='//blog.signdict.org'><%= gettext("Blog") %></a></li>
-            <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
-            <li><a href='/contact'><%= gettext("Contact") %></a></li>
-          </ul>
-        </div>
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--social">
-          <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>"><i class="fa fa-github" aria-hidden="true"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render SignDict.SharedView, "footer.html", conn: @conn %>
