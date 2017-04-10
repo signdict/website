@@ -1,20 +1,24 @@
-<h2><%= gettext("Change your password") %></h2>
+<div class="o-grid">
+  <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
+    <h2><%= gettext("Change your password") %></h2>
 
-<%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user, class: "password-reset-form"], fn f -> %>
-  <%= hidden_input f, :password_reset_unencrypted, value: @password_reset_unencrypted %>
-  <%= hidden_input f, :email, value: @email %>
+    <%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user, class: "password-reset-form"], fn f -> %>
+      <%= hidden_input f, :password_reset_unencrypted, value: @password_reset_unencrypted %>
+      <%= hidden_input f, :email, value: @email %>
 
-  <div class="form-group">
-    <%= label f, :password, gettext("user.password"), class: "sentinel control-label" %><br />
-    <%= password_input f, :password, class: "sentinel form-control" %>
+      <div>
+        <%= label f, :password, gettext("user.password"), class: "sentinel control-label", class: "sc-label" %>
+        <%= password_input f, :password, placeholder: gettext("user.password"), class: "sc-input" %>
+      </div>
+
+      <div>
+        <%= label f, :password_confirmation, gettext("user.password_confirmation"), class: "sc-label" %>
+        <%= password_input f, :password_confirmation, placeholder: gettext("user.password_confirmation"), class: "sc-input" %>
+      </div>
+
+      <div class="sc-actions">
+        <%= submit gettext("Change my password"), class: "sc-button" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= label f, :password_confirmation, gettext("user.password_confirmation"), class: "sentinel control-label" %><br />
-    <%= password_input f, :password_confirmation, class: "sentinel form-control" %>
-  </div>
-
-  <div class="actions">
-    <%= submit gettext("Change my password"), class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

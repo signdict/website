@@ -13,8 +13,8 @@ defmodule SignDict.UserSignUpTest do
       |> fill_in(Query.text_field("user_name"), with: "Elisa Example")
       |> click(Query.button("Register"))
     end)
-    |> assert_alert("Registration successful")
     |> visit("/")
+    |> click(Query.link("Sign out"))
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form

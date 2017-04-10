@@ -22,7 +22,7 @@ defmodule SignDict.UserControllerTest do
   describe "create/2" do
     test "creates a user with valid form data", %{conn: conn} do
       conn = post(conn, user_path(conn, :create), user: @valid_attrs)
-      assert redirected_to(conn) == session_path(conn, :new)
+      assert redirected_to(conn) == page_path(conn, :welcome)
       assert Repo.get_by(SignDict.User, email: "elisa@example.com")
     end
 
