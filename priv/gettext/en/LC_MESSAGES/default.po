@@ -27,7 +27,7 @@ msgstr ""
 msgid "Invalid email address or password"
 msgstr ""
 
-#: web/templates/session/new.html.eex:12
+#: web/templates/session/new.html.eex:22
 msgid "Log in"
 msgstr ""
 
@@ -35,7 +35,7 @@ msgstr ""
 #: web/templates/backend/language/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
-#: web/templates/user/edit.html.eex:4 web/templates/user/new.html.eex:4
+#: web/templates/user/edit.html.eex:4 web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -48,22 +48,18 @@ msgid "Please fill in an email address and password"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:23
-#: web/templates/user/new.html.eex:38
+#: web/templates/shared/navigation.html.eex:26 web/templates/user/new.html.eex:3
+#: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr ""
 
-#: web/controllers/user_controller.ex:22
-msgid "Registration successful"
-msgstr ""
-
-#: web/templates/layout/backend.html.eex:28
-#: web/templates/shared/navigation.html.eex:26
+#: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:29
 msgid "Sign in"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:25
-#: web/templates/shared/navigation.html.eex:19
+#: web/templates/shared/navigation.html.eex:22
 msgid "Sign out"
 msgstr ""
 
@@ -77,56 +73,62 @@ msgstr ""
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
-#: web/templates/user/edit.html.eex:21 web/templates/user/new.html.eex:33
-#: web/templates/user/show.html.eex:6
+#: web/templates/user/edit.html.eex:21 web/templates/user/show.html.eex:6
 msgid "user.biography"
 msgstr "Biography"
 
 #: web/templates/backend/user/form.html.eex:9
 #: web/templates/backend/user/index.html.eex:6
 #: web/templates/backend/user/show.html.eex:14
-#: web/templates/reset_password/new.html.eex:7
-#: web/templates/session/new.html.eex:3 web/templates/session/new.html.eex:4
-#: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:9
+#: web/templates/reset_password/new.html.eex:9
+#: web/templates/reset_password/new.html.eex:10
+#: web/templates/session/new.html.eex:7 web/templates/session/new.html.eex:8
+#: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:23
+#: web/templates/user/new.html.eex:24
 msgid "user.email"
 msgstr "Email"
 
 #: web/templates/backend/user/form.html.eex:21
 #: web/templates/backend/user/index.html.eex:7
-#: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:27
+#: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:17
+#: web/templates/user/new.html.eex:18
 msgid "user.name"
 msgstr "Name"
 
 #: web/templates/backend/user/form.html.eex:44
-#: web/templates/reset_password/edit.html.eex:8
-#: web/templates/session/new.html.eex:8 web/templates/session/new.html.eex:9
-#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:15
+#: web/templates/reset_password/edit.html.eex:10
+#: web/templates/reset_password/edit.html.eex:11
+#: web/templates/session/new.html.eex:12 web/templates/session/new.html.eex:13
+#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:29
+#: web/templates/user/new.html.eex:30
 msgid "user.password"
 msgstr "Password"
 
 #: web/templates/backend/user/form.html.eex:50
-#: web/templates/reset_password/edit.html.eex:13
-#: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:21
+#: web/templates/reset_password/edit.html.eex:15
+#: web/templates/reset_password/edit.html.eex:16
+#: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:35
+#: web/templates/user/new.html.eex:36
 msgid "user.password_confirmation"
 msgstr "Password confirmation"
 
-#: web/templates/reset_password/edit.html.eex:18
+#: web/templates/reset_password/edit.html.eex:20
 msgid "Change my password"
 msgstr ""
 
-#: web/templates/reset_password/edit.html.eex:1
+#: web/templates/reset_password/edit.html.eex:3
 msgid "Change your password"
 msgstr ""
 
-#: web/templates/reset_password/new.html.eex:3
+#: web/templates/reset_password/new.html.eex:5
 msgid "Enter your email address and we'll send you a link to reset your password."
 msgstr ""
 
-#: web/templates/session/new.html.eex:15
+#: web/templates/session/new.html.eex:17
 msgid "Forgot password?"
 msgstr ""
 
-#: web/templates/reset_password/new.html.eex:1
+#: web/templates/reset_password/new.html.eex:3
 msgid "Forgot your password?"
 msgstr ""
 
@@ -134,7 +136,7 @@ msgstr ""
 msgid "Sadly you are not allowed to do this"
 msgstr ""
 
-#: web/templates/reset_password/new.html.eex:12
+#: web/templates/reset_password/new.html.eex:14
 msgid "Send password reset instructions"
 msgstr ""
 
@@ -248,7 +250,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:46
+#: web/controllers/user_controller.ex:47
 msgid "Updated successfully."
 msgstr ""
 
@@ -449,90 +451,135 @@ msgstr ""
 msgid "Only one vote per video and user"
 msgstr ""
 
-#: web/templates/shared/navigation.html.eex:4
+#: web/templates/shared/navigation.html.eex:7
 msgid "About SignDict"
 msgstr ""
 
-#: web/templates/page/index.html.eex:7
+#: web/templates/page/index.html.eex:13
 msgid "SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>"
 msgstr ""
 
-#: web/templates/page/index.html.eex:10
+#: web/templates/page/index.html.eex:16
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr ""
 
-#: web/templates/page/index.html.eex:94
+#: web/templates/shared/footer.html.eex:28
 msgid "Contact"
 msgstr ""
 
-#: web/templates/page/index.html.eex:49
+#: web/templates/page/index.html.eex:74
 msgid "Curious?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:93
+#: web/templates/shared/footer.html.eex:27
 msgid "Imprint"
 msgstr ""
 
-#: web/templates/page/index.html.eex:30
+#: web/templates/page/index.html.eex:45
 msgid "Language barrier"
 msgstr ""
 
-#: web/templates/page/index.html.eex:71
+#: web/templates/shared/footer.html.eex:9
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr ""
 
-#: web/templates/page/index.html.eex:74
+#: web/templates/shared/footer.html.eex:10
 msgid "Logo Prototype Fund"
 msgstr ""
 
-#: web/templates/page/index.html.eex:77
+#: web/templates/shared/footer.html.eex:11
 msgid "Logo rrone"
 msgstr ""
 
-#: web/templates/page/index.html.eex:80
+#: web/templates/shared/footer.html.eex:12
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:58
+#: web/templates/page/index.html.eex:83
 msgid "Newsletter sign up"
 msgstr ""
 
-#: web/templates/page/index.html.eex:37
+#: web/templates/page/index.html.eex:52
 msgid "Our mission: to help understanding each other."
 msgstr ""
 
-#: web/templates/page/index.html.eex:20
+#: web/templates/page/index.html.eex:32
 msgid "Search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:34
+#: web/templates/page/index.html.eex:49
 msgid "SignDict believes..."
 msgstr "SignDict believes that communication is the key to an open society. To increase the integration of deaf we created a dictionary where everyone can participate in."
 
-#: web/templates/page/index.html.eex:89
+#: web/templates/shared/footer.html.eex:22
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/page/index.html.eex:101
+#: web/templates/shared/footer.html.eex:33
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/page/index.html.eex:98
+#: web/templates/shared/footer.html.eex:32
 msgid "SignDict on Twitter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:67
+#: web/templates/shared/footer.html.eex:6
 msgid "Supporter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:55
+#: web/templates/page/index.html.eex:80
 msgid "This page is still under construction and.."
 msgstr "This page is still under construction and not every feature is working yet. If you want to be informed when we add new things, subscribe to our newsletter."
 
-#: web/templates/page/index.html.eex:52
+#: web/templates/page/index.html.eex:77
 msgid "Want to stay up to date?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:19
+#: web/templates/page/index.html.eex:29
 msgid "Enter word to search"
+msgstr ""
+
+#: web/templates/page/index.html.eex:58
+msgid "A hand with a speech bubble"
+msgstr ""
+
+#: web/templates/shared/footer.html.eex:26
+msgid "Blog"
+msgstr ""
+
+#: web/templates/page/index.html.eex:8
+#: web/templates/shared/navigation.html.eex:5
+msgid "SignDict Logo"
+msgstr ""
+
+#: web/templates/page/index.html.eex:69
+msgid "Two hands waving"
+msgstr ""
+
+#: web/templates/session/new.html.eex:18
+msgid "Create new account"
+msgstr ""
+
+#: web/templates/user/new.html.eex:6
+msgid "We are happy that you want to help. Please enter your details below so that we can create your account."
+msgstr ""
+
+#: web/templates/page/welcome.html.eex:13
+msgid "Complete your user profile >"
+msgstr ""
+
+#: web/templates/page/welcome.html.eex:12
+msgid "Search through SignDicts %{sign_count} signs >"
+msgstr ""
+
+#: web/templates/page/welcome.html.eex:5
+msgid "Welcome, %{username}!"
+msgstr ""
+
+#: web/templates/page/welcome.html.eex:8
+msgid "Your account was created. Here are a few things you can do now:"
+msgstr ""
+
+#: web/templates/page/welcome.html.eex:3
+msgid "welcome svg"
 msgstr ""

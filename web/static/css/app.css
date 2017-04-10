@@ -1,10 +1,12 @@
-@import "base/fonts.css";
 @import "base/colors.css";
-@import "components/navigation.css";
-@import "components/buttons.css";
+@import "base/fonts.css";
 @import "components/alerts.css";
-@import "objects/landing.css";
+@import "components/buttons.css";
+@import "components/forms.css";
+@import "components/navigation.css";
 @import "objects/footer.css";
+@import "objects/landing.css";
+@import "objects/welcome.css";
 @import "font-awesome.min.css";
 
 a {
@@ -32,11 +34,19 @@ body {
   .sc-layout--empty {
     padding: 1em 0.5em;
   }
+
+  .sc-main {
+    min-height: 10em;
+  }
 }
 
 @media all and (min-width: 48em) {
   .sc-layout--empty {
     padding: 1em 0px;
+  }
+
+  .sc-main {
+    min-height: 30em;
   }
 }
 
@@ -44,3 +54,6 @@ strong {
   font-weight: 600;
 }
 
+.st-no-margin {
+  margin: 0;
+}

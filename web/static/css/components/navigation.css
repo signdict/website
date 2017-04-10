@@ -4,14 +4,29 @@
   margin-bottom: 2em;
 }
 
+.sc-navigation--logo {
+  margin-top: -1em;
+  width: auto;
+  height: 4em;
+  float: left;
+  margin-left: -1em;
+}
+
 @media all and (max-width: 48em) {
   .sc-navigation {
     text-align: left;
     padding: 0.5em 0;
   }
 
+  .sc-layout--empty .sc-navigation-item {
+    margin-left: 0;
+  }
+
   .sc-navigation-item {
-    margin-left: 0em;
+    margin-left: -1em;
+  }
+  .sc-navigation--logo {
+    margin-right: 1em;
   }
 }
 
@@ -23,6 +38,10 @@
   .sc-navigation-item {
     display: inline-block;
     margin-left: 1em;
+  }
+
+  .sc-navigation--logo {
+    margin-right: 1em;
   }
 }
 

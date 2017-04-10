@@ -1,0 +1,20 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
+      <div class="so-welcome">
+        <a href="/"><img src="/images/welcome.svg" alt="<%= gettext("welcome svg") %>" class="so-welcome--image" /></a>
+
+        <h1><%= gettext("Welcome, %{username}!", username: @current_user.name) %></h1>
+
+        <p>
+          <%= gettext("Your account was created. Here are a few things you can do now:") %>
+        </p>
+
+        <p>
+          <%= link gettext("Search through SignDicts %{sign_count} signs >", sign_count: @sign_count), to: "/search" %><br/>
+          <%= link gettext("Complete your user profile >"), to: user_path(@conn, :edit, @current_user) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

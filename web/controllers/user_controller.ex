@@ -4,6 +4,7 @@ defmodule SignDict.UserController do
   use SignDict.Web, :controller
 
   alias SignDict.User
+  alias Guardian.Plug
 
   plug :load_and_authorize_resource, model: User
 
@@ -17,10 +18,10 @@ defmodule SignDict.UserController do
              |> Repo.insert()
 
     case result do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
-        |> put_flash(:info, gettext("Registration successful"))
-        |> redirect(to: session_path(conn, :new))
+        |> Plug.sign_in(user)
+        |> redirect(to: page_path(conn, :welcome))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset
     end

@@ -1,0 +1,25 @@
+.so-welcome {
+  text-align: center;
+}
+
+@media all and (max-width: 48em) {
+  .so-welcome {
+    margin-top: 1em;
+  }
+
+  .so-welcome--image {
+    width: auto;
+    height: 8em;
+  }
+}
+
+@media all and (min-width: 48em) {
+  .so-welcome {
+    margin-top: 3em;
+  }
+
+  .so-welcome--image {
+    width: auto;
+    height: 15em;
+  }
+}

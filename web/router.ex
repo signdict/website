@@ -55,6 +55,12 @@ defmodule SignDict.Router do
     get "/", PageController, :index
   end
 
+  scope "/", SignDict do
+    pipe_through [:browser, :browser_session, :auth]
+
+    get "/welcome", PageController, :welcome
+  end
+
   # Backend functions. Only accessible to logged in admin users.
   scope "/backend", SignDict.Backend, as: :backend do
     pipe_through [:browser, :browser_session, :auth, :backend]

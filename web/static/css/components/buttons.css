@@ -1,6 +1,35 @@
 .sc-button {
-  background-color: $highlight;
-  color: $dark_background;
-  padding: 1em 1.5em;
   display: inline-block;
+
+  margin-top: 1em;
+
+  padding: 1em 2em;
+
+  border: none;
+  background-color: $highlight;
+  color: $bright_font;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  height: 100%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.sc-link {
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: $highlight;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+
+.sc-link:hover {
+  text-decoration: underline;
 }
