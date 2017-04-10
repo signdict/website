@@ -19,7 +19,10 @@
               <%= link @current_user.name, to: user_path(@conn, :show, @current_user) %>
             </li>
             <li class='sc-navigation-item'>
-              <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-default" %>
+              <%= form_tag(session_path(@conn, :delete, @current_user), method: :delete) %>
+                <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link' />
+                <%# <%= link gettext("Sign out"), to: session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-default" %1> %>
+              </form>
             </li>
           <% else %>
             <li class='sc-navigation-item'>

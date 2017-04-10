@@ -14,11 +14,8 @@ defmodule SignDict.UserSignUpTest do
       |> click(Query.button("Register"))
     end)
     |> visit("/")
-
-    Process.sleep(2000)
-
-    session
-    |> click(Query.link("Sign out"))
+    |> click(Query.button("Sign out"))
+    |> visit("/")
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form
@@ -28,11 +25,8 @@ defmodule SignDict.UserSignUpTest do
     end)
     |> assert_alert("Successfully signed in")
     |> visit("/")
-    |> click(Query.link("Sign out"))
-    # Sadly this link does not work right now, so I
-    # had to comment it out.
-    # TODO: find a way to fix this again
-    # |> assert_alert("Successfully signed out")
+    |> click(Query.button("Sign out"))
+    |> assert_alert("Successfully signed out")
   end
 
 end

@@ -4,6 +4,8 @@
   font-size: 1em;
   margin-bottom: 0.5em;
   width: 100%;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .sc-label {

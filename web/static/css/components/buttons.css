@@ -17,3 +17,19 @@
   -moz-appearance: none;
   appearance: none;
 }
+
+.sc-link {
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: $highlight;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+
+.sc-link:hover {
+  text-decoration: underline;
+}
