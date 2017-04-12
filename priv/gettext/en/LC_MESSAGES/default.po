@@ -35,7 +35,7 @@ msgstr ""
 #: web/templates/backend/language/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
-#: web/templates/user/edit.html.eex:4 web/templates/user/new.html.eex:12
+#: web/templates/user/edit.html.eex:6 web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -48,18 +48,18 @@ msgid "Please fill in an email address and password"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:26 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:29 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:29
+#: web/templates/shared/navigation.html.eex:32
 msgid "Sign in"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:25
-#: web/templates/shared/navigation.html.eex:22
+#: web/templates/shared/navigation.html.eex:23
 msgid "Sign out"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
-#: web/templates/user/edit.html.eex:21 web/templates/user/show.html.eex:6
+#: web/templates/user/edit.html.eex:32 web/templates/user/show.html.eex:6
 msgid "user.biography"
 msgstr "Biography"
 
@@ -83,15 +83,15 @@ msgstr "Biography"
 #: web/templates/reset_password/new.html.eex:9
 #: web/templates/reset_password/new.html.eex:10
 #: web/templates/session/new.html.eex:7 web/templates/session/new.html.eex:8
-#: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:23
-#: web/templates/user/new.html.eex:24
+#: web/templates/user/edit.html.eex:11 web/templates/user/edit.html.eex:12
+#: web/templates/user/new.html.eex:23 web/templates/user/new.html.eex:24
 msgid "user.email"
 msgstr "Email"
 
 #: web/templates/backend/user/form.html.eex:21
 #: web/templates/backend/user/index.html.eex:7
-#: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:17
-#: web/templates/user/new.html.eex:18
+#: web/templates/user/edit.html.eex:17 web/templates/user/edit.html.eex:18
+#: web/templates/user/new.html.eex:17 web/templates/user/new.html.eex:18
 msgid "user.name"
 msgstr "Name"
 
@@ -99,16 +99,16 @@ msgstr "Name"
 #: web/templates/reset_password/edit.html.eex:10
 #: web/templates/reset_password/edit.html.eex:11
 #: web/templates/session/new.html.eex:12 web/templates/session/new.html.eex:13
-#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:29
-#: web/templates/user/new.html.eex:30
+#: web/templates/user/edit.html.eex:46 web/templates/user/edit.html.eex:47
+#: web/templates/user/new.html.eex:29 web/templates/user/new.html.eex:30
 msgid "user.password"
 msgstr "Password"
 
 #: web/templates/backend/user/form.html.eex:50
 #: web/templates/reset_password/edit.html.eex:15
 #: web/templates/reset_password/edit.html.eex:16
-#: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:35
-#: web/templates/user/new.html.eex:36
+#: web/templates/user/edit.html.eex:52 web/templates/user/edit.html.eex:53
+#: web/templates/user/new.html.eex:35 web/templates/user/new.html.eex:36
 msgid "user.password_confirmation"
 msgstr "Password confirmation"
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Welcome to the dashboard"
 msgstr ""
 
-#: web/templates/user/edit.html.eex:44
+#: web/templates/user/edit.html.eex:59
 msgid "Update"
 msgstr ""
 
@@ -255,13 +255,14 @@ msgid "Updated successfully."
 msgstr ""
 
 #: web/templates/backend/user/index.html.eex:16
-#: web/templates/backend/user/show.html.eex:7 web/templates/user/show.html.eex:3
+#: web/templates/backend/user/show.html.eex:7
+#: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:15
 #: web/templates/backend/user/show.html.eex:5
-#: web/templates/user/edit.html.eex:27
+#: web/templates/user/edit.html.eex:23
 msgid "user.avatar"
 msgstr "Avatar"
 
@@ -547,7 +548,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: web/templates/page/index.html.eex:8
+#: web/templates/page/index.html.eex:8 web/templates/page/welcome.html.eex:5
 #: web/templates/shared/navigation.html.eex:5
 msgid "SignDict Logo"
 msgstr ""
@@ -564,22 +565,30 @@ msgstr ""
 msgid "We are happy that you want to help. Please enter your details below so that we can create your account."
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:13
+#: web/templates/page/welcome.html.eex:15
 msgid "Complete your user profile >"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:12
+#: web/templates/page/welcome.html.eex:14
 msgid "Search through SignDicts %{sign_count} signs >"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:5
+#: web/templates/page/welcome.html.eex:7
 msgid "Welcome, %{username}!"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:8
+#: web/templates/page/welcome.html.eex:10
 msgid "Your account was created. Here are a few things you can do now:"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:3
-msgid "welcome svg"
+#: web/templates/user/edit.html.eex:39
+msgid "Change Password"
+msgstr ""
+
+#: web/templates/user/edit.html.eex:33
+msgid "Please describe yourself"
+msgstr ""
+
+#: web/templates/user/edit.html.eex:43
+msgid "You only need to enter your password here if you want to change it. Otherwise keep it empty."
 msgstr ""
