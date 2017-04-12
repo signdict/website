@@ -48,18 +48,18 @@ msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:29 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:38 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr "Registrieren"
 
 #: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:32
+#: web/templates/shared/navigation.html.eex:41
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: web/templates/layout/backend.html.eex:25
-#: web/templates/shared/navigation.html.eex:23
+#: web/templates/shared/navigation.html.eex:22
 msgid "Sign out"
 msgstr "Abmelden"
 
@@ -256,6 +256,7 @@ msgstr "Erfolgreich gespeichert"
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
+#: web/templates/shared/navigation.html.eex:34
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
@@ -452,7 +453,8 @@ msgstr "Eintrag erfolgreich gelöscht."
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
 
-#: web/templates/shared/navigation.html.eex:7
+#: web/templates/shared/navigation.html.eex:6
+#: web/templates/shared/navigation.html.eex:8
 msgid "About SignDict"
 msgstr "Über SignDict"
 
@@ -505,6 +507,7 @@ msgid "Our mission: to help understanding each other."
 msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
 
 #: web/templates/page/index.html.eex:32
+#: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
 msgstr "Suche"
 
@@ -537,6 +540,7 @@ msgid "Want to stay up to date?"
 msgstr "Willst du bei Neuigkeiten informiert werden?"
 
 #: web/templates/page/index.html.eex:29
+#: web/templates/shared/searchbar.html.eex:7
 msgid "Enter word to search"
 msgstr "Wort nach dem gesucht werden soll"
 
@@ -592,3 +596,7 @@ msgstr "Bitte beschreibe dich ein bisschen"
 #: web/templates/user/edit.html.eex:43
 msgid "You only need to enter your password here if you want to change it. Otherwise keep it empty."
 msgstr "Du musst hier nur dein Passwort eintragen, wenn du es ändern willst. Ansonsten kannst du diese Felder leer lassen."
+
+#: web/templates/shared/searchbar.html.eex:7
+msgid "Search in SignDict..."
+msgstr "SignDict durchsuchen..."
