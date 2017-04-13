@@ -28,7 +28,14 @@ defmodule SignDict.UserController do
   end
 
   def show(conn, _params) do
-    render(conn, "show.html", user: conn.assigns.user)
+    video_count = SignDict.Video
+                  |> where(user_id: ^conn.assigns.user.id)
+                  |> Repo.aggregate(:count, :id)
+    render(conn, "show.html",
+      user: conn.assigns.user,
+      searchbar: true,
+      video_count: video_count
+    )
   end
 
   def edit(conn, _params) do

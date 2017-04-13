@@ -2,7 +2,7 @@
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
       <div class="so-welcome">
-        <a href="/"><img src="/images/welcome.svg" alt="<%= gettext("welcome svg") %>" class="so-welcome--image" /></a>
+        <a href="/"><img src="/images/welcome.svg" alt="<%= gettext("SignDict Logo") %>" class="so-welcome--image" /></a>
 
         <h1><%= gettext("Welcome, %{username}!", username: @current_user.name) %></h1>
 

@@ -3,10 +3,12 @@
 @import "components/alerts.css";
 @import "components/buttons.css";
 @import "components/forms.css";
-@import "components/navigation.css";
 @import "objects/footer.css";
 @import "objects/landing.css";
+@import "objects/navigation.css";
 @import "objects/welcome.css";
+@import "objects/searchbar.css";
+@import "objects/user-show.css";
 @import "font-awesome.min.css";
 
 a {
@@ -28,7 +30,6 @@ body {
   padding: 1em;
   color: $dark_font;
 }
-
 
 @media all and (max-width: 48em) {
   .sc-layout--empty {

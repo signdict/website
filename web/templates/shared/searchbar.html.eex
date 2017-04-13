@@ -1,0 +1,16 @@
+<%= if assigns[:searchbar] == true do %>
+  <div class="so-searchbar">
+    <div class="o-container o-container--medium">
+      <form action="/search">
+        <div class="o-grid o-grid--wrap">
+          <div class="o-grid__cell--width-80@medium o-grid__cell--width-100">
+            <input class="so-searchbar--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search in SignDict...") %>"/>
+          </div>
+          <div class="o-grid__cell so-landing--search--submit-cell">
+            <input class="so-searchbar--submit" type="submit" value="<%= gettext("Search") %> &#8250;" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>

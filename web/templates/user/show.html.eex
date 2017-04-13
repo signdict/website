@@ -1,17 +1,38 @@
-<h2><%= @user.name %></h2>
+<div class="o-grid o-grid--wrap so-user-show">
+  <div class="o-grid__cell o-grid__cell--width-25@small o-grid__cell--width-100">
+    <%= img_tag SignDict.User.avatar_url(@user), alt: gettext("The avatar image of this user"), class: "so-user-show--avatar" %>
+  </div>
 
-<%= img_tag SignDict.User.avatar_url(@user), alt: gettext("The avatar image of this user"), width: 64 %>
+  <div class="o-grid__cell">
+    <h2 class="so-user-show--name"><%= @user.name %></h2>
+    <div class="so-user-show--since">
+      <%= gettext("User since %{since}", since: relative_date(@user.inserted_at)) %>
+    </div>
+    <div>
+      <%= if @user.biography do %>
+        <%= text_to_html @user.biography %>
+      <% else %>
+        <p>
+          <%= gettext("This user doesn't have a bio yet") %>
+        </p>
+      <% end %>
+    </div>
 
-<div>
-    <strong><%= gettext("user.biography") %>:</strong>
     <p>
-      <%= @user.biography %>
+      <%= if Canada.Can.can? @current_user, :edit, @user do %>
+        <%= link gettext("Edit"), to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
+      <% end %>
     </p>
-  </li>
-</div>
 
-<p>
-  <%= if Canada.Can.can? @current_user, :edit, @user do %>
-    <%= link gettext("Edit"), to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
-  <% end %>
-</p>
+    <hr class="so-user-show--seperator"/>
+
+    <div class="so-user-show--stats--number">
+      <%= @video_count %>
+    </div>
+    <div class="so-user-show--stats--label">
+      <%= gettext("Uploaded videos") %>
+    </div>
+
+    <hr class="so-user-show--seperator"/>
+  </div>
+</div>

@@ -13,10 +13,17 @@
   </head>
 
   <body>
-    <div class="sc-main o-container o-container--medium">
+    <div class="o-container o-container--medium">
       <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
-      <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+    </div>
 
+    <%= render SignDict.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+
+    <div>
+      <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+    <div>
+
+    <div class="sc-main o-container o-container--medium">
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>

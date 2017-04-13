@@ -51,6 +51,7 @@ defmodule SignDict.Router do
     delete "/video/:video_id/vote", VoteController, :delete
 
     get "/imprint", PageController, :imprint
+    get "/about",   PageController, :about
     get "/contact", PageController, :contact
     get "/", PageController, :index
   end

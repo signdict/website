@@ -1,0 +1,44 @@
+.so-searchbar {
+  background-color: $dark_background;
+  margin: 0 -1em;
+  padding: 2em 0em;
+}
+
+.so-searchbar--input {
+  border: none;
+  border-radius: 0;
+  font-size: 1em;
+  padding: 0.8em 1em;
+  width: 100%;
+  height: 3em;
+}
+
+.so-searchbar--submit {
+  border: none;
+  background-color: $highlight;
+  color: $bright_font;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  height: 3em;
+  width: 100%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+@media all and (max-width: 48em) {
+  .so-searchbar {
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 2em;
+  }
+
+  .so-searchbar--submit {
+    margin-top: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    width: auto;
+  }
+}
