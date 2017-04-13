@@ -16,7 +16,6 @@
   width: auto;
   height: 6em;
   float: left;
-  margin-left: -1em;
   position: absolute;
 }
 
@@ -32,7 +31,7 @@
 }
 
 .so-navigation--about {
-  margin-left: 5em;
+  margin-left: 6em;
   margin-top: 0.5em;
   color: $deactive;
   font-size: 0.9em;
@@ -61,7 +60,12 @@
   }
 
   .so-navigation--logo {
+    margin-left: -1em;
     margin-right: 1em;
+  }
+
+  .so-navigation--about {
+    margin-left: 5em;
   }
 }
 

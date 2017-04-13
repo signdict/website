@@ -1,6 +1,6 @@
 .so-searchbar {
   background-color: $dark_background;
-  margin: 0 -1em;
+  margin: 0 -1em 1em -1em;
   padding: 2em 0em;
 }
 
@@ -11,6 +11,10 @@
   padding: 0.8em 1em;
   width: 100%;
   height: 3em;
+}
+
+.o-grid__cell.so-searchbar--submit-cell {
+  padding-left: 0;
 }
 
 .so-searchbar--submit {
@@ -33,6 +37,11 @@
     padding-right: 1em;
     padding-left: 1em;
     padding-bottom: 2em;
+  }
+
+  .o-grid__cell.so-searchbar--input-cell {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .so-searchbar--submit {
