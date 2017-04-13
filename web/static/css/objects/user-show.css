@@ -1,0 +1,30 @@
+.so-user-show--avatar {
+  margin-top: 1em;
+  width: 100%;
+  height: auto;
+}
+
+.so-user-show--name {
+  margin-bottom: 0;
+}
+
+.so-user-show--since {
+  color: $deactive;
+  font-size: 0.7em;
+}
+
+.so-user-show--seperator {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid $deactive;
+  margin: 1.5em 0;
+}
+
+.so-user-show--stats--number {
+  font-size: 0.9em;
+}
+
+.so-user-show--stats--label {
+  color: $deactive;
+  font-size: 0.7em;
+}

@@ -24,14 +24,14 @@
   width: 2.5em;
 }
 
-.so-navigation--imprint--no-logo {
+.so-navigation--about--no-logo {
   margin-top: 0.5em;
   color: $deactive;
   font-size: 0.9em;
   display: inline-block;
 }
 
-.so-navigation--imprint {
+.so-navigation--about {
   margin-left: 5em;
   margin-top: 0.5em;
   color: $deactive;

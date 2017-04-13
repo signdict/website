@@ -20,6 +20,10 @@ defmodule SignDict.PageController do
       sign_count: sign_count()
   end
 
+  def about(conn, _params) do
+    render conn, "about.html", layout: {SignDict.LayoutView, "empty.html"}
+  end
+
   defp sign_count do
     Repo.aggregate(SignDict.Video, :count, :id)
   end

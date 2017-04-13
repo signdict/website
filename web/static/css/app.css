@@ -8,6 +8,7 @@
 @import "objects/navigation.css";
 @import "objects/welcome.css";
 @import "objects/searchbar.css";
+@import "objects/user-show.css";
 @import "font-awesome.min.css";
 
 a {

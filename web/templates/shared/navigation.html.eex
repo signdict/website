@@ -3,9 +3,9 @@
     <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
       <%= if assigns[:logo] == nil || assigns[:logo] == true do %>
         <a href="/"><img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-navigation--logo"/></a>
-        <a href='/imprint' class='so-navigation--imprint'><%= gettext("About SignDict")%></a>
+        <a href='/about' class='so-navigation--about'><%= gettext("About SignDict")%></a>
       <% else %>
-        <a href='/imprint' class='so-navigation--imprint--no-logo'><%= gettext("About SignDict")%></a>
+        <a href='/about' class='so-navigation--about--no-logo'><%= gettext("About SignDict")%></a>
       <% end %>
     </div>
     <div class="o-grid__cell">
