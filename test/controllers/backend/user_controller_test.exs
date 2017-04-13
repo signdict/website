@@ -64,7 +64,7 @@ defmodule SignDict.Backend.UserControllerTest do
   test "renders page not found when id is nonexistent", %{conn: conn} do
     conn = conn
            |> guardian_login(insert(:admin_user))
-           |> get(backend_user_path(conn, :show, -1))
+           |> get(backend_user_path(conn, :show, 123123123))
     assert conn.status == 404
   end
 
@@ -82,7 +82,7 @@ defmodule SignDict.Backend.UserControllerTest do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> put(backend_user_path(conn, :update, user), user: @valid_attrs)
-    assert redirected_to(conn) == backend_user_path(conn, :show, user)
+    assert redirected_to(conn) == backend_user_path(conn, :show, Repo.get(SignDict.User, user.id))
     assert Repo.get_by(User, email: "homer@example.com")
   end
 

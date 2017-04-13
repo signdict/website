@@ -86,7 +86,7 @@ defmodule SignDict.UserControllerTest do
       conn = conn
            |> guardian_login(user)
            |> patch(user_path(conn, :update, user), user: @valid_attrs)
-      assert redirected_to(conn) == user_path(conn, :show, user)
+      assert redirected_to(conn) == user_path(conn, :show, Repo.get(SignDict.User, user.id))
       assert Repo.get_by(SignDict.User, email: "elisa@example.com")
     end
 
