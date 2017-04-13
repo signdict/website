@@ -6,7 +6,7 @@
   <div class="o-grid__cell">
     <h2 class="so-user-show--name"><%= @user.name %></h2>
     <div class="so-user-show--since">
-      <%= gettext("User since %{since}", since: NaiveDateTime.to_date(@user.inserted_at)) %>
+      <%= gettext("User since %{since}", since: relative_date(@user.inserted_at)) %>
     </div>
     <div>
       <%= if @user.biography do %>

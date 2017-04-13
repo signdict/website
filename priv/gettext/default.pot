@@ -73,7 +73,7 @@ msgstr ""
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
-#: web/templates/user/edit.html.eex:32 web/templates/user/show.html.eex:6
+#: web/templates/user/edit.html.eex:32
 msgid "user.biography"
 msgstr ""
 
@@ -187,7 +187,7 @@ msgstr ""
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:34
 #: web/templates/backend/video/show.html.eex:46
-#: web/templates/user/show.html.eex:15
+#: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
 
@@ -250,7 +250,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:47
+#: web/controllers/user_controller.ex:54
 msgid "Updated successfully."
 msgstr ""
 
@@ -600,3 +600,33 @@ msgstr ""
 #: web/templates/shared/searchbar.html.eex:7
 msgid "Search in SignDict..."
 msgstr ""
+
+#: web/templates/user/show.html.eex:16
+msgid "This user doesn't have a bio yet"
+msgstr ""
+
+#: web/templates/user/show.html.eex:33
+msgid "Uploaded videos"
+msgstr ""
+
+#: web/templates/user/show.html.eex:9
+msgid "User since %{since}"
+msgstr ""
+
+#: web/views/helpers/date_helper.ex:22
+msgid "one day"
+msgid_plural "%{count} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/views/helpers/date_helper.ex:15
+msgid "one month"
+msgid_plural "%{count} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/views/helpers/date_helper.ex:9
+msgid "one year"
+msgid_plural "%{count} years"
+msgstr[0] ""
+msgstr[1] ""
