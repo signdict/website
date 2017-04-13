@@ -10,6 +10,7 @@ defmodule SignDict.User do
 
   @roles ~w(user admin)
 
+  @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "users" do
     field :email, :string
 
@@ -146,5 +147,18 @@ defmodule SignDict.User do
 
     changeset
     |> put_change(:password_hash, hashed_password)
+  end
+end
+
+defimpl Phoenix.Param, for: SignDict.User do
+  def to_param(%{name: name, id: id}) do
+    "#{id}-#{title_to_param(name)}"
+  end
+
+  defp title_to_param(title) do
+    (title || "")
+    |> String.downcase
+    |> String.replace(~r/[^\w-]+/u, "-")
+    |> String.replace(~r/-$/, "")
   end
 end

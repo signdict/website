@@ -205,4 +205,11 @@ defmodule SignDict.UserTest do
       refute User.admin?(%User{role: "user"})
     end
   end
+
+  describe "Phoenix.Param" do
+    test "it creates a nice permalink for the user" do
+      assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
+
 end
