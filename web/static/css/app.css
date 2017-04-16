@@ -21,11 +21,11 @@ a:hover {
 }
 
 p {
- line-height: 2em;
+  line-height: 2em;
 }
 
 body {
-  font-family: 'SignDict', 'Helvetica Neue';
+  font-family: "SignDict", "Helvetica Neue";
   font-weight: 100;
   padding: 1em;
   color: $dark_font;
