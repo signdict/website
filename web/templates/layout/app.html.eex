@@ -9,7 +9,7 @@
 
     <title><%= gettext("Hello SignDict!") %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.1">
+    <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
   </head>
 
   <body>
