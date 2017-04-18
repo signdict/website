@@ -362,7 +362,7 @@ msgstr "Neues Video"
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
 #: web/templates/backend/video/show.html.eex:14
-#: web/templates/entry/show.html.eex:27
+#: web/templates/entry/show.html.eex:34
 msgid "User"
 msgstr "Benutzer"
 
@@ -649,11 +649,11 @@ msgstr "Vorschaubild"
 msgid "video.video_url"
 msgstr "Video"
 
-#: web/templates/entry/show.html.eex:73
+#: web/templates/entry/show.html.eex:81
 msgid "No other variations"
 msgstr "Keine weiteren Variationen"
 
-#: web/templates/entry/show.html.eex:52
+#: web/templates/entry/show.html.eex:60
 msgid "Variations »%{entry}«"
 msgstr "Varianten »%{entry}«"
 
@@ -661,14 +661,18 @@ msgstr "Varianten »%{entry}«"
 msgid "today"
 msgstr "heute"
 
-#: web/templates/entry/show.html.eex:64
-msgid "%{time} ago"
-msgstr "Vor %{time}"
+#: web/templates/entry/show.html.eex:72
+msgid "${time} ago"
+msgstr "Vor ${time}"
 
-#: web/templates/entry/show.html.eex:33
+#: web/templates/entry/show.html.eex:40
 msgid "Date of upload"
 msgstr "Uploaddatum"
 
-#: web/templates/entry/show.html.eex:63
+#: web/templates/entry/show.html.eex:71
 msgid "by"
 msgstr "von"
+
+#: web/templates/entry/show.html.eex:19
+msgid "Source:"
+msgstr "Quelle:"

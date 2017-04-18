@@ -27,7 +27,7 @@
         <p><%= @entry.description %></p>
       <% end %>
 
-      <div class="o-grid  o-grid--wrap o-grid--no-gutter so-video-details">
+      <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
           <%= link @video.user.name, to: user_path(@conn, :show, @video.user_id) %><br/>
           <div class="so-video-details--label">
@@ -69,7 +69,7 @@
                     <div class="o-grid__cell">
                       <div class="so-video-list--details">
                         <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user_id) %><br/>
-                        <%= relative_date(video.inserted_at, past_text: gettext("%{time} ago")) %>
+                        <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %>
                       </div>
                     </div>
                   </div>

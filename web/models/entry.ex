@@ -3,6 +3,7 @@ defmodule SignDict.Entry do
 
   @types ~w(word phrase example)
 
+  @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "entries" do
     field :text, :string
     field :description, :string
@@ -41,4 +42,17 @@ defmodule SignDict.Entry do
     end
   end
 
+end
+
+defimpl Phoenix.Param, for: SignDict.Entry do
+  def to_param(%{text: text, id: id}) do
+    "#{id}-#{text_to_param(text)}"
+  end
+
+  defp text_to_param(text) do
+    (text || "")
+    |> String.downcase
+    |> String.replace(~r/[^\w-]+/u, "-")
+    |> String.replace(~r/-$/, "")
+  end
 end
