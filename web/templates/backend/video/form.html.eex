@@ -30,6 +30,24 @@
   </div>
 
   <div class="o-form-element">
+    <%= label f, :video_url, gettext("video.video_url"), class: "c-label" %>
+    <%= text_input f, :video_url, class: "c-field #{class_for_error(f, :video_url)}" %>
+    <%= error_tag f, :video_url%>
+  </div>
+
+  <div class="o-form-element">
+    <%= label f, :thumbnail_url, gettext("video.thumbnail_url"), class: "c-label" %>
+    <%= text_input f, :thumbnail_url, class: "c-field #{class_for_error(f, :thumbnail_url)}" %>
+    <%= error_tag f, :thumbnail_url%>
+  </div>
+
+  <div class="o-form-element">
+    <%= label f, :plays, gettext("video.plays"), class: "c-label" %>
+    <%= text_input f, :plays, type: :number, class: "c-field #{class_for_error(f, :plays)}" %>
+    <%= error_tag f, :plays%>
+  </div>
+
+  <div class="o-form-element">
     <%= submit gettext("Submit"), class: "c-button" %>
   </div>
 <% end %>

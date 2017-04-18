@@ -1,0 +1,14 @@
+.so-video-list {
+  list-style: none;
+  margin-top: 0.2em;
+  vertical-align: top;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-left: 0;
+}
+
+.so-video-list--details {
+  padding-left: 1em;
+  color: $deactive;
+}

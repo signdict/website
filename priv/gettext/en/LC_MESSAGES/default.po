@@ -167,14 +167,14 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:9
 #: web/templates/backend/language/index.html.eex:10
-#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:9
 msgid "Actions"
 msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Delete"
 msgstr ""
@@ -183,10 +183,10 @@ msgstr ""
 #: web/templates/backend/entry/show.html.eex:25
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
-#: web/templates/backend/shared/videos_table.html.eex:35
+#: web/templates/backend/shared/videos_table.html.eex:41
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:34
-#: web/templates/backend/video/show.html.eex:46
+#: web/templates/backend/video/show.html.eex:69
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
@@ -202,7 +202,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:22
 #: web/templates/backend/language/index.html.eex:24
-#: web/templates/backend/shared/videos_table.html.eex:34
+#: web/templates/backend/shared/videos_table.html.eex:40
 #: web/templates/backend/user/index.html.eex:25
 msgid "Show"
 msgstr ""
@@ -210,7 +210,7 @@ msgstr ""
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
 #: web/templates/backend/user/form.html.eex:57
-#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
 msgstr ""
 
@@ -318,7 +318,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Are you sure?"
 msgstr ""
@@ -342,8 +342,8 @@ msgid "Edit user"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
-#: web/templates/backend/shared/videos_table.html.eex:5
-#: web/templates/backend/video/show.html.eex:5
+#: web/templates/backend/shared/videos_table.html.eex:6
+#: web/templates/backend/video/show.html.eex:7
 msgid "Entry"
 msgstr ""
 
@@ -359,31 +359,32 @@ msgstr ""
 msgid "New video"
 msgstr ""
 
-#: web/templates/backend/shared/videos_table.html.eex:8
+#: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
-#: web/templates/backend/video/show.html.eex:12
+#: web/templates/backend/video/show.html.eex:14
+#: web/templates/entry/show.html.eex:27
 msgid "User"
 msgstr ""
 
-#: web/templates/backend/shared/videos_table.html.eex:11
+#: web/templates/backend/shared/videos_table.html.eex:12
 #: web/templates/backend/video/form.html.eex:15
-#: web/templates/backend/video/show.html.eex:26
+#: web/templates/backend/video/show.html.eex:28
 msgid "video.copyright"
 msgstr "Copyright"
 
-#: web/templates/backend/shared/videos_table.html.eex:12
+#: web/templates/backend/shared/videos_table.html.eex:13
 #: web/templates/backend/video/form.html.eex:21
-#: web/templates/backend/video/show.html.eex:33
+#: web/templates/backend/video/show.html.eex:35
 msgid "video.license"
 msgstr "License"
 
-#: web/templates/backend/shared/videos_table.html.eex:13
+#: web/templates/backend/shared/videos_table.html.eex:15
 msgid "video.orignal_href"
 msgstr "Source"
 
-#: web/templates/backend/shared/videos_table.html.eex:10
+#: web/templates/backend/shared/videos_table.html.eex:11
 #: web/templates/backend/video/form.html.eex:9
-#: web/templates/backend/video/show.html.eex:19
+#: web/templates/backend/video/show.html.eex:21
 msgid "video.state"
 msgstr "State"
 
@@ -432,6 +433,7 @@ msgstr ""
 msgid "Entry updated successfully."
 msgstr ""
 
+#: web/templates/backend/shared/videos_table.html.eex:4
 #: web/templates/backend/video/show.html.eex:1
 msgid "Video"
 msgstr ""
@@ -441,7 +443,7 @@ msgid "entry.language"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:27
-#: web/templates/backend/video/show.html.eex:40
+#: web/templates/backend/video/show.html.eex:42
 msgid "video.original_href"
 msgstr "Original URL"
 
@@ -519,11 +521,11 @@ msgstr "SignDict believes that communication is the key to an open society. To i
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:33
+#: web/templates/shared/footer.html.eex:34
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:32
+#: web/templates/shared/footer.html.eex:33
 msgid "SignDict on Twitter"
 msgstr ""
 
@@ -613,23 +615,60 @@ msgstr ""
 msgid "User since %{since}"
 msgstr ""
 
-#, fuzzy
-#: web/views/helpers/date_helper.ex:22
+#: web/views/helpers/date_helper.ex:12
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
-#: web/views/helpers/date_helper.ex:15
+#: web/views/helpers/date_helper.ex:11
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
-#: web/views/helpers/date_helper.ex:9
+#: web/views/helpers/date_helper.ex:10
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] ""
 msgstr[1] ""
+
+#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/video/form.html.eex:45
+#: web/templates/backend/video/show.html.eex:63
+msgid "video.plays"
+msgstr "Video plays"
+
+#: web/templates/backend/video/form.html.eex:39
+#: web/templates/backend/video/show.html.eex:56
+msgid "video.thumbnail_url"
+msgstr "Thumbnail"
+
+#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/show.html.eex:49
+msgid "video.video_url"
+msgstr "Video"
+
+#: web/templates/entry/show.html.eex:73
+msgid "No other variations"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:52
+msgid "Variations »%{entry}«"
+msgstr ""
+
+#: web/views/helpers/date_helper.ex:13
+msgid "today"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:64
+msgid "%{time} ago"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:33
+msgid "Date of upload"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:63
+msgid "by"
+msgstr ""

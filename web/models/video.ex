@@ -12,9 +12,14 @@ defmodule SignDict.Video do
     field :copyright, :string
     field :license, :string
     field :original_href, :string
+    field :video_url, :string
+    field :thumbnail_url, :string
+    field :plays, :integer
 
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
+
+    has_many :votes, SignDict.Vote
 
     timestamps()
   end
@@ -51,9 +56,9 @@ defmodule SignDict.Video do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,
-                     :user_id, :entry_id])
+                     :user_id, :entry_id, :video_url, :thumbnail_url, :plays])
     |> validate_required([:state, :copyright, :license, :original_href,
-                          :entry_id, :user_id])
+                          :entry_id, :user_id, :video_url, :thumbnail_url])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
     |> validate_state()
@@ -77,4 +82,14 @@ defmodule SignDict.Video do
       changeset
     end
   end
+
+  def ordered_by_vote_for_entry(entry) do
+    from(video in SignDict.Video,
+      left_join: up in assoc(video, :votes),
+      where: video.entry_id == ^entry.id,
+      order_by: [desc: count(up.id), desc: video.inserted_at],
+      group_by: video.id,
+      select: video)
+  end
+
 end

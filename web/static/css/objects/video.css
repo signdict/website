@@ -1,0 +1,40 @@
+.so-video {
+  background-color: #000;
+  margin-top: -1em;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+.so-video--player {
+  display: block;
+  width: 100%;
+  padding: 0 1em;
+}
+
+.so-video-details {
+  margin: 1em 0;
+}
+
+.so-video-details--headline {
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+
+.so-video-details--source {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  font-size: 0.7em;
+  color: $deactive;
+}
+
+.so-video-details--label {
+  color: $deactive;
+  font-size: 0.7em;
+  margin-bottom: 0.5em;
+}
+
+@media all and (max-width: 48em) {
+  .so-video--player {
+    padding: 0;
+  }
+}

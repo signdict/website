@@ -14,7 +14,7 @@ defmodule SignDict.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :sign_dict, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js video_files favicon.ico robots.txt)
 
   plug Plug.Static,
     at: "/uploads",
