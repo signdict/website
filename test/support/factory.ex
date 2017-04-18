@@ -43,6 +43,8 @@ defmodule SignDict.Factory do
       copyright: "copyright",
       license: "license",
       original_href: "original_href",
+      video_url: "http://example.com/video.mp4",
+      thumbnail_url: "http://example.com/video.jpg",
       user: build(:user)
     }
   end

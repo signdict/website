@@ -11,7 +11,9 @@ defmodule SignDict.VideoTest do
       copyright: "some content", license: "some content",
       original_href: "some content", state: "uploaded",
       type: "some content",
-      user_id: user().id, entry_id: entry().id
+      user_id: user().id, entry_id: entry().id,
+      thumbnail_url: "https://example.com/thumbnail.jpg",
+      video_url: "https://example.com/video.mp4"
     }
   end
 
