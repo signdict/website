@@ -362,7 +362,7 @@ msgstr ""
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
 #: web/templates/backend/video/show.html.eex:14
-#: web/templates/entry/show.html.eex:34
+#: web/templates/entry/show.html.eex:43
 msgid "User"
 msgstr ""
 
@@ -615,19 +615,19 @@ msgstr ""
 msgid "User since %{since}"
 msgstr ""
 
-#: web/views/helpers/date_helper.ex:12
+#: web/views/helpers/date_helper.ex:18
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: web/views/helpers/date_helper.ex:11
+#: web/views/helpers/date_helper.ex:15
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: web/views/helpers/date_helper.ex:10
+#: web/views/helpers/date_helper.ex:12
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] ""
@@ -649,30 +649,48 @@ msgstr "Thumbnail"
 msgid "video.video_url"
 msgstr "Video"
 
-#: web/templates/entry/show.html.eex:81
+#: web/templates/entry/show.html.eex:93
 msgid "No other variations"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:60
+#: web/templates/entry/show.html.eex:68
 msgid "Variations »%{entry}«"
 msgstr ""
 
-#: web/views/helpers/date_helper.ex:13
+#: web/views/helpers/date_helper.ex:19
 msgid "today"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:72
+#: web/templates/entry/show.html.eex:83
 msgid "${time} ago"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:40
+#: web/templates/entry/show.html.eex:49
 msgid "Date of upload"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:71
+#: web/templates/entry/show.html.eex:82
 msgid "by"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:19
+#: web/templates/entry/show.html.eex:56
 msgid "Source:"
 msgstr ""
+
+#: web/templates/entry/show.html.eex:75
+msgid "Choose this variant"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:27
+msgid "Please login to vote for this video."
+msgstr ""
+
+#: web/templates/entry/show.html.eex:76
+msgid "Thumbnail for Video"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:84
+msgid "One vote"
+msgid_plural "%{count} Votes"
+msgstr[0] ""
+msgstr[1] ""

@@ -89,7 +89,7 @@ defmodule SignDict.Video do
     from(video in SignDict.Video,
       left_join: up in assoc(video, :votes),
       where: video.entry_id == ^entry.id and video.state == ^"published",
-      order_by: [desc: count(up.id), desc: video.inserted_at],
+      order_by: [desc: count(up.id), asc: video.inserted_at],
       group_by: video.id,
       select: %{video | vote_count: count(up.id)})
   end
