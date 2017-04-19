@@ -46,13 +46,6 @@ end
 
 defimpl Phoenix.Param, for: SignDict.Entry do
   def to_param(%{text: text, id: id}) do
-    "#{id}-#{text_to_param(text)}"
-  end
-
-  defp text_to_param(text) do
-    (text || "")
-    |> String.downcase
-    |> String.replace(~r/[^\w-]+/u, "-")
-    |> String.replace(~r/-$/, "")
+    SignDict.Permalink.to_permalink(id, text)
   end
 end

@@ -25,4 +25,15 @@ defmodule SignDict.Permalink do
   def load(integer) when is_integer(integer) do
     {:ok, integer}
   end
+
+  def to_permalink(id, string) do
+    "#{id}-#{cleanup_string(string)}"
+  end
+
+  defp cleanup_string(string) do
+    (string || "")
+    |> String.downcase
+    |> String.replace(~r/[^\w-]+/u, "-")
+    |> String.replace(~r/-$/, "")
+  end
 end

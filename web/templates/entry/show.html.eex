@@ -29,7 +29,7 @@
 
       <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
-          <%= link @video.user.name, to: user_path(@conn, :show, @video.user_id) %><br/>
+          <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
           <div class="so-video-details--label">
             <%= gettext("User") %>
           </div>
@@ -64,12 +64,13 @@
                 <li>
                   <div class="o-grid o-grid--no-gutter">
                     <div class="o-grid__cell o-grid__cell--width-33">
-                      <%= link img_tag(video.thumbnail_url, class: "o-image"), to: entry_video_path(@conn, :show, @entry, video.id) %>
+                      <%= link img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")), to: entry_video_path(@conn, :show, @entry, video.id) %>
                     </div>
                     <div class="o-grid__cell">
                       <div class="so-video-list--details">
-                        <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user_id) %><br/>
-                        <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %>
+                        <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
+                        <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
+                        <%= gettext("%{count} Votes", count: video.vote_count) %>
                       </div>
                     </div>
                   </div>

@@ -16,6 +16,8 @@ defmodule SignDict.Video do
     field :thumbnail_url, :string
     field :plays, :integer
 
+    field :vote_count, :integer, virtual: true
+
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
 
@@ -86,10 +88,10 @@ defmodule SignDict.Video do
   def ordered_by_vote_for_entry(entry) do
     from(video in SignDict.Video,
       left_join: up in assoc(video, :votes),
-      where: video.entry_id == ^entry.id,
+      where: video.entry_id == ^entry.id and video.state == ^"published",
       order_by: [desc: count(up.id), desc: video.inserted_at],
       group_by: video.id,
-      select: video)
+      select: %{video | vote_count: count(up.id)})
   end
 
 end

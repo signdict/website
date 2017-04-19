@@ -152,13 +152,6 @@ end
 
 defimpl Phoenix.Param, for: SignDict.User do
   def to_param(%{name: name, id: id}) do
-    "#{id}-#{title_to_param(name)}"
-  end
-
-  defp title_to_param(title) do
-    (title || "")
-    |> String.downcase
-    |> String.replace(~r/[^\w-]+/u, "-")
-    |> String.replace(~r/-$/, "")
+    SignDict.Permalink.to_permalink(id, name)
   end
 end
