@@ -7,9 +7,15 @@ defmodule SignDict.Helpers.DateHelper do
     difference_in_days   = Timex.diff(Timex.now, datetime, :days)
 
     cond do
-      difference_in_years  > 0 -> String.replace(opts[:past_text], "${time}", ngettext("one year", "%{count} years", difference_in_years))
-      difference_in_months > 0 -> String.replace(opts[:past_text], "${time}", ngettext("one month", "%{count} months", difference_in_months))
-      difference_in_days   > 0 -> String.replace(opts[:past_text], "${time}", ngettext("one day", "%{count} days", difference_in_days))
+      difference_in_years  > 0 ->
+        String.replace(opts[:past_text], "${time}",
+                       ngettext("one year", "%{count} years", difference_in_years))
+      difference_in_months > 0 ->
+        String.replace(opts[:past_text], "${time}",
+                       ngettext("one month", "%{count} months", difference_in_months))
+      difference_in_days   > 0 ->
+        String.replace(opts[:past_text], "${time}",
+                       ngettext("one day", "%{count} days", difference_in_days))
       true -> gettext("today")
     end
   end

@@ -26,7 +26,10 @@ defmodule SignDict.EntryController do
     entry = Entry |> Entry.with_language |> Repo.get!(id)
 
     video_query = Video.ordered_by_vote_for_entry(entry)
-    videos = video_query |> where([v], v.id != ^video_id) |> Repo.all |> Repo.preload(:user)
+    videos = video_query
+             |> where([v], v.id != ^video_id)
+             |> Repo.all
+             |> Repo.preload(:user)
     video = Video |> Repo.get!(video_id) |> Repo.preload(:user)
 
     render(conn, "show.html",
