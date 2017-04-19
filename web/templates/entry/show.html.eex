@@ -14,12 +14,6 @@
 
   <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell o-grid__cell--width-60@small o-grid__cell--width-100">
-      <%= if @video.original_href do %>
-        <p class="so-video-details--source">
-          <%= gettext("Source:") %>
-          <%= link @video.copyright, to: @video.original_href %>
-        </p>
-      <% end %>
 
       <h1 class="so-video-details--headline"><%= @entry.text %></h1>
 
@@ -30,16 +24,16 @@
       <%= cond do %>
       <% @current_user == nil -> %>
         <p>
-          Melde dich an, um voten zu können!
+          <%= gettext("Please login to vote for this video.") %>
         </p>
-      <% @voted_video && @video.id != @voted_video.id -> %>
+      <% @voted_video && @video.id == @voted_video.id -> %>
+        <%= link "down-vote", to: vote_path(@conn, :delete, @video), method: :delete, class: "btn btn-primary" %>
+      <% true -> %>
         <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
           <div class="form-group">
             <%= submit "up-vote", class: "btn btn-primary" %>
           </div>
         <% end %>
-      <% true -> %>
-        <%= link "down-vote", to: vote_path(@conn, :delete, @video), method: :delete, class: "btn btn-primary" %>
       <% end %>
 
       <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
@@ -57,6 +51,12 @@
         </div>
       </div>
 
+      <%= if @video.original_href do %>
+        <p class="so-video-details--source">
+          <%= gettext("Source:") %>
+          <%= link @video.copyright, to: @video.original_href %>
+        </p>
+      <% end %>
       <a rel="license" href="http://creativecommons.org/licenses/<%= @video.license %>">
         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
       </a>
