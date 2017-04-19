@@ -125,4 +125,6 @@ defmodule SignDict.VideoTest do
   def entry do
     insert :entry
   end
+
+  # TODO: test ordered_by_vote_for_entry
 end

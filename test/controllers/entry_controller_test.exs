@@ -13,4 +13,6 @@ defmodule SignDict.EntryControllerTest do
     end
   end
 
+  # TODO: test show/2 methods
+
 end

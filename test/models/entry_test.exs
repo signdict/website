@@ -36,4 +36,10 @@ defmodule SignDict.EntryTest do
       assert Entry.to_string(%Entry{text: "Example", description: "This is it"}) == "Example (This is it)"
     end
   end
+
+  describe "Phoenix.Param" do
+    test "it creates a nice permalink for the entry" do
+      assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
 end
