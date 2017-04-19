@@ -42,4 +42,6 @@ defmodule SignDict.EntryTest do
       assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"
     end
   end
+
+  # TODO: add test for voted_video
 end

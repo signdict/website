@@ -8,19 +8,16 @@ defmodule SignDict.VoteController do
 
   def create(conn, %{"video_id" => video_id}) do
     video = Video |> Repo.get!(video_id) |> Repo.preload(:entry)
-    changeset = Vote.changeset(%Vote{
-                                 user_id: conn.assigns.current_user.id,
-                                 video_id: video.id})
 
-    case Repo.insert(changeset) do
+    case Vote.vote_video(conn.assigns.current_user, video) do
       {:ok, _vote} ->
         conn
           |> put_flash(:info, "You voted successfully.")
-          |> redirect(to: entry_path(conn, :show, video.entry))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote failed.")
-          |> redirect(to: entry_path(conn, :show, video.entry))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
     end
   end
 
@@ -35,14 +32,14 @@ defmodule SignDict.VoteController do
   defp do_delete(conn, video, vote) when is_nil(vote) do
     conn
     |> put_flash(:error, "Your vote could not be found.")
-    |> redirect(to: entry_path(conn, :show, video.entry))
+    |> redirect(to: entry_video_path(conn, :show, video.entry, video))
   end
   defp do_delete(conn, video, vote) do
     case Repo.delete(vote) do
       {:ok, _vote} ->
         conn
           |> put_flash(:info, "You vote was reverted successfully")
-          |> redirect(to: entry_path(conn, :show, video.entry))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote deletion failed.")

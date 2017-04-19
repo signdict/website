@@ -8,6 +8,42 @@
   padding-left: 0;
 }
 
+.so-video-list--item {
+  margin-bottom: 1em;
+}
+
+.so-video-list--item--thumbnail {
+  position: relative;
+}
+
+.so-video-list--item_selected {
+  background-color: $deactive;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.so-video-list--item_selected .so-video-list--details {
+  color: #fff;
+}
+
+.so-video-list--video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-image: url(/images/speechbubble-play.svg);
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.so-video-list--item--thumbnail:hover .so-video-list--video-play {
+  display: inline-block;
+}
+
 .so-video-list--details {
   padding-left: 1em;
   color: $deactive;

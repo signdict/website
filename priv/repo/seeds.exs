@@ -54,9 +54,9 @@ File.cp("test/fixtures/videos/Zug2.jpg", "priv/static/video_files/Zug2.jpg")
 SignDict.Repo.insert!(
   %SignDict.Video{
     state: "published",
-    copyright: "Philipps - dgs.wikisign.org",
-    license: "by-sa/3.0/de",
-    original_href: "http://dgs.wikisign.org/Zug",
+    copyright: "Henrike Maria Falke - gebaerdenlernen.de",
+    license: "by-nc-sa/3.0/de",
+    original_href: "http://www.gebaerdenlernen.de/index.php?article_id=176",
     thumbnail_url: "/video_files/Zug.jpg",
     video_url: "/video_files/Zug.mp4",
     entry: aufnehmen,

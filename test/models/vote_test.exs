@@ -36,4 +36,6 @@ defmodule SignDict.VoteTest do
     vote_changeset = %Vote{} |> Vote.changeset(%{user_id: 42, video_id: 43})
     assert {:ok, _} = Repo.insert(vote_changeset)
   end
+
+  # TODO: test vote_video
 end

@@ -27,6 +27,21 @@
         <p><%= @entry.description %></p>
       <% end %>
 
+      <%= cond do %>
+      <% @current_user == nil -> %>
+        <p>
+          Melde dich an, um voten zu können!
+        </p>
+      <% @voted_video && @video.id != @voted_video.id -> %>
+        <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
+          <div class="form-group">
+            <%= submit "up-vote", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <% true -> %>
+        <%= link "down-vote", to: vote_path(@conn, :delete, @video), method: :delete, class: "btn btn-primary" %>
+      <% end %>
+
       <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
           <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
@@ -46,13 +61,6 @@
         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
       </a>
 
-      <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
-        <div class="form-group">
-          <%= submit "up-vote", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-      <%= link "down-vote", to: vote_path(@conn, :delete, @video), method: :delete, class: "btn btn-primary" %>
-
     </div>
     <div class="o-grid__cell">
       <div class="sc-sidebar">
@@ -61,12 +69,15 @@
           <%= if Enum.count(@videos) > 0 do %>
             <ul class="so-video-list">
               <%= for video <- @videos do %>
-                <li>
+                <li class="so-video-list--item <%= if video.id == @video.id, do: "so-video-list--item_selected" %>">
                   <div class="o-grid o-grid--no-gutter">
-                    <div class="o-grid__cell o-grid__cell--width-33">
-                      <%= link img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")), to: entry_video_path(@conn, :show, @entry, video.id) %>
+                    <div class="o-grid__cell o-grid__cell--width-33 so-video-list--item--thumbnail">
+                      <a href='<%= entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
+                        <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
+                        <i class="so-video-list--video-play" aria-hidden="true"></i>
+                      </a>
                     </div>
-                    <div class="o-grid__cell">
+                    <div class="o-grid__cell o-grid__cell--center">
                       <div class="so-video-list--details">
                         <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
                         <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
