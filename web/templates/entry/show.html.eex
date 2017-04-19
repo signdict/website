@@ -81,7 +81,7 @@
                       <div class="so-video-list--details">
                         <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
                         <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
-                        <%= ngettext("One like", "%{count} likes", video.vote_count) %>
+                        <%= ngettext("1 like", "%{count} likes", video.vote_count) %>
                       </div>
                     </div>
                   </div>

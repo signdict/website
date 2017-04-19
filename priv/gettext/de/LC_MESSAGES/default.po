@@ -690,7 +690,7 @@ msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
 #: web/templates/entry/show.html.eex:84
-msgid "One like"
+msgid "1 like"
 msgid_plural "%{count} likes"
-msgstr[0] "Eine:r liebt dies"
+msgstr[0] "1 liebt dies"
 msgstr[1] "%{count} lieben dies"
