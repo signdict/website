@@ -11,7 +11,7 @@ defmodule SignDict.EntryController do
     entry  = Entry |> Entry.with_language |> Repo.get!(id)
     videos = load_videos(entry)
     voted  = Entry.voted_video(entry, conn.assigns.current_user)
-    video  = if voted.id, do: voted, else: List.first(videos)
+    video  = if voted && voted.id, do: voted, else: List.first(videos)
 
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "empty.html"},
