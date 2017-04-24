@@ -6,7 +6,9 @@ defmodule SignDict.Backend.VideoControllerTest do
   alias SignDict.Video
   @valid_attrs %{
     copyright: "some content", license: "some content",
-    original_href: "some content", state: "uploaded"
+    original_href: "some content", state: "uploaded",
+    thumbnail_url: "http://example.com/video.jpg",
+    video_url: "http://example.com/video.mp4"
   }
   @invalid_attrs %{}
 

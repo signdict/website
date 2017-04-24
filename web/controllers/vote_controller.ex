@@ -7,25 +7,22 @@ defmodule SignDict.VoteController do
   alias SignDict.Video
 
   def create(conn, %{"video_id" => video_id}) do
-    video = Video |> Repo.get!(video_id)
-    changeset = Vote.changeset(%Vote{
-                                 user_id: conn.assigns.current_user.id,
-                                 video_id: video.id})
+    video = Video |> Repo.get!(video_id) |> Repo.preload(:entry)
 
-    case Repo.insert(changeset) do
+    case Vote.vote_video(conn.assigns.current_user, video) do
       {:ok, _vote} ->
         conn
           |> put_flash(:info, "You voted successfully.")
-          |> redirect(to: entry_path(conn, :show, video.entry_id))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote failed.")
-          |> redirect(to: entry_path(conn, :show, video.entry_id))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
     end
   end
 
   def delete(conn, %{"video_id" => video_id}) do
-    video = Video |> Repo.get!(video_id)
+    video = Video |> Repo.get!(video_id) |> Repo.preload(:entry)
     vote = Vote |> Repo.get_by(%{video_id: video.id,
                                  user_id: conn.assigns.current_user.id})
     do_delete(conn, video, vote)
@@ -35,18 +32,18 @@ defmodule SignDict.VoteController do
   defp do_delete(conn, video, vote) when is_nil(vote) do
     conn
     |> put_flash(:error, "Your vote could not be found.")
-    |> redirect(to: entry_path(conn, :show, video.entry_id))
+    |> redirect(to: entry_video_path(conn, :show, video.entry, video))
   end
   defp do_delete(conn, video, vote) do
     case Repo.delete(vote) do
       {:ok, _vote} ->
         conn
           |> put_flash(:info, "You vote was reverted successfully")
-          |> redirect(to: entry_path(conn, :show, video.entry_id))
+          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
           |> put_flash(:error, "Your vote deletion failed.")
-          |> redirect(to: entry_path(conn, :show, video.entry_id))
+          |> redirect(to: entry_path(conn, :show, video.entry))
     end
   end
 end

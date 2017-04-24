@@ -1,14 +1,18 @@
 defmodule SignDict.Entry do
   use SignDict.Web, :model
 
+  alias SignDict.Video
+  alias SignDict.Repo
+
   @types ~w(word phrase example)
 
+  @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "entries" do
     field :text, :string
     field :description, :string
     field :type, :string
     belongs_to :language, SignDict.Language
-    has_many :videos, SignDict.Video
+    has_many :videos, Video
 
     timestamps()
   end
@@ -41,4 +45,26 @@ defmodule SignDict.Entry do
     end
   end
 
+  def voted_video(entry, user)
+  def voted_video(_entry, user) when is_nil(user) do
+    %Video{}
+  end
+  def voted_video(entry, user) do
+    query = from(video in Video,
+                 inner_join: vote  in SignDict.Vote,
+                         on: video.id == vote.video_id,
+                 inner_join: entry in SignDict.Entry,
+                         on: entry.id == video.entry_id,
+                 where: entry.id == ^entry.id and vote.user_id == ^user.id)
+    query
+    |> Repo.one
+    |> Repo.preload(:user)
+  end
+
+end
+
+defimpl Phoenix.Param, for: SignDict.Entry do
+  def to_param(%{text: text, id: id}) do
+    SignDict.Permalink.to_permalink(id, text)
+  end
 end

@@ -20,6 +20,6 @@ defmodule SignDict.Helpers.DateHelperTest do
 
   test "it returns today if difference is less than a day" do
     time = Timex.shift(Timex.now, hours: 1)
-    assert relative_date(time) == "Today"
+    assert relative_date(time) == "today"
   end
 end

@@ -1,5 +1,5 @@
 defmodule SignDict.UserPasswordResetTest do
-  use SignUp.AcceptanceCase, async: true
+  use SignDict.AcceptanceCase, async: true
   import SignDict.Factory
 
   test "send rest email", %{session: session} do

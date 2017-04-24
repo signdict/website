@@ -64,7 +64,7 @@ defmodule SignDict.Backend.EntryControllerTest do
   test "renders page not found when id is nonexistent", %{conn: conn} do
     conn = conn
            |> guardian_login(insert(:admin_user))
-           |> get(backend_entry_path(conn, :show, -1))
+           |> get(backend_entry_path(conn, :show, 999999))
     assert conn.status == 404
   end
 
@@ -82,7 +82,7 @@ defmodule SignDict.Backend.EntryControllerTest do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> put(backend_entry_path(conn, :update, entry), entry: @valid_attrs)
-    assert redirected_to(conn) == backend_entry_path(conn, :show, entry)
+    assert redirected_to(conn) == backend_entry_path(conn, :show, Repo.get(SignDict.Entry, entry.id))
     assert Repo.get_by(Entry, text: "house")
   end
 

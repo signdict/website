@@ -8,11 +8,11 @@ defmodule SignDict.PageController do
   end
 
   def imprint(conn, _params) do
-    render conn, "imprint.html", layout: {SignDict.LayoutView, "empty.html"}
+    render conn, "imprint.html", layout: {SignDict.LayoutView, "app.html"}
   end
 
   def contact(conn, _params) do
-    render conn, "contact.html", layout: {SignDict.LayoutView, "empty.html"}
+    render conn, "contact.html", layout: {SignDict.LayoutView, "app.html"}
   end
 
   def welcome(conn, _params) do
@@ -21,7 +21,7 @@ defmodule SignDict.PageController do
   end
 
   def about(conn, _params) do
-    render conn, "about.html", layout: {SignDict.LayoutView, "empty.html"}
+    render conn, "about.html", layout: {SignDict.LayoutView, "app.html"}
   end
 
   defp sign_count do

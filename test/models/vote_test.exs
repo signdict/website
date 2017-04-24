@@ -36,4 +36,28 @@ defmodule SignDict.VoteTest do
     vote_changeset = %Vote{} |> Vote.changeset(%{user_id: 42, video_id: 43})
     assert {:ok, _} = Repo.insert(vote_changeset)
   end
+
+  describe "vote_video/2" do
+    test "vote for a video" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      {:ok, video} = %{build(:video) | entry: entry} |> Repo.insert
+      Vote.vote_video(user, video)
+      assert Vote |> Repo.aggregate(:count, :id) == 1
+    end
+
+    test "deletes only the already given vote by the user and sets a new one" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      {:ok, video} = %{build(:video) | entry: entry} |> Repo.insert
+      %Vote{user: user, video: video} |> Repo.insert
+      insert(:vote)
+
+      Vote.vote_video(user, video)
+      query = from(v in Vote, where: v.user_id == ^user.id and v.video_id == ^video.id)
+      assert query |> Repo.aggregate(:count, :id) == 1
+      assert Vote |> Repo.aggregate(:count, :id) == 2
+    end
+  end
+
 end

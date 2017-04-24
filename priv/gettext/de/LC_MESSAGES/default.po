@@ -167,14 +167,14 @@ msgstr "Leider darfst du dies nicht."
 
 #: web/templates/backend/entry/index.html.eex:9
 #: web/templates/backend/language/index.html.eex:10
-#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:9
 msgid "Actions"
 msgstr "Aktionen"
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Delete"
 msgstr "Löschen"
@@ -183,10 +183,10 @@ msgstr "Löschen"
 #: web/templates/backend/entry/show.html.eex:25
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
-#: web/templates/backend/shared/videos_table.html.eex:35
+#: web/templates/backend/shared/videos_table.html.eex:41
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:34
-#: web/templates/backend/video/show.html.eex:46
+#: web/templates/backend/video/show.html.eex:69
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -202,7 +202,7 @@ msgstr "Neuer Nutzer"
 
 #: web/templates/backend/entry/index.html.eex:22
 #: web/templates/backend/language/index.html.eex:24
-#: web/templates/backend/shared/videos_table.html.eex:34
+#: web/templates/backend/shared/videos_table.html.eex:40
 #: web/templates/backend/user/index.html.eex:25
 msgid "Show"
 msgstr "Anzeigen"
@@ -210,7 +210,7 @@ msgstr "Anzeigen"
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
 #: web/templates/backend/user/form.html.eex:57
-#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
 msgstr "Absenden"
 
@@ -318,7 +318,7 @@ msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
@@ -342,8 +342,8 @@ msgid "Edit user"
 msgstr "Nutzer bearbeiten"
 
 #: web/templates/backend/entry/show.html.eex:1
-#: web/templates/backend/shared/videos_table.html.eex:5
-#: web/templates/backend/video/show.html.eex:5
+#: web/templates/backend/shared/videos_table.html.eex:6
+#: web/templates/backend/video/show.html.eex:7
 msgid "Entry"
 msgstr "Eintrag"
 
@@ -359,31 +359,32 @@ msgstr "Alle Videos"
 msgid "New video"
 msgstr "Neues Video"
 
-#: web/templates/backend/shared/videos_table.html.eex:8
+#: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
-#: web/templates/backend/video/show.html.eex:12
+#: web/templates/backend/video/show.html.eex:14
+#: web/templates/entry/show.html.eex:76
 msgid "User"
 msgstr "Benutzer"
 
-#: web/templates/backend/shared/videos_table.html.eex:11
+#: web/templates/backend/shared/videos_table.html.eex:12
 #: web/templates/backend/video/form.html.eex:15
-#: web/templates/backend/video/show.html.eex:26
+#: web/templates/backend/video/show.html.eex:28
 msgid "video.copyright"
 msgstr "Urheberrecht"
 
-#: web/templates/backend/shared/videos_table.html.eex:12
+#: web/templates/backend/shared/videos_table.html.eex:13
 #: web/templates/backend/video/form.html.eex:21
-#: web/templates/backend/video/show.html.eex:33
+#: web/templates/backend/video/show.html.eex:35
 msgid "video.license"
 msgstr "Lizenz"
 
-#: web/templates/backend/shared/videos_table.html.eex:13
+#: web/templates/backend/shared/videos_table.html.eex:15
 msgid "video.orignal_href"
 msgstr "Quelle"
 
-#: web/templates/backend/shared/videos_table.html.eex:10
+#: web/templates/backend/shared/videos_table.html.eex:11
 #: web/templates/backend/video/form.html.eex:9
-#: web/templates/backend/video/show.html.eex:19
+#: web/templates/backend/video/show.html.eex:21
 msgid "video.state"
 msgstr "Status"
 
@@ -432,6 +433,7 @@ msgstr "Eintrag erfolgreich angelegt."
 msgid "Entry updated successfully."
 msgstr "Eintrag erfolgreich aktualisiert."
 
+#: web/templates/backend/shared/videos_table.html.eex:4
 #: web/templates/backend/video/show.html.eex:1
 msgid "Video"
 msgstr "Video"
@@ -441,7 +443,7 @@ msgid "entry.language"
 msgstr "Sprache"
 
 #: web/templates/backend/video/form.html.eex:27
-#: web/templates/backend/video/show.html.eex:40
+#: web/templates/backend/video/show.html.eex:42
 msgid "video.original_href"
 msgstr "Orignal URL"
 
@@ -519,11 +521,11 @@ msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gese
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: web/templates/shared/footer.html.eex:33
+#: web/templates/shared/footer.html.eex:34
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
-#: web/templates/shared/footer.html.eex:32
+#: web/templates/shared/footer.html.eex:33
 msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
@@ -613,23 +615,92 @@ msgstr "Videos hochgeladen"
 msgid "User since %{since}"
 msgstr "Dabei seit %{since}"
 
-#, fuzzy
-#: web/views/helpers/date_helper.ex:22
+#: web/views/helpers/date_helper.ex:18
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] "einem Tag"
 msgstr[1] "%{count} Tagen"
 
-#, fuzzy
 #: web/views/helpers/date_helper.ex:15
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] "einem Monat"
 msgstr[1] "%{count} Monaten"
 
-#, fuzzy
-#: web/views/helpers/date_helper.ex:9
+#: web/views/helpers/date_helper.ex:12
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] "einem Jahr"
 msgstr[1] "%{count} Jahren"
+
+#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/video/form.html.eex:45
+#: web/templates/backend/video/show.html.eex:63
+msgid "video.plays"
+msgstr "Videoabrufe"
+
+#: web/templates/backend/video/form.html.eex:39
+#: web/templates/backend/video/show.html.eex:56
+msgid "video.thumbnail_url"
+msgstr "Vorschaubild"
+
+#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/show.html.eex:49
+msgid "video.video_url"
+msgstr "Video"
+
+#: web/templates/entry/show.html.eex:127
+msgid "No other variations"
+msgstr "Keine weiteren Variationen"
+
+#: web/templates/entry/show.html.eex:101
+msgid "Variations »%{entry}«"
+msgstr "Varianten »%{entry}«"
+
+#: web/views/helpers/date_helper.ex:19
+msgid "today"
+msgstr "heute"
+
+#: web/templates/entry/show.html.eex:116
+msgid "${time} ago"
+msgstr "Vor ${time}"
+
+#: web/templates/entry/show.html.eex:82
+msgid "Date of upload"
+msgstr "Uploaddatum"
+
+#: web/templates/entry/show.html.eex:115
+msgid "by"
+msgstr "von"
+
+#: web/templates/entry/show.html.eex:89
+msgid "Source:"
+msgstr "Quelle:"
+
+#: web/templates/entry/show.html.eex:108
+msgid "Choose this variant"
+msgstr "Diese Variante wählen"
+
+#: web/templates/entry/show.html.eex:61
+msgid "Please login to vote for this video."
+msgstr "Bitte melde dich an, um für dieses Video zu stimmen."
+
+#: web/templates/entry/show.html.eex:109
+msgid "Thumbnail for Video"
+msgstr "Vorschaubild des Videos"
+
+#: web/templates/entry/show.html.eex:65
+msgid "Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow."
+msgstr "Zeigt dieses Video die von dir benutzte Gebärde für das Wort? Wenn ja, dann stimme für dies ab mit klick auf den Pfeil."
+
+#: web/templates/entry/show.html.eex:37
+msgid "Don't vote this video up"
+msgstr "Nicht für dieses Video stimmen"
+
+#: web/templates/entry/show.html.eex:45
+msgid "Vote this video up"
+msgstr "Für dieses Video stimmen."
+
+#: web/templates/entry/show.html.eex:63
+msgid "You voted for this video. You can remove your vote by clicking on the arrow."
+msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."

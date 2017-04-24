@@ -1,5 +1,5 @@
 defmodule SignDict.UserSignUpTest do
-  use SignUp.AcceptanceCase, async: true
+  use SignDict.AcceptanceCase, async: true
 
   test "sign up user, login and logout", %{session: session} do
     session

@@ -46,7 +46,9 @@ defmodule SignDict.Router do
     get "/password/edit", ResetPasswordController, :edit
     put "/password",      ResetPasswordController, :update
 
-    resources "/entry",  EntryController, only: [:show]
+    resources "/entry",  EntryController, only: [:show] do
+      get "/video/:video_id", EntryController, :show, as: :video
+    end
     post "/video/:video_id/vote", VoteController, :create
     delete "/video/:video_id/vote", VoteController, :delete
 

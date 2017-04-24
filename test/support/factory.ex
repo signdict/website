@@ -43,12 +43,18 @@ defmodule SignDict.Factory do
       copyright: "copyright",
       license: "license",
       original_href: "original_href",
+      video_url: "http://example.com/video.mp4",
+      thumbnail_url: "http://example.com/video.jpg",
       user: build(:user)
     }
   end
 
+  def video_published_factory do
+    %{video_factory() | state: "published"}
+  end
+
   def video_with_entry_factory do
-    %{video_factory() | entry: build(:entry)}
+    %{video_published_factory() | entry: build(:entry)}
   end
 
   def entry_factory do
@@ -61,7 +67,7 @@ defmodule SignDict.Factory do
   end
 
   def entry_with_videos_factory do
-    %{entry_factory() | videos: build_list(4, :video)}
+    %{entry_factory() | videos: build_list(4, :video_published)}
   end
 
   def vote_factory do

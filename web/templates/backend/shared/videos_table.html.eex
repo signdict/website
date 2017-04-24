@@ -1,6 +1,7 @@
 <table class="c-table c-table--striped c-table--condensed">
   <thead class="c-table__head">
     <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("Video") %></th>
       <%= if List.first(@videos) == nil || Ecto.assoc_loaded?(List.first(@videos).entry) do %>
         <th class="c-table__cell" scope='col'><%= gettext("Entry") %></th>
       <% end %>
@@ -10,6 +11,7 @@
       <th class="c-table__cell" scope='col'><%= gettext("video.state") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.copyright") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.license") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("video.plays") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.orignal_href") %></th>
       <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
     </tr>
@@ -17,6 +19,9 @@
   <tbody class="c-table__body">
 <%= for video <- @videos do %>
     <tr class="c-table__row">
+      <td class="c-table__cell">
+        <%= link img_tag(video.thumbnail_url, class: "o-image"), to: backend_entry_video_path(@conn, :show, video.entry_id, video) %>
+      </td>
       <%= if Ecto.assoc_loaded?(video.entry) do %>
         <td class="c-table__cell"><%= link video.entry.text, to: backend_entry_path(@conn, :show, video.entry) %></td>
       <% end %>
@@ -26,6 +31,7 @@
       <td class="c-table__cell"><%= video.state %></td>
       <td class="c-table__cell"><%= video.copyright %></td>
       <td class="c-table__cell"><%= video.license %></td>
+      <td class="c-table__cell"><%= video.plays %></td>
       <td class="c-table__cell"><%= link video.original_href, to: video.original_href, target: "_blank", rel: "noopener" %></td>
 
       <td class="c-table__cell">

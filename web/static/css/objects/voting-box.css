@@ -1,0 +1,50 @@
+.so-voting-box {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.so-voting-box--vote-button {
+  display: inline-block;
+
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-size: 2em;
+  font-weight: 600;
+  cursor: pointer;
+  height: 100%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.so-voting-box--vote-button:hover {
+  color: $highlight;
+}
+
+.so-voting-box--vote-button_selected {
+  color: $highlight;
+}
+
+.so-voting-box--vote-button_selected:hover {
+  color: #000;
+}
+
+.so-voting-box--count {
+  font-size: 1.5em;
+  margin-top: -0.2em;
+  min-width: 1.4em;
+}
+
+.so-voting-box--explanation {
+  display: table;
+  height: 100%;
+}
+
+.so-voting-box--explanation--text {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 0.8em;
+  color: $deactive;
+}

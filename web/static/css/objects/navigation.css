@@ -15,7 +15,6 @@
   margin-top: -1.5em;
   width: auto;
   height: 6em;
-  float: left;
   position: absolute;
 }
 
@@ -33,6 +32,7 @@
 .so-navigation--about {
   margin-left: 6em;
   margin-top: 0.5em;
+  margin-bottom: 3em;
   color: $deactive;
   font-size: 0.9em;
   display: inline-block;
@@ -42,26 +42,15 @@
   .so-navigation {
     text-align: left;
     padding: 0.5em 0;
-    margin-top: 3em;
-  }
-
-  .sc-layout--empty .so-navigation {
-    margin-top: 0em;
-    margin-bottom: 2em;
-  }
-
-  .sc-layout--empty .so-navigation-item {
-    margin-left: 0;
   }
 
   .so-navigation-item {
-    margin-left: -1em;
     margin-bottom: 0.5em;
   }
 
   .so-navigation--logo {
-    margin-left: -1em;
     margin-right: 1em;
+    margin-bottom: 3em;
   }
 
   .so-navigation--about {

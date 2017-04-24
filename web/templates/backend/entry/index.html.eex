@@ -12,9 +12,9 @@
   <tbody class="c-table__body">
 <%= for entry <- @entries do %>
     <tr class="c-table__row">
-      <td class="c-table__cell"><%= entry.text %></td>
+      <td class="c-table__cell"><%= link entry.text, to: backend_entry_path(@conn, :show, entry)  %></td>
       <td class="c-table__cell"><%= entry.type %></td>
-      <td class="c-table__cell"><%= link SignDict.Language.name(entry.language), to: backend_language_path(@conn, :show, entry.language) %></div>
+      <td class="c-table__cell"><%= link entry.language.short_name, to: backend_language_path(@conn, :show, entry.language) %></div>
 
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">

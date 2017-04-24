@@ -1,22 +1,137 @@
-<div>
-  <h2><%= @entry.text %></h2>
-  <p><%= @entry.description %></p>
-  <p><%= @entry.type %></p>
-  <p>
-    <%= if @entry.language do %>
-      <%= @entry.language.long_name %></p>
-    <% end %>
-  <ul>
-    <%= for video <- @entry.videos do %>
-      <li>
-        <%= video.id %>
-        <%= form_for @conn, vote_path(@conn, :create, video), [as: :vote], fn _f -> %>
-          <div class="form-group">
-            <%= submit "up-vote", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-        <%= link "down-vote", to: vote_path(@conn, :delete, video), method: :delete, class: "btn btn-primary" %>
-      </li>
-    <% end %>
-  </ul>
+<div class="o-container o-container--medium">
+  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
 </div>
+
+<%= render SignDict.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+
+<div class="so-video">
+  <div class="o-container o-container--medium">
+    <video class="so-video--player" src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+  </div>
+</div>
+
+<div class="o-container o-container--medium">
+
+  <div class="o-grid o-grid--wrap">
+    <div class="o-grid__cell o-grid__cell--width-60@small o-grid__cell--width-100">
+
+      <h1 class="so-video-details--headline"><%= @entry.text %></h1>
+
+      <%= if String.length(@entry.description) > 0 do %>
+        <p><%= @entry.description %></p>
+      <% end %>
+
+      <div class="o-grid o-grid--no-gutter">
+        <div class="o-grid__cell o-grid__cell--width-15">
+          <div class="so-voting-box">
+            <div class="so-voting-box--upvote">
+              <%= cond do %>
+              <% @current_user == nil -> %>
+                <span class="so-voting-box--vote-button so-voting-box--vote-button_deactive">
+                  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                </span>
+              <% @voted_video && @video.id == @voted_video.id -> %>
+                <%= form_for @conn, vote_path(@conn, :delete, @video), [method: :delete, as: :vote], fn _f -> %>
+                  <div class="form-group">
+                    <button type="submit" class="so-voting-box--vote-button so-voting-box--vote-button_selected">
+                      <i class="fa fa-chevron-up" aria-label="<%= gettext("Don't vote this video up") %>"></i>
+                    </button>
+                  </div>
+                <% end %>
+              <% true -> %>
+                <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
+                  <div class="form-group">
+                    <button type="submit" class="so-voting-box--vote-button">
+                      <i class="fa fa-chevron-up" aria-label="<%= gettext("Vote this video up") %>"></i>
+                    </button>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="so-voting-box--count">
+              <%= @video.vote_count %>
+            </div>
+          </div>
+        </div>
+        <div class="o-grid__cell">
+          <div class="so-voting-box--explanation">
+            <div class="so-voting-box--explanation--text">
+              <%= cond do %>
+                <% @current_user == nil -> %>
+                  <%= gettext("Please login to vote for this video.") %>
+                <% @voted_video && @video.id == @voted_video.id -> %>
+                  <%= gettext("You voted for this video. You can remove your vote by clicking on the arrow.") %>
+                <% true -> %>
+                  <%= gettext("Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow.") %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
+        <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
+          <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
+          <div class="so-video-details--label">
+            <%= gettext("User") %>
+          </div>
+        </div>
+        <div class="o-grid__cell">
+          <%= Date.to_string @video.inserted_at %>
+          <div class="so-video-details--label">
+            <%= gettext("Date of upload") %>
+          </div>
+        </div>
+      </div>
+
+      <%= if @video.original_href do %>
+        <p class="so-video-details--source">
+          <%= gettext("Source:") %>
+          <%= link @video.copyright, to: @video.original_href %>
+        </p>
+      <% end %>
+      <a rel="license" href="http://creativecommons.org/licenses/<%= @video.license %>">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
+      </a>
+
+    </div>
+    <div class="o-grid__cell">
+      <div class="sc-sidebar">
+        <div class="sc-sidebar--content">
+          <h1><%= gettext("Variations »%{entry}«", entry: @entry.text) %></h1>
+          <%= if Enum.count(@videos) > 0 do %>
+            <ul class="so-video-list">
+              <%= for video <- @videos do %>
+                <li class="so-video-list--item <%= if video.id == @video.id, do: "so-video-list--item_selected" %>">
+                  <div class="o-grid o-grid--no-gutter">
+                    <div class="o-grid__cell o-grid__cell--width-33 so-video-list--item--thumbnail">
+                      <a href='<%= entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
+                        <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
+                        <i class="so-video-list--video-play" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                    <div class="o-grid__cell o-grid__cell--center">
+                      <div class="so-video-list--details">
+                        <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
+                        <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
+                        <i class="fa fa-chevron-up so-video-list--details--votes <%= if @voted_video && video.id == @voted_video.id, do: "so-video-list--details--votes_voted" %>" aria-label="Votes for this video"></i>
+                        <%= video.vote_count %>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>
+              <%= gettext("No other variations") %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= render SignDict.SharedView, "footer.html", conn: @conn %>
