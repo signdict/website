@@ -6,12 +6,17 @@ defmodule SignDict.EntryController do
   alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.Video
+  alias SignDict.Vote
 
   def show(conn, %{"id" => id}) do
     entry  = Entry |> Entry.with_language |> Repo.get!(id)
     videos = load_videos(entry)
     voted  = Entry.voted_video(entry, conn.assigns.current_user)
-    video  = if voted && voted.id, do: voted, else: List.first(videos)
+    video  = if voted && voted.id do
+      voted |> Vote.with_vote_count
+    else
+      List.first(videos)
+    end
 
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "empty.html"},
@@ -26,7 +31,10 @@ defmodule SignDict.EntryController do
   def show(conn, %{"entry_id" => id, "video_id" => video_id}) do
     entry  = Entry |> Entry.with_language |> Repo.get!(id)
     videos = load_videos(entry)
-    video  = Video |> Repo.get!(video_id) |> Repo.preload(:user)
+    video  = Video
+             |> Repo.get!(video_id)
+             |> Repo.preload(:user)
+             |> Vote.with_vote_count
 
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "empty.html"},

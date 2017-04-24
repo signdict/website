@@ -21,20 +21,53 @@
         <p><%= @entry.description %></p>
       <% end %>
 
-      <%= cond do %>
-      <% @current_user == nil -> %>
-        <p>
-          <%= gettext("Please login to vote for this video.") %>
-        </p>
-      <% @voted_video && @video.id == @voted_video.id -> %>
-        <%= link "down-vote", to: vote_path(@conn, :delete, @video), method: :delete, class: "btn btn-primary" %>
-      <% true -> %>
-        <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
-          <div class="form-group">
-            <%= submit "up-vote", class: "btn btn-primary" %>
+      <div class="o-grid o-grid--no-gutter">
+        <div class="o-grid__cell o-grid__cell--width-15">
+          <div class="so-voting-box">
+            <div class="so-voting-box--upvote">
+              <%= cond do %>
+              <% @current_user == nil -> %>
+                <span class="so-voting-box--vote-button so-voting-box--vote-button_deactive">
+                  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                </span>
+              <% @voted_video && @video.id == @voted_video.id -> %>
+                <%= form_for @conn, vote_path(@conn, :delete, @video), [method: :delete, as: :vote], fn _f -> %>
+                  <div class="form-group">
+                    <button type="submit" class="so-voting-box--vote-button so-voting-box--vote-button_selected">
+                      <i class="fa fa-chevron-up" aria-label="<%= gettext("Don't vote this video up") %>"></i>
+                    </button>
+                  </div>
+                <% end %>
+              <% true -> %>
+                <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
+                  <div class="form-group">
+                    <button type="submit" class="so-voting-box--vote-button">
+                      <i class="fa fa-chevron-up" aria-label="<%= gettext("Vote this video up") %>"></i>
+                    </button>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="so-voting-box--count">
+              <%= @video.vote_count %>
+            </div>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+        <div class="o-grid__cell">
+          <div class="so-voting-box--explanation">
+            <div class="so-voting-box--explanation--text">
+              <%= cond do %>
+                <% @current_user == nil -> %>
+                  <%= gettext("Please login to vote for this video.") %>
+                <% @voted_video && @video.id == @voted_video.id -> %>
+                  <%= gettext("You voted for this video. You can remove your vote by clicking on the arrow.") %>
+                <% true -> %>
+                  <%= gettext("Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow.") %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
@@ -81,7 +114,8 @@
                       <div class="so-video-list--details">
                         <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
                         <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
-                        <%= ngettext("1 like", "%{count} likes", video.vote_count) %>
+                        <i class="fa fa-chevron-up so-video-list--details--votes <%= if @voted_video && video.id == @voted_video.id, do: "so-video-list--details--votes_voted" %>" aria-label="Votes for this video"></i>
+                        <%= video.vote_count %>
                       </div>
                     </div>
                   </div>

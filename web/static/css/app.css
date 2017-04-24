@@ -12,6 +12,7 @@
 @import "objects/user-show.css";
 @import "objects/video.css";
 @import "objects/video-list.css";
+@import "objects/voting-box.css";
 @import "font-awesome.min.css";
 
 a {

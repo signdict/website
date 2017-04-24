@@ -48,3 +48,11 @@
   padding-left: 1em;
   color: $deactive;
 }
+
+.so-video-list--details--votes {
+  font-size: 1em !important;
+}
+
+.so-video-list--details--votes_voted {
+  color: $highlight;
+}

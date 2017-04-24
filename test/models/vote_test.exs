@@ -38,4 +38,5 @@ defmodule SignDict.VoteTest do
   end
 
   # TODO: test vote_video
+  # TODO: test with_vote_count
 end
