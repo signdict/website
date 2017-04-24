@@ -703,4 +703,4 @@ msgstr "Für dieses Video stimmen."
 
 #: web/templates/entry/show.html.eex:63
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
-msgstr "Du hast für dieses Video gestimmt. Du kannst dies mit klicken auf dem Pfeil zurück nehmen."
+msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."
