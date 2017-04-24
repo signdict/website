@@ -34,12 +34,4 @@ defmodule SignDict.Vote do
     SignDict.Repo.insert(changeset)
   end
 
-  def with_vote_count(video) do
-    if video.vote_count == nil do
-      query = from vote in SignDict.Vote, where: vote.video_id == ^video.id
-      %{video | vote_count: SignDict.Repo.aggregate(query, :count, :id)}
-    else
-      video
-    end
-  end
 end

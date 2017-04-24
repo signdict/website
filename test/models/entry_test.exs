@@ -3,6 +3,7 @@ defmodule SignDict.EntryTest do
   import SignDict.Factory
 
   alias SignDict.Entry
+  alias SignDict.Video
 
   @valid_attrs %{description: "some content", text: "some content", type: "word"}
   @invalid_attrs %{}
@@ -37,11 +38,24 @@ defmodule SignDict.EntryTest do
     end
   end
 
+  describe "voted_video/2" do
+    test "returns an empty video if user is nil" do
+      assert Entry.voted_video(%Entry{}, nil) == %Video{id: nil}
+    end
+
+    test "returns the video with the user preloaded" do
+      entry = insert(:entry)
+      video = %{build(:video) | entry: entry} |> Repo.insert!
+      vote  = %SignDict.Vote{video: video, user: insert(:user)} |> Repo.insert!
+      voted_video = Entry.voted_video(vote.video.entry, vote.user)
+      assert voted_video.id == video.id
+      assert Ecto.assoc_loaded? voted_video.user
+    end
+  end
+
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the entry" do
       assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"
     end
   end
-
-  # TODO: add test for voted_video
 end

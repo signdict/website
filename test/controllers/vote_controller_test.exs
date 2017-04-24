@@ -27,7 +27,20 @@ defmodule SignDict.VoteControllerTest do
     end
 
     test "it changes the vote to another video if voting another video of the same entry" do
-      # TODO do this
+      user   = insert(:user)
+      entry  = insert(:entry)
+      {:ok, video1} = %{build(:video) | entry: entry} |> Repo.insert
+      {:ok, video2} = %{build(:video) | entry: entry} |> Repo.insert
+      %SignDict.Vote{user: user, video: video1} |> Repo.insert
+
+      conn  = build_conn()
+               |> guardian_login(user)
+               |> post(vote_path(build_conn(), :create, video2))
+
+      query = from(v in Vote, where: v.user_id == ^user.id and v.video_id == ^video2.id)
+      assert query |> Repo.aggregate(:count, :id) == 1
+      assert Vote |> Repo.aggregate(:count, :id) == 1
+      assert redirected_to(conn) == entry_video_path(conn, :show, video2.entry, video2)
     end
 
     test "deletes existing vote" do
