@@ -57,3 +57,8 @@ strong {
 .st-no-margin {
   margin: 0;
 }
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $highlight;
+}
