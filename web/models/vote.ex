@@ -2,6 +2,9 @@ defmodule SignDict.Vote do
   use SignDict.Web, :model
   import SignDict.Gettext
 
+  alias SignDict.Repo
+  alias SignDict.Vote
+
   schema "votes" do
     belongs_to :user, SignDict.User
     belongs_to :video, SignDict.Video
@@ -21,17 +24,18 @@ defmodule SignDict.Vote do
   end
 
   def vote_video(user, video) do
-    delete_query = from(vote in SignDict.Vote,
+    delete_query = from(vote in Vote,
            inner_join: video in assoc(vote, :video),
-           where: vote.user_id == ^user.id and video.entry_id == ^video.entry_id)
+           where: vote.user_id == ^user.id and
+                  video.entry_id == ^video.entry_id)
 
     delete_query
-    |> SignDict.Repo.delete_all
+    |> Repo.delete_all
 
-    changeset = SignDict.Vote.changeset(%SignDict.Vote{
+    changeset = Vote.changeset(%Vote{
                                  user_id: user.id,
                                  video_id: video.id})
-    SignDict.Repo.insert(changeset)
+    Repo.insert(changeset)
   end
 
 end

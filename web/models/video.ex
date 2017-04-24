@@ -3,6 +3,7 @@ defmodule SignDict.Video do
   import StateMc.EctoSm
 
   alias SignDict.Repo
+  alias SignDict.Vote
 
   @states [:created, :uploaded, :transcoded, :waiting_for_review,
            :published, :deleted]
@@ -96,8 +97,8 @@ defmodule SignDict.Video do
 
   def with_vote_count(video) do
     if video.vote_count == nil do
-      query = from vote in SignDict.Vote, where: vote.video_id == ^video.id
-      %{video | vote_count: SignDict.Repo.aggregate(query, :count, :id)}
+      query = from vote in Vote, where: vote.video_id == ^video.id
+      %{video | vote_count: Repo.aggregate(query, :count, :id)}
     else
       video
     end

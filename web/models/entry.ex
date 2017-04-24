@@ -2,6 +2,7 @@ defmodule SignDict.Entry do
   use SignDict.Web, :model
 
   alias SignDict.Video
+  alias SignDict.Repo
 
   @types ~w(word phrase example)
 
@@ -50,12 +51,14 @@ defmodule SignDict.Entry do
   end
   def voted_video(entry, user) do
     query = from(video in Video,
-                 inner_join: vote  in SignDict.Vote,  on: video.id == vote.video_id,
-                 inner_join: entry in SignDict.Entry, on: entry.id == video.entry_id,
+                 inner_join: vote  in SignDict.Vote,
+                         on: video.id == vote.video_id,
+                 inner_join: entry in SignDict.Entry,
+                         on: entry.id == video.entry_id,
                  where: entry.id == ^entry.id and vote.user_id == ^user.id)
     query
-    |> SignDict.Repo.one
-    |> SignDict.Repo.preload(:user)
+    |> Repo.one
+    |> Repo.preload(:user)
   end
 
 end
