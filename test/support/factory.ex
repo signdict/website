@@ -54,7 +54,7 @@ defmodule SignDict.Factory do
   end
 
   def video_with_entry_factory do
-    %{video_factory() | entry: build(:entry)}
+    %{video_published_factory() | entry: build(:entry)}
   end
 
   def entry_factory do

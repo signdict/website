@@ -1,9 +1,33 @@
 defmodule SignDict.EntryVotingTest do
-  use SignUp.AcceptanceCase, async: true
+  use SignDict.AcceptanceCase, async: true
   import SignDict.Factory
 
+  alias SignDict.User
+
   test "user votes for a video", %{session: session} do
-    # TODO: complete this
+    Repo.insert! User.changeset(build(:user), %{email: "elisa@example.com", password: "correct_password", password_confirmation: "correct_password"})
+    video = insert(:video_with_entry)
+
+    session
+    |> visit("/")
+    |> click(Query.link("Sign in"))
+    |> find(Query.css(".login-form"), fn(form) ->
+      form
+      |> fill_in(Query.text_field("session_email"), with: "elisa@example.com")
+      |> fill_in(Query.text_field("session_password"), with: "correct_password")
+      |> click(Query.button("Log in"))
+    end)
+    |> visit("/entry/#{video.entry.id}")
+    |> click(Query.css(".so-voting-box--vote-button"))
+    |> find(Wallaby.Query.css(".so-voting-box--count"), fn(count) ->
+      assert count
+      |> has_text?("1")
+    end)
+    |> click(Query.css(".so-voting-box--vote-button"))
+    |> find(Wallaby.Query.css(".so-voting-box--count"), fn(count) ->
+      assert count
+      |> has_text?("0")
+    end)
   end
 
 end
