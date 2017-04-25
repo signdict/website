@@ -17,15 +17,15 @@
 }
 
 .so-video-list--item_selected {
-  background-color: $deactive;
-  margin-left: -1em;
+  border-left: 0.4em solid $highlight;
+  margin-left: -0.7em;
   margin-right: -1em;
-  padding-left: 1em;
+  padding-left: 0.3em;
   padding-right: 1em;
 }
 
-.so-video-list--item_selected .so-video-list--details {
-  color: #fff;
+.so-video-list--item_selected .so-video-list--video-play {
+  display: inline-block;
 }
 
 .so-video-list--video-play {
