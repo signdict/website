@@ -451,7 +451,7 @@ msgstr "Orignal URL"
 msgid "Entry deleted successfully."
 msgstr "Eintrag erfolgreich gelöscht."
 
-#: web/models/vote.ex:20
+#: web/models/vote.ex:23
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
 
@@ -704,3 +704,25 @@ msgstr "Für dieses Video stimmen."
 #: web/templates/entry/show.html.eex:63
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."
+
+#: web/controllers/vote_controller.ex:41
+msgid "You vote was reverted successfully"
+msgstr "Deine Stimme für dieses Video wurde zurück genommen."
+
+#, fuzzy
+#: web/controllers/vote_controller.ex:34
+msgid "Sadly your vote could not be found."
+msgstr "Leider konnte Deine Abstimmung nicht gefunden werden."
+
+#, fuzzy
+#: web/controllers/vote_controller.ex:45
+msgid "Sadly your vote deletion failed."
+msgstr "Leider hat das zurück nehmen deiner Stimme nicht funktioniert."
+
+#: web/controllers/vote_controller.ex:19
+msgid "Sadly your voting failed."
+msgstr "Leider hat das abstimmen nicht funktioniert."
+
+#: web/controllers/vote_controller.ex:15
+msgid "Thanks for voting!"
+msgstr "Danke für deine Stimme."
