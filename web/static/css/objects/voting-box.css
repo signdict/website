@@ -31,6 +31,14 @@
   color: #000;
 }
 
+.so-voting-box--vote-button_deactive {
+  color: $deactive;
+}
+
+.so-voting-box--vote-button_deactive:hover {
+  color: $deactive;
+}
+
 .so-voting-box--count {
   font-size: 1.5em;
   margin-top: -0.2em;

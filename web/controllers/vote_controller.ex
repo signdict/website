@@ -12,11 +12,11 @@ defmodule SignDict.VoteController do
     case Vote.vote_video(conn.assigns.current_user, video) do
       {:ok, _vote} ->
         conn
-          |> put_flash(:info, "You voted successfully.")
+          |> put_flash(:info, gettext("Thanks for voting!"))
           |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
-          |> put_flash(:error, "Your vote failed.")
+          |> put_flash(:error, gettext("Sadly your voting failed."))
           |> redirect(to: entry_video_path(conn, :show, video.entry, video))
     end
   end
@@ -31,18 +31,18 @@ defmodule SignDict.VoteController do
   defp do_delete(conn, video, vote)
   defp do_delete(conn, video, vote) when is_nil(vote) do
     conn
-    |> put_flash(:error, "Your vote could not be found.")
+    |> put_flash(:error, gettext("Sadly your vote could not be found."))
     |> redirect(to: entry_video_path(conn, :show, video.entry, video))
   end
   defp do_delete(conn, video, vote) do
     case Repo.delete(vote) do
       {:ok, _vote} ->
         conn
-          |> put_flash(:info, "You vote was reverted successfully")
+          |> put_flash(:info, gettext("You vote was reverted successfully"))
           |> redirect(to: entry_video_path(conn, :show, video.entry, video))
       {:error, _changeset} ->
         conn
-          |> put_flash(:error, "Your vote deletion failed.")
+          |> put_flash(:error, gettext("Sadly your vote deletion failed."))
           |> redirect(to: entry_path(conn, :show, video.entry))
     end
   end
