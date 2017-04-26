@@ -65,6 +65,8 @@ defmodule SignDict.VoteControllerTest do
       assert Vote |> Repo.get_by(%{user_id: user.id, video_id: video.id})
       assert redirected_to(conn) == entry_video_path(conn, :show, video.entry, video)
     end
+
+    # TODO: test if current video is updated in entry
   end
 
   describe "vote with logged out user" do

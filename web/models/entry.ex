@@ -3,6 +3,7 @@ defmodule SignDict.Entry do
 
   alias SignDict.Video
   alias SignDict.Repo
+  alias SignDict.Entry
 
   @types ~w(word phrase example)
 
@@ -12,7 +13,9 @@ defmodule SignDict.Entry do
     field :description, :string
     field :type, :string
     belongs_to :language, SignDict.Language
+
     has_many :videos, Video
+    belongs_to :current_video, Video
 
     timestamps()
   end
@@ -31,6 +34,9 @@ defmodule SignDict.Entry do
 
   def with_language(query) do
     from q in query, preload: :language
+  end
+  def with_current_video(query) do
+    from q in query, preload: :current_video
   end
 
   def types do
@@ -61,6 +67,24 @@ defmodule SignDict.Entry do
     |> Repo.preload(:user)
   end
 
+  def search(_query) do
+    []
+  end
+
+  def update_current_video(entry) do
+    Ecto.Adapters.SQL.query(Repo,
+      """
+        UPDATE entries SET current_video_id = (
+          SELECT videos.id FROM votes JOIN videos ON (votes.video_id = videos.id)
+            WHERE videos.entry_id = $1::integer
+            GROUP BY videos.entry_id, videos.id ORDER BY count(*) DESC LIMIT 1
+        ) WHERE entries.id = $1::integer
+      """, [entry.id]
+    )
+    Entry
+    |> Entry.with_current_video
+    |> Repo.get!(entry.id)
+  end
 end
 
 defimpl Phoenix.Param, for: SignDict.Entry do

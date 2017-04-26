@@ -3,6 +3,7 @@ defmodule SignDict.VoteController do
 
   plug Guardian.Plug.EnsureAuthenticated, handler: SignDict.GuardianErrorHandler
 
+  alias SignDict.Entry
   alias SignDict.Vote
   alias SignDict.Video
 
@@ -37,6 +38,7 @@ defmodule SignDict.VoteController do
   defp do_delete(conn, video, vote) do
     case Repo.delete(vote) do
       {:ok, _vote} ->
+        Entry.update_current_video(video.entry)
         conn
           |> put_flash(:info, gettext("You vote was reverted successfully"))
           |> redirect(to: entry_video_path(conn, :show, video.entry, video))

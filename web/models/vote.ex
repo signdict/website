@@ -4,6 +4,7 @@ defmodule SignDict.Vote do
 
   alias SignDict.Repo
   alias SignDict.Vote
+  alias SignDict.Entry
 
   schema "votes" do
     belongs_to :user, SignDict.User
@@ -35,7 +36,11 @@ defmodule SignDict.Vote do
     changeset = Vote.changeset(%Vote{
                                  user_id: user.id,
                                  video_id: video.id})
-    Repo.insert(changeset)
+    result = Repo.insert(changeset)
+
+    Entry.update_current_video(video.entry)
+
+    result
   end
 
 end

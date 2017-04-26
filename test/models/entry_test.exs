@@ -53,6 +53,16 @@ defmodule SignDict.EntryTest do
     end
   end
 
+  test "update_current_video/1" do
+    user   = insert(:user)
+    entry  = insert(:entry)
+    {:ok, _video1} = %{build(:video) | entry: entry} |> Repo.insert
+    {:ok, video2} = %{build(:video) | entry: entry} |> Repo.insert
+    %SignDict.Vote{user: user, video: video2} |> Repo.insert
+    entry = Entry.update_current_video(entry)
+    assert entry.current_video.id == video2.id
+  end
+
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the entry" do
       assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"

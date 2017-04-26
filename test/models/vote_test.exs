@@ -58,6 +58,8 @@ defmodule SignDict.VoteTest do
       assert query |> Repo.aggregate(:count, :id) == 1
       assert Vote |> Repo.aggregate(:count, :id) == 2
     end
+
+    # TODO: test if current video is updated in entry
   end
 
 end
