@@ -53,14 +53,28 @@ defmodule SignDict.EntryTest do
     end
   end
 
-  test "update_current_video/1" do
-    user   = insert(:user)
-    entry  = insert(:entry)
-    {:ok, _video1} = %{build(:video) | entry: entry} |> Repo.insert
-    {:ok, video2} = %{build(:video) | entry: entry} |> Repo.insert
-    %SignDict.Vote{user: user, video: video2} |> Repo.insert
-    entry = Entry.update_current_video(entry)
-    assert entry.current_video.id == video2.id
+  describe "update_current_video/1" do
+
+    test "updates to the highest rated video" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      {:ok, _video1} = %{build(:video_published) | entry: entry} |> Repo.insert
+      {:ok, video2}  = %{build(:video_published) | entry: entry} |> Repo.insert
+      %SignDict.Vote{user: user, video: video2} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
+    test "tests that it only uses videos in production state" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      {:ok, video1} = %{build(:video) | state: "deleted", entry: entry} |> Repo.insert
+      {:ok, video2} = %{build(:video_published) | entry: entry} |> Repo.insert
+      %SignDict.Vote{user: user, video: video1} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
   end
 
   describe "Phoenix.Param" do

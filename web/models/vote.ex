@@ -43,4 +43,12 @@ defmodule SignDict.Vote do
     result
   end
 
+  def delete_vote(user, video) do
+    delete_query = from(vote in Vote,
+           where: vote.user_id == ^user.id and
+                  vote.video_id == ^video.id)
+    delete_query |> Repo.delete_all
+    Entry.update_current_video(video.entry)
+  end
+
 end

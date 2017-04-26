@@ -75,10 +75,10 @@ defmodule SignDict.Entry do
     Ecto.Adapters.SQL.query(Repo,
       """
         UPDATE entries SET current_video_id = (
-          SELECT videos.id FROM votes JOIN videos ON (votes.video_id = videos.id)
-            WHERE videos.entry_id = $1::integer
-            GROUP BY videos.entry_id, videos.id ORDER BY count(*) DESC LIMIT 1
-        ) WHERE entries.id = $1::integer
+          SELECT videos.id FROM videos LEFT OUTER JOIN votes ON (votes.video_id = videos.id)
+            WHERE videos.entry_id = $1::integer AND videos.state = 'published'
+            GROUP BY videos.entry_id, videos.id ORDER BY count(votes.id) desc, videos.inserted_at ASC LIMIT 1
+        ) WHERE entries.id = $1::integer;
       """, [entry.id]
     )
     Entry
