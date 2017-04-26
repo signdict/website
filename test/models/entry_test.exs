@@ -77,6 +77,8 @@ defmodule SignDict.EntryTest do
 
   end
 
+  # TODO: test search/1
+
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the entry" do
       assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"

@@ -48,13 +48,13 @@ msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:38 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr "Registrieren"
 
 #: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:41
+#: web/templates/shared/navigation.html.eex:40
 msgid "Sign in"
 msgstr "Anmelden"
 
@@ -256,7 +256,7 @@ msgstr "Erfolgreich gespeichert"
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:34
+#: web/templates/shared/navigation.html.eex:33
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
@@ -451,7 +451,7 @@ msgstr "Orignal URL"
 msgid "Entry deleted successfully."
 msgstr "Eintrag erfolgreich gelöscht."
 
-#: web/models/vote.ex:23
+#: web/models/vote.ex:24
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
 
@@ -705,19 +705,9 @@ msgstr "Für dieses Video stimmen."
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."
 
-#: web/controllers/vote_controller.ex:41
+#: web/controllers/vote_controller.ex:30
 msgid "You vote was reverted successfully"
 msgstr "Deine Stimme für dieses Video wurde zurück genommen."
-
-#, fuzzy
-#: web/controllers/vote_controller.ex:34
-msgid "Sadly your vote could not be found."
-msgstr "Leider konnte Deine Abstimmung nicht gefunden werden."
-
-#, fuzzy
-#: web/controllers/vote_controller.ex:45
-msgid "Sadly your vote deletion failed."
-msgstr "Leider hat das zurück nehmen deiner Stimme nicht funktioniert."
 
 #: web/controllers/vote_controller.ex:19
 msgid "Sadly your voting failed."
@@ -726,3 +716,9 @@ msgstr "Leider hat das abstimmen nicht funktioniert."
 #: web/controllers/vote_controller.ex:15
 msgid "Thanks for voting!"
 msgstr "Danke für deine Stimme."
+
+#: web/templates/search/index.html.eex:4
+msgid "One search result for »%{query}«"
+msgid_plural "%{count} search results for »%{query}«"
+msgstr[0] "Ein Suchergebniss für »%{query}«"
+msgstr[1] "%{count} Suchergebnisse für »%{query}«"

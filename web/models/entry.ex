@@ -67,10 +67,6 @@ defmodule SignDict.Entry do
     |> Repo.preload(:user)
   end
 
-  def search(_query) do
-    []
-  end
-
   def update_current_video(entry) do
     Ecto.Adapters.SQL.query(Repo,
       """
@@ -85,6 +81,13 @@ defmodule SignDict.Entry do
     |> Entry.with_current_video
     |> Repo.get!(entry.id)
   end
+
+  def search(query) do
+    query = from(entry in Entry,
+            where: ilike(entry.text, ^("%#{query}%")))
+    query |> Entry.with_current_video |> Repo.all
+  end
+
 end
 
 defimpl Phoenix.Param, for: SignDict.Entry do

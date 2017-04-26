@@ -9,6 +9,6 @@ defmodule SignDict.SearchController do
     else
       []
     end
-    render conn, "index.html", searchbar: true, entries: entries
+    render conn, "index.html", conn: conn, searchbar: true, entries: entries
   end
 end
