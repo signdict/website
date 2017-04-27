@@ -4,6 +4,7 @@ defmodule SignDict.Entry do
   alias SignDict.Video
   alias SignDict.Repo
   alias SignDict.Entry
+  alias Ecto.Adapters.SQL
 
   @types ~w(word phrase example)
 
@@ -68,7 +69,7 @@ defmodule SignDict.Entry do
   end
 
   def update_current_video(entry) do
-    Ecto.Adapters.SQL.query(Repo,
+    SQL.query(Repo,
       """
         UPDATE entries SET current_video_id = (
           SELECT videos.id FROM videos LEFT OUTER JOIN votes ON (votes.video_id = videos.id)
@@ -84,7 +85,8 @@ defmodule SignDict.Entry do
 
   def search(query) do
     query = from(entry in Entry,
-            where: ilike(entry.text, ^("%#{query}%")) and not(is_nil(entry.current_video_id)))
+            where: ilike(entry.text, ^("%#{query}%")) and
+                   not(is_nil(entry.current_video_id)))
     query |> Entry.with_current_video |> Repo.all
   end
 
