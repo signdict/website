@@ -2,10 +2,8 @@ defmodule SignDict.EntryVotingTest do
   use SignDict.AcceptanceCase, async: true
   import SignDict.Factory
 
-  alias SignDict.User
-
   test "user votes for a video", %{session: session} do
-    Repo.insert! User.changeset(build(:user), %{email: "elisa@example.com", password: "correct_password", password_confirmation: "correct_password"})
+    insert(:user, %{email: "elisa@example.com", password: "correct_password", password_confirmation: "correct_password"})
     video = insert(:video_with_entry)
 
     session

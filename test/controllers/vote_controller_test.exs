@@ -29,8 +29,8 @@ defmodule SignDict.VoteControllerTest do
     test "it changes the vote to another video if voting another video of the same entry" do
       user   = insert(:user)
       entry  = insert(:entry)
-      {:ok, video1} = %{build(:video) | entry: entry} |> Repo.insert
-      {:ok, video2} = %{build(:video) | entry: entry} |> Repo.insert
+      video1 = insert(:video, %{entry: entry})
+      video2 = insert(:video, %{entry: entry})
       %SignDict.Vote{user: user, video: video1} |> Repo.insert
 
       conn  = build_conn()

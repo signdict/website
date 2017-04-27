@@ -133,14 +133,14 @@ defmodule SignDict.VideoTest do
 
     setup do
       entry = insert(:entry)
-      {:ok, user_1}  = %{build(:user) | name: "User 1"} |> Repo.insert
-      {:ok, user_2}  = %{build(:user) | name: "User 2"} |> Repo.insert
-      {:ok, user_3}  = %{build(:user) | name: "User 3"} |> Repo.insert
-      {:ok, video_1} = %{build(:video) | state: "published", user: user_1, entry: entry } |> Repo.insert
-      {:ok, video_2} = %{build(:video) | state: "published", user: user_2, entry: entry } |> Repo.insert
-      {:ok, _vote}    = %SignDict.Vote{user: user_1, video: video_1} |> Repo.insert
-      {:ok, _vote}    = %SignDict.Vote{user: user_2, video: video_1} |> Repo.insert
-      {:ok, _vote}    = %SignDict.Vote{user: user_3, video: video_2} |> Repo.insert
+      user_1  = insert(:user, %{name: "User 1"})
+      user_2  = insert(:user, %{name: "User 2"})
+      user_3  = insert(:user, %{name: "User 3"})
+      video_1 = insert(:video, %{state: "published", user: user_1, entry: entry})
+      video_2 = insert(:video, %{state: "published", user: user_2, entry: entry})
+      {:ok, _vote} = %SignDict.Vote{user: user_1, video: video_1} |> Repo.insert
+      {:ok, _vote} = %SignDict.Vote{user: user_2, video: video_1} |> Repo.insert
+      {:ok, _vote} = %SignDict.Vote{user: user_3, video: video_2} |> Repo.insert
 
       {:ok, entry: entry, video_1: video_1, video_2: video_2}
     end

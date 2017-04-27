@@ -1,7 +1,7 @@
 <%= if @conn.params["q"] && String.length(@conn.params["q"]) > 0 do %>
   <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell">
-      <h1>
+      <h1 class="so-search-result--headline">
         <%= ngettext(
               "One search result for »%{query}«",
               "%{count} search results for »%{query}«",
@@ -20,7 +20,7 @@
     </div>
     <div class="o-grid__cell">
       <h2>
-        <%= link entry.text, to: entry_path(@conn, :show, entry) %>
+        <%= link entry.text, to: entry_path(@conn, :show, entry), class: "so-search-result--link" %>
       </h2>
 
       <%= if String.length(entry.description) > 0 do %>

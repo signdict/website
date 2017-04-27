@@ -40,9 +40,9 @@ defmodule SignDict.VoteTest do
 
   describe "vote_video/2" do
     setup do
-      user   = insert(:user)
-      entry  = insert(:entry)
-      {:ok, video} = %{build(:video_published) | entry: entry} |> Repo.insert
+      user  = insert(:user)
+      entry = insert(:entry)
+      video = insert(:video_published, %{entry: entry})
       {:ok, user: user, entry: entry, video: video}
     end
 
@@ -70,9 +70,9 @@ defmodule SignDict.VoteTest do
 
   describe "delete_vote/2" do
     setup do
-      user   = insert(:user)
-      entry  = insert(:entry)
-      {:ok, video} = %{build(:video_published) | entry: entry} |> Repo.insert
+      user  = insert(:user)
+      entry = insert(:entry)
+      video = insert(:video_published, %{entry: entry})
       {:ok, user: user, entry: entry, video: video}
     end
 

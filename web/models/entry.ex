@@ -84,7 +84,7 @@ defmodule SignDict.Entry do
 
   def search(query) do
     query = from(entry in Entry,
-            where: ilike(entry.text, ^("%#{query}%")))
+            where: ilike(entry.text, ^("%#{query}%")) and not(is_nil(entry.current_video_id)))
     query |> Entry.with_current_video |> Repo.all
   end
 

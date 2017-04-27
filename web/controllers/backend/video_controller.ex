@@ -46,6 +46,7 @@ defmodule SignDict.Backend.VideoController do
 
     case Repo.update(changeset) do
       {:ok, video} ->
+        SignDict.Entry.update_current_video(Repo.get(SignDict.Entry, video.entry_id))
         conn
         |> put_flash(:info, "Video updated successfully.")
         |> redirect(to: backend_entry_video_path(conn, :show,

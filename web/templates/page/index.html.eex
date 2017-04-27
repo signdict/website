@@ -22,8 +22,7 @@
 </div>
 
 <div class="o-container o-container--medium">
-  <div class='so-landing--search'>
-    <form action="/search">
+    <form action="/search" class='so-landing--search'>
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell--width-80@medium o-grid__cell--width-100">
           <input class="so-landing--search--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>"/>
@@ -33,7 +32,6 @@
         </div>
       </div>
     </form>
-  </div>
 </div>
 
 <div class="so-landing--motivation">
