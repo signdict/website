@@ -5,13 +5,13 @@ defmodule SignDict.SearchEntryTest do
   alias SignDict.Entry
 
   test "Search for a sign", %{session: session} do
-    train_entry = insert(:entry, %{text: "train"})
-    insert(:video_published, %{entry: train_entry})
-    Entry.update_current_video(train_entry)
+    kid_entry = insert(:entry, %{text: "kid"})
+    insert(:video_published, %{entry: kid_entry})
+    Entry.update_current_video(kid_entry)
 
-    house_entry = insert(:entry, %{text: "house"})
-    insert(:video_published, %{entry: house_entry})
-    Entry.update_current_video(house_entry)
+    school_entry = insert(:entry, %{text: "school"})
+    insert(:video_published, %{entry: school_entry})
+    Entry.update_current_video(school_entry)
 
     session
     |> visit("/")
@@ -26,6 +26,6 @@ defmodule SignDict.SearchEntryTest do
     end)
     |> click(Query.css(".so-search-result--link"))
 
-    assert current_path(session) == entry_path(SignDict.Endpoint, :show, train_entry)
+    assert current_path(session) == entry_path(SignDict.Endpoint, :show, kid_entry)
   end
 end

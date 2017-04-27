@@ -37,6 +37,11 @@ defmodule SignDict.Factory do
     }
   end
 
+  def find_or_build_language(language) do
+    SignDict.Repo.get_by(SignDict.Language, short_name: language)
+    || build(String.to_atom("language_#{language}"))
+  end
+
   def video_factory do
     %SignDict.Video {
       state: "created",
@@ -62,7 +67,7 @@ defmodule SignDict.Factory do
       description: "some content",
       text: "some content",
       type: "word",
-      language: build(:language_dgs)
+      language: find_or_build_language("dgs")
     }
   end
 
