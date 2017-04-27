@@ -45,11 +45,57 @@ defmodule SignDict.EntryTest do
 
     test "returns the video with the user preloaded" do
       entry = insert(:entry)
-      video = %{build(:video) | entry: entry} |> Repo.insert!
+      video = insert(:video, %{entry: entry})
       vote  = %SignDict.Vote{video: video, user: insert(:user)} |> Repo.insert!
       voted_video = Entry.voted_video(vote.video.entry, vote.user)
       assert voted_video.id == video.id
       assert Ecto.assoc_loaded? voted_video.user
+    end
+  end
+
+  describe "update_current_video/1" do
+
+    test "updates to the highest rated video" do
+      user    = insert(:user)
+      entry   = insert(:entry)
+      _video1 = insert(:video_published, %{entry: entry})
+      video2  = insert(:video_published, %{entry: entry})
+      %SignDict.Vote{user: user, video: video2} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
+    test "tests that it only uses videos in production state" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      video1 = insert(:video, %{state: "deleted", entry: entry})
+      video2 = insert(:video_published, %{entry: entry})
+      %SignDict.Vote{user: user, video: video1} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
+  end
+
+  describe "search/1" do
+    setup do
+      train_entry = insert(:entry, %{text: "train"})
+      insert(:video_published, %{entry: train_entry})
+      Entry.update_current_video(train_entry)
+
+      house_entry = insert(:entry, %{text: "house"})
+      insert(:video_published, %{entry: house_entry})
+      Entry.update_current_video(house_entry)
+
+      tree_entry  = insert(:entry, %{text: "tree"})
+      insert(:video, %{entry: tree_entry})
+      Entry.update_current_video(tree_entry)
+
+      {:ok, train: train_entry, tree: tree_entry}
+    end
+
+    test "it returns the correct entry when searching for a word and only uses entries with published videos", %{train: train} do
+      assert Enum.map(Entry.search("tr"), &(&1.id)) == Enum.map([train], &(&1.id))
     end
   end
 

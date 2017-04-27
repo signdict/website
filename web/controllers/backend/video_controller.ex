@@ -1,5 +1,7 @@
 defmodule SignDict.Backend.VideoController do
   use SignDict.Web, :controller
+
+  alias SignDict.Entry
   alias SignDict.Video
 
   plug :load_and_authorize_resource, model: Video, preload: [:entry, :user]
@@ -46,6 +48,7 @@ defmodule SignDict.Backend.VideoController do
 
     case Repo.update(changeset) do
       {:ok, video} ->
+        Entry.update_current_video(Repo.get(SignDict.Entry, video.entry_id))
         conn
         |> put_flash(:info, "Video updated successfully.")
         |> redirect(to: backend_entry_video_path(conn, :show,

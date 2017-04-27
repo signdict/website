@@ -3,6 +3,8 @@ defmodule SignDict.Entry do
 
   alias SignDict.Video
   alias SignDict.Repo
+  alias SignDict.Entry
+  alias Ecto.Adapters.SQL
 
   @types ~w(word phrase example)
 
@@ -12,7 +14,9 @@ defmodule SignDict.Entry do
     field :description, :string
     field :type, :string
     belongs_to :language, SignDict.Language
+
     has_many :videos, Video
+    belongs_to :current_video, Video
 
     timestamps()
   end
@@ -31,6 +35,9 @@ defmodule SignDict.Entry do
 
   def with_language(query) do
     from q in query, preload: :language
+  end
+  def with_current_video(query) do
+    from q in query, preload: :current_video
   end
 
   def types do
@@ -59,6 +66,28 @@ defmodule SignDict.Entry do
     query
     |> Repo.one
     |> Repo.preload(:user)
+  end
+
+  def update_current_video(entry) do
+    SQL.query(Repo,
+      """
+        UPDATE entries SET current_video_id = (
+          SELECT videos.id FROM videos LEFT OUTER JOIN votes ON (votes.video_id = videos.id)
+            WHERE videos.entry_id = $1::integer AND videos.state = 'published'
+            GROUP BY videos.entry_id, videos.id ORDER BY count(votes.id) desc, videos.inserted_at ASC LIMIT 1
+        ) WHERE entries.id = $1::integer;
+      """, [entry.id]
+    )
+    Entry
+    |> Entry.with_current_video
+    |> Repo.get!(entry.id)
+  end
+
+  def search(query) do
+    query = from(entry in Entry,
+            where: ilike(entry.text, ^("%#{query}%")) and
+                   not(is_nil(entry.current_video_id)))
+    query |> Entry.with_current_video |> Repo.all
   end
 
 end

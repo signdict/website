@@ -48,13 +48,13 @@ msgid "Please fill in an email address and password"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:38 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:41
+#: web/templates/shared/navigation.html.eex:40
 msgid "Sign in"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:34
+#: web/templates/shared/navigation.html.eex:33
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr ""
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Entry deleted successfully."
 msgstr ""
 
-#: web/models/vote.ex:23
+#: web/models/vote.ex:24
 msgid "Only one vote per video and user"
 msgstr ""
 
@@ -705,16 +705,8 @@ msgstr ""
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr ""
 
-#: web/controllers/vote_controller.ex:41
+#: web/controllers/vote_controller.ex:30
 msgid "You vote was reverted successfully"
-msgstr ""
-
-#: web/controllers/vote_controller.ex:34
-msgid "Sadly your vote could not be found."
-msgstr ""
-
-#: web/controllers/vote_controller.ex:45
-msgid "Sadly your vote deletion failed."
 msgstr ""
 
 #: web/controllers/vote_controller.ex:19
@@ -724,3 +716,9 @@ msgstr ""
 #: web/controllers/vote_controller.ex:15
 msgid "Thanks for voting!"
 msgstr ""
+
+#: web/templates/search/index.html.eex:4
+msgid "%{count} search result for »%{query}«"
+msgid_plural "%{count} search results for »%{query}«"
+msgstr[0] ""
+msgstr[1] ""

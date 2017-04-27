@@ -4,6 +4,7 @@ defmodule SignDict.Vote do
 
   alias SignDict.Repo
   alias SignDict.Vote
+  alias SignDict.Entry
 
   schema "votes" do
     belongs_to :user, SignDict.User
@@ -35,7 +36,19 @@ defmodule SignDict.Vote do
     changeset = Vote.changeset(%Vote{
                                  user_id: user.id,
                                  video_id: video.id})
-    Repo.insert(changeset)
+    result = Repo.insert(changeset)
+
+    Entry.update_current_video(video.entry)
+
+    result
+  end
+
+  def delete_vote(user, video) do
+    delete_query = from(vote in Vote,
+           where: vote.user_id == ^user.id and
+                  vote.video_id == ^video.id)
+    delete_query |> Repo.delete_all
+    Entry.update_current_video(video.entry)
   end
 
 end
