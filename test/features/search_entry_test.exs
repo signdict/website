@@ -17,7 +17,7 @@ defmodule SignDict.SearchEntryTest do
     |> visit("/")
     |> find(Query.css(".so-landing--search"), fn(form) ->
       form
-      |> fill_in(Query.text_field("q"), with: "tr")
+      |> fill_in(Query.text_field("q"), with: "ki")
       |> click(Query.button("Search ›"))
     end)
     |> find(Query.css(".so-search-result--headline"), fn(headline) ->
