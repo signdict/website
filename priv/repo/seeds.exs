@@ -84,3 +84,5 @@ SignDict.Repo.insert!(
   }
 )
 
+SignDict.Entry.update_current_video(aufnehmen)
+

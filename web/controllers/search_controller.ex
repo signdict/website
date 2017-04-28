@@ -5,7 +5,7 @@ defmodule SignDict.SearchController do
 
   def index(conn, params) do
     entries = if params["q"] && String.length(params["q"]) > 0 do
-      Entry.search(params["q"])
+      Entry.search(Gettext.get_locale(SignDict.Gettext), params["q"])
     else
       []
     end
