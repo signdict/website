@@ -95,7 +95,7 @@ defmodule SignDict.EntryTest do
     end
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos", %{train: train} do
-      assert Enum.map(Entry.search("tr"), &(&1.id)) == Enum.map([train], &(&1.id))
+      assert Enum.map(Entry.search("de", "tr"), &(&1.id)) == Enum.map([train], &(&1.id))
     end
   end
 
