@@ -83,19 +83,23 @@ defmodule SignDict.EntryTest do
       insert(:video_published, %{entry: train_entry})
       Entry.update_current_video(train_entry)
 
-      house_entry = insert(:entry, %{text: "house"})
-      insert(:video_published, %{entry: house_entry})
-      Entry.update_current_video(house_entry)
+      hotel_entry = insert(:entry, %{text: "hôtel"})
+      insert(:video_published, %{entry: hotel_entry})
+      Entry.update_current_video(hotel_entry)
 
       tree_entry  = insert(:entry, %{text: "tree"})
       insert(:video, %{entry: tree_entry})
       Entry.update_current_video(tree_entry)
 
-      {:ok, train: train_entry, tree: tree_entry}
+      {:ok, train: train_entry, tree: tree_entry, hotel: hotel_entry}
     end
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos", %{train: train} do
-      assert Enum.map(Entry.search("tr"), &(&1.id)) == Enum.map([train], &(&1.id))
+      assert Enum.map(Entry.search("de", "tr"), &(&1.id)) == Enum.map([train], &(&1.id))
+    end
+
+    test "it also finds words with accents when using without", %{hotel: hotel} do
+      assert Enum.map(Entry.search("de", "hotel"), &(&1.id)) == Enum.map([hotel], &(&1.id))
     end
   end
 

@@ -83,11 +83,34 @@ defmodule SignDict.Entry do
     |> Repo.get!(entry.id)
   end
 
-  def search(query) do
-    query = from(entry in Entry,
-            where: ilike(entry.text, ^("%#{query}%")) and
-                   not(is_nil(entry.current_video_id)))
-    query |> Entry.with_current_video |> Repo.all
+  def search(locale, search) do
+    qry = """
+      select id from entries where current_video_id is not null and
+        fulltext_search @@ to_tsquery('#{postgres_locale(locale)}', unaccent($1));
+    """
+    res = Ecto.Adapters.SQL.query!(Repo, qry, [format_search_to_postgres(search)])
+    ids = Enum.map(res.rows, fn(row) -> List.first(row) end)
+    query = from(entry in Entry, where: entry.id in ^ids)
+
+    query
+    |> Entry.with_current_video
+    |> Repo.all
+  end
+
+  defp postgres_locale(locale) do
+    # The locale is mapped to a postgres string
+    # here. If you add a new language here, you also
+    # have to change the database trigger to have
+    # this new language in there, too.
+    cond do
+      locale == 'de' -> 'german'
+      locale == 'en' -> 'english'
+      true -> 'simple'
+    end
+  end
+
+  defp format_search_to_postgres(search) do
+    "#{search}:*"
   end
 
 end
