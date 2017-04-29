@@ -48,5 +48,6 @@ defmodule SignDict.Endpoint do
     key: "_sign_dict_key",
     signing_salt: "2xqY1fFX"
 
+  plug PryIn.Plug
   plug SignDict.Router
 end

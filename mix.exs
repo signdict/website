@@ -21,7 +21,7 @@ defmodule SignDict.Mixfile do
   def application do
     [
       mod: {SignDict, []},
-      extra_applications: [:canada, :elixir_make]
+      extra_applications: [:canada, :elixir_make, :pryin]
     ]
   end
 
@@ -58,7 +58,8 @@ defmodule SignDict.Mixfile do
      {:arc_ecto, "~> 0.6.0"},
      {:exgravatar, "~> 2.0.0"},
      {:distillery, "~> 1.3.1"},
-     {:timex, "~> 3.0"}
+     {:timex, "~> 3.0"},
+     {:pryin, "~> 0.1"}
    ]
   end
 

@@ -109,7 +109,7 @@ defmodule SignDict.Entry do
     cond do
       locale == "de" -> "german"
       locale == "en" -> "english"
-      true -> 'simple'
+      true -> "simple"
     end
   end
 
