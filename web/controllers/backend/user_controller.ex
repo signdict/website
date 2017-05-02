@@ -1,6 +1,7 @@
 defmodule SignDict.Backend.UserController do
   use SignDict.Web, :controller
   alias SignDict.User
+  alias SignDict.Video
 
   plug :load_and_authorize_resource, model: User
 
@@ -26,9 +27,13 @@ defmodule SignDict.Backend.UserController do
     end
   end
 
-  def show(conn, _params) do
+  def show(conn, params) do
     user = conn.assigns.user |> Repo.preload(videos: :entry)
-    render(conn, "show.html", user: user)
+    videos = Video
+             |> where([video], video.user_id == ^user.id)
+             |> preload(:entry)
+             |> Repo.paginate(params)
+    render(conn, "show.html", user: user, videos: videos)
   end
 
   def edit(conn, _params) do

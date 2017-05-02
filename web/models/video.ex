@@ -16,6 +16,7 @@ defmodule SignDict.Video do
     field :video_url, :string
     field :thumbnail_url, :string
     field :plays, :integer
+    field :metadata, :map
 
     field :vote_count, :integer, virtual: true
 
@@ -31,7 +32,7 @@ defmodule SignDict.Video do
     defstate @states
 
     defevent :upload, %{from: [:created], to: :uploaded}, fn (changeset) ->
-      changeset |> Repo.update() # TODO: actually upload the file
+      changeset |> Repo.update()
     end
 
     defevent :transcode, %{from: [:uploaded], to: :transcoded}, fn(changeset) ->

@@ -10,6 +10,11 @@
     <title><%= gettext("Hello SignDict!") %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
+
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
+      <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
+    <% end %>
   </head>
 
   <body>
@@ -31,10 +36,5 @@
     </div> <!-- /container -->
 
     <%= render SignDict.SharedView, "footer.html", conn: @conn %>
-
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
-      <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
-    <% end %>
   </body>
 </html>

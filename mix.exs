@@ -59,7 +59,9 @@ defmodule SignDict.Mixfile do
      {:exgravatar, "~> 2.0.0"},
      {:distillery, "~> 1.3.1"},
      {:timex, "~> 3.0"},
-     {:pryin, "~> 0.1"}
+     {:pryin, "~> 0.1"},
+     {:scrivener_ecto, "~> 1.0"},
+     {:scrivener_html, "~> 1.7"},
    ]
   end
 

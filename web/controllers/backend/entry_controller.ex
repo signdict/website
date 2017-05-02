@@ -3,12 +3,16 @@ defmodule SignDict.Backend.EntryController do
   alias SignDict.Entry
   alias SignDict.Language
 
-  plug :load_and_authorize_resource, model: Entry
+  plug :load_and_authorize_resource, model: Entry, except: :index
 
-  def index(conn, _params) do
-    entries = conn.assigns.entrys
-              |> Repo.preload(:language)
-    render(conn, "index.html", entries: entries)
+  def index(conn, params) do
+    entries = Entry
+              |> filter_entries(params["filter"])
+              |> order_by(:text)
+              |> preload(:language)
+              |> Repo.paginate(params)
+
+    render(conn, "index.html", entries: entries, params: params)
   end
 
   def new(conn, _params) do
@@ -67,5 +71,25 @@ defmodule SignDict.Backend.EntryController do
     conn
     |> put_flash(:info, gettext("Entry deleted successfully."))
     |> redirect(to: backend_entry_path(conn, :index))
+  end
+
+  defp filter_entries(query, search) do
+    do_filter(query, normalize_search(search))
+  end
+
+  defp normalize_search(search) do
+    if search == nil || search == "" do
+      nil
+    else
+      search
+    end
+  end
+
+  defp do_filter(query, filter) when is_nil(filter) do
+    query
+  end
+  defp do_filter(query, filter) do
+    query
+    |> where([entry], ilike(entry.text, ^"#{filter}%"))
   end
 end
