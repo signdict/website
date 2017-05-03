@@ -1,8 +1,5 @@
 <div class="o-container o-container--medium">
-  <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: true %>
-  <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
-
-  <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
+  <div class="o-grid__cell o-grid__cell--offset-15@small">
     <h1 class="so-landing--banner--headline"><%= gettext("Impressum") %></h1>
     <p>
       <a href="http://bodo.tasche.me">Bodo Tasche</a>
@@ -15,5 +12,3 @@
     <a href="mailto:mail@signdict.org">mail@signdict.org</a>
   </div>
 </div>
-
-<%= render SignDict.SharedView, "footer.html", conn: @conn %>
