@@ -9,7 +9,9 @@ defmodule SignDict.UserController do
   plug :load_and_authorize_resource, model: User
 
   def new(conn, _params) do
-    render conn, "new.html", changeset: User.register_changeset(%User{})
+    render conn, "new.html",
+      changeset: User.register_changeset(%User{}),
+      title: gettext("Register")
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -23,7 +25,8 @@ defmodule SignDict.UserController do
         |> Plug.sign_in(user)
         |> redirect(to: page_path(conn, :welcome))
       {:error, changeset} ->
-        render conn, "new.html", changeset: changeset
+        render conn, "new.html", changeset: changeset,
+          title: gettext("Register")
     end
   end
 
@@ -34,14 +37,20 @@ defmodule SignDict.UserController do
     render(conn, "show.html",
       user: conn.assigns.user,
       searchbar: true,
-      video_count: video_count
+      video_count: video_count,
+      title: gettext("User %{user}", user: conn.assigns.user.name)
     )
   end
 
   def edit(conn, _params) do
     user = conn.assigns.user
     changeset = User.changeset(user)
-    render(conn, "edit.html", user: user, changeset: changeset, user: user)
+    render(conn, "edit.html",
+      user: user,
+      changeset: changeset,
+      user: user,
+      title: gettext("Edit profile")
+    )
   end
 
   def update(conn, %{"id" => _id, "user" => user_params}) do

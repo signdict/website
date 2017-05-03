@@ -8,20 +8,23 @@ defmodule SignDict.PageController do
   end
 
   def imprint(conn, _params) do
-    render conn, "imprint.html", layout: {SignDict.LayoutView, "app.html"}
+    render conn, "imprint.html", layout: {SignDict.LayoutView, "app.html"},
+       title: gettext("Imprint")
   end
 
   def contact(conn, _params) do
-    render conn, "contact.html", layout: {SignDict.LayoutView, "app.html"}
+    render conn, "contact.html", layout: {SignDict.LayoutView, "app.html"},
+       title: gettext("Contact")
   end
 
   def welcome(conn, _params) do
     render conn, "welcome.html", layout: {SignDict.LayoutView, "empty.html"},
-      sign_count: sign_count()
+      sign_count: sign_count(), title: gettext("Welcome")
   end
 
   def about(conn, _params) do
-    render conn, "about.html", layout: {SignDict.LayoutView, "app.html"}
+    render conn, "about.html", layout: {SignDict.LayoutView, "app.html"},
+      title: gettext("About")
   end
 
   defp sign_count do
