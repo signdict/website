@@ -32,7 +32,11 @@
       <td class="c-table__cell"><%= video.copyright %></td>
       <td class="c-table__cell"><%= video.license %></td>
       <td class="c-table__cell"><%= video.plays %></td>
-      <td class="c-table__cell"><%= link video.original_href, to: video.original_href, target: "_blank", rel: "noopener" %></td>
+      <td class="c-table__cell">
+        <%= if video.original_href do %>
+          <%= link video.original_href, to: video.original_href, target: "_blank", rel: "noopener" %>
+        <% end %>
+      </td>
 
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">

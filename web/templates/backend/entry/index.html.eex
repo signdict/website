@@ -1,35 +1,58 @@
-<h1 class="c-heading"><%= gettext("Listing entries") %></h1>
+<div class="o-grid">
+  <div class="o-grid__cell">
+    <h1 class="c-heading"><%= gettext("Listing entries") %></h1>
+  </div>
+</div>
 
-<table class="c-table c-table--striped">
-  <thead class="c-table__head">
-    <tr class="c-table__row c-table__row--heading">
-      <th class="c-table__cell" scope='col'><%= gettext("entry.text") %></th>
-      <th class="c-table__cell" scope='col'><%= gettext("entry.type") %></th>
-      <th class="c-table__cell" scope='col'><%= gettext("Language") %></th>
-      <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
-    </tr>
-  </thead>
-  <tbody class="c-table__body">
-<%= for entry <- @entries do %>
-    <tr class="c-table__row">
-      <td class="c-table__cell"><%= link entry.text, to: backend_entry_path(@conn, :show, entry)  %></td>
-      <td class="c-table__cell"><%= entry.type %></td>
-      <td class="c-table__cell"><%= link entry.language.short_name, to: backend_language_path(@conn, :show, entry.language) %></div>
+<form>
+  <div class="o-grid">
+    <div class="o-grid__cell">
+      <input name="filter" class="c-field" value="<%= @params["filter"] %>">
+    </div>
+    <div class="o-grid__cell">
+      <input type="submit" value="Filter!" class="c-button">
+    </div>
+  </div>
+</form>
 
-      <td class="c-table__cell">
-        <div class="o-grid o-grid--no-gutter">
-          <div class="o-grid__cell t-action-buttons">
-            <%= link gettext("Show"), to: backend_entry_path(@conn, :show, entry), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, entry), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Delete"), to: backend_entry_path(@conn, :delete, entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
-          </div>
-        </div>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="o-grid">
+  <div class="o-grid__cell">
+    <table class="c-table c-table--striped">
+      <thead class="c-table__head">
+        <tr class="c-table__row c-table__row--heading">
+          <th class="c-table__cell" scope='col'><%= gettext("entry.text") %></th>
+          <th class="c-table__cell" scope='col'><%= gettext("entry.description") %></th>
+          <th class="c-table__cell" scope='col'><%= gettext("entry.type") %></th>
+          <th class="c-table__cell" scope='col'><%= gettext("Language") %></th>
+          <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
+        </tr>
+      </thead>
+      <tbody class="c-table__body">
+    <%= for entry <- @entries do %>
+        <tr class="c-table__row">
+          <td class="c-table__cell"><%= link entry.text, to: backend_entry_path(@conn, :show, entry)  %></td>
+          <td class="c-table__cell"><%= entry.description %></td>
+          <td class="c-table__cell"><%= entry.type %></td>
+          <td class="c-table__cell"><%= link entry.language.short_name, to: backend_language_path(@conn, :show, entry.language) %></div>
 
-<p>
-  <%= link gettext("New entry"), to: backend_entry_path(@conn, :new), class: "c-button c-button--info" %>
-</p>
+          <td class="c-table__cell">
+            <div class="o-grid o-grid--no-gutter">
+              <div class="o-grid__cell t-action-buttons">
+                <%= link gettext("Show"), to: backend_entry_path(@conn, :show, entry), class: "c-button u-xsmall c-button--success" %>
+                <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, entry), class: "c-button u-xsmall c-button--success" %>
+                <%= link gettext("Delete"), to: backend_entry_path(@conn, :delete, entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+              </div>
+            </div>
+          </td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+    <%= pagination_links @entries, filter: @params["filter"] %>
+
+    <p>
+      <%= link gettext("New entry"), to: backend_entry_path(@conn, :new), class: "c-button c-button--info" %>
+    </p>
+  </div>
+</div>

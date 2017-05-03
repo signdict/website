@@ -31,5 +31,7 @@ config :wallaby, screenshot_on_failure: true
 # easier for non german speaking people
 config :sign_dict, SignDict.Gettext, default_locale: "en"
 
+config :sign_dict, :upload_path, "./test/uploads"
+
 config :sign_dict, SignDict.Mailer,
   adapter: Bamboo.TestAdapter

@@ -1,6 +1,8 @@
 <h1 class="c-heading"><%= gettext("Video") %>: <%= SignDict.Entry.to_string @video.entry %></h1>
 
-<video src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+<%= if @video.video_url do %>
+  <video src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+<% end %>
 
 <div class="o-container--small">
   <div class="o-grid">
@@ -47,14 +49,26 @@
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.video_url") %></strong></div>
-    <div class="o-grid__cell"><%= link @video.video_url, to: @video.video_url, target: "_blank", rel: "noopener" %></div>
+    <div class="o-grid__cell">
+      <%= if @video.video_url do %>
+        <%= link @video.video_url, to: @video.video_url, target: "_blank", rel: "noopener" %>
+      <% else %>
+        NONE
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.thumbnail_url") %></strong></div>
-    <div class="o-grid__cell"><%= link @video.thumbnail_url, to: @video.thumbnail_url, target: "_blank", rel: "noopener" %></div>
+    <div class="o-grid__cell">
+      <%= if @video.thumbnail_url do %>
+        <%= link @video.thumbnail_url, to: @video.thumbnail_url, target: "_blank", rel: "noopener" %>
+      <% else %>
+        NONE
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -62,6 +76,13 @@
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.plays") %></strong></div>
     <div class="o-grid__cell"><%= @video.plays %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.metadata") %></strong></div>
+    <div class="o-grid__cell"><code><pre><%= format_metadata(@video) %></pre></code></div>
   </div>
 </div>
 

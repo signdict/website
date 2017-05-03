@@ -1,4 +1,5 @@
 @import "base/_fonts.css";
+@import "components/_pagination.css";
 
 body {
   font-family: "SignDict", "Helvetica Neue";
