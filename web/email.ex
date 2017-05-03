@@ -3,6 +3,15 @@ defmodule SignDict.Email do
 
   import SignDict.Gettext
 
+  def contact_form(email, content) do
+    base_email()
+    |> to("mail@signdict.org")
+    |> subject(gettext("New message via contact form"))
+    |> assign(:email, email)
+    |> assign(:content, content)
+    |> render(:contact_form)
+  end
+
   def password_reset(user) do
     base_email()
     |> to(user)
@@ -13,7 +22,7 @@ defmodule SignDict.Email do
 
   defp base_email do
     new_email()
-    |> from("mail@signdict.com")
+    |> from("mail@signdict.org")
     |> put_html_layout({SignDict.LayoutView, "email.html"})
   end
 end

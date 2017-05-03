@@ -55,7 +55,8 @@ defmodule SignDict.Router do
     get "/search", SearchController, :index
     get "/imprint", PageController, :imprint
     get "/about",   PageController, :about
-    get "/contact", PageController, :contact
+    get "/contact", ContactController, :new
+    post "/contact", ContactController, :create
     get "/", PageController, :index
   end
 
