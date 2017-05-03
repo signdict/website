@@ -13,8 +13,8 @@
 <%= for user <- @users do %>
     <tr class="c-table__row">
       <td class="c-table__cell">
-        <%= img_tag SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, style: "margin-right: 0.5em" %>
-        <%= user.email %>
+        <%= link img_tag(SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, height: 32, style: "margin-right: 0.5em"), to: backend_user_path(@conn, :show, user) %>
+        <%= link user.email, to: backend_user_path(@conn, :show, user) %>
       </td>
       <td class="c-table__cell"><%= user.name %></td>
       <td class="c-table__cell"><%= user.role %></td>

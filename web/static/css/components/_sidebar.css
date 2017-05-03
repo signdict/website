@@ -1,0 +1,12 @@
+.sc-sidebar {
+  background-color: $light_background;
+  padding: 1em 1em;
+}
+
+.sc-sidebar--content {
+  font-size: 0.9em;
+}
+
+.sc-sidebar h1 {
+  font-size: 1em;
+}

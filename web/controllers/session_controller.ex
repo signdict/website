@@ -15,7 +15,7 @@ defmodule SignDict.SessionController do
   def create(conn, %{"session" => %{"email" => "", "password" => ""}}) do
     conn
     |> put_flash(:error, gettext("Please fill in an email address and password"))
-    |> render("new.html")
+    |> render("new.html", title: gettext("Login"))
   end
 
   def create(conn, %{"session" => %{"email" => email,
@@ -29,7 +29,7 @@ defmodule SignDict.SessionController do
       {:error, _reason} ->
         conn
         |> put_flash(:error, gettext("Invalid email address or password"))
-        |> render("new.html")
+        |> render("new.html", title: gettext("Login"))
     end
   end
 

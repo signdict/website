@@ -1,11 +1,17 @@
 defmodule SignDict.Backend.VideoController do
   use SignDict.Web, :controller
+
+  alias SignDict.Entry
   alias SignDict.Video
 
-  plug :load_and_authorize_resource, model: Video, preload: [:entry, :user]
+  plug :load_and_authorize_resource, model: Video, preload: [:entry, :user], except: :index
 
-  def index(conn, _params) do
-    render(conn, "index.html", videos: conn.assigns.videos)
+  def index(conn, params) do
+    videos = Video
+             |> order_by(:id)
+             |> preload(:entry)
+             |> Repo.paginate(params)
+    render(conn, "index.html", videos: videos)
   end
 
   def new(conn, %{"entry_id" => entry_id}) do
@@ -46,6 +52,7 @@ defmodule SignDict.Backend.VideoController do
 
     case Repo.update(changeset) do
       {:ok, video} ->
+        Entry.update_current_video(Repo.get(SignDict.Entry, video.entry_id))
         conn
         |> put_flash(:info, "Video updated successfully.")
         |> redirect(to: backend_entry_video_path(conn, :show,

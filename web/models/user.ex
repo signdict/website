@@ -10,6 +10,7 @@ defmodule SignDict.User do
 
   @roles ~w(user admin)
 
+  @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "users" do
     field :email, :string
 
@@ -146,5 +147,11 @@ defmodule SignDict.User do
 
     changeset
     |> put_change(:password_hash, hashed_password)
+  end
+end
+
+defimpl Phoenix.Param, for: SignDict.User do
+  def to_param(%{name: name, id: id}) do
+    SignDict.Permalink.to_permalink(id, name)
   end
 end

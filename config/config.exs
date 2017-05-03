@@ -14,6 +14,7 @@ config :sign_dict, SignDict.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
   render_errors: [view: SignDict.ErrorView, accepts: ~w(html json)],
+  instrumenters: [PryIn.Instrumenter],
   pubsub: [name: SignDict.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
@@ -52,6 +53,19 @@ config :arc,
   storage: Arc.Storage.Local
 
 config :sign_dict, :upload_path, "./uploads"
+
+config :pryin,
+       otp_app: :sign_dict,
+       enabled: false,
+       env: :dev
+
+config :sign_dict, SignDict.Repo,
+  loggers: [PryIn.EctoLogger, Ecto.LogEntry]
+
+config :scrivener_html,
+  routes_helper: SignDict.Router.Helpers,
+  # If you use a single view style everywhere, you can configure it here. See View Styles below for more info.
+  view_style: :bootstrap
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

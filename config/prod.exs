@@ -79,3 +79,8 @@ config :phoenix, :serve_endpoints, true
 config :bugsnex, :release_stage, "production"
 config :bugsnex, :use_logger, true
 config :bugsnex, :api_key, System.get_env("BUGSNAG_API_KEY")
+
+config :pryin,
+       api_key: System.get_env("PRYIN_API_KEY"),
+       enabled: true,
+       env: :prod

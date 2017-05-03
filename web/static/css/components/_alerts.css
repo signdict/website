@@ -1,0 +1,17 @@
+.sc-alert {
+  padding: 1em 1em;
+  margin-bottom: 2em;
+  width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sc-alert--success {
+  background-color: $success_background;
+  color: $success;
+}
+
+.sc-alert--error {
+  background-color: $alert_background;
+  color: $alert;
+}

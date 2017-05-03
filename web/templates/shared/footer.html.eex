@@ -18,19 +18,21 @@
   <div class="so-footer--links">
     <div class="o-container o-container--medium">
       <div class="o-grid o-grid--wrap">
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--about">
+        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-33@medium so-footer--links--about">
           <%= gettext("SignDict is a sign language dictionary where everyone can participate") %>
         </div>
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--center">
+        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-33@medium so-footer--links--center">
           <ul class="so-footer--links--list">
             <li><a href='//blog.signdict.org'><%= gettext("Blog") %></a></li>
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/contact'><%= gettext("Contact") %></a></li>
           </ul>
         </div>
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--social">
-          <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-33@medium so-footer--links--social">
+          <div class="so-footer--links--social--text">
+            <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>"><i class="fa fa-github" aria-hidden="true"></i></a>
+          </div>
         </div>
       </div>
     </div>

@@ -57,6 +57,7 @@ defmodule SignDict.Web do
       import SignDict.ErrorHelpers
       import SignDict.BlazeHelpers
       import SignDict.Gettext
+      import SignDict.Helpers.DateHelper
     end
   end
 

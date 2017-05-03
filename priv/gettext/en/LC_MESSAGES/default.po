@@ -14,10 +14,6 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:10 web/templates/layout/empty.html.eex:10
-msgid "Hello SignDict!"
-msgstr ""
-
 #: web/views/error_view.ex:9
 msgid "Internal server error"
 msgstr ""
@@ -35,7 +31,7 @@ msgstr ""
 #: web/templates/backend/language/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
-#: web/templates/user/edit.html.eex:4 web/templates/user/new.html.eex:12
+#: web/templates/user/edit.html.eex:6 web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -47,14 +43,15 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
+#: web/controllers/user_controller.ex:14 web/controllers/user_controller.ex:29
 #: web/templates/layout/backend.html.eex:27
-#: web/templates/shared/navigation.html.eex:26 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
 msgid "Register"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:28 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:29
+#: web/templates/shared/navigation.html.eex:40
 msgid "Sign in"
 msgstr ""
 
@@ -73,7 +70,7 @@ msgstr ""
 
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
-#: web/templates/user/edit.html.eex:21 web/templates/user/show.html.eex:6
+#: web/templates/user/edit.html.eex:32
 msgid "user.biography"
 msgstr "Biography"
 
@@ -83,15 +80,15 @@ msgstr "Biography"
 #: web/templates/reset_password/new.html.eex:9
 #: web/templates/reset_password/new.html.eex:10
 #: web/templates/session/new.html.eex:7 web/templates/session/new.html.eex:8
-#: web/templates/user/edit.html.eex:9 web/templates/user/new.html.eex:23
-#: web/templates/user/new.html.eex:24
+#: web/templates/user/edit.html.eex:11 web/templates/user/edit.html.eex:12
+#: web/templates/user/new.html.eex:23 web/templates/user/new.html.eex:24
 msgid "user.email"
 msgstr "Email"
 
 #: web/templates/backend/user/form.html.eex:21
 #: web/templates/backend/user/index.html.eex:7
-#: web/templates/user/edit.html.eex:15 web/templates/user/new.html.eex:17
-#: web/templates/user/new.html.eex:18
+#: web/templates/user/edit.html.eex:17 web/templates/user/edit.html.eex:18
+#: web/templates/user/new.html.eex:17 web/templates/user/new.html.eex:18
 msgid "user.name"
 msgstr "Name"
 
@@ -99,16 +96,16 @@ msgstr "Name"
 #: web/templates/reset_password/edit.html.eex:10
 #: web/templates/reset_password/edit.html.eex:11
 #: web/templates/session/new.html.eex:12 web/templates/session/new.html.eex:13
-#: web/templates/user/edit.html.eex:33 web/templates/user/new.html.eex:29
-#: web/templates/user/new.html.eex:30
+#: web/templates/user/edit.html.eex:46 web/templates/user/edit.html.eex:47
+#: web/templates/user/new.html.eex:29 web/templates/user/new.html.eex:30
 msgid "user.password"
 msgstr "Password"
 
 #: web/templates/backend/user/form.html.eex:50
 #: web/templates/reset_password/edit.html.eex:15
 #: web/templates/reset_password/edit.html.eex:16
-#: web/templates/user/edit.html.eex:39 web/templates/user/new.html.eex:35
-#: web/templates/user/new.html.eex:36
+#: web/templates/user/edit.html.eex:52 web/templates/user/edit.html.eex:53
+#: web/templates/user/new.html.eex:35 web/templates/user/new.html.eex:36
 msgid "user.password_confirmation"
 msgstr "Password confirmation"
 
@@ -167,14 +164,14 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:9
 #: web/templates/backend/language/index.html.eex:10
-#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:9
 msgid "Actions"
 msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Delete"
 msgstr ""
@@ -183,11 +180,11 @@ msgstr ""
 #: web/templates/backend/entry/show.html.eex:25
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
-#: web/templates/backend/shared/videos_table.html.eex:35
+#: web/templates/backend/shared/videos_table.html.eex:41
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:34
-#: web/templates/backend/video/show.html.eex:46
-#: web/templates/user/show.html.eex:15
+#: web/templates/backend/video/show.html.eex:69
+#: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
 
@@ -202,7 +199,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:22
 #: web/templates/backend/language/index.html.eex:24
-#: web/templates/backend/shared/videos_table.html.eex:34
+#: web/templates/backend/shared/videos_table.html.eex:40
 #: web/templates/backend/user/index.html.eex:25
 msgid "Show"
 msgstr ""
@@ -210,7 +207,7 @@ msgstr ""
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
 #: web/templates/backend/user/form.html.eex:57
-#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
 msgstr ""
 
@@ -246,22 +243,24 @@ msgstr ""
 msgid "Welcome to the dashboard"
 msgstr ""
 
-#: web/templates/user/edit.html.eex:44
+#: web/templates/user/edit.html.eex:59
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:47
+#: web/controllers/user_controller.ex:63
 msgid "Updated successfully."
 msgstr ""
 
 #: web/templates/backend/user/index.html.eex:16
-#: web/templates/backend/user/show.html.eex:7 web/templates/user/show.html.eex:3
+#: web/templates/backend/user/show.html.eex:7
+#: web/templates/shared/navigation.html.eex:33
+#: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:15
 #: web/templates/backend/user/show.html.eex:5
-#: web/templates/user/edit.html.eex:27
+#: web/templates/user/edit.html.eex:23
 msgid "user.avatar"
 msgstr "Avatar"
 
@@ -316,7 +315,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/language/index.html.eex:26
-#: web/templates/backend/shared/videos_table.html.eex:36
+#: web/templates/backend/shared/videos_table.html.eex:42
 #: web/templates/backend/user/index.html.eex:27
 msgid "Are you sure?"
 msgstr ""
@@ -340,8 +339,8 @@ msgid "Edit user"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
-#: web/templates/backend/shared/videos_table.html.eex:5
-#: web/templates/backend/video/show.html.eex:5
+#: web/templates/backend/shared/videos_table.html.eex:6
+#: web/templates/backend/video/show.html.eex:7
 msgid "Entry"
 msgstr ""
 
@@ -357,31 +356,32 @@ msgstr ""
 msgid "New video"
 msgstr ""
 
-#: web/templates/backend/shared/videos_table.html.eex:8
+#: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
-#: web/templates/backend/video/show.html.eex:12
+#: web/templates/backend/video/show.html.eex:14
+#: web/templates/entry/show.html.eex:76
 msgid "User"
 msgstr ""
 
-#: web/templates/backend/shared/videos_table.html.eex:11
+#: web/templates/backend/shared/videos_table.html.eex:12
 #: web/templates/backend/video/form.html.eex:15
-#: web/templates/backend/video/show.html.eex:26
+#: web/templates/backend/video/show.html.eex:28
 msgid "video.copyright"
 msgstr "Copyright"
 
-#: web/templates/backend/shared/videos_table.html.eex:12
+#: web/templates/backend/shared/videos_table.html.eex:13
 #: web/templates/backend/video/form.html.eex:21
-#: web/templates/backend/video/show.html.eex:33
+#: web/templates/backend/video/show.html.eex:35
 msgid "video.license"
 msgstr "License"
 
-#: web/templates/backend/shared/videos_table.html.eex:13
+#: web/templates/backend/shared/videos_table.html.eex:15
 msgid "video.orignal_href"
 msgstr "Source"
 
-#: web/templates/backend/shared/videos_table.html.eex:10
+#: web/templates/backend/shared/videos_table.html.eex:11
 #: web/templates/backend/video/form.html.eex:9
-#: web/templates/backend/video/show.html.eex:19
+#: web/templates/backend/video/show.html.eex:21
 msgid "video.state"
 msgstr "State"
 
@@ -390,6 +390,7 @@ msgid "Entries"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:10
+#: web/templates/shared/header.html.eex:7
 msgid "SignDict"
 msgstr ""
 
@@ -430,6 +431,7 @@ msgstr ""
 msgid "Entry updated successfully."
 msgstr ""
 
+#: web/templates/backend/shared/videos_table.html.eex:4
 #: web/templates/backend/video/show.html.eex:1
 msgid "Video"
 msgstr ""
@@ -439,7 +441,7 @@ msgid "entry.language"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:27
-#: web/templates/backend/video/show.html.eex:40
+#: web/templates/backend/video/show.html.eex:42
 msgid "video.original_href"
 msgstr "Original URL"
 
@@ -447,11 +449,12 @@ msgstr "Original URL"
 msgid "Entry deleted successfully."
 msgstr ""
 
-#: web/models/vote.ex:20
+#: web/models/vote.ex:24
 msgid "Only one vote per video and user"
 msgstr ""
 
-#: web/templates/shared/navigation.html.eex:7
+#: web/templates/shared/navigation.html.eex:6
+#: web/templates/shared/navigation.html.eex:8
 msgid "About SignDict"
 msgstr ""
 
@@ -463,19 +466,19 @@ msgstr ""
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:28
+#: web/controllers/page_controller.ex:17 web/templates/shared/footer.html.eex:28
 msgid "Contact"
 msgstr ""
 
-#: web/templates/page/index.html.eex:74
+#: web/templates/page/index.html.eex:72
 msgid "Curious?"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:27
+#: web/controllers/page_controller.ex:12 web/templates/shared/footer.html.eex:27
 msgid "Imprint"
 msgstr ""
 
-#: web/templates/page/index.html.eex:45
+#: web/templates/page/index.html.eex:43
 msgid "Language barrier"
 msgstr ""
 
@@ -495,19 +498,20 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:83
+#: web/templates/page/index.html.eex:81
 msgid "Newsletter sign up"
 msgstr ""
 
-#: web/templates/page/index.html.eex:52
+#: web/templates/page/index.html.eex:50
 msgid "Our mission: to help understanding each other."
 msgstr ""
 
-#: web/templates/page/index.html.eex:32
+#: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:31
+#: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:49
+#: web/templates/page/index.html.eex:47
 msgid "SignDict believes..."
 msgstr "SignDict believes that communication is the key to an open society. To increase the integration of deaf we created a dictionary where everyone can participate in."
 
@@ -515,11 +519,11 @@ msgstr "SignDict believes that communication is the key to an open society. To i
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:33
+#: web/templates/shared/footer.html.eex:34
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:32
+#: web/templates/shared/footer.html.eex:33
 msgid "SignDict on Twitter"
 msgstr ""
 
@@ -527,19 +531,20 @@ msgstr ""
 msgid "Supporter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:80
+#: web/templates/page/index.html.eex:78
 msgid "This page is still under construction and.."
 msgstr "This page is still under construction and not every feature is working yet. If you want to be informed when we add new things, subscribe to our newsletter."
 
-#: web/templates/page/index.html.eex:77
+#: web/templates/page/index.html.eex:75
 msgid "Want to stay up to date?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:29
+#: web/templates/page/index.html.eex:28
+#: web/templates/shared/searchbar.html.eex:7
 msgid "Enter word to search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:58
+#: web/templates/page/index.html.eex:56
 msgid "A hand with a speech bubble"
 msgstr ""
 
@@ -547,12 +552,12 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: web/templates/page/index.html.eex:8
+#: web/templates/page/index.html.eex:8 web/templates/page/welcome.html.eex:5
 #: web/templates/shared/navigation.html.eex:5
 msgid "SignDict Logo"
 msgstr ""
 
-#: web/templates/page/index.html.eex:69
+#: web/templates/page/index.html.eex:67
 msgid "Two hands waving"
 msgstr ""
 
@@ -564,22 +569,192 @@ msgstr ""
 msgid "We are happy that you want to help. Please enter your details below so that we can create your account."
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:13
+#: web/templates/page/welcome.html.eex:15
 msgid "Complete your user profile >"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:12
+#: web/templates/page/welcome.html.eex:14
 msgid "Search through SignDicts %{sign_count} signs >"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:5
+#: web/templates/page/welcome.html.eex:7
 msgid "Welcome, %{username}!"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:8
+#: web/templates/page/welcome.html.eex:10
 msgid "Your account was created. Here are a few things you can do now:"
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:3
-msgid "welcome svg"
+#: web/templates/user/edit.html.eex:39
+msgid "Change Password"
+msgstr ""
+
+#: web/templates/user/edit.html.eex:33
+msgid "Please describe yourself"
+msgstr ""
+
+#: web/templates/user/edit.html.eex:43
+msgid "You only need to enter your password here if you want to change it. Otherwise keep it empty."
+msgstr ""
+
+#: web/templates/shared/searchbar.html.eex:7
+msgid "Search in SignDict..."
+msgstr ""
+
+#: web/templates/user/show.html.eex:16
+msgid "This user doesn't have a bio yet"
+msgstr ""
+
+#: web/templates/user/show.html.eex:33
+msgid "Uploaded videos"
+msgstr ""
+
+#: web/templates/user/show.html.eex:9
+msgid "User since %{since}"
+msgstr ""
+
+#: web/views/helpers/date_helper.ex:18
+msgid "one day"
+msgid_plural "%{count} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/views/helpers/date_helper.ex:15
+msgid "one month"
+msgid_plural "%{count} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/views/helpers/date_helper.ex:12
+msgid "one year"
+msgid_plural "%{count} years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/templates/backend/shared/videos_table.html.eex:14
+#: web/templates/backend/video/form.html.eex:45
+#: web/templates/backend/video/show.html.eex:63
+msgid "video.plays"
+msgstr "Video plays"
+
+#: web/templates/backend/video/form.html.eex:39
+#: web/templates/backend/video/show.html.eex:56
+msgid "video.thumbnail_url"
+msgstr "Thumbnail"
+
+#: web/templates/backend/video/form.html.eex:33
+#: web/templates/backend/video/show.html.eex:49
+msgid "video.video_url"
+msgstr "Video"
+
+#: web/templates/entry/show.html.eex:127
+msgid "No other variations"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:101
+msgid "Variations »%{entry}«"
+msgstr ""
+
+#: web/views/helpers/date_helper.ex:19
+msgid "today"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:116
+msgid "${time} ago"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:82
+msgid "Date of upload"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:115
+msgid "by"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:89
+msgid "Source:"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:108
+msgid "Choose this variant"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:61
+msgid "Please login to vote for this video."
+msgstr ""
+
+#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
+msgid "Thumbnail for Video"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:65
+msgid "Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow."
+msgstr ""
+
+#: web/templates/entry/show.html.eex:37
+msgid "Don't vote this video up"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:45
+msgid "Vote this video up"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:63
+msgid "You voted for this video. You can remove your vote by clicking on the arrow."
+msgstr ""
+
+#: web/controllers/vote_controller.ex:30
+msgid "You vote was reverted successfully"
+msgstr ""
+
+#: web/controllers/vote_controller.ex:19
+msgid "Sadly your voting failed."
+msgstr ""
+
+#: web/controllers/vote_controller.ex:15
+msgid "Thanks for voting!"
+msgstr ""
+
+#: web/templates/search/index.html.eex:5
+msgid "One search result for »%{query}«"
+msgid_plural "%{count} search results for »%{query}«"
+msgstr[0] ""
+msgstr[1] ""
+
+#: web/controllers/page_controller.ex:27
+msgid "About"
+msgstr ""
+
+#: web/controllers/user_controller.ex:52
+msgid "Edit profile"
+msgstr ""
+
+#: web/controllers/session_controller.ex:18
+#: web/controllers/session_controller.ex:32
+msgid "Login"
+msgstr ""
+
+#: web/controllers/reset_password_controller.ex:10
+#: web/controllers/reset_password_controller.ex:24
+msgid "Reset password"
+msgstr ""
+
+#: web/controllers/search_controller.ex:10
+msgid "Search results for %{query}"
+msgstr ""
+
+#: web/controllers/entry_controller.ex:27 web/controllers/entry_controller.ex:46
+msgid "Sign for %{sign}"
+msgstr ""
+
+#: web/controllers/user_controller.ex:41
+msgid "User %{user}"
+msgstr ""
+
+#: web/controllers/page_controller.ex:22
+msgid "Welcome"
+msgstr ""
+
+#: web/templates/shared/header.html.eex:4
+msgid "SignDict - A sign language dictionary"
 msgstr ""

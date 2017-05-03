@@ -1,8 +1,10 @@
-@import "base/fonts.css";
+@import "base/_fonts.css";
+@import "components/_pagination.css";
 
 body {
-  font-family: 'SignDict', 'Helvetica Neue';
+  font-family: "SignDict", "Helvetica Neue";
   font-weight: 100;
+  margin: 0;
 }
 
 form.link {

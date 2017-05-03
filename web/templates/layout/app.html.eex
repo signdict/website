@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="<%= Gettext.get_locale(SignDict.Gettext) %>">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title><%= gettext("Hello SignDict!") %></title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.0">
+    <%= render SignDict.SharedView, "header.html", conn: @conn, current_user: @current_user %>
   </head>
 
   <body>
-    <div class="sc-main o-container o-container--medium">
+    <div class="o-container o-container--medium">
       <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
-      <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+    </div>
 
+    <%= render SignDict.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+
+    <div>
+      <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+    <div>
+
+    <div class="sc-main o-container o-container--medium">
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
@@ -24,10 +23,5 @@
     </div> <!-- /container -->
 
     <%= render SignDict.SharedView, "footer.html", conn: @conn %>
-
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
-      <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
-    <% end %>
   </body>
 </html>

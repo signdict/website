@@ -3,6 +3,7 @@ defmodule SignDict.EntryTest do
   import SignDict.Factory
 
   alias SignDict.Entry
+  alias SignDict.Video
 
   @valid_attrs %{description: "some content", text: "some content", type: "word"}
   @invalid_attrs %{}
@@ -34,6 +35,85 @@ defmodule SignDict.EntryTest do
 
     test "returns name and description if description is given" do
       assert Entry.to_string(%Entry{text: "Example", description: "This is it"}) == "Example (This is it)"
+    end
+  end
+
+  describe "voted_video/2" do
+    test "returns an empty video if user is nil" do
+      assert Entry.voted_video(%Entry{}, nil) == %Video{id: nil}
+    end
+
+    test "returns the video with the user preloaded" do
+      entry = insert(:entry)
+      video = insert(:video, %{entry: entry})
+      vote  = %SignDict.Vote{video: video, user: insert(:user)} |> Repo.insert!
+      voted_video = Entry.voted_video(vote.video.entry, vote.user)
+      assert voted_video.id == video.id
+      assert Ecto.assoc_loaded? voted_video.user
+    end
+  end
+
+  describe "update_current_video/1" do
+
+    test "updates to the highest rated video" do
+      user    = insert(:user)
+      entry   = insert(:entry)
+      _video1 = insert(:video_published, %{entry: entry})
+      video2  = insert(:video_published, %{entry: entry})
+      %SignDict.Vote{user: user, video: video2} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
+    test "tests that it only uses videos in production state" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      video1 = insert(:video, %{state: "deleted", entry: entry})
+      video2 = insert(:video_published, %{entry: entry})
+      %SignDict.Vote{user: user, video: video1} |> Repo.insert
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video2.id
+    end
+
+  end
+
+  describe "search/1" do
+    setup do
+      train_entry = insert(:entry, %{text: "train"})
+      insert(:video_published, %{entry: train_entry})
+      Entry.update_current_video(train_entry)
+
+      hotel_entry = insert(:entry, %{text: "hôtel"})
+      insert(:video_published, %{entry: hotel_entry})
+      Entry.update_current_video(hotel_entry)
+
+      tree_entry  = insert(:entry, %{text: "tree"})
+      insert(:video, %{entry: tree_entry})
+      Entry.update_current_video(tree_entry)
+
+      house_entry  = insert(:entry, %{text: "haus"})
+      insert(:video_published, %{entry: house_entry})
+      Entry.update_current_video(house_entry)
+
+      {:ok, train: train_entry, tree: tree_entry, hotel: hotel_entry, house: house_entry}
+    end
+
+    test "it returns the correct entry when searching for a word and only uses entries with published videos", %{train: train} do
+      assert Enum.map(Entry.search("de", "tr"), &(&1.id)) == Enum.map([train], &(&1.id))
+    end
+
+    test "it also finds words with accents when using without", %{hotel: hotel} do
+      assert Enum.map(Entry.search("de", "hotel"), &(&1.id)) == Enum.map([hotel], &(&1.id))
+    end
+
+    test "it also finds the singular when searching for plural forms", %{house: house} do
+      assert Enum.map(Entry.search("de", "häuser"), &(&1.id)) == Enum.map([house], &(&1.id))
+    end
+  end
+
+  describe "Phoenix.Param" do
+    test "it creates a nice permalink for the entry" do
+      assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"
     end
   end
 end

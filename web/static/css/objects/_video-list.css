@@ -1,0 +1,58 @@
+.so-video-list {
+  list-style: none;
+  margin-top: 0.2em;
+  vertical-align: top;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-left: 0;
+}
+
+.so-video-list--item {
+  margin-bottom: 1em;
+}
+
+.so-video-list--item--thumbnail {
+  position: relative;
+}
+
+.so-video-list--item_selected {
+  border-left: 0.4em solid $highlight;
+  margin-left: -0.7em;
+  margin-right: -1em;
+  padding-left: 0.3em;
+  padding-right: 1em;
+}
+
+.so-video-list--item_selected .so-video-list--video-play {
+  display: inline-block;
+}
+
+.so-video-list--video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-image: url(/images/speechbubble-play.svg);
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.so-video-list--item--thumbnail:hover .so-video-list--video-play {
+  display: inline-block;
+}
+
+.so-video-list--details {
+  padding-left: 1em;
+  color: $deactive;
+}
+
+.so-video-list--details--votes {
+  font-size: 1em !important;
+}
+
+.so-video-list--details--votes_voted {
+  color: $highlight;
+}

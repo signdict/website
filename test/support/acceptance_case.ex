@@ -1,4 +1,4 @@
-defmodule SignUp.AcceptanceCase do
+defmodule SignDict.AcceptanceCase do
   use ExUnit.CaseTemplate
 
   using do

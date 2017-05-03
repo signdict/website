@@ -14,7 +14,7 @@ defmodule SignDict.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :sign_dict, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js video_files favicon.ico robots.txt)
 
   plug Plug.Static,
     at: "/uploads",
@@ -48,5 +48,6 @@ defmodule SignDict.Endpoint do
     key: "_sign_dict_key",
     signing_salt: "2xqY1fFX"
 
+  plug PryIn.Plug
   plug SignDict.Router
 end

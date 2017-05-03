@@ -13,19 +13,34 @@ defmodule SignDict.VoteControllerTest do
                |> guardian_login(user)
                |> post(vote_path(build_conn(), :create, video))
       assert Vote |> Repo.get_by(%{user_id: user.id, video_id: video.id})
-      assert redirected_to(conn) == entry_path(conn, :show, video.entry)
+      assert redirected_to(conn) == entry_video_path(conn, :show, video.entry, video)
     end
 
     test "it can not create same vote more then once" do
       video = insert(:video_with_entry)
       user = insert(:user)
-      vote = insert(:vote, video: video, user: user)
       conn = build_conn()
                |> guardian_login(user)
                |> post(vote_path(build_conn(), :create, video))
-      assert  Vote |> Repo.aggregate(:count, :id) == 1
-      assert Vote |> Repo.get(vote.id)
-      assert redirected_to(conn) == entry_path(conn, :show, video.entry)
+      assert Vote |> Repo.aggregate(:count, :id) == 1
+      assert redirected_to(conn) == entry_video_path(conn, :show, video.entry, video)
+    end
+
+    test "it changes the vote to another video if voting another video of the same entry" do
+      user   = insert(:user)
+      entry  = insert(:entry)
+      video1 = insert(:video, %{entry: entry})
+      video2 = insert(:video, %{entry: entry})
+      %SignDict.Vote{user: user, video: video1} |> Repo.insert
+
+      conn  = build_conn()
+               |> guardian_login(user)
+               |> post(vote_path(build_conn(), :create, video2))
+
+      query = from(v in Vote, where: v.user_id == ^user.id and v.video_id == ^video2.id)
+      assert query |> Repo.aggregate(:count, :id) == 1
+      assert Vote |> Repo.aggregate(:count, :id) == 1
+      assert redirected_to(conn) == entry_video_path(conn, :show, video2.entry, video2)
     end
 
     test "deletes existing vote" do
@@ -36,7 +51,7 @@ defmodule SignDict.VoteControllerTest do
                |> guardian_login(user)
                |> delete(vote_path(build_conn(), :delete, video))
       refute Vote |> Repo.get(vote.id)
-      assert redirected_to(conn) == entry_path(conn, :show, video.entry)
+      assert redirected_to(conn) == entry_video_path(conn, :show, video.entry, video)
     end
 
     test "does not delete vote of other user" do
@@ -48,7 +63,7 @@ defmodule SignDict.VoteControllerTest do
                |> guardian_login(other_user)
                |> delete(vote_path(build_conn(), :delete, video))
       assert Vote |> Repo.get_by(%{user_id: user.id, video_id: video.id})
-      assert redirected_to(conn) == entry_path(conn, :show, video.entry)
+      assert redirected_to(conn) == entry_video_path(conn, :show, video.entry, video)
     end
   end
 

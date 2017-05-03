@@ -27,6 +27,9 @@
   cursor: pointer;
   padding: 0;
   margin: 0;
+  margin-left: -2px;
+  margin-top: -2px;
+  font-family: "SignDict", "Helvetica Neue";
 }
 
 

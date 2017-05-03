@@ -52,6 +52,9 @@
 
 .so-footer--links--social {
   text-align: right;
+}
+
+.so-footer--links--social--text {
   font-size: 2em;
 }
 

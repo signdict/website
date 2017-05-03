@@ -11,7 +11,9 @@ defmodule SignDict.VideoTest do
       copyright: "some content", license: "some content",
       original_href: "some content", state: "uploaded",
       type: "some content",
-      user_id: user().id, entry_id: entry().id
+      user_id: user().id, entry_id: entry().id,
+      thumbnail_url: "https://example.com/thumbnail.jpg",
+      video_url: "https://example.com/video.mp4"
     }
   end
 
@@ -116,6 +118,46 @@ defmodule SignDict.VideoTest do
     end
   end
 
+  describe "with_vote_count/1" do
+    test "returns video if vote count is already set" do
+      assert Video.with_vote_count(%Video{vote_count: 100}) == %Video{vote_count: 100}
+    end
+
+    test "queries the database and returns video with added vote count" do
+      vote = insert(:vote)
+      assert Video.with_vote_count(vote.video).vote_count == 1
+    end
+  end
+
+  describe "ordered_by_vote_for_entry/1" do
+
+    setup do
+      entry = insert(:entry)
+      user_1  = insert(:user, %{name: "User 1"})
+      user_2  = insert(:user, %{name: "User 2"})
+      user_3  = insert(:user, %{name: "User 3"})
+      video_1 = insert(:video, %{state: "published", user: user_1, entry: entry})
+      video_2 = insert(:video, %{state: "published", user: user_2, entry: entry})
+      {:ok, _vote} = %SignDict.Vote{user: user_1, video: video_1} |> Repo.insert
+      {:ok, _vote} = %SignDict.Vote{user: user_2, video: video_1} |> Repo.insert
+      {:ok, _vote} = %SignDict.Vote{user: user_3, video: video_2} |> Repo.insert
+
+      {:ok, entry: entry, video_1: video_1, video_2: video_2}
+    end
+
+    test "returns ordered list", %{entry: entry, video_1: video_1, video_2: video_2} do
+      videos = Video.ordered_by_vote_for_entry(entry) |> Repo.all
+      video_ids = Enum.map(videos, fn(video) -> video.id end)
+      assert video_ids == [video_1.id, video_2.id]
+    end
+
+    test "returned videos have vote_count", %{entry: entry} do
+      videos = Video.ordered_by_vote_for_entry(entry) |> Repo.all
+      vote_counts = Enum.map(videos, fn(video) -> video.vote_count end)
+      assert vote_counts == [2, 1]
+    end
+  end
+
   def user do
     insert :user
   end
@@ -123,4 +165,5 @@ defmodule SignDict.VideoTest do
   def entry do
     insert :entry
   end
+
 end

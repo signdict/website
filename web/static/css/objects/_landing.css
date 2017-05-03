@@ -30,6 +30,7 @@
   font-size: 1em;
   padding: 0.5em 1em;
   width: 100%;
+  height: 2em;
 }
 
 .so-landing--search--submit {
@@ -39,7 +40,7 @@
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
-  height: 100%;
+  height: 2em;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -54,6 +55,8 @@
   background-color: $dark_background;
   color: $bright_font;
   margin-top: -1em;
+  margin-left: -1em;
+  margin-right: -1em;
   z-index: 1;
 }
 
@@ -71,7 +74,7 @@
   position: absolute;
   content: "";
   width: 110%;
-  height:56%;
+  height: 56%;
   margin-left: -0.4em;
   margin-right: -0.4em;
   pointer-events: none;
@@ -122,7 +125,7 @@
   .so-landing--search {
     margin-top: 2em;
     margin-left: -1em;
-    margin-right: -0.5em;
+    margin-right: -1em;
   }
 
   .so-landing--search--submit {
@@ -139,7 +142,7 @@
 
   .so-landing--motivation {
     margin-left: -1em;
-    margin-right: -0.5em;
+    margin-right: -1em;
     padding-left: 2em;
     padding-right: 2em;
   }

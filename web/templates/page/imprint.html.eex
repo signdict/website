@@ -1,3 +1,4 @@
+
 <div class="o-container o-container--medium">
   <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: true %>
   <%= render SignDict.SharedView, "alerts.html", conn: @conn %>

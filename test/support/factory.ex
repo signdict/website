@@ -37,18 +37,29 @@ defmodule SignDict.Factory do
     }
   end
 
+  def find_or_build_language(language) do
+    SignDict.Repo.get_by(SignDict.Language, short_name: language)
+    || build(String.to_atom("language_#{language}"))
+  end
+
   def video_factory do
     %SignDict.Video {
       state: "created",
       copyright: "copyright",
       license: "license",
       original_href: "original_href",
+      video_url: "http://example.com/video.mp4",
+      thumbnail_url: "http://example.com/video.jpg",
       user: build(:user)
     }
   end
 
+  def video_published_factory do
+    %{video_factory() | state: "published"}
+  end
+
   def video_with_entry_factory do
-    %{video_factory() | entry: build(:entry)}
+    %{video_published_factory() | entry: build(:entry)}
   end
 
   def entry_factory do
@@ -56,12 +67,12 @@ defmodule SignDict.Factory do
       description: "some content",
       text: "some content",
       type: "word",
-      language: build(:language_dgs)
+      language: find_or_build_language("dgs")
     }
   end
 
   def entry_with_videos_factory do
-    %{entry_factory() | videos: build_list(4, :video)}
+    %{entry_factory() | videos: build_list(4, :video_published)}
   end
 
   def vote_factory do
