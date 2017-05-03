@@ -38,8 +38,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :sign_dict, SignDict.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "signdict_dev",
+  username: "sr",
+  password: "",
+  database: "sr",
   hostname: "localhost",
   pool_size: 10
