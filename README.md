@@ -51,3 +51,4 @@ and is part of the 1st batch of the [prototype fund](http://prototypefund.de).
 
 ![Logo of the German Federal Ministry of Education and Research](images/support-bmbf.png)
 ![Prototype Fund Logo](images/support-prototype.png)
+
