@@ -7,7 +7,7 @@ defmodule SignDict.ResetPasswordController do
   alias SignDict.Mailer
 
   def new(conn, _params) do
-    render(conn, "new.html", changeset: %User{})
+    render(conn, "new.html", changeset: %User{}, title: gettext("Reset password"))
   end
 
   def create(conn, %{"user" => user}) do
@@ -21,7 +21,7 @@ defmodule SignDict.ResetPasswordController do
   def edit(conn, params)
   def edit(conn, %{"email" => email, "password_reset_token" => password_reset_token}) do
     render(conn, "edit.html", password_reset_unencrypted: password_reset_token,
-                              email: email)
+                              email: email, title: gettext("Reset password"))
   end
   def edit(conn, _params) do
     conn

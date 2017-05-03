@@ -4,11 +4,18 @@ defmodule SignDict.SearchController do
   alias SignDict.Entry
 
   def index(conn, params) do
-    entries = if params["q"] && String.length(params["q"]) > 0 do
-      Entry.search(Gettext.get_locale(SignDict.Gettext), params["q"])
+    [entries, title] = if params["q"] && String.length(params["q"]) > 0 do
+      [
+        Entry.search(Gettext.get_locale(SignDict.Gettext), params["q"]),
+        gettext("Search results for %{query}", query: params["q"])
+      ]
     else
-      []
+      [[], gettext("Search")]
     end
-    render conn, "index.html", conn: conn, searchbar: true, entries: entries
+    render conn, "index.html",
+      conn: conn,
+      searchbar: true,
+      entries: entries,
+      title: title
   end
 end

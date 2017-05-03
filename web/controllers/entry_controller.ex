@@ -23,7 +23,8 @@ defmodule SignDict.EntryController do
            video: video,
            videos: videos,
            voted_video: voted,
-           searchbar: true
+           searchbar: true,
+           title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end
 
@@ -41,7 +42,8 @@ defmodule SignDict.EntryController do
            video: video,
            videos: videos,
            voted_video: Entry.voted_video(entry, conn.assigns.current_user),
-           searchbar: true
+           searchbar: true,
+           title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end
 

@@ -14,10 +14,6 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: web/templates/layout/app.html.eex:10 web/templates/layout/empty.html.eex:10
-msgid "Hello SignDict!"
-msgstr ""
-
 #: web/views/error_view.ex:9
 msgid "Internal server error"
 msgstr ""
@@ -47,6 +43,7 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
+#: web/controllers/user_controller.ex:14 web/controllers/user_controller.ex:29
 #: web/templates/layout/backend.html.eex:27
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
@@ -250,7 +247,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:54
+#: web/controllers/user_controller.ex:63
 msgid "Updated successfully."
 msgstr ""
 
@@ -393,6 +390,7 @@ msgid "Entries"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:10
+#: web/templates/shared/header.html.eex:7
 msgid "SignDict"
 msgstr ""
 
@@ -468,19 +466,19 @@ msgstr ""
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:28
+#: web/controllers/page_controller.ex:17 web/templates/shared/footer.html.eex:28
 msgid "Contact"
 msgstr ""
 
-#: web/templates/page/index.html.eex:74
+#: web/templates/page/index.html.eex:72
 msgid "Curious?"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:27
+#: web/controllers/page_controller.ex:12 web/templates/shared/footer.html.eex:27
 msgid "Imprint"
 msgstr ""
 
-#: web/templates/page/index.html.eex:45
+#: web/templates/page/index.html.eex:43
 msgid "Language barrier"
 msgstr ""
 
@@ -500,20 +498,20 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:83
+#: web/templates/page/index.html.eex:81
 msgid "Newsletter sign up"
 msgstr ""
 
-#: web/templates/page/index.html.eex:52
+#: web/templates/page/index.html.eex:50
 msgid "Our mission: to help understanding each other."
 msgstr ""
 
-#: web/templates/page/index.html.eex:32
+#: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:31
 #: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:49
+#: web/templates/page/index.html.eex:47
 msgid "SignDict believes..."
 msgstr ""
 
@@ -533,20 +531,20 @@ msgstr ""
 msgid "Supporter"
 msgstr ""
 
-#: web/templates/page/index.html.eex:80
+#: web/templates/page/index.html.eex:78
 msgid "This page is still under construction and.."
 msgstr ""
 
-#: web/templates/page/index.html.eex:77
+#: web/templates/page/index.html.eex:75
 msgid "Want to stay up to date?"
 msgstr ""
 
-#: web/templates/page/index.html.eex:29
+#: web/templates/page/index.html.eex:28
 #: web/templates/shared/searchbar.html.eex:7
 msgid "Enter word to search"
 msgstr ""
 
-#: web/templates/page/index.html.eex:58
+#: web/templates/page/index.html.eex:56
 msgid "A hand with a speech bubble"
 msgstr ""
 
@@ -559,7 +557,7 @@ msgstr ""
 msgid "SignDict Logo"
 msgstr ""
 
-#: web/templates/page/index.html.eex:69
+#: web/templates/page/index.html.eex:67
 msgid "Two hands waving"
 msgstr ""
 
@@ -685,7 +683,7 @@ msgstr ""
 msgid "Please login to vote for this video."
 msgstr ""
 
-#: web/templates/entry/show.html.eex:109
+#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
 msgid "Thumbnail for Video"
 msgstr ""
 
@@ -717,8 +715,46 @@ msgstr ""
 msgid "Thanks for voting!"
 msgstr ""
 
-#: web/templates/search/index.html.eex:4
-msgid "%{count} search result for »%{query}«"
+#: web/templates/search/index.html.eex:5
+msgid "One search result for »%{query}«"
 msgid_plural "%{count} search results for »%{query}«"
 msgstr[0] ""
 msgstr[1] ""
+
+#: web/controllers/page_controller.ex:27
+msgid "About"
+msgstr ""
+
+#: web/controllers/user_controller.ex:52
+msgid "Edit profile"
+msgstr ""
+
+#: web/controllers/session_controller.ex:18
+#: web/controllers/session_controller.ex:32
+msgid "Login"
+msgstr ""
+
+#: web/controllers/reset_password_controller.ex:10
+#: web/controllers/reset_password_controller.ex:24
+msgid "Reset password"
+msgstr ""
+
+#: web/controllers/search_controller.ex:10
+msgid "Search results for %{query}"
+msgstr ""
+
+#: web/controllers/entry_controller.ex:27 web/controllers/entry_controller.ex:46
+msgid "Sign for %{sign}"
+msgstr ""
+
+#: web/controllers/user_controller.ex:41
+msgid "User %{user}"
+msgstr ""
+
+#: web/controllers/page_controller.ex:22
+msgid "Welcome"
+msgstr ""
+
+#: web/templates/shared/header.html.eex:4
+msgid "SignDict - A sign language dictionary"
+msgstr ""
