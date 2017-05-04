@@ -683,8 +683,8 @@ msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
 #: web/templates/entry/show.html.eex:61
-msgid "Please login to vote for this video."
-msgstr "Bitte melde dich an, um für dieses Video zu stimmen."
+msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
+msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
 #: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
 msgid "Thumbnail for Video"
