@@ -1,4 +1,3 @@
-
 defmodule SignDict.Endpoint do
   use Phoenix.Endpoint, otp_app: :sign_dict
 

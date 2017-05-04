@@ -5,6 +5,9 @@ elixir:
 addons:
   postgresql: "9.6"
 
+services:
+ - redis-server
+
 env:
  global:
    - MIX_ENV=test
