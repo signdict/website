@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
 
-<link rel="apple-touch-icon-precomposed" href="favicon-152.png">
-<link rel="icon" href="favicon_64.png" sizes="64x64">
+<link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+<link rel="icon" href="/favicon_64.png" sizes="64x64">
 
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
