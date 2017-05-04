@@ -13,7 +13,7 @@ defmodule SignDict.ContactFormTest do
     end)
     |> has_text?("The email was sent")
 
-    assert_delivered_with(subject: "New message via contact form", to: [{nil, "mail@signdict.org"}])
+    assert_delivered_with(subject: "[signdict] New message via contact form", to: [{"Bodo", "bodo@tasche.me"}])
   end
 
 end

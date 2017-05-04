@@ -5,8 +5,8 @@ defmodule SignDict.Email do
 
   def contact_form(email, content) do
     base_email()
-    |> to("mail@signdict.org")
-    |> subject(gettext("New message via contact form"))
+    |> to({"Bodo", "bodo@tasche.me"})
+    |> subject("[signdict] " <> gettext("New message via contact form"))
     |> assign(:email, email)
     |> assign(:content, content)
     |> render(:contact_form)
