@@ -53,6 +53,7 @@ defmodule SignDict.Mixfile do
      {:canary, "~> 1.1.0"},
      {:secure_random, "~> 0.5"},
      {:bamboo, "~> 0.8"},
+     {:bamboo_smtp, "~> 1.3.0"},
      {:bugsnex, "~> 0.3.0"},
      {:arc, "~> 0.7.0"},
      {:arc_ecto, "~> 0.6.0"},

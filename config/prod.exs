@@ -84,3 +84,13 @@ config :pryin,
        api_key: System.get_env("PRYIN_API_KEY"),
        enabled: true,
        env: :prod
+
+config :sign_dict, SignDict.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.mailbox.org",
+  port: 465,
+  username: "mail@signdict.org",
+  password: System.get_env("SMTP_PASSWORD"),
+  tls: :if_available,
+  ssl: true,
+  retries: 1
