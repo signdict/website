@@ -58,7 +58,7 @@
             <div class="so-voting-box--explanation--text">
               <%= cond do %>
                 <% @current_user == nil -> %>
-                  <%= gettext("Please login to vote for this video.") %>
+                  <%= raw gettext("Please <a href='%{login_url}'>login</a> to vote for this video.", login_url: session_path(@conn, :new)) %>
                 <% @voted_video && @video.id == @voted_video.id -> %>
                   <%= gettext("You voted for this video. You can remove your vote by clicking on the arrow.") %>
                 <% true -> %>
