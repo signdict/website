@@ -35,11 +35,11 @@ defmodule SignDict.VideoTest do
       refute changeset.valid?
 
       [state: errmsg] = errors_on(%Video{}, attrs)
-      assert errmsg == "must be in the list of created, uploaded, transcoded, waiting_for_review, published, deleted"
+      assert errmsg == "must be in the list of created, uploaded, transcoding, waiting_for_review, published, deleted"
     end
 
     test "checks if a state is valid" do
-      Enum.each(~w(uploaded transcoded waiting_for_review published deleted), fn s ->
+      Enum.each(~w(uploaded transcoding waiting_for_review published deleted), fn s ->
         assert Video.valid_state?(s)
       end)
     end
@@ -68,7 +68,7 @@ defmodule SignDict.VideoTest do
       assert Video.can_delete?(v)
     end
 
-    test "allow transition from uploaded to transcoded and deleted" do
+    test "allow transition from uploaded to transcoding and deleted" do
       v = %Video{state: "uploaded"}
 
       assert Video.current_state(v) == :uploaded
@@ -76,10 +76,10 @@ defmodule SignDict.VideoTest do
       assert Video.can_delete?(v)
     end
 
-    test "allow transition from transcoded to waiting_for_review and deleted" do
-      v = %Video{state: "transcoded"}
+    test "allow transition from transcoding to waiting_for_review and deleted" do
+      v = %Video{state: "transcoding"}
 
-      assert Video.current_state(v) == :transcoded
+      assert Video.current_state(v) == :transcoding
       assert Video.can_wait_for_review?(v)
       assert Video.can_delete?(v)
     end
@@ -105,7 +105,7 @@ defmodule SignDict.VideoTest do
       assert Video.current_state(v) == :uploaded
 
       {:ok, v} = Video.transcode(v)
-      assert Video.current_state(v) == :transcoded
+      assert Video.current_state(v) == :transcoding
 
       {:ok, v} = Video.wait_for_review(v)
       assert Video.current_state(v) == :waiting_for_review

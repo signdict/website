@@ -7,14 +7,14 @@ defmodule SignDict.Importer.JsonImporter do
   alias SignDict.User
   alias SignDict.Repo
 
-  def import_json(json_file) do
+  def import_json(json_file, exq \\ Exq) do
     json           = json_file |> read_file |> decode_json
     user           = find_or_create_user_for(json)
     entry          = find_or_create_entry_for(json_file, json)
     video_filename = Path.dirname(json_file) <> "/" <> Path.basename(json["filename"])
     filename       = import_video(video_filename)
 
-    Repo.insert!(%Video{
+    video = Repo.insert!(%Video{
       copyright: "#{json["author"]} - #{json["source"]}",
       license: json["license"],
       original_href: json["word_link"],
@@ -26,6 +26,8 @@ defmodule SignDict.Importer.JsonImporter do
       entry: entry,
       state: "uploaded"
     })
+    exq.enqueue(Exq, "default", SignDict.Worker.TranscodeVideo, [video.id])
+    video
   end
 
   defp read_file(file) do
