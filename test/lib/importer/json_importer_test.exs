@@ -1,5 +1,5 @@
 defmodule SignDict.Importer.JsonImporterTest do
-  use ExUnit.Case, async: true
+  use SignDict.ModelCase
   import SignDict.Factory
 
   alias SignDict.Importer.JsonImporter
@@ -8,10 +8,6 @@ defmodule SignDict.Importer.JsonImporterTest do
   alias SignDict.User
   alias SignDict.Video
 
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignDict.Repo)
-  end
-
   setup_all do
     on_exit fn ->
       File.rm_rf "test/uploads/video_upload"
@@ -19,6 +15,12 @@ defmodule SignDict.Importer.JsonImporterTest do
   end
 
   describe "import_json/1" do
+    defmodule ExqMock do
+      def enqueue(_arg1, _arg2, module, params) do
+        send self(), {:enqueue, module, params}
+      end
+    end
+
     setup do
       working_path = Path.join([System.tmp_dir, "video_" <> Integer.to_string(System.unique_integer([:positive]))])
       File.mkdir(working_path)
@@ -39,7 +41,8 @@ defmodule SignDict.Importer.JsonImporterTest do
     end
 
     test "it imports the data into the video", %{path: path} do
-      video = JsonImporter.import_json(Path.join(path, "Zug.json"))
+      video = JsonImporter.import_json(Path.join(path, "Zug.json"), ExqMock)
+      video_id = video.id
       assert video.copyright              == "Henrike Maria Falke - Gebärden lernen"
       assert video.license                == "by-nc-sa/3.0/de"
       assert video.original_href          == "http://www.gebaerdenlernen.de/index.php?article_id=176"
@@ -60,30 +63,39 @@ defmodule SignDict.Importer.JsonImporterTest do
       assert video.entry.description == "Eisenbahn"
       assert video.user.name         == "Gebärden lernen"
       assert Video.current_state(video) == :uploaded
+      assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
 
     test "it does use an already existing entry and adds the video to it", %{path: path, entry_with_description: entry} do
-      video = JsonImporter.import_json(Path.join(path, "Zug.json"))
+      video = JsonImporter.import_json(Path.join(path, "Zug.json"), ExqMock)
+      video_id = video.id
       assert Entry |> Repo.aggregate(:count, :id) == 2
       assert video.entry_id == entry.id
+      assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
 
     test "It also uses the correct entry when a description is not available", %{path: path, entry_without_description: entry}  do
-      video = JsonImporter.import_json(Path.join(path, "Zug2.json"))
+      video = JsonImporter.import_json(Path.join(path, "Zug2.json"), ExqMock)
+      video_id = video.id
       assert Entry |> Repo.aggregate(:count, :id) == 2
       assert video.entry_id == entry.id
+      assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
 
     test "it assigns the video to the correct user", %{path: path, user: user} do
-      video = JsonImporter.import_json(Path.join(path, "Zug.json"))
+      video = JsonImporter.import_json(Path.join(path, "Zug.json"), ExqMock)
+      video_id = video.id
       assert User |> Repo.aggregate(:count, :id) == 1
       assert video.user_id == user.id
+      assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
 
     test "it creates a new user if it does not exist yet", %{path: path} do
-      video = JsonImporter.import_json(Path.join(path, "Zug2.json"))
+      video = JsonImporter.import_json(Path.join(path, "Zug2.json"), ExqMock)
+      video_id = video.id
       assert User |> Repo.aggregate(:count, :id) == 2
       assert video.user.name == "dgs.wikisign.org"
+      assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
   end
 end

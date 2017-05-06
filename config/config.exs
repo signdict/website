@@ -67,6 +67,21 @@ config :scrivener_html,
   # If you use a single view style everywhere, you can configure it here. See View Styles below for more info.
   view_style: :bootstrap
 
+config :exq,
+  concurrency: 3, # limit the concurrency because postgres connections
+  scheduler_enable: true,
+  queues: [
+    {"transcoder", 1}, # the transcoder queue is rate limited by jw_player => only 1 worker
+    {"default", 3}
+  ]
+
+config :exq_ui,
+  server: false
+
+config :sign_dict, :jw_player,
+  api_key: "API_KEY",
+  api_secret: "API_SECRET"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

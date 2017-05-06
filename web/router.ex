@@ -66,6 +66,22 @@ defmodule SignDict.Router do
     get "/welcome", PageController, :welcome
   end
 
+  pipeline :exq do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :put_secure_browser_headers
+    plug :browser_session
+    plug :auth
+    plug :backend
+    plug ExqUi.RouterPlug, namespace: "exq"
+  end
+
+  scope "/exq", ExqUi do
+    pipe_through :exq
+    forward "/", RouterPlug.Router, :index
+  end
+
   # Backend functions. Only accessible to logged in admin users.
   scope "/backend", SignDict.Backend, as: :backend do
     pipe_through [:browser, :browser_session, :auth, :backend]

@@ -5,7 +5,7 @@ defmodule SignDict.Video do
   alias SignDict.Repo
   alias SignDict.Vote
 
-  @states [:created, :uploaded, :transcoded, :waiting_for_review,
+  @states [:created, :uploaded, :transcoding, :waiting_for_review,
            :published, :deleted]
 
   schema "videos" do
@@ -35,11 +35,11 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :transcode, %{from: [:uploaded], to: :transcoded}, fn(changeset) ->
+    defevent :transcode, %{from: [:uploaded], to: :transcoding}, fn(changeset) ->
       changeset |> Repo.update()
     end
 
-    defevent :wait_for_review, %{from: [:transcoded],
+    defevent :wait_for_review, %{from: [:transcoding],
                                  to: :waiting_for_review}, fn(changeset) ->
       changeset |> Repo.update()
     end
@@ -50,7 +50,7 @@ defmodule SignDict.Video do
     end
 
     # Allow deletion from every state:
-    defevent :delete, %{from: [:created, :uploaded, :transcoded,
+    defevent :delete, %{from: [:created, :uploaded, :transcoding,
                                :waiting_for_review, :published],
                         to: :deleted}, fn(changeset) ->
       changeset |> Repo.update()
@@ -60,9 +60,22 @@ defmodule SignDict.Video do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,
-                     :user_id, :entry_id, :video_url, :thumbnail_url, :plays])
+                     :user_id, :entry_id, :video_url, :thumbnail_url,
+                     :plays, :metadata])
     |> validate_required([:state, :copyright, :license, :original_href,
                           :entry_id, :user_id, :video_url, :thumbnail_url])
+    |> foreign_key_constraint(:entry_id)
+    |> foreign_key_constraint(:user_id)
+    |> validate_state()
+  end
+
+  def changeset_transcoder(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:state, :copyright, :license, :original_href,
+                     :user_id, :entry_id, :video_url, :thumbnail_url,
+                     :plays, :metadata])
+    |> validate_required([:state, :copyright, :license, :original_href,
+                          :entry_id, :user_id])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
     |> validate_state()

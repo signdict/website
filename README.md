@@ -19,7 +19,12 @@ the most accurate sign language dictionary there is.
 SignDict uses Elixir and Phoenix. Information on how
 to install Elixir can be found [here](http://elixir-lang.org/install.html).
 
-After you installed Elixir, the setup is as follows:
+For the video transcoding it uses [redis](http://redis.io). On
+macs install it via `brew install redis-server` and start it.
+
+As database it uses [PostgreSQL](http://postgresql.org).
+
+After you installed everything, the setup is as follows:
 
 ```bash
 mix deps.get

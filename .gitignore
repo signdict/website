@@ -30,3 +30,6 @@ screenshots/
 
 # User file uploads
 uploads/
+
+# Redis Database
+dump.rdb
