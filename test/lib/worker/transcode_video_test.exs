@@ -26,7 +26,7 @@ defmodule SignDict.Worker.TranscodeVideoTest do
 
     test "it calls the video service to upload the video" do
       video_id = insert(:video, state: "uploaded").id
-      TranscodeVideo.perform(video_id, VideoServiceMock)
+      TranscodeVideo.perform(video_id, VideoServiceMock, 0)
       assert_received {:transcode_video, ^video_id}
       assert Repo.get(Video, video_id).state == "transcoding"
     end

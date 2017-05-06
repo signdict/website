@@ -69,6 +69,18 @@ defmodule SignDict.Video do
     |> validate_state()
   end
 
+  def changeset_transcoder(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:state, :copyright, :license, :original_href,
+                     :user_id, :entry_id, :video_url, :thumbnail_url,
+                     :plays, :metadata])
+    |> validate_required([:state, :copyright, :license, :original_href,
+                          :entry_id, :user_id])
+    |> foreign_key_constraint(:entry_id)
+    |> foreign_key_constraint(:user_id)
+    |> validate_state()
+  end
+
   def valid_state?(state) when is_atom(state), do: @states |> Enum.member?(state)
   def valid_state?(state), do: valid_state?(String.to_atom(state))
 

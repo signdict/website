@@ -4,7 +4,9 @@ defmodule SignDict.Transcoder.JwPlayer do
   alias SignDict.Repo
   alias SignDict.Video
 
-  def upload_video(video) do
+  def upload_video(video, exq \\ Exq) do
+
+    # exq.enqueue_in(Exq, "transcoder", 60, SignDict.Worker.CheckVideoStatus, [video.metadata["jw_video_id"]])
     {:ok, video}
   end
 
@@ -17,10 +19,10 @@ defmodule SignDict.Transcoder.JwPlayer do
         update_video(video, http_client)
         :done
       Enum.member?(["created", "processing", "updating"], status) ->
-        video |> add_jw_answer_to_video(json) |> Repo.update
+        video |> Video.changeset_transcoder |> add_jw_answer_to_video(json) |> Repo.update
         :transcoding
       true ->
-        video |> add_jw_answer_to_video(json) |> Repo.update
+        video |> Video.changeset_transcoder |> add_jw_answer_to_video(json) |> Repo.update
         :error
     end
   end
@@ -35,7 +37,7 @@ defmodule SignDict.Transcoder.JwPlayer do
   defp update_video(video, http_client) do
     result = http_client.get!("https://cdn.jwplayer.com/v2/media/#{video.metadata["jw_video_id"]}")
     json = Poison.decode!(result.body)
-    changeset = Video.changeset(video, %{
+    changeset = Video.changeset_transcoder(video, %{
                                   video_url: get_video_from_response(json),
                                   thumbnail_url: get_thumbnail_from_response(json)
                                 })
@@ -74,7 +76,7 @@ defmodule SignDict.Transcoder.JwPlayer do
 
   defp add_jw_answer_to_video(video, json) do
     {_source, metadata} = Ecto.Changeset.fetch_field(video, :metadata)
-    changeset = Video.changeset(video, %{metadata: Map.merge(metadata || %{}, %{"jw_status" => json})})
+    changeset = Video.changeset_transcoder(video, %{metadata: Map.merge(metadata || %{}, %{"jw_status" => json})})
     changeset
   end
 

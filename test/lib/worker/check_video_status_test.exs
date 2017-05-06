@@ -48,7 +48,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
 
     test "if the video is still transcoding retry another time" do
       video_id = insert(:video, %{state: "transcoding"}).id
-      assert CheckVideoStatus.perform(video_id, VideoServiceMockTranscoding, ExqMock) == :transcoding
+      assert CheckVideoStatus.perform(video_id, VideoServiceMockTranscoding, ExqMock, 0) == :transcoding
       assert Repo.get(Video, video_id).state == "transcoding"
       assert_received {:check_status, ^video_id}
       assert_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
@@ -56,7 +56,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
 
     test "it publishes the video if it is done" do
       video_id = insert(:video, %{state: "transcoding"}).id
-      assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock) == :done
+      assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
       assert Repo.get(Video, video_id).state == "waiting_for_review"
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
@@ -64,7 +64,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
 
     test "it returns an error if the status code is unknown" do
       video_id = insert(:video, %{state: "transcoding"}).id
-      assert CheckVideoStatus.perform(video_id, VideoServiceMockError, ExqMock) == {:error, :unknown_status}
+      assert CheckVideoStatus.perform(video_id, VideoServiceMockError, ExqMock, 0) == {:error, :unknown_status}
       assert Repo.get(Video, video_id).state == "transcoding"
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}

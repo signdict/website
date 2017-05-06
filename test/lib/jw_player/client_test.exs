@@ -1,4 +1,4 @@
-defmodule SignDict.PostgresQueryHelperTest do
+defmodule SignDict.JwPlayer.ClientTest do
   use ExUnit.Case, async: true
 
   test "it generates a corectly sigend url" do
