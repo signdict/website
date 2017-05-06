@@ -1,5 +1,5 @@
 defmodule SignDict.Importer.JsonImporterTest do
-  use ExUnit.Case, async: true
+  use SignDict.ModelCase
   import SignDict.Factory
 
   alias SignDict.Importer.JsonImporter
@@ -7,11 +7,6 @@ defmodule SignDict.Importer.JsonImporterTest do
   alias SignDict.Repo
   alias SignDict.User
   alias SignDict.Video
-
-  setup do
-    Application.ensure_all_started(SignDict.Repo)
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignDict.Repo)
-  end
 
   setup_all do
     on_exit fn ->

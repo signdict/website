@@ -70,7 +70,10 @@ config :scrivener_html,
 config :exq,
   concurrency: 3, # limit the concurrency because postgres connections
   scheduler_enable: true,
-  queues: ["default"]
+  queues: [
+    {"transcoder", 1}, # the transcoder queue is rate limited by jw_player => only 1 worker
+    {"default", 3}
+  ]
 
 config :exq_ui,
   server: false

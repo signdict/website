@@ -1,15 +1,10 @@
 defmodule SignDict.Worker.CheckVideoStatusTest do
-  use ExUnit.Case, async: true
+  use SignDict.ModelCase
   import SignDict.Factory
 
   alias SignDict.Repo
   alias SignDict.Video
   alias SignDict.Worker.CheckVideoStatus
-
-  setup do
-    Application.ensure_all_started(SignDict.Repo)
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignDict.Repo)
-  end
 
   defmodule ExqMock do
     def enqueue_in(_arg1, _arg2, time, module, params) do

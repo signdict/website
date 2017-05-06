@@ -1,15 +1,10 @@
 defmodule SignDict.Worker.TranscodeVideoTest do
-  use ExUnit.Case, async: true
+  use SignDict.ModelCase
   import SignDict.Factory
 
   alias SignDict.Repo
   alias SignDict.Video
   alias SignDict.Worker.TranscodeVideo
-
-  setup do
-    Application.ensure_all_started(SignDict.Repo)
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignDict.Repo)
-  end
 
   describe "perform/2" do
     defmodule VideoServiceMock do
