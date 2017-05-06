@@ -97,4 +97,4 @@ config :sign_dict, SignDict.Mailer,
 
 config :sign_dict, :jw_player,
   api_key: System.get_env("JW_PLAYER_API_KEY"),
-  api_secret:System.get_env("JW_PLAYER_API_SECRET")
+  api_secret: System.get_env("JW_PLAYER_API_SECRET")

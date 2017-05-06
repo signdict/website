@@ -60,7 +60,8 @@ defmodule SignDict.Video do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,
-                     :user_id, :entry_id, :video_url, :thumbnail_url, :plays])
+                     :user_id, :entry_id, :video_url, :thumbnail_url,
+                     :plays, :metadata])
     |> validate_required([:state, :copyright, :license, :original_href,
                           :entry_id, :user_id, :video_url, :thumbnail_url])
     |> foreign_key_constraint(:entry_id)
