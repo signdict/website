@@ -475,7 +475,8 @@ msgstr ""
 msgid "Curious?"
 msgstr ""
 
-#: web/controllers/page_controller.ex:12 web/templates/shared/footer.html.eex:27
+#: web/controllers/page_controller.ex:12 web/templates/page/imprint.html.eex:3
+#: web/templates/shared/footer.html.eex:27
 msgid "Imprint"
 msgstr ""
 
@@ -680,10 +681,6 @@ msgstr ""
 msgid "Choose this variant"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:61
-msgid "Please login to vote for this video."
-msgstr ""
-
 #: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
 msgid "Thumbnail for Video"
 msgstr ""
@@ -768,7 +765,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:27 web/controllers/entry_controller.ex:46
+#: web/controllers/entry_controller.ex:58
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -782,4 +779,16 @@ msgstr ""
 
 #: web/controllers/page_controller.ex:17
 msgid "Welcome"
+msgstr ""
+
+#: web/controllers/entry_controller.ex:64
+msgid "No videos found."
+msgstr ""
+
+#: web/templates/entry/show.html.eex:61
+msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
+msgstr ""
+
+#: web/templates/layout/backend.html.eex:46
+msgid "Worker Queue"
 msgstr ""
