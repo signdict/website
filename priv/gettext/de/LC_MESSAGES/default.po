@@ -44,7 +44,6 @@ msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
 #: web/controllers/user_controller.ex:14 web/controllers/user_controller.ex:29
-#: web/templates/layout/backend.html.eex:27
 #: web/templates/layout/backend.html.eex:34
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
@@ -468,7 +467,6 @@ msgstr "SignDict ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jede
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr "Aktuell haben %{humans} Menschen %{signs} Gebärden beigetragen"
 
-#: web/controllers/page_controller.ex:17 web/templates/shared/footer.html.eex:28
 #: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:28
 msgid "Contact"
 msgstr "Kontakt"
@@ -477,7 +475,8 @@ msgstr "Kontakt"
 msgid "Curious?"
 msgstr "Neugierig?"
 
-#: web/controllers/page_controller.ex:12 web/templates/shared/footer.html.eex:27
+#: web/controllers/page_controller.ex:12 web/templates/page/imprint.html.eex:3
+#: web/templates/shared/footer.html.eex:27
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -682,10 +681,6 @@ msgstr "Quelle:"
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: web/templates/entry/show.html.eex:61
-msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
-msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
-
 #: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
@@ -724,7 +719,6 @@ msgid_plural "%{count} search results for »%{query}«"
 msgstr[0] "Ein Suchergebniss für »%{query}«"
 msgstr[1] "%{count} Suchergebnisse für »%{query}«"
 
-#: web/controllers/page_controller.ex:27
 #: web/templates/contact/new.html.eex:13 web/templates/contact/new.html.eex:14
 msgid "Content"
 msgstr "Inhalt"
@@ -771,19 +765,30 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/entry_controller.ex:27 web/controllers/entry_controller.ex:46
+#: web/controllers/entry_controller.ex:58
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
-
-#: web/controllers/user_controller.ex:41
-msgid "User %{user}"
-msgstr "Nutzer %{user}"
-
-#: web/controllers/page_controller.ex:22
-msgid "Welcome"
-msgstr "Willkommen"
 
 #: web/templates/shared/header.html.eex:4
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprachlexikon"
 
+#: web/controllers/user_controller.ex:41
+msgid "User %{user}"
+msgstr "Nutzer %{user}"
+
+#: web/controllers/page_controller.ex:17
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: web/controllers/entry_controller.ex:64
+msgid "No videos found."
+msgstr "Keine Videos gefunden."
+
+#: web/templates/entry/show.html.eex:61
+msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
+msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
+
+#: web/templates/layout/backend.html.eex:46
+msgid "Worker Queue"
+msgstr ""
