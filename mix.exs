@@ -21,7 +21,7 @@ defmodule SignDict.Mixfile do
   def application do
     [
       mod: {SignDict, []},
-      extra_applications: [:canada, :elixir_make, :pryin]
+      extra_applications: [:canada, :elixir_make, :pryin, :exq, :exq_ui]
     ]
   end
 
