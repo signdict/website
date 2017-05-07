@@ -43,7 +43,7 @@
           <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
           <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
           <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>
-          <%= nav_active_link @conn, gettext("Worker Queue"), "/exq/" %>
+          <%= nav_active_link @conn, gettext("Worker Queue"), "/exq/", [{"data-turbolinks", "false"}] %>
         </nav>
       </div>
       <main class="o-grid__cell o-grid__cell--width-85@large o-panel-container">

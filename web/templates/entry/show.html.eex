@@ -6,7 +6,7 @@
 
 <div class="so-video">
   <div class="o-container o-container--medium">
-    <video class="so-video--player" src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+    <video class="so-video--player" playsinline src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
   </div>
 </div>
 
