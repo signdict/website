@@ -68,7 +68,6 @@ config :scrivener_html,
   view_style: :bootstrap
 
 config :exq,
-  concurrency: 3, # limit the concurrency because postgres connections
   scheduler_enable: true,
   queues: [
     {"transcoder", 1}, # the transcoder queue is rate limited by jw_player => only 1 worker

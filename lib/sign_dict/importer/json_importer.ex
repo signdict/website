@@ -26,7 +26,7 @@ defmodule SignDict.Importer.JsonImporter do
       entry: entry,
       state: "uploaded"
     })
-    exq.enqueue(Exq, "video_transcoder", SignDict.Worker.TranscodeVideo, [video.id])
+    exq.enqueue(Exq, "transcoder", SignDict.Worker.TranscodeVideo, [video.id])
     video
   end
 
