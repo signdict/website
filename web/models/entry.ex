@@ -94,8 +94,9 @@ defmodule SignDict.Entry do
       ]
     )
     ids = Enum.map(res.rows, fn(row) -> List.first(row) end)
-    query = from(entry in Entry, where: entry.id in ^ids)
-
+    query = from(entry in Entry, where: entry.id in ^ids,
+                 order_by: fragment("levenshtein(?, ?)", entry.text, ^search)
+               )
     query
     |> Entry.with_current_video
     |> Repo.all
