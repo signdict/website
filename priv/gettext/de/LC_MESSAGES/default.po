@@ -799,7 +799,7 @@ msgstr "Bitte gebe ein Wort in das Suchfeld ein um nach Gebärden zu suchen."
 
 #: web/templates/search/index.html.eex:47
 msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
-msgstr "SignDict wird es jedem erlauben, fehlende Gebärden hochzuladen. Du brauchst dazu nur deine Webcam. Leider ist diese Funktion noch nicht fertig. Wenn du auf dem Laufenden bleiben willst, melde dich bitte für den Newsletter an."
+msgstr "SignDict wird es allen erlauben, fehlende Gebärden hochzuladen. Du brauchst dazu nur deine Webcam. Leider ist diese Funktion noch nicht fertig. Wenn du auf dem Laufenden bleiben willst, melde dich bitte für den Newsletter an."
 
 #: web/templates/search/index.html.eex:44
 msgid "Want to add new videos?"
