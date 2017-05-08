@@ -23,6 +23,8 @@ defmodule SignDict.PageController do
   end
 
   defp sign_count do
-    Repo.aggregate(SignDict.Video, :count, :id)
+    SignDict.Video
+    |> where(state: "published")
+    |> Repo.aggregate(:count, :id)
   end
 end
