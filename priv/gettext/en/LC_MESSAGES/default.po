@@ -500,7 +500,7 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:81
+#: web/templates/page/index.html.eex:81 web/templates/search/index.html.eex:54
 msgid "Newsletter sign up"
 msgstr ""
 
@@ -681,7 +681,7 @@ msgstr ""
 msgid "Choose this variant"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
+#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr ""
 
@@ -791,4 +791,16 @@ msgstr ""
 
 #: web/templates/layout/backend.html.eex:46
 msgid "Worker Queue"
+msgstr ""
+
+#: web/templates/search/index.html.eex:16
+msgid "Please enter a word in the field above to search for signs."
+msgstr ""
+
+#: web/templates/search/index.html.eex:47
+msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
+msgstr ""
+
+#: web/templates/search/index.html.eex:44
+msgid "Want to add new videos?"
 msgstr ""

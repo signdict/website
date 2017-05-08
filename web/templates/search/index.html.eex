@@ -9,6 +9,14 @@
       </h1>
     </div>
   </div>
+<% else %>
+  <div class="o-grid o-grid--wrap">
+    <div class="o-grid__cell">
+      <p>
+        <%= gettext("Please enter a word in the field above to search for signs.") %>
+      </p>
+    </div>
+  </div>
 <% end %>
 
 <%= for entry <- @entries do %>
@@ -29,3 +37,21 @@
     </div>
   </div>
 <% end %>
+
+<div class="o-grid o-grid--wrap">
+  <div class="o-grid__cell">
+    <h2>
+      <%= gettext("Want to add new videos?") %>
+    </h2>
+    <p>
+      <%= gettext("""
+SignDict will allow everyone to upload missing signs using your webcam.
+Sadly this feature is not ready yet. If you want to get notified
+about this, please subscribe to our newsletter by clicking the button below.
+""") %>
+    </p>
+    <p>
+      <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %>&nbsp;&#8250;</a>
+    </p>
+  </div>
+</div>
