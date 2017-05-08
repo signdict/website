@@ -91,11 +91,16 @@ defmodule SignDict.EntryTest do
       insert(:video, %{entry: tree_entry})
       Entry.update_current_video(tree_entry)
 
+      houseboat_entry  = insert(:entry, %{text: "hausboot"})
+      insert(:video_published, %{entry: houseboat_entry})
+      Entry.update_current_video(houseboat_entry)
+
       house_entry  = insert(:entry, %{text: "haus"})
       insert(:video_published, %{entry: house_entry})
       Entry.update_current_video(house_entry)
 
-      {:ok, train: train_entry, tree: tree_entry, hotel: hotel_entry, house: house_entry}
+      {:ok, train: train_entry, tree: tree_entry, hotel: hotel_entry,
+        house: house_entry, house_boat: houseboat_entry}
     end
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos", %{train: train} do
@@ -106,8 +111,12 @@ defmodule SignDict.EntryTest do
       assert Enum.map(Entry.search("de", "hotel"), &(&1.id)) == Enum.map([hotel], &(&1.id))
     end
 
-    test "it also finds the singular when searching for plural forms", %{house: house} do
-      assert Enum.map(Entry.search("de", "häuser"), &(&1.id)) == Enum.map([house], &(&1.id))
+    test "it returns the results with the best match first", %{house: house, house_boat: house_boat} do
+      assert Enum.map(Entry.search("de", "haus"), &(&1.id)) == Enum.map([house, house_boat], &(&1.id))
+    end
+
+    test "it also finds the singular when searching for plural forms", %{house: house, house_boat: house_boat} do
+      assert Enum.map(Entry.search("de", "häuser"), &(&1.id)) == Enum.map([house, house_boat], &(&1.id))
     end
   end
 
