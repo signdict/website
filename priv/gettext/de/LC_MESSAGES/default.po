@@ -500,7 +500,7 @@ msgstr "Logo rrone"
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
-#: web/templates/page/index.html.eex:81
+#: web/templates/page/index.html.eex:81 web/templates/search/index.html.eex:54
 msgid "Newsletter sign up"
 msgstr "Anmeldung zum Newsletter"
 
@@ -681,7 +681,7 @@ msgstr "Quelle:"
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:18
+#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
@@ -792,3 +792,15 @@ msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu 
 #: web/templates/layout/backend.html.eex:46
 msgid "Worker Queue"
 msgstr ""
+
+#: web/templates/search/index.html.eex:16
+msgid "Please enter a word in the field above to search for signs."
+msgstr "Bitte gebe ein Wort in das Suchfeld ein um nach Gebärden zu suchen."
+
+#: web/templates/search/index.html.eex:47
+msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
+msgstr "SignDict wird es jedem erlauben, fehlende Gebärden hochzuladen. Du brauchst dazu nur deine Webcam. Leider ist diese Funktion noch nicht fertig. Wenn du auf dem laufenden bleiben willst, melde dich bitte für den Newsletter an."
+
+#: web/templates/search/index.html.eex:44
+msgid "Want to add new videos?"
+msgstr "Willst du neue Videos hinzufügen?"
