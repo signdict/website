@@ -9,6 +9,13 @@
 .so-footer--sponsorheader {
   font-size: 1em;
 }
+.so-footer--sponsorheader a {
+  color: $dark_font;
+}
+
+.so-footer--sponsorabout a {
+  color: $highlight;
+}
 
 .so-footer--sponsorlogo {
   height: 7em;
@@ -39,9 +46,6 @@
 .so-footer--links--about {
   color: $deactive;
   font-size: 0.9em;
-}
-
-.so-footer--links--center {
 }
 
 .so-footer--links--list {

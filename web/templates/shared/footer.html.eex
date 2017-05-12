@@ -1,19 +1,24 @@
 <div class="so-footer">
-  <div class="o-container o-container--medium">
-    <div class="o-grid o-grid--wrap">
-      <div class="o-grid__cell">
-        <h1 class="so-footer--sponsorheader">
-          <%= gettext("Supporter") %>
-        </h1>
-        <p>
-          <a href="https://bmbf.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="/images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/></a>
-          <a href="https://prototypefund.de"><img class="so-footer--sponsorlogo so-footer--prototype" src="/images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/></a>
-          <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
-          <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
-        </p>
+  <%= if @conn.assigns[:supporter_footer] == nil || @conn.assigns[:supporter_footer] == true do %>
+    <div class="o-container o-container--medium">
+      <div class="o-grid o-grid--wrap">
+        <div class="o-grid__cell">
+          <h1 class="so-footer--sponsorheader">
+            <%= link gettext("Supporter"), to: page_path(@conn, :supporter) %>
+          </h1>
+          <p>
+            <a href="https://bmbf.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="/images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/></a>
+            <a href="https://prototypefund.de"><img class="so-footer--sponsorlogo so-footer--prototype" src="/images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/></a>
+            <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
+            <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
+          </p>
+          <p class="so-footer--sponsorabout">
+            <%= link gettext("The complete list of supporters."), to: page_path(@conn, :supporter) %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="so-footer--links">
     <div class="o-container o-container--medium">
