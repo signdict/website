@@ -22,6 +22,12 @@ defmodule SignDict.PageController do
       title: gettext("About")
   end
 
+  def supporter(conn, _params) do
+    render conn, "supporter.html", layout: {SignDict.LayoutView, "app.html"},
+      title: gettext("Supporter"), supporter_footer: false,
+      searchbar: true
+  end
+
   defp sign_count do
     SignDict.Video
     |> where(state: "published")

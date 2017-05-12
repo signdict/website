@@ -7,12 +7,13 @@
 @import "objects/_footer.css";
 @import "objects/_landing.css";
 @import "objects/_navigation.css";
-@import "objects/_welcome.css";
 @import "objects/_searchbar.css";
+@import "objects/_supporter.css";
 @import "objects/_user-show.css";
-@import "objects/_video.css";
 @import "objects/_video-list.css";
+@import "objects/_video.css";
 @import "objects/_voting-box.css";
+@import "objects/_welcome.css";
 @import "_font-awesome.min.css";
 
 a {

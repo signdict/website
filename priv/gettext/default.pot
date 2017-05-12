@@ -467,7 +467,7 @@ msgstr ""
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr ""
 
-#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:28
+#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:33
 msgid "Contact"
 msgstr ""
 
@@ -476,7 +476,7 @@ msgid "Curious?"
 msgstr ""
 
 #: web/controllers/page_controller.ex:12 web/templates/page/imprint.html.eex:3
-#: web/templates/shared/footer.html.eex:27
+#: web/templates/shared/footer.html.eex:32
 msgid "Imprint"
 msgstr ""
 
@@ -484,19 +484,23 @@ msgstr ""
 msgid "Language barrier"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:9
+#: web/templates/page/supporter.html.eex:14
+#: web/templates/shared/footer.html.eex:10
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:10
+#: web/templates/page/supporter.html.eex:13
+#: web/templates/shared/footer.html.eex:11
 msgid "Logo Prototype Fund"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:11
+#: web/templates/page/supporter.html.eex:25
+#: web/templates/shared/footer.html.eex:12
 msgid "Logo rrone"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:12
+#: web/templates/page/supporter.html.eex:36
+#: web/templates/shared/footer.html.eex:13
 msgid "Logo zweitag"
 msgstr ""
 
@@ -517,19 +521,20 @@ msgstr ""
 msgid "SignDict believes..."
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:22
+#: web/templates/shared/footer.html.eex:27
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:34
+#: web/templates/shared/footer.html.eex:39
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:33
+#: web/templates/shared/footer.html.eex:38
 msgid "SignDict on Twitter"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:6
+#: web/controllers/page_controller.ex:27 web/templates/page/supporter.html.eex:4
+#: web/templates/shared/footer.html.eex:7
 msgid "Supporter"
 msgstr ""
 
@@ -550,7 +555,7 @@ msgstr ""
 msgid "A hand with a speech bubble"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:26
+#: web/templates/shared/footer.html.eex:31
 msgid "Blog"
 msgstr ""
 
@@ -803,4 +808,44 @@ msgstr ""
 
 #: web/templates/search/index.html.eex:44
 msgid "Want to add new videos?"
+msgstr ""
+
+#: web/templates/shared/footer.html.eex:16
+msgid "The complete list of supporters."
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:7
+msgid "supporter_intro"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:18
+msgid "supporter_prototype"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:59
+msgid "All contributors."
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:58
+msgid "All libraries we are using to develop SignDict"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:47
+msgid "SignDict also wants to thank the following services and people:"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:49
+msgid "for always beeing there for me."
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:29
+msgid "supporter_rrbone"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:40
+msgid "supporter_zweitag"
+msgstr ""
+
+#: web/templates/page/supporter.html.eex:60
+msgid "and YOU for reading this <3"
 msgstr ""

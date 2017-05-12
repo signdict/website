@@ -467,7 +467,7 @@ msgstr "SignDict ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jede
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr "Aktuell haben %{humans} Menschen %{signs} Gebärden beigetragen"
 
-#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:28
+#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:33
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -476,7 +476,7 @@ msgid "Curious?"
 msgstr "Neugierig?"
 
 #: web/controllers/page_controller.ex:12 web/templates/page/imprint.html.eex:3
-#: web/templates/shared/footer.html.eex:27
+#: web/templates/shared/footer.html.eex:32
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -484,19 +484,23 @@ msgstr "Impressum"
 msgid "Language barrier"
 msgstr "Sprachbarriere"
 
-#: web/templates/shared/footer.html.eex:9
+#: web/templates/page/supporter.html.eex:14
+#: web/templates/shared/footer.html.eex:10
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr "Logo Bundesministerium für Bildung und Forschung"
 
-#: web/templates/shared/footer.html.eex:10
+#: web/templates/page/supporter.html.eex:13
+#: web/templates/shared/footer.html.eex:11
 msgid "Logo Prototype Fund"
 msgstr "Logo Prototype Fund"
 
-#: web/templates/shared/footer.html.eex:11
+#: web/templates/page/supporter.html.eex:25
+#: web/templates/shared/footer.html.eex:12
 msgid "Logo rrone"
 msgstr "Logo rrone"
 
-#: web/templates/shared/footer.html.eex:12
+#: web/templates/page/supporter.html.eex:36
+#: web/templates/shared/footer.html.eex:13
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
@@ -517,25 +521,26 @@ msgstr "Suche"
 msgid "SignDict believes..."
 msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gesellschaft ist. Um die Integration von gehörlosen Menschen zu fördern, bieten wir ein lebendiges Gebärdensprach-Wörterbuch, das jeden einlädt mitzumachen."
 
-#: web/templates/shared/footer.html.eex:22
+#: web/templates/shared/footer.html.eex:27
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: web/templates/shared/footer.html.eex:34
+#: web/templates/shared/footer.html.eex:39
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
-#: web/templates/shared/footer.html.eex:33
+#: web/templates/shared/footer.html.eex:38
 msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
-#: web/templates/shared/footer.html.eex:6
+#: web/controllers/page_controller.ex:27 web/templates/page/supporter.html.eex:4
+#: web/templates/shared/footer.html.eex:7
 msgid "Supporter"
 msgstr "Unterstützer"
 
 #: web/templates/page/index.html.eex:78
 msgid "This page is still under construction and.."
-msgstr "Diese Seite ist noch im Aufbau und noch nicht alles ist Fertig. Willst du informiert werden, sobald es neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
+msgstr "Diese Seite ist noch im Aufbau und noch nicht alles ist Fertig. Willst du informiert werden, sobald es Neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
 
 #: web/templates/page/index.html.eex:75
 msgid "Want to stay up to date?"
@@ -550,7 +555,7 @@ msgstr "Wort nach dem gesucht werden soll"
 msgid "A hand with a speech bubble"
 msgstr "Eine Hand mit einer Sprechblase"
 
-#: web/templates/shared/footer.html.eex:26
+#: web/templates/shared/footer.html.eex:31
 msgid "Blog"
 msgstr "Blog"
 
@@ -804,3 +809,44 @@ msgstr "SignDict wird es jedem erlauben, fehlende Gebärden hochzuladen. Du brau
 #: web/templates/search/index.html.eex:44
 msgid "Want to add new videos?"
 msgstr "Willst du neue Videos hinzufügen?"
+
+#: web/templates/shared/footer.html.eex:16
+msgid "The complete list of supporters."
+msgstr "Die komplette Liste an Unterstützern."
+
+#: web/templates/page/supporter.html.eex:7
+msgid "supporter_intro"
+msgstr "Dieses Projekt ist nicht kommerziell und alles steht unter Open Source Lizenzen. Der Quelltext nutzt die Mozilla Public License 2.0 und alle Videos sind unter einer Creative Commons Lizenz. Der Betrieb und die Entwicklung des Projektes kosten eine große Menge an Zeit und Ressourcen. Glücklicherweise haben einige Firmen und Privatpersonen geholfen, dieses Projekt zu realisieren. Hier findest du eine Liste mit allen Unterstützern:innen und was genau jede:r zum Projekt beigetragen hat."
+
+#: web/templates/page/supporter.html.eex:18
+msgid "supporter_prototype"
+msgstr "Der Prototype Fund hat dieses Projekt in die erste Förderrunde aufgenommen. Danke für das Vertrauen dafür. Danke auch an das BmBF für die Unterstützung des Prototypefundes. Ohne diese wäre dieses Projekt nicht möglich gewesen."
+
+#: web/templates/page/supporter.html.eex:59
+msgid "All contributors."
+msgstr "Allen Mitwirkenden."
+
+#: web/templates/page/supporter.html.eex:58
+msgid "All libraries we are using to develop SignDict"
+msgstr "Alle Bibliotheken, die wir für die Entwicklung von SignDict benutzen"
+
+#: web/templates/page/supporter.html.eex:47
+msgid "SignDict also wants to thank the following services and people:"
+msgstr "SignDict dankt auch folgenden Diensten und Menschen:"
+
+#: web/templates/page/supporter.html.eex:49
+msgid "for always beeing there for me."
+msgstr "weil Ihr immer für mich da seit."
+
+#: web/templates/page/supporter.html.eex:29
+msgid "supporter_rrbone"
+msgstr "Dieser Dienst wird auf Servern von RRBone betrieben. Danke für die Bereitstellung der Server."
+
+#: web/templates/page/supporter.html.eex:40
+msgid "supporter_zweitag"
+msgstr "Zweitag hat freundlicherweise dieses sehr schicke Design entworfen und mir bei der Umsetzung mit Rat zur Seite gestanden."
+
+#, fuzzy
+#: web/templates/page/supporter.html.eex:60
+msgid "and YOU for reading this <3"
+msgstr "und DIR für das Lesen dieser Liste <3"
