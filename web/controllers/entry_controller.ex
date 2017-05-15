@@ -10,7 +10,9 @@ defmodule SignDict.EntryController do
 
   def index(conn, _params) do
     entries = Entry
+              |> where([e], not is_nil(e.current_video_id))
               |> limit(10)
+              |> Entry.with_current_video
               |> Repo.all
 
     render(conn, "index.html",
