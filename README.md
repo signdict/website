@@ -43,6 +43,10 @@ would have been sent out here: `http://localhost:4000/sent_emails`
 
 This project is using [yarn](http://yarnjs.com/) for javascript dependency management.
 
+You can also use the included `Procfile` to start redis and the phoenix server at
+the same time. Install `foreman` with `gem install foreman` and execute `foreman start`
+to have both started automatically.
+
 ## Deployment
 
 The system is currently deployed using [gatling](https://github.com/hashrocket/gatling).
