@@ -1,1 +1,3 @@
+<%= link "A", to: entry_path(@conn, :index, letter: "a") %>
+
 <%= length @entries %>
