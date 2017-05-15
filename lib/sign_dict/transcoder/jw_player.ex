@@ -1,8 +1,11 @@
 defmodule SignDict.Transcoder.JwPlayer do
   @behaviour SignDict.Transcoder.API
 
+  alias Ecto.Changeset
+  alias JwPlayer.Client
   alias SignDict.Repo
   alias SignDict.Video
+  alias SignDict.Worker.CheckVideoStatus
 
   def upload_video(video, http_client \\ HTTPoison, exq \\ Exq) do
     json = upload_video_to_jw(video, http_client)
@@ -13,7 +16,7 @@ defmodule SignDict.Transcoder.JwPlayer do
         |> add_jw_answer_to_video(json)
         |> add_jw_video_id_to_video(json)
         |> Repo.update
-        exq.enqueue_in(Exq, "transcoder", 60, SignDict.Worker.CheckVideoStatus, [video.id])
+        exq.enqueue_in(Exq, "transcoder", 60, CheckVideoStatus, [video.id])
         {:ok, video}
     else
         video
@@ -50,7 +53,7 @@ defmodule SignDict.Transcoder.JwPlayer do
 
   defp upload_video_to_jw(video, http_client) do
     response = "/videos/create"
-               |> JwPlayer.Client.sign_url(%{
+               |> Client.sign_url(%{
                  title: "video-#{video.id}",
                  download_url: "https://beta.signdict.org/uploads/video_upload/#{video.metadata["source_mp4"]}"
                })
@@ -60,7 +63,7 @@ defmodule SignDict.Transcoder.JwPlayer do
 
   defp load_video_status(video, http_client) do
     response = "/videos/show"
-               |> JwPlayer.Client.sign_url(%{video_key: video.metadata["jw_video_id"]})
+               |> Client.sign_url(%{video_key: video.metadata["jw_video_id"]})
                |> http_client.get!
     Poison.decode! response.body
   end
@@ -114,8 +117,9 @@ defmodule SignDict.Transcoder.JwPlayer do
   end
 
   defp add_metadata(video, data) do
-    {_source, metadata} = Ecto.Changeset.fetch_field(video, :metadata)
-    changeset = Video.changeset_transcoder(video, %{metadata: Map.merge(metadata || %{}, data)})
+    {_source, metadata} = Changeset.fetch_field(video, :metadata)
+    changeset = Video.changeset_transcoder(video,
+                  %{metadata: Map.merge(metadata || %{}, data)})
     changeset
   end
 end

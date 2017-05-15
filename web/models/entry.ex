@@ -5,6 +5,7 @@ defmodule SignDict.Entry do
   alias SignDict.Repo
   alias SignDict.Entry
   alias Ecto.Adapters.SQL
+  alias SignDict.PostgresQueryHelper
 
   @types ~w(word phrase example)
 
@@ -86,11 +87,12 @@ defmodule SignDict.Entry do
   def search(locale, search) do
     qry = """
       select id from entries where current_video_id is not null and
-        fulltext_search @@ to_tsquery('#{postgres_locale(locale)}', unaccent($1));
+        fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
+                                      unaccent($1));
     """
-    res = Ecto.Adapters.SQL.query!(
+    res = SQL.query!(
       Repo, qry, [
-        SignDict.PostgresQueryHelper.format_search_query(search)
+        PostgresQueryHelper.format_search_query(search)
       ]
     )
     ids = Enum.map(res.rows, fn(row) -> List.first(row) end)

@@ -45,7 +45,6 @@ defmodule SignDict.EntryControllerTest do
       assert html_response(conn, 200) =~ "User 1"
     end
 
-
     test "shows the voted video if the user voted one", %{conn: conn, entry: entry, user_3: user} do
       conn = conn
            |> guardian_login(user)

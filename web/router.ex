@@ -49,6 +49,11 @@ defmodule SignDict.Router do
     resources "/entry",  EntryController, only: [:show] do
       get "/video/:video_id", EntryController, :show, as: :video
     end
+
+    resources "/embed",  EmbedController, only: [:show] do
+      get "/video/:video_id", EmbedController, :show, as: :video
+    end
+
     post "/video/:video_id/vote", VoteController, :create
     delete "/video/:video_id/vote", VoteController, :delete
 
