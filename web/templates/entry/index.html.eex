@@ -1,3 +1,9 @@
 <%= link "A", to: entry_path(@conn, :index, letter: "a") %>
+<%= link "B", to: entry_path(@conn, :index, letter: "b") %>
 
-<%= length @entries %>
+<%# A-Z , Nummern, Sonstiges %>
+
+<%= for entry <- @entries do %>
+  <%= entry.text %>
+<% end %>
+
