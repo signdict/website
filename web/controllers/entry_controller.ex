@@ -8,6 +8,19 @@ defmodule SignDict.EntryController do
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
 
+  def index(conn, _params) do
+    entries = Entry
+              |> limit(10)
+              |> Repo.all
+
+    render(conn, "index.html",
+           layout: {SignDict.LayoutView, "app.html"},
+           entries: entries,
+           searchbar: true,
+           title: gettext("All entries")
+         )
+  end
+
   def show(conn, %{"id" => id}) do
     if id =~ ~r/^\d+(-.*)?\z/ do
       conn
