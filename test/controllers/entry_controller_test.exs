@@ -23,18 +23,24 @@ defmodule SignDict.EntryControllerTest do
       }
     end
 
+    test "it redirect if the entry was not found", %{conn: conn} do
+      conn = get conn, entry_path(conn, :show, 99999)
+      assert redirected_to(conn) == "/"
+      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+    end
+
     test "it redirect if the entry does not have any videos and no video id is given", %{conn: conn} do
       entry = insert(:entry)
       conn = get conn, entry_path(conn, :show, entry)
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "No videos found."
+      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
     end
 
     test "it redirect if the entry does not have any videos and a video id is given", %{conn: conn} do
       entry = insert(:entry)
       conn = get conn, entry_video_path(conn, :show, entry, 1)
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "No videos found."
+      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
     end
 
     test "shows the highest voted video if no video is given", %{conn: conn, entry: entry} do

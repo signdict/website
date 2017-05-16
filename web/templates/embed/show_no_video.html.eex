@@ -1,0 +1,10 @@
+<div class="so-embed--no-video">
+  <p class="so-embed--no-video--text">
+    <%= gettext("Sorry, no sign was found") %>
+  </p>
+
+  <a class="sc-button" target="_blank" rel="noopener" href="https://<%= @conn.host %>">
+    <%= gettext("Open SignDict") %>
+  </a>
+
+</div>

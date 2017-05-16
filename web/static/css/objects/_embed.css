@@ -4,6 +4,18 @@
   background-color: #000;
 }
 
+.so-embed--no-video {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.so-embed--no-video--text {
+  color: #fff;
+  font-size: 1em;
+  margin-top: 2em;
+}
+
 .so-embed--player {
   position: absolute;
   left: 0;

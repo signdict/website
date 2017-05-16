@@ -15,13 +15,28 @@ defmodule SignDict.EmbedController do
     |> render_entry(entry_video_path(conn, :show, id, video_id))
   end
 
+  defp render_entry(%{conn: conn, videos: videos}, _entry_link) when length(videos) == 0 do
+    render(conn, "show_no_video.html",
+           layout: {SignDict.LayoutView, "embed.html"},
+           title: gettext("Sorry, no sign found")
+         )
+  end
   defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "embed.html"},
            entry: entry,
            entry_path: entry_link,
            video: video,
+           ogtags: %{
+             "og:description" => "Video by #{video.user.name}"
+           },
            title: gettext("Sign for %{sign}", sign: entry.text)
+         )
+  end
+  defp render_entry(%{conn: conn}, _entry_link) do
+    render(conn, "show_no_video.html",
+           layout: {SignDict.LayoutView, "embed.html"},
+           title: gettext("Sorry, no sign found")
          )
   end
 

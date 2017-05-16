@@ -10,7 +10,9 @@ defmodule SignDict.Services.EntryVideoLoader do
   end
   def load_videos_for_entry(conn, id: entry_id) do
     result = do_load_entry_and_videos(entry_id, conn.assigns.current_user)
-    video  = do_load_voted_video(%{voted: result.voted, videos: result.videos})
+    video = if !is_nil(result[:entry]) do
+      do_load_voted_video(%{voted: result.voted, videos: result.videos})
+    end
     Map.merge(result, %{conn: conn, video: video})
   end
 
@@ -37,7 +39,16 @@ defmodule SignDict.Services.EntryVideoLoader do
   end
 
   def do_load_entry_and_videos(entry_id, current_user) do
-    entry       = Entry |> Entry.with_language |>  Repo.get!(entry_id)
+    Entry
+    |> Entry.with_language
+    |> Repo.get(entry_id)
+    |> do_fetch_videos_for_entry(current_user)
+  end
+
+  defp do_fetch_videos_for_entry(entry, _current_user) when is_nil(entry) do
+    %{}
+  end
+  defp do_fetch_videos_for_entry(entry, current_user) do
     video_query = Video.ordered_by_vote_for_entry(entry)
     videos      = video_query |> Repo.all |> Repo.preload(:user)
     voted       = Entry.voted_video(entry, current_user)

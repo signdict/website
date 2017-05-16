@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="<%= Gettext.get_locale(SignDict.Gettext) %>" prefix="og: http://ogp.me/ns#">
   <head>
-    <%= render SignDict.SharedView, "header.html", conn: @conn, current_user: @current_user %>
+    <%= render SignDict.SharedView, "header.html", conn: @conn,
+            current_user: @current_user,
+            ogtags: assigns[:ogtags],
+            title: assigns[:title] %>
   </head>
-
   <body>
     <div class="o-container o-container--medium">
       <%= render SignDict.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
@@ -19,8 +21,7 @@
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
-
-    </div> <!-- /container -->
+    </div>
 
     <%= render SignDict.SharedView, "footer.html", conn: @conn %>
   </body>

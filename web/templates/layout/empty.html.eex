@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="<%= Gettext.get_locale(SignDict.Gettext) %>" prefix="og: http://ogp.me/ns#">
   <head>
-    <%= render SignDict.SharedView, "header.html", conn: @conn, current_user: @current_user %>
+    <%= render SignDict.SharedView, "header.html", conn: @conn,
+            current_user: @current_user,
+            ogtags: assigns[:ogtags],
+            title: assigns[:title] %>
   </head>
 
   <body class='sc-layout--empty'>

@@ -31,10 +31,13 @@ defmodule SignDict.EntryController do
            title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end
+  defp render_entry(%{conn: conn}) do
+    redirect_no_videos(conn)
+  end
 
   defp redirect_no_videos(conn) do
     conn
-    |> put_flash(:info, gettext("No videos found."))
+    |> put_flash(:info, gettext("Sorry, I could not find an entry for this."))
     |> redirect(to: "/")
   end
 
