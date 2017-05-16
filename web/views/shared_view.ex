@@ -1,19 +1,20 @@
 defmodule SignDict.SharedView do
   use SignDict.Web, :view
 
-  def ogtags(assigns) do
-    if assigns[:ogtags] do
-      for {key, value} <- assigns[:ogtags] do
-        raw("\t<meta property=\"#{key}\" content=\"#{value}\">\n")
-      end
-    else
-      raw("""
-      <meta property="og:title" content="SignDict" />
-      <meta property="og:description" content="Ein Gebärdensprachlexikon" />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="http://8aa627d7.ngrok.io/images/logo.png" />
-      <meta property="og:url" content="http://8aa627d7.ngrok.io" />
-      """)
+  def ogtags(conn) do
+    ogtags = Map.merge(%{
+                "og:title" => "SignDict",
+                "og:description" => "Ein Gebärdensprachlexikon",
+                "og:type" => "website",
+                "og:image" => "/images/logo.png",
+                "og:url" => SignDict.Router.Helpers.url(conn) <> conn.request_path
+              }, (conn.assigns[:ogtags] || %{}))
+    render_metatags(ogtags)
+  end
+
+  defp render_metatags(tags) do
+    for {key, value} <- tags do
+      raw("\t<meta property=\"#{key}\" content=\"#{value}\">\n")
     end
   end
 

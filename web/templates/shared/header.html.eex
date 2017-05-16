@@ -1,6 +1,6 @@
 <title><%= gettext("SignDict") %><%= if assigns[:title] do %> - <%= assigns[:title] %><% end %></title>
 
-<%= ogtags(assigns) %>
+<%= ogtags(@conn) %>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
