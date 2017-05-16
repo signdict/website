@@ -16,7 +16,7 @@ defmodule SignDict.Services.EntryVideoLoader do
 
   defp do_load_video(%{video_id: video_id, videos: videos}) when length(videos) > 0 do
     Video
-    |> Repo.get!(video_id)
+    |> Repo.get(video_id)
     |> Repo.preload(:user)
     |> Video.with_vote_count
   end
@@ -28,7 +28,9 @@ defmodule SignDict.Services.EntryVideoLoader do
     Video.with_vote_count(params.voted)
   end
   defp do_load_voted_video(%{videos: videos}) when length(videos) > 0 do
-    List.first(videos)
+    videos
+    |> List.first
+    |> Video.with_vote_count
   end
   defp do_load_voted_video(_args) do
     nil

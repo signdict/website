@@ -50,6 +50,7 @@ defmodule SignDict.EntryTest do
       voted_video = Entry.voted_video(vote.video.entry, vote.user)
       assert voted_video.id == video.id
       assert Ecto.assoc_loaded? voted_video.user
+      assert voted_video.vote_count == 1
     end
   end
 

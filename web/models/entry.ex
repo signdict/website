@@ -67,6 +67,7 @@ defmodule SignDict.Entry do
     query
     |> Repo.one
     |> Repo.preload(:user)
+    |> Video.with_vote_count
   end
 
   def update_current_video(entry) do

@@ -108,12 +108,15 @@ defmodule SignDict.Video do
       select: %{video | vote_count: count(up.id)})
   end
 
-  def with_vote_count(video) do
-    if video.vote_count == nil do
+  def with_vote_count(video) when not is_nil(video) do
+    if video.vote_count == nil && !is_nil(video.id) do
       query = from vote in Vote, where: vote.video_id == ^video.id
       %{video | vote_count: Repo.aggregate(query, :count, :id)}
     else
       video
     end
+  end
+  def with_vote_count(_video) do
+    nil
   end
 end
