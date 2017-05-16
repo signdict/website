@@ -390,7 +390,7 @@ msgid "Entries"
 msgstr "Einträge"
 
 #: web/templates/layout/backend.html.eex:10
-#: web/templates/shared/header.html.eex:7
+#: web/templates/shared/header.html.eex:1
 msgid "SignDict"
 msgstr ""
 
@@ -559,7 +559,8 @@ msgstr "Eine Hand mit einer Sprechblase"
 msgid "Blog"
 msgstr "Blog"
 
-#: web/templates/page/index.html.eex:8 web/templates/page/welcome.html.eex:5
+#: web/templates/embed/show.html.eex:2 web/templates/page/index.html.eex:8
+#: web/templates/page/welcome.html.eex:5
 #: web/templates/shared/navigation.html.eex:5
 msgid "SignDict Logo"
 msgstr "SignDict Logo"
@@ -770,11 +771,11 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/entry_controller.ex:58
+#: web/controllers/embed_controller.ex:33 web/controllers/entry_controller.ex:31
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
-#: web/templates/shared/header.html.eex:4
+#: web/templates/shared/header.html.eex:8
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprachlexikon"
 
@@ -785,10 +786,6 @@ msgstr "Nutzer %{user}"
 #: web/controllers/page_controller.ex:17
 msgid "Welcome"
 msgstr "Willkommen"
-
-#: web/controllers/entry_controller.ex:64
-msgid "No videos found."
-msgstr "Keine Videos gefunden."
 
 #: web/templates/entry/show.html.eex:61
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
@@ -846,7 +843,26 @@ msgstr "Dieser Dienst wird auf Servern von RRBone betrieben. Danke für die Bere
 msgid "supporter_zweitag"
 msgstr "Zweitag hat freundlicherweise dieses sehr schicke Design entworfen und mir bei der Umsetzung mit Rat zur Seite gestanden."
 
-#, fuzzy
 #: web/templates/page/supporter.html.eex:60
 msgid "and YOU for reading this <3"
 msgstr "und DIR für das Lesen dieser Liste <3"
+
+#: web/templates/embed/show.html.eex:3
+msgid "Details >"
+msgstr "Details >"
+
+#: web/templates/embed/show_no_video.html.eex:7
+msgid "Open SignDict"
+msgstr "Öffne SignDict"
+
+#: web/controllers/entry_controller.ex:40
+msgid "Sorry, I could not find an entry for this."
+msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
+
+#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:39
+msgid "Sorry, no sign found"
+msgstr "Entschuldigung, keine Gebärde gefunden"
+
+#: web/templates/embed/show_no_video.html.eex:3
+msgid "Sorry, no sign was found"
+msgstr "Entschuldigung, es wurde keine Gebärde gefunden"

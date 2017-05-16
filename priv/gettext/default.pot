@@ -390,7 +390,7 @@ msgid "Entries"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:10
-#: web/templates/shared/header.html.eex:7
+#: web/templates/shared/header.html.eex:1
 msgid "SignDict"
 msgstr ""
 
@@ -559,7 +559,8 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: web/templates/page/index.html.eex:8 web/templates/page/welcome.html.eex:5
+#: web/templates/embed/show.html.eex:2 web/templates/page/index.html.eex:8
+#: web/templates/page/welcome.html.eex:5
 #: web/templates/shared/navigation.html.eex:5
 msgid "SignDict Logo"
 msgstr ""
@@ -770,11 +771,11 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:58
+#: web/controllers/embed_controller.ex:33 web/controllers/entry_controller.ex:31
 msgid "Sign for %{sign}"
 msgstr ""
 
-#: web/templates/shared/header.html.eex:4
+#: web/templates/shared/header.html.eex:8
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
@@ -784,10 +785,6 @@ msgstr ""
 
 #: web/controllers/page_controller.ex:17
 msgid "Welcome"
-msgstr ""
-
-#: web/controllers/entry_controller.ex:64
-msgid "No videos found."
 msgstr ""
 
 #: web/templates/entry/show.html.eex:61
@@ -848,4 +845,24 @@ msgstr ""
 
 #: web/templates/page/supporter.html.eex:60
 msgid "and YOU for reading this <3"
+msgstr ""
+
+#: web/templates/embed/show.html.eex:3
+msgid "Details >"
+msgstr ""
+
+#: web/templates/embed/show_no_video.html.eex:7
+msgid "Open SignDict"
+msgstr ""
+
+#: web/controllers/entry_controller.ex:40
+msgid "Sorry, I could not find an entry for this."
+msgstr ""
+
+#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:39
+msgid "Sorry, no sign found"
+msgstr ""
+
+#: web/templates/embed/show_no_video.html.eex:3
+msgid "Sorry, no sign was found"
 msgstr ""
