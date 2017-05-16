@@ -1,0 +1,3 @@
+<video class="so-embed--player" playsinline src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+<a href="<%= @entry_path %>" target="_blank" rel="noopener"><img class="so-embed--logo" src="/images/logo.svg" alt="<%= gettext("SignDict Logo") %>" /></a>
+<a href="<%= @entry_path %>" target="_blank" rel="noopener" class="sc-button so-embed--details">Details &gt;</a>

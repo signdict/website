@@ -1,0 +1,31 @@
+.so-embed {
+  margin: 0px;
+  padding: 0px;
+  background-color: #000;
+}
+
+.so-embed--player {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.so-embed--logo {
+  position: absolute;
+  left: 1em;
+  top: 0.5em;
+  width: 2em;
+  z-index: 10;
+}
+
+.so-embed--details {
+  position: absolute;
+  right: 1em;
+  top: 0em;
+  z-index: 10;
+  height: auto;
+  padding: 0.5em 1em;
+}
+
