@@ -18,7 +18,8 @@ defmodule SignDict.PageController do
   end
 
   def about(conn, _params) do
-    render conn, "about.html", layout: {SignDict.LayoutView, "app.html"},
+    render conn, "about_#{Gettext.get_locale(SignDict.Gettext)}.html", layout: {SignDict.LayoutView, "app.html"},
+      searchbar: true,
       title: gettext("About")
   end
 
