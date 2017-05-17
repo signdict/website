@@ -14,14 +14,16 @@ defmodule SignDict.SharedView do
 
   defp render_metatags(tags) do
     for {key, value} <- tags do
-      raw("<meta property=\"#{key}\" content=\"#{value}\">\n")
+      {:safe, safe_value} = Phoenix.HTML.html_escape(value)
+      raw("<meta property=\"#{key}\" content=\"#{safe_value}\">\n")
     end
   end
 
-  defp title(conn) do
-    "SignDict" <> if conn.assigns[:title] do
-      " - " <> conn.assigns[:title]
-    end
+  defp title(%{assigns: %{title: title}}) do
+    "SignDict - #{title}"
+  end
+  defp title(_args) do
+    "SignDict"
   end
 
 end

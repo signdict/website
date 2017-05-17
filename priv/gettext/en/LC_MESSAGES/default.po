@@ -247,7 +247,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:63
+#: web/controllers/user_controller.ex:64
 msgid "Updated successfully."
 msgstr ""
 
@@ -749,7 +749,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr ""
 
-#: web/controllers/user_controller.ex:52
+#: web/controllers/user_controller.ex:53
 msgid "Edit profile"
 msgstr ""
 
@@ -771,7 +771,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:33 web/controllers/entry_controller.ex:31
+#: web/controllers/embed_controller.ex:31 web/controllers/entry_controller.ex:32
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: web/controllers/user_controller.ex:41
+#: web/controllers/user_controller.ex:42
 msgid "User %{user}"
 msgstr ""
 
@@ -855,11 +855,11 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:40
+#: web/controllers/entry_controller.ex:41
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
-#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:39
+#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:37
 msgid "Sorry, no sign found"
 msgstr ""
 
@@ -869,4 +869,21 @@ msgstr ""
 
 #: web/views/shared_view.ex:7
 msgid "A sign language dictionary"
+msgstr ""
+
+#: lib/sign_dict/services/opengraph.ex:13
+msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
+msgstr ""
+
+#: lib/sign_dict/services/opengraph.ex:52
+msgid "by %{copyright}"
+msgstr ""
+
+#, fuzzy
+#: lib/sign_dict/services/opengraph.ex:38
+msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
+msgstr ""
+
+#: lib/sign_dict/services/opengraph.ex:50
+msgid "by %{copyright} - %{username}"
 msgstr ""

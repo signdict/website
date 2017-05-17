@@ -28,6 +28,7 @@ defmodule SignDict.EntryController do
            videos: videos,
            voted_video: voted,
            searchbar: true,
+           ogtags: SignDict.Services.OpenGraph.to_metadata(entry, video),
            title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end

@@ -27,9 +27,7 @@ defmodule SignDict.EmbedController do
            entry: entry,
            entry_path: entry_link,
            video: video,
-           ogtags: %{
-             "og:description" => "Video by #{video.user.name}"
-           },
+           ogtags: SignDict.Services.OpenGraph.to_metadata(entry, video),
            title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end
