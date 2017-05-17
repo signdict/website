@@ -882,7 +882,7 @@ msgstr "von %{copyright}"
 #, fuzzy
 #: lib/sign_dict/services/opengraph.ex:38
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
-msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright_source}\n"
+msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright}\n"
 
 #: lib/sign_dict/services/opengraph.ex:50
 msgid "by %{copyright} - %{username}"
