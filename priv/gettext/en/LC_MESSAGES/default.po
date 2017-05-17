@@ -866,3 +866,7 @@ msgstr ""
 #: web/templates/embed/show_no_video.html.eex:3
 msgid "Sorry, no sign was found"
 msgstr ""
+
+#: web/views/shared_view.ex:7
+msgid "A sign language dictionary"
+msgstr ""

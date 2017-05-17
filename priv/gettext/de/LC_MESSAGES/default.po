@@ -777,7 +777,7 @@ msgstr "Gebärde für %{sign}"
 
 #: web/templates/shared/header.html.eex:8
 msgid "SignDict - A sign language dictionary"
-msgstr "SignDict - Ein Gebärdensprachlexikon"
+msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
 #: web/controllers/user_controller.ex:41
 msgid "User %{user}"
@@ -866,3 +866,7 @@ msgstr "Entschuldigung, keine Gebärde gefunden"
 #: web/templates/embed/show_no_video.html.eex:3
 msgid "Sorry, no sign was found"
 msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
+
+#: web/views/shared_view.ex:7
+msgid "A sign language dictionary"
+msgstr "Ein Gebärdensprach-Wörterbuch"

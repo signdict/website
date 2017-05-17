@@ -3,10 +3,10 @@ defmodule SignDict.SharedView do
 
   def ogtags(conn) do
     ogtags = Map.merge(%{
-                "og:title" => "SignDict",
-                "og:description" => "Ein Gebärdensprachlexikon",
+                "og:title" => title(conn),
+                "og:description" => gettext("A sign language dictionary"),
                 "og:type" => "website",
-                "og:image" => "/images/logo.png",
+                "og:image" => SignDict.Router.Helpers.url(conn) <> "/images/logo.png",
                 "og:url" => SignDict.Router.Helpers.url(conn) <> conn.request_path
               }, (conn.assigns[:ogtags] || %{}))
     render_metatags(ogtags)
@@ -14,7 +14,13 @@ defmodule SignDict.SharedView do
 
   defp render_metatags(tags) do
     for {key, value} <- tags do
-      raw("\t<meta property=\"#{key}\" content=\"#{value}\">\n")
+      raw("<meta property=\"#{key}\" content=\"#{value}\">\n")
+    end
+  end
+
+  defp title(conn) do
+    "SignDict" <> if conn.assigns[:title] do
+      " - " <> conn.assigns[:title]
     end
   end
 
