@@ -38,6 +38,7 @@ defmodule SignDict.UserController do
       user: conn.assigns.user,
       searchbar: true,
       video_count: video_count,
+      ogtags: SignDict.Services.OpenGraph.to_metadata(conn.assigns.user),
       title: gettext("User %{user}", user: conn.assigns.user.name)
     )
   end

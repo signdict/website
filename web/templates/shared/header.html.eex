@@ -1,19 +1,19 @@
+<title><%= gettext("SignDict") %><%= if assigns[:title] do %> - <%= assigns[:title] %><% end %></title>
+
+<%= ogtags(@conn) %>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="<%= gettext("SignDict - A sign language dictionary") %>">
 <meta name="author" content="SignDict">
-<title>
-  <%= gettext("SignDict") %>
-  <%= if assigns[:title] do %>
-    - <%= assigns[:title] %>
-  <% end %>
-</title>
+
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
 
 <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
 <link rel="icon" href="/favicon_64.png" sizes="64x64">
+
 
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <%= if Application.get_env(:sign_dict, :environment) != :prod do %>

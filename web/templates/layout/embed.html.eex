@@ -7,7 +7,7 @@
             title: assigns[:title] %>
   </head>
 
-  <body class='sc-layout--empty'>
+  <body class='so-embed'>
     <%= render @view_module, @view_template, assigns %>
   </body>
 </html>

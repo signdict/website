@@ -192,7 +192,7 @@ defmodule SignDict.UserTest do
 
     test "it returns a user uploaded image if one was uploaded" do
       user = build :user_with_avatar, email: "bodo@tasche.me"
-      assert User.avatar_url(user) == "/uploads/user/avatars/thumb.png"
+      assert User.avatar_url(user) =~ "/uploads/user/avatars/thumb.png"
     end
   end
 
