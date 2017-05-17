@@ -14,7 +14,7 @@ defmodule SignDict.Services.OpenGraphTest do
   test "it generates metadata for videos with a copyright line" do
     video= insert(:video_with_entry)
     result = SignDict.Services.OpenGraph.to_metadata(video.entry, video)
-    assert result == %{
+    assert %{
       "og:description" => "This video shows the sign of \"some content\". " <>
                           "See more Signs on SignDict.org,\nyour sign " <>
                           "language dictionary.\nLicense: license " <>
@@ -22,11 +22,11 @@ defmodule SignDict.Services.OpenGraphTest do
       "og:image" => "http://example.com/video.jpg",
       "og:image:secure_url" => "https://example.com/video.jpg",
       "og:type" => "video.other", "og:video:height" => 720,
-      "og:video:secure_url" => "https://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
-      "og:video:type" => "text/html",
-      "og:video:url" => "http://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
+      "og:video:secure_url" => "http://example.com/video.mp4",
+      "og:video:type" => "video/mp4",
+      "og:video:url" => "http://example.com/video.mp4",
       "og:video:width" => 1280
-    }
+    } == result
   end
 
   test "it generates metadata for videos without a copyright line" do
@@ -40,9 +40,9 @@ defmodule SignDict.Services.OpenGraphTest do
       "og:image" => "http://example.com/video.jpg",
       "og:image:secure_url" => "https://example.com/video.jpg",
       "og:type" => "video.other", "og:video:height" => 720,
-      "og:video:secure_url" => "https://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
-      "og:video:type" => "text/html",
-      "og:video:url" => "http://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
+      "og:video:secure_url" => "http://example.com/video.mp4",
+      "og:video:type" => "video/mp4",
+      "og:video:url" => "http://example.com/video.mp4",
       "og:video:width" => 1280
     }
   end

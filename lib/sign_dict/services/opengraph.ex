@@ -19,16 +19,15 @@ end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
   import SignDict.Gettext
-  import SignDict.Router.Helpers
   def to_metadata(entry, video) do
     %{
       "og:description"      => description(entry, video),
       "og:image"            => video.thumbnail_url,
       "og:image:secure_url" => secure_url(video.thumbnail_url),
       "og:type"             => "video.other",
-      "og:video:url"        => embed_video_url(SignDict.Endpoint, :show, entry, video),
-      "og:video:secure_url" => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
-      "og:video:type"       => "text/html",
+      "og:video:url"        => video.video_url,
+      "og:video:secure_url" => video.video_url,
+      "og:video:type"       => "video/mp4",
       "og:video:width"      => 1280,
       "og:video:height"     => 720,
     }
