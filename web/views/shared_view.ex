@@ -2,12 +2,18 @@ defmodule SignDict.SharedView do
   use SignDict.Web, :view
 
   def ogtags(conn) do
+    description = gettext("A sign language dictionary")
+    image_url   = SignDict.Router.Helpers.url(conn) <> "/images/logo.png"
     ogtags = Map.merge(%{
-                "og:title" => title(conn),
-                "og:description" => gettext("A sign language dictionary"),
-                "og:type" => "website",
-                "og:image" => SignDict.Router.Helpers.url(conn) <> "/images/logo.png",
-                "og:url" => SignDict.Router.Helpers.url(conn) <> conn.request_path
+                "og:title"            => title(conn),
+                "og:description"      => description,
+                "og:type"             => "website",
+                "og:image"            => image_url,
+                "og:url"              => SignDict.Router.Helpers.url(conn) <> conn.request_path,
+                "twitter:card"        => "summary",
+                "twitter:site"        => "@SignDict",
+                "twitter:description" => description,
+                "twitter:image"       => String.replace(image_url, "http://", "https://"),
               }, (conn.assigns[:ogtags] || %{}))
     render_metatags(ogtags)
   end

@@ -7,18 +7,25 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.User do
   import SignDict.Gettext
   def to_metadata(user, _sub_model \\ %{}) do
     thumbnail_url = SignDict.User.avatar_url(user)
+    description   = String.trim(gettext("""
+         %{user} is a user on SignDict, a sign language dictionary.
+      """, user: user.name))
     %{
       "og:image"            => thumbnail_url,
       "og:image:secure_url" => String.replace(thumbnail_url, "http://", "https://"),
-      "og:description"      => String.trim(gettext("""
-         %{user} is a user on SignDict, a sign language dictionary.
-      """, user: user.name))
+      "og:description"      => description,
+      "twitter:card"        => "summary",
+      "twitter:site"        => "@SignDict",
+      "twitter:description" => description,
+      "twitter:image"       => String.replace(thumbnail_url, "http://", "https://"),
     }
   end
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
   import SignDict.Gettext
+  import SignDict.Router.Helpers
+
   def to_metadata(entry, video) do
     %{
       "og:description"      => description(entry, video),
@@ -30,17 +37,26 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
       "og:video:type"       => "video/mp4",
       "og:video:width"      => 1280,
       "og:video:height"     => 720,
+      "twitter:card"        => "player",
+      "twitter:site"        => "@SignDict",
+      "twitter:description" => description(entry, video),
+      "twitter:image"       => video.thumbnail_url,
+      "twitter:player"      => embed_video_url(SignDict.Endpoint, :show, entry, video),
+      "twitter:width"       => 640,
+      "twitter:height"       => 360,
     }
   end
 
   defp description(entry, video) do
-    gettext("""
+    description = gettext("""
       This video shows the sign of "%{sign}". See more Signs on SignDict.org,
       your sign language dictionary.
       License: %{license} %{copyright}
       """,
       sign: entry.text, license: video.license,
       copyright: copyright(video))
+
+    description
     |> String.replace("\n", " ")
     |> String.trim
   end
