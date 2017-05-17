@@ -6,7 +6,7 @@ defmodule SignDict.Services.OpenGraphTest do
   test "it generates metadata for users" do
     user = insert(:user)
     result = SignDict.Services.OpenGraph.to_metadata(user)
-    assert result["og:description"] == "   Jane Smith is a user on SignDict, a sign language dictionary.\n"
+    assert result["og:description"] == "Jane Smith is a user on SignDict, a sign language dictionary."
     assert result["og:image"] =~ "https://secure.gravatar.com/avatar/"
     assert result["og:image:secure_url"] =~ "https://secure.gravatar.com/avatar/"
   end
@@ -16,9 +16,9 @@ defmodule SignDict.Services.OpenGraphTest do
     result = SignDict.Services.OpenGraph.to_metadata(video.entry, video)
     assert %{
       "og:description" => "This video shows the sign of \"some content\". " <>
-                          "See more Signs on SignDict.org,\nyour sign " <>
-                          "language dictionary.\nLicense: license " <>
-                          "by copyright - Jane Smith\n",
+                          "See more Signs on SignDict.org, your sign " <>
+                          "language dictionary. License: license " <>
+                          "by copyright - Jane Smith",
       "og:image" => "http://example.com/video.jpg",
       "og:image:secure_url" => "https://example.com/video.jpg",
       "og:type" => "video.other", "og:video:height" => 720,
@@ -34,9 +34,9 @@ defmodule SignDict.Services.OpenGraphTest do
     result = SignDict.Services.OpenGraph.to_metadata(video.entry, video)
     assert result == %{
       "og:description" => "This video shows the sign of \"some content\". " <>
-                          "See more Signs on SignDict.org,\nyour sign " <>
-                          "language dictionary.\nLicense: license " <>
-                          "by Jane Smith\n",
+                          "See more Signs on SignDict.org, your sign " <>
+                          "language dictionary. License: license " <>
+                          "by Jane Smith",
       "og:image" => "http://example.com/video.jpg",
       "og:image:secure_url" => "https://example.com/video.jpg",
       "og:type" => "video.other", "og:video:height" => 720,

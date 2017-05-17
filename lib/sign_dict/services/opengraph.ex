@@ -10,9 +10,9 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.User do
     %{
       "og:image"            => thumbnail_url,
       "og:image:secure_url" => String.replace(thumbnail_url, "http://", "https://"),
-      "og:description"      => gettext("""
+      "og:description"      => String.trim(gettext("""
          %{user} is a user on SignDict, a sign language dictionary.
-      """, user: user.name)
+      """, user: user.name))
     }
   end
 end
@@ -40,8 +40,9 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
       License: %{license} %{copyright}
       """,
       sign: entry.text, license: video.license,
-      copyright: copyright(video)
-    )
+      copyright: copyright(video))
+    |> String.replace("\n", " ")
+    |> String.trim
   end
 
   defp copyright(video) do
