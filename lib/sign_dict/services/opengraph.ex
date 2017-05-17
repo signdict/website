@@ -28,22 +28,22 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
 
   def to_metadata(entry, video) do
     %{
-      "og:description"      => description(entry, video),
-      "og:image"            => video.thumbnail_url,
-      "og:image:secure_url" => secure_url(video.thumbnail_url),
-      "og:type"             => "video.other",
-      "og:video:url"        => video.video_url,
-      "og:video:secure_url" => video.video_url,
-      "og:video:type"       => "video/mp4",
-      "og:video:width"      => 1280,
-      "og:video:height"     => 720,
-      "twitter:card"        => "player",
-      "twitter:site"        => "@SignDict",
-      "twitter:description" => description(entry, video),
-      "twitter:image"       => video.thumbnail_url,
-      "twitter:player"      => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
-      "twitter:width"       => 480,
-      "twitter:height"      => 350,
+      "og:description"        => description(entry, video),
+      "og:image"              => video.thumbnail_url,
+      "og:image:secure_url"   => secure_url(video.thumbnail_url),
+      "og:type"               => "video.other",
+      "og:video:url"          => video.video_url,
+      "og:video:secure_url"   => video.video_url,
+      "og:video:type"         => "video/mp4",
+      "og:video:width"        => 1280,
+      "og:video:height"       => 720,
+      "twitter:card"          => "player",
+      "twitter:site"          => "@SignDict",
+      "twitter:description"   => description(entry, video),
+      "twitter:image"         => video.thumbnail_url,
+      "twitter:player"        => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
+      "twitter:player:width"  => 480,
+      "twitter:player:height" => 350,
     }
   end
 
