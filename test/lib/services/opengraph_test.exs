@@ -32,11 +32,11 @@ defmodule SignDict.Services.OpenGraphTest do
       "og:video:width" => 1280,
       "twitter:card" => "player",
       "twitter:description" => "This video shows the sign of \"some content\". See more Signs on SignDict.org, your sign language dictionary. License: license by copyright - Jane Smith",
-      "twitter:height" => 360,
+      "twitter:height" => 350,
       "twitter:image" => "http://example.com/video.jpg",
       "twitter:player" => "https://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
       "twitter:site" => "@SignDict",
-      "twitter:width" => 640
+      "twitter:width" => 480
     } == result
   end
 
@@ -57,11 +57,11 @@ defmodule SignDict.Services.OpenGraphTest do
       "og:video:width" => 1280,
       "twitter:card" => "player",
       "twitter:description" => "This video shows the sign of \"some content\". See more Signs on SignDict.org, your sign language dictionary. License: license by Jane Smith",
-      "twitter:height" => 360,
+      "twitter:height" => 350,
       "twitter:image" => "http://example.com/video.jpg",
       "twitter:player" => "https://localhost:4001/embed/#{video.entry.id}-some-content/video/#{video.id}",
       "twitter:site" => "@SignDict",
-      "twitter:width" => 640
+      "twitter:width" => 480
     }
   end
 end

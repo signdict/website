@@ -42,8 +42,8 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
       "twitter:description" => description(entry, video),
       "twitter:image"       => video.thumbnail_url,
       "twitter:player"      => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
-      "twitter:width"       => 640,
-      "twitter:height"      => 360,
+      "twitter:width"       => 480,
+      "twitter:height"      => 350,
     }
   end
 
