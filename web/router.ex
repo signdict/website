@@ -11,6 +11,14 @@ defmodule SignDict.Router do
     plug SignDict.Plug.Locale
   end
 
+  pipeline :embed do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug SignDict.Plug.Locale
+
+    plug :fetch_flash
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -36,6 +44,14 @@ defmodule SignDict.Router do
   end
 
   scope "/", SignDict do
+    pipe_through [:embed, :browser_session]
+
+    resources "/embed", EmbedController, only: [:show] do
+      get "/video/:video_id", EmbedController, :show, as: :video
+    end
+  end
+
+  scope "/", SignDict do
     pipe_through [:browser, :browser_session]
 
     resources "/users",    UserController, except: [:delete]
@@ -46,12 +62,8 @@ defmodule SignDict.Router do
     get "/password/edit", ResetPasswordController, :edit
     put "/password",      ResetPasswordController, :update
 
-    resources "/entry",  EntryController, only: [:show] do
+    resources "/entry", EntryController, only: [:show] do
       get "/video/:video_id", EntryController, :show, as: :video
-    end
-
-    resources "/embed",  EmbedController, only: [:show] do
-      get "/video/:video_id", EmbedController, :show, as: :video
     end
 
     post "/video/:video_id/vote", VoteController, :create
