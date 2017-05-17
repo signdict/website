@@ -1,0 +1,71 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell">
+    <h1>Was ist SignDict?</h1>
+
+    <p>SignDict ist offenes Gebärdensprach-Wörterbuch zum Mitmachen. Fehlt eine
+      Gebärde oder gibt es andere Varianten? Dann kann diese einfach mit einem Klick
+      aufgenommen und hinzugefügt werden. Leider ist die Aufnahme-Funktion noch nicht
+      fertig, diese wird in den nächsten Monaten hinzugefügt. Der Name SignDict setzt sich zusammen aus
+      Sign, dem englischen Wort für Gebärde, und Dictionary, dem englischen Wort für
+      Wörterbuch.</p>
+
+    <p>Dieses Projekt wird durch den <a href="http://prototypefund.de">Prototype Fund</a>
+      gefördert. Entwicklungsbeginn war der 1. März 2017.</p>
+
+    <h1>Für wen wird das gebaut?</h1>
+
+    <p>Dieses Wörterbuch richtet sich an Gebärdende und an Personen, die diese Sprache
+      erlernen wollen. Es soll als Nachschlagewerk und Lernhilfe dienen und die
+      Sichtbarkeit der Gebärdensprache im öffentlichen Raum erhöhen.</p>
+
+    <h1>Wieso wird SignDict benötigt?</h1>
+
+    <p>Das Ziel ist es, das erste interaktives Gebärdensprach-Wörterbuch im Internet
+      aufzubauen, bei dem jede:r ohne technisches Vorwissen mitmachen kann.</p>
+
+    <p>Wenn du nach Gebärdensprach-Wörterbüchern im Internet suchst, wirst du einige
+      finden. Leider haben die meisten nur ein paar hundert Gebärden und erlauben es
+      nicht, weitere Gebärden hinzuzufügen. Dazu kommt, dass in der deutschen
+      Gebärdensprache eine große Anzahl an Variationen für ein Wort existiert. In
+      Wörterbüchern wird allerdings oft nur eine Variante angezeigt. Ich möchte
+      versuchen, bei SignDict möglichst viele Gebärden-Varianten eines Wortes zu
+      sammeln.</p>
+
+    <p>Daher kam die Idee, ein gemeinsames Wörterbuch aufzubauen: Jede:r kann
+      mitmachen und Gebärden hinzufügen. Viele Computer haben heutzutage eine Webcam
+      mit der du ganz einfach eine Gebärde aufnehmen und hinzufügen kannst. So bauen
+      wir zusammen als Gebärdensprach-Community ein interaktives Nachschlagewerk auf,
+      das so viele Gebärden wie möglich in mehreren Gebärdensprachen enthält. Den
+      Anfang machen wir mit der deutschen Gebärdensprache (DGS).</p>
+
+    <h1>Warum baue ich diese Seite?</h1>
+
+    <p><img src="/images/bodo.jpg" alt="Bodo" /><br />
+      <sup>(Foto von <a href="http://carolinweinkopf.de/">Carolin Weinkopf</a>)</sup></p>
+
+    <p>Ich bin ein <a href="https://en.wikipedia.org/wiki/Child_of_deaf_adult">CODA</a>, meine
+      Eltern sind gehörlos, und ich träume schon seit dem ersten Auftauchen von
+      Videos im Internet von genau so einem Wörterbuch. 2013 habe ich zusammen mit
+      einigen weiteren Menschen <a href="http://bitboxer.de/2013/10/25/see-me-speak/">in einem
+        Programmierwettbewerb</a> die
+      Machbarkeit getestet. Leider musste ich damals feststellen, dass es technisch
+      noch nicht ohne weiteres möglich war, dieses Projekt nach meinen Vorstellungen
+      umzusetzen.  Zum Glück sind diese Probleme nun gelöst und unserem gemeinsamen
+      Gebärdensprach-Wörterbuch steht nichts mehr im Weg.</p>
+
+    <h1>OpenSource</h1>
+
+    <p>Die Videos werden unter einer <a href="https://creativecommons.org/">Creative Commons</a>
+      Lizenz und der Quelltext unter die <a href="https://www.wikiwand.com/en/Mozilla_Public_License">MPL</a>
+      gestellt.</p>
+
+    <h1>Finanzierung</h1>
+
+    <p>Dieses Projekt ist Teilnehmer der 1. Runde des <a href="http://prototypefund.de/">Prototype Fund</a>
+      und wird durch das
+      <a href="https://www.bmbf.de/">Bundesministerium für Bildung und Forschung</a> gefördert.</p>
+
+    <p>Danke an die <a href="https://prototypefund.de/2016/10/25/1022/">Jury</a> für die Auswahl meines
+      Projektes für den Prototype Fund.</p>
+  </div>
+</div>

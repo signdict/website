@@ -1,0 +1,65 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell">
+    <h1>What is SignDict?</h1>
+    <p>
+      This project is an open sign language dictionary.
+      A sign missing, or you know another sign for the word? Record and add it with one click.
+      The recording functionality will use your webcam. Sadly this is not ready yet,
+      but will be added soon.
+    </p>
+    <p>
+      This project is funded by the <a href="https://prototypefund.de">Prototype Fund</a>.
+      Start of development was the 1st of March 2017.
+    </p>
+    <h1>Who is the target audience?</h1>
+    <p>
+      This dictionary is aimed at people already fluent and to learners.
+      It will be a dictionary and learning aid and wants to raise the
+      awareness of sign language in the public space.
+    </p>
+    <h1>Why do we need this?</h1>
+    <p>
+      The goal is to create the first interactive sign language dictionary in which
+      everyone can participate in without any technical knowledge.
+    </p>
+    <p>
+      If you search for online sign language dictionaries, you will find a few.
+      Sadly most have a few hundred words and don’t allow to add new signs.
+      Additionally only a few show more than one sign for a word.
+      I want to try to have as many sign variations for a word as possible.
+    </p>
+    <p>
+      This lead to the idea to crowdsource the dictionary. Everyone can participate and add a sign.
+      Most computers nowadays have a webcam with a quality that is sufficient to record sign language.
+      Together we as the sign language community can build an interactive dictionary. One that has as many signs as possible.
+      At the beginning the dictionary will only have the german sign language (DGS), but we will add more languages as we grow.
+    </p>
+    <h1>Why do you build this?</h1>
+    <p>
+      <img src="/images/bodo.jpg" alt="Bodo"/>
+      <br/>
+      <sup>
+      (Photo by <a href="http://carolinweinkopf.de">Carolin Weinkopf</a>)
+      </sup>
+    </p>
+    <p>
+      I am a <a href="https://en.wikipedia.org/wiki/Child_of_deaf_adult">CODA</a>, a child of deaf adults.
+      Since I started to see videos appear online, I was dreaming of a service like this.
+      In 2013 I wrote a <a href="http://bitboxer.de/2013/10/25/see-me-speak/">proof of concept</a> with a few friends during a hackathon.
+      One of the learnings back then was that the web technology was not good enough at that time to do it as good as I wanted.
+      Luckily those problems are solved now and I can start building it.
+    </p>
+    <h1>OpenSource</h1>
+    <p>
+      Every video will be licensed under a <a href="https://creativecommons.org/">Creative Commons</a> license
+      and the code running the website will be licensed under the <a href="https://www.wikiwand.com/en/Mozilla_Public_License">MPL</a>.
+    </p>
+    <h1>Funding</h1>
+    <p>
+      Thanks to the <a href="http://prototypefund.de/en/">Prototype Fund</a>,
+      the <a href="https://www.bmbf.de/">Federal Ministry of Education and Research</a> (BMBF)
+      and their <a href="https://prototypefund.de/2016/10/25/1022/">jury</a>
+      for selecting this project as a finalist of the 1st round of the Prototype Fund.
+    </p>
+  </div>
+</div>
