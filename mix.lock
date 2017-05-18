@@ -65,4 +65,4 @@
   "timex": {:hex, :timex, "3.1.13", "48b33162e3ec33e9a08fb5f98e3f3c19c3e328dded3156096c1969b77d33eef0", [:mix], [{:combine, "~> 0.7", [hex: :combine, optional: false]}, {:gettext, "~> 0.10", [hex: :gettext, optional: false]}, {:tzdata, "~> 0.1.8 or ~> 0.5", [hex: :tzdata, optional: false]}]},
   "tzdata": {:hex, :tzdata, "0.5.11", "3d5469a9f46bdf4a8760333dbdabdcc4751325035c454b10521f71e7c611ae50", [:mix], [{:hackney, "~> 1.0", [hex: :hackney, optional: false]}]},
   "uuid": {:hex, :uuid, "1.1.7", "007afd58273bc0bc7f849c3bdc763e2f8124e83b957e515368c498b641f7ab69", [:mix], []},
-  "wallaby": {:hex, :wallaby, "0.16.1", "29bf72d80bb41992cd27dceb9bec8206255f58bb152d38716589769c722d1bf0", [:mix], [{:httpoison, "~> 0.11.0", [hex: :httpoison, optional: false]}, {:poison, ">= 1.4.0", [hex: :poison, optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, optional: false]}]}}
+  "wallaby": {:hex, :wallaby, "0.17.0", "a5c348c7a4b203bb5abd53716a5cd81ad8b2545508fa5a6c90efe3daee3f5c5f", [:mix], [{:httpoison, "~> 0.11.0", [hex: :httpoison, optional: false]}, {:poison, ">= 1.4.0", [hex: :poison, optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, optional: false]}]}}
