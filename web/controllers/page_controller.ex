@@ -23,6 +23,12 @@ defmodule SignDict.PageController do
       title: gettext("About")
   end
 
+  def privacy(conn, _params) do
+    render conn, "privacy_#{Gettext.get_locale(SignDict.Gettext)}.html", layout: {SignDict.LayoutView, "app.html"},
+      searchbar: true,
+      title: gettext("Privacy")
+  end
+
   def supporter(conn, _params) do
     render conn, "supporter.html", layout: {SignDict.LayoutView, "app.html"},
       title: gettext("Supporter"), supporter_footer: false,

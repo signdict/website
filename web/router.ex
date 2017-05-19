@@ -69,10 +69,11 @@ defmodule SignDict.Router do
     post "/video/:video_id/vote", VoteController, :create
     delete "/video/:video_id/vote", VoteController, :delete
 
-    get "/search",    SearchController, :index
-    get "/imprint",   PageController, :imprint
-    get "/about",     PageController, :about
-    get "/supporter", PageController, :supporter
+    get "/search",    SearchController,  :index
+    get "/imprint",   PageController,    :imprint
+    get "/about",     PageController,    :about
+    get "/supporter", PageController,    :supporter
+    get "/privacy",   PageController,    :privacy
     get "/contact",   ContactController, :new
     post "/contact",  ContactController, :create
 
