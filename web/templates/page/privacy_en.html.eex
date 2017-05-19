@@ -1,4 +1,128 @@
 <div class="o-container o-container--medium">
   <div class="o-grid__cell">
+    <h1><%= gettext("Privacy") %></h1>
+
+    <p>
+      For us the protection of your privacy is very important. We will never
+      disclose your data to a third party and obey the strict German privacy
+      laws.
+    </p>
+
+    <p>
+      The usage of this website is possible without giving us any
+      data. If you enter personal data it is always by choice and
+      we will never force you to do so. We will never hand over
+      your data to a third party without your consent.
+    </p>
+
+    <p>
+      We should point out that data transmission on the internet (for example
+      using E-Mail) can be compromised. A complete protection can't be
+      guaranteed.
+    </p>
+
+    <h2>Cookies</h2>
+
+    <p>
+      This page is using cookies. Cookies are small textfiles that are stored
+      on your computer when you visit a website. Cookies don't harm your
+      computer and can't contain viruses. Those cookies will help us to make
+      the page a more effective experience for you.
+    </p>
+
+    <p>
+      Most of our cookies are so called "session cookies". Those will
+      be stored on your computer to make it possible to keep you logged into
+      the page when you revisit it.
+    </p>
+
+    <p>
+      You can configure your browser that it notices you about cookies to
+      allow them only for specific websites. Alternatively you can configure
+      your browser to delete all cookies when you close it. If you deactivate
+      cookies for this site some parts of the site can't be used anymore.
+    </p>
+
+    <h2>Server-Log-Files</h2>
+
+    <p>
+      The provider of this page stores some data in so called server log files.
+      Those files will include data your browser will send to us automatically.
+      For example:
+    </p>
+
+    <ul>
+      <li>Browser type and version</li>
+      <li>used operating system</li>
+      <li>Referrer</li>
+      <li>URL</li>
+      <li>Host name of your computer</li>
+      <li>Time and date of your request</li>
+    </ul>
+
+    <p>
+      This data is not assignable to a specific person. There is no
+      consolidation with data from other sources that would make this
+      possible. We will check the log files if we have concrete evidence
+      for illegal usage of the site.
+    </p>
+
+    <h2>Contact form</h2>
+
+    <p>
+      If you use the contact form, we will store the data sent in that form
+      to answer you question. The information will never be shared with
+      a third party without your consent.
+    </p>
+
+    <h2>Newsletter</h2>
+
+    <p>
+      If you opt in for our newsletter we will share your email address
+      with our newsletter provider. We are using
+      <a href="https://mailchimp.com/">Mailchimp</a>. The privacy
+      explanation of Mailchimp can be found
+      <a href="https://mailchimp.com/legal/privacy/">here</a>.
+    </p>
+
+    <p>
+      If you want to delete your data from Mailchimp, follow the
+      unsubscribe link in our newsletter.
+    </p>
+
+    <h2>Videos</h2>
+
+    <p>
+      We are using a company called <a href="https://jwplayer.com">JWPlayer</a>
+      to be able to show you the videos. Their privacy explanation can
+      be found
+      <a href="https://www.jwplayer.com/privacy/">here</a>.
+    </p>
+
+    <h2>SSL-Encryption</h2>
+
+    <p>
+      This site is using encryption to secure the data you are
+      sending while using this site. The address bar of your
+      web browser should show you a "https://" instead of a "http"
+      at the start of the url.
+    </p>
+
+    <p>
+      While ssl is active, no third party can read the data that
+      is transmitted to us.
+    </p>
+
+    <h2>Request for information or deletion</h2>
+
+    <p>
+      You have the right to ask us what data we store about you
+      on our server. We will provide that information for free.
+      We also will delete all data that is stored about you on
+      our servers if you request us to do so. If you have any
+      question about your data or your privacy, feel free to
+      contact us using the address in the imprint or the
+      <a href="/contact">contact form</a>.
+    </p>
   </div>
 </div>

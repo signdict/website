@@ -467,7 +467,7 @@ msgstr "SignDict ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jede
 msgid "Currenty %{humans} humans have added %{signs} signs"
 msgstr "Aktuell haben %{humans} Menschen %{signs} Gebärden beigetragen"
 
-#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:33
+#: web/templates/contact/new.html.eex:3 web/templates/shared/footer.html.eex:34
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -525,15 +525,15 @@ msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gese
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: web/templates/shared/footer.html.eex:39
+#: web/templates/shared/footer.html.eex:40
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
-#: web/templates/shared/footer.html.eex:38
+#: web/templates/shared/footer.html.eex:39
 msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
-#: web/controllers/page_controller.ex:27 web/templates/page/supporter.html.eex:4
+#: web/controllers/page_controller.ex:34 web/templates/page/supporter.html.eex:4
 #: web/templates/shared/footer.html.eex:7
 msgid "Supporter"
 msgstr "Unterstützer"
@@ -745,7 +745,7 @@ msgstr "Die Email wurde abgesendet."
 msgid "video.metadata"
 msgstr "Metadata"
 
-#: web/controllers/page_controller.ex:22
+#: web/controllers/page_controller.ex:23
 msgid "About"
 msgstr "Über"
 
@@ -867,23 +867,26 @@ msgstr "Entschuldigung, keine Gebärde gefunden"
 msgid "Sorry, no sign was found"
 msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
 
-#: web/views/shared_view.ex:7
+#: web/views/shared_view.ex:5
 msgid "A sign language dictionary"
 msgstr "Ein Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:13
+#: lib/sign_dict/services/opengraph.ex:10
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr "%{user} ist ein Nutzer auf SignDict, einem Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:52
+#: lib/sign_dict/services/opengraph.ex:68
 msgid "by %{copyright}"
 msgstr "von %{copyright}"
 
-#, fuzzy
-#: lib/sign_dict/services/opengraph.ex:38
+#: lib/sign_dict/services/opengraph.ex:51
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright}\n"
 
-#: lib/sign_dict/services/opengraph.ex:50
+#: lib/sign_dict/services/opengraph.ex:66
 msgid "by %{copyright} - %{username}"
 msgstr "von %{copyright} - %{username}"
+
+#: web/controllers/page_controller.ex:29 web/templates/shared/footer.html.eex:33
+msgid "Privacy"
+msgstr "Datenschutz"

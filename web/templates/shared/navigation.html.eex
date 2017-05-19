@@ -14,7 +14,7 @@
           <%= if @current_user do %>
             <%= if SignDict.User.admin? @current_user do %>
               <li class='so-navigation-item'>
-                <%= link "Admin", to: backend_dashboard_path(@conn, :index) %>
+                <%= link "Admin", to: backend_dashboard_path(@conn, :index), data: [turbolinks: "false"] %>
               </li>
             <% end %>
             <li class='so-navigation-item'>
