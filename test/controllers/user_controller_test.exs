@@ -1,5 +1,6 @@
 defmodule SignDict.UserControllerTest do
   use SignDict.ConnCase
+  use Bamboo.Test, shared: :true
 
   import SignDict.Factory
 
@@ -7,7 +8,7 @@ defmodule SignDict.UserControllerTest do
     email: "elisa@example.com",
     password: "valid_password",
     password_confirmation: "valid_password",
-    name: "some content",
+    name: "user name",
     biography: "some content"
   }
   @invalid_attrs %{}
@@ -31,8 +32,9 @@ defmodule SignDict.UserControllerTest do
       assert html_response(conn, 200) =~ "Email"
     end
 
-    test "it sends an email to confirm the user email address" do
-      # TODO
+    test "it sends an email to confirm the user email address", %{conn: conn} do
+      post(conn, user_path(conn, :create), user: @valid_attrs)
+      assert_delivered_with(subject: "Please confirm your email address", to: [{"user name", "elisa@example.com"}])
     end
   end
 
@@ -102,8 +104,9 @@ defmodule SignDict.UserControllerTest do
       assert html_response(conn, 200) =~ "Email"
     end
 
-    test "it sends an email to confirm the changed user email address" do
-      # TODO
+    test "it sends an email to confirm the changed user email address", %{conn: conn} do
+      post(conn, user_path(conn, :create), user: @valid_attrs)
+      assert_delivered_with(subject: "Please confirm your email address", to: [{"user name", "elisa@example.com"}])
     end
   end
 end

@@ -13,7 +13,10 @@ defmodule SignDict.Email do
   end
 
   def confirm_email(user) do
-    # TODO: |> put_change(:confirmation_sent_at, DateTime.utc_now())
+    user
+    |> SignDict.User.confirm_sent_at_changeset
+    |> SignDict.Repo.update
+
     base_email()
     |> to(user)
     |> subject(gettext("Please confirm your email address"))
@@ -38,6 +41,6 @@ end
 
 defimpl Bamboo.Formatter, for: SignDict.User do
   def format_email_address(user, _opts) do
-    {user.name, user.email}
+    {user.name, user.unconfirmed_email || user.email}
   end
 end

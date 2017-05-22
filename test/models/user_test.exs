@@ -265,14 +265,20 @@ defmodule SignDict.UserTest do
     end
   end
 
-  describe "Phoenix.Param" do
-    test "it creates a nice permalink for the user" do
-      assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+  describe "confirm_sent_at_changeset/1" do
+    test "it updates the confirmation_sent_at" do
+      changeset = User.confirm_sent_at_changeset(%User{email: "oldemail@example.com"})
+      assert changeset.valid?
+      assert {:changes, _timestamp} = Ecto.Changeset.fetch_field(changeset, :confirmation_sent_at)
     end
   end
 
-  describe "confirm_email/1" do
+  describe "confirm_email_changeset/1" do
     test "it confirms the email if it is valid" do
+      # TODO
+    end
+
+    test "it does not confirm if the token is wrong" do
       # TODO
     end
 
@@ -280,5 +286,12 @@ defmodule SignDict.UserTest do
       # TODO
     end
   end
+
+  describe "Phoenix.Param" do
+    test "it creates a nice permalink for the user" do
+      assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
+
 
 end

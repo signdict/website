@@ -133,6 +133,11 @@ defmodule SignDict.User do
     |> validate_password_if_present
   end
 
+  def confirm_sent_at_changeset(user) do
+    user
+    |> cast(%{confirmation_sent_at: DateTime.utc_now}, [:confirmation_sent_at])
+  end
+
   def create_reset_password_changeset(struct) do
     {unencrypted_token, encrypted_token} = generate_token()
     struct
