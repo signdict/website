@@ -43,7 +43,7 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/controllers/user_controller.ex:14 web/controllers/user_controller.ex:29
+#: web/controllers/user_controller.ex:13 web/controllers/user_controller.ex:28
 #: web/templates/layout/backend.html.eex:34
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:41
@@ -154,7 +154,7 @@ msgstr "Leider konnte das Passwort nicht geändert werden"
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
 
-#: web/email.ex:18
+#: web/email.ex:42
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
@@ -247,7 +247,7 @@ msgstr "Willkommen im Dashboard"
 msgid "Update"
 msgstr "Speichern"
 
-#: web/controllers/user_controller.ex:64
+#: web/controllers/user_controller.ex:63
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
@@ -749,7 +749,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr "Über"
 
-#: web/controllers/user_controller.ex:53
+#: web/controllers/user_controller.ex:52
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
@@ -779,7 +779,7 @@ msgstr "Gebärde für %{sign}"
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
-#: web/controllers/user_controller.ex:42
+#: web/controllers/user_controller.ex:41
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
@@ -887,6 +887,41 @@ msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden find
 msgid "by %{copyright} - %{username}"
 msgstr "von %{copyright} - %{username}"
 
-#: web/controllers/page_controller.ex:29 web/templates/shared/footer.html.eex:33
+#: web/controllers/page_controller.ex:29
+#: web/templates/page/privacy_de.html.eex:3
+#: web/templates/page/privacy_en.html.eex:3
+#: web/templates/shared/footer.html.eex:33
 msgid "Privacy"
 msgstr "Datenschutz"
+
+#: web/controllers/email_confirmation_controller.ex:18
+msgid "Invalid confirmation link."
+msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
+
+#: web/controllers/user_controller.ex:76
+msgid "Please click on the link in the email we just sent to confirm your account."
+msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
+
+#: web/email.ex:22
+msgid "Please confirm your email address"
+msgstr "Bitte bestätige deine Email-Adresse"
+
+#: web/controllers/email_confirmation_controller.ex:30
+msgid "Unable to confirm your email address."
+msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
+
+#: web/models/user.ex:87
+msgid "already used"
+msgstr "wird schon benutzt"
+
+#: web/controllers/user_controller.ex:85
+msgid "Please click on the link in the email we just sent to confirm the change of your email."
+msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
+
+#: web/email.ex:34
+msgid "Please confirm the change of your email address"
+msgstr "Bitte bestätige die Änderung deiner Email-Adresse"
+
+#: web/controllers/email_confirmation_controller.ex:37
+msgid "Your new email address is now confirmed."
+msgstr "Deine neue Email-Adresse ist nun bestätigt."

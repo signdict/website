@@ -36,6 +36,8 @@ config :sign_dict, :upload_path, "./test/uploads"
 config :sign_dict, SignDict.Mailer,
   adapter: Bamboo.TestAdapter
 
+config :bamboo, :refute_timeout, 10
+
 config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"

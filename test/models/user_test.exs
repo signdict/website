@@ -52,6 +52,36 @@ defmodule SignDict.UserTest do
       changeset = User.changeset(user, params)
       assert changeset.valid?
     end
+
+    test "it moves the email to unconfirmed_email and sets the confirmation fields and sents an email" do
+      params = @valid_attrs
+      changeset = User.changeset(%User{email: "oldemail@example.com"}, params)
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:data, "oldemail@example.com"} == Ecto.Changeset.fetch_field(changeset, :email)
+      assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token)
+      assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token_unencrypted)
+    end
+
+    test "it sets the email to nil if it is new and moves it to the unconfirmed_email field" do
+      params = @valid_attrs
+      changeset = User.changeset(%User{}, params)
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:data, nil} == Ecto.Changeset.fetch_field(changeset, :email)
+    end
+
+    test "it is invalid if the email already exists in the unconfirmed_email field" do
+      insert :user, %{unconfirmed_email: "elisa@example.com"}
+      changeset = User.changeset(%User{}, @valid_attrs)
+      refute changeset.valid?
+    end
+
+    test "it is invalid if the email adready exists in the email field" do
+      insert :user, %{email: "elisa@example.com"}
+      changeset = User.changeset(%User{}, @valid_attrs)
+      refute changeset.valid?
+    end
   end
 
   describe "User.admin_changeset/2" do
@@ -133,6 +163,35 @@ defmodule SignDict.UserTest do
       changeset = User.register_changeset(%User{}, @valid_attrs)
       assert Ecto.Changeset.fetch_field(changeset, :password_hash) != :error
     end
+
+    test "it moves the email to unconfirmed_email and sets the confirmation fields and sents an email" do
+      params = @valid_attrs
+      changeset = User.register_changeset(%User{email: "oldemail@example.com"}, params)
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:data, "oldemail@example.com"} == Ecto.Changeset.fetch_field(changeset, :email)
+      assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token)
+    end
+
+    test "it sets the email to nil if it is new and moves it to the unconfirmed_email field" do
+      params = @valid_attrs
+      changeset = User.register_changeset(%User{}, params)
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:data, nil} == Ecto.Changeset.fetch_field(changeset, :email)
+    end
+
+    test "it is invalid if the email already exists in the unconfirmed_email field" do
+      insert :user, %{unconfirmed_email: "elisa@example.com"}
+      changeset = User.register_changeset(%User{}, @valid_attrs)
+      refute changeset.valid?
+    end
+
+    test "it is invalid if the email adready exists in the email field" do
+      insert :user, %{email: "elisa@example.com"}
+      changeset = User.register_changeset(%User{}, @valid_attrs)
+      refute changeset.valid?
+    end
   end
 
   describe "User.create_reset_password_changeset/1" do
@@ -203,6 +262,51 @@ defmodule SignDict.UserTest do
 
     test "for non admins it returns false" do
       refute User.admin?(%User{role: "user"})
+    end
+  end
+
+  describe "confirm_sent_at_changeset/1" do
+    test "it updates the confirmation_sent_at" do
+      changeset = User.confirm_sent_at_changeset(%User{email: "oldemail@example.com"})
+      assert changeset.valid?
+      assert {:changes, _timestamp} = Ecto.Changeset.fetch_field(changeset, :confirmation_sent_at)
+    end
+  end
+
+  describe "confirm_email_changeset/1" do
+    test "it confirms the email if it is valid" do
+      user = insert(:user,
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      )
+      changeset = User.confirm_email_changeset(user, %{
+        confirmation_token_unencrypted: "12345",
+      })
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} = Ecto.Changeset.fetch_field(changeset, :email)
+      assert {:changes, nil}                 = Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:changes, _confirmed_at}       = Ecto.Changeset.fetch_field(changeset, :confirmed_at)
+    end
+
+    test "it does not confirm if the token is wrong" do
+      changeset = User.confirm_email_changeset(%User{
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      }, %{
+        confirmation_token_unencrypted: "23456",
+      })
+      refute changeset.valid?
+    end
+
+    test "it does not confirm the email if it is already present" do
+      insert :user, email: "elisa@example.com"
+      user = insert :user,
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      changeset = User.confirm_email_changeset(user, %{
+        confirmation_token_unencrypted: "12345",
+      })
+      assert {:error, _changeset} = Repo.update(changeset)
     end
   end
 
