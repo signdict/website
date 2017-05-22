@@ -3,7 +3,7 @@ defmodule SignDict.EntryVotingTest do
   import SignDict.Factory
 
   test "user votes for a video", %{session: session} do
-    insert(:user, %{email: "elisa@example.com", password: "correct_password", password_confirmation: "correct_password"})
+    insert(:user, %{email: "bob@example.com", password: "correct_password", password_confirmation: "correct_password"})
     video = insert(:video_with_entry)
 
     session
@@ -11,7 +11,7 @@ defmodule SignDict.EntryVotingTest do
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form
-      |> fill_in(Query.text_field("session_email"), with: "elisa@example.com")
+      |> fill_in(Query.text_field("session_email"), with: "bob@example.com")
       |> fill_in(Query.text_field("session_password"), with: "correct_password")
       |> click(Query.button("Log in"))
     end)

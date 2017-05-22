@@ -1,25 +1,32 @@
 defmodule SignDict.UserSignUpTest do
   use SignDict.AcceptanceCase, async: true
 
+  alias SignDict.User
+
   test "sign up user, login and logout", %{session: session} do
     session
     |> visit("/")
     |> click(Query.link("Register"))
     |> find(Query.css(".user-form"), fn(form) ->
       form
-      |> fill_in(Query.text_field("user_email"), with: "elisa@example.com")
+      |> fill_in(Query.text_field("user_email"), with: "new_user@example.com")
       |> fill_in(Query.text_field("user_password"), with: "mylongpassword")
       |> fill_in(Query.text_field("user_password_confirmation"), with: "mylongpassword")
       |> fill_in(Query.text_field("user_name"), with: "Elisa Example")
       |> click(Query.button("Register"))
     end)
-    |> visit("/")
-    |> click(Query.button("Sign out"))
-    |> visit("/")
+    assert current_path(session) == "/"
+
+    User
+    |> Repo.get_by!(unconfirmed_email: "new_user@example.com")
+    |> User.admin_changeset(%{email: "new_user@example.com"})
+    |> Repo.update()
+
+    session
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form
-      |> fill_in(Query.text_field("session_email"), with: "elisa@example.com")
+      |> fill_in(Query.text_field("session_email"), with: "new_user@example.com")
       |> fill_in(Query.text_field("session_password"), with: "mylongpassword")
       |> click(Query.button("Log in"))
     end)
