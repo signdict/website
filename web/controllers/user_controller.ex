@@ -23,6 +23,7 @@ defmodule SignDict.UserController do
       {:ok, user} ->
         conn
         |> Plug.sign_in(user)
+        |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
         |> redirect(to: page_path(conn, :welcome))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset,
@@ -58,6 +59,7 @@ defmodule SignDict.UserController do
     user = conn.assigns.user
     changeset = User.changeset(user, user_params)
 
+    # TODO: change flash if email was changed
     case Repo.update(changeset) do
       {:ok, user} ->
         conn

@@ -52,6 +52,18 @@ defmodule SignDict.UserTest do
       changeset = User.changeset(user, params)
       assert changeset.valid?
     end
+
+    test "it moves the email to unconfirmed_email and sets the confirmation fields and sents an email" do
+      # TODO
+    end
+
+    test "it is invalid if the email already exists in the unconfirmed_email field" do
+      # TODO
+    end
+
+    test "it is invalid if the email adready exists in the email field" do
+      # TODO
+    end
   end
 
   describe "User.admin_changeset/2" do
@@ -209,6 +221,16 @@ defmodule SignDict.UserTest do
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the user" do
       assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
+
+  describe "confirm_email/1" do
+    test "it confirms the email if it is valid" do
+      # TODO
+    end
+
+    test "it does not confirm the email if it is already present" do
+      # TODO
     end
   end
 

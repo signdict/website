@@ -57,7 +57,38 @@ defmodule SignDict.User do
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
+    |> unconfirm_email_change
     |> validate_password_if_present
+  end
+
+  def register_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:email, :password, :password_confirmation,
+                     :name, :biography])
+    |> validate_required([:email, :name, :password, :password_confirmation])
+    |> validate_email
+    |> unconfirm_email_change
+    |> validate_password
+  end
+
+  def unconfirm_email_change(changeset) do
+    # TODO
+    # continue this
+    # check if email is already in unconfirmed_email or email
+    # email > unconfirmed_email
+    # confirmation_token = new token
+    # confirmation_sent_at = now
+    # sent email
+    changeset
+  end
+
+  def confirm_email(user) do
+    # TODO
+    # CONTINUE THIS
+    # unconfirmed_email > email
+    # confirmed_at = now
+    user
+    |> validate_email
   end
 
   def admin_changeset(user, params \\ %{}) do
@@ -68,15 +99,6 @@ defmodule SignDict.User do
     |> validate_required([:email, :name])
     |> validate_email
     |> validate_password_if_present
-  end
-
-  def register_changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:email, :password, :password_confirmation,
-                     :name, :biography])
-    |> validate_required([:email, :name, :password, :password_confirmation])
-    |> validate_email
-    |> validate_password
   end
 
   def create_reset_password_changeset(struct) do
