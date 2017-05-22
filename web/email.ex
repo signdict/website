@@ -12,6 +12,15 @@ defmodule SignDict.Email do
     |> render(:contact_form)
   end
 
+  def confirm_email(user) do
+    # TODO: |> put_change(:confirmation_sent_at, DateTime.utc_now())
+    base_email()
+    |> to(user)
+    |> subject(gettext("Please confirm your email address"))
+    |> assign(:user, user)
+    |> render(String.to_atom("confirm_email_#{Gettext.get_locale(SignDict.Gettext)}"))
+  end
+
   def password_reset(user) do
     base_email()
     |> to(user)

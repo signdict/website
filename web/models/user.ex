@@ -1,4 +1,6 @@
 defmodule SignDict.User do
+  require SignDict.Gettext
+
   import Exgravatar
 
   use SignDict.Web, :model
@@ -7,6 +9,8 @@ defmodule SignDict.User do
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
   alias SignDict.Avatar
+  alias SignDict.Repo
+  alias SignDict.User
 
   @roles ~w(user admin)
 
@@ -27,6 +31,12 @@ defmodule SignDict.User do
     field :password_reset_unencrypted, :string, virtual: true
 
     field :avatar, SignDict.Avatar.Type
+
+    field :unconfirmed_email, :string
+    field :confirmation_token, :string
+    field :confirmation_token_unencrypted, :string, virtual: true
+    field :confirmed_at, :utc_datetime
+    field :confirmation_sent_at, :utc_datetime
 
     has_many :videos, SignDict.Video
 
@@ -57,8 +67,8 @@ defmodule SignDict.User do
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
-    |> unconfirm_email_change
     |> validate_password_if_present
+    |> confirm_email_change
   end
 
   def register_changeset(struct, params \\ %{}) do
@@ -67,28 +77,50 @@ defmodule SignDict.User do
                      :name, :biography])
     |> validate_required([:email, :name, :password, :password_confirmation])
     |> validate_email
-    |> unconfirm_email_change
     |> validate_password
+    |> confirm_email_change
   end
 
-  def unconfirm_email_change(changeset) do
-    # TODO
-    # continue this
-    # check if email is already in unconfirmed_email or email
-    # email > unconfirmed_email
-    # confirmation_token = new token
-    # confirmation_sent_at = now
-    # sent email
+  def confirm_email_change(changeset) do
+    cond do
+      email_already_used?(changeset) ->
+        add_error(changeset, :email, SignDict.Gettext.gettext("already used"))
+      changeset.valid? && Changeset.fetch_change(changeset, :email) != :error ->
+        do_confirm_email_change(changeset)
+      true ->
+        changeset
+    end
+  end
+
+  defp do_confirm_email_change(changeset) do
+    {unencrypted_token, encrypted_token} = generate_token()
     changeset
+    |> put_change(:unconfirmed_email, changeset.changes[:email])
+    |> put_change(:confirmation_token, encrypted_token)
+    |> put_change(:confirmation_token_unencrypted, unencrypted_token)
+    |> delete_change(:email)
   end
 
-  def confirm_email(user) do
-    # TODO
-    # CONTINUE THIS
-    # unconfirmed_email > email
-    # confirmed_at = now
+  defp email_already_used?(changeset) do
+    {_source, email} = fetch_field(changeset, :email)
+    if email != nil do
+      count = User
+              |> where([user], user.email == ^email or user.unconfirmed_email == ^email)
+              |> Repo.aggregate(:count, :id)
+      count > 0
+    else
+      false
+    end
+  end
+
+  def confirm_email_changeset(user, params) do
     user
+    |> cast(params, [:confirmation_token_unencrypted])
+    |> put_change(:email, user.unconfirmed_email)
+    |> put_change(:unconfirmed_email, nil)
+    |> put_change(:confirmed_at, DateTime.utc_now())
     |> validate_email
+    |> validate_token(:confirmation_token, :confirmation_token_unencrypted)
   end
 
   def admin_changeset(user, params \\ %{}) do
@@ -102,9 +134,7 @@ defmodule SignDict.User do
   end
 
   def create_reset_password_changeset(struct) do
-    unencrypted_token = SecureRandom.urlsafe_base64(32)
-    encrypted_token = Bcrypt.hashpwsalt(unencrypted_token)
-
+    {unencrypted_token, encrypted_token} = generate_token()
     struct
     |> change
     |> put_change(:password_reset_unencrypted, unencrypted_token)
@@ -116,23 +146,23 @@ defmodule SignDict.User do
     |> cast(params, [:password, :password_confirmation,
                      :password_reset_unencrypted])
     |> validate_required([:password, :password_confirmation])
-    |> validate_token
+    |> validate_token(:password_reset_token, :password_reset_unencrypted)
     |> validate_password
   end
 
-  defp validate_token(%{valid?: false} = changeset), do: changeset
-  defp validate_token(%{valid?: true} = changeset) do
+  defp validate_token(%{valid?: false} = changeset, _field_encrypted, _field_unencrypted), do: changeset
+  defp validate_token(%{valid?: true} = changeset, field_encrypted, field_unencrypted) do
     {:ok, reset_unencrypted} =
-      Changeset.fetch_change(changeset, :password_reset_unencrypted)
+      Changeset.fetch_change(changeset, field_unencrypted)
     {_, reset_encrypted}     =
-      Changeset.fetch_field(changeset, :password_reset_token)
+      Changeset.fetch_field(changeset, field_encrypted)
     token_matches = Bcrypt.checkpw(reset_unencrypted, reset_encrypted)
-    do_validate_token(token_matches, changeset)
+    do_validate_token(token_matches, changeset, field_encrypted)
   end
 
-  defp do_validate_token(true, changeset), do: changeset
-  defp do_validate_token(false, changeset) do
-    Changeset.add_error changeset, :password_reset_token, "invalid"
+  defp do_validate_token(true, changeset, _field_encrypted), do: changeset
+  defp do_validate_token(false, changeset, field_encrypted) do
+    Changeset.add_error changeset, field_encrypted, "invalid"
   end
 
   defp validate_email(changeset) do
@@ -169,6 +199,11 @@ defmodule SignDict.User do
 
     changeset
     |> put_change(:password_hash, hashed_password)
+  end
+
+  defp generate_token do
+    unencrypted_token = SecureRandom.urlsafe_base64(32)
+    {unencrypted_token, Bcrypt.hashpwsalt(unencrypted_token)}
   end
 end
 

@@ -54,8 +54,9 @@ defmodule SignDict.ResetPasswordController do
   defp send_password_reset_link_to_user(user) do
     user_changeset = User.create_reset_password_changeset(user)
     {:ok, user} = Repo.update(user_changeset)
-    mail = Email.password_reset(user)
-    Mailer.deliver_later(mail)
+    user
+    |> Email.password_reset
+    |> Mailer.deliver_later
   end
 
 end

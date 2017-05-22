@@ -57,6 +57,8 @@ defmodule SignDict.Router do
     resources "/users",    UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
+    get "/email_confirmation", EmailConfirmationController, :update
+
     get "/password/new",  ResetPasswordController, :new
     post "/password/new", ResetPasswordController, :create
     get "/password/edit", ResetPasswordController, :edit

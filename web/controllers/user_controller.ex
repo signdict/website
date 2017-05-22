@@ -4,7 +4,6 @@ defmodule SignDict.UserController do
   use SignDict.Web, :controller
 
   alias SignDict.User
-  alias Guardian.Plug
 
   plug :load_and_authorize_resource, model: User
 
@@ -22,9 +21,8 @@ defmodule SignDict.UserController do
     case result do
       {:ok, user} ->
         conn
-        |> Plug.sign_in(user)
-        |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
-        |> redirect(to: page_path(conn, :welcome))
+        |> sent_confirm_email(user)
+        |> redirect(to: "/")
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset,
           title: gettext("Register")
@@ -59,14 +57,22 @@ defmodule SignDict.UserController do
     user = conn.assigns.user
     changeset = User.changeset(user, user_params)
 
-    # TODO: change flash if email was changed
     case Repo.update(changeset) do
       {:ok, user} ->
         conn
         |> put_flash(:info, gettext("Updated successfully."))
+        |> sent_confirm_email(user)
         |> redirect(to: user_path(conn, :show, user))
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
+  end
+
+  defp sent_confirm_email(conn, user) do
+    user
+    |> SignDict.Email.confirm_email
+    |> SignDict.Mailer.deliver_later
+    conn
+    |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
   end
 end
