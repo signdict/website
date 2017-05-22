@@ -275,15 +275,37 @@ defmodule SignDict.UserTest do
 
   describe "confirm_email_changeset/1" do
     test "it confirms the email if it is valid" do
-      # TODO
+      changeset = User.confirm_email_changeset(%User{
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      }, %{
+        confirmation_token_unencrypted: "12345",
+      })
+      assert changeset.valid?
+      assert {:changes, "elisa@example.com"} = Ecto.Changeset.fetch_field(changeset, :email)
+      assert {:changes, nil}                 = Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:changes, _confirmed_at}       = Ecto.Changeset.fetch_field(changeset, :confirmed_at)
     end
 
     test "it does not confirm if the token is wrong" do
-      # TODO
+      changeset = User.confirm_email_changeset(%User{
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      }, %{
+        confirmation_token_unencrypted: "23456",
+      })
+      refute changeset.valid?
     end
 
     test "it does not confirm the email if it is already present" do
-      # TODO
+      insert :user, email: "elisa@example.com"
+      user = insert :user,
+        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+        unconfirmed_email: "elisa@example.com"
+      changeset = User.confirm_email_changeset(user, %{
+        confirmation_token_unencrypted: "12345",
+      })
+      assert {:error, _changeset} = Repo.update(changeset)
     end
   end
 
@@ -292,6 +314,5 @@ defmodule SignDict.UserTest do
       assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
     end
   end
-
 
 end
