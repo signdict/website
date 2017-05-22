@@ -22,11 +22,19 @@ defmodule SignDict.EmailConfirmationControllerTest do
       assert get_flash(conn, :error) == "Unable to confirm your email address."
     end
 
-    test "it signs in the user and confirms the email address", %{conn: conn} do
+    test "it signs in the user and confirms the email address and redirects to welcome", %{conn: conn} do
       insert(:user, unconfirmed_email: "confirm-3@example.com", confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken"))
       conn = conn
              |> get(email_confirmation_path(conn, :update, email: "confirm-3@example.com", confirmation_token: "encryptedtoken"))
       assert redirected_to(conn) == "/welcome"
+      assert Repo.get_by!(SignDict.User, email: "confirm-3@example.com")
+    end
+
+    test "it signs in the user and confirms the email address and redirects to the landing page if it was just a change", %{conn: conn} do
+      insert(:user, unconfirmed_email: "confirm-3@example.com", confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken"))
+      conn = conn
+             |> get(email_confirmation_path(conn, :update, email: "confirm-3@example.com", change: "true", confirmation_token: "encryptedtoken"))
+      assert redirected_to(conn) == "/"
       assert Repo.get_by!(SignDict.User, email: "confirm-3@example.com")
     end
   end

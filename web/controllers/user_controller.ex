@@ -61,7 +61,7 @@ defmodule SignDict.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, gettext("Updated successfully."))
-        |> sent_confirm_email(user)
+        |> sent_confirm_email_change(user, changeset)
         |> redirect(to: user_path(conn, :show, user))
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
@@ -74,5 +74,17 @@ defmodule SignDict.UserController do
     |> SignDict.Mailer.deliver_later
     conn
     |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
+  end
+
+  defp sent_confirm_email_change(conn, user, changeset) do
+    if Ecto.Changeset.fetch_change(changeset, :unconfirmed_email) != :error do
+      user
+      |> SignDict.Email.confirm_email_change
+      |> SignDict.Mailer.deliver_later
+      conn
+      |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm the change of your email."))
+    else
+      conn
+    end
   end
 end

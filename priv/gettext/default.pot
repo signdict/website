@@ -154,7 +154,7 @@ msgstr ""
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
-#: web/email.ex:30
+#: web/email.ex:42
 msgid "Your password reset link"
 msgstr ""
 
@@ -912,4 +912,16 @@ msgstr ""
 
 #: web/models/user.ex:87
 msgid "already used"
+msgstr ""
+
+#: web/controllers/user_controller.ex:85
+msgid "Please click on the link in the email we just sent to confirm the change of your email."
+msgstr ""
+
+#: web/email.ex:34
+msgid "Please confirm the change of your email address"
+msgstr ""
+
+#: web/controllers/email_confirmation_controller.ex:37
+msgid "Your new email address is now confirmed."
 msgstr ""

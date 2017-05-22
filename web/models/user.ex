@@ -102,15 +102,25 @@ defmodule SignDict.User do
   end
 
   defp email_already_used?(changeset) do
-    {_source, email} = fetch_field(changeset, :email)
-    if email != nil do
-      count = User
-              |> where([user], user.email == ^email or user.unconfirmed_email == ^email)
-              |> Repo.aggregate(:count, :id)
-      count > 0
-    else
-      false
-    end
+    {_source, user_id} = fetch_field(changeset, :id)
+    {_source, email}   = fetch_field(changeset, :email)
+    do_email_already_used?(user_id, email)
+  end
+
+  defp do_email_already_used?(user_id, email) when is_nil(user_id) and is_nil(email) do
+    false
+  end
+  defp do_email_already_used?(user_id, email) when is_nil(user_id) do
+    count = User
+            |> where([user], user.email == ^email or user.unconfirmed_email == ^email)
+            |> Repo.aggregate(:count, :id)
+    count > 0
+  end
+  defp do_email_already_used?(user_id, email) do
+    count = User
+            |> where([user], user.id != ^user_id and user.email == ^email or user.unconfirmed_email == ^email)
+            |> Repo.aggregate(:count, :id)
+    count > 0
   end
 
   def confirm_email_changeset(user, params) do

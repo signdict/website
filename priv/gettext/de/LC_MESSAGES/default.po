@@ -154,7 +154,7 @@ msgstr "Leider konnte das Passwort nicht geändert werden"
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
 
-#: web/email.ex:30
+#: web/email.ex:42
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
@@ -913,3 +913,15 @@ msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 #: web/models/user.ex:87
 msgid "already used"
 msgstr "wird schon benutzt"
+
+#: web/controllers/user_controller.ex:85
+msgid "Please click on the link in the email we just sent to confirm the change of your email."
+msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
+
+#: web/email.ex:34
+msgid "Please confirm the change of your email address"
+msgstr "Bitte bestätige die Änderung deiner Email-Adresse"
+
+#: web/controllers/email_confirmation_controller.ex:37
+msgid "Your new email address is now confirmed."
+msgstr "Deine neue Email-Adresse ist nun bestätigt."

@@ -24,6 +24,18 @@ defmodule SignDict.Email do
     |> render(String.to_atom("confirm_email_#{Gettext.get_locale(SignDict.Gettext)}"))
   end
 
+  def confirm_email_change(user) do
+    user
+    |> SignDict.User.confirm_sent_at_changeset
+    |> SignDict.Repo.update
+
+    base_email()
+    |> to(user)
+    |> subject(gettext("Please confirm the change of your email address"))
+    |> assign(:user, user)
+    |> render(String.to_atom("confirm_email_change_#{Gettext.get_locale(SignDict.Gettext)}"))
+  end
+
   def password_reset(user) do
     base_email()
     |> to(user)

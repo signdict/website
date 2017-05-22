@@ -105,8 +105,21 @@ defmodule SignDict.UserControllerTest do
     end
 
     test "it sends an email to confirm the changed user email address", %{conn: conn} do
-      post(conn, user_path(conn, :create), user: @valid_attrs)
-      assert_delivered_with(subject: "Please confirm your email address", to: [{"user name", "elisa@example.com"}])
+      user = insert :user, email: "another@example.com"
+      conn
+      |> guardian_login(user)
+      |> patch(user_path(conn, :update, user), user: @valid_attrs)
+      assert_delivered_with(subject: "Please confirm the change of your email address", to: [{"user name", "elisa@example.com"}])
+    end
+
+    test "it does not sent an email if the user did not change", %{conn: conn} do
+      user = insert :user, email: "elisa@example.com"
+      conn = conn
+             |> guardian_login(user)
+             |> patch(user_path(conn, :update, user), user: @valid_attrs)
+      assert redirected_to(conn) == user_path(conn, :show, Repo.get(SignDict.User, user.id))
+      user = Repo.get_by(SignDict.User, id: user.id)
+      refute_delivered_email(SignDict.Email.confirm_email_change(user))
     end
   end
 end

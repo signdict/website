@@ -275,10 +275,11 @@ defmodule SignDict.UserTest do
 
   describe "confirm_email_changeset/1" do
     test "it confirms the email if it is valid" do
-      changeset = User.confirm_email_changeset(%User{
+      user = insert(:user,
         confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
         unconfirmed_email: "elisa@example.com"
-      }, %{
+      )
+      changeset = User.confirm_email_changeset(user, %{
         confirmation_token_unencrypted: "12345",
       })
       assert changeset.valid?
