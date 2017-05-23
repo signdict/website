@@ -1,15 +1,18 @@
 defmodule SignDict.SharedView do
   use SignDict.Web, :view
 
+  alias SignDict.Router.Helpers
+  alias Phoenix.HTML
+
   def ogtags(conn) do
     description = gettext("A sign language dictionary")
-    image_url   = SignDict.Router.Helpers.url(conn) <> "/images/logo.png"
+    image_url   = Helpers.url(conn) <> "/images/logo.png"
     ogtags = Map.merge(%{
                 "og:title"            => title(conn),
                 "og:description"      => description,
                 "og:type"             => "website",
                 "og:image"            => image_url,
-                "og:url"              => SignDict.Router.Helpers.url(conn) <> conn.request_path,
+                "og:url"              => Helpers.url(conn) <> conn.request_path,
                 "twitter:card"        => "summary",
                 "twitter:site"        => "@SignDict",
                 "twitter:description" => description,
@@ -20,7 +23,7 @@ defmodule SignDict.SharedView do
 
   defp render_metatags(tags) do
     for {key, value} <- tags do
-      {:safe, safe_value} = Phoenix.HTML.html_escape(value)
+      {:safe, safe_value} = HTML.html_escape(value)
       raw("<meta property=\"#{key}\" content=\"#{safe_value}\">\n")
     end
   end

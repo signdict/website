@@ -4,7 +4,8 @@ defmodule SignDict.Backend.VideoController do
   alias SignDict.Entry
   alias SignDict.Video
 
-  plug :load_and_authorize_resource, model: Video, preload: [:entry, :user], except: :index
+  plug :load_and_authorize_resource, model: Video,
+    preload: [:entry, :user], except: :index
 
   def index(conn, params) do
     videos = Video

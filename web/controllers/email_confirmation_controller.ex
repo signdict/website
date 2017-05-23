@@ -19,7 +19,8 @@ defmodule SignDict.EmailConfirmationController do
     |> redirect(to: "/")
   end
   defp do_update(conn, user, token, change) do
-    changeset = User.confirm_email_changeset(user, %{confirmation_token_unencrypted: token})
+    changeset = User.confirm_email_changeset(user,
+                  %{confirmation_token_unencrypted: token})
     case Repo.update(changeset) do
       {:ok, _user_changeset} ->
         conn

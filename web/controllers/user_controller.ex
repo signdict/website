@@ -3,6 +3,10 @@ defmodule SignDict.UserController do
   """
   use SignDict.Web, :controller
 
+  alias Ecto.Changeset
+  alias SignDict.Email
+  alias SignDict.Mailer
+  alias SignDict.Services.OpenGraph
   alias SignDict.User
 
   plug :load_and_authorize_resource, model: User
@@ -37,7 +41,7 @@ defmodule SignDict.UserController do
       user: conn.assigns.user,
       searchbar: true,
       video_count: video_count,
-      ogtags: SignDict.Services.OpenGraph.to_metadata(conn.assigns.user),
+      ogtags: OpenGraph.to_metadata(conn.assigns.user),
       title: gettext("User %{user}", user: conn.assigns.user.name)
     )
   end
@@ -70,17 +74,17 @@ defmodule SignDict.UserController do
 
   defp sent_confirm_email(conn, user) do
     user
-    |> SignDict.Email.confirm_email
-    |> SignDict.Mailer.deliver_later
+    |> Email.confirm_email
+    |> Mailer.deliver_later
     conn
     |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
   end
 
   defp sent_confirm_email_change(conn, user, changeset) do
-    if Ecto.Changeset.fetch_change(changeset, :unconfirmed_email) != :error do
+    if Changeset.fetch_change(changeset, :unconfirmed_email) != :error do
       user
-      |> SignDict.Email.confirm_email_change
-      |> SignDict.Mailer.deliver_later
+      |> Email.confirm_email_change
+      |> Mailer.deliver_later
       conn
       |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm the change of your email."))
     else

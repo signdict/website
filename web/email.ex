@@ -3,6 +3,9 @@ defmodule SignDict.Email do
 
   import SignDict.Gettext
 
+  alias SignDict.User
+  alias SignDict.Repo
+
   def contact_form(email, content) do
     base_email()
     |> to({"Bodo", "mail@signdict.org"})
@@ -14,8 +17,8 @@ defmodule SignDict.Email do
 
   def confirm_email(user) do
     user
-    |> SignDict.User.confirm_sent_at_changeset
-    |> SignDict.Repo.update
+    |> User.confirm_sent_at_changeset
+    |> Repo.update
 
     base_email()
     |> to(user)
@@ -26,8 +29,8 @@ defmodule SignDict.Email do
 
   def confirm_email_change(user) do
     user
-    |> SignDict.User.confirm_sent_at_changeset
-    |> SignDict.Repo.update
+    |> User.confirm_sent_at_changeset
+    |> Repo.update
 
     base_email()
     |> to(user)

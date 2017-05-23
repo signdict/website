@@ -72,9 +72,9 @@ defmodule SignDict.Transcoder.JwPlayer do
     result = http_client.get!("https://cdn.jwplayer.com/v2/media/#{video.metadata["jw_video_id"]}")
     json = Poison.decode!(result.body)
     changeset = Video.changeset_transcoder(video, %{
-                                  video_url: get_video_from_response(json),
-                                  thumbnail_url: get_thumbnail_from_response(json)
-                                })
+      video_url: get_video_from_response(json),
+      thumbnail_url: get_thumbnail_from_response(json)
+    })
     changeset
     |> add_jw_answer_to_video(json)
     |> Repo.update

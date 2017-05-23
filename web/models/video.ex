@@ -35,7 +35,8 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :transcode, %{from: [:uploaded], to: :transcoding}, fn(changeset) ->
+    defevent :transcode, %{from: [:uploaded], to: :transcoding},
+        fn(changeset) ->
       changeset |> Repo.update()
     end
 
