@@ -19,5 +19,13 @@ defmodule SignDict.PostgresQueryHelperTest do
     test "it trims the spaces away" do
       assert PostgresQueryHelper.format_search_query("Homer  Simpson ") == "Homer:*&Simpson:*"
     end
+
+    test "it removes special characters" do
+      assert PostgresQueryHelper.format_search_query("Haus&Hof&2") == "Haus:*&Hof:*&2:*"
+    end
+
+    test "it has no problems with umlauts" do
+      assert PostgresQueryHelper.format_search_query("Häuser") == "Häuser:*"
+    end
   end
 end
