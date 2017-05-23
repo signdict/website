@@ -21,6 +21,11 @@ defmodule SignDict.EmbedController do
            title: gettext("Sorry, no sign found")
          )
   end
+  defp render_entry(%{conn: conn, entry: entry, video: video}, _entry_link)
+      when is_nil(video) and not is_nil(entry) do
+    conn
+    |> redirect(to: embed_path(conn, :show, entry))
+  end
   defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "embed.html"},
