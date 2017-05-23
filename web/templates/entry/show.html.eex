@@ -69,8 +69,8 @@
         </div>
       </div>
 
-      <div class="o-grid o-grid--wrap o-grid--no-gutter so-video-details">
-        <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100">
+      <div class="o-grid o-grid--bottom o-grid--wrap o-grid--no-gutter so-video-details">
+        <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100 st-margin-right">
           <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
           <div class="so-video-details--label">
             <%= gettext("User") %>
@@ -95,7 +95,7 @@
       </a>
 
     </div>
-    <div class="o-grid__cell">
+    <div class="o-grid__cell o-grid__cell--width-40@small o-grid__cell--width-100">
       <div class="sc-sidebar">
         <div class="sc-sidebar--content">
           <h1><%= gettext("Variations »%{entry}«", entry: @entry.text) %></h1>
@@ -110,12 +110,18 @@
                         <i class="so-video-list--video-play" aria-hidden="true"></i>
                       </a>
                     </div>
-                    <div class="o-grid__cell o-grid__cell--center">
+                    <div class="o-grid__cell o-grid__cell--width-66 o-grid__cell--center">
                       <div class="so-video-list--details">
-                        <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
-                        <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %><br/>
-                        <i class="fa fa-chevron-up so-video-list--details--votes <%= if @voted_video && video.id == @voted_video.id, do: "so-video-list--details--votes_voted" %>" aria-label="Votes for this video"></i>
-                        <%= video.vote_count %>
+                        <div class="so-video-list--details--by">
+                          <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
+                        </div>
+                        <div class="so-video-list--details--date">
+                          <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %>
+                        </div>
+                        <div class="so-video-list--details--votes">
+                          <i class="fa fa-chevron-up so-video-list--details--votes <%= if @voted_video && video.id == @voted_video.id, do: "so-video-list--details--votes_voted" %>" aria-label="Votes for this video"></i>
+                          <%= video.vote_count %>
+                        </div>
                       </div>
                     </div>
                   </div>

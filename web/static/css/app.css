@@ -61,6 +61,10 @@ strong {
   margin: 0;
 }
 
+.st-margin-right {
+  margin-right: 1em;
+}
+
 .turbolinks-progress-bar {
   height: 5px;
   background-color: $highlight;
