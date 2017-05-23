@@ -7,9 +7,13 @@ defmodule SignDict.EntryController do
   alias SignDict.Services.OpenGraph
 
   def show(conn, %{"id" => id}) do
-    conn
-    |> EntryVideoLoader.load_videos_for_entry(id: id)
-    |> render_entry
+    if id =~ ~r/^\d+(-.*)?\z/ do
+      conn
+      |> EntryVideoLoader.load_videos_for_entry(id: id)
+      |> render_entry
+    else
+      redirect_to_search(conn, conn.params["id"])
+    end
   end
 
   def show(conn, %{"entry_id" => id, "video_id" => video_id}) do
@@ -54,7 +58,7 @@ defmodule SignDict.EntryController do
   end
 
   defp redirect_to_search(conn, id) do
-    query = Regex.named_captures(~r/\d*-(?<query>.*)\z/, id)["query"]
+    query = Regex.named_captures(~r/^(\d*-)?(?<query>.*)$/, id)["query"]
             |> String.replace("-", " ")
     conn
     |> redirect(to: search_path(conn, :index, q: query))
