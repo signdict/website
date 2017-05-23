@@ -65,6 +65,7 @@ defmodule SignDict.Mixfile do
      {:scrivener_html, "~> 1.7"},
      {:exq, "~> 0.8.6"},
      {:exq_ui, "~> 0.8.6"},
+     {:ex_chimp, "~> 0.0.2"},
    ]
   end
 

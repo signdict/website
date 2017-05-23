@@ -43,10 +43,10 @@ msgstr "Seite nicht gefunden"
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: web/controllers/user_controller.ex:13 web/controllers/user_controller.ex:28
+#: web/controllers/user_controller.ex:17 web/controllers/user_controller.ex:33
 #: web/templates/layout/backend.html.eex:34
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
-#: web/templates/user/new.html.eex:41
+#: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr "Registrieren"
 
@@ -154,7 +154,7 @@ msgstr "Leider konnte das Passwort nicht geändert werden"
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
 
-#: web/email.ex:42
+#: web/email.ex:45
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
@@ -247,7 +247,7 @@ msgstr "Willkommen im Dashboard"
 msgid "Update"
 msgstr "Speichern"
 
-#: web/controllers/user_controller.ex:63
+#: web/controllers/user_controller.ex:68
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
@@ -655,7 +655,7 @@ msgstr "Vorschaubild"
 msgid "video.video_url"
 msgstr "Video"
 
-#: web/templates/entry/show.html.eex:127
+#: web/templates/entry/show.html.eex:133
 msgid "No other variations"
 msgstr "Keine weiteren Variationen"
 
@@ -667,7 +667,7 @@ msgstr "Varianten »%{entry}«"
 msgid "today"
 msgstr "heute"
 
-#: web/templates/entry/show.html.eex:116
+#: web/templates/entry/show.html.eex:119
 msgid "${time} ago"
 msgstr "Vor ${time}"
 
@@ -675,7 +675,7 @@ msgstr "Vor ${time}"
 msgid "Date of upload"
 msgstr "Uploaddatum"
 
-#: web/templates/entry/show.html.eex:115
+#: web/templates/entry/show.html.eex:116
 msgid "by"
 msgstr "von"
 
@@ -749,7 +749,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr "Über"
 
-#: web/controllers/user_controller.ex:52
+#: web/controllers/user_controller.ex:57
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
@@ -758,7 +758,7 @@ msgstr "Profil bearbeiten"
 msgid "Login"
 msgstr "Anmelden"
 
-#: web/email.ex:9
+#: web/email.ex:12
 msgid "New message via contact form"
 msgstr "Neue Nachricht via Kontakt-Formular"
 
@@ -771,7 +771,7 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/embed_controller.ex:31 web/controllers/entry_controller.ex:32
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:39
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
@@ -779,7 +779,7 @@ msgstr "Gebärde für %{sign}"
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
-#: web/controllers/user_controller.ex:41
+#: web/controllers/user_controller.ex:46
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
@@ -855,11 +855,11 @@ msgstr "Details >"
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
-#: web/controllers/entry_controller.ex:41
+#: web/controllers/entry_controller.ex:52
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
 
-#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:37
+#: web/controllers/embed_controller.ex:22 web/controllers/embed_controller.ex:43
 msgid "Sorry, no sign found"
 msgstr "Entschuldigung, keine Gebärde gefunden"
 
@@ -867,7 +867,7 @@ msgstr "Entschuldigung, keine Gebärde gefunden"
 msgid "Sorry, no sign was found"
 msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
 
-#: web/views/shared_view.ex:5
+#: web/views/shared_view.ex:8
 msgid "A sign language dictionary"
 msgstr "Ein Gebärdensprach-Wörterbuch"
 
@@ -875,15 +875,15 @@ msgstr "Ein Gebärdensprach-Wörterbuch"
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr "%{user} ist ein Nutzer auf SignDict, einem Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:68
+#: lib/sign_dict/services/opengraph.ex:70
 msgid "by %{copyright}"
 msgstr "von %{copyright}"
 
-#: lib/sign_dict/services/opengraph.ex:51
+#: lib/sign_dict/services/opengraph.ex:53
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright}\n"
 
-#: lib/sign_dict/services/opengraph.ex:66
+#: lib/sign_dict/services/opengraph.ex:68
 msgid "by %{copyright} - %{username}"
 msgstr "von %{copyright} - %{username}"
 
@@ -898,30 +898,34 @@ msgstr "Datenschutz"
 msgid "Invalid confirmation link."
 msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
 
-#: web/controllers/user_controller.ex:76
+#: web/controllers/user_controller.ex:81
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
 
-#: web/email.ex:22
+#: web/email.ex:25
 msgid "Please confirm your email address"
 msgstr "Bitte bestätige deine Email-Adresse"
 
-#: web/controllers/email_confirmation_controller.ex:30
+#: web/controllers/email_confirmation_controller.ex:31
 msgid "Unable to confirm your email address."
 msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 
-#: web/models/user.ex:87
+#: web/models/user.ex:91
 msgid "already used"
 msgstr "wird schon benutzt"
 
-#: web/controllers/user_controller.ex:85
+#: web/controllers/user_controller.ex:90
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
 
-#: web/email.ex:34
+#: web/email.ex:37
 msgid "Please confirm the change of your email address"
 msgstr "Bitte bestätige die Änderung deiner Email-Adresse"
 
-#: web/controllers/email_confirmation_controller.ex:37
+#: web/controllers/email_confirmation_controller.ex:38
 msgid "Your new email address is now confirmed."
 msgstr "Deine neue Email-Adresse ist nun bestätigt."
+
+#: web/templates/user/new.html.eex:43
+msgid "user.want_newsletter"
+msgstr "Ja, ich will den Newsletter abonnieren."

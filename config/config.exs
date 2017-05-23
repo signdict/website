@@ -81,6 +81,12 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
+config :sign_dict, :newsletter,
+  subscriber: SignDict.MockChimp
+
+config :ex_chimp,
+  api_key: "yourapikeyhere-us12"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
