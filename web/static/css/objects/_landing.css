@@ -146,6 +146,10 @@
     padding-left: 2em;
     padding-right: 2em;
   }
+
+  .so-landing--banner--headline {
+    font-size: 2em;
+  }
 }
 
 @media all and (min-width: 48em) {
