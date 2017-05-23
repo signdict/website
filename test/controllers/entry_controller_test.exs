@@ -23,14 +23,13 @@ defmodule SignDict.EntryControllerTest do
       }
     end
 
-    test "it redirect if the entry was not found", %{conn: conn} do
-      conn = get conn, entry_path(conn, :show, 99999)
-      assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+    test "it redirects to search if the id could not be found", %{conn: conn} do
+      conn = get conn, entry_path(conn, :show, "99999-nach-hause")
+      assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
     end
 
-    test "it redirect to the search if a text is found in the link", %{conn: conn} do
-      conn = get conn, entry_path(conn, :show, "99999-nach-hause")
+    test "it redirect to the search if no number is in the id", %{conn: conn} do
+      conn = get conn, entry_path(conn, :show, "nach-hause")
       assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
     end
 
