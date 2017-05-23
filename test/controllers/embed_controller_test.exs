@@ -45,6 +45,11 @@ defmodule SignDict.EmbedControllerTest do
       assert html_response(conn, 200) =~ "User 1"
     end
 
+    test "redirects to the embed page if the linked video does not exist", %{conn: conn, entry: entry} do
+      conn = get conn, embed_video_path(conn, :show, entry, 1234567890)
+      assert redirected_to(conn) == embed_path(conn, :show, entry)
+    end
+
     test "shows the voted video if the user voted one", %{conn: conn, entry: entry, user_3: user} do
       conn = conn
            |> guardian_login(user)
