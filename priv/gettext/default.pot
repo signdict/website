@@ -43,10 +43,10 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/controllers/user_controller.ex:13 web/controllers/user_controller.ex:28
+#: web/controllers/user_controller.ex:17 web/controllers/user_controller.ex:33
 #: web/templates/layout/backend.html.eex:34
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
-#: web/templates/user/new.html.eex:41
+#: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
-#: web/email.ex:42
+#: web/email.ex:45
 msgid "Your password reset link"
 msgstr ""
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:63
+#: web/controllers/user_controller.ex:68
 msgid "Updated successfully."
 msgstr ""
 
@@ -655,7 +655,7 @@ msgstr ""
 msgid "video.video_url"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:127
+#: web/templates/entry/show.html.eex:133
 msgid "No other variations"
 msgstr ""
 
@@ -667,7 +667,7 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:116
+#: web/templates/entry/show.html.eex:119
 msgid "${time} ago"
 msgstr ""
 
@@ -675,7 +675,7 @@ msgstr ""
 msgid "Date of upload"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:115
+#: web/templates/entry/show.html.eex:116
 msgid "by"
 msgstr ""
 
@@ -749,7 +749,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: web/controllers/user_controller.ex:52
+#: web/controllers/user_controller.ex:57
 msgid "Edit profile"
 msgstr ""
 
@@ -758,7 +758,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: web/email.ex:9
+#: web/email.ex:12
 msgid "New message via contact form"
 msgstr ""
 
@@ -771,7 +771,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:31 web/controllers/entry_controller.ex:32
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:39
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: web/controllers/user_controller.ex:41
+#: web/controllers/user_controller.ex:46
 msgid "User %{user}"
 msgstr ""
 
@@ -855,11 +855,11 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:41
+#: web/controllers/entry_controller.ex:52
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
-#: web/controllers/embed_controller.ex:21 web/controllers/embed_controller.ex:37
+#: web/controllers/embed_controller.ex:22 web/controllers/embed_controller.ex:43
 msgid "Sorry, no sign found"
 msgstr ""
 
@@ -867,7 +867,7 @@ msgstr ""
 msgid "Sorry, no sign was found"
 msgstr ""
 
-#: web/views/shared_view.ex:5
+#: web/views/shared_view.ex:8
 msgid "A sign language dictionary"
 msgstr ""
 
@@ -875,15 +875,15 @@ msgstr ""
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:68
+#: lib/sign_dict/services/opengraph.ex:70
 msgid "by %{copyright}"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:51
+#: lib/sign_dict/services/opengraph.ex:53
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:66
+#: lib/sign_dict/services/opengraph.ex:68
 msgid "by %{copyright} - %{username}"
 msgstr ""
 
@@ -898,30 +898,34 @@ msgstr ""
 msgid "Invalid confirmation link."
 msgstr ""
 
-#: web/controllers/user_controller.ex:76
+#: web/controllers/user_controller.ex:81
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr ""
 
-#: web/email.ex:22
+#: web/email.ex:25
 msgid "Please confirm your email address"
 msgstr ""
 
-#: web/controllers/email_confirmation_controller.ex:30
+#: web/controllers/email_confirmation_controller.ex:31
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:87
+#: web/models/user.ex:91
 msgid "already used"
 msgstr ""
 
-#: web/controllers/user_controller.ex:85
+#: web/controllers/user_controller.ex:90
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr ""
 
-#: web/email.ex:34
+#: web/email.ex:37
 msgid "Please confirm the change of your email address"
 msgstr ""
 
-#: web/controllers/email_confirmation_controller.ex:37
+#: web/controllers/email_confirmation_controller.ex:38
 msgid "Your new email address is now confirmed."
+msgstr ""
+
+#: web/templates/user/new.html.eex:43
+msgid "user.want_newsletter"
 msgstr ""

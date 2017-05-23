@@ -20,6 +20,8 @@ defmodule SignDict.User do
   schema "users" do
     field :email, :string
 
+    field :want_newsletter, :boolean, virtual: true
+
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     field :password_hash, :string
@@ -76,7 +78,7 @@ defmodule SignDict.User do
   def register_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password, :password_confirmation,
-                     :name, :biography])
+                     :name, :biography, :want_newsletter])
     |> validate_required([:email, :name, :password, :password_confirmation])
     |> validate_email
     |> validate_password
@@ -223,6 +225,12 @@ defmodule SignDict.User do
   defp generate_token do
     unencrypted_token = SecureRandom.urlsafe_base64(32)
     {unencrypted_token, Bcrypt.hashpwsalt(unencrypted_token)}
+  end
+
+  def subscribe_to_newsletter(user) do
+    subscriber = Application.get_env(:sign_dict, :newsletter)[:subscriber]
+    subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email,
+                          %{"FULL_NAME" => user.name})
   end
 end
 

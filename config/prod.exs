@@ -80,6 +80,11 @@ config :bugsnex, :release_stage, "production"
 config :bugsnex, :use_logger, true
 config :bugsnex, :api_key, System.get_env("BUGSNAG_API_KEY")
 
+config :sign_dict, :newsletter,
+  subscriber: ExChimp.List
+config :ex_chimp,
+  api_key: System.get_env("MAILCHIMP_API_KEY")
+
 config :pryin,
        api_key: System.get_env("PRYIN_API_KEY"),
        enabled: true,

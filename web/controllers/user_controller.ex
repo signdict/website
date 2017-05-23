@@ -24,6 +24,7 @@ defmodule SignDict.UserController do
 
     case result do
       {:ok, user} ->
+        if user.want_newsletter, do: User.subscribe_to_newsletter(user)
         conn
         |> sent_confirm_email(user)
         |> redirect(to: "/")
