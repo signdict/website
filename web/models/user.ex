@@ -9,6 +9,8 @@ defmodule SignDict.User do
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
   alias SignDict.Avatar
+  alias SignDict.Endpoint
+  alias SignDict.Gettext
   alias SignDict.Repo
   alias SignDict.User
 
@@ -49,7 +51,7 @@ defmodule SignDict.User do
 
   def avatar_url(user)
   def avatar_url(user = %SignDict.User{avatar: avatar}) when avatar != nil do
-    SignDict.Endpoint.url() <> Avatar.url({avatar, user}, :thumb)
+    Endpoint.url() <> Avatar.url({avatar, user}, :thumb)
   end
   def avatar_url(user = %SignDict.User{email: email}) when email != nil do
     gravatar_url(user.email, s: 256)
@@ -84,7 +86,7 @@ defmodule SignDict.User do
   def confirm_email_change(changeset) do
     cond do
       email_already_used?(changeset) ->
-        add_error(changeset, :email, SignDict.Gettext.gettext("already used"))
+        add_error(changeset, :email, Gettext.gettext("already used"))
       changeset.valid? && Changeset.fetch_change(changeset, :email) != :error ->
         do_confirm_email_change(changeset)
       true ->
@@ -112,13 +114,15 @@ defmodule SignDict.User do
   end
   defp do_email_already_used?(user_id, email) when is_nil(user_id) do
     count = User
-            |> where([user], user.email == ^email or user.unconfirmed_email == ^email)
+            |> where([user], user.email == ^email or
+                             user.unconfirmed_email == ^email)
             |> Repo.aggregate(:count, :id)
     count > 0
   end
   defp do_email_already_used?(user_id, email) do
     count = User
-            |> where([user], user.id != ^user_id and user.email == ^email or user.unconfirmed_email == ^email)
+            |> where([user], user.id != ^user_id and user.email == ^email or
+                             user.unconfirmed_email == ^email)
             |> Repo.aggregate(:count, :id)
     count > 0
   end

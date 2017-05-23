@@ -2,6 +2,7 @@ defmodule SignDict.EmbedController do
   use SignDict.Web, :controller
 
   alias SignDict.Services.EntryVideoLoader
+  alias SignDict.Services.OpenGraph
 
   def show(conn, %{"id" => id}) do
     conn
@@ -32,7 +33,7 @@ defmodule SignDict.EmbedController do
            entry: entry,
            entry_path: entry_link,
            video: video,
-           ogtags: SignDict.Services.OpenGraph.to_metadata(entry, video),
+           ogtags: OpenGraph.to_metadata(entry, video),
            title: gettext("Sign for %{sign}", sign: entry.text)
          )
   end
