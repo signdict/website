@@ -9,7 +9,6 @@ defmodule SignDict.User do
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
   alias SignDict.Avatar
-  alias SignDict.Endpoint
   alias SignDict.Gettext
   alias SignDict.Repo
   alias SignDict.User
@@ -53,7 +52,7 @@ defmodule SignDict.User do
 
   def avatar_url(user)
   def avatar_url(user = %SignDict.User{avatar: avatar}) when avatar != nil do
-    Endpoint.url() <> Avatar.url({avatar, user}, :thumb)
+    Avatar.url({avatar, user}, :thumb)
   end
   def avatar_url(user = %SignDict.User{email: email}) when email != nil do
     gravatar_url(user.email, s: 256)
