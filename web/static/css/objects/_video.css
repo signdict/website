@@ -33,6 +33,12 @@
   margin-bottom: 0.5em;
 }
 
+.so-video-list--details--by {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media all and (max-width: 48em) {
   .so-video--player {
     padding: 0;
