@@ -46,7 +46,7 @@ defmodule SignDict.Services.EntryVideoLoader do
   end
 
   defp do_fetch_videos_for_entry(entry, _current_user) when is_nil(entry) do
-    %{}
+    %{entry: nil, videos: []}
   end
   defp do_fetch_videos_for_entry(entry, current_user) do
     video_query = Video.ordered_by_vote_for_entry(entry)

@@ -71,4 +71,12 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     assert result.voted == video_2
     assert result.videos == [video_1, video_2]
   end
+
+  test "it returns nil if no entry be found and an entry is given" do
+    conn = %{assigns: %{current_user: nil}}
+    result = EntryVideoLoader.load_videos_for_entry(conn, id: 0, video_id: 0)
+    assert result.conn == conn
+    assert result.entry == nil
+    assert result.videos == []
+  end
 end

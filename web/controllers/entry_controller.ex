@@ -22,7 +22,7 @@ defmodule SignDict.EntryController do
     |> render_entry
   end
 
-  defp render_entry(%{conn: conn, videos: videos}) when length(videos) == 0 do
+  defp render_entry(%{conn: conn, videos: videos, entry: entry}) when length(videos) == 0 and not is_nil(entry) do
     redirect_no_videos(conn)
   end
   defp render_entry(%{conn: conn, entry: entry, video: video})
@@ -44,7 +44,7 @@ defmodule SignDict.EntryController do
          )
   end
   defp render_entry(%{conn: conn}) do
-    if conn.params["id"] =~ ~r/\d*-\D*/ do
+    if conn.params["id"] && conn.params["id"] =~ ~r/\d*-\D*/ do
       redirect_to_search(conn, conn.params["id"])
     else
       redirect_no_videos(conn)
