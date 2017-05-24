@@ -2342,7 +2342,7 @@ performance-now@^0.2.0:
   version "2.9.3"
 
 "phoenix@file:deps/phoenix":
-  version "1.2.3"
+  version "1.2.4"
 
 pify@^2.0.0:
   version "2.3.0"
