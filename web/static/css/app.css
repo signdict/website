@@ -15,7 +15,7 @@
 @import "objects/_video.css";
 @import "objects/_voting-box.css";
 @import "objects/_welcome.css";
-@import "_font-awesome.min.css";
+@import "vendor/_font-awesome.min.css";
 
 a {
   color: $highlight;

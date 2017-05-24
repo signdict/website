@@ -1,0 +1,3 @@
+<div id="app">
+  <my-app :message='message'><my-app>
+</div>
