@@ -13,7 +13,7 @@ var fs           = require('fs'),
     commonjs     = require("rollup-plugin-commonjs"),
     babel        = require('rollup-plugin-babel'),
     replace      = require('rollup-plugin-replace'),
-    vue          = require('rollup-plugin-vue'),
+    vue          = require('rollup-plugin-vue');
 
 gulp.task('clean', function() {
   return del(['priv/static']);
