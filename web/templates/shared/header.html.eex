@@ -14,8 +14,10 @@
 <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
 <link rel="icon" href="/favicon_64.png" sizes="64x64">
 
+<%= if is_nil(assigns[:appjs]) || assigns[:appjs] do %>
+  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+<% end %>
 
-<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <%= if Application.get_env(:sign_dict, :environment) != :prod do %>
   <script src="https://cdn.accesslint.com/accesslint-1.1.2.js"></script>
 <% end %>
