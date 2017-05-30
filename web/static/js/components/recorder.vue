@@ -31,6 +31,14 @@ function handleError(error) {
 }
 
 function initRecorder() {
+  /*
+  TODO: higher resolution and bitrate
+
+  if(getBrowser() == "Chrome"){
+    var constraints = {"audio": false, "video": { "mandatory": { "minWidth": 320, "maxWidth": 320, "minHeight": 240,"maxHeight": 240 }, "optional": [] } };
+  }else if(getBrowser() == "Firefox"){
+    var constraints = {audio: true,video: { width: { min: 320, ideal: 320, max: 1280 }, height: { min: 240, ideal: 240, max: 720 }}}; 
+  } */
   navigator.mediaDevices.getUserMedia({audio: false, video: true}).
     then(handleSuccess).catch(handleError);
 }
