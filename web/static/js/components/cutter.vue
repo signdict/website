@@ -1,6 +1,7 @@
 <template>
   <div class="cutter">
     Here we cut!
+    <router-link to="/">Back to recording</router-link>
   </div>
 </template>
 

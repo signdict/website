@@ -97,6 +97,10 @@ html, body {
   height: 100%;
 }
 
+#app {
+  height: 100%;
+}
+
 .recorder {
   width: 100%;
   height: 100%;
@@ -109,6 +113,7 @@ html, body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
