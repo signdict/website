@@ -1,7 +1,13 @@
 import Vue       from 'vue/dist/vue.common.js'
 import VueRouter from 'vue-router'
+import Vuex      from 'vuex'
+
+Vue.use(VueRouter)
+Vue.use(Vuex)
+
 import Recorder  from "./components/recorder.vue"
 import Cutter    from "./components/cutter.vue"
+import store     from "./components/store.js"
 
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {
@@ -14,11 +20,10 @@ document.onreadystatechange = function () {
       routes
     })
 
-    Vue.use(VueRouter)
-
     new Vue({
       el: '#app',
-      router
+      router,
+      store
     })
   }
 }

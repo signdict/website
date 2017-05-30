@@ -13,6 +13,7 @@ var streamHandle;
 var mediaRecorder;
 var recordedBlobs;
 var router;
+var store;
 
 function handleSuccess(stream) {
   var previewVideo = document.getElementsByClassName("recorder--video")[0];
@@ -47,6 +48,7 @@ function handleDataAvailable(event) {
   console.log("getting data!");
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
+    store.commit('setRecordedBlobs', recordedBlobs);
   }
 }
 
@@ -78,6 +80,7 @@ export default {
     initRecorder();
     console.log("done!");
     router = this.$router;
+    store  = this.$store;
   },
 
   methods: {
