@@ -58,6 +58,7 @@ defmodule SignDict.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     resources "/recorder", RecorderController, only: [:index, :new]
+    get "/recorder/new/:stuff", RecorderController, :new
 
     get "/email_confirmation", EmailConfirmationController, :update
 

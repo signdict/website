@@ -12,6 +12,7 @@
 var streamHandle;
 var mediaRecorder;
 var recordedBlobs;
+var router;
 
 function handleSuccess(stream) {
   var previewVideo = document.getElementsByClassName("recorder--video")[0];
@@ -34,7 +35,12 @@ function initRecorder() {
 }
 
 function handleStop(event) {
-  console.log('Recorder stopped: ', event);
+  console.log("this is the router");
+  console.log(router);
+  console.log('Recorder stopped: ',  event);
+
+  streamHandle.getTracks()[0].stop();
+  router.push({path: "/cutter"});
 }
 
 function handleDataAvailable(event) {
@@ -63,6 +69,7 @@ function startRecording() {
 function stopRecording() {
   mediaRecorder.stop();
   console.log("Media recording stopped!");
+  console.log(router);
 }
 
 export default {
@@ -70,6 +77,7 @@ export default {
     console.log("calling method!");
     initRecorder();
     console.log("done!");
+    router = this.$router;
   },
 
   methods: {

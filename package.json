@@ -9,7 +9,8 @@
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
     "turbolinks": "^5.0.0",
-    "vue": "^2.3.3"
+    "vue": "^2.3.3",
+    "vue-router": "^2.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3",
