@@ -540,7 +540,7 @@ msgstr "Unterstützer"
 
 #: web/templates/page/index.html.eex:78
 msgid "This page is still under construction and.."
-msgstr "Diese Seite ist noch im Aufbau und noch nicht alles ist Fertig. Willst du informiert werden, sobald es Neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
+msgstr "Diese Seite befindet sich derzeit im Aufbau, daher ist noch nicht alles fertig. Willst du informiert werden, sobald es Neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
 
 #: web/templates/page/index.html.eex:75
 msgid "Want to stay up to date?"
