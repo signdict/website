@@ -34,8 +34,26 @@ function initRecorder() {
   /*
   TODO: higher resolution and bitrate
 
+    Capture 720p or 1080p video along with minFrameRate+maxFrameRate==30 using getUserMedia
+    Record using MediaStreamRecorder; pass huge videoBitsPerSecond or bitsPerSecond
+
   if(getBrowser() == "Chrome"){
-    var constraints = {"audio": false, "video": { "mandatory": { "minWidth": 320, "maxWidth": 320, "minHeight": 240,"maxHeight": 240 }, "optional": [] } };
+var constraint = {
+    video: {
+        mandatory: {
+            maxHeight: 720,
+            maxWidth: 1280
+        },
+        optional: [
+            {minWidth: 320},
+            {minWidth: 640},
+            {minWidth: 960},
+            {minWidth: 1024},
+            {minWidth: 1280}
+        ]
+    },
+    audio: false
+};
   }else if(getBrowser() == "Firefox"){
     var constraints = {audio: true,video: { width: { min: 320, ideal: 320, max: 1280 }, height: { min: 240, ideal: 240, max: 720 }}}; 
   } */
