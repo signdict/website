@@ -5,6 +5,7 @@ defmodule SignDict.UserController do
 
   alias Ecto.Changeset
   alias SignDict.Email
+  alias SignDict.Entry
   alias SignDict.Mailer
   alias SignDict.Services.OpenGraph
   alias SignDict.User
@@ -38,9 +39,17 @@ defmodule SignDict.UserController do
     video_count = SignDict.Video
                   |> where(user_id: ^conn.assigns.user.id)
                   |> Repo.aggregate(:count, :id)
+
+    entries = Entry
+              |> where([e], not is_nil(e.current_video_id))
+              |> limit(10)
+              |> Entry.with_current_video
+              |> Repo.all
+
     render(conn, "show.html",
       user: conn.assigns.user,
       searchbar: true,
+      entries: entries,
       video_count: video_count,
       ogtags: OpenGraph.to_metadata(conn.assigns.user),
       title: gettext("User %{user}", user: conn.assigns.user.name)
