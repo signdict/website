@@ -19,12 +19,47 @@
 var extractFramePosition = 1;
 var extractVideoContext = null;
 
+function drawVideoInCanvas(canvas, context, video) {
+  var imageAspectRatio = video.videoWidth / video.videoHeight;
+  var canvasAspectRatio = canvas.width / canvas.height;
+  var renderableHeight, renderableWidth, xStart, yStart;
+
+  // If image's aspect ratio is less than canvas's we fit on height
+  // and place the image centrally along width
+  if(imageAspectRatio < canvasAspectRatio) {
+    renderableHeight = canvas.height;
+    renderableWidth = video.videoWidth * (renderableHeight / video.videoHeight);
+    xStart = (canvas.width - renderableWidth) / 2;
+    yStart = 0;
+  }
+
+  // If image's aspect ratio is greater than canvas's we fit on width
+  // and place the image centrally along height
+  else if(imageAspectRatio > canvasAspectRatio) {
+    renderableWidth = canvas.width
+    renderableHeight = video.videoHeight * (renderableWidth / video.videoWidth);
+    xStart = 0;
+    yStart = (canvas.height - renderableHeight) / 2;
+  }
+
+  // Happy path - keep aspect ratio
+  else {
+    renderableHeight = canvas.height;
+    renderableWidth = canvas.width;
+    xStart = 0;
+    yStart = 0;
+  }
+  context.drawImage(video, xStart, yStart, renderableWidth, renderableHeight);
+}
+
 function extractFrame(video) {
   let canvas = document.createElement('canvas');
   let ctx    = canvas.getContext('2d');
   canvas.width = 320;
   canvas.height = 240;
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  ctx.fillStyle="#000000";
+  ctx.fillRect(0, 0, 320, 240);
+  drawVideoInCanvas(canvas, ctx, video);
 
   let dataURI = canvas.toDataURL('image/jpeg');
   let image = document.createElement("img");
@@ -77,7 +112,7 @@ export default {
     videoElement.src =
       window.URL.createObjectURL(superBuffer);
     videoElement.play();
-    videoElement.playbackRate = 100.0
+    videoElement.playbackRate = 1000.0
     videoElement.addEventListener('durationchange',function(){
       if (!context.framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
         console.log("extracting frames!");
