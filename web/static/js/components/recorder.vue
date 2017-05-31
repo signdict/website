@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import browser from 'detect-browser';
+
 var streamHandle;
 var mediaRecorder;
 var recordedBlobs;
@@ -31,33 +33,36 @@ function handleError(error) {
 }
 
 function initRecorder() {
-  /*
-  TODO: higher resolution and bitrate
+  let constraints = {audio: true, video: true};
 
-    Capture 720p or 1080p video along with minFrameRate+maxFrameRate==30 using getUserMedia
-    Record using MediaStreamRecorder; pass huge videoBitsPerSecond or bitsPerSecond
-
-  if(getBrowser() == "Chrome"){
-var constraint = {
-    video: {
+  if (browser.name == "firefox") {
+    constraints = {
+      video: {
+        height: { min: 240, ideal: 720, max: 720 }
+        width: { min: 320, ideal: 1280, max: 1280 },
+      },
+      audio: false
+    };
+  } else if (browser.name == "chrome") {
+    constraints = {
+      video: {
         mandatory: {
-            maxHeight: 720,
-            maxWidth: 1280
+          maxHeight: 720,
+          maxWidth: 1280
         },
         optional: [
-            {minWidth: 320},
-            {minWidth: 640},
-            {minWidth: 960},
-            {minWidth: 1024},
-            {minWidth: 1280}
+          {minWidth: 320},
+          {minWidth: 640},
+          {minWidth: 960},
+          {minWidth: 1024},
+          {minWidth: 1280}
         ]
-    },
-    audio: false
-};
-  }else if(getBrowser() == "Firefox"){
-    var constraints = {audio: true,video: { width: { min: 320, ideal: 320, max: 1280 }, height: { min: 240, ideal: 240, max: 720 }}}; 
-  } */
-  navigator.mediaDevices.getUserMedia({audio: false, video: true}).
+      },
+      audio: false
+    }
+  }
+
+  navigator.mediaDevices.getUserMedia(constraints).
     then(handleSuccess).catch(handleError);
 }
 

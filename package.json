@@ -6,6 +6,7 @@
     "watch": "./node_modules/gulp/bin/gulp.js watch"
   },
   "dependencies": {
+    "detect-browser": "^1.7.0",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
     "turbolinks": "^5.0.0",
