@@ -11,9 +11,9 @@
     "phoenix_html": "file:deps/phoenix_html",
     "turbolinks": "^5.0.0",
     "vue": "^2.3.3",
-    "voo-i18n": "^1.0.10",
     "vue-router": "^2.5.3",
-    "vuex": "^2.3.1"
+    "vuex": "^2.3.1",
+    "voo-i18n": "^1.0.10"
   },
   "devDependencies": {
     "autoprefixer": "^6.3",

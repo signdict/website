@@ -1,10 +1,18 @@
 <template>
   <div class="recorder">
-    {{ $t('Hello world') }}
     <video class="recorder--video recorder--video_flip" autoplay muted></video>
+    <div v-if="!recording" class="recorder--countdown">
+      <div class="recorder--countdown--number">
+        {{ countdown }}
+      </div>
+    </div>
+    <div v-if="recording" class="recorder--rec">
+      REC
+    </div>
     <div class="recorder--navbar">
-      <button v-on:click="startRecording">Start Recording!</button>
-      <button v-on:click="stopRecording">Stop Recording!</button>
+      <div v-if="recording" class="recorder--navbar--stop" v-on:click="stopRecording">
+        <i class="fa fa-stop-circle-o" aria-label="Stop"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -68,10 +76,7 @@ function initRecorder() {
 }
 
 function handleStop(event) {
-  console.log("this is the router");
-  console.log(router);
   console.log('Recorder stopped: ',  event);
-
   streamHandle.getTracks()[0].stop();
   router.push({path: "/cutter"});
 }
@@ -84,7 +89,8 @@ function handleDataAvailable(event) {
   }
 }
 
-function startRecording() {
+function startRecording(context) {
+  context.recording = true;
   recordedBlobs = []
   try {
     mediaRecorder = new MediaRecorder(streamHandle, {mimeType: "video/webm"});
@@ -106,21 +112,41 @@ function stopRecording() {
   console.log(router);
 }
 
+function startCountdown(context) {
+  setTimeout(function() {
+    context.countdown -= 1;
+    if (context.countdown > 0) {
+      startCountdown(context);
+    } else {
+      startRecording(context);
+    }
+  }, 1000);
+}
+
 export default {
+  data() {
+    return {
+      countdown: 5,
+      recording: false
+    }
+  },
   created() {
     console.log("calling method!");
     initRecorder();
     console.log("done!");
     router = this.$router;
     store  = this.$store;
+    startCountdown(this);
   },
 
   methods: {
     startRecording: function(event) {
+      this.recording = true;
       startRecording();
     },
 
     stopRecording: function(event) {
+      this.recording = false;
       stopRecording();
     }
   }
@@ -142,6 +168,7 @@ html, body {
   padding-bottom: 5em;
   background-color: #000;
   overflow: hidden;
+  position: relative;
 }
 
 .recorder--video {
@@ -151,6 +178,67 @@ html, body {
   object-fit: contain;
   width: 100%;
   height: 100%;
+}
+
+.recorder--countdown {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+}
+
+.recorder--countdown--number {
+  border-radius: 50%;
+  font-size: 6em;
+
+  width: 2em;
+  height: 2em;
+  padding: 0.4em;
+
+  background: #666;
+  border: 2px solid #666;
+  color: #fff;
+  text-align: center;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recorder--rec {
+  position: absolute;
+  top: 1em;
+  right: 3em;
+  color: #fff;
+  font-weight: 800;
+}
+.recorder--rec:before {
+  animation: blinker 1s linear infinite;
+  position: absolute;
+  margin-left: -1.3em;
+  margin-top: 0.05em;
+  content: '';
+  background-color:#FF0000;
+  border-radius:50%;
+  opacity:0.8;
+  width: 1em;
+  height: 1em;
+  pointer-events: none;
+}
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+.recorder--navbar {
+  border-top: 1px solid #222;
+  background-color: #333;
+  height: 100%;
+}
+
+.recorder--navbar--stop {
+  text-align: center;
+  font-size: 4em;
+  color: #e30d25;
+  cursor: pointer;
 }
 
 .recorder--video_flip {
