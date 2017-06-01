@@ -1,7 +1,10 @@
-import Vue       from 'vue/dist/vue.common.js'
-import VueRouter from 'vue-router'
-import Vuex      from 'vuex'
+import Vue          from 'vue/dist/vue.common.js'
+import VueRouter    from 'vue-router'
+import Vuex         from 'vuex'
+import i18n         from 'voo-i18n'
+import translations from './i18n/map'
 
+Vue.use(i18n, translations)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
@@ -23,7 +26,13 @@ document.onreadystatechange = function () {
     new Vue({
       el: '#app',
       router,
-      store
+      store,
+      i18n,
+      data() {
+        return {
+          locale: document.documentElement.lang
+        }
+      },
     })
   }
 }

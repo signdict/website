@@ -1,5 +1,6 @@
 <template>
   <div class="recorder">
+    {{ $t('Hello world') }}
     <video class="recorder--video recorder--video_flip" autoplay muted></video>
     <div class="recorder--navbar">
       <button v-on:click="startRecording">Start Recording!</button>
@@ -106,7 +107,7 @@ function stopRecording() {
 }
 
 export default {
-  created: function() {
+  created() {
     console.log("calling method!");
     initRecorder();
     console.log("done!");
