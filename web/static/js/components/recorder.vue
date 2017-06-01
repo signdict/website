@@ -38,7 +38,7 @@ function initRecorder() {
   if (browser.name == "firefox") {
     constraints = {
       video: {
-        height: { min: 240, ideal: 720, max: 720 }
+        height: { min: 240, ideal: 720, max: 720 },
         width: { min: 320, ideal: 1280, max: 1280 },
       },
       audio: false
