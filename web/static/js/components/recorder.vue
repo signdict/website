@@ -1,5 +1,6 @@
 <template>
   <div class="recorder">
+    <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
     <video class="recorder--video recorder--video_flip" autoplay muted></video>
     <div v-if="!recording" class="recorder--countdown">
       <div class="recorder--countdown--number">
@@ -10,8 +11,21 @@
       REC
     </div>
     <div class="recorder--navbar">
-      <div v-if="recording" class="recorder--navbar--stop" v-on:click="stopRecording">
-        <i class="fa fa-stop-circle-o" aria-label="Stop"></i>
+      <div class="o-grid o-grid--no-gutter">
+        <div class="o-grid__cell o-grid__cell--width-20">
+          <div class="recorder--navbar--back">
+            <a href='/recorder'>
+              &lt;&lt; {{ $t('Back') }}
+            </a>
+          </div>
+        </div>
+        <div class="o-grid__cell o-grid__cell--width-60">
+          <div v-if="recording" class="recorder--navbar--stop" v-on:click="stopRecording">
+            <i class="fa fa-stop-circle-o" aria-label="Stop"></i>
+          </div>
+        </div>
+        <div class="o-grid__cell o-grid__cell--width-20">
+        </div>
       </div>
     </div>
   </div>
@@ -109,7 +123,6 @@ function startRecording(context) {
 function stopRecording() {
   mediaRecorder.stop();
   console.log("Media recording stopped!");
-  console.log(router);
 }
 
 function startCountdown(context) {
@@ -232,6 +245,12 @@ html, body {
   border-top: 1px solid #222;
   background-color: #333;
   height: 100%;
+  position: relative;
+}
+
+.recorder--navbar--back {
+  margin-left: 1em;
+  margin-top: 2em;
 }
 
 .recorder--navbar--stop {
