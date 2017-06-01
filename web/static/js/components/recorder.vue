@@ -223,6 +223,7 @@ html, body {
   right: 3em;
   color: #fff;
   font-weight: 800;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .recorder--rec:before {
   animation: blinker 1s linear infinite;
