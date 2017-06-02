@@ -103,11 +103,19 @@ function handleDataAvailable(event) {
   }
 }
 
+function detectCodec() {
+  return ['video/webm;codecs=vp9',
+    'video/webm;codecs=vp8',
+    'video/webm'].find(function(codec) {
+      return MediaRecorder.isTypeSupported(codec);
+    });
+}
+
 function startRecording(context) {
   context.recording = true;
   recordedBlobs = []
   try {
-    mediaRecorder = new MediaRecorder(streamHandle, {mimeType: "video/webm"});
+    mediaRecorder = new MediaRecorder(streamHandle, {mimeType: detectCodec()});
   } catch (e) {
     console.error('Exception while creating MediaRecorder: ' + e);
     alert('Exception while creating MediaRecorder: '
