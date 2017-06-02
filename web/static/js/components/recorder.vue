@@ -198,6 +198,7 @@ html, body {
   top: 50%;
   transform: translate(0, -50%);
   width: 100%;
+  opacity: 0.8;
 }
 
 .recorder--countdown--number {
