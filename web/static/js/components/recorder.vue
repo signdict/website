@@ -1,6 +1,5 @@
 <template>
   <div class="recorder">
-    <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
     <video class="recorder--video recorder--video_flip" autoplay muted></video>
     <div v-if="!recording" class="recorder--countdown">
       <div class="recorder--countdown--number">
@@ -254,7 +253,7 @@ html, body {
 .recorder--navbar {
   border-top: 1px solid #222;
   background-color: #333;
-  height: 100%;
+  height: 5em;
   position: relative;
 }
 
