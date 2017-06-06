@@ -129,6 +129,14 @@ function getVideoElement() {
   return document.getElementsByClassName("cutter--player")[0];
 }
 
+function getCutterElement() {
+  return document.getElementsByClassName("cutter--handles")[0];
+}
+
+function getCutterPreviews() {
+  return document.getElementsByClassName("cutter--previews")[0];
+}
+
 function resetVideoplayerHeight() {
   let navbar       = document.getElementsByClassName("cutter--navbar")[0];
   getVideoElement().style.height = window.innerHeight - navbar.clientHeight + "px";
@@ -163,6 +171,7 @@ function dragStart(event) {
   event.stopImmediatePropagation();
 
   getVideoElement().pause();
+  dragMove(event);
 
   document.body.style.cursor = "move";
   document.body.style.cursor = "grabbing";
@@ -172,8 +181,26 @@ function dragStart(event) {
 
 function dragMove(event) {
   if (dragging) {
-    console.log("drag move");
-    console.log(event);
+    let cutter         = getCutterPreviews();
+    let rect           = cutter.getBoundingClientRect();
+    let computedStyles = window.getComputedStyle(cutter);
+    let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
+    let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
+    let currentPos     = 0;
+
+    if (event.clientX < minPos) {
+      currentPos = 0;
+    } else if (event.clientX > maxPos) {
+      currentPos = maxPos - minPos;
+    } else {
+      currentPos = event.clientX - minPos;
+    }
+
+    let percent = currentPos / ((maxPos - minPos) / 100.0)
+    let video = getVideoElement();
+    let jumpTo = video.duration / 100 * percent;
+    video.currentTime = jumpTo;
+
     event.stopImmediatePropagation();
   }
 }
@@ -194,7 +221,7 @@ function dragCancel(event) {
 }
 
 function initCutter() {
-  let cutter = document.getElementsByClassName("cutter--handles")[0];
+  let cutter = getCutterElement();
   cutter.addEventListener("mousedown", dragStart);
   window.addEventListener("mousemove", dragMove);
   window.addEventListener("mouseup", dragEnd);
