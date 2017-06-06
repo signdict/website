@@ -8,10 +8,8 @@
         </li>
       </ul>
       <div class='cutter--handles'>
-        <div class='cutter-handles--left'>
-        </div>
-        <div class='cutter-handles--right'>
-        </div>
+        <div class='cutter--handles--left'></div>
+        <div class='cutter--handles--right'></div>
       </div>
       <div class="o-grid o-grid--no-gutter cutter--navbar--buttons">
         <div class="o-grid__cell o-grid__cell--width-20">
@@ -98,6 +96,7 @@ function seekForThumbnail(event){
   if (extractFramePosition < 10) {
     jumpToNextPosition(video);
   } else {
+    resetVideoplayerHeight();
     video.removeEventListener("seeked", seekForThumbnail);
     video.playbackRate = 1
     video.play();
@@ -113,10 +112,92 @@ function createThumbnails(video, context) {
   jumpToNextPosition(video);
 }
 
+function updateCutterHandles() {
+  let videoPreviews = document.getElementsByClassName("cutter--previews")[0];
+  let handles       = document.getElementsByClassName("cutter--handles")[0];
+  let handleLeft    = document.getElementsByClassName("cutter--handles--left")[0];
+  let handleRight   = document.getElementsByClassName("cutter--handles--right")[0];
+  console.log(handles);
+  console.log(handleLeft);
+  console.log(handleRight);
+  handles.style.height = videoPreviews.clientHeight + "px";
+  handleLeft.style.height = videoPreviews.clientHeight + "px";
+  handleRight.style.height = videoPreviews.clientHeight + "px";
+}
+
+function getVideoElement() {
+  return document.getElementsByClassName("cutter--player")[0];
+}
+
 function resetVideoplayerHeight() {
-  let videoElement = document.getElementsByClassName("cutter--player")[0];
   let navbar       = document.getElementsByClassName("cutter--navbar")[0];
-  videoElement.style.height = window.innerHeight - navbar.clientHeight + "px";
+  getVideoElement().style.height = window.innerHeight - navbar.clientHeight + "px";
+  updateCutterHandles();
+}
+
+function initVideoPlayer(context, blobs) {
+  let videoElement = getVideoElement();
+  videoElement.src = window.URL.createObjectURL(new Blob(blobs));
+  videoElement.play();
+  videoElement.playbackRate = 1000.0
+  videoElement.addEventListener('durationchange',function(){
+    if (!context.framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
+      console.log("extracting frames!");
+      context.framesExtracted = true;
+      window.setTimeout(function() {
+        createThumbnails(videoElement, context);
+      });
+    }
+  });
+
+  window.onresize = resetVideoplayerHeight;
+  resetVideoplayerHeight();
+}
+
+let dragging = false;
+
+function dragStart(event) {
+  dragging = true;
+  console.log("drag start");
+  console.log(event);
+  event.stopImmediatePropagation();
+
+  getVideoElement().pause();
+
+  document.body.style.cursor = "move";
+  document.body.style.cursor = "grabbing";
+  document.body.style.cursor = "-moz-grabbing";
+  document.body.style.cursor = "-webkit-grabbing";
+}
+
+function dragMove(event) {
+  if (dragging) {
+    console.log("drag move");
+    console.log(event);
+    event.stopImmediatePropagation();
+  }
+}
+
+function dragEnd(event) {
+  dragging = false;
+  document.body.style.cursor = "";
+  console.log("drag end");
+  console.log(event);
+  event.stopImmediatePropagation();
+  getVideoElement().play();
+}
+
+function dragCancel(event) {
+  console.log("drag cancel");
+  console.log(event);
+  event.stopImmediatePropagation();
+}
+
+function initCutter() {
+  let cutter = document.getElementsByClassName("cutter--handles")[0];
+  cutter.addEventListener("mousedown", dragStart);
+  window.addEventListener("mousemove", dragMove);
+  window.addEventListener("mouseup", dragEnd);
 }
 
 export default {
@@ -131,24 +212,8 @@ export default {
     if (blobs.length == 0) {
       this.$router.replace("/");
     } else {
-      let superBuffer = new Blob(this.$store.state.recordedBlobs);
-      let videoElement = document.getElementsByClassName("cutter--player")[0];
-      let context = this;
-      videoElement.src = window.URL.createObjectURL(superBuffer);
-      videoElement.play();
-      videoElement.playbackRate = 1000.0
-      videoElement.addEventListener('durationchange',function(){
-        if (!context.framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
-          console.log("extracting frames!");
-          context.framesExtracted = true;
-          window.setTimeout(function() {
-            createThumbnails(videoElement, context);
-          });
-        }
-      });
-
-      window.onresize = resetVideoplayerHeight;
-      resetVideoplayerHeight();
+      initVideoPlayer(this, blobs);
+      initCutter();
     }
   },
   methods: {
@@ -214,6 +279,10 @@ export default {
   vertical-align: top;
   margin: 0px auto;
   padding: 0px 2%;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .cutter--previews--item {
@@ -224,5 +293,40 @@ export default {
 .cutter--previews--item--image {
   width: 10%;
 }
+
+.cutter--handles {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 3em;
+  width: 100%;
+}
+
+.cutter--handles--left {
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  height: 3em;
+  width: 4px;
+  background-color: #fdd100;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.cutter--handles--right {
+  position: absolute;
+  right: 100px;
+  top: 0px;
+  height: 3em;
+  width: 4px;
+  background-color: #fdd100;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
 
 </style>
