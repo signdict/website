@@ -52,6 +52,7 @@ let cuttingEnd   = 0;
 let currentHandle = null;
 let dragging = false;
 let framesExtracted = false;
+let unmounted = false;
 
 function resetCutterHandles() {
   let height        = getCutterPreviews().clientHeight + "px";
@@ -154,7 +155,9 @@ function updateVideoPosition() {
       getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
     }
   }
-  window.requestAnimationFrame(updateVideoPosition);
+  if (!unmounted) {
+    window.requestAnimationFrame(updateVideoPosition);
+  }
 }
 
 function initVideoPlayer(context, blobs, duration) {
@@ -290,6 +293,12 @@ function initCutter($store) {
   window.addEventListener("mouseup", dragEnd);
 }
 
+function destroyCutter() {
+  unmounted = true;
+  window.removeEventListener("mousemove", dragMove);
+  window.removeEventListener("mouseup", dragEnd);
+}
+
 export default {
   data () {
     return {
@@ -305,6 +314,9 @@ export default {
       initVideoPlayer(this, blobs, this.$store.state.recordedDuration);
       initCutter(this.$store);
     }
+  },
+  beforeDestroy() {
+    destroyCutter();
   },
   methods: {
     pauseRecording: function() {
