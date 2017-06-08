@@ -153,9 +153,14 @@ function updateVideoPosition() {
   window.requestAnimationFrame(updateVideoPosition);
 }
 
-function initVideoPlayer(context, blobs) {
+function initVideoPlayer(context, blobs, duration) {
   let videoElement = getVideoElement();
   videoElement.src = window.URL.createObjectURL(new Blob(blobs));
+  // This is a small hack. Sadly the recorded stream
+  // does not have a duration metadata entry. We jump to the
+  // last position and play it. After that the browser adds the
+  // duration automatically.
+  videoElement.currentTime = duration - 0.2;
   videoElement.play();
   videoElement.playbackRate = 1000.0
   videoElement.addEventListener('durationchange',function(){
@@ -287,7 +292,7 @@ export default {
     if (blobs.length == 0) {
       this.$router.replace("/");
     } else {
-      initVideoPlayer(this, blobs);
+      initVideoPlayer(this, blobs, this.$store.state.recordedDuration);
       initCutter();
     }
   },

@@ -90,13 +90,13 @@ function initRecorder() {
 
 function handleStop(event) {
   streamHandle.getTracks()[0].stop();
+  store.commit('setRecordedBlobs', recordedBlobs);
   router.push({path: "/cutter"});
 }
 
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
-    store.commit('setRecordedBlobs', recordedBlobs);
   }
 }
 
@@ -144,6 +144,8 @@ export default {
     return {
       countdown: 5,
       recording: false
+      recording: false,
+      recordingStartedAt: 0
     }
   },
   created() {
@@ -156,11 +158,13 @@ export default {
   methods: {
     startRecording: function(event) {
       this.recording = true;
+      this.recordingStartedAt = new Date();
       startRecording();
     },
 
     stopRecording: function(event) {
       this.recording = false;
+      this.$store.commit('setRecordedDuration', (new Date() - this.recordingStartedAt) / 1000)
       stopRecording();
     }
   }

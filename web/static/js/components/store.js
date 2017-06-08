@@ -4,11 +4,15 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    recordedBlobs: []
+    recordedBlobs: [],
+    recordedDuration: 0
   },
   mutations: {
     setRecordedBlobs: function(state, blobs) {
       state.recordedBlobs = blobs;
+    },
+    setRecordedDuration: function(state, duration) {
+      state.recordedDuration = duration;
     }
   }
 });
