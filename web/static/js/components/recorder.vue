@@ -148,7 +148,7 @@ export default {
       recordingStartedAt: 0
     }
   },
-  created() {
+  mounted() {
     initRecorder();
     router = this.$router;
     store  = this.$store;
@@ -164,7 +164,7 @@ export default {
 
     stopRecording: function(event) {
       this.recording = false;
-      this.$store.commit('setRecordedDuration', (new Date() - this.recordingStartedAt) / 1000)
+      this.$store.commit('setRecordedDuration', (new Date() - this.recordingStartedAt) / 1000);
       stopRecording();
     }
   }

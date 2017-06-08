@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-20">
-          <router-link to="/" class="cutter--navbar--next">
+          <router-link to="/upload" class="cutter--navbar--next">
             {{ $t('Next') }} &gt;&gt;
           </router-link>
         </div>

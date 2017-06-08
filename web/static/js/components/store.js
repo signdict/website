@@ -5,7 +5,9 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     recordedBlobs: [],
-    recordedDuration: 0
+    recordedDuration: 0,
+    startTime: 0,
+    endTime:   0,
   },
   mutations: {
     setRecordedBlobs: function(state, blobs) {
@@ -13,6 +15,14 @@ const store = new Vuex.Store({
     },
     setRecordedDuration: function(state, duration) {
       state.recordedDuration = duration;
+    },
+    setStartTime: function(state, time) {
+      console.log("start time " + time);
+      state.startTime = time;
+    },
+    setEndTime: function(state, time) {
+      console.log("end time " + time);
+      state.endTime = time;
     }
   }
 });
