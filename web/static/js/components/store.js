@@ -17,11 +17,9 @@ const store = new Vuex.Store({
       state.recordedDuration = duration;
     },
     setStartTime: function(state, time) {
-      console.log("start time " + time);
       state.startTime = time;
     },
     setEndTime: function(state, time) {
-      console.log("end time " + time);
       state.endTime = time;
     }
   }

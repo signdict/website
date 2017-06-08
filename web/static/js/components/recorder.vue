@@ -121,7 +121,7 @@ function startRecording(context) {
   }
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
-  mediaRecorder.start(100);
+  mediaRecorder.start(50);
 }
 
 function stopRecording() {

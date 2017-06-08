@@ -12,8 +12,8 @@ export default {
   },
   mounted() {
     console.log("mounted!!");
-    console.log(this.$store.startTime);
-    console.log(this.$store.endTime);
+    console.log(this.$store.state.startTime);
+    console.log(this.$store.state.endTime);
   },
   methods: {
   }

@@ -46,6 +46,7 @@ function createThumbnails(video, context) {
   });
 }
 
+let store = null;
 let cuttingStart = 0;
 let cuttingEnd   = 0;
 let currentHandle = null;
@@ -138,17 +139,20 @@ function resetVideoplayerHeight() {
 
 function updateVideoPosition() {
   if (!dragging) {
-    let currentTime = getVideoElement().currentTime;
-    if (framesExtracted) {
-      if (currentTime + 0.2 < cuttingStart) {
-        currentTime = cuttingStart;
-        getVideoElement().currentTime = cuttingStart;
-      } else if (currentTime > cuttingEnd) {
-        currentTime = cuttingEnd;
-        getVideoElement().currentTime = cuttingStart;
+    let player = getVideoElement();
+    if (player) {
+      let currentTime = getVideoElement().currentTime;
+      if (framesExtracted) {
+        if (currentTime + 0.2 < cuttingStart) {
+          currentTime = cuttingStart;
+          getVideoElement().currentTime = cuttingStart;
+        } else if (currentTime > cuttingEnd) {
+          currentTime = cuttingEnd;
+          getVideoElement().currentTime = cuttingStart;
+        }
       }
+      getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
     }
-    getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
   }
   window.requestAnimationFrame(updateVideoPosition);
 }
@@ -207,6 +211,11 @@ function repositionHandles() {
   getHandleLeftBar().style.width  = startPosition + "px";
   getHandleRightBar().style.left  = endPosition + "px";
   getHandleRightBar().style.width = window.innerWidth - endPosition + "px";
+
+  if (store) {
+    store.commit('setStartTime', cuttingStart);
+    store.commit('setEndTime', cuttingEnd);
+  }
 }
 
 function updateCurrentHandle(clientX) {
@@ -273,8 +282,9 @@ function dragCancel(event) {
   event.stopImmediatePropagation();
 }
 
-function initCutter() {
+function initCutter($store) {
   let cutter = getCutterElement();
+  store = $store;
   cutter.addEventListener("mousedown", dragStart);
   window.addEventListener("mousemove", dragMove);
   window.addEventListener("mouseup", dragEnd);
@@ -293,7 +303,7 @@ export default {
       this.$router.replace("/");
     } else {
       initVideoPlayer(this, blobs, this.$store.state.recordedDuration);
-      initCutter();
+      initCutter(this.$store);
     }
   },
   methods: {
