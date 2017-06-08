@@ -1,6 +1,6 @@
 <template>
   <div class="cutter">
-    <video class='cutter--player' loop></video>
+    <video class='cutter--player' loop preload></video>
     <div class='cutter--navbar'>
       <ul class='cutter--previews'>
         <li class='cutter--previews--item' v-for="image in videoImages">
@@ -8,8 +8,11 @@
         </li>
       </ul>
       <div class='cutter--handles'>
+        <div class='cutter--handles--left-bar'></div>
+        <div class='cutter--handles--right-bar'></div>
         <div class='cutter--handles--left'></div>
         <div class='cutter--handles--right'></div>
+        <div class='cutter--handles--position'></div>
       </div>
       <div class="o-grid o-grid--no-gutter cutter--navbar--buttons">
         <div class="o-grid__cell o-grid__cell--width-20">
@@ -35,17 +38,56 @@ function createThumbnails(video, context) {
   });
 }
 
-function updateCutterHandles() {
-  let videoPreviews = document.getElementsByClassName("cutter--previews")[0];
-  let handles       = document.getElementsByClassName("cutter--handles")[0];
-  let handleLeft    = document.getElementsByClassName("cutter--handles--left")[0];
-  let handleRight   = document.getElementsByClassName("cutter--handles--right")[0];
-  console.log(handles);
-  console.log(handleLeft);
-  console.log(handleRight);
-  handles.style.height = videoPreviews.clientHeight + "px";
-  handleLeft.style.height = videoPreviews.clientHeight + "px";
-  handleRight.style.height = videoPreviews.clientHeight + "px";
+let cuttingStart = 0;
+let cuttingEnd   = 0;
+let currentHandle = null;
+let dragging = false;
+let framesExtracted = false;
+
+function resetCutterHandles() {
+  let videoPreviews = getCutterPreviews();
+  getCutterElement().style.height  = videoPreviews.clientHeight + "px";
+  getHandleLeft().style.height     = videoPreviews.clientHeight + "px";
+  getHandleRight().style.height    = videoPreviews.clientHeight + "px";
+  getHandleLeftBar().style.height  = videoPreviews.clientHeight + "px";
+  getHandleRightBar().style.height = videoPreviews.clientHeight + "px";
+  getHandlePosition().style.height = videoPreviews.clientHeight + "px";
+  repositionHandles();
+}
+
+function timeToPixel(time) {
+  let cutter         = getCutterPreviews();
+  let rect           = cutter.getBoundingClientRect();
+  let computedStyles = window.getComputedStyle(cutter);
+  let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
+  let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
+  let duration       = getVideoElement().duration;
+
+  return minPos + (maxPos - minPos) / duration * time
+}
+
+function pixelToTime(clientX) {
+  let cutter         = getCutterPreviews();
+  let rect           = cutter.getBoundingClientRect();
+  let computedStyles = window.getComputedStyle(cutter);
+  let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
+  let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
+  let duration       = getVideoElement().duration;
+  let currentPos     = 0;
+
+  if (clientX < minPos) {
+    currentPos = 0;
+  } else if (clientX > maxPos) {
+    currentPos = maxPos - minPos;
+  } else {
+    currentPos = clientX - minPos;
+  }
+
+  return duration / (maxPos - minPos) * currentPos;
+  if (time >= video.duration) {
+    time = video.duration - 0.01;
+  }
+  return time;
 }
 
 function getVideoElement() {
@@ -60,10 +102,42 @@ function getCutterPreviews() {
   return document.getElementsByClassName("cutter--previews")[0];
 }
 
+function getHandleLeft() {
+  return document.getElementsByClassName("cutter--handles--left")[0];
+}
+
+function getHandleRight() {
+  return document.getElementsByClassName("cutter--handles--right")[0];
+}
+
+function getHandleLeftBar() {
+  return document.getElementsByClassName("cutter--handles--left-bar")[0];
+}
+
+function getHandleRightBar() {
+  return document.getElementsByClassName("cutter--handles--right-bar")[0];
+}
+
+function getHandlePosition() {
+  return document.getElementsByClassName("cutter--handles--position")[0];
+}
+
 function resetVideoplayerHeight() {
   let navbar       = document.getElementsByClassName("cutter--navbar")[0];
   getVideoElement().style.height = window.innerHeight - navbar.clientHeight + "px";
-  updateCutterHandles();
+  resetCutterHandles();
+}
+
+function updateVideoPosition() {
+  if (!dragging) {
+    let currentTime = getVideoElement().currentTime;
+    if (framesExtracted && currentTime > cuttingEnd) {
+      currentTime = cuttingEnd;
+      getVideoElement().currentTime = cuttingStart;
+    }
+    getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
+  }
+  window.requestAnimationFrame(updateVideoPosition);
 }
 
 function initVideoPlayer(context, blobs) {
@@ -72,73 +146,108 @@ function initVideoPlayer(context, blobs) {
   videoElement.play();
   videoElement.playbackRate = 1000.0
   videoElement.addEventListener('durationchange',function(){
-    if (!context.framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
-      context.framesExtracted = true;
+    if (!framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
+      framesExtracted = true;
       window.setTimeout(function() {
         createThumbnails(videoElement, context);
+        cuttingEnd = videoElement.duration;
       });
     }
   });
+  window.requestAnimationFrame(updateVideoPosition);
 
   window.onresize = resetVideoplayerHeight;
   resetVideoplayerHeight();
 }
 
-let dragging = false;
+function setCursor(element, cursor) {
+  element.style.cursor = "move";
+  element.style.cursor = cursor;
+  element.style.cursor = `-moz-${cursor}`;
+  element.style.cursor = `-webkit-${cursor}`;
+}
+
+function nearestHandle(left, right, clientX) {
+  let leftPos  = parseFloat(window.getComputedStyle(left).left);
+  let rightPos = parseFloat(window.getComputedStyle(right).left);
+
+  if (Math.abs(leftPos - clientX) < Math.abs(rightPos - clientX)) {
+    return "left";
+  } else {
+    return "right";
+  }
+}
+
+function repositionHandles() {
+  let startPosition = timeToPixel(cuttingStart);
+  let endPosition = timeToPixel(cuttingEnd);
+
+  getHandleLeft().style.left  = startPosition + "px";
+  getHandleRight().style.left = endPosition + "px";
+  getHandleLeftBar().style.width  = startPosition + "px";
+  getHandleRightBar().style.left  = endPosition + "px";
+  getHandleRightBar().style.width = window.innerWidth - endPosition + "px";
+}
+
+function updateCurrentHandle(clientX) {
+  let currentTime = pixelToTime(clientX);
+  getVideoElement().currentTime = currentTime;
+  if (currentHandle == "left") {
+    if (currentTime < cuttingEnd) {
+      cuttingStart = currentTime;
+    } else {
+      cuttingStart = cuttingEnd;
+    }
+  } else if (currentHandle == "right") {
+    if (currentTime > cuttingStart) {
+      cuttingEnd = currentTime;
+    } else {
+      cuttingEnd = cuttingStart;
+    }
+  }
+  repositionHandles();
+}
+
+function resetDragging() {
+  document.body.style.cursor = "";
+  setCursor(getHandleLeft(), "grab");
+  setCursor(getHandleRight(), "grab");
+
+  dragging = false;
+  getVideoElement().play();
+}
 
 function dragStart(event) {
-  dragging = true;
-  console.log("drag start");
-  console.log(event);
   event.stopImmediatePropagation();
+  dragging = true;
+
+  let handleLeft    = getHandleLeft();
+  let handleRight   = getHandleRight();
+
+  setCursor(document.body, "grabbing");
+  setCursor(handleLeft, "grabbing");
+  setCursor(handleRight, "grabbing");
+
+  currentHandle = nearestHandle(handleLeft, handleRight, event.clientX);
 
   getVideoElement().pause();
-  dragMove(event);
-
-  document.body.style.cursor = "move";
-  document.body.style.cursor = "grabbing";
-  document.body.style.cursor = "-moz-grabbing";
-  document.body.style.cursor = "-webkit-grabbing";
+  updateCurrentHandle(event.clientX);
 }
 
 function dragMove(event) {
   if (dragging) {
-    let cutter         = getCutterPreviews();
-    let rect           = cutter.getBoundingClientRect();
-    let computedStyles = window.getComputedStyle(cutter);
-    let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
-    let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
-    let currentPos     = 0;
-
-    if (event.clientX < minPos) {
-      currentPos = 0;
-    } else if (event.clientX > maxPos) {
-      currentPos = maxPos - minPos;
-    } else {
-      currentPos = event.clientX - minPos;
-    }
-
-    let percent = currentPos / ((maxPos - minPos) / 100.0)
-    let video = getVideoElement();
-    let jumpTo = video.duration / 100 * percent;
-    video.currentTime = jumpTo;
-
+    updateCurrentHandle(event.clientX);
     event.stopImmediatePropagation();
   }
 }
 
 function dragEnd(event) {
-  dragging = false;
-  document.body.style.cursor = "";
-  console.log("drag end");
-  console.log(event);
+  resetDragging();
   event.stopImmediatePropagation();
-  getVideoElement().play();
 }
 
 function dragCancel(event) {
-  console.log("drag cancel");
-  console.log(event);
+  resetDragging();
   event.stopImmediatePropagation();
 }
 
@@ -152,7 +261,6 @@ function initCutter() {
 export default {
   data () {
     return {
-      framesExtracted: false,
       videoImages: []
     }
   },
@@ -251,9 +359,17 @@ export default {
   width: 100%;
 }
 
+.cutter--handles--right-bar,
+.cutter--handles--left-bar {
+  position: absolute;
+  top: 0px;
+  height: 3em;
+  width: 4px;
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
 .cutter--handles--left {
   position: absolute;
-  left: 100px;
   top: 0px;
   height: 3em;
   width: 4px;
@@ -266,7 +382,6 @@ export default {
 
 .cutter--handles--right {
   position: absolute;
-  right: 100px;
   top: 0px;
   height: 3em;
   width: 4px;
@@ -277,5 +392,12 @@ export default {
   cursor: -webkit-grab;
 }
 
+.cutter--handles--position {
+  position: absolute;
+  top: 0px;
+  height: 3em;
+  width: 2px;
+  background-color: #e30d25;
+}
 
 </style>
