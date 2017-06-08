@@ -19,8 +19,8 @@
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-60">
-          <div v-if="recording" class="recorder--navbar--stop" v-on:click="stopRecording">
-            <i class="fa fa-stop-circle-o" aria-label="Stop"></i>
+          <div v-if="recording" class="recorder--navbar--stop">
+            <i class="fa fa-stop-circle-o" aria-label="Stop" v-on:click="stopRecording"></i>
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-20">
@@ -89,13 +89,11 @@ function initRecorder() {
 }
 
 function handleStop(event) {
-  console.log('Recorder stopped: ',  event);
   streamHandle.getTracks()[0].stop();
   router.push({path: "/cutter"});
 }
 
 function handleDataAvailable(event) {
-  console.log("getting data!");
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
     store.commit('setRecordedBlobs', recordedBlobs);
@@ -124,12 +122,10 @@ function startRecording(context) {
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
   mediaRecorder.start(100);
-  console.log("Media recording started!");
 }
 
 function stopRecording() {
   mediaRecorder.stop();
-  console.log("Media recording stopped!");
 }
 
 function startCountdown(context) {
@@ -151,9 +147,7 @@ export default {
     }
   },
   created() {
-    console.log("calling method!");
     initRecorder();
-    console.log("done!");
     router = this.$router;
     store  = this.$store;
     startCountdown(this);
@@ -266,6 +260,9 @@ html, body {
   text-align: center;
   font-size: 4em;
   color: #e30d25;
+}
+
+.recorder--navbar--stop i {
   cursor: pointer;
 }
 

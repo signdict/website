@@ -1,6 +1,6 @@
 <template>
   <div class="cutter">
-    <video class='cutter--player' loop preload></video>
+    <video class='cutter--player' loop preload v-bind:data-playing="playing"></video>
     <div class='cutter--navbar'>
       <ul class='cutter--previews'>
         <li class='cutter--previews--item' v-for="image in videoImages">
@@ -21,9 +21,17 @@
           </router-link>
         </div>
         <div class="o-grid__cell o-grid__cell--width-60">
+          <div v-if="playing" class="cutter--navbar--pause">
+            <i class="fa fa-pause-circle-o" aria-label="Pause" v-on:click="pauseRecording"></i>
+          </div>
+          <div v-if="!playing" class="cutter--navbar--play">
+            <i class="fa fa-play-circle-o" aria-label="Play" v-on:click="playRecording"></i>
+          </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-20">
-          <button v-on:click="download">download</button>
+          <router-link to="/" class="cutter--navbar--next">
+            {{ $t('Next') }} &gt;&gt;
+          </router-link>
         </div>
       </div>
     </div>
@@ -156,10 +164,10 @@ function initVideoPlayer(context, blobs) {
       window.setTimeout(function() {
         createThumbnails(videoElement, context);
         cuttingEnd = videoElement.duration;
+        window.requestAnimationFrame(updateVideoPosition);
       });
     }
   });
-  window.requestAnimationFrame(updateVideoPosition);
 
   window.onresize = resetVideoplayerHeight;
   resetVideoplayerHeight();
@@ -221,7 +229,9 @@ function resetDragging() {
   setCursor(getHandleRight(), "grab");
 
   dragging = false;
-  getVideoElement().play();
+  if (getVideoElement().dataset.playing == "true") {
+    getVideoElement().play();
+  }
 }
 
 function dragStart(event) {
@@ -268,6 +278,7 @@ function initCutter() {
 export default {
   data () {
     return {
+      playing: true,
       videoImages: []
     }
   },
@@ -281,18 +292,15 @@ export default {
     }
   },
   methods: {
-    download: function() {
-      let blob = new Blob(this.$store.state.recordedBlobs, {
-        type: 'video/webm'
-      });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      document.body.appendChild(a);
-      a.style = 'display: none';
-      a.href = url;
-      a.download = 'test.webm';
-      a.click();
-      window.URL.revokeObjectURL(url);
+    pauseRecording: function() {
+      let player = getVideoElement();
+      player.pause();
+      this.playing = false;
+    },
+    playRecording: function() {
+      let player = getVideoElement();
+      player.play();
+      this.playing = true;
     }
   }
 }
@@ -327,13 +335,21 @@ export default {
 }
 
 .cutter--navbar--buttons {
-  height: 3em;
-  margin-top: 1.5em;
+  height: 5em;
 }
 
 .cutter--navbar--back {
-  margin-left: 1em;
+  padding-left: 1em;
   margin-top: 2em;
+  display: inline-block;
+}
+
+.cutter--navbar--next {
+  padding-right: 1em;
+  margin-top: 2em;
+  display: inline-block;
+  text-align: right;
+  width: 100%;
 }
 
 .cutter--previews {
@@ -405,6 +421,24 @@ export default {
   height: 3em;
   width: 2px;
   background-color: #e30d25;
+}
+
+.cutter--navbar--pause {
+  text-align: center;
+  font-size: 4em;
+  color: #46B472;
+}
+.cutter--navbar--pause i {
+  cursor: pointer;
+}
+
+.cutter--navbar--play {
+  text-align: center;
+  font-size: 4em;
+  color: #46B472;
+}
+.cutter--navbar--play i {
+  cursor: pointer;
 }
 
 </style>
