@@ -45,13 +45,13 @@ let dragging = false;
 let framesExtracted = false;
 
 function resetCutterHandles() {
-  let videoPreviews = getCutterPreviews();
-  getCutterElement().style.height  = videoPreviews.clientHeight + "px";
-  getHandleLeft().style.height     = videoPreviews.clientHeight + "px";
-  getHandleRight().style.height    = videoPreviews.clientHeight + "px";
-  getHandleLeftBar().style.height  = videoPreviews.clientHeight + "px";
-  getHandleRightBar().style.height = videoPreviews.clientHeight + "px";
-  getHandlePosition().style.height = videoPreviews.clientHeight + "px";
+  let height        = getCutterPreviews().clientHeight + "px";
+  getCutterElement().style.height  = height;
+  getHandleLeft().style.height     = height;
+  getHandleRight().style.height    = height;
+  getHandleLeftBar().style.height  = height;
+  getHandleRightBar().style.height = height;
+  getHandlePosition().style.height = height;
   repositionHandles();
 }
 
@@ -131,9 +131,14 @@ function resetVideoplayerHeight() {
 function updateVideoPosition() {
   if (!dragging) {
     let currentTime = getVideoElement().currentTime;
-    if (framesExtracted && currentTime > cuttingEnd) {
-      currentTime = cuttingEnd;
-      getVideoElement().currentTime = cuttingStart;
+    if (framesExtracted) {
+      if (currentTime + 0.2 < cuttingStart) {
+        currentTime = cuttingStart;
+        getVideoElement().currentTime = cuttingStart;
+      } else if (currentTime > cuttingEnd) {
+        currentTime = cuttingEnd;
+        getVideoElement().currentTime = cuttingStart;
+      }
     }
     getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
   }
@@ -161,10 +166,12 @@ function initVideoPlayer(context, blobs) {
 }
 
 function setCursor(element, cursor) {
-  element.style.cursor = "move";
-  element.style.cursor = cursor;
-  element.style.cursor = `-moz-${cursor}`;
-  element.style.cursor = `-webkit-${cursor}`;
+  if (element != null) {
+    element.style.cursor = "move";
+    element.style.cursor = cursor;
+    element.style.cursor = `-moz-${cursor}`;
+    element.style.cursor = `-webkit-${cursor}`;
+  }
 }
 
 function nearestHandle(left, right, clientX) {
