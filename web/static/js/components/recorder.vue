@@ -163,8 +163,6 @@ export default {
 
     stopRecording: function(event) {
       this.recording = false;
-      console.log(this.recordingStartedAt);
-      console.log("stop recording!");
       let duration = (new Date() - this.recordingStartedAt) / 1000;
       this.$store.commit('setRecordedDuration', duration);
       this.$store.commit('setEndTime', duration);
