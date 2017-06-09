@@ -160,13 +160,15 @@ function updateVideoPosition() {
   }
 }
 
-function initVideoPlayer(context, blobs, duration) {
+function initVideoPlayer(context, blobs) {
+  let duration     = context.$store.state.recordedDuration;
   let videoElement = getVideoElement();
-  cuttingStart = context.$store.state.startTime || 0;
-  currentHandle = null;
-  dragging = false;
+  cuttingStart    = context.$store.state.startTime || 0;
+  cuttingEnd      = context.$store.state.endTime || duration;
+  currentHandle   = null;
+  dragging        = false;
   framesExtracted = false;
-  unmounted = false;
+  unmounted       = false;
 
   videoElement.src = window.URL.createObjectURL(new Blob(blobs));
   // This is a small hack. Sadly the recorded stream
@@ -181,7 +183,9 @@ function initVideoPlayer(context, blobs, duration) {
       framesExtracted = true;
       window.setTimeout(function() {
         createThumbnails(videoElement, context);
-        cuttingEnd = context.$store.state.endTime || videoElement.duration;
+        if (cuttingEnd > videoElement.duration) {
+          cuttingEnd = videoElement.duration;
+        }
         window.requestAnimationFrame(updateVideoPosition);
       });
     }
@@ -317,7 +321,7 @@ export default {
     if (blobs.length == 0) {
       this.$router.replace("/");
     } else {
-      initVideoPlayer(this, blobs, this.$store.state.recordedDuration);
+      initVideoPlayer(this, blobs);
       initCutter(this.$store);
     }
   },

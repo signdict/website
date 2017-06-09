@@ -110,6 +110,7 @@ function detectCodec() {
 
 function startRecording(context) {
   context.recording = true;
+  context.recordingStartedAt = new Date();
   recordedBlobs = []
   try {
     mediaRecorder = new MediaRecorder(streamHandle, {mimeType: detectCodec()});
@@ -157,14 +158,17 @@ export default {
 
   methods: {
     startRecording: function(event) {
-      this.recording = true;
-      this.recordingStartedAt = new Date();
       startRecording();
     },
 
     stopRecording: function(event) {
       this.recording = false;
-      this.$store.commit('setRecordedDuration', (new Date() - this.recordingStartedAt) / 1000);
+      console.log(this.recordingStartedAt);
+      console.log("stop recording!");
+      let duration = (new Date() - this.recordingStartedAt) / 1000;
+      this.$store.commit('setRecordedDuration', duration);
+      this.$store.commit('setEndTime', duration);
+      this.$store.commit('setStartTime', 0);
       stopRecording();
     }
   }
