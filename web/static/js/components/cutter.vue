@@ -162,6 +162,12 @@ function updateVideoPosition() {
 
 function initVideoPlayer(context, blobs, duration) {
   let videoElement = getVideoElement();
+  cuttingStart = context.$store.state.startTime || 0;
+  currentHandle = null;
+  dragging = false;
+  framesExtracted = false;
+  unmounted = false;
+
   videoElement.src = window.URL.createObjectURL(new Blob(blobs));
   // This is a small hack. Sadly the recorded stream
   // does not have a duration metadata entry. We jump to the
@@ -175,7 +181,7 @@ function initVideoPlayer(context, blobs, duration) {
       framesExtracted = true;
       window.setTimeout(function() {
         createThumbnails(videoElement, context);
-        cuttingEnd = videoElement.duration;
+        cuttingEnd = context.$store.state.endTime || videoElement.duration;
         window.requestAnimationFrame(updateVideoPosition);
       });
     }

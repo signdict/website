@@ -1,6 +1,9 @@
 <template>
   <div class="upload">
     Hello
+    <router-link to="/cutter" class="cutter--navbar--next">
+      {{ $t('Back') }}
+    </router-link>
   </div>
 </template>
 
