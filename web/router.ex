@@ -126,5 +126,6 @@ defmodule SignDict.Router do
     pipe_through [:api, :browser_session]
 
     get "/current_user", CurrentUserController, :show
+    resources "/sessions", SessionController, only: [:create]
   end
 end
