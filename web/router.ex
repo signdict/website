@@ -21,6 +21,7 @@ defmodule SignDict.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   pipeline :browser_session do
@@ -119,5 +120,11 @@ defmodule SignDict.Router do
       resources "/videos", VideoController
     end
     resources "/videos", VideoController, only: [:index]
+  end
+
+  scope "/api", SignDict.Api, as: :api do
+    pipe_through [:api, :browser_session]
+
+    get "/current_user", CurrentUserController, :show
   end
 end
