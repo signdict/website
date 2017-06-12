@@ -70,6 +70,15 @@ defmodule SignDict.Video do
     |> validate_state()
   end
 
+  def changeset_uploader(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:license, :user_id, :entry_id, :metadata])
+    |> validate_required([:license, :entry_id, :user_id])
+    |> foreign_key_constraint(:entry_id)
+    |> foreign_key_constraint(:user_id)
+    |> validate_state()
+  end
+
   def changeset_transcoder(struct, params \\ %{}) do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,

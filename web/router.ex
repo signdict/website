@@ -128,5 +128,6 @@ defmodule SignDict.Router do
     get "/current_user", CurrentUserController, :show
     resources "/sessions", SessionController, only: [:create]
     resources "/register", RegisterController, only: [:create]
+    resources "/upload",   UploadController, only: [:create]
   end
 end
