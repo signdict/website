@@ -1,12 +1,12 @@
 defmodule SignDict.Importer.JsonImporter do
   import Ecto.Query
 
-  alias Ecto.UUID
   alias SignDict.Entry
   alias SignDict.Language
-  alias SignDict.Video
-  alias SignDict.User
   alias SignDict.Repo
+  alias SignDict.Services.VideoImporter
+  alias SignDict.User
+  alias SignDict.Video
 
   def import_json(json_file, exq \\ Exq) do
     json           = json_file |> read_file |> decode_json
@@ -14,7 +14,7 @@ defmodule SignDict.Importer.JsonImporter do
     entry          = find_or_create_entry_for(json_file, json)
     video_filename = Path.dirname(json_file) <> "/" <>
                      Path.basename(json["filename"])
-    filename       = import_video(video_filename)
+    filename       = VideoImporter.store_file(video_filename)
 
     video = Repo.insert!(%Video{
       copyright: "#{json["author"]} - #{json["source"]}",
@@ -39,24 +39,6 @@ defmodule SignDict.Importer.JsonImporter do
 
   defp decode_json(json) do
     Poison.decode!(json)
-  end
-
-  defp import_video(filename) do
-    file = "#{UUID.generate}-#{Path.basename(filename)}"
-    file_with_path = Path.join([paths_for_file(file), file])
-    upload_path = Path.expand(Application.get_env(:sign_dict, :upload_path))
-    target_file = Path.join([upload_path, "video_upload", file_with_path])
-    File.mkdir_p(Path.dirname(target_file))
-    File.rename(filename, target_file)
-    file_with_path
-  end
-
-  defp paths_for_file(filename) do
-    Path.join([
-      String.slice(filename, 0..1),
-      String.slice(filename, 2..3),
-      String.slice(filename, 4..5)
-    ])
   end
 
   defp find_or_create_user_for(%{"source" => username}) do

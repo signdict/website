@@ -8,10 +8,20 @@ defmodule SignDict.Api.UploadControllerTest do
   describe "create/2" do
 
     setup do
+      working_path = Path.join([System.tmp_dir, "upload_" <> Integer.to_string(System.unique_integer([:positive]))])
+      video_file   = Path.join([working_path, "Zug.mp4"])
+      File.mkdir(working_path)
+      File.cp("test/fixtures/videos/Zug.mp4", video_file)
+
+      on_exit fn ->
+        File.rm_rf Path.expand(Application.get_env(:sign_dict, :upload_path))
+        File.rm_rf working_path
+      end
+
       %{
         entry:  insert(:entry),
         user:   insert(:user),
-        upload: %Plug.Upload{path: "test/fixtures/videos/Zug.mp4", filename: "Zug.mp4"}
+        upload: %Plug.Upload{path: video_file, filename: "Zug.mp4"}
       }
     end
 
@@ -20,8 +30,12 @@ defmodule SignDict.Api.UploadControllerTest do
              |> guardian_login(user)
              |> post(api_upload_path(conn, :create),
                     %{video: upload, entry_id: entry.id})
-
       video = Repo.get_by!(Video, user_id: user.id)
+      video_id = video.id
+      assert_received {:mock_exq, "transcoder", SignDict.Worker.TranscodeVideo, [^video_id]}
+
+      video_file = Path.join([Application.get_env(:sign_dict, :upload_path), "video_upload", video.metadata["source_mp4"]])
+      assert File.exists?(video_file)
 
       json = json_response(conn, 200)
       assert json == %{
@@ -39,8 +53,12 @@ defmodule SignDict.Api.UploadControllerTest do
              |> assign(:registered_user_id, user.id)
              |> post(api_upload_path(conn, :create),
                     %{video: upload, entry_id: entry.id})
-
       video = Repo.get_by!(Video, user_id: user.id)
+      video_id = video.id
+      assert_received {:mock_exq, "transcoder", SignDict.Worker.TranscodeVideo, [^video_id]}
+
+      video_file = Path.join([Application.get_env(:sign_dict, :upload_path), "video_upload", video.metadata["source_mp4"]])
+      assert File.exists?(video_file)
 
       json = json_response(conn, 200)
       assert json == %{

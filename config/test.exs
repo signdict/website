@@ -36,6 +36,9 @@ config :sign_dict, :upload_path, "./test/uploads"
 config :sign_dict, SignDict.Mailer,
   adapter: Bamboo.TestAdapter
 
+config :sign_dict, :queue,
+  library: SignDict.MockExq
+
 config :bamboo, :refute_timeout, 10
 
 config :sign_dict, :jw_player,
