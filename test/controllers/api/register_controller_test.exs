@@ -29,7 +29,7 @@ defmodule SignDict.Api.RegisterControllerTest do
 
     test "does not create resource and renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, api_register_path(conn, :create), user: @invalid_attrs)
-      json = json_response(conn, 200)
+      json = json_response(conn, 400)
       assert json == %{
         "error" => %{
           "email"                 => "can't be blank",

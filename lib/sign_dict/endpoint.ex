@@ -36,7 +36,8 @@ defmodule SignDict.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Poison,
+    length: 50_000_000
 
   plug Plug.MethodOverride
   plug Plug.Head

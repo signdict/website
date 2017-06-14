@@ -1,5 +1,6 @@
 import Vue          from 'vue/dist/vue.common.js'
 import VueRouter    from 'vue-router'
+import VueResource  from 'vue-resource'
 import Vuex         from 'vuex'
 import i18n         from 'voo-i18n'
 import translations from './i18n/map'
@@ -7,6 +8,7 @@ import translations from './i18n/map'
 Vue.use(i18n, translations)
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(VueResource)
 
 import Recorder  from "./components/recorder.vue"
 import Cutter    from "./components/cutter.vue"
@@ -30,6 +32,9 @@ document.onreadystatechange = function () {
       router,
       store,
       i18n,
+      http: {
+        root: '/api',
+      },
       data() {
         return {
           locale: document.documentElement.lang

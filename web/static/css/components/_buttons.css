@@ -18,6 +18,11 @@
   appearance: none;
 }
 
+.sc-button[disabled="disabled"] {
+  cursor: not-allowed;
+  background-color: $deactive;
+}
+
 .sc-button--small {
   padding: 0.5em 1em;
   font-weight: normal;

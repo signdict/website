@@ -17,7 +17,9 @@ defmodule SignDict.Api.RegisterController do
         |> put_session(:registered_user_id, user.id)
         |> render(user: user)
       {:error, changeset} ->
-        render conn, errors: changeset.errors
+        conn
+        |> put_status(400)
+        |> render(errors: changeset.errors)
     end
   end
 
