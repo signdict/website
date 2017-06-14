@@ -142,14 +142,14 @@ function updateVideoPosition() {
   if (!dragging) {
     let player = getVideoElement();
     if (player) {
-      let currentTime = getVideoElement().currentTime;
+      let currentTime = player.currentTime;
       if (framesExtracted) {
         if (currentTime + 0.2 < cuttingStart) {
           currentTime = cuttingStart;
-          getVideoElement().currentTime = cuttingStart;
+          player.currentTime = cuttingStart;
         } else if (currentTime > cuttingEnd) {
           currentTime = cuttingEnd;
-          getVideoElement().currentTime = cuttingStart;
+          player.currentTime = cuttingStart;
         }
       }
       getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";

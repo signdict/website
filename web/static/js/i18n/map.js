@@ -1,4 +1,5 @@
 import de from './de'
+import en from './en'
 
 export let locales = [
   {
@@ -14,5 +15,5 @@ export let locales = [
 ]
 
 export default {
-  de
+  de, en
 }
