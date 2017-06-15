@@ -22,13 +22,14 @@
         <router-link to="/cutter" class="upload--back">
           &lt;&lt; {{ $t('Back') }}
         </router-link>
-        <div class="upload--loading" v-if="!loaded">
+        <div class="upload--loading" v-if="currentPanel == 'loading'">
           {{ $t('Please wait...') }}
         </div>
+        <div class="upload--loading" v-if="currentPanel == 'uploading'">
+          {{ $t('Uploading') }}
+        </div>
         <div class="upload--submit" v-else-if="currentUser">
-          upload ze file!
-          {{ currentUser.id }}
-          {{ currentUser.name }}
+          <button class='sc-button' v-on:click.stop="uploadVideo">{{ $t('Upload video') }}</button>
         </div>
         <div class="upload--login-or-register" v-else>
           <h3>{{ $t('Login required') }}</h3>
@@ -41,7 +42,7 @@
           </div>
 
           <transition name="grow">
-            <div class="upload--login" v-if="loginPanel">
+            <div class="upload--login" v-if="currentPanel == 'login'">
               <div v-if="loginError">
                 <p class="sc-alert sc-alert--error" role="alert">{{ $t('The email or password was wrong.') }}</p>
               </div>
@@ -71,7 +72,7 @@
           </div>
 
           <transition name="grow">
-            <div class="upload--register" v-if="registerPanel">
+            <div class="upload--register" v-if="currentPanel == 'register'">
               <div v-if="registerError">
                 <p class="sc-alert sc-alert--error" role="alert">{{ $t('Oops, something went wrong! Please check the errors below.') }}</p>
               </div>
@@ -130,7 +131,7 @@ let unmounted    = false;
 function refreshUser(self) {
   self.$http.get('/api/current_user').then(response => {
     self.currentUser = response.body.user
-    self.loaded      = true
+    self.currentPanel = 'info'
   }, response => {
     console.log("Sadly something went wrong:");
     console.log(response);
@@ -182,17 +183,11 @@ export default {
   data() {
     return {
       currentUser:   null,
-      error:         false,
-      loaded:        false,
-      loginPanel:    false,
-      registerPanel: false,
+      currentPanel:  'loading',
       submitted:     false
     }
   },
   mounted() {
-    console.log("mounted!!");
-    console.log(this.$store.state.startTime);
-    console.log(this.$store.state.endTime);
     let blobs = this.$store.state.recordedBlobs;
     initVideoPlayer(this, blobs);
     refreshUser(this);
@@ -202,14 +197,12 @@ export default {
   },
   methods: {
     showRegisterPanel: function(event) {
-      this.registerPanel  = !this.registerPanel;
-      this.loginPanel     = false;
+      this.currentPanel   = 'register'
       this.registerError  = false;
       scrollToBottom();
     },
     showLoginPanel: function(event) {
-      this.loginPanel     = !this.loginPanel;
-      this.registerPanel  = false;
+      this.currentPanel   = 'login'
       this.loginError     = false;
       scrollToBottom();
     },
@@ -244,6 +237,10 @@ export default {
         this.submitted     = false;
         this.registerError = response.body.error
       });
+    },
+    uploadVideo: function() {
+      this.currentPanel = 'uploading';
+      console.log("Upload video...");
     }
   }
 }
@@ -264,6 +261,10 @@ export default {
 
 .upload--register {
   margin: 2em 0;
+}
+
+.upload--submit {
+  text-align: center;
 }
 
 .grow-enter-active,
