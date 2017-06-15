@@ -25,8 +25,24 @@
         <div class="upload--loading" v-if="currentPanel == 'loading'">
           {{ $t('Please wait...') }}
         </div>
-        <div class="upload--loading" v-if="currentPanel == 'uploading'">
-          {{ $t('Uploading') }}
+        <div class="upload--transfer" v-else-if="currentPanel == 'uploading'">
+          <div class="upload--transfer--progressbar">
+            <div class="upload--transfer--progressbar--inner" :style="progressStyle"></div>
+            <div class="upload--transfer--progressbar--text">
+              {{ $t('Uploading') }}
+            </div>
+          </div>
+        </div>
+        <div class="upload--thankyou" v-else-if="currentPanel == 'thankyou'">
+          <p>
+            {{ $t('Thank you for uploading your video. It will be published after a review within the next 48 hours.') }}
+          </p>
+          <a href="/" class="sc-button">{{ $t('Back to SignDict') }}</a>
+        </div>
+        <div class="upload--error" v-else-if="currentPanel == 'error'">
+          <p class="sc-alert sc-alert--error" role="alert">
+            {{ $t('Sorry, there was a problem during the upload. Please contact us if this error appears more than once.') }}
+          </p>
         </div>
         <div class="upload--submit" v-else-if="currentUser">
           <button class='sc-button' v-on:click.stop="uploadVideo">{{ $t('Upload video') }}</button>
@@ -175,8 +191,17 @@ function updateVideoPosition() {
 
 function scrollToBottom() {
   setTimeout(function() {
-    window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
   }, 100)
+}
+
+function cutVideo(blobs, start, end) {
+  // We can cut the end part, but sadly the beginning contains
+  // some important header information we can't get rid of, so
+  // the beginning has to be cut on the server
+  let endSlice   = 1 + Math.ceil(end * 1000 / 50);
+  let newBlobs = blobs.slice(0, endSlice)
+  return new Blob(newBlobs, {type: 'video/webm'});
 }
 
 export default {
@@ -184,7 +209,8 @@ export default {
     return {
       currentUser:   null,
       currentPanel:  'loading',
-      submitted:     false
+      submitted:     false,
+      progress:      0
     }
   },
   mounted() {
@@ -194,6 +220,13 @@ export default {
   },
   beforeDestroy() {
     destroyVideoPlayer();
+  },
+  computed: {
+    progressStyle() {
+      return {
+        width: `${this.progress}%`
+      }
+    }
   },
   methods: {
     showRegisterPanel: function(event) {
@@ -240,7 +273,29 @@ export default {
     },
     uploadVideo: function() {
       this.currentPanel = 'uploading';
-      console.log("Upload video...");
+      let blobs = cutVideo(
+        this.$store.state.recordedBlobs,
+        this.$store.state.startTime,
+        this.$store.state.endTime
+      );
+      let formData = new FormData();
+      formData.append('entry_id',   2);
+      formData.append('start_time', this.$store.state.startTime);
+      formData.append('end_time',   this.$store.state.endTime);
+      formData.append('video',      blobs, 'recording.webm');
+      this.progress = 0;
+      let self = this;
+      this.$http.post('/api/upload', formData, {
+        progress(e) {
+          if (e.lengthComputable) {
+            self.progress = e.loaded / e.total * 100;
+          }
+        }
+      }).then(response => {
+        this.currentPanel = 'thankyou';
+      }, response => {
+        this.currentPanel = 'uploaderror';
+      });
     }
   }
 }
@@ -265,6 +320,33 @@ export default {
 
 .upload--submit {
   text-align: center;
+}
+
+.upload--thankyou {
+  text-align: center;
+}
+
+.upload--transfer--progressbar {
+  width: 100%;
+  position: relative;
+  margin: 2em 0em;
+  background-color: #aeb0b0;
+  height: 2.1em;
+}
+
+.upload--transfer--progressbar--inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #50D8C8;
+}
+
+.upload--transfer--progressbar--text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 1em;
 }
 
 .grow-enter-active,

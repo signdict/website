@@ -37,7 +37,8 @@ defmodule SignDict.Endpoint do
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Poison,
-    length: 50_000_000
+    length: 50_000_000,
+    read_timeout: 60_000
 
   plug Plug.MethodOverride
   plug Plug.Head

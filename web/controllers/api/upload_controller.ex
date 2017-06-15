@@ -22,7 +22,7 @@ defmodule SignDict.Api.UploadController do
   end
 
   defp upload_video(conn, entry_id, fileupload) do
-    filename = VideoImporter.store_file(fileupload.path)
+    filename = VideoImporter.store_file(fileupload.path, fileupload.filename)
     %Video{}
     |> Video.changeset_uploader(%{
       entry_id: entry_id,

@@ -19,6 +19,11 @@ export default {
   'Password': 'Passwort',
   'Confirm password': 'Passwort bestätigen',
   'Yes, I want to subscribe to the newsletter': 'Ja, ich will den Newsletter abonnieren.',
-  'Register': 'Registrieren'
+  'Register': 'Registrieren',
+  'Thank you for uploading your video. It will be published after a review within the next 48 hours.': 'Danke für das Hochladen deines Videos. Es wird nach einer Überprüfung von uns in den nächsten 48 Stunden freigeschaltet.',
+  'Sorry, there was a problem during the upload. Please contact us if this error appears more than once.': 'Leider gab es ein Problem während des Hochladens. Bitte melde dich bei uns, wenn du diesen Fehler mehr als einmal siehst',
+  'Back to SignDict': 'Zurück zu SignDict',
+  'Upload video': 'Video hochladen',
+  'Uploading': 'Sende Video'
 }
 

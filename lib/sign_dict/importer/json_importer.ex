@@ -14,7 +14,7 @@ defmodule SignDict.Importer.JsonImporter do
     entry          = find_or_create_entry_for(json_file, json)
     video_filename = Path.dirname(json_file) <> "/" <>
                      Path.basename(json["filename"])
-    filename       = VideoImporter.store_file(video_filename)
+    filename       = VideoImporter.store_file(video_filename, Path.basename(json["filename"]))
 
     video = Repo.insert!(%Video{
       copyright: "#{json["author"]} - #{json["source"]}",
