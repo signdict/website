@@ -34,10 +34,12 @@
           </div>
         </div>
         <div class="upload--thankyou" v-else-if="currentPanel == 'thankyou'">
-          <p>
+          <p class="upload--thankyou--text">
             {{ $t('Thank you for uploading your video. It will be published after a review within the next 48 hours.') }}
           </p>
-          <a href="/" class="sc-button">{{ $t('Back to SignDict') }}</a>
+          <div class="upload--thankyou--button">
+            <a href="/" class="sc-button">{{ $t('Back to SignDict') }}</a>
+          </div>
         </div>
         <div class="upload--error" v-else-if="currentPanel == 'error'">
           <p class="sc-alert sc-alert--error" role="alert">
@@ -45,7 +47,14 @@
           </p>
         </div>
         <div class="upload--submit" v-else-if="currentUser">
-          <button class='sc-button' v-on:click.stop="uploadVideo">{{ $t('Upload video') }}</button>
+          <p class="upload--submit--legal" v-locale="{ locale: $root.locale, tra: 'By pressing the upload button you will publish the video using the |CC-BY-SA 4.0| license.'}">
+            <span></span>
+            <a href="creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"></a>
+            <span></span>
+          </p>
+          <div class="upload--submit--button">
+            <button class='sc-button' v-on:click.stop="uploadVideo">{{ $t('Upload video') }}</button>
+          </div>
         </div>
         <div class="upload--login-or-register" v-else>
           <h3>{{ $t('Login required') }}</h3>
@@ -215,8 +224,12 @@ export default {
   },
   mounted() {
     let blobs = this.$store.state.recordedBlobs;
-    initVideoPlayer(this, blobs);
-    refreshUser(this);
+    if (blobs.length == 0) {
+      this.$router.replace("/");
+    } else {
+      initVideoPlayer(this, blobs);
+      refreshUser(this);
+    }
   },
   beforeDestroy() {
     destroyVideoPlayer();
@@ -279,7 +292,7 @@ export default {
         this.$store.state.endTime
       );
       let formData = new FormData();
-      formData.append('entry_id',   2);
+      formData.append('entry_id',   document.getElementById("app").getAttribute("data-entry-id"));
       formData.append('start_time', this.$store.state.startTime);
       formData.append('end_time',   this.$store.state.endTime);
       formData.append('video',      blobs, 'recording.webm');
@@ -318,11 +331,18 @@ export default {
   margin: 2em 0;
 }
 
-.upload--submit {
+.upload--submit--legal {
+  font-size: 0.8em;
+}
+
+.upload--submit--button {
   text-align: center;
 }
 
-.upload--thankyou {
+.upload--thankyou--text {
+}
+
+.upload--thankyou--button {
   text-align: center;
 }
 

@@ -4295,9 +4295,9 @@ void-elements@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-voo-i18n@^1.0.10:
+voo-i18n@MattyRad/vue-i18n#feature/vue-2:
   version "1.0.10"
-  resolved "https://registry.yarnpkg.com/voo-i18n/-/voo-i18n-1.0.10.tgz#17c0ee04cb005b9ba3cacf25eb1eac9bc91b9c63"
+  resolved "https://codeload.github.com/MattyRad/vue-i18n/tar.gz/a3338698d6f561867b0c4dd2a2c9c8f52808edb4"
 
 vue-resource@^1.3.4:
   version "1.3.4"

@@ -6,6 +6,6 @@
       <%= gettext("recoding_explanation") %>
     </p>
 
-    <%= link gettext("Record new sign"), to: recorder_path(@conn, :new), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    <%= link gettext("Record new sign"), to: recorder_path(@conn, :new, entry_id: @entry_id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
   </div>
 </div>

@@ -5,7 +5,7 @@ import Vuex         from 'vuex'
 import i18n         from 'voo-i18n'
 import translations from './i18n/map'
 
-Vue.use(i18n, translations)
+Vue.use(i18n, {translations})
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -27,18 +27,14 @@ document.onreadystatechange = function () {
       routes
     })
 
-    new Vue({
+    vue = new Vue({
       el: '#app',
       router,
       store,
       i18n,
+      locale: document.documentElement.lang,
       http: {
         root: '/api',
-      },
-      data() {
-        return {
-          locale: document.documentElement.lang
-        }
       },
     })
   }
