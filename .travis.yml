@@ -33,6 +33,7 @@ before_install:
   - npm install -g yarn
 
 before_script:
+  - rvm reload
   - rvm install ruby-2.3.1
   - gem install pronto-credo
   - yarn
@@ -40,4 +41,3 @@ before_script:
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
   - mix coveralls.travis
-

@@ -15,12 +15,18 @@ var fs           = require('fs'),
     replace      = require('rollup-plugin-replace'),
     vue          = require('rollup-plugin-vue');
 
+function swallowError (error) {
+  console.log(error.toString())
+  this.emit('end')
+}
+
 gulp.task('clean', function() {
   return del(['priv/static']);
 });
 
 gulp.task('assets', function() {
   return gulp.src('web/static/assets/**')
+    .on('error', swallowError)
     .pipe(rsync({
       root: 'web/static/assets/',
       destination: 'priv/static/',
@@ -36,6 +42,7 @@ gulp.task('css', function () {
     cssnano()
   ];
   return gulp.src('web/static/css/*.css')
+    .on('error', swallowError)
     .pipe(sourcemaps.init())
     .pipe(postcss(plugins))
     .pipe(sourcemaps.write('.'))
@@ -72,6 +79,7 @@ gulp.task('js', function() {
         }),
       ],
     })
+      .on('error', swallowError)
       .pipe(source(file, 'web/static/js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))

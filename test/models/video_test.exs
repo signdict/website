@@ -35,7 +35,7 @@ defmodule SignDict.VideoTest do
       refute changeset.valid?
 
       [state: errmsg] = errors_on(%Video{}, attrs)
-      assert errmsg == "must be in the list of created, uploaded, transcoding, waiting_for_review, published, deleted"
+      assert errmsg == "must be in the list of created, uploaded, prepared, transcoding, waiting_for_review, published, deleted"
     end
 
     test "checks if a state is valid" do
@@ -104,6 +104,9 @@ defmodule SignDict.VideoTest do
       {:ok, v} = Video.upload(v)
       assert Video.current_state(v) == :uploaded
 
+      {:ok, v} = Video.prepare(v)
+      assert Video.current_state(v) == :prepared
+
       {:ok, v} = Video.transcode(v)
       assert Video.current_state(v) == :transcoding
 
@@ -155,6 +158,12 @@ defmodule SignDict.VideoTest do
       videos = Video.ordered_by_vote_for_entry(entry) |> Repo.all
       vote_counts = Enum.map(videos, fn(video) -> video.vote_count end)
       assert vote_counts == [2, 1]
+    end
+  end
+
+  describe "file_path/1" do
+    test "returns the full file path for a video" do
+      assert Video.file_path("folder/test.mp4") == "./test/uploads/video_upload/folder/test.mp4"
     end
   end
 

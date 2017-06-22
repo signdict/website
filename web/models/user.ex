@@ -238,3 +238,18 @@ defimpl Phoenix.Param, for: SignDict.User do
     SignDict.Permalink.to_permalink(id, name)
   end
 end
+
+defimpl SignDict.Serializer, for: SignDict.User do
+  alias SignDict.User
+
+  def to_map(user) do
+    %{
+      user: %{
+        id: user.id,
+        name: user.name,
+        email: user.email || user.unconfirmed_email,
+        avatar: User.avatar_url(user)
+      }
+    }
+  end
+end
