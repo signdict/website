@@ -9,7 +9,6 @@ defmodule SignDict.Api.UploadController do
     result = conn
              |> upload_video(entry_id, fileupload, start_time, end_time)
              |> Repo.insert()
-
     case result do
       {:ok, video} ->
         queue = Application.get_env(:sign_dict, :queue)[:library]

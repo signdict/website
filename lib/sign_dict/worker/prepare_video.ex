@@ -11,23 +11,35 @@ defmodule SignDict.Worker.PrepareVideo do
   end
 
   defp convert_to_mp4(video_id, system) do
-    video         = Repo.get!(Video, video_id)
-    # TODO: start/end_time
-    {_result, 0}  = system.cmd("ffmpeg", [
+    video      = Repo.get!(Video, video_id)
+    start_time = String.to_float(video.metadata["video_start_time"])
+    end_time   = String.to_float(video.metadata["video_end_time"])
+    {_result, 0} = system.cmd("ffmpeg", [
+      "-ss", Float.to_string(start_time),
       "-i", "#{Video.file_path(video.metadata["source_webm"])}",
       "-r", "30000/1001",
       "-pix_fmt", "yuv420p",
       "-vsync", "1",
       "-g", "60",
       "-y",
-      target_filename(video)
+      "-t", Float.to_string(end_time - start_time),
+      video |> target_filename |> Video.file_path
     ])
-    {:ok, _video} = Video.prepare(video)
+    {:ok, _video} = video
+                    |> add_mp4_source_to_metadata
+                    |> Video.prepare
+  end
+
+  defp add_mp4_source_to_metadata(video) do
+    Video.changeset_transcoder(video, %{
+      metadata: Map.merge(video.metadata, %{
+        "source_mp4" => target_filename(video)
+      })
+    })
   end
 
   defp target_filename(video) do
     video.metadata["source_webm"]
     |> String.replace(~r/\.webm$/, ".mp4")
-    |> Video.file_path
   end
 end
