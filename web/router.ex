@@ -21,6 +21,7 @@ defmodule SignDict.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   pipeline :browser_session do
@@ -58,6 +59,7 @@ defmodule SignDict.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     resources "/recorder", RecorderController, only: [:index, :new]
+    get "/recorder/new/:stuff", RecorderController, :new
 
     get "/email_confirmation", EmailConfirmationController, :update
 
@@ -118,5 +120,14 @@ defmodule SignDict.Router do
       resources "/videos", VideoController
     end
     resources "/videos", VideoController, only: [:index]
+  end
+
+  scope "/api", SignDict.Api, as: :api do
+    pipe_through [:api, :browser_session]
+
+    get "/current_user", CurrentUserController, :show
+    resources "/sessions", SessionController, only: [:create]
+    resources "/register", RegisterController, only: [:create]
+    resources "/upload",   UploadController, only: [:create]
   end
 end

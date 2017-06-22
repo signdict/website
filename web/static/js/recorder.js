@@ -1,36 +1,41 @@
-import Vue from 'vue'
-import MyApp from "./components/my-app.vue"
+import Vue          from 'vue/dist/vue.common.js'
+import VueRouter    from 'vue-router'
+import VueResource  from 'vue-resource'
+import Vuex         from 'vuex'
+import i18n         from 'voo-i18n'
+import translations from './i18n/map'
+
+Vue.use(i18n, {translations})
+Vue.use(VueRouter)
+Vue.use(Vuex)
+Vue.use(VueResource)
+
+import Recorder  from "./components/recorder.vue"
+import Cutter    from "./components/cutter.vue"
+import Upload    from "./components/upload.vue"
+import store     from "./components/store.js"
 
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {
-    // Import "globally" used libraries -- importing them from Vue components alone
-    // seems to trip up brunch at the moment (they won't be included in the final
-    // app.js file)
+    const routes = [
+      { path: '/', component: Recorder },
+      { path: '/cutter', component: Cutter },
+      { path: '/upload', component: Upload }
+    ]
 
-    // import "lodash"
+    const router = new VueRouter({
+      routes
+    })
 
-    // Create the main component
-
-    Vue.component('my-app', MyApp)
-
-    // And create the top-level view model:
-
-    new Vue({
+    vue = new Vue({
       el: '#app',
-      data() {
-        return {
-          // state for the top level component, e.g
-          currentMessage: "Hello World"
-        }
+      router,
+      store,
+      i18n,
+      locale: document.documentElement.lang,
+      http: {
+        root: '/api',
       },
-      render: function (createElement) {
-        return createElement(MyApp, {
-          props: {
-            // props for the top level component, e.g.
-            message: this.currentMessage
-          }
-        })
-      }
-    });
+    })
   }
 }

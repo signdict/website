@@ -24,9 +24,9 @@
             </li>
             <li class='so-navigation-item'>
               <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
-                <a href="?locale=en">English</a>
+                <a href="?locale=en" data-turbolinks="false">English</a>
               <% else %>
-                <a href="?locale=de">Deutsch</a>
+                <a href="?locale=de" data-turbolinks="false">Deutsch</a>
               <% end %>
             </li>
             <li class='so-navigation-item so-navigation-item--image'>
@@ -41,9 +41,9 @@
             </li>
             <li class='so-navigation-item'>
               <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
-                <a href="?locale=en">English</a>
+                <a href="?locale=en" data-turbolinks="false">English</a>
               <% else %>
-                <a href="?locale=de">Deutsch</a>
+                <a href="?locale=de" data-turbolinks="false">Deutsch</a>
               <% end %>
             </li>
           <% end %>

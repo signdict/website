@@ -81,6 +81,9 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
+config :sign_dict, :queue,
+  library: Exq
+
 config :sign_dict, :newsletter,
   subscriber: SignDict.MockChimp
 
