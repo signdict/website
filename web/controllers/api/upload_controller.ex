@@ -4,15 +4,16 @@ defmodule SignDict.Api.UploadController do
   alias SignDict.Video
   alias SignDict.Services.VideoImporter
 
-  def create(conn, %{"entry_id" => entry_id, "video" => fileupload}) do
+  def create(conn, %{"entry_id" => entry_id, "video" => fileupload,
+                     "end_time" => end_time, "start_time" => start_time}) do
     result = conn
-             |> upload_video(entry_id, fileupload)
+             |> upload_video(entry_id, fileupload, start_time, end_time)
              |> Repo.insert()
 
     case result do
       {:ok, video} ->
         queue = Application.get_env(:sign_dict, :queue)[:library]
-        queue.enqueue(Exq, "transcoder", SignDict.Worker.TranscodeVideo, [video.id])
+        queue.enqueue(Exq, "transcoder", SignDict.Worker.PrepareVideo, [video.id])
         render(conn, video: video)
       {:error, _changeset} ->
         conn
@@ -21,7 +22,7 @@ defmodule SignDict.Api.UploadController do
     end
   end
 
-  defp upload_video(conn, entry_id, fileupload) do
+  defp upload_video(conn, entry_id, fileupload, start_time, end_time) do
     filename = VideoImporter.store_file(fileupload.path, fileupload.filename)
     %Video{}
     |> Video.changeset_uploader(%{
@@ -29,7 +30,9 @@ defmodule SignDict.Api.UploadController do
       license: "by/4.0",
       user_id: get_user_id(conn),
       metadata: %{
-        source_mp4: filename
+        source_webm: filename,
+        video_start_time: start_time,
+        video_end_time: end_time
       },
       state: "uploaded"
     })

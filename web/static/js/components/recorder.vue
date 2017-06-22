@@ -144,7 +144,6 @@ export default {
   data() {
     return {
       countdown: 5,
-      recording: false
       recording: false,
       recordingStartedAt: 0
     }

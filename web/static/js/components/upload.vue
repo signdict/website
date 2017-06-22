@@ -19,9 +19,11 @@
         <div class="upload--video">
           <video class='upload--player' loop preload></video>
         </div>
-        <router-link to="/cutter" class="upload--back">
-          &lt;&lt; {{ $t('Back') }}
-        </router-link>
+        <div v-if="currentPanel != 'thankyou'">
+          <router-link to="/cutter" class="upload--back">
+            &lt;&lt; {{ $t('Back') }}
+          </router-link>
+        </div>
         <div class="upload--loading" v-if="currentPanel == 'loading'">
           {{ $t('Please wait...') }}
         </div>

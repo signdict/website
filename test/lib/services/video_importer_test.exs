@@ -23,7 +23,7 @@ defmodule SignDict.Services.VideoImporterTest do
     end
 
     test "it copies a file to a new path", %{video_file: video_file} do
-      target_file = VideoImporter.store_file(video_file)
+      target_file = VideoImporter.store_file(video_file, "Zug.mp4")
       video_path = Path.join([
         Application.get_env(:sign_dict, :upload_path),
         "video_upload",

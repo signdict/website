@@ -4,10 +4,7 @@ defmodule SignDict.Worker.TranscodeVideo do
 
   def perform(video_id, video_service \\ SignDict.Transcoder.JwPlayer,
               sleep_ms \\ 1000) do
-
-    if Application.get_env(:sign_dict, :environment) != :dev do
-      upload_and_transcode(video_id, video_service)
-    end
+    upload_and_transcode(video_id, video_service)
     # Rate limit the workers, sadly i didn't find a better way :(
     Process.sleep(sleep_ms)
   end

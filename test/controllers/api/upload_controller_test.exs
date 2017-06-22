@@ -29,20 +29,22 @@ defmodule SignDict.Api.UploadControllerTest do
       conn = conn
              |> guardian_login(user)
              |> post(api_upload_path(conn, :create),
-                    %{video: upload, entry_id: entry.id})
+                    %{video: upload, entry_id: entry.id, start_time: 0, end_time: 2})
       video = Repo.get_by!(Video, user_id: user.id)
       video_id = video.id
-      assert_received {:mock_exq, "transcoder", SignDict.Worker.TranscodeVideo, [^video_id]}
+      assert_received {:mock_exq, "transcoder", SignDict.Worker.PrepareVideo, [^video_id]}
 
-      video_file = Path.join([Application.get_env(:sign_dict, :upload_path), "video_upload", video.metadata["source_mp4"]])
+      video_file = Video.file_path(video.metadata["source_webm"])
       assert File.exists?(video_file)
+      assert video.metadata["video_start_time"] == 0
+      assert video.metadata["video_end_time"] == 2
 
       json = json_response(conn, 200)
       assert json == %{
         "video" => %{
           "entry_id" => entry.id,
           "user_id"  => user.id,
-          "state"    => "created",
+          "state"    => "uploaded",
           "id"       => video.id
         }
       }
@@ -52,12 +54,12 @@ defmodule SignDict.Api.UploadControllerTest do
       conn = conn
              |> assign(:registered_user_id, user.id)
              |> post(api_upload_path(conn, :create),
-                    %{video: upload, entry_id: entry.id})
+                    %{video: upload, entry_id: entry.id, start_time: 0, end_time: 2})
       video = Repo.get_by!(Video, user_id: user.id)
       video_id = video.id
-      assert_received {:mock_exq, "transcoder", SignDict.Worker.TranscodeVideo, [^video_id]}
+      assert_received {:mock_exq, "transcoder", SignDict.Worker.PrepareVideo, [^video_id]}
 
-      video_file = Path.join([Application.get_env(:sign_dict, :upload_path), "video_upload", video.metadata["source_mp4"]])
+      video_file = Path.join([Application.get_env(:sign_dict, :upload_path), "video_upload", video.metadata["source_webm"]])
       assert File.exists?(video_file)
 
       json = json_response(conn, 200)
@@ -65,7 +67,7 @@ defmodule SignDict.Api.UploadControllerTest do
         "video" => %{
           "entry_id" => entry.id,
           "user_id"  => user.id,
-          "state"    => "created",
+          "state"    => "uploaded",
           "id"       => video.id
         }
       }
@@ -75,7 +77,7 @@ defmodule SignDict.Api.UploadControllerTest do
       conn = conn
              |> guardian_login(user)
              |> post(api_upload_path(conn, :create),
-                    %{video: upload, entry_id: -1})
+                    %{video: upload, entry_id: -1, start_time: 0, end_time: 2})
 
       count = Video
               |> where(user_id: ^user.id)

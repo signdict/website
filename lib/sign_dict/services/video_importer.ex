@@ -1,11 +1,11 @@
 defmodule SignDict.Services.VideoImporter do
   alias Ecto.UUID
+  alias SignDict.Video
 
   def store_file(path, filename) do
     file = "#{UUID.generate}-#{Path.basename(filename)}"
     file_with_path = Path.join([paths_for_file(file), file])
-    upload_path = Path.expand(Application.get_env(:sign_dict, :upload_path))
-    target_file = Path.join([upload_path, "video_upload", file_with_path])
+    target_file = Video.file_path(file_with_path)
     File.mkdir_p(Path.dirname(target_file))
     File.rename(path, target_file)
     file_with_path

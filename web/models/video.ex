@@ -5,7 +5,7 @@ defmodule SignDict.Video do
   alias SignDict.Repo
   alias SignDict.Vote
 
-  @states [:created, :uploaded, :transcoding, :waiting_for_review,
+  @states [:created, :uploaded, :prepared, :transcoding, :waiting_for_review,
            :published, :deleted]
 
   schema "videos" do
@@ -35,7 +35,12 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :transcode, %{from: [:uploaded], to: :transcoding},
+    defevent :prepare, %{from: [:uploaded], to: :prepared},
+        fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :transcode, %{from: [:uploaded, :prepared], to: :transcoding},
         fn(changeset) ->
       changeset |> Repo.update()
     end
@@ -72,7 +77,7 @@ defmodule SignDict.Video do
 
   def changeset_uploader(struct, params \\ %{}) do
     struct
-    |> cast(params, [:license, :user_id, :entry_id, :metadata])
+    |> cast(params, [:license, :user_id, :entry_id, :metadata, :state])
     |> validate_required([:license, :entry_id, :user_id])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
@@ -128,5 +133,13 @@ defmodule SignDict.Video do
   end
   def with_vote_count(_video) do
     nil
+  end
+
+  def file_path(file) do
+    Path.join([
+      Application.get_env(:sign_dict, :upload_path),
+      "video_upload",
+      file
+    ])
   end
 end
