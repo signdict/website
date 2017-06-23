@@ -18,8 +18,9 @@ msgstr ""
 msgid "Internal server error"
 msgstr ""
 
-#: web/controllers/session_controller.ex:31
-#: web/controllers/session_controller.ex:52
+#: lib/sign_dict/services/credential_verifier.ex:17
+#: lib/sign_dict/services/credential_verifier.ex:28
+#: web/controllers/session_controller.ex:28
 msgid "Invalid email address or password"
 msgstr ""
 
@@ -39,11 +40,11 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
-#: web/controllers/session_controller.ex:17
+#: web/controllers/session_controller.ex:14
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: web/controllers/user_controller.ex:17 web/controllers/user_controller.ex:33
+#: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
 #: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
@@ -60,11 +61,11 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
-#: web/controllers/session_controller.ex:26
+#: web/controllers/session_controller.ex:23
 msgid "Successfully signed in"
 msgstr ""
 
-#: web/controllers/session_controller.ex:39
+#: web/controllers/session_controller.ex:36
 msgid "Successfully signed out"
 msgstr ""
 
@@ -247,7 +248,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:68
+#: web/controllers/user_controller.ex:77
 msgid "Updated successfully."
 msgstr ""
 
@@ -749,12 +750,12 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: web/controllers/user_controller.ex:57
+#: web/controllers/user_controller.ex:66
 msgid "Edit profile"
 msgstr ""
 
-#: web/controllers/session_controller.ex:18
-#: web/controllers/session_controller.ex:32
+#: web/controllers/session_controller.ex:15
+#: web/controllers/session_controller.ex:29
 msgid "Login"
 msgstr ""
 
@@ -771,7 +772,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:39
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:43
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -779,11 +780,11 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: web/controllers/user_controller.ex:46
+#: web/controllers/user_controller.ex:55
 msgid "User %{user}"
 msgstr ""
 
-#: web/controllers/page_controller.ex:17
+#: web/controllers/page_controller.ex:17 web/templates/recorder/index.html.eex:3
 msgid "Welcome"
 msgstr ""
 
@@ -855,7 +856,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:52
+#: web/controllers/entry_controller.ex:56
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -898,7 +899,7 @@ msgstr ""
 msgid "Invalid confirmation link."
 msgstr ""
 
-#: web/controllers/user_controller.ex:81
+#: web/controllers/user_controller.ex:90
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr ""
 
@@ -910,11 +911,11 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:91
+#: web/models/user.ex:90
 msgid "already used"
 msgstr ""
 
-#: web/controllers/user_controller.ex:90
+#: web/controllers/user_controller.ex:99
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr ""
 
@@ -928,4 +929,12 @@ msgstr ""
 
 #: web/templates/user/new.html.eex:43
 msgid "user.want_newsletter"
+msgstr ""
+
+#: web/templates/recorder/index.html.eex:9
+msgid "Record new sign"
+msgstr ""
+
+#: web/templates/recorder/index.html.eex:6
+msgid "recoding_explanation"
 msgstr ""
