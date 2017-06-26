@@ -48,5 +48,15 @@ defmodule SignDict.Worker.PrepareVideoTest do
       video_id = video.id
       assert_received {:mock_exq, "transcoder", SignDict.Worker.TranscodeVideo, [^video_id]}
     end
+
+    test "it also works when giving integers and not floats as string" do
+      video = insert(:video_with_entry, state: "uploaded", metadata: %{
+        "source_webm" => "folder/file.webm",
+        "video_start_time" => "1",
+        "video_end_time"   => "3",
+      })
+      PrepareVideo.perform(video.id, SystemMock)
+      assert Repo.get(Video, video.id).state == "prepared"
+    end
   end
 end
