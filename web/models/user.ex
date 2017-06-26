@@ -70,6 +70,12 @@ defmodule SignDict.User do
     struct.role == "admin"
   end
 
+  def all_editors do
+    User
+    |> where([c], c.role == "editor")
+    |> Repo.all
+  end
+
   def changeset(user, params \\ %{}) do
     user
     |> cast(params, [:email, :name, :biography, :password,

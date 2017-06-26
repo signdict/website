@@ -3,8 +3,9 @@ defmodule SignDict.Email do
 
   import SignDict.Gettext
 
-  alias SignDict.User
+  alias SignDict.Entry
   alias SignDict.Repo
+  alias SignDict.User
 
   def contact_form(email, content) do
     base_email()
@@ -45,6 +46,17 @@ defmodule SignDict.Email do
     |> subject(gettext("Your password reset link"))
     |> assign(:user, user)
     |> render(String.to_atom("password_reset_#{Gettext.get_locale(SignDict.Gettext)}"))
+  end
+
+  def video_waiting_for_review(video) do
+    entry = Repo.get_by(Entry, id: video.entry_id)
+    base_email()
+    |> bcc(User.all_editors)
+    |> to({"Bodo", "mail@signdict.org"})
+    |> subject("New video added for \"#{entry.text}\"")
+    |> assign(:entry, entry)
+    |> assign(:video, video)
+    |> render(:video_waiting_for_review)
   end
 
   defp base_email do
