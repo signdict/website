@@ -14,7 +14,7 @@ defmodule SignDict.User do
   alias SignDict.User
 
   @all_flags ~w(recording)
-  @roles ~w(user admin)
+  @roles ~w(user admin editor)
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "users" do

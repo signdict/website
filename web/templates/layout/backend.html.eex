@@ -39,11 +39,17 @@
       <div class="o-grid__cell--width-15 o-grid__cell--hidden o-grid__cell--visible@large o-panel-container">
         <nav class="c-nav c-nav--light o-panel">
           <%= nav_active_link @conn, gettext("Dashboard"), backend_dashboard_path(@conn, :index)  %>
-          <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
+          <%= if Canada.Can.can?(@current_user, "show", %SignDict.User{}) do %>
+            <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
+          <% end %>
           <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
           <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
-          <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>
-          <%= nav_active_link @conn, gettext("Worker Queue"), "/exq/", [{"data-turbolinks", "false"}] %>
+          <%= if Canada.Can.can?(@current_user, "show", %SignDict.Language{}) do %>
+            <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>
+          <% end %>
+          <%= if Canada.Can.can?(@current_user, "show_queue", %{}) do %>
+            <%= nav_active_link @conn, gettext("Worker Queue"), "/exq/", [{"data-turbolinks", "false"}] %>
+          <% end %>
         </nav>
       </div>
       <main class="o-grid__cell o-grid__cell--width-85@large o-panel-container">

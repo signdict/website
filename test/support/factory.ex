@@ -28,6 +28,17 @@ defmodule SignDict.Factory do
     }
   end
 
+  def editor_user_factory do
+    %SignDict.User{
+      name: "Jane Smith",
+      email: sequence(:email, &"editor-#{&1}@example.com"),
+      password: "correct_password",
+      password_confirmation: "correct_password",
+      password_hash: Bcrypt.hashpwsalt("correct_password"),
+      role: "editor"
+    }
+  end
+
   def language_dgs_factory do
     %SignDict.Language {
       iso6393: "gsg",

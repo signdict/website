@@ -12,7 +12,7 @@
       <nav role="navigation">
         <ul class="so-navigation">
           <%= if @current_user do %>
-            <%= if SignDict.User.admin? @current_user do %>
+            <%= if Canada.Can.can? @current_user, :show_backend, %{} do %>
               <li class='so-navigation-item'>
                 <%= link "Admin", to: backend_dashboard_path(@conn, :index), data: [turbolinks: "false"] %>
               </li>

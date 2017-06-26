@@ -6,16 +6,14 @@ defmodule SignDict.Plug.AllowedForBackend do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    redirect_if_not_allowed(conn, conn.assigns.current_user)
+    if !Canada.Can.can?(conn.assigns.current_user, :show_backend, %{}) do
+      conn
+      |> put_flash(:error, gettext("You are not allowed to do this."))
+      |> redirect(to: "/")
+      |> halt()
+    else
+      conn
+    end
   end
 
-  defp redirect_if_not_allowed(conn, current_user)
-  defp redirect_if_not_allowed(conn, %{role: "admin"}), do: conn
-  defp redirect_if_not_allowed(conn, _current_user) do
-    conn
-    |> put_flash(:error, gettext("You are not allowed to do this."))
-    |> put_status(:unauthorized)
-    |> redirect(to: "/")
-    |> halt()
-  end
 end
