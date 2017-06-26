@@ -1,6 +1,8 @@
 defmodule SignDict.Worker.CheckVideoStatus do
   require Bugsnex
 
+  alias SignDict.Email
+  alias SignDict.Mailer
   alias SignDict.Repo
   alias SignDict.Video
 
@@ -24,7 +26,10 @@ defmodule SignDict.Worker.CheckVideoStatus do
     :transcoding
   end
   defp process_video(video, :done, _exq) do
-    Video.wait_for_review(video)
+    {:ok, video} = Video.wait_for_review(video)
+    video
+    |> Email.video_waiting_for_review
+    |> Mailer.deliver_later
     :done
   end
   defp process_video(_video, _state, _exq) do

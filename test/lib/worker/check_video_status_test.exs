@@ -1,5 +1,7 @@
 defmodule SignDict.Worker.CheckVideoStatusTest do
   use SignDict.ModelCase
+  use Bamboo.Test
+
   import SignDict.Factory
 
   alias SignDict.Repo
@@ -50,11 +52,22 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
     end
 
     test "it publishes the video if it is done" do
-      video_id = insert(:video, %{state: "transcoding"}).id
+      video_id = insert(:video_with_entry, %{state: "transcoding"}).id
       assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
       assert Repo.get(Video, video_id).state == "waiting_for_review"
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
+    end
+
+    test "it sends an email and notifies the users" do
+      editor   = insert :editor_user
+      video_id = insert(:video_with_entry, %{state: "transcoding"}).id
+      assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
+      assert_delivered_with(
+        subject: "New video added for \"some content\"",
+        to:      [{"Bodo", "mail@signdict.org"}],
+        bcc:     [{editor.name, editor.email}]
+      )
     end
 
     test "it returns an error if the status code is unknown" do

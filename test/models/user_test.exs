@@ -345,7 +345,7 @@ defmodule SignDict.UserTest do
     end
   end
 
-  describe "has_flag?" do
+  describe "User.has_flag?" do
     test "it returns true if feature is present" do
       user = insert :user, flags: ["recording"]
       assert User.has_flag?(user, "recording")
@@ -363,6 +363,15 @@ defmodule SignDict.UserTest do
     test "it returns false if flags is nil" do
       user = insert :user, flags: nil
       refute User.has_flag?(user, "recording")
+    end
+  end
+
+  describe "User.all_editors" do
+    test "it returns a list of editors" do
+      insert :admin_user
+      insert :user
+      editor = insert :editor_user
+      assert [editor.email] == Enum.map(User.all_editors, fn(user) -> user.email end)
     end
   end
 
