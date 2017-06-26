@@ -133,6 +133,12 @@
               <%= gettext("No other variations") %>
             </p>
           <% end %>
+
+          <%= if SignDict.User.has_flag?(@current_user, "recording") do %>
+            <p>
+              <%= link gettext("Record new video"), to: recorder_path(@conn, :index, entry_id: @video.entry_id), class: "sc-button sc-button--small" %>
+            </p>
+          <% end %>
         </div>
       </div>
     </div>
