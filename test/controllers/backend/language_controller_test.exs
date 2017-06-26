@@ -21,7 +21,7 @@ defmodule SignDict.Backend.LanguageControllerTest do
     conn = conn
            |> guardian_login(insert(:user))
            |> get(backend_language_path(conn, :index))
-    assert redirected_to(conn, 401) == "/"
+    assert redirected_to(conn, 302) == "/"
   end
 
   test "lists all entries on index", %{conn: conn} do

@@ -12,7 +12,6 @@ defmodule SignDict.GuardianErrorHandler do
 
   def handle_unauthorized(conn) do
     conn
-    |> put_status(:unauthorized)
     |> put_flash(:error, gettext("Sadly you are not allowed to do this"))
     |> redirect(to: "/")
     |> halt

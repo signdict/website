@@ -25,7 +25,7 @@ defmodule SignDict.Entry do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:text, :description, :type, :language_id])
-    |> validate_required([:text, :description, :type])
+    |> validate_required([:text, :type])
     |> validate_inclusion(:type, @types)
     |> foreign_key_constraint(:language_id)
   end

@@ -12,14 +12,20 @@ defmodule SignDict.Backend.DashboardControllerTest do
     conn = conn
            |> guardian_login(insert(:user))
            |> get(backend_dashboard_path(conn, :index))
-    assert redirected_to(conn, 401) == "/"
+    assert redirected_to(conn, 302) == "/"
   end
 
-  test "shows dashboard page", %{conn: conn} do
+  test "shows dashboard page if user is admin", %{conn: conn} do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> get(backend_dashboard_path(conn, :index))
     assert html_response(conn, 200) =~ "dashboard"
   end
 
+  test "shows dashboard page if user is editor", %{conn: conn} do
+    conn = conn
+           |> guardian_login(insert(:editor_user))
+           |> get(backend_dashboard_path(conn, :index))
+    assert html_response(conn, 200) =~ "dashboard"
+  end
 end

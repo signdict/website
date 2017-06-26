@@ -63,13 +63,13 @@ defmodule SignDict.UserControllerTest do
            |> guardian_login(insert(:user))
            |> get(backend_video_path(conn, :index))
 
-      assert redirected_to(conn, 401) == "/"
+      assert redirected_to(conn, 302) == "/"
     end
 
     test "it redirects if user is not logged in", %{conn: conn} do
       user = insert :user
       conn = get conn, user_path(conn, :edit, user)
-      assert redirected_to(conn, 401) == "/"
+      assert redirected_to(conn, 302) == "/"
     end
 
     test "it lets you edit the user if you are that user", %{conn: conn} do
@@ -87,14 +87,14 @@ defmodule SignDict.UserControllerTest do
       conn = conn
            |> guardian_login(insert(:user))
            |> patch(user_path(conn, :update, user), user: @valid_attrs)
-      assert redirected_to(conn, 401) == "/"
+      assert redirected_to(conn, 302) == "/"
     end
 
     test "it redirects if user is not logged in", %{conn: conn} do
       user = insert :user
       conn = conn
            |> patch(user_path(conn, :update, user), user: @valid_attrs)
-      assert redirected_to(conn, 401) == "/"
+      assert redirected_to(conn, 302) == "/"
     end
 
     test "it lets you update the user if you are that user", %{conn: conn} do
