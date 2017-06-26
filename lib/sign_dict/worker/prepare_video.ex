@@ -1,19 +1,23 @@
 defmodule SignDict.Worker.PrepareVideo do
+  require Bugsnex
+
   alias SignDict.Repo
   alias SignDict.Video
 
   def perform(video_id, system \\ System) do
-   convert_to_mp4(video_id, system)
-   if Application.get_env(:sign_dict, :environment) != :dev do
-      queue = Application.get_env(:sign_dict, :queue)[:library]
-      queue.enqueue(Exq, "transcoder", SignDict.Worker.TranscodeVideo, [video_id])
+    Bugsnex.handle_errors %{video_id: video_id} do
+      convert_to_mp4(video_id, system)
+      if Application.get_env(:sign_dict, :environment) != :dev do
+        queue = Application.get_env(:sign_dict, :queue)[:library]
+        queue.enqueue(Exq, "transcoder", SignDict.Worker.TranscodeVideo, [video_id])
+      end
     end
   end
 
   defp convert_to_mp4(video_id, system) do
     video      = Repo.get!(Video, video_id)
-    start_time = String.to_float(video.metadata["video_start_time"])
-    end_time   = String.to_float(video.metadata["video_end_time"])
+    {start_time, _reminder} = Float.parse(video.metadata["video_start_time"])
+    {end_time, _reminder}   = Float.parse(video.metadata["video_end_time"])
     {_result, 0} = system.cmd("ffmpeg", [
       "-ss", Float.to_string(start_time),
       "-i", "#{Video.file_path(video.metadata["source_webm"])}",
