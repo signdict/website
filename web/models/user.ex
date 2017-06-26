@@ -13,6 +13,7 @@ defmodule SignDict.User do
   alias SignDict.Repo
   alias SignDict.User
 
+  @all_flags ~w(recording)
   @roles ~w(user admin)
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
@@ -41,6 +42,8 @@ defmodule SignDict.User do
     field :confirmed_at, :utc_datetime
     field :confirmation_sent_at, :utc_datetime
 
+    field :flags, {:array, :string}
+
     has_many :videos, SignDict.Video
 
     timestamps()
@@ -48,6 +51,10 @@ defmodule SignDict.User do
 
   def roles do
     @roles
+  end
+
+  def all_flags do
+    @all_flags
   end
 
   def avatar_url(user)
@@ -141,11 +148,21 @@ defmodule SignDict.User do
   def admin_changeset(user, params \\ %{}) do
     user
     |> cast(params, [:email, :name, :biography, :password,
-                     :password_confirmation, :role])
+                     :password_confirmation, :role, :flags])
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
+    |> clean_flags_if_empty(params)
     |> validate_password_if_present
+  end
+
+  defp clean_flags_if_empty(changeset, params) do
+    if params != %{} && get_change(changeset, :flags, []) == [] do
+      changeset
+      |> put_change(:flags, [])
+    else
+      changeset
+    end
   end
 
   def confirm_sent_at_changeset(user) do
@@ -230,6 +247,13 @@ defmodule SignDict.User do
     subscriber = Application.get_env(:sign_dict, :newsletter)[:subscriber]
     subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email,
                           %{"FULL_NAME" => user.name})
+  end
+
+  def has_flag?(user, _flag) when is_nil(user) do
+    false
+  end
+  def has_flag?(user, flag) do
+    Enum.member?(user.flags || [], flag)
   end
 end
 

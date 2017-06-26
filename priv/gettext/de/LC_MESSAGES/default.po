@@ -69,8 +69,8 @@ msgstr "Erfolgreich angemeldet"
 msgid "Successfully signed out"
 msgstr "Erfolgreich abgemeldet"
 
-#: web/templates/backend/user/form.html.eex:33
-#: web/templates/backend/user/show.html.eex:28
+#: web/templates/backend/user/form.html.eex:38
+#: web/templates/backend/user/show.html.eex:35
 #: web/templates/user/edit.html.eex:32
 msgid "user.biography"
 msgstr "Biographie"
@@ -93,7 +93,7 @@ msgstr "Email"
 msgid "user.name"
 msgstr "Name"
 
-#: web/templates/backend/user/form.html.eex:44
+#: web/templates/backend/user/form.html.eex:49
 #: web/templates/reset_password/edit.html.eex:10
 #: web/templates/reset_password/edit.html.eex:11
 #: web/templates/session/new.html.eex:12 web/templates/session/new.html.eex:13
@@ -102,7 +102,7 @@ msgstr "Name"
 msgid "user.password"
 msgstr "Passwort"
 
-#: web/templates/backend/user/form.html.eex:50
+#: web/templates/backend/user/form.html.eex:55
 #: web/templates/reset_password/edit.html.eex:15
 #: web/templates/reset_password/edit.html.eex:16
 #: web/templates/user/edit.html.eex:52 web/templates/user/edit.html.eex:53
@@ -183,8 +183,8 @@ msgstr "Löschen"
 #: web/templates/backend/language/show.html.eex:32
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:26
-#: web/templates/backend/user/show.html.eex:34
-#: web/templates/backend/video/show.html.eex:90
+#: web/templates/backend/user/show.html.eex:41
+#: web/templates/backend/video/show.html.eex:94
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -207,7 +207,7 @@ msgstr "Anzeigen"
 
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
-#: web/templates/backend/user/form.html.eex:57
+#: web/templates/backend/user/form.html.eex:62
 #: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
 msgstr "Absenden"
@@ -235,7 +235,7 @@ msgid "Users"
 msgstr "Nutzer"
 
 #: web/templates/backend/entry/show.html.eex:28
-#: web/templates/backend/user/show.html.eex:37
+#: web/templates/backend/user/show.html.eex:44
 #: web/templates/layout/backend.html.eex:44
 msgid "Videos"
 msgstr "Videos"
@@ -310,7 +310,7 @@ msgstr "Langer Name"
 msgid "language.short_name"
 msgstr "Abkürzung"
 
-#: web/templates/backend/user/form.html.eex:40
+#: web/templates/backend/user/form.html.eex:45
 msgid "Only enter a password if you want to change it"
 msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
 
@@ -642,17 +642,17 @@ msgstr[1] "%{count} Jahren"
 
 #: web/templates/backend/shared/videos_table.html.eex:14
 #: web/templates/backend/video/form.html.eex:45
-#: web/templates/backend/video/show.html.eex:77
+#: web/templates/backend/video/show.html.eex:81
 msgid "video.plays"
 msgstr "Videoabrufe"
 
 #: web/templates/backend/video/form.html.eex:39
-#: web/templates/backend/video/show.html.eex:64
+#: web/templates/backend/video/show.html.eex:68
 msgid "video.thumbnail_url"
 msgstr "Vorschaubild"
 
 #: web/templates/backend/video/form.html.eex:33
-#: web/templates/backend/video/show.html.eex:51
+#: web/templates/backend/video/show.html.eex:55
 msgid "video.video_url"
 msgstr "Video"
 
@@ -742,7 +742,7 @@ msgstr "Absenden"
 msgid "The email was sent."
 msgstr "Die Email wurde abgesendet."
 
-#: web/templates/backend/video/show.html.eex:84
+#: web/templates/backend/video/show.html.eex:88
 msgid "video.metadata"
 msgstr "Metadata"
 
@@ -911,7 +911,7 @@ msgstr "Bitte bestätige deine Email-Adresse"
 msgid "Unable to confirm your email address."
 msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 
-#: web/models/user.ex:90
+#: web/models/user.ex:97
 msgid "already used"
 msgstr "wird schon benutzt"
 
@@ -938,3 +938,8 @@ msgstr ""
 #: web/templates/recorder/index.html.eex:6
 msgid "recoding_explanation"
 msgstr ""
+
+#: web/templates/backend/user/form.html.eex:33
+#: web/templates/backend/user/show.html.eex:28
+msgid "user.flags"
+msgstr "Feature flags"

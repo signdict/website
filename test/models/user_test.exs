@@ -131,6 +131,21 @@ defmodule SignDict.UserTest do
       changeset = User.admin_changeset(user, params)
       assert changeset.valid?
     end
+
+    test "update flags if present" do
+      changeset = User.admin_changeset(%User{}, %{"flags" => ["recording"]})
+      assert Ecto.Changeset.fetch_field(changeset, :flags) == {:changes, ["recording"]}
+    end
+
+    test "it does not remove a flag when params is empty" do
+      changeset = User.admin_changeset(%User{flags: ["recording"]}, %{})
+      assert Ecto.Changeset.fetch_field(changeset, :flags) == {:data, ["recording"]}
+    end
+
+    test "it removes the flag if params are present but flags is not" do
+      changeset = User.admin_changeset(%User{flags: ["recording"]}, %{"other" => "other"})
+      assert Ecto.Changeset.fetch_field(changeset, :flags) == {:changes, []}
+    end
   end
 
   describe "User.register_changeset/2" do
@@ -327,6 +342,27 @@ defmodule SignDict.UserTest do
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the user" do
       assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
+
+  describe "has_flag?" do
+    test "it returns true if feature is present" do
+      user = insert :user, flags: ["recording"]
+      assert User.has_flag?(user, "recording")
+    end
+
+    test "it returns false if feature is not present" do
+      user = insert :user, flags: ["another_flag"]
+      refute User.has_flag?(user, "recording")
+    end
+
+    test "it returns false if user is nil" do
+      refute User.has_flag?(nil, "recording")
+    end
+
+    test "it returns false if flags is nil" do
+      user = insert :user, flags: nil
+      refute User.has_flag?(user, "recording")
     end
   end
 

@@ -30,6 +30,11 @@
   </div>
 
   <div class="o-form-element">
+    <%= label f, :flags, gettext("user.flags"), class: "c-label" %>
+    <%= multiple_select f, :flags, SignDict.User.all_flags %>
+  </div>
+
+  <div class="o-form-element">
     <%= label f, :biography, gettext("user.biography"), class: "c-label" %>
     <%= textarea f, :biography, class: "c-field #{class_for_error(f, :biography)}" %>
     <%= error_tag f, :biography %>
