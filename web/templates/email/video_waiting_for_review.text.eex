@@ -2,4 +2,4 @@ There was a new video added for <%= @entry.text %> 🚀.
 
 You can find it here:
 
-<%= backend_entry_video_path(SignDict.Endpoint, :show, @entry.id, @video.id) %>
+<%= backend_entry_video_url(SignDict.Endpoint, :show, @entry.id, @video.id) %>

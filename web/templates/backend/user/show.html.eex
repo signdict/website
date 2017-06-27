@@ -37,9 +37,11 @@
   </div>
 </div>
 
-<p>
-  <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, @user), class: "c-button" %>
-</p>
+<%= if Canada.Can.can? @current_user, :edit, @user do %>
+  <p>
+    <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, @user), class: "c-button" %>
+  </p>
+<% end %>
 
 <h2 class="c-heading"><%= gettext("Videos") %></h2>
 
