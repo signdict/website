@@ -114,6 +114,8 @@ defmodule SignDict.Router do
 
     get "/", DashboardController, :index
 
+    get "/review", ReviewController, :index
+
     resources "/users",  UserController
     resources "/languages", LanguageController
     resources "/entries", EntryController do

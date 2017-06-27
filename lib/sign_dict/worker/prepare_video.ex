@@ -15,7 +15,7 @@ defmodule SignDict.Worker.PrepareVideo do
   end
 
   defp convert_to_mp4(video_id, system) do
-    video      = Repo.get!(Video, video_id)
+    video = Repo.get!(Video, video_id)
     {start_time, _reminder} = Float.parse(video.metadata["video_start_time"])
     {end_time, _reminder}   = Float.parse(video.metadata["video_end_time"])
     {_result, 0} = system.cmd("ffmpeg", [
