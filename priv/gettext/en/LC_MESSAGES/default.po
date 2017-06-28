@@ -130,7 +130,7 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: web/auth/guardian_error_handler.ex:16
+#: web/auth/guardian_error_handler.ex:15
 msgid "Sadly you are not allowed to do this"
 msgstr ""
 
@@ -155,11 +155,11 @@ msgstr ""
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
-#: web/email.ex:45
+#: web/email.ex:46
 msgid "Your password reset link"
 msgstr ""
 
-#: web/plugs/allowed_for_backend.ex:16
+#: web/plugs/allowed_for_backend.ex:11
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -183,7 +183,7 @@ msgstr ""
 #: web/templates/backend/language/show.html.eex:32
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:26
-#: web/templates/backend/user/show.html.eex:41
+#: web/templates/backend/user/show.html.eex:42
 #: web/templates/backend/video/show.html.eex:94
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
@@ -230,13 +230,13 @@ msgstr ""
 msgid "user.role"
 msgstr "Role"
 
-#: web/templates/layout/backend.html.eex:42
+#: web/templates/layout/backend.html.eex:43
 msgid "Users"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:28
-#: web/templates/backend/user/show.html.eex:44
-#: web/templates/layout/backend.html.eex:44
+#: web/templates/backend/user/show.html.eex:46
+#: web/templates/layout/backend.html.eex:47
 msgid "Videos"
 msgstr ""
 
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:45
+#: web/templates/layout/backend.html.eex:49
 msgid "Languages"
 msgstr ""
 
@@ -349,6 +349,7 @@ msgstr ""
 msgid "Listing languages"
 msgstr ""
 
+#: web/templates/backend/review/index.html.eex:1
 #: web/templates/backend/video/index.html.eex:1
 msgid "Listing videos"
 msgstr ""
@@ -386,7 +387,7 @@ msgstr "Source"
 msgid "video.state"
 msgstr "State"
 
-#: web/templates/layout/backend.html.eex:43
+#: web/templates/layout/backend.html.eex:46
 msgid "Entries"
 msgstr ""
 
@@ -759,7 +760,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: web/email.ex:12
+#: web/email.ex:13
 msgid "New message via contact form"
 msgstr ""
 
@@ -792,7 +793,7 @@ msgstr ""
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:46
+#: web/templates/layout/backend.html.eex:52
 msgid "Worker Queue"
 msgstr ""
 
@@ -903,7 +904,7 @@ msgstr ""
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr ""
 
-#: web/email.ex:25
+#: web/email.ex:26
 msgid "Please confirm your email address"
 msgstr ""
 
@@ -911,7 +912,7 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:97
+#: web/models/user.ex:103
 msgid "already used"
 msgstr ""
 
@@ -919,7 +920,7 @@ msgstr ""
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr ""
 
-#: web/email.ex:37
+#: web/email.ex:38
 msgid "Please confirm the change of your email address"
 msgstr ""
 
@@ -943,3 +944,23 @@ msgstr ""
 #: web/templates/backend/user/show.html.eex:28
 msgid "user.flags"
 msgstr "Feature flags"
+
+#: web/templates/entry/show.html.eex:142
+msgid "Record new video"
+msgstr ""
+
+#: web/templates/layout/backend.html.eex:45
+msgid "Review Queue"
+msgstr ""
+
+#: web/controllers/backend/review_controller.ex:19
+msgid "Video approved"
+msgstr ""
+
+#: web/templates/entry/show.html.eex:140
+msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
+msgstr ""
+
+#: web/controllers/backend/review_controller.ex:23
+msgid "Video could not be approved"
+msgstr ""

@@ -56,3 +56,8 @@
 .so-video-list--details--votes_voted {
   color: $highlight;
 }
+
+.so-video-list--details--add-video--text {
+  font-size: 1em !important;
+  margin-bottom: 0em;
+}

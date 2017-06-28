@@ -1,8 +1,26 @@
 <h1 class="c-heading"><%= gettext("Video") %>: <%= SignDict.Entry.to_string @video.entry %></h1>
 
 <%= if @video.video_url do %>
-  <video src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
+<div class="o-container">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-100">
+      <video src="<%= @video.video_url %>" class="b-video-player" loop controls poster="<%= @video.thumbnail_url %>"></video>
+    </div>
+  </div>
+</div>
 <% end %>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell">
+      <div class="b-video-actions">
+        <%= if SignDict.Video.can_publish?(@video) do %>
+          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), method: "get", class: "c-button") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="o-container--small">
   <div class="o-grid">

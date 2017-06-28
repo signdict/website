@@ -28,3 +28,13 @@ form.link {
 .c-hint {
   position: relative;
 }
+
+.b-video-player {
+  display: block;
+  width: 100%;
+  max-width: 40em;
+}
+
+.b-video-actions {
+  margin: 1em 0em;
+}
