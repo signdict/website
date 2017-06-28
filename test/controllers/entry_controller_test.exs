@@ -84,4 +84,20 @@ defmodule SignDict.EntryControllerTest do
       assert html_response(conn, 200) =~ "User 2"
     end
   end
+
+  describe "new/2" do
+    test "it renders the form" do
+      # TODO
+    end
+  end
+
+  describe "create/2" do
+    test "it redirects to the record page if entry could be stored" do
+      # TODO
+    end
+
+    test "it shows the form if the validation of the entry failed" do
+      # TODO
+    end
+  end
 end

@@ -8,20 +8,35 @@ defmodule SignDict.EntryTest do
   @valid_attrs %{description: "some content", text: "some content", type: "word"}
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
-    language = insert :language_dgs
-    changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs,  %{language_id: language.id}))
-    assert changeset.valid?
-  end
+  describe "changeset/2" do
+    test "changeset with valid attributes" do
+      language = insert :language_dgs
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs,  %{language_id: language.id}))
+      assert changeset.valid?
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = Entry.changeset(%Entry{}, @invalid_attrs)
-    refute changeset.valid?
-  end
+    test "changeset with invalid attributes" do
+      changeset = Entry.changeset(%Entry{}, @invalid_attrs)
+      refute changeset.valid?
+    end
 
-  test "changeset with invalid value for type attribute" do
-    changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{type: "somthing_invalid"}))
-    refute changeset.valid?
+    test "changeset with invalid value for type attribute" do
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{type: "somthing_invalid"}))
+      refute changeset.valid?
+    end
+
+    test "entry is invalid if two entries have the same text and description" do
+      insert :entry, text: "some content", description: "some content"
+      changeset = Entry.changeset(%Entry{}, @valid_attrs)
+      {:error, changeset} = Repo.insert(changeset)
+      refute changeset.valid?
+    end
+
+    test "entry is valid if two entries have the same text but different descriptions" do
+      insert :entry, text: "some content", description: "some content"
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{description: "other content"}))
+      assert {:ok, _changeset} = Repo.insert(changeset)
+    end
   end
 
   describe "to_string/1" do

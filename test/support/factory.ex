@@ -75,7 +75,7 @@ defmodule SignDict.Factory do
 
   def entry_factory do
     %SignDict.Entry {
-      description: "some content",
+      description: sequence(:email, &"some content #{&1}"),
       text: "some content",
       type: "word",
       language: find_or_build_language("dgs")

@@ -3,6 +3,7 @@ defmodule SignDict.EntryController do
   """
   use SignDict.Web, :controller
 
+  alias SignDict.Entry
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
 
@@ -20,6 +21,16 @@ defmodule SignDict.EntryController do
     conn
     |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id)
     |> render_entry
+  end
+
+  def new(conn, _params) do
+    render conn, "new.html"
+  end
+
+  def create(conn, _params) do
+    entry = %Entry{id: 2}
+    conn
+    |> redirect(to: recorder_path(conn, :index, entry_id: entry.id))
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry}) when length(videos) == 0 and not is_nil(entry) do
