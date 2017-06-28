@@ -56,7 +56,7 @@ defmodule SignDict.Entry do
     if changeset.changes[field] do
       put_change(changeset, field, String.trim(changeset.changes[field]))
     else
-      changeset
+      put_change(changeset, field, "")
     end
   end
 
