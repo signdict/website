@@ -45,6 +45,11 @@ defmodule SignDict.EntryTest do
       changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{text: " some content ", description: " some content ", language_id: language.id}))
       assert {:error, _changeset} = Repo.insert(changeset)
     end
+
+    test "it replaces nil with an empty string for description" do
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{description: nil}))
+      assert {:changes, ""} == Ecto.Changeset.fetch_field(changeset, :description)
+    end
   end
 
   describe "to_string/1" do
