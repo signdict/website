@@ -6,7 +6,7 @@ defmodule SignDict.Backend.EntryControllerTest do
   alias SignDict.Entry
   @valid_attrs %{
     text: "house", description: "building",
-    type: "word"
+    type: "word",
   }
   @invalid_attrs %{
     type: "nonexisting"
@@ -39,9 +39,11 @@ defmodule SignDict.Backend.EntryControllerTest do
   end
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
+    langauge = find_or_insert_language("dgs")
     conn = conn
            |> guardian_login(insert(:admin_user))
-           |> post(backend_entry_path(conn, :create), entry: @valid_attrs)
+           |> post(backend_entry_path(conn, :create),
+                   entry: Map.merge(@valid_attrs, %{language_id: langauge.id}))
     assert redirected_to(conn) == backend_entry_path(conn, :index)
     assert Repo.get_by(Entry, text: "house")
   end

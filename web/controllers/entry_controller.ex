@@ -3,6 +3,8 @@ defmodule SignDict.EntryController do
   """
   use SignDict.Web, :controller
 
+  alias SignDict.Entry
+  alias SignDict.Language
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
 
@@ -20,6 +22,33 @@ defmodule SignDict.EntryController do
     conn
     |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id)
     |> render_entry
+  end
+
+  def new(conn, _params) do
+    changeset = Entry.changeset(%Entry{})
+    languages = Repo.all(Language)
+    render(conn, "new.html", changeset: changeset, languages: languages)
+  end
+
+  def create(conn, %{"entry" => entry_params}) do
+    changeset = Entry.changeset(%Entry{}, entry_params)
+    entry = Entry.find_by_changeset(changeset)
+    if entry do
+      redirect(conn, to: recorder_path(conn, :index, entry_id: entry.id))
+    else
+      create_entry(conn, changeset)
+    end
+  end
+
+  defp create_entry(conn, changeset) do
+    case Repo.insert(changeset) do
+      {:ok, entry} ->
+        conn
+        |> redirect(to: recorder_path(conn, :index, entry_id: entry.id))
+      {:error, changeset} ->
+        languages = Repo.all(Language)
+        render(conn, "new.html", changeset: changeset, languages: languages)
+    end
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry}) when length(videos) == 0 and not is_nil(entry) do

@@ -38,20 +38,33 @@
   </div>
 <% end %>
 
-<div class="o-grid o-grid--wrap">
-  <div class="o-grid__cell">
-    <h2>
-      <%= gettext("Want to add new videos?") %>
-    </h2>
-    <p>
-      <%= gettext("""
-SignDict will allow everyone to upload missing signs using your webcam.
-Sadly this feature is not ready yet. If you want to get notified
-about this, please subscribe to our newsletter by clicking the button below.
-""") %>
-    </p>
-    <p>
-      <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %>&nbsp;&#8250;</a>
-    </p>
+<%= if SignDict.User.has_flag?(@current_user, "recording") do %>
+  <div class="o-grid o-grid--wrap">
+    <div class="o-grid__cell">
+      <p>
+        <%= gettext("Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam.") %>
+      </p>
+      <p>
+        <%= link gettext("Add new entry"), to: entry_path(@conn, :new), class: "sc-button sc-button--small" %>
+      </p>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="o-grid o-grid--wrap">
+    <div class="o-grid__cell">
+      <h2>
+        <%= gettext("Want to add new videos?") %>
+      </h2>
+      <p>
+        <%= gettext("""
+  SignDict will allow everyone to upload missing signs using your webcam.
+  Sadly this feature is not ready yet. If you want to get notified
+  about this, please subscribe to our newsletter by clicking the button below.
+  """) %>
+      </p>
+      <p>
+        <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %>&nbsp;&#8250;</a>
+      </p>
+    </div>
+  </div>
+<% end %>

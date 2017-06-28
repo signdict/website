@@ -68,7 +68,7 @@ defmodule SignDict.Router do
     get "/password/edit", ResetPasswordController, :edit
     put "/password",      ResetPasswordController, :update
 
-    resources "/entry", EntryController, only: [:show] do
+    resources "/entry", EntryController, only: [:show, :new, :create] do
       get "/video/:video_id", EntryController, :show, as: :video
     end
 
@@ -108,7 +108,8 @@ defmodule SignDict.Router do
     forward "/", RouterPlug.Router, :index
   end
 
-  # Backend functions. Only accessible to logged in admin users.
+  # Backend functions. Only accessible to
+  # logged in users with the correct role.
   scope "/backend", SignDict.Backend, as: :backend do
     pipe_through [:browser, :browser_session, :auth, :backend]
 
