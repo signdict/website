@@ -130,7 +130,7 @@ msgstr "Passwort vergessen?"
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
-#: web/auth/guardian_error_handler.ex:16
+#: web/auth/guardian_error_handler.ex:15
 msgid "Sadly you are not allowed to do this"
 msgstr "Leider darfst du dies nicht."
 
@@ -155,11 +155,11 @@ msgstr "Leider konnte das Passwort nicht geändert werden"
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
 
-#: web/email.ex:45
+#: web/email.ex:46
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
-#: web/plugs/allowed_for_backend.ex:16
+#: web/plugs/allowed_for_backend.ex:11
 msgid "You are not allowed to do this."
 msgstr "Leider darfst du dies nicht."
 
@@ -183,7 +183,7 @@ msgstr "Löschen"
 #: web/templates/backend/language/show.html.eex:32
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:26
-#: web/templates/backend/user/show.html.eex:41
+#: web/templates/backend/user/show.html.eex:42
 #: web/templates/backend/video/show.html.eex:94
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
@@ -230,13 +230,13 @@ msgstr "Nutzer erfolgreich aktualisiert."
 msgid "user.role"
 msgstr "Rolle"
 
-#: web/templates/layout/backend.html.eex:42
+#: web/templates/layout/backend.html.eex:43
 msgid "Users"
 msgstr "Nutzer"
 
 #: web/templates/backend/entry/show.html.eex:28
-#: web/templates/backend/user/show.html.eex:44
-#: web/templates/layout/backend.html.eex:44
+#: web/templates/backend/user/show.html.eex:46
+#: web/templates/layout/backend.html.eex:47
 msgid "Videos"
 msgstr "Videos"
 
@@ -277,7 +277,7 @@ msgstr "Sprache erfolgreich gelöscht."
 msgid "Language updated successfully."
 msgstr "Sprache erfolgreich aktualisiert."
 
-#: web/templates/layout/backend.html.eex:45
+#: web/templates/layout/backend.html.eex:49
 msgid "Languages"
 msgstr "Sprachen"
 
@@ -349,6 +349,7 @@ msgstr "Eintrag"
 msgid "Listing languages"
 msgstr "Alle Sprachen"
 
+#: web/templates/backend/review/index.html.eex:1
 #: web/templates/backend/video/index.html.eex:1
 msgid "Listing videos"
 msgstr "Alle Videos"
@@ -386,7 +387,7 @@ msgstr "Quelle"
 msgid "video.state"
 msgstr "Status"
 
-#: web/templates/layout/backend.html.eex:43
+#: web/templates/layout/backend.html.eex:46
 msgid "Entries"
 msgstr "Einträge"
 
@@ -759,7 +760,7 @@ msgstr "Profil bearbeiten"
 msgid "Login"
 msgstr "Anmelden"
 
-#: web/email.ex:12
+#: web/email.ex:13
 msgid "New message via contact form"
 msgstr "Neue Nachricht via Kontakt-Formular"
 
@@ -792,7 +793,7 @@ msgstr "Willkommen"
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
-#: web/templates/layout/backend.html.eex:46
+#: web/templates/layout/backend.html.eex:52
 msgid "Worker Queue"
 msgstr ""
 
@@ -903,7 +904,7 @@ msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
 
-#: web/email.ex:25
+#: web/email.ex:26
 msgid "Please confirm your email address"
 msgstr "Bitte bestätige deine Email-Adresse"
 
@@ -911,7 +912,7 @@ msgstr "Bitte bestätige deine Email-Adresse"
 msgid "Unable to confirm your email address."
 msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 
-#: web/models/user.ex:97
+#: web/models/user.ex:103
 msgid "already used"
 msgstr "wird schon benutzt"
 
@@ -919,7 +920,7 @@ msgstr "wird schon benutzt"
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
 
-#: web/email.ex:37
+#: web/email.ex:38
 msgid "Please confirm the change of your email address"
 msgstr "Bitte bestätige die Änderung deiner Email-Adresse"
 
@@ -933,7 +934,7 @@ msgstr "Ja, ich will den Newsletter abonnieren."
 
 #: web/templates/recorder/index.html.eex:9
 msgid "Record new sign"
-msgstr ""
+msgstr "Neue Gebärde aufnehmen"
 
 #: web/templates/recorder/index.html.eex:6
 msgid "recoding_explanation"
@@ -943,3 +944,20 @@ msgstr ""
 #: web/templates/backend/user/show.html.eex:28
 msgid "user.flags"
 msgstr "Feature flags"
+
+#: web/templates/entry/show.html.eex:142
+msgid "Record new video"
+msgstr "Neues Video aufnehmen"
+
+#: web/templates/layout/backend.html.eex:45
+msgid "Review Queue"
+msgstr "Neue Videos"
+
+#: web/controllers/backend/review_controller.ex:17
+msgid "Video approved"
+msgstr "Video freigegeben"
+
+#, fuzzy
+#: web/templates/entry/show.html.eex:140
+msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
+msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."

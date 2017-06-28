@@ -17,4 +17,19 @@ defmodule SignDict.Backend.ReviewControllerTest do
       )
     end
   end
+
+  describe "approve_video/2" do
+    test "approves a video", %{conn: conn} do
+      video = insert(:video_with_entry, state: "waiting_for_review")
+      conn = conn
+             |> guardian_login(insert(:editor_user))
+             |> get(backend_review_path(conn, :approve_video, video.id))
+      assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry_id, video.id)
+      # TODO: check if video state changes
+    end
+
+    test "throws error if state can't be cahnged", %{conn: conn} do
+      # TODO: implement this
+    end
+  end
 end

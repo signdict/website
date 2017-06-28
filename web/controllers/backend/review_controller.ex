@@ -11,4 +11,11 @@ defmodule SignDict.Backend.ReviewController do
     render(conn, "index.html", videos: videos)
   end
 
+  def approve_video(conn, %{"video_id" => video_id}) do
+    video = Repo.get_by(Video, id: video_id)
+    conn
+    |> put_flash(:info, gettext("Video approved"))
+    |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+  end
+
 end
