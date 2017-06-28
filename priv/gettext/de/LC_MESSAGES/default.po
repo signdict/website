@@ -953,11 +953,14 @@ msgstr "Neues Video aufnehmen"
 msgid "Review Queue"
 msgstr "Neue Videos"
 
-#: web/controllers/backend/review_controller.ex:17
+#: web/controllers/backend/review_controller.ex:19
 msgid "Video approved"
 msgstr "Video freigegeben"
 
-#, fuzzy
 #: web/templates/entry/show.html.eex:140
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."
+
+#: web/controllers/backend/review_controller.ex:23
+msgid "Video could not be approved"
+msgstr "Video konnte nicht freigegeben werden"
