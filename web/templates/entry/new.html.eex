@@ -1,0 +1,9 @@
+<h1 class="c-heading"><%= gettext("Add new entry") %></h1>
+
+<p>
+  <%= gettext("You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step.") %>
+</p>
+
+<%= render "form.html", changeset: @changeset,
+                        languages: @languages,
+                        action: entry_path(@conn, :create) %>

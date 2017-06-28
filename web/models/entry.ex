@@ -25,10 +25,39 @@ defmodule SignDict.Entry do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:text, :description, :type, :language_id])
+    |> trim_fields
     |> unique_constraint(:text, name: :entries_text_description_index)
-    |> validate_required([:text, :type])
+    |> validate_required([:text, :type, :language_id])
     |> validate_inclusion(:type, @types)
     |> foreign_key_constraint(:language_id)
+  end
+
+  def find_by_changeset(changeset) do
+    if changeset.valid? do
+      Repo.get_by(
+        SignDict.Entry,
+        text:        get_field(changeset, :text) || "",
+        description: get_field(changeset, :description) || "",
+        language_id: get_field(changeset, :language_id),
+        type:        get_field(changeset, :type)
+      )
+    else
+      nil
+    end
+  end
+
+  defp trim_fields(changeset) do
+    changeset
+    |> do_trim_field(:text)
+    |> do_trim_field(:description)
+  end
+
+  defp do_trim_field(changeset, field) do
+    if changeset.changes[field] do
+      put_change(changeset, field, String.trim(changeset.changes[field]))
+    else
+      changeset
+    end
   end
 
   def with_videos(query) do

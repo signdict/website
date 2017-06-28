@@ -10,7 +10,7 @@ defmodule SignDict.EntryTest do
 
   describe "changeset/2" do
     test "changeset with valid attributes" do
-      language = insert :language_dgs
+      language = find_or_insert_language("dgs")
       changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs,  %{language_id: language.id}))
       assert changeset.valid?
     end
@@ -33,9 +33,17 @@ defmodule SignDict.EntryTest do
     end
 
     test "entry is valid if two entries have the same text but different descriptions" do
+      language = find_or_insert_language("dgs")
       insert :entry, text: "some content", description: "some content"
-      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{description: "other content"}))
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{description: "other content", language_id: language.id}))
       assert {:ok, _changeset} = Repo.insert(changeset)
+    end
+
+    test "it truncates the text and description before inserting or testing uniqueness" do
+      language = find_or_insert_language("dgs")
+      insert :entry, text: "some content", description: "some content"
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs, %{text: " some content ", description: " some content ", language_id: language.id}))
+      assert {:error, _changeset} = Repo.insert(changeset)
     end
   end
 
@@ -134,6 +142,29 @@ defmodule SignDict.EntryTest do
     test "it also finds the singular when searching for plural forms", %{house: house, house_boat: house_boat} do
       assert Enum.map(Entry.search("de", "häuser"), &(&1.id)) == Enum.map([house, house_boat], &(&1.id))
     end
+  end
+
+  describe "find_by_changeset/1" do
+
+    test "it finds an entry based on the new changeset" do
+      language = find_or_insert_language("dgs")
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs,  %{language_id: language.id}))
+      {:ok, entry} = changeset |> Repo.insert
+      assert entry == Entry.find_by_changeset(changeset)
+    end
+
+    test "it returns nil if the changeset could not be found" do
+      insert :entry
+      language = find_or_insert_language("dgs")
+      changeset = Entry.changeset(%Entry{}, Map.merge(@valid_attrs,  %{language_id: language.id}))
+      assert nil == Entry.find_by_changeset(changeset)
+    end
+
+    test "it returns nil if the changeset is not valid" do
+      changeset = Entry.changeset(%Entry{}, %{})
+      assert Entry.find_by_changeset(changeset) == nil
+    end
+
   end
 
   describe "Phoenix.Param" do

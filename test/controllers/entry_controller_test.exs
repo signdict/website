@@ -3,6 +3,9 @@ defmodule SignDict.EntryControllerTest do
 
   import SignDict.Factory
 
+  alias SignDict.Entry
+  alias SignDict.Vote
+
   describe "show/2 entry attributes" do
 
     setup do
@@ -12,9 +15,9 @@ defmodule SignDict.EntryControllerTest do
       user_3  = insert(:user, %{name: "User 3"})
       video_1 = insert(:video, %{state: "published", user: user_1, entry: entry})
       video_2 = insert(:video, %{state: "published", user: user_2, entry: entry})
-      {:ok, _vote}    = %SignDict.Vote{user: user_1, video: video_1} |> Repo.insert
-      {:ok, _vote}    = %SignDict.Vote{user: user_2, video: video_1} |> Repo.insert
-      {:ok, _vote}    = %SignDict.Vote{user: user_3, video: video_2} |> Repo.insert
+      {:ok, _vote}    = %Vote{user: user_1, video: video_1} |> Repo.insert
+      {:ok, _vote}    = %Vote{user: user_2, video: video_1} |> Repo.insert
+      {:ok, _vote}    = %Vote{user: user_3, video: video_2} |> Repo.insert
 
       {
         :ok,
@@ -86,18 +89,42 @@ defmodule SignDict.EntryControllerTest do
   end
 
   describe "new/2" do
-    test "it renders the form" do
-      # TODO
+    test "it renders the form", %{conn: conn} do
+      conn = conn
+             |> get(entry_path(conn, :new))
+      assert html_response(conn, 200) =~ "Add new entry"
     end
   end
 
   describe "create/2" do
-    test "it redirects to the record page if entry could be stored" do
-      # TODO
+    test "it redirects to the record page if entry could be stored", %{conn: conn} do
+      language = SignDict.Factory.find_or_insert_language("dgs")
+      conn = conn
+             |> post(entry_path(conn, :create), entry: %{
+               text: "New Entry", description: "New description", type: "word",
+               language_id: language.id
+             })
+      entry = Repo.get_by!(Entry, text: "New Entry")
+      assert redirected_to(conn) == recorder_path(conn, :index, entry_id: entry.id)
     end
 
-    test "it shows the form if the validation of the entry failed" do
-      # TODO
+    test "it redirects to an already existing page if the entry was already in the database", %{conn: conn} do
+      {:ok, language} = SignDict.Factory.find_or_build_language("dgs") |> Repo.insert
+      entry = insert(:entry, text: "Another excelent entry", description: "", type: "word")
+      conn  = conn
+              |> post(entry_path(conn, :create), entry: %{
+                text: "Another excelent entry", description: "", type: "word",
+                language_id: language.id
+              })
+      assert redirected_to(conn) == recorder_path(conn, :index, entry_id: entry.id)
+    end
+
+    test "it shows the form if the validation of the entry failed", %{conn: conn} do
+      conn = conn
+             |> post(entry_path(conn, :create), entry: %{
+               text: "", description: "", type: "word"
+             })
+      assert html_response(conn, 200) =~ "Add new entry"
     end
   end
 end

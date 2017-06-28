@@ -32,7 +32,8 @@ msgstr ""
 #: web/templates/backend/language/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
-#: web/templates/user/edit.html.eex:6 web/templates/user/new.html.eex:12
+#: web/templates/entry/form.html.eex:4 web/templates/user/edit.html.eex:6
+#: web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -184,7 +185,7 @@ msgstr ""
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:42
-#: web/templates/backend/video/show.html.eex:94
+#: web/templates/backend/video/show.html.eex:112
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
@@ -341,7 +342,7 @@ msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
 #: web/templates/backend/shared/videos_table.html.eex:6
-#: web/templates/backend/video/show.html.eex:9
+#: web/templates/backend/video/show.html.eex:27
 msgid "Entry"
 msgstr ""
 
@@ -360,20 +361,20 @@ msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
-#: web/templates/backend/video/show.html.eex:16
+#: web/templates/backend/video/show.html.eex:34
 #: web/templates/entry/show.html.eex:76
 msgid "User"
 msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:12
 #: web/templates/backend/video/form.html.eex:15
-#: web/templates/backend/video/show.html.eex:30
+#: web/templates/backend/video/show.html.eex:48
 msgid "video.copyright"
 msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:13
 #: web/templates/backend/video/form.html.eex:21
-#: web/templates/backend/video/show.html.eex:37
+#: web/templates/backend/video/show.html.eex:55
 msgid "video.license"
 msgstr ""
 
@@ -383,7 +384,7 @@ msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:11
 #: web/templates/backend/video/form.html.eex:9
-#: web/templates/backend/video/show.html.eex:23
+#: web/templates/backend/video/show.html.eex:41
 msgid "video.state"
 msgstr ""
 
@@ -407,18 +408,21 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:9
 #: web/templates/backend/entry/index.html.eex:23
+#: web/templates/entry/form.html.eex:9
 msgid "entry.text"
 msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:21
 #: web/templates/backend/entry/index.html.eex:25
 #: web/templates/backend/entry/show.html.eex:12
+#: web/templates/entry/form.html.eex:24
 msgid "entry.type"
 msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:15
 #: web/templates/backend/entry/index.html.eex:24
 #: web/templates/backend/entry/show.html.eex:5
+#: web/templates/entry/form.html.eex:15
 msgid "entry.description"
 msgstr ""
 
@@ -440,11 +444,12 @@ msgid "Video"
 msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:27
+#: web/templates/entry/form.html.eex:33
 msgid "entry.language"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:27
-#: web/templates/backend/video/show.html.eex:44
+#: web/templates/backend/video/show.html.eex:62
 msgid "video.original_href"
 msgstr ""
 
@@ -506,7 +511,7 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:81 web/templates/search/index.html.eex:54
+#: web/templates/page/index.html.eex:81 web/templates/search/index.html.eex:66
 msgid "Newsletter sign up"
 msgstr ""
 
@@ -643,17 +648,17 @@ msgstr[1] ""
 
 #: web/templates/backend/shared/videos_table.html.eex:14
 #: web/templates/backend/video/form.html.eex:45
-#: web/templates/backend/video/show.html.eex:81
+#: web/templates/backend/video/show.html.eex:99
 msgid "video.plays"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:39
-#: web/templates/backend/video/show.html.eex:68
+#: web/templates/backend/video/show.html.eex:86
 msgid "video.thumbnail_url"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:33
-#: web/templates/backend/video/show.html.eex:55
+#: web/templates/backend/video/show.html.eex:73
 msgid "video.video_url"
 msgstr ""
 
@@ -743,7 +748,7 @@ msgstr ""
 msgid "The email was sent."
 msgstr ""
 
-#: web/templates/backend/video/show.html.eex:88
+#: web/templates/backend/video/show.html.eex:106
 msgid "video.metadata"
 msgstr ""
 
@@ -773,7 +778,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:43
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:72
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -801,11 +806,11 @@ msgstr ""
 msgid "Please enter a word in the field above to search for signs."
 msgstr ""
 
-#: web/templates/search/index.html.eex:47
+#: web/templates/search/index.html.eex:59
 msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
 msgstr ""
 
-#: web/templates/search/index.html.eex:44
+#: web/templates/search/index.html.eex:56
 msgid "Want to add new videos?"
 msgstr ""
 
@@ -857,7 +862,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:56
+#: web/controllers/entry_controller.ex:85
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -953,7 +958,7 @@ msgstr ""
 msgid "Review Queue"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:19
+#: web/controllers/backend/review_controller.ex:20
 msgid "Video approved"
 msgstr ""
 
@@ -961,6 +966,42 @@ msgstr ""
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:23
+#: web/controllers/backend/review_controller.ex:24
 msgid "Video could not be approved"
+msgstr ""
+
+#: web/templates/entry/new.html.eex:1 web/templates/search/index.html.eex:48
+msgid "Add new entry"
+msgstr ""
+
+#: web/templates/backend/video/show.html.eex:18
+msgid "Approve video"
+msgstr ""
+
+#: web/views/entry_view.ex:14
+msgid "entry.type.example"
+msgstr ""
+
+#: web/views/entry_view.ex:13
+msgid "entry.type.phrase"
+msgstr ""
+
+#: web/views/entry_view.ex:12
+msgid "entry.type.word"
+msgstr ""
+
+#: web/templates/entry/form.html.eex:17
+msgid "If you want to create another entry for another meaning of a word, please describe the meaning in a little bit more detail here."
+msgstr ""
+
+#: web/templates/entry/form.html.eex:40
+msgid "Create entry"
+msgstr ""
+
+#: web/templates/entry/new.html.eex:4
+msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
+msgstr ""
+
+#: web/templates/search/index.html.eex:45
+msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
 msgstr ""

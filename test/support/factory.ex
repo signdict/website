@@ -53,6 +53,11 @@ defmodule SignDict.Factory do
     || build(String.to_atom("language_#{language}"))
   end
 
+  def find_or_insert_language(language) do
+    SignDict.Repo.get_by(SignDict.Language, short_name: language)
+    || insert(String.to_atom("language_#{language}"))
+  end
+
   def video_factory do
     %SignDict.Video {
       state: "created",
