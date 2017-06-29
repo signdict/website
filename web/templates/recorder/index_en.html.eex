@@ -1,0 +1,79 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell">
+    <h1>Welcome</h1>
+
+    <p>
+      Thanks for your interest in recording a new sign for <strong>"<%= @entry.text %>"</strong>.
+      To make the recording as good as possible you need to pay attention to a
+      few things. It would be great if you read the following text and try to
+      follow the advise given there. Feel free to click on the button below
+      if you already know how it works. If not, please continue reading.
+    </p>
+
+    <%= link "Record new sign", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+
+    <h2>General</h2>
+
+    <p>
+      We will use your webcam to record the sign. You won't need any expensive
+      camera. If you need to attach it to your computer first, please do so
+      before you continue.
+    </p>
+
+    <p>
+      To make sure the recording works fin, you need to use the <strong>Chrome</strong>
+      Browser. Support for other browser will be implemented soon.
+    </p>
+
+    <h2>Neutral</h2>
+
+    <p>
+      Please try to sign the word as neutral as possible. Laughing, crying or
+      exaggerated movements should be avoided.
+    </p>
+
+    <h2>Background</h2>
+
+    <p>
+      There should be no movements in the background. It would be best if you
+      record the video in front of a plane wall. Nothing should distract
+      the watcher from the sign you want to teach.
+    </p>
+
+    <h2>Lighting</h2>
+
+    <p>
+      Make sure you have good lighting for your body. Your hands should be visible.
+      Please don't film against the sun or another light source. Ideally the light
+      should come from behind or above the webcam.
+    </p>
+
+    <h2>Position</h2>
+
+    <p>
+      Ideally you should stand and the camera should see you from head to your
+      hip.
+    </p>
+
+    <h2>Length</h2>
+
+    <p>
+      After you recorded the video, you will be able to cut it. Please
+      make sure you cut it to the important part: the sign.
+    </p>
+
+    <h2>Example</h2>
+
+    <p>
+      You can find a good example video <a href="/entry/882-abziehen/video/10" target="_blank">
+        here</a>.
+    </p>
+
+    <p>
+      Ready to record your video? Yes? Click here:
+    </p>
+
+    <%= link "Record new sign", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+  </div>
+  </div>
+</div>

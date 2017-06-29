@@ -4,12 +4,13 @@ defmodule SignDict.RecorderController do
   alias SignDict.Entry
 
   def index(conn, %{"entry_id" => entry_id}) do
-    if is_nil(Repo.get(Entry, entry_id)) do
+    entry = Repo.get(Entry, entry_id)
+    if is_nil(entry) do
       redirect_when_no_entry(conn)
     else
       render(
-        conn, "index.html", layout: {SignDict.LayoutView, "app.html"},
-        entry_id: entry_id
+        conn, "index_#{Gettext.get_locale(SignDict.Gettext)}.html", layout: {SignDict.LayoutView, "app.html"},
+        entry: entry
       )
     end
   end

@@ -791,7 +791,7 @@ msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
-#: web/controllers/page_controller.ex:17 web/templates/recorder/index.html.eex:3
+#: web/controllers/page_controller.ex:17
 msgid "Welcome"
 msgstr "Willkommen"
 
@@ -938,14 +938,6 @@ msgstr "Deine neue Email-Adresse ist nun bestätigt."
 msgid "user.want_newsletter"
 msgstr "Ja, ich will den Newsletter abonnieren."
 
-#: web/templates/recorder/index.html.eex:9
-msgid "Record new sign"
-msgstr "Neue Gebärde aufnehmen"
-
-#: web/templates/recorder/index.html.eex:6
-msgid "recoding_explanation"
-msgstr ""
-
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
 msgid "user.flags"
@@ -1019,3 +1011,7 @@ msgstr "Alle Einträge für %{letter}"
 #: web/templates/entry/index.html.eex:5
 msgid "Browse through SignDict"
 msgstr "Alle Einträge"
+
+#: web/controllers/recorder_controller.ex:37
+msgid "Sorry, I couldn't find the entry for which you wanted to record a sign."
+msgstr "Leider konnte ich den Eintrag nicht finden, zudem du eine Gebärde aufnehmen wolltest."

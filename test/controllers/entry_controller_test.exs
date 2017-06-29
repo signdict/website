@@ -105,7 +105,7 @@ defmodule SignDict.EntryControllerTest do
                language_id: language.id
              })
       entry = Repo.get_by!(Entry, text: "New Entry")
-      assert redirected_to(conn) == recorder_path(conn, :index, entry_id: entry.id)
+      assert redirected_to(conn) == recorder_path(conn, :index, entry.id)
     end
 
     test "it redirects to an already existing page if the entry was already in the database", %{conn: conn} do
@@ -116,7 +116,7 @@ defmodule SignDict.EntryControllerTest do
                 text: "Another excelent entry", description: "", type: "word",
                 language_id: language.id
               })
-      assert redirected_to(conn) == recorder_path(conn, :index, entry_id: entry.id)
+      assert redirected_to(conn) == recorder_path(conn, :index, entry.id)
     end
 
     test "it shows the form if the validation of the entry failed", %{conn: conn} do
