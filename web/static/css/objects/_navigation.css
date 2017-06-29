@@ -1,14 +1,19 @@
+$header_background_color: #fff;
+
 .so-navigation {
-  list-style: none;
-  margin-top: 0.2em;
-  vertical-align: top;
-  font-size: 0.9em;
-  margin-bottom: 0.3em;
-  padding-top: 0.5em;
+  position: static;
+  width: 100%;
+  max-width: 48em;
+  z-index: 3;
+  background-color: $header_background_color;
+  min-height: 48px;
 }
 
-.so-navigation-item {
-  vertical-align: top;
+.so-navigation__left {
+  display: block;
+  float: left;
+  margin-left: 1em;
+  margin-bottom: 0;
 }
 
 .so-navigation--logo {
@@ -16,10 +21,6 @@
   width: auto;
   height: 6em;
   position: absolute;
-}
-
-.so-navigation-item--image * img {
-  width: 2.5em;
 }
 
 .so-navigation--about--no-logo {
@@ -32,29 +33,113 @@
 .so-navigation--about {
   margin-left: 6em;
   margin-top: 0.5em;
-  margin-bottom: 3em;
   color: $deactive;
   font-size: 0.9em;
   display: inline-block;
 }
 
+.so-navigation__menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: $header_background_color;
+  font-size: 0.9em;
+  clear: both;
+  max-height: 0;
+}
+
+.so-navigation__menu li a {
+  display: block;
+  padding: 0.75em 1em;
+}
+
+.so-navigation__menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 1em 2em;
+  position: relative;
+  user-select: none;
+}
+
+.so-navigation__navicon {
+  background-color: $dark_background;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 1em;
+}
+
+.so-navigation__navicon:before,
+.so-navigation__navicon:after {
+  background-color: $dark_background;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.so-navigation__navicon:before {
+  top: 5px;
+}
+
+.so-navigation__navicon:after {
+  top: -5px;
+}
+
+/* .so-navigation__menu-btn is a checkbox. according to its state we need to
+   change the displayed menu-icon and change the menu's visibility. */
+
+.so-navigation__menu-btn {
+  display: none;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu {
+  max-height: 440px;
+  padding: 3em 0 1em;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu--no-logo {
+  padding-top: 0;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu li {
+  display: block;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu li a:hover {
+  background-color: $light_background;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu-icon .so-navigation__navicon {
+  background: transparent;
+  cursor: pointer;
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu-icon .so-navigation__navicon:before {
+  transform: rotate(-45deg);
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu-icon .so-navigation__navicon:after {
+  transform: rotate(45deg);
+}
+
+.so-navigation__menu-btn:checked ~ .so-navigation__menu-icon .so-navigation__navicon:before,
+.so-navigation__menu-btn:checked ~ .so-navigation__menu-icon .so-navigation__navicon:after {
+  top: 0;
+}
+
 @media all and (max-width: 48em) {
   .so-navigation {
-    text-align: left;
-    padding: 0.5em 0;
-  }
-
-  .so-navigation-item {
-    margin-bottom: 0.5em;
+    min-height: 48px;
   }
 
   .so-navigation--logo {
     margin-right: 1em;
-    margin-bottom: 3em;
-  }
-
-  .so-navigation--about {
-    margin-left: 5em;
   }
 }
 
@@ -63,15 +148,21 @@
     text-align: right;
   }
 
-  .so-navigation-item {
+  .so-header li {
+    float: left;
+  }
+
+  .so-navigation__menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+
+  .so-navigation__menu li {
     display: inline-block;
-    margin-left: 1em;
-    height: 2.5em;
   }
 
-  .so-navigation-item--image {
-    margin-top: -0.7em;
+  .so-navigation__menu-icon {
+    display: none;
   }
-
 }
-

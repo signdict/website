@@ -15,7 +15,7 @@
 
     <div>
       <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
-    <div>
+    </div>
 
     <div class="sc-main o-container o-container--medium">
       <main role="main">
