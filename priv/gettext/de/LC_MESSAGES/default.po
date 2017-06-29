@@ -249,7 +249,7 @@ msgstr "Willkommen im Dashboard"
 msgid "Update"
 msgstr "Speichern"
 
-#: web/controllers/user_controller.ex:77
+#: web/controllers/user_controller.ex:76
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
@@ -532,11 +532,11 @@ msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gese
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: web/templates/shared/footer.html.eex:40
+#: web/templates/shared/footer.html.eex:41
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
-#: web/templates/shared/footer.html.eex:39
+#: web/templates/shared/footer.html.eex:40
 msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
@@ -694,7 +694,8 @@ msgstr "Quelle:"
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:26
+#: web/templates/entry/index.html.eex:53 web/templates/entry/show.html.eex:109
+#: web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
@@ -756,7 +757,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr "Über"
 
-#: web/controllers/user_controller.ex:66
+#: web/controllers/user_controller.ex:65
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
@@ -778,7 +779,7 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:72
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:88
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
@@ -786,7 +787,7 @@ msgstr "Gebärde für %{sign}"
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
-#: web/controllers/user_controller.ex:55
+#: web/controllers/user_controller.ex:54
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
@@ -862,7 +863,7 @@ msgstr "Details >"
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
-#: web/controllers/entry_controller.ex:85
+#: web/controllers/entry_controller.ex:101
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
 
@@ -905,7 +906,7 @@ msgstr "Datenschutz"
 msgid "Invalid confirmation link."
 msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
 
-#: web/controllers/user_controller.ex:90
+#: web/controllers/user_controller.ex:89
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
 
@@ -921,7 +922,7 @@ msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 msgid "already used"
 msgstr "wird schon benutzt"
 
-#: web/controllers/user_controller.ex:99
+#: web/controllers/user_controller.ex:98
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
 
@@ -978,15 +979,15 @@ msgstr "Neuen Eintrag hinzufügen"
 msgid "Approve video"
 msgstr "Video freigeben"
 
-#: web/views/entry_view.ex:14
+#: web/views/entry_view.ex:16
 msgid "entry.type.example"
 msgstr "Beispielsatz"
 
-#: web/views/entry_view.ex:13
+#: web/views/entry_view.ex:15
 msgid "entry.type.phrase"
 msgstr "Redensart / Phrase"
 
-#: web/views/entry_view.ex:12
+#: web/views/entry_view.ex:14
 msgid "entry.type.word"
 msgstr "Wort"
 
@@ -1002,7 +1003,19 @@ msgstr "Eintrag anlegen"
 msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
 msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem du den Text eingegeben hast, wirst du im nächsten Schritt die Möglichkeit haben, die Gebärde aufzunehmen."
 
-#, fuzzy
 #: web/templates/search/index.html.eex:45
 msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
+
+#: web/controllers/entry_controller.ex:23
+#: web/templates/shared/footer.html.eex:35
+msgid "All entries"
+msgstr "Alle Einträge"
+
+#: web/templates/entry/index.html.eex:45
+msgid "Browse results for %{letter}"
+msgstr "Alle Einträge für %{letter}"
+
+#: web/templates/entry/index.html.eex:5
+msgid "Browse through SignDict"
+msgstr "Alle Einträge"

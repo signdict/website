@@ -46,6 +46,22 @@ defmodule SignDict.Entry do
     end
   end
 
+  def active_entries do
+    Entry |> where([e], not is_nil(e.current_video_id))
+  end
+
+  def for_letter(query, letter) do
+    cond do
+      String.match?(letter, ~r/^[a-zA-Z]$/) ->
+        query |> where([e], fragment("text ~* ?", ^"^#{letter}.*"))
+      String.match?(letter, ~r/^0-9$/) ->
+        query |> where([e], fragment("text ~* ?", ^"^[0-9].*"))
+      true ->
+        query |> where([e], fragment("text ~* ?", ^"^A.*"))
+    end
+    |> order_by(fragment("lower(text)"))
+  end
+
   defp trim_fields(changeset) do
     changeset
     |> do_trim_field(:text)
