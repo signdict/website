@@ -8,17 +8,18 @@ defmodule SignDict.EntryController do
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
 
-  def index(conn, _params) do
-    entries = Entry
-              |> where([e], not is_nil(e.current_video_id))
-              |> limit(10)
+  def index(conn, params) do
+    letter = params["letter"] || "A"
+    entries = Entry.active_entries
               |> Entry.with_current_video
-              |> Repo.all
+              |> Entry.for_letter(letter)
+              |> Repo.paginate(params)
 
     render(conn, "index.html",
            layout: {SignDict.LayoutView, "app.html"},
            entries: entries,
            searchbar: true,
+           letter: letter,
            title: gettext("All entries")
          )
   end

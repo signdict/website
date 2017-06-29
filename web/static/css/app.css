@@ -2,6 +2,7 @@
 @import "base/_fonts.css";
 @import "components/_alerts.css";
 @import "components/_buttons.css";
+@import "components/_pagination.css";
 @import "components/_forms.css";
 @import "components/_sidebar.css";
 @import "objects/_embed.css";

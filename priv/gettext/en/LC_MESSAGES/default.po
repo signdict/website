@@ -249,7 +249,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: web/controllers/user_controller.ex:77
+#: web/controllers/user_controller.ex:76
 msgid "Updated successfully."
 msgstr ""
 
@@ -532,11 +532,11 @@ msgstr "SignDict believes that communication is the key to an open society. To i
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:40
+#: web/templates/shared/footer.html.eex:41
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:39
+#: web/templates/shared/footer.html.eex:40
 msgid "SignDict on Twitter"
 msgstr ""
 
@@ -694,7 +694,8 @@ msgstr ""
 msgid "Choose this variant"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:109 web/templates/search/index.html.eex:26
+#: web/templates/entry/index.html.eex:53 web/templates/entry/show.html.eex:109
+#: web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr ""
 
@@ -756,7 +757,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr ""
 
-#: web/controllers/user_controller.ex:66
+#: web/controllers/user_controller.ex:65
 msgid "Edit profile"
 msgstr ""
 
@@ -778,7 +779,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:72
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:88
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -786,7 +787,7 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: web/controllers/user_controller.ex:55
+#: web/controllers/user_controller.ex:54
 msgid "User %{user}"
 msgstr ""
 
@@ -862,7 +863,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:85
+#: web/controllers/entry_controller.ex:101
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -905,7 +906,7 @@ msgstr ""
 msgid "Invalid confirmation link."
 msgstr ""
 
-#: web/controllers/user_controller.ex:90
+#: web/controllers/user_controller.ex:89
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr ""
 
@@ -921,7 +922,7 @@ msgstr ""
 msgid "already used"
 msgstr ""
 
-#: web/controllers/user_controller.ex:99
+#: web/controllers/user_controller.ex:98
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr ""
 
@@ -978,15 +979,15 @@ msgstr ""
 msgid "Approve video"
 msgstr ""
 
-#: web/views/entry_view.ex:14
+#: web/views/entry_view.ex:16
 msgid "entry.type.example"
 msgstr "Example sentence"
 
-#: web/views/entry_view.ex:13
+#: web/views/entry_view.ex:15
 msgid "entry.type.phrase"
 msgstr "Idiom / phrase"
 
-#: web/views/entry_view.ex:12
+#: web/views/entry_view.ex:14
 msgid "entry.type.word"
 msgstr "Word"
 
@@ -1002,7 +1003,19 @@ msgstr ""
 msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
 msgstr ""
 
-#, fuzzy
 #: web/templates/search/index.html.eex:45
 msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
+msgstr ""
+
+#: web/controllers/entry_controller.ex:23
+#: web/templates/shared/footer.html.eex:35
+msgid "All entries"
+msgstr ""
+
+#: web/templates/entry/index.html.eex:45
+msgid "Browse results for %{letter}"
+msgstr ""
+
+#: web/templates/entry/index.html.eex:5
+msgid "Browse through SignDict"
 msgstr ""

@@ -1,6 +1,8 @@
 defmodule SignDict.EntryView do
   require SignDict.Gettext
 
+  import Scrivener.HTML
+
   use SignDict.Web, :view
 
   def translated_types do

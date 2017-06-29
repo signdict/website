@@ -127,4 +127,24 @@ defmodule SignDict.EntryControllerTest do
       assert html_response(conn, 200) =~ "Add new entry"
     end
   end
+
+  describe "index/2" do
+
+    test "it shows only entries for a certain letter", %{conn: conn} do
+      sloth_entry = insert(:entry, %{text: "Sloth"})
+      insert(:video_published, %{entry: sloth_entry})
+      Entry.update_current_video(sloth_entry)
+
+      marmot_entry = insert(:entry, %{text: "Marmot"})
+      insert(:video_published, %{entry: marmot_entry})
+      Entry.update_current_video(marmot_entry)
+
+      conn = conn
+             |> get(entry_path(conn, :index), letter: "S")
+      body = html_response(conn, 200)
+      assert body =~ "Sloth"
+      refute body =~ "Marmot"
+    end
+
+  end
 end

@@ -40,8 +40,7 @@ defmodule SignDict.UserController do
                   |> where(user_id: ^conn.assigns.user.id)
                   |> Repo.aggregate(:count, :id)
 
-    entries = Entry
-              |> where([e], not is_nil(e.current_video_id))
+    entries = Entry.active_entries
               |> limit(10)
               |> Entry.with_current_video
               |> Repo.all

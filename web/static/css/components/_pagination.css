@@ -12,4 +12,5 @@
 .pagination li.active a {
   font-weight: bold;
   text-decoration: none;
+  color: $dark_font;
 }

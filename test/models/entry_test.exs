@@ -172,6 +172,58 @@ defmodule SignDict.EntryTest do
 
   end
 
+  describe "active_entries/0" do
+
+    test "it returns only entries with current_videos" do
+      insert(:entry, %{text: "Dog"})
+      sheep_entry = insert(:entry, %{text: "Sheep"})
+      insert(:video_published, %{entry: sheep_entry})
+      Entry.update_current_video(sheep_entry)
+
+      entries = Entry.active_entries |> Repo.all
+
+      assert [sheep_entry.id] == Enum.map(entries, fn(x) -> x.id end)
+    end
+
+  end
+
+  describe "for_letter/2" do
+    setup do
+      entry_alpaca = insert(:entry, %{text: "Alpaca"})
+      insert(:video_published, %{entry: entry_alpaca})
+      Entry.update_current_video(entry_alpaca)
+
+      entry_hedgehog = insert(:entry, %{text: "Hedgehog"})
+      insert(:video_published, %{entry: entry_hedgehog})
+      Entry.update_current_video(entry_hedgehog)
+
+      entry_1978 = insert(:entry, %{text: "1978"})
+      insert(:video_published, %{entry: entry_1978})
+      Entry.update_current_video(entry_1978)
+
+      %{
+        entry_hedgehog: entry_hedgehog,
+        entry_1978: entry_1978,
+        entry_alpaca: entry_alpaca
+      }
+    end
+
+    test "it returns only entries starting with a letter", %{entry_hedgehog: hedgehog} do
+      entries = Entry.for_letter(Entry, "H") |> Repo.all
+      assert [hedgehog.id] == Enum.map(entries, fn(x) -> x.id end)
+    end
+
+    test "it returns entries with numbers", %{entry_1978: entry_1978} do
+      entries = Entry.for_letter(Entry, "0-9") |> Repo.all
+      assert [entry_1978.id] == Enum.map(entries, fn(x) -> x.id end)
+    end
+
+    test "it returns entries with A when nothing matches", %{entry_alpaca: entry_alpaca} do
+      entries = Entry.for_letter(Entry, "error") |> Repo.all
+      assert [entry_alpaca.id] == Enum.map(entries, fn(x) -> x.id end)
+    end
+  end
+
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the entry" do
       assert Phoenix.Param.to_param(%Entry{id: 1, text: "My name is my castle!"}) == "1-my-name-is-my-castle"
