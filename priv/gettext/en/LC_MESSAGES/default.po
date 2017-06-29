@@ -791,7 +791,7 @@ msgstr ""
 msgid "User %{user}"
 msgstr ""
 
-#: web/controllers/page_controller.ex:17 web/templates/recorder/index.html.eex:3
+#: web/controllers/page_controller.ex:17
 msgid "Welcome"
 msgstr ""
 
@@ -938,14 +938,6 @@ msgstr ""
 msgid "user.want_newsletter"
 msgstr "Yes, I want to subscribe to the newsletter"
 
-#: web/templates/recorder/index.html.eex:9
-msgid "Record new sign"
-msgstr ""
-
-#: web/templates/recorder/index.html.eex:6
-msgid "recoding_explanation"
-msgstr ""
-
 #: web/templates/backend/user/form.html.eex:33
 #: web/templates/backend/user/show.html.eex:28
 msgid "user.flags"
@@ -1018,4 +1010,8 @@ msgstr ""
 
 #: web/templates/entry/index.html.eex:5
 msgid "Browse through SignDict"
+msgstr ""
+
+#: web/controllers/recorder_controller.ex:37
+msgid "Sorry, I couldn't find the entry for which you wanted to record a sign."
 msgstr ""

@@ -1,0 +1,79 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell">
+    <h1>Willkommen</h1>
+
+    <p>
+      Danke, das du eine neue Gebärde zu <strong>"<%= @entry.text %>"</strong> aufnehmen willst.
+      Damit die Aufnahme gut wird, gibt es ein paar Kleinigkeiten zu beachten.
+      Lese am besten den unten stehen Text durch, bevor du das erste mal eine
+      Aufnahme probierst. Wenn du schon weißt, wie das ganze funktioniert, kannst
+      du auch direkt mit der Aufnahme starten mit Klick auf den Button:
+    </p>
+
+    <%= link "Neue Gebärde aufnehmen", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+
+    <h2>Allgemeines</h2>
+
+    <p>
+      Für die Aufnahme werden wir deine Webcam benutzen. Du brauchst also keine
+      teure Videokamera. Falls nötig, schließe deine Webcam jetzt an deinen Computer
+      an bevor du weiter machst.
+    </p>
+
+    <p>
+      Damit die Aufnahme reibungslos funktioniert, musst du den <strong>Chrome</strong>
+      Browser benutzen. Unterstützung für Firefox und andere Browser kommt bald.
+    </p>
+
+    <h2>Neutralität</h2>
+
+    <p>
+      Bitte versuche, die Gebärde so neutral wie möglich aufzunehmen. Lachen, Weinen
+      oder übertriebene Bewegungen solltest du vermeiden.
+    </p>
+
+    <h2>Hintergrund</h2>
+
+    <p>
+      Achte darauf, das sich nichts im Hintergrund bewegt. Am besten nimmst du
+      die Gebärden vor einer einfarbigen Wand auf, damit nichts von der eigentlichen
+      Gebärde ablenkt.
+    </p>
+
+    <h2>Beleuchtung</h2>
+
+    <p>
+      Für die Aufnahme solltest du gut ausgeleuchtet sein. Wenn es zu dunkel ist,
+      sind deine Hände nicht gut zu erkennen. Filme nicht gegen die Sonne oder
+      mit einer Lampe die direkt in die Webcam leuchtet.
+    </p>
+
+    <h2>Position</h2>
+
+    <p>
+      Für eine perfekte Aufnahme solltest du stehen. Dabei sollte die Kamera
+      dich von deinem Kopf bis zur Hüfte aufnehmen.
+    </p>
+
+    <h2>Länge</h2>
+
+    <p>
+      Nachdem du das Video aufgenommen hast, wirst du die Möglichkeit haben, den
+      Beginn und das Ende zu schneiden. Bitte kürze das Video so, das es nur die
+      eigentliche Gebärde zeigt und keine langen Pausen davor/danach hat.
+    </p>
+
+    <h2>Beispiel</h2>
+
+    <p>
+      Ein gutes Beispiel für ein Video findest du <a href="/entry/882-abziehen/video/10" target="_blank">
+        hier</a>.
+    </p>
+
+    <p>
+      Kann es los gehen? Dann klicke hier:
+    </p>
+
+    <%= link "Neue Gebärde aufnehmen", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+  </div>
+</div>

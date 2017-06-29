@@ -50,7 +50,7 @@ defmodule SignDict.EntryController do
     changeset = Entry.changeset(%Entry{}, entry_params)
     entry = Entry.find_by_changeset(changeset)
     if entry do
-      redirect(conn, to: recorder_path(conn, :index, entry_id: entry.id))
+      redirect(conn, to: recorder_path(conn, :index, entry.id))
     else
       create_entry(conn, changeset)
     end
@@ -60,7 +60,7 @@ defmodule SignDict.EntryController do
     case Repo.insert(changeset) do
       {:ok, entry} ->
         conn
-        |> redirect(to: recorder_path(conn, :index, entry_id: entry.id))
+        |> redirect(to: recorder_path(conn, :index, entry.id))
       {:error, changeset} ->
         languages = Repo.all(Language)
         render(conn, "new.html", changeset: changeset, languages: languages)
