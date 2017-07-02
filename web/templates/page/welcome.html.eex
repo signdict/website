@@ -12,7 +12,10 @@
 
         <p>
           <%= link gettext("Search through SignDicts %{sign_count} signs >", sign_count: @sign_count), to: "/search" %><br/>
-          <%= link gettext("Complete your user profile >"), to: user_path(@conn, :edit, @current_user) %>
+          <%= link gettext("Complete your user profile >"), to: user_path(@conn, :edit, @current_user) %><br />
+          <%= if SignDict.User.has_flag?(@current_user, "recording") do %>
+            <%= link gettext("Add a new sign >"), to: entry_path(@conn, :new) %>
+          <% end %>
         </p>
       </div>
     </div>
