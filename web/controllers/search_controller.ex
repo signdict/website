@@ -12,10 +12,27 @@ defmodule SignDict.SearchController do
     else
       [[], gettext("Search")]
     end
-    render conn, "index.html",
-      conn: conn,
-      searchbar: true,
-      entries: entries,
-      title: title
+    if perfect_match?(params["q"], entries) do
+      redirect(conn, to: entry_path(conn, :show, List.first(entries)))
+    else
+      render(
+        conn, "index.html",
+        conn: conn,
+        searchbar: true,
+        entries: entries,
+        title: title
+      )
+    end
+  end
+
+  defp perfect_match?(search, entries)
+  defp perfect_match?(search, _entries) when is_nil(search) do
+    false
+  end
+  defp perfect_match?(search, [entry]) do
+    String.downcase(entry.text) == String.downcase(search)
+  end
+  defp perfect_match?(_search, _entries) do
+    false
   end
 end
