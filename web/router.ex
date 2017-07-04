@@ -2,13 +2,16 @@ defmodule SignDict.Router do
   use SignDict.Web, :router
   use Bugsnex.Plug
 
+  pipeline :locale do
+    plug SignDict.Plug.Locale
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug SignDict.Plug.Locale
   end
 
   pipeline :embed do
@@ -45,7 +48,7 @@ defmodule SignDict.Router do
   end
 
   scope "/", SignDict do
-    pipe_through [:embed, :browser_session]
+    pipe_through [:embed, :browser_session, :locale]
 
     resources "/embed", EmbedController, only: [:show] do
       get "/video/:video_id", EmbedController, :show, as: :video
@@ -53,7 +56,7 @@ defmodule SignDict.Router do
   end
 
   scope "/", SignDict do
-    pipe_through [:browser, :browser_session]
+    pipe_through [:browser, :browser_session, :locale]
 
     resources "/users",    UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
@@ -87,7 +90,7 @@ defmodule SignDict.Router do
   end
 
   scope "/", SignDict do
-    pipe_through [:browser, :browser_session, :auth]
+    pipe_through [:browser, :browser_session, :auth, :locale]
 
     get "/welcome", PageController, :welcome
   end
@@ -111,7 +114,7 @@ defmodule SignDict.Router do
   # Backend functions. Only accessible to
   # logged in users with the correct role.
   scope "/backend", SignDict.Backend, as: :backend do
-    pipe_through [:browser, :browser_session, :auth, :backend]
+    pipe_through [:browser, :browser_session, :auth, :backend, :locale]
 
     get "/", DashboardController, :index
 
@@ -127,7 +130,7 @@ defmodule SignDict.Router do
   end
 
   scope "/api", SignDict.Api, as: :api do
-    pipe_through [:api, :browser_session]
+    pipe_through [:api, :browser_session, :locale]
 
     get "/current_user", CurrentUserController, :show
     resources "/sessions", SessionController, only: [:create]
