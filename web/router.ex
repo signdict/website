@@ -81,12 +81,15 @@ defmodule SignDict.Router do
     get "/feelinglucky", FeelingLuckyController, :index
 
     get "/search",    SearchController,  :index
-    get "/imprint",   PageController,    :imprint
-    get "/about",     PageController,    :about
-    get "/supporter", PageController,    :supporter
-    get "/privacy",   PageController,    :privacy
-    get "/contact",   ContactController, :new
-    post "/contact",  ContactController, :create
+
+    get "/about",        PageController,    :about
+    get "/imprint",      PageController,    :imprint
+    get "/notsupported", PageController,    :not_supported
+    get "/privacy",      PageController,    :privacy
+    get "/supporter",    PageController,    :supporter
+
+    get "/contact",      ContactController, :new
+    post "/contact",     ContactController, :create
 
     get "/", PageController, :index
   end

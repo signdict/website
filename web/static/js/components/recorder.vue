@@ -140,6 +140,15 @@ function startCountdown(context) {
   }, 1000);
 }
 
+function checkBrowser() {
+  console.log(browser.version);
+  if (browser.name == "Chrome" || parseInt(browser.version) < 59) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 export default {
   data() {
     return {
@@ -149,10 +158,14 @@ export default {
     }
   },
   mounted() {
-    initRecorder();
-    router = this.$router;
-    store  = this.$store;
-    startCountdown(this);
+    if (checkBrowser()) {
+      initRecorder();
+      router = this.$router;
+      store  = this.$store;
+      startCountdown(this);
+    } else {
+      window.location = "/notsupported"
+    }
   },
 
   methods: {

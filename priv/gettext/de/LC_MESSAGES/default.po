@@ -1027,3 +1027,16 @@ msgstr "Dein Video wurde freigegeben :)"
 #: web/templates/entry/index.html.eex:9
 msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
 msgstr "Abenteuerlustig? Dann schau dir doch einen <a href='%{random}'>zufälligen Eintrag an</a>."
+
+#: web/templates/page/not_supported.html.eex:16
+msgid "Firefox currently has a bug that prevents recording to work propperly. I hope\nthis is fixed soonish. As soon as it is, I will re-enable the recording\nfunctionality in Firefox.\n"
+msgstr "Firefox hat momentan einen Bug, der es verhindert, dass die Aufnahme korrekt funktioniert. Ich hoffe dies ist bald repariert. Sobald eine neue Version von Firefox mit dem Fix veröffentlicht wird, werde ich dies nochmals ausprobieren."
+
+#: web/templates/page/not_supported.html.eex:6
+msgid "The webcam recording functionality uses relatively new features and currently\nonly Chrome supports them. Please make sure you have the latest version of it\ninstalled. It is also not possible to record with a tablet or\nyour phone. You need to have a laptop. I hope this will change in the future,\nbut that depends on the browser manufacturers.\n"
+msgstr "Die Webcam Aufnahme benutzt relativ neue Funktionen und momentan unterstützt diese nur der Chrome Browser. Bitte stelle sicher das du die neueste Version von Chrome installiert hast. Es ist desweiteren nicht möglich, mit einem Tablet oder deinem Telefon aufzunehmen. Du brauchst einen Laptop. Ich hoffe dies ändert sich in Zukunft, aber dies hängt von den Browser-Herstellern ab."
+
+#: web/controllers/page_controller.ex:40
+#: web/templates/page/not_supported.html.eex:3
+msgid "Your browser is not supported"
+msgstr "Dein Webbrowser wird nicht unterstützt"

@@ -1,0 +1,24 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell">
+    <h1 class="so-landing--banner--headline"><%= gettext("Your browser is not supported") %></h1>
+
+    <p>
+      <%= gettext("""
+The webcam recording functionality uses relatively new features and currently
+only Chrome supports them. Please make sure you have the latest version of it
+installed. It is also not possible to record with a tablet or
+your phone. You need to have a laptop. I hope this will change in the future,
+but that depends on the browser manufacturers.
+""")
+       %>
+    </p>
+    <p>
+      <%= gettext("""
+Firefox currently has a bug that prevents recording to work propperly. I hope
+this is fixed soonish. As soon as it is, I will re-enable the recording
+functionality in Firefox.
+""") %>
+    </p>
+    </p>
+  </div>
+</div>

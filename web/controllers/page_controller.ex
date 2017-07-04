@@ -35,6 +35,12 @@ defmodule SignDict.PageController do
       searchbar: true
   end
 
+  def not_supported(conn, _params) do
+    render conn, "not_supported.html", layout: {SignDict.LayoutView, "app.html"},
+      title: gettext("Your browser is not supported"), supporter_footer: false,
+      searchbar: true
+  end
+
   defp sign_count do
     SignDict.Video
     |> where(state: "published")
