@@ -914,7 +914,7 @@ msgstr "Bitte bestätige deine Email-Adresse"
 msgid "Unable to confirm your email address."
 msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 
-#: web/models/user.ex:103
+#: web/models/user.ex:105
 msgid "already used"
 msgstr "wird schon benutzt"
 
@@ -947,7 +947,7 @@ msgstr "Neues Video aufnehmen"
 msgid "Review Queue"
 msgstr "Neue Videos"
 
-#: web/controllers/backend/review_controller.ex:20
+#: web/controllers/backend/review_controller.ex:23
 msgid "Video approved"
 msgstr "Video freigegeben"
 
@@ -955,7 +955,7 @@ msgstr "Video freigegeben"
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."
 
-#: web/controllers/backend/review_controller.ex:24
+#: web/controllers/backend/review_controller.ex:27
 msgid "Video could not be approved"
 msgstr "Video konnte nicht freigegeben werden"
 
@@ -1016,7 +1016,10 @@ msgstr "Leider konnte ich den Eintrag nicht finden, zudem du eine Gebärde aufne
 msgid "Add a new sign >"
 msgstr "Eine neue Gebärde hinzufügen >"
 
-#, fuzzy
 #: web/templates/page/index.html.eex:16
 msgid "Currenty %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden</a> beigetragen"
+
+#: web/email.ex:68
+msgid "Your video was approved :)"
+msgstr "Dein Video wurde freigegeben :)"
