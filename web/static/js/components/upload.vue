@@ -51,7 +51,7 @@
         <div class="upload--submit" v-else-if="currentUser">
           <p class="upload--submit--legal" v-locale="{ locale: $root.locale, tra: 'By pressing the upload button you will publish the video using the |CC-BY-SA 4.0| license.'}">
             <span></span>
-            <a href="creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"></a>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"></a>
             <span></span>
           </p>
           <div class="upload--submit--button">

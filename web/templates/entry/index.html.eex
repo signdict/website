@@ -5,6 +5,10 @@
         <%= gettext("Browse through SignDict") %>
       </h1>
 
+      <p>
+        <%= raw gettext("Feeling adventurous? Try <a href='%{random}'>a random entry</a>.", random: feeling_lucky_path(@conn, :index)) %>
+      </p>
+
       <div>
         <%= link "A", to: entry_path(@conn, :index, letter: "A") %> |
         <%= link "B", to: entry_path(@conn, :index, letter: "B") %> |
