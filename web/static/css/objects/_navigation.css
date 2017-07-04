@@ -6,7 +6,7 @@ $header_background_color: #fff;
   max-width: 48em;
   z-index: 3;
   background-color: $header_background_color;
-  min-height: 48px;
+  min-height: 64px;
 }
 
 .so-navigation__left {
@@ -21,6 +21,7 @@ $header_background_color: #fff;
   width: auto;
   height: 6em;
   position: absolute;
+  border: 0;
 }
 
 .so-navigation__about--no-logo {
@@ -60,7 +61,6 @@ $header_background_color: #fff;
   float: right;
   padding: 1em 2em;
   position: relative;
-  user-select: none;
 }
 
 .so-navigation__navicon {
