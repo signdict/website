@@ -16,21 +16,21 @@ $header_background_color: #fff;
   margin-bottom: 0;
 }
 
-.so-navigation--logo {
+.so-navigation__logo {
   margin-top: -1.5em;
   width: auto;
   height: 6em;
   position: absolute;
 }
 
-.so-navigation--about--no-logo {
+.so-navigation__about--no-logo {
   margin-top: 0.5em;
   color: $deactive;
   font-size: 0.9em;
   display: inline-block;
 }
 
-.so-navigation--about {
+.so-navigation__about {
   margin-left: 6em;
   margin-top: 0.5em;
   color: $deactive;

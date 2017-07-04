@@ -1,10 +1,10 @@
 <header class="so-navigation">
   <div class="so-navigation__left">
     <%= if assigns[:logo] == nil || assigns[:logo] == true do %>
-      <a href="/"><img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-navigation--logo"/></a>
-      <a href='/about' class='so-navigation--about'><%= gettext("About SignDict")%></a>
+      <a href="/"><img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-navigation__logo"/></a>
+      <a href='/about' class='so-navigation__about'><%= gettext("About SignDict")%></a>
     <% else %>
-      <a href='/about' class='so-navigation--about--no-logo'><%= gettext("About SignDict")%></a>
+      <a href='/about' class='so-navigation__about--no-logo'><%= gettext("About SignDict")%></a>
     <% end %>
   </div>
 
