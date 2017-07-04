@@ -690,7 +690,7 @@ msgstr ""
 msgid "Choose this variant"
 msgstr ""
 
-#: web/templates/entry/index.html.eex:53 web/templates/entry/show.html.eex:109
+#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:109
 #: web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr ""
@@ -1000,7 +1000,7 @@ msgstr ""
 msgid "All entries"
 msgstr ""
 
-#: web/templates/entry/index.html.eex:45
+#: web/templates/entry/index.html.eex:49
 msgid "Browse results for %{letter}"
 msgstr ""
 
@@ -1022,4 +1022,8 @@ msgstr ""
 
 #: web/email.ex:68
 msgid "Your video was approved :)"
+msgstr ""
+
+#: web/templates/entry/index.html.eex:9
+msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
 msgstr ""

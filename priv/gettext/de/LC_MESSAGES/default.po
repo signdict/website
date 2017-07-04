@@ -690,7 +690,7 @@ msgstr "Quelle:"
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: web/templates/entry/index.html.eex:53 web/templates/entry/show.html.eex:109
+#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:109
 #: web/templates/search/index.html.eex:26
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
@@ -1000,7 +1000,7 @@ msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge dies
 msgid "All entries"
 msgstr "Alle Einträge"
 
-#: web/templates/entry/index.html.eex:45
+#: web/templates/entry/index.html.eex:49
 msgid "Browse results for %{letter}"
 msgstr "Alle Einträge für %{letter}"
 
@@ -1023,3 +1023,7 @@ msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden<
 #: web/email.ex:68
 msgid "Your video was approved :)"
 msgstr "Dein Video wurde freigegeben :)"
+
+#: web/templates/entry/index.html.eex:9
+msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
+msgstr "Abenteuerlustig? Dann schau dir doch einen <a href='%{random}'>zufälligen Eintrag an</a>."
