@@ -837,7 +837,7 @@ msgstr "SignDict dankt auch folgenden Diensten und Menschen:"
 
 #: web/templates/page/supporter.html.eex:49
 msgid "for always beeing there for me."
-msgstr "weil Ihr immer für mich da seit."
+msgstr "weil Ihr immer für mich da seid."
 
 #: web/templates/page/supporter.html.eex:29
 msgid "supporter_rrbone"
