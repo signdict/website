@@ -11,7 +11,7 @@ services:
 env:
  global:
    - MIX_ENV=test
-   - PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
+   - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
    - TRAVIS_NODE_VERSION="6.10.1"
 
 cache:

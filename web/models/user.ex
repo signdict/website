@@ -44,6 +44,8 @@ defmodule SignDict.User do
 
     field :flags, {:array, :string}
 
+    field :locale, :string
+
     has_many :videos, SignDict.Video
 
     timestamps()
@@ -79,7 +81,7 @@ defmodule SignDict.User do
   def changeset(user, params \\ %{}) do
     user
     |> cast(params, [:email, :name, :biography, :password,
-                     :password_confirmation])
+                     :password_confirmation, :locale])
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_email
