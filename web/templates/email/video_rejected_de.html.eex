@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <%= @video.rejection_reason %>
+</p>
+
+<p>
   Falls du denkst das dies nicht zutrifft, antworte bitte auf diese Mail und
   wir werden uns das Video noch einmal ansehen.
 </p>

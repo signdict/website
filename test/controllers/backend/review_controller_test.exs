@@ -66,17 +66,29 @@ defmodule SignDict.Backend.ReviewControllerTest do
       video = insert(:video_with_entry, state: "waiting_for_review")
       conn = conn
              |> guardian_login(insert(:editor_user))
-             |> post(backend_review_path(conn, :reject_video, video.id))
+             |> put(backend_review_path(conn, :reject_video, video.id), %{video: %{rejection_reason: "wrong sign"}})
       assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry_id, video.id)
       assert get_flash(conn, :info) == "Video rejected"
-      assert Repo.get(Video, video.id).state == "rejected"
+      video = Repo.get(Video, video.id)
+      assert video.state == "rejected"
+      assert video.rejection_reason == "wrong sign"
     end
 
     test "throws error if state can't be changed", %{conn: conn} do
       video = insert(:video_with_entry, state: "uploaded")
       conn = conn
              |> guardian_login(insert(:editor_user))
-             |> post(backend_review_path(conn, :reject_video, video.id))
+             |> put(backend_review_path(conn, :reject_video, video.id), %{video: %{rejection_reason: "wrong sign"}})
+      assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry_id, video.id)
+      assert get_flash(conn, :error) == "Video could not be rejected"
+      assert Repo.get(Video, video.id).state == "uploaded"
+    end
+
+    test "throws error if reason is missing", %{conn: conn} do
+      video = insert(:video_with_entry, state: "uploaded")
+      conn = conn
+             |> guardian_login(insert(:editor_user))
+             |> put(backend_review_path(conn, :reject_video, video.id), %{video: %{rejection_reason: ""}})
       assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry_id, video.id)
       assert get_flash(conn, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
@@ -86,7 +98,7 @@ defmodule SignDict.Backend.ReviewControllerTest do
       video = insert(:video_with_entry, state: "waiting_for_review")
       conn
       |> guardian_login(insert(:editor_user))
-      |> post(backend_review_path(conn, :reject_video, video.id))
+      |> put(backend_review_path(conn, :reject_video, video.id), %{video: %{rejection_reason: "wrong sign"}})
       assert_delivered_with(subject: "Your video was rejected", to: [{video.user.name, video.user.email}])
     end
 
@@ -95,7 +107,7 @@ defmodule SignDict.Backend.ReviewControllerTest do
       User.changeset(video.user, %{locale: "de"}) |> Repo.update
       conn
       |> guardian_login(insert(:editor_user))
-      |> post(backend_review_path(conn, :reject_video, video.id))
+      |> put(backend_review_path(conn, :reject_video, video.id), %{video: %{rejection_reason: "wrong sign"}})
       assert_delivered_with(subject: "Dein Video wurde abgelehnt", to: [{video.user.name, video.user.email}])
     end
   end

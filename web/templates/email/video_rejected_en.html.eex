@@ -7,6 +7,10 @@
 </p>
 
 <p>
+  <%= @video.rejection_reason %>
+</p>
+
+<p>
   If you think this is an error, answer to this email and we will check
   again.
 </p>

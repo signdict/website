@@ -101,7 +101,7 @@ defmodule SignDict.VideoTest do
     end
 
     test "allows transition from waiting_for_review to rejected" do
-      v = insert(:video, state: "waiting_for_review")
+      v = insert(:video, state: "waiting_for_review", rejection_reason: "reason")
 
       assert Video.current_state(v) == :waiting_for_review
       assert Video.can_reject?(v)
@@ -110,12 +110,28 @@ defmodule SignDict.VideoTest do
     end
 
     test "allows transition from published to rejected" do
-      v = insert(:video, state: "published")
+      v = insert(:video, state: "published", rejection_reason: "reason")
 
       assert Video.current_state(v) == :published
       assert Video.can_reject?(v)
       {:ok, v} = Video.reject(v)
       assert Video.current_state(v) == :rejected
+    end
+
+    test "forbids transition from waiting_for_review to rejected if reason is nil" do
+      v = insert(:video, state: "waiting_for_review", rejection_reason: nil)
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_reject?(v)
+      assert {:error, _v} = Video.reject(v)
+    end
+
+    test "forbids transition from waiting_for_review to rejected if reason is empty" do
+      v = insert(:video, state: "waiting_for_review", rejection_reason: "")
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_reject?(v)
+      assert {:error, _v} = Video.reject(v)
     end
 
     test "the state traversal from start to end" do

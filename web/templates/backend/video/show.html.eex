@@ -15,10 +15,19 @@
     <div class="o-grid__cell">
       <div class="b-video-actions">
         <%= if SignDict.Video.can_publish?(@video) do %>
-          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), method: "post", class: "c-button") %>
+          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), class: "c-button") %>
         <% end %>
         <%= if SignDict.Video.can_reject?(@video) do %>
-          <%= button(gettext("Reject video"), to: backend_review_path(@conn, :reject_video, @video.id), method: "post", class: "c-button") %>
+          <%= form_for SignDict.Video.changeset(@video), backend_review_path(@conn, :reject_video, @video.id), fn f -> %>
+
+            <div class="o-form-element">
+              <%= label f, :rejection_reason, gettext("Rejection reason"), class: "c-label" %>
+              <%= text_input f, :rejection_reason, class: "c-field #{class_for_error(f, :rejection_reason)}" %>
+              <%= error_tag f, :rejection_reason%>
+            </div>
+
+            <%= submit gettext("Reject video"), class: "c-button" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -42,7 +51,14 @@
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.state") %></strong></div>
-    <div class="o-grid__cell"><%= @video.state %></div>
+    <div class="o-grid__cell">
+      <%= @video.state %>
+      <%= if SignDict.Video.current_state(@video) == :rejected do %>
+        <p>
+          <%= @video.rejection_reason %>
+        </p>
+      <% end %>
+    </div>
   </div>
 </div>
 
