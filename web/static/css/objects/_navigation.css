@@ -163,6 +163,12 @@ li.so-navigation__menu-item--user > a {
     margin-right: 1em;
   }
 
+  .so-navigation__menu > li > a,
+  .so-navigation__menu > li > form {
+    display: block;
+    padding: 0.75em 0.3em;
+  }
+
   .so-navigation__user-name {
     display: inline;
     margin-left: 0.5em;
