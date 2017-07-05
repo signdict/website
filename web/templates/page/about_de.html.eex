@@ -40,7 +40,7 @@
 
     <h1>Warum baue ich diese Seite?</h1>
 
-    <p><img src="/images/bodo.jpg" alt="Bodo" /><br />
+    <p><img class="o-image" src="/images/bodo.jpg" alt="Bodo" /><br />
       <sup>(Foto von <a href="http://carolinweinkopf.de/">Carolin Weinkopf</a>)</sup></p>
 
     <p>Ich bin ein <a href="https://en.wikipedia.org/wiki/Child_of_deaf_adult">CODA</a>, meine

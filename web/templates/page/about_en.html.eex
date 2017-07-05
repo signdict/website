@@ -36,7 +36,7 @@
     </p>
     <h1>Why do you build this?</h1>
     <p>
-      <img src="/images/bodo.jpg" alt="Bodo"/>
+      <img class="o-image" src="/images/bodo.jpg" alt="Bodo"/>
       <br/>
       <sup>
       (Photo by <a href="http://carolinweinkopf.de">Carolin Weinkopf</a>)
