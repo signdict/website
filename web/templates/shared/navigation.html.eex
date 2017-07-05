@@ -29,7 +29,7 @@
 
         <li>
           <%= form_tag(session_path(@conn, :delete, @current_user), method: :delete) %>
-            <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link so-nagvigation__menu-item--logout' />
+            <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link so-navigation__menu-item--logout' />
           </form>
         </li>
 
@@ -40,8 +40,9 @@
           <a href="?locale=de" data-turbolinks="false">Deutsch</a>
         <% end %>
         </li>
-        <li>
-          <a href="<%= user_path(@conn, :show, @current_user) %>"><%= img_tag SignDict.User.avatar_url(@current_user), alt: gettext("The avatar image of this user") %></a>
+
+        <li class="so-navigation__menu-item--user">
+          <a href="<%= user_path(@conn, :show, @current_user) %>"><%= img_tag SignDict.User.avatar_url(@current_user), alt: gettext("The avatar image of this user"), class: "so-navigation__user-avatar" %><span class="so-navigation__user-name"><%= @current_user.name %></span></a>
         </li>
 
       <% else %>

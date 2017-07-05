@@ -135,6 +135,26 @@ $header_background_color: #fff;
   top: 0;
 }
 
+li.so-navigation__menu-item--user > a {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.so-navigation__user-avatar {
+  max-height: 2.5em;
+  vertical-align: middle;
+  border: 0;
+}
+
+.so-navigation__user-name {
+  display: none;
+}
+
+.so-navigation__menu-item--logout {
+  width: 100%;
+  text-align: left;
+}
+
 @media all and (max-width: 48em) {
   .so-navigation {
     min-height: 48px;
@@ -142,6 +162,11 @@ $header_background_color: #fff;
 
   .so-navigation--logo {
     margin-right: 1em;
+  }
+
+  .so-navigation__user-name {
+    display: inline;
+    margin-left: 0.5em;
   }
 }
 
