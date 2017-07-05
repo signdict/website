@@ -2,13 +2,14 @@
   <div class="so-searchbar">
     <div class="o-container o-container--medium">
       <form action="/search">
-        <div class="o-grid o-grid--wrap">
-          <div class="o-grid__cell o-grid__cell--width-80@medium o-grid__cell--width-100 so-searchbar--input-cell">
-            <input class="so-searchbar--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search in SignDict...") %>" value="<%= @conn.params["q"] %>"/>
-          </div>
-          <div class="o-grid__cell so-searchbar--submit-cell">
-            <input class="so-searchbar--submit" type="submit" value="<%= gettext("Search") %> &#8250;" />
-          </div>
+        <div class="so-searchbar--container">
+          <input class="so-searchbar--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search in SignDict...") %>" value="<%= @conn.params["q"] %>"/>
+          <button class="so-searchbar--submit" type="submit">
+            <i class="fa fa-search so-searchbar--icon" aria-hidden="true"></i>
+            <span class="so-searchbar--text">
+              <%= gettext("Search") %> &#8250;
+            </span>
+          </button>
         </div>
       </form>
     </div>

@@ -4,17 +4,18 @@
   padding: 2em 0em;
 }
 
+.so-searchbar--container {
+  display: flex;
+  padding: 0 1em;
+}
+
 .so-searchbar--input {
   border: none;
   border-radius: 0;
   font-size: 1em;
   padding: 0.8em 1em;
-  width: 100%;
+  width: 85%;
   height: 3em;
-}
-
-.o-grid__cell.so-searchbar--submit-cell {
-  padding-left: 0;
 }
 
 .so-searchbar--submit {
@@ -25,30 +26,35 @@
   font-weight: 600;
   cursor: pointer;
   height: 3em;
-  width: 100%;
+  width: 15%;
+  margin-left: 1em;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+.fa.so-searchbar--icon {
+  display: none;
+}
+
 @media all and (max-width: 48em) {
   .so-searchbar {
-    padding-right: 1em;
-    padding-left: 1em;
     padding-bottom: 2em;
   }
 
-  .o-grid__cell.so-searchbar--input-cell {
-    padding-left: 0;
-    padding-right: 0;
+  .so-searchbar--submit {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0;
   }
 
-  .so-searchbar--submit {
-    margin-top: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-    width: auto;
+  .so-searchbar--text {
+    display: none;
+  }
+
+  .fa.so-searchbar--icon {
+    display: inline-block;
   }
 }
 
