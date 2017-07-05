@@ -14,6 +14,8 @@
 <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
 <link rel="icon" href="/favicon_64.png" sizes="64x64">
 
+<link href="https://cdn.jwplayer.com" rel="preconnect" crossorigin>
+
 <%= if is_nil(assigns[:appjs]) || assigns[:appjs] do %>
   <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <% end %>
