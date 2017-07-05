@@ -36,9 +36,9 @@ gulp.task('assets', function() {
 
 gulp.task('css', function () {
   var plugins = [
-    autoprefixer({browsers: ['last 3 versions']}),
     require('postcss-partial-import'),
     require('postcss-advanced-variables'),
+    autoprefixer({browsers: ['last 3 versions']}),
     cssnano()
   ];
   return gulp.src('web/static/css/*.css')
