@@ -60,7 +60,7 @@ defmodule SignDict.Email do
   end
 
   def video_approved(video) do
-    video = video |> Repo.preload(:user) |> Repo.preload(:entry)
+    video  = video |> Repo.preload(:user) |> Repo.preload(:entry)
     locale = video.user.locale || Application.get_env(:sign_dict, SignDict.Gettext)[:default_locale]
     Gettext.with_locale SignDict.Gettext, locale, fn ->
       base_email()
@@ -70,6 +70,20 @@ defmodule SignDict.Email do
       |> assign(:user, video.user)
       |> assign(:entry, video.entry)
       |> render(String.to_atom("video_approved_#{locale}"))
+    end
+  end
+
+  def video_rejected(video) do
+    video  = video |> Repo.preload(:user) |> Repo.preload(:entry)
+    locale = video.user.locale || Application.get_env(:sign_dict, SignDict.Gettext)[:default_locale]
+    Gettext.with_locale SignDict.Gettext, locale, fn ->
+      base_email()
+      |> to({video.user.name, video.user.email})
+      |> subject(gettext("Your video was rejected"))
+      |> assign(:video, video)
+      |> assign(:user, video.user)
+      |> assign(:entry, video.entry)
+      |> render(String.to_atom("video_rejected_#{locale}"))
     end
   end
 

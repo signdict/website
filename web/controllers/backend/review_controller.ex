@@ -29,9 +29,30 @@ defmodule SignDict.Backend.ReviewController do
     end
   end
 
+  def reject_video(conn, %{"video_id" => video_id}) do
+    video = Repo.get_by(Video, id: video_id)
+    case Video.reject(video) do
+      {:ok, video} ->
+        inform_user_of_rejection(video)
+        conn
+        |> put_flash(:info, gettext("Video rejected"))
+        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+      {:error, _video} ->
+        conn
+        |> put_flash(:error, gettext("Video could not be rejected"))
+        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+    end
+  end
+
   defp inform_user_of_approval(video) do
     video
     |> Email.video_approved
+    |> Mailer.deliver_later
+  end
+
+  defp inform_user_of_rejection(video) do
+    video
+    |> Email.video_rejected
     |> Mailer.deliver_later
   end
 

@@ -15,7 +15,10 @@
     <div class="o-grid__cell">
       <div class="b-video-actions">
         <%= if SignDict.Video.can_publish?(@video) do %>
-          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), method: "get", class: "c-button") %>
+          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), method: "post", class: "c-button") %>
+        <% end %>
+        <%= if SignDict.Video.can_reject?(@video) do %>
+          <%= button(gettext("Reject video"), to: backend_review_path(@conn, :reject_video, @video.id), method: "post", class: "c-button") %>
         <% end %>
       </div>
     </div>

@@ -1040,3 +1040,15 @@ msgstr ""
 #: web/templates/page/not_supported.html.eex:3
 msgid "Your browser is not supported"
 msgstr ""
+
+#: web/controllers/backend/review_controller.ex:42
+msgid "Video could not be rejected"
+msgstr ""
+
+#: web/controllers/backend/review_controller.ex:38
+msgid "Video rejected"
+msgstr ""
+
+#: web/email.ex:82
+msgid "Your video was rejected"
+msgstr ""

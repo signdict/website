@@ -1040,3 +1040,15 @@ msgstr "Die Webcam Aufnahme benutzt relativ neue Funktionen und momentan unterst
 #: web/templates/page/not_supported.html.eex:3
 msgid "Your browser is not supported"
 msgstr "Dein Webbrowser wird nicht unterstützt"
+
+#: web/controllers/backend/review_controller.ex:42
+msgid "Video could not be rejected"
+msgstr "Das Video konnte nicht abgelehnt werden"
+
+#: web/controllers/backend/review_controller.ex:38
+msgid "Video rejected"
+msgstr "Video abgelehnt"
+
+#: web/email.ex:82
+msgid "Your video was rejected"
+msgstr "Dein Video wurde abgelehnt"

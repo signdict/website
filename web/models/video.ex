@@ -6,7 +6,7 @@ defmodule SignDict.Video do
   alias SignDict.Vote
 
   @states [:created, :uploaded, :prepared, :transcoding, :waiting_for_review,
-           :published, :deleted]
+           :published, :deleted, :rejected]
 
   schema "videos" do
     field :state, :string, default: "created"
@@ -50,14 +50,19 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :publish, %{from: [:waiting_for_review],
+    defevent :publish, %{from: [:waiting_for_review, :rejected],
                          to: :published}, fn(changeset) ->
+      changeset |> Repo.update()
+    end
+
+    defevent :reject, %{from: [:waiting_for_review, :published],
+                        to: :rejected}, fn(changeset) ->
       changeset |> Repo.update()
     end
 
     # Allow deletion from every state:
     defevent :delete, %{from: [:created, :uploaded, :transcoding,
-                               :waiting_for_review, :published],
+                               :waiting_for_review, :published, :rejected],
                         to: :deleted}, fn(changeset) ->
       changeset |> Repo.update()
     end
