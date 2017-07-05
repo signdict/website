@@ -185,7 +185,7 @@ msgstr ""
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:26
 #: web/templates/backend/user/show.html.eex:42
-#: web/templates/backend/video/show.html.eex:112
+#: web/templates/backend/video/show.html.eex:131
 #: web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
@@ -342,7 +342,7 @@ msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
 #: web/templates/backend/shared/videos_table.html.eex:6
-#: web/templates/backend/video/show.html.eex:27
+#: web/templates/backend/video/show.html.eex:39
 msgid "Entry"
 msgstr ""
 
@@ -361,20 +361,20 @@ msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
-#: web/templates/backend/video/show.html.eex:34
+#: web/templates/backend/video/show.html.eex:46
 #: web/templates/entry/show.html.eex:76
 msgid "User"
 msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:12
 #: web/templates/backend/video/form.html.eex:15
-#: web/templates/backend/video/show.html.eex:48
+#: web/templates/backend/video/show.html.eex:67
 msgid "video.copyright"
 msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:13
 #: web/templates/backend/video/form.html.eex:21
-#: web/templates/backend/video/show.html.eex:55
+#: web/templates/backend/video/show.html.eex:74
 msgid "video.license"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 
 #: web/templates/backend/shared/videos_table.html.eex:11
 #: web/templates/backend/video/form.html.eex:9
-#: web/templates/backend/video/show.html.eex:41
+#: web/templates/backend/video/show.html.eex:53
 msgid "video.state"
 msgstr ""
 
@@ -449,7 +449,7 @@ msgid "entry.language"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:27
-#: web/templates/backend/video/show.html.eex:62
+#: web/templates/backend/video/show.html.eex:81
 msgid "video.original_href"
 msgstr ""
 
@@ -644,17 +644,17 @@ msgstr[1] ""
 
 #: web/templates/backend/shared/videos_table.html.eex:14
 #: web/templates/backend/video/form.html.eex:45
-#: web/templates/backend/video/show.html.eex:99
+#: web/templates/backend/video/show.html.eex:118
 msgid "video.plays"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:39
-#: web/templates/backend/video/show.html.eex:86
+#: web/templates/backend/video/show.html.eex:105
 msgid "video.thumbnail_url"
 msgstr ""
 
 #: web/templates/backend/video/form.html.eex:33
-#: web/templates/backend/video/show.html.eex:73
+#: web/templates/backend/video/show.html.eex:92
 msgid "video.video_url"
 msgstr ""
 
@@ -745,7 +745,7 @@ msgstr ""
 msgid "The email was sent."
 msgstr ""
 
-#: web/templates/backend/video/show.html.eex:106
+#: web/templates/backend/video/show.html.eex:125
 msgid "video.metadata"
 msgstr ""
 
@@ -1039,4 +1039,24 @@ msgstr ""
 #: web/controllers/page_controller.ex:40
 #: web/templates/page/not_supported.html.eex:3
 msgid "Your browser is not supported"
+msgstr ""
+
+#: web/controllers/backend/review_controller.ex:44
+msgid "Video could not be rejected"
+msgstr ""
+
+#: web/controllers/backend/review_controller.ex:39
+msgid "Video rejected"
+msgstr ""
+
+#: web/email.ex:82
+msgid "Your video was rejected"
+msgstr ""
+
+#: web/templates/backend/video/show.html.eex:29
+msgid "Reject video"
+msgstr ""
+
+#: web/templates/backend/video/show.html.eex:24
+msgid "Rejection reason"
 msgstr ""

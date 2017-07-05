@@ -6,7 +6,7 @@ defmodule SignDict.Video do
   alias SignDict.Vote
 
   @states [:created, :uploaded, :prepared, :transcoding, :waiting_for_review,
-           :published, :deleted]
+           :published, :deleted, :rejected]
 
   schema "videos" do
     field :state, :string, default: "created"
@@ -19,6 +19,8 @@ defmodule SignDict.Video do
     field :metadata, :map
 
     field :vote_count, :integer, virtual: true
+
+    field :rejection_reason, :string
 
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
@@ -50,14 +52,21 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end
 
-    defevent :publish, %{from: [:waiting_for_review],
+    defevent :publish, %{from: [:waiting_for_review, :rejected],
                          to: :published}, fn(changeset) ->
       changeset |> Repo.update()
     end
 
+    defevent :reject, %{from: [:waiting_for_review, :published],
+                        to: :rejected}, fn(changeset) ->
+      changeset
+      |> validate_rejection_reason
+      |> Repo.update()
+    end
+
     # Allow deletion from every state:
     defevent :delete, %{from: [:created, :uploaded, :transcoding,
-                               :waiting_for_review, :published],
+                               :waiting_for_review, :published, :rejected],
                         to: :deleted}, fn(changeset) ->
       changeset |> Repo.update()
     end
@@ -67,7 +76,7 @@ defmodule SignDict.Video do
     struct
     |> cast(params, [:state, :copyright, :license, :original_href,
                      :user_id, :entry_id, :video_url, :thumbnail_url,
-                     :plays, :metadata])
+                     :plays, :metadata, :rejection_reason])
     |> validate_required([:state, :copyright, :license, :original_href,
                           :entry_id, :user_id, :video_url, :thumbnail_url])
     |> foreign_key_constraint(:entry_id)
@@ -109,6 +118,15 @@ defmodule SignDict.Video do
         error_msg = "must be in the list of " <> Enum.join(@states, ", ")
         add_error(changeset, :state, error_msg)
       end
+    else
+      changeset
+    end
+  end
+
+  defp validate_rejection_reason(changeset) do
+    reason = get_field(changeset, :rejection_reason)
+    if is_nil(reason) || String.length(reason) == 0 do
+      add_error(changeset, :rejection_reason, "should not be empty")
     else
       changeset
     end

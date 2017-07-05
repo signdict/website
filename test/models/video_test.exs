@@ -35,11 +35,11 @@ defmodule SignDict.VideoTest do
       refute changeset.valid?
 
       [state: errmsg] = errors_on(%Video{}, attrs)
-      assert errmsg == "must be in the list of created, uploaded, prepared, transcoding, waiting_for_review, published, deleted"
+      assert errmsg == "must be in the list of created, uploaded, prepared, transcoding, waiting_for_review, published, deleted, rejected"
     end
 
     test "checks if a state is valid" do
-      Enum.each(~w(uploaded transcoding waiting_for_review published deleted), fn s ->
+      Enum.each(~w(uploaded transcoding waiting_for_review published deleted rejected), fn s ->
         assert Video.valid_state?(s)
       end)
     end
@@ -90,6 +90,48 @@ defmodule SignDict.VideoTest do
       assert Video.current_state(v) == :waiting_for_review
       assert Video.can_publish?(v)
       assert Video.can_delete?(v)
+    end
+
+    test "allow transition from rejected to published and deleted" do
+      v = %Video{state: "rejected"}
+
+      assert Video.current_state(v) == :rejected
+      assert Video.can_publish?(v)
+      assert Video.can_delete?(v)
+    end
+
+    test "allows transition from waiting_for_review to rejected" do
+      v = insert(:video, state: "waiting_for_review", rejection_reason: "reason")
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_reject?(v)
+      {:ok, v} = Video.reject(v)
+      assert Video.current_state(v) == :rejected
+    end
+
+    test "allows transition from published to rejected" do
+      v = insert(:video, state: "published", rejection_reason: "reason")
+
+      assert Video.current_state(v) == :published
+      assert Video.can_reject?(v)
+      {:ok, v} = Video.reject(v)
+      assert Video.current_state(v) == :rejected
+    end
+
+    test "forbids transition from waiting_for_review to rejected if reason is nil" do
+      v = insert(:video, state: "waiting_for_review", rejection_reason: nil)
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_reject?(v)
+      assert {:error, _v} = Video.reject(v)
+    end
+
+    test "forbids transition from waiting_for_review to rejected if reason is empty" do
+      v = insert(:video, state: "waiting_for_review", rejection_reason: "")
+
+      assert Video.current_state(v) == :waiting_for_review
+      assert Video.can_reject?(v)
+      assert {:error, _v} = Video.reject(v)
     end
 
     test "the state traversal from start to end" do

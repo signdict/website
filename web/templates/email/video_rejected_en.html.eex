@@ -1,0 +1,20 @@
+<p>
+  Hi <%= @user.name %>,
+</p>
+
+<p>
+  Your video for "<%= @entry.text %>" was rejected.
+</p>
+
+<p>
+  <%= @video.rejection_reason %>
+</p>
+
+<p>
+  If you think this is an error, answer to this email and we will check
+  again.
+</p>
+
+<p>
+  Greetings from the SignDict team.
+</p>
