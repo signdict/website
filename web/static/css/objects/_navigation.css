@@ -50,7 +50,8 @@ $header_background_color: #fff;
   max-height: 0;
 }
 
-.so-navigation__menu li a {
+.so-navigation__menu > li > a,
+.so-navigation__menu > li > form {
   display: block;
   padding: 0.75em 1em;
 }
@@ -111,7 +112,8 @@ $header_background_color: #fff;
   display: block;
 }
 
-.so-navigation__menu-btn:checked ~ .so-navigation__menu li a:hover {
+.so-navigation__menu-btn:checked ~ .so-navigation__menu li:hover,
+.so-navigation__menu-btn:checked ~ .so-navigation__menu li form:hover {
   background-color: $light_background;
 }
 

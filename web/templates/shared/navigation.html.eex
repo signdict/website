@@ -29,7 +29,7 @@
 
         <li>
           <%= form_tag(session_path(@conn, :delete, @current_user), method: :delete) %>
-            <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link' />
+            <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link so-nagvigation__menu-item--logout' />
           </form>
         </li>
 
