@@ -175,10 +175,6 @@ li.so-navigation__menu-item--user > a {
     text-align: right;
   }
 
-  .so-header li {
-    float: left;
-  }
-
   .so-navigation__menu {
     clear: none;
     float: right;
