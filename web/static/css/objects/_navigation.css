@@ -42,6 +42,7 @@ $header_background_color: #fff;
 .so-navigation__menu {
   margin: 0;
   padding: 0;
+  padding-right: 1em;
   list-style: none;
   overflow: hidden;
   background-color: $header_background_color;
