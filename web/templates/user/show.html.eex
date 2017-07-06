@@ -54,6 +54,8 @@
       </div>
     <% end %>
 
-    <%= pagination_links @videos %>
+    <%= if @videos.total_entries > 0 do %>
+      <%= pagination_links @videos %>
+    <% end %>
   </div>
 </div>
