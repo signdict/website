@@ -27,12 +27,33 @@
     <hr class="so-user-show--seperator"/>
 
     <div class="so-user-show--stats--number">
-      <%= @video_count %>
+      <%= @videos.total_entries %>
     </div>
     <div class="so-user-show--stats--label">
       <%= gettext("Uploaded videos") %>
     </div>
 
     <hr class="so-user-show--seperator"/>
+
+    <%= for video <- @videos.entries do %>
+      <div class="o-grid o-grid--wrap">
+        <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--width-30">
+          <a href="<%= entry_path(@conn, :show, video.entry) %>">
+            <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
+          </a>
+        </div>
+        <div class="o-grid__cell">
+          <h2>
+            <%= link video.entry.text, to: entry_path(@conn, :show, video.entry), class: "so-search-result--link" %>
+          </h2>
+
+          <%= if String.length(video.entry.description) > 0 do %>
+            <p><%= video.entry.description %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= pagination_links @videos %>
   </div>
 </div>
