@@ -33,6 +33,7 @@
 <script>
 import browser from 'detect-browser';
 
+const MAX_RECORDING_SECONDS = 60 * 5; // 5 Minutes maximum recording time
 var streamHandle;
 var mediaRecorder;
 var recordedBlobs;
@@ -94,9 +95,16 @@ function handleStop(event) {
   router.push({path: "/cutter"});
 }
 
-function handleDataAvailable(event) {
+function handleDataAvailable(event, context) {
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
+    let duration = (new Date() - context.recordingStartedAt) / 1000;
+    if (duration > MAX_RECORDING_SECONDS) {
+      context.stopRecording();
+      alert(
+        context.$root.$t("You cannot record longer than 5 minutes.")
+      );
+    }
   }
 }
 
@@ -121,7 +129,9 @@ function startRecording(context) {
     return;
   }
   mediaRecorder.onstop = handleStop;
-  mediaRecorder.ondataavailable = handleDataAvailable;
+  mediaRecorder.ondataavailable = function(event) {
+    handleDataAvailable(event, context);
+  };
   mediaRecorder.start(50);
 }
 

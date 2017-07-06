@@ -26,5 +26,6 @@ export default {
   'Upload video': 'Video hochladen',
   'Uploading': 'Sende Video',
   'By pressing the upload button you will publish the video using the |CC-BY-SA 4.0| license.': 'Nachdem du auf den "hochladen" Knopf gedrückst hast, veröffentlichst du das Video unter der |CC-BY-SA 4.0| Lizenz.',
+  'You cannot record longer than 5 minutes.': 'Du kannst nicht länger als 5 Minuten aufnehmen.',
 }
 
