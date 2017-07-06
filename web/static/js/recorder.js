@@ -27,7 +27,7 @@ document.onreadystatechange = function () {
       routes
     })
 
-    vue = new Vue({
+    new Vue({
       el: '#app',
       router,
       store,
