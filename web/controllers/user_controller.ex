@@ -5,10 +5,10 @@ defmodule SignDict.UserController do
 
   alias Ecto.Changeset
   alias SignDict.Email
-  alias SignDict.Entry
   alias SignDict.Mailer
   alias SignDict.Services.OpenGraph
   alias SignDict.User
+  alias SignDict.Video
 
   plug :load_and_authorize_resource, model: User
 
@@ -35,21 +35,12 @@ defmodule SignDict.UserController do
     end
   end
 
-  def show(conn, _params) do
-    video_count = SignDict.Video
-                  |> where(user_id: ^conn.assigns.user.id)
-                  |> Repo.aggregate(:count, :id)
-
-    entries = Entry.active_entries
-              |> limit(10)
-              |> Entry.with_current_video
-              |> Repo.all
-
+  def show(conn, params) do
+    user = conn.assigns.user
     render(conn, "show.html",
-      user: conn.assigns.user,
+      user: user,
       searchbar: true,
-      entries: entries,
-      video_count: video_count,
+      videos: load_videos(user, params),
       ogtags: OpenGraph.to_metadata(conn.assigns.user),
       title: gettext("User %{user}", user: conn.assigns.user.name)
     )
@@ -79,6 +70,15 @@ defmodule SignDict.UserController do
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
+  end
+
+  defp load_videos(user, params) do
+    query = from v in Video,
+      where: v.state == ^"published" and v.user_id == ^user.id,
+      join: e in assoc(v, :entry),
+      order_by: e.text,
+      preload: :entry
+    Repo.paginate(query, params)
   end
 
   defp sent_confirm_email(conn, user) do

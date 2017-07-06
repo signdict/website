@@ -54,6 +54,17 @@ defmodule SignDict.UserControllerTest do
       conn = get conn, user_path(conn, :show, user)
       assert html_response(conn, 200) =~ user.name
     end
+
+    test "it shows the entries of that specific user", %{conn: conn} do
+      insert :video_with_entry
+      video_a  = insert :video_with_entry
+      video_b  = insert :video_with_entry, %{user: video_a.user}
+      _video_c = insert :video_with_entry, %{user: video_a.user, state: "uploaded"}
+      conn    = get conn, user_path(conn, :show, video_a.user)
+      assert html_response(conn, 200) =~ video_a.user.name
+      assert conn.assigns.videos.total_entries == 2
+      assert [video_b.id, video_a.id] == Enum.map(conn.assigns.videos.entries, fn(v) -> v.id end)
+    end
   end
 
   describe "edit/2" do
