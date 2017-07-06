@@ -1,0 +1,47 @@
+$_letter_spacing_left: 0.35em;
+
+.so-entry-index__letter-links {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: -$_letter_spacing_left;
+  width: 100%;
+}
+
+.so-entry-index__letter-links > a {
+  white-space: nowrap;
+  margin-left: $_letter_spacing_left;
+}
+
+.so-entry-index__letter-links > a:after {
+  content: ' | ';
+  display: inline-block;
+  color: $dark_font;
+  margin-left: $_letter_spacing_left;
+}
+
+.so-entry-index__letter-links > a:last-child:after {
+  display: none;
+}
+
+@media all and (max-width: 48em) {
+  .so-entry-index__letter-links > a {
+    padding: 0.6em 0.15em;
+    margin-left: $_letter_spacing_left;
+    margin-top: 0.75em;
+
+    background-color: $light_background;
+    text-align: center;
+
+    width: 10%;
+    min-width: 2em;
+  }
+
+  .so-entry-index__letter-links > a:hover {
+    background-color: $dimmed_background;
+  }
+
+  .so-entry-index__letter-links > a:after {
+    display: none;
+  }
+}
