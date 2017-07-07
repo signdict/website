@@ -4,13 +4,13 @@
       <header>
         <div class="o-grid o-grid--wrap">
           <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
-            <a href="/"><img src='/images/logo.svg' :alt="$t('SignDict Logo')" class="so-navigation--logo"/></a>
-            <a href='/about' class='so-navigation--about'>{{ $t('About SignDict') }}</a>
+            <a href="/"><img src='/images/logo.svg' :alt="$t('SignDict Logo')" class="so-navigation__logo"/></a>
+            <a href='/about' class='so-navigation__about'>{{ $t('About SignDict') }}</a>
           </div>
         </div>
       </header>
     </div>
-    <div class="sc-main o-container o-container--medium">
+    <div class="sc-main o-container o-container--medium upload--content">
       <div class="o-grid__cell o-grid__cell--width-100">
         <h1>{{ $t('Nearly done...') }}</h1>
         <p>
@@ -319,6 +319,10 @@ export default {
 <style lang="sass">
 .upload {
   padding: 1em;
+}
+
+.upload--content {
+  margin-top: 4em;
 }
 
 .upload--player {
