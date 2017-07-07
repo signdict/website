@@ -4,6 +4,7 @@ defmodule SignDict.Backend.ReviewControllerTest do
 
   import SignDict.Factory
 
+  alias SignDict.Entry
   alias SignDict.User
   alias SignDict.Video
 
@@ -31,6 +32,15 @@ defmodule SignDict.Backend.ReviewControllerTest do
       assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry_id, video.id)
       assert get_flash(conn, :info) == "Video approved"
       assert Repo.get(Video, video.id).state == "published"
+    end
+
+    test "it sets the current_video_id of the entry" , %{conn: conn} do
+      video = insert(:video_with_entry, state: "waiting_for_review")
+      conn
+      |> guardian_login(insert(:editor_user))
+      |> post(backend_review_path(conn, :approve_video, video.id))
+      entry = Repo.get(Entry, video.entry_id)
+      assert entry.current_video_id == video.id
     end
 
     test "throws error if state can't be changed", %{conn: conn} do

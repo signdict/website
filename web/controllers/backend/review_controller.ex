@@ -1,9 +1,10 @@
 defmodule SignDict.Backend.ReviewController do
   use SignDict.Web, :controller
 
-  alias SignDict.Video
   alias SignDict.Email
+  alias SignDict.Entry
   alias SignDict.Mailer
+  alias SignDict.Video
 
   def index(conn, params) do
     videos = Video
@@ -18,7 +19,9 @@ defmodule SignDict.Backend.ReviewController do
     video = Repo.get_by(Video, id: video_id)
     case Video.publish(video) do
       {:ok, video} ->
+        update_entry(video)
         inform_user_of_approval(video)
+
         conn
         |> put_flash(:info, gettext("Video approved"))
         |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
@@ -56,6 +59,11 @@ defmodule SignDict.Backend.ReviewController do
     video
     |> Email.video_rejected
     |> Mailer.deliver_later
+  end
+
+  defp update_entry(video) do
+    entry = Repo.get(Entry, video.entry_id)
+    Entry.update_current_video(entry)
   end
 
 end
