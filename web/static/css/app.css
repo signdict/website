@@ -19,6 +19,7 @@
 @import "objects/_voting-box.css";
 @import "objects/_welcome.css";
 @import "vendor/_font-awesome.min.css";
+@import "vendor/_socialbuttons.css";
 
 a {
   color: $highlight;

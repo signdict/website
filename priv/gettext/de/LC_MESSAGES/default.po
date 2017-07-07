@@ -47,18 +47,18 @@ msgstr "Bitte fülle das Formular aus"
 
 #: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
-#: web/templates/shared/navigation.html.eex:37 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:50 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr "Registrieren"
 
 #: web/templates/layout/backend.html.eex:35 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:40
+#: web/templates/shared/navigation.html.eex:54
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: web/templates/layout/backend.html.eex:32
-#: web/templates/shared/navigation.html.eex:22
+#: web/templates/shared/navigation.html.eex:32
 msgid "Sign out"
 msgstr "Abmelden"
 
@@ -249,13 +249,13 @@ msgstr "Willkommen im Dashboard"
 msgid "Update"
 msgstr "Speichern"
 
-#: web/controllers/user_controller.ex:76
+#: web/controllers/user_controller.ex:67
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:33
+#: web/templates/shared/navigation.html.eex:45
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
@@ -362,7 +362,7 @@ msgstr "Neues Video"
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
 #: web/templates/backend/video/show.html.eex:46
-#: web/templates/entry/show.html.eex:76
+#: web/templates/entry/show.html.eex:90
 msgid "User"
 msgstr "Benutzer"
 
@@ -461,8 +461,8 @@ msgstr "Eintrag erfolgreich gelöscht."
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
 
-#: web/templates/shared/navigation.html.eex:6
-#: web/templates/shared/navigation.html.eex:8
+#: web/templates/shared/navigation.html.eex:5
+#: web/templates/shared/navigation.html.eex:7
 msgid "About SignDict"
 msgstr "Über SignDict"
 
@@ -550,7 +550,7 @@ msgid "Want to stay up to date?"
 msgstr "Willst du bei Neuigkeiten informiert werden?"
 
 #: web/templates/page/index.html.eex:31
-#: web/templates/shared/searchbar.html.eex:7
+#: web/templates/shared/searchbar.html.eex:6
 msgid "Enter word to search"
 msgstr "Wort nach dem gesucht werden soll"
 
@@ -564,7 +564,7 @@ msgstr "Blog"
 
 #: web/templates/embed/show.html.eex:2 web/templates/page/index.html.eex:8
 #: web/templates/page/welcome.html.eex:5
-#: web/templates/shared/navigation.html.eex:5
+#: web/templates/shared/navigation.html.eex:4
 msgid "SignDict Logo"
 msgstr "SignDict Logo"
 
@@ -608,7 +608,7 @@ msgstr "Bitte beschreibe dich ein bisschen"
 msgid "You only need to enter your password here if you want to change it. Otherwise keep it empty."
 msgstr "Du musst hier nur dein Passwort eintragen, wenn du es ändern willst. Ansonsten kannst du diese Felder leer lassen."
 
-#: web/templates/shared/searchbar.html.eex:7
+#: web/templates/shared/searchbar.html.eex:6
 msgid "Search in SignDict..."
 msgstr "SignDict durchsuchen..."
 
@@ -658,11 +658,11 @@ msgstr "Vorschaubild"
 msgid "video.video_url"
 msgstr "Video"
 
-#: web/templates/entry/show.html.eex:133
+#: web/templates/entry/show.html.eex:147
 msgid "No other variations"
 msgstr "Keine weiteren Variationen"
 
-#: web/templates/entry/show.html.eex:101
+#: web/templates/entry/show.html.eex:115
 msgid "Variations »%{entry}«"
 msgstr "Varianten »%{entry}«"
 
@@ -670,44 +670,44 @@ msgstr "Varianten »%{entry}«"
 msgid "today"
 msgstr "heute"
 
-#: web/templates/entry/show.html.eex:119
+#: web/templates/entry/show.html.eex:133
 msgid "${time} ago"
 msgstr "Vor ${time}"
 
-#: web/templates/entry/show.html.eex:82
+#: web/templates/entry/show.html.eex:96
 msgid "Date of upload"
 msgstr "Uploaddatum"
 
-#: web/templates/entry/show.html.eex:116
+#: web/templates/entry/show.html.eex:130
 msgid "by"
 msgstr "von"
 
-#: web/templates/entry/show.html.eex:89
+#: web/templates/entry/show.html.eex:103
 msgid "Source:"
 msgstr "Quelle:"
 
-#: web/templates/entry/show.html.eex:108
+#: web/templates/entry/show.html.eex:122
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:109
-#: web/templates/search/index.html.eex:26
+#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:123
+#: web/templates/search/index.html.eex:26 web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
-#: web/templates/entry/show.html.eex:65
+#: web/templates/entry/show.html.eex:79
 msgid "Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow."
 msgstr "Zeigt dieses Video die von dir benutzte Gebärde für das Wort? Wenn ja, dann stimme für dies ab mit klick auf den Pfeil."
 
-#: web/templates/entry/show.html.eex:37
+#: web/templates/entry/show.html.eex:51
 msgid "Don't vote this video up"
 msgstr "Nicht für dieses Video stimmen"
 
-#: web/templates/entry/show.html.eex:45
+#: web/templates/entry/show.html.eex:59
 msgid "Vote this video up"
 msgstr "Für dieses Video stimmen."
 
-#: web/templates/entry/show.html.eex:63
+#: web/templates/entry/show.html.eex:77
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."
 
@@ -753,7 +753,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr "Über"
 
-#: web/controllers/user_controller.ex:65
+#: web/controllers/user_controller.ex:56
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
@@ -775,7 +775,7 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:88
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:90
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
@@ -783,7 +783,7 @@ msgstr "Gebärde für %{sign}"
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
-#: web/controllers/user_controller.ex:54
+#: web/controllers/user_controller.ex:45
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
@@ -791,7 +791,7 @@ msgstr "Nutzer %{user}"
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: web/templates/entry/show.html.eex:61
+#: web/templates/entry/show.html.eex:75
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
@@ -859,7 +859,7 @@ msgstr "Details >"
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
-#: web/controllers/entry_controller.ex:101
+#: web/controllers/entry_controller.ex:103
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
 
@@ -939,7 +939,7 @@ msgstr "Ja, ich will den Newsletter abonnieren."
 msgid "user.flags"
 msgstr "Feature flags"
 
-#: web/templates/entry/show.html.eex:142
+#: web/templates/entry/show.html.eex:156
 msgid "Record new video"
 msgstr "Neues Video aufnehmen"
 
@@ -951,7 +951,7 @@ msgstr "Neue Videos"
 msgid "Video approved"
 msgstr "Video freigegeben"
 
-#: web/templates/entry/show.html.eex:140
+#: web/templates/entry/show.html.eex:154
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."
 
@@ -1024,7 +1024,7 @@ msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden<
 msgid "Your video was approved :)"
 msgstr "Dein Video wurde freigegeben :)"
 
-#: web/templates/entry/index.html.eex:9
+#: web/templates/entry/index.html.eex:39
 msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
 msgstr "Abenteuerlustig? Dann schau dir doch einen <a href='%{random}'>zufälligen Eintrag an</a>."
 
@@ -1060,3 +1060,7 @@ msgstr "Video ablehnen"
 #: web/templates/backend/video/show.html.eex:24
 msgid "Rejection reason"
 msgstr "Ablehnungsgrund"
+
+#: web/controllers/entry_controller.ex:86
+msgid "Watch this sign for \"%{sign}\" on @signdict"
+msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
