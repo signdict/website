@@ -82,6 +82,8 @@ defmodule SignDict.EntryController do
            entry: entry,
            video: video,
            videos: videos,
+           share_url: SignDict.Router.Helpers.url(conn) <> conn.request_path,
+           share_text: gettext("Watch this sign for \"%{sign}\" on @signdict", sign: entry.text),
            voted_video: voted,
            searchbar: true,
            ogtags: OpenGraph.to_metadata(entry, video),
