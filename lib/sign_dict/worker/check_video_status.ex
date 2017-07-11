@@ -1,13 +1,17 @@
 defmodule SignDict.Worker.CheckVideoStatus do
   require Bugsnex
 
+  @process_sleep_time 100
+  @check_transcoder_result_time 60 # 60 seconds
+  @recheck_transcoder_result_time 60 * 10 # 10 minutes
+
   alias SignDict.Email
   alias SignDict.Mailer
   alias SignDict.Repo
   alias SignDict.Video
 
   def perform(video_id, video_service \\ SignDict.Transcoder.JwPlayer,
-              exq \\ Exq, sleep_ms \\ 1000) do
+              exq \\ Exq, sleep_ms \\ @process_sleep_time) do
     Bugsnex.handle_errors %{video_id: video_id} do
       video = Repo.get(SignDict.Video, video_id)
       status = video_service.check_status(video)
@@ -21,11 +25,13 @@ defmodule SignDict.Worker.CheckVideoStatus do
 
   defp process_video(video, state, exq)
   defp process_video(video, :transcoding, exq) do
-    exq.enqueue_in(Exq, "transcoder", 60,
+    exq.enqueue_in(Exq, "transcoder", @check_transcoder_result_time,
                    SignDict.Worker.CheckVideoStatus, [video.id])
     :transcoding
   end
-  defp process_video(video, :done, _exq) do
+  defp process_video(video, :done, exq) do
+    exq.enqueue_in(Exq, "transcoder", @recheck_transcoder_result_time,
+                   SignDict.Worker.RecheckVideo, [video.id])
     {:ok, video} = Video.wait_for_review(video)
     video
     |> Email.video_waiting_for_review
