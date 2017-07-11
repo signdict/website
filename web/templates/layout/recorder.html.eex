@@ -7,6 +7,9 @@
             title: assigns[:title],
             appjs: false %>
 
+    <%= if Application.get_env(:sign_dict, :environment) == :prod do %>
+      <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="053a0d2caf8b6e940418d09bad85f308"></script>
+    <% end %>
     <script src="<%= static_path(@conn, "/js/recorder.js") %>"></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/components.css") %>">
   </head>

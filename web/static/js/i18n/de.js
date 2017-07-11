@@ -16,6 +16,8 @@ export default {
   'Login': 'Anmelden',
   'I don\'t have a SignDict account': 'Ich brauche noch ein SignDict-Konto',
   'Oops, something went wrong! Please check the errors below.': 'Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder.',
+  'Name': 'Name',
+  'Email': 'Email',
   'Password': 'Passwort',
   'Confirm password': 'Passwort bestätigen',
   'Yes, I want to subscribe to the newsletter': 'Ja, ich will den Newsletter abonnieren.',
