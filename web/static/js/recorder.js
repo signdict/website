@@ -10,6 +10,7 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
 
+import Position  from "./components/position.vue"
 import Recorder  from "./components/recorder.vue"
 import Cutter    from "./components/cutter.vue"
 import Upload    from "./components/upload.vue"
@@ -18,7 +19,8 @@ import store     from "./components/store.js"
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {
     const routes = [
-      { path: '/', component: Recorder },
+      { path: '/', component: Position },
+      { path: '/recorder', component: Recorder },
       { path: '/cutter', component: Cutter },
       { path: '/upload', component: Upload }
     ]

@@ -27,5 +27,9 @@ export default {
   'Uploading': 'Sende Video',
   'By pressing the upload button you will publish the video using the |CC-BY-SA 4.0| license.': 'Nachdem du auf den "hochladen" Knopf gedrückst hast, veröffentlichst du das Video unter der |CC-BY-SA 4.0| Lizenz.',
   'You cannot record longer than 5 minutes.': 'Du kannst nicht länger als 5 Minuten aufnehmen.',
+  'Start recording': 'Aufnahme starten',
+  'Check your position': 'Überprüfe deine Position',
+  'Okay': 'Okay',
+  'Please make sure that you are as close to the body outline as possible. If you think everything looks perfect, click on the "Start recording" on the lower right.': 'Bitte versuche, so nah wie möglich an den abgebildeten Körperumriss zu kommen. Wenn du denkst das alles perfekt aussieht, klicke auf "Aufnahme starten" rechts unten.'
 }
 
