@@ -16,7 +16,7 @@
       </div>
       <div class="o-grid o-grid--no-gutter cutter--navbar--buttons">
         <div class="o-grid__cell o-grid__cell--width-20">
-          <router-link to="/" class="cutter--navbar--back">
+          <router-link to="/recorder" class="cutter--navbar--back">
             &lt;&lt; {{ $t('Back') }}
           </router-link>
         </div>

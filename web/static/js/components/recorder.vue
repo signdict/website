@@ -13,9 +13,9 @@
       <div class="o-grid o-grid--no-gutter">
         <div class="o-grid__cell o-grid__cell--width-20">
           <div class="recorder--navbar--back">
-            <a href='/recorder'>
+            <router-link to="/">
               &lt;&lt; {{ $t('Back') }}
-            </a>
+            </router-link>
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-60">
@@ -32,6 +32,7 @@
 
 <script>
 import browser from 'detect-browser';
+import { getMediaConstraint } from './media_device.js';
 
 const MAX_RECORDING_SECONDS = 60 * 5; // 5 Minutes maximum recording time
 var streamHandle;
@@ -56,36 +57,7 @@ function handleError(error) {
 }
 
 function initRecorder() {
-  let constraints = {audio: true, video: true};
-
-  if (browser.name == "firefox") {
-    constraints = {
-      video: {
-        height: { min: 240, ideal: 720, max: 720 },
-        width: { min: 320, ideal: 1280, max: 1280 },
-      },
-      audio: false
-    };
-  } else if (browser.name == "chrome") {
-    constraints = {
-      video: {
-        mandatory: {
-          maxHeight: 720,
-          maxWidth: 1280
-        },
-        optional: [
-          {minWidth: 320},
-          {minWidth: 640},
-          {minWidth: 960},
-          {minWidth: 1024},
-          {minWidth: 1280}
-        ]
-      },
-      audio: false
-    }
-  }
-
-  navigator.mediaDevices.getUserMedia(constraints).
+  navigator.mediaDevices.getUserMedia(getMediaConstraint()).
     then(handleSuccess).catch(handleError);
 }
 
@@ -150,15 +122,6 @@ function startCountdown(context) {
   }, 1000);
 }
 
-function checkBrowser() {
-  console.log(browser.version);
-  if (browser.name == "Chrome" || parseInt(browser.version) < 59) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
 export default {
   data() {
     return {
@@ -168,14 +131,10 @@ export default {
     }
   },
   mounted() {
-    if (checkBrowser()) {
-      initRecorder();
-      router = this.$router;
-      store  = this.$store;
-      startCountdown(this);
-    } else {
-      window.location = "/notsupported"
-    }
+    initRecorder();
+    router = this.$router;
+    store  = this.$store;
+    startCountdown(this);
   },
 
   methods: {
@@ -196,14 +155,6 @@ export default {
 </script>
 
 <style lang="sass">
-html, body {
-  height: 100%;
-}
-
-#app {
-  height: 100%;
-}
-
 .recorder {
   width: 100%;
   height: 100%;
