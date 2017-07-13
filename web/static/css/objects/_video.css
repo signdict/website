@@ -11,6 +11,19 @@
   padding: 0 1em;
 }
 
+#so-video--player .jw-icon-rewind {
+  display: none !important;
+}
+#so-video--player  .jw-icon-volume {
+  display: none !important;
+}
+
+.so-video--player--element {
+  display: block;
+  width: 100%;
+  padding: 0 1em;
+}
+
 .so-video-details {
   margin: 1em 0;
 }
@@ -41,6 +54,9 @@
 
 @media all and (max-width: 48em) {
   .so-video--player {
+    padding: 0;
+  }
+  .so-video--player--element {
     padding: 0;
   }
 }
