@@ -6,22 +6,7 @@
 
 <div class="so-video">
   <div class="o-container o-container--medium">
-    <script src="https://content.jwplatform.com/libraries/N8W51Nii.js"></script>
-    <div class="so-video--player" id="so-video--player">
-      <video class="so-video--player--element" playsinline src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
-    </div>
-    <script type="text/javaScript">
-      (function() {
-        document.getElementById("so-video--player").innerHTML = "";
-        jwplayer("so-video--player").setup({
-          "file": "<%= @video.video_url %>",
-          "image": "<%= @video.thumbnail_url %>",
-          "repeat": true,
-          "playbackRateControls": [0.25, 0.5, 0.75, 1],
-          "autostart": false
-        });
-      })();
-    </script>
+    <video class="so-video--player" playsinline src="<%= @video.video_url %>" loop controls poster="<%= @video.thumbnail_url %>"></video>
   </div>
 </div>
 

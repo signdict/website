@@ -24,21 +24,6 @@
   height: 100%;
 }
 
-#so-embed--player .jw-icon-rewind {
-  display: none !important;
-}
-#so-embed--player  .jw-icon-volume {
-  display: none !important;
-}
-
-.so-embed--player--element {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .so-embed--logo {
   position: absolute;
   left: 1em;
