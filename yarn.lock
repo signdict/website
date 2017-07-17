@@ -2927,6 +2927,10 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
+plyr@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/plyr/-/plyr-2.0.13.tgz#9b726d2444fd743338c23d3c48ca3416c97712be"
+
 postcss-advanced-variables@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/postcss-advanced-variables/-/postcss-advanced-variables-1.2.2.tgz#90a6213262e66a050a368b4a9c5d4778d72dbd74"
