@@ -55,7 +55,7 @@ defmodule SignDict.Transcoder.JwPlayer do
     response = "/videos/create"
                |> Client.sign_url(%{
                  title: "video-#{video.id}",
-                 download_url: "https://beta.signdict.org/uploads/video_upload/#{video.metadata["source_mp4"]}"
+                 download_url: "https://signdict.org/uploads/video_upload/#{video.metadata["source_mp4"]}"
                })
                |> http_client.get!
     Poison.decode! response.body

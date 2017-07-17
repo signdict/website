@@ -15,7 +15,7 @@ config :sign_dict, :environment, :prod
 # which you typically run after static files are built.
 config :sign_dict, SignDict.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "beta.signdict.org", port: 80],
+  url: [host: "signdict.org", port: 80],
   cache_static_manifest: "priv/static/manifest.json",
   root: ".",
   server: true,
