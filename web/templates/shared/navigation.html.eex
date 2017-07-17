@@ -34,6 +34,10 @@
         </li>
 
         <li>
+          <a href="https://community.signdict.org/">Community</a>
+        </li>
+
+        <li>
         <%= if Gettext.get_locale(SignDict.Gettext) == "de" do %>
           <a href="?locale=en" data-turbolinks="false">English</a>
         <% else %>
@@ -52,6 +56,10 @@
 
         <li>
           <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+        </li>
+
+        <li>
+          <a href="https://community.signdict.org/">Community</a>
         </li>
 
         <li>
