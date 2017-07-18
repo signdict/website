@@ -4,8 +4,7 @@
     <p>
       This project is an open sign language dictionary.
       A sign missing, or you know another sign for the word? Record and add it with one click.
-      The recording functionality will use your webcam. Sadly this is not ready yet,
-      but will be added soon.
+      The only thing you need for this is your own webcam.
     </p>
     <p>
       This project is funded by the <a href="https://prototypefund.de">Prototype Fund</a>.
