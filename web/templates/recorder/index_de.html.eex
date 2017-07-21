@@ -10,7 +10,7 @@
       du auch direkt mit der Aufnahme starten mit Klick auf den Button:
     </p>
 
-    <%= link "Neue Gebärde aufnehmen", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    <%= render "record_button.html", conn: @conn, entry: @entry %>
 
     <h2>Allgemeines</h2>
 
@@ -74,6 +74,6 @@
       Kann es los gehen? Dann klicke hier:
     </p>
 
-    <%= link "Neue Gebärde aufnehmen", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    <%= render "record_button.html", conn: @conn, entry: @entry %>
   </div>
 </div>

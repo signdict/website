@@ -47,13 +47,13 @@ msgstr "Bitte fülle das Formular aus"
 
 #: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
-#: web/templates/shared/navigation.html.eex:50 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:54 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr "Registrieren"
 
 #: web/templates/layout/backend.html.eex:35 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:54
+#: web/templates/shared/navigation.html.eex:58
 msgid "Sign in"
 msgstr "Anmelden"
 
@@ -255,7 +255,7 @@ msgstr "Erfolgreich gespeichert"
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:45
+#: web/templates/shared/navigation.html.eex:49
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
@@ -507,7 +507,7 @@ msgstr "Logo rrone"
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
-#: web/templates/page/index.html.eex:84 web/templates/search/index.html.eex:66
+#: web/templates/page/index.html.eex:84
 msgid "Newsletter sign up"
 msgstr "Anmeldung zum Newsletter"
 
@@ -803,14 +803,6 @@ msgstr ""
 msgid "Please enter a word in the field above to search for signs."
 msgstr "Bitte gebe ein Wort in das Suchfeld ein um nach Gebärden zu suchen."
 
-#: web/templates/search/index.html.eex:59
-msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
-msgstr "SignDict wird es allen erlauben, fehlende Gebärden hochzuladen. Du brauchst dazu nur deine Webcam. Leider ist diese Funktion noch nicht fertig. Wenn du auf dem Laufenden bleiben willst, melde dich bitte für den Newsletter an."
-
-#: web/templates/search/index.html.eex:56
-msgid "Want to add new videos?"
-msgstr "Willst du neue Videos hinzufügen?"
-
 #: web/templates/shared/footer.html.eex:16
 msgid "The complete list of supporters."
 msgstr "Die komplette Liste an Unterstützern."
@@ -823,11 +815,11 @@ msgstr "Dieses Projekt ist nicht kommerziell und alles steht unter Open Source L
 msgid "supporter_prototype"
 msgstr "Der Prototype Fund hat dieses Projekt in die erste Förderrunde aufgenommen. Danke für das Vertrauen dafür. Danke auch an das BmBF für die Unterstützung des Prototypefundes. Ohne diese wäre dieses Projekt nicht möglich gewesen."
 
-#: web/templates/page/supporter.html.eex:59
+#: web/templates/page/supporter.html.eex:60
 msgid "All contributors."
 msgstr "Allen Mitwirkenden."
 
-#: web/templates/page/supporter.html.eex:58
+#: web/templates/page/supporter.html.eex:59
 msgid "All libraries we are using to develop SignDict"
 msgstr "Alle Bibliotheken, die wir für die Entwicklung von SignDict benutzen"
 
@@ -847,7 +839,7 @@ msgstr "Dieser Dienst wird auf Servern von RRBone betrieben. Danke für die Bere
 msgid "supporter_zweitag"
 msgstr "Zweitag hat freundlicherweise dieses sehr schicke Design entworfen und mir bei der Umsetzung mit Rat zur Seite gestanden."
 
-#: web/templates/page/supporter.html.eex:60
+#: web/templates/page/supporter.html.eex:61
 msgid "and YOU for reading this <3"
 msgstr "und DIR für das Lesen dieser Liste <3"
 
@@ -939,7 +931,7 @@ msgstr "Ja, ich will den Newsletter abonnieren."
 msgid "user.flags"
 msgstr "Feature flags"
 
-#: web/templates/entry/show.html.eex:156
+#: web/templates/entry/show.html.eex:155
 msgid "Record new video"
 msgstr "Neues Video aufnehmen"
 
@@ -947,19 +939,19 @@ msgstr "Neues Video aufnehmen"
 msgid "Review Queue"
 msgstr "Neue Videos"
 
-#: web/controllers/backend/review_controller.ex:23
+#: web/controllers/backend/review_controller.ex:26
 msgid "Video approved"
 msgstr "Video freigegeben"
 
-#: web/templates/entry/show.html.eex:154
+#: web/templates/entry/show.html.eex:153
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."
 
-#: web/controllers/backend/review_controller.ex:27
+#: web/controllers/backend/review_controller.ex:30
 msgid "Video could not be approved"
 msgstr "Video konnte nicht freigegeben werden"
 
-#: web/templates/entry/new.html.eex:1 web/templates/search/index.html.eex:48
+#: web/templates/entry/new.html.eex:1 web/templates/search/index.html.eex:47
 msgid "Add new entry"
 msgstr "Neuen Eintrag hinzufügen"
 
@@ -991,7 +983,7 @@ msgstr "Eintrag anlegen"
 msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
 msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem du den Text eingegeben hast, wirst du im nächsten Schritt die Möglichkeit haben, die Gebärde aufzunehmen."
 
-#: web/templates/search/index.html.eex:45
+#: web/templates/search/index.html.eex:44
 msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
@@ -1012,7 +1004,7 @@ msgstr "Alle Einträge"
 msgid "Sorry, I couldn't find the entry for which you wanted to record a sign."
 msgstr "Leider konnte ich den Eintrag nicht finden, zudem du eine Gebärde aufnehmen wolltest."
 
-#: web/templates/page/welcome.html.eex:17
+#: web/templates/page/welcome.html.eex:16
 msgid "Add a new sign >"
 msgstr "Eine neue Gebärde hinzufügen >"
 
@@ -1041,11 +1033,11 @@ msgstr "Die Webcam Aufnahme benutzt relativ neue Funktionen und momentan unterst
 msgid "Your browser is not supported"
 msgstr "Dein Webbrowser wird nicht unterstützt"
 
-#: web/controllers/backend/review_controller.ex:44
+#: web/controllers/backend/review_controller.ex:47
 msgid "Video could not be rejected"
 msgstr "Das Video konnte nicht abgelehnt werden"
 
-#: web/controllers/backend/review_controller.ex:39
+#: web/controllers/backend/review_controller.ex:42
 msgid "Video rejected"
 msgstr "Video abgelehnt"
 
@@ -1064,3 +1056,15 @@ msgstr "Ablehnungsgrund"
 #: web/controllers/entry_controller.ex:86
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
+
+#: web/templates/recorder/record_button.html.eex:8
+msgid "Record new sign"
+msgstr "Neue Gebärde aufnehmen"
+
+#: web/templates/recorder/record_button.html.eex:3
+msgid "You need to enable Javascript for this to work."
+msgstr "Du musst Javascript aktivieren für diese Funktion."
+
+#: web/templates/recorder/record_button.html.eex:12
+msgid "Sorry, but you need the latest Chrome Browser for recording right now."
+msgstr "Leider brauchst du einen aktuellen Chrome Browser für die Aufnahmefunktion."

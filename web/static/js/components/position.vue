@@ -62,10 +62,10 @@ function initRecorder() {
 }
 
 function checkBrowser() {
-  if (browser.name == "Chrome" || parseInt(browser.version) < 59) {
-    return false;
-  } else {
+  if (browser.name == "chrome" && parseInt(browser.version) >= 59) {
     return true;
+  } else {
+    return false;
   }
 }
 
