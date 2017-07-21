@@ -12,3 +12,5 @@ document.addEventListener("turbolinks:load", function() {
   });
 });
 
+import browser from 'detect-browser';
+window.browser = browser;

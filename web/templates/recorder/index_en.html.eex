@@ -10,7 +10,7 @@
       if you already know how it works. If not, please continue reading.
     </p>
 
-    <%= link "Record new sign", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    <%= render "record_button.html", conn: @conn, entry: @entry %>
 
     <h2>General</h2>
 
@@ -73,7 +73,7 @@
       Ready to record your video? Yes? Click here:
     </p>
 
-    <%= link "Record new sign", to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    <%= render "record_button.html", conn: @conn, entry: @entry %>
   </div>
   </div>
 </div>

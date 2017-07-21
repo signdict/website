@@ -47,13 +47,13 @@ msgstr ""
 
 #: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
-#: web/templates/shared/navigation.html.eex:50 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:54 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:35 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:54
+#: web/templates/shared/navigation.html.eex:58
 msgid "Sign in"
 msgstr ""
 
@@ -255,7 +255,7 @@ msgstr ""
 
 #: web/templates/backend/user/index.html.eex:16
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:45
+#: web/templates/shared/navigation.html.eex:49
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr ""
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:84 web/templates/search/index.html.eex:66
+#: web/templates/page/index.html.eex:84
 msgid "Newsletter sign up"
 msgstr ""
 
@@ -803,14 +803,6 @@ msgstr ""
 msgid "Please enter a word in the field above to search for signs."
 msgstr ""
 
-#: web/templates/search/index.html.eex:59
-msgid "SignDict will allow everyone to upload missing signs using your webcam.\nSadly this feature is not ready yet. If you want to get notified\nabout this, please subscribe to our newsletter by clicking the button below.\n"
-msgstr ""
-
-#: web/templates/search/index.html.eex:56
-msgid "Want to add new videos?"
-msgstr ""
-
 #: web/templates/shared/footer.html.eex:16
 msgid "The complete list of supporters."
 msgstr ""
@@ -823,11 +815,11 @@ msgstr ""
 msgid "supporter_prototype"
 msgstr ""
 
-#: web/templates/page/supporter.html.eex:59
+#: web/templates/page/supporter.html.eex:60
 msgid "All contributors."
 msgstr ""
 
-#: web/templates/page/supporter.html.eex:58
+#: web/templates/page/supporter.html.eex:59
 msgid "All libraries we are using to develop SignDict"
 msgstr ""
 
@@ -847,7 +839,7 @@ msgstr ""
 msgid "supporter_zweitag"
 msgstr ""
 
-#: web/templates/page/supporter.html.eex:60
+#: web/templates/page/supporter.html.eex:61
 msgid "and YOU for reading this <3"
 msgstr ""
 
@@ -939,7 +931,7 @@ msgstr ""
 msgid "user.flags"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:156
+#: web/templates/entry/show.html.eex:155
 msgid "Record new video"
 msgstr ""
 
@@ -947,19 +939,19 @@ msgstr ""
 msgid "Review Queue"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:23
+#: web/controllers/backend/review_controller.ex:26
 msgid "Video approved"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:154
+#: web/templates/entry/show.html.eex:153
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:27
+#: web/controllers/backend/review_controller.ex:30
 msgid "Video could not be approved"
 msgstr ""
 
-#: web/templates/entry/new.html.eex:1 web/templates/search/index.html.eex:48
+#: web/templates/entry/new.html.eex:1 web/templates/search/index.html.eex:47
 msgid "Add new entry"
 msgstr ""
 
@@ -991,7 +983,7 @@ msgstr ""
 msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
 msgstr ""
 
-#: web/templates/search/index.html.eex:45
+#: web/templates/search/index.html.eex:44
 msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
 msgstr ""
 
@@ -1012,7 +1004,7 @@ msgstr ""
 msgid "Sorry, I couldn't find the entry for which you wanted to record a sign."
 msgstr ""
 
-#: web/templates/page/welcome.html.eex:17
+#: web/templates/page/welcome.html.eex:16
 msgid "Add a new sign >"
 msgstr ""
 
@@ -1041,11 +1033,11 @@ msgstr ""
 msgid "Your browser is not supported"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:44
+#: web/controllers/backend/review_controller.ex:47
 msgid "Video could not be rejected"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:39
+#: web/controllers/backend/review_controller.ex:42
 msgid "Video rejected"
 msgstr ""
 
@@ -1063,4 +1055,16 @@ msgstr ""
 
 #: web/controllers/entry_controller.ex:86
 msgid "Watch this sign for \"%{sign}\" on @signdict"
+msgstr ""
+
+#: web/templates/recorder/record_button.html.eex:8
+msgid "Record new sign"
+msgstr ""
+
+#: web/templates/recorder/record_button.html.eex:3
+msgid "You need to enable Javascript for this to work."
+msgstr ""
+
+#: web/templates/recorder/record_button.html.eex:12
+msgid "Sorry, but you need the latest Chrome Browser for recording right now."
 msgstr ""
