@@ -44,6 +44,7 @@ mix deps.get
 mix ecto.setup
 sudo apt install npm
 sudo npm install -g yarn
+yarn
 mix phoenix.server
 ```
 
