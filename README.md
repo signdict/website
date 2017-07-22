@@ -20,16 +20,30 @@ SignDict uses Elixir and Phoenix. Information on how
 to install Elixir can be found [here](http://elixir-lang.org/install.html).
 
 For the video transcoding it uses [redis](http://redis.io). On
-macs install it via `brew install redis-server` and start it.
+mac, install it via `brew install redis-server`, or `sudo apt install redis-server` for Linux and start it.
 
 As database it uses [PostgreSQL](http://postgresql.org).
 
 After you installed everything, the setup is as follows:
 
+### Mac instructions:
+
 ```bash
 mix deps.get
 mix ecto.setup
 yarn
+mix phoenix.server
+```
+
+### Linux instructions:
+
+Note: If you run into postgres password authentication errors, check out [this blogpost for help](https://juwondaniel.wordpress.com/2016/09/23/solve-mix-ecto-create-postgresql-password-issue-with-phoenix/).
+
+```bash
+mix deps.get
+mix ecto.setup
+sudo apt install npm
+sudo npm install -g yarn
 mix phoenix.server
 ```
 
