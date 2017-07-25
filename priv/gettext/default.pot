@@ -77,7 +77,7 @@ msgid "user.biography"
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:9
-#: web/templates/backend/user/index.html.eex:6
+#: web/templates/backend/user/index.html.eex:7
 #: web/templates/backend/user/show.html.eex:14
 #: web/templates/reset_password/new.html.eex:9
 #: web/templates/reset_password/new.html.eex:10
@@ -88,7 +88,7 @@ msgid "user.email"
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:21
-#: web/templates/backend/user/index.html.eex:7
+#: web/templates/backend/user/index.html.eex:8
 #: web/templates/user/edit.html.eex:17 web/templates/user/edit.html.eex:18
 #: web/templates/user/new.html.eex:17 web/templates/user/new.html.eex:18
 msgid "user.name"
@@ -167,14 +167,14 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:27
 #: web/templates/backend/language/index.html.eex:10
 #: web/templates/backend/shared/videos_table.html.eex:16
-#: web/templates/backend/user/index.html.eex:9
+#: web/templates/backend/user/index.html.eex:10
 msgid "Actions"
 msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:46
-#: web/templates/backend/user/index.html.eex:27
+#: web/templates/backend/user/index.html.eex:31
 msgid "Delete"
 msgstr ""
 
@@ -183,7 +183,7 @@ msgstr ""
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
 #: web/templates/backend/shared/videos_table.html.eex:45
-#: web/templates/backend/user/index.html.eex:26
+#: web/templates/backend/user/index.html.eex:30
 #: web/templates/backend/user/show.html.eex:42
 #: web/templates/backend/video/show.html.eex:131
 #: web/templates/user/show.html.eex:23
@@ -194,7 +194,7 @@ msgstr ""
 msgid "Listing users"
 msgstr ""
 
-#: web/templates/backend/user/index.html.eex:37
+#: web/templates/backend/user/index.html.eex:43
 #: web/templates/backend/user/new.html.eex:1
 msgid "New user"
 msgstr ""
@@ -202,7 +202,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:41
 #: web/templates/backend/language/index.html.eex:24
 #: web/templates/backend/shared/videos_table.html.eex:44
-#: web/templates/backend/user/index.html.eex:25
+#: web/templates/backend/user/index.html.eex:29
 msgid "Show"
 msgstr ""
 
@@ -213,20 +213,20 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: web/controllers/backend/user_controller.ex:23
+#: web/controllers/backend/user_controller.ex:24
 msgid "User created successfully."
 msgstr ""
 
-#: web/controllers/backend/user_controller.ex:63
+#: web/controllers/backend/user_controller.ex:64
 msgid "User deleted successfully."
 msgstr ""
 
-#: web/controllers/backend/user_controller.ex:52
+#: web/controllers/backend/user_controller.ex:53
 msgid "User updated successfully."
 msgstr ""
 
 #: web/templates/backend/user/form.html.eex:27
-#: web/templates/backend/user/index.html.eex:8
+#: web/templates/backend/user/index.html.eex:9
 #: web/templates/backend/user/show.html.eex:21
 msgid "user.role"
 msgstr ""
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Updated successfully."
 msgstr ""
 
-#: web/templates/backend/user/index.html.eex:16
+#: web/templates/backend/user/index.html.eex:20
 #: web/templates/backend/user/show.html.eex:7
 #: web/templates/shared/navigation.html.eex:49
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
@@ -318,7 +318,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:46
-#: web/templates/backend/user/index.html.eex:27
+#: web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
 msgstr ""
 
@@ -1067,4 +1067,8 @@ msgstr ""
 
 #: web/templates/recorder/record_button.html.eex:12
 msgid "Sorry, but you need the latest Chrome Browser for recording right now."
+msgstr ""
+
+#: web/templates/backend/user/index.html.eex:6
+msgid "user.id"
 msgstr ""
