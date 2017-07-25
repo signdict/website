@@ -3,10 +3,11 @@ defmodule SignDict.Backend.UserController do
   alias SignDict.User
   alias SignDict.Video
 
-  plug :load_and_authorize_resource, model: User
+  plug :load_and_authorize_resource, model: User, except: :index
 
-  def index(conn, _params) do
-    render(conn, "index.html", users: conn.assigns.users)
+  def index(conn, params) do
+    users = load_user_list(conn, params)
+    render(conn, "index.html", users: users)
   end
 
   def new(conn, _params) do
@@ -62,5 +63,16 @@ defmodule SignDict.Backend.UserController do
     conn
     |> put_flash(:info, gettext("User deleted successfully."))
     |> redirect(to: backend_user_path(conn, :index))
+  end
+
+  defp load_user_list(conn, params) do
+    if !Canada.Can.can?(conn.assigns.current_user, :show, %User{}) do
+      User |> order_by(:id) |> Repo.paginate(params)
+    else
+      %Scrivener.Page{
+        entries: [], page_number: 1, page_size: 25, total_entries: 0,
+        total_pages: 1
+      }
+    end
   end
 end

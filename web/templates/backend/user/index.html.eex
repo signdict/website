@@ -3,6 +3,7 @@
 <table class="c-table c-table--striped">
   <thead class="c-table__head">
     <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("user.id") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("user.email") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("user.name") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("user.role") %></th>
@@ -10,8 +11,11 @@
     </tr>
   </thead>
   <tbody class="c-table__body">
-<%= for user <- @users do %>
+<%= for user <- @users.entries do %>
     <tr class="c-table__row">
+      <td class="c-table__cell">
+        <%= link user.id, to: backend_user_path(@conn, :show, user) %>
+      </td>
       <td class="c-table__cell">
         <%= link img_tag(SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, height: 32, style: "margin-right: 0.5em"), to: backend_user_path(@conn, :show, user) %>
         <%= link user.email, to: backend_user_path(@conn, :show, user) %>
@@ -32,6 +36,8 @@
 <% end %>
   </tbody>
 </table>
+
+<%= pagination_links @users %>
 
 <p>
   <%= link gettext("New user"), to: backend_user_path(@conn, :new), class: "c-button c-button--info" %>
