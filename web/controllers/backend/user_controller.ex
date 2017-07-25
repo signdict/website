@@ -66,7 +66,7 @@ defmodule SignDict.Backend.UserController do
   end
 
   defp load_user_list(conn, params) do
-    if !Canada.Can.can?(conn.assigns.current_user, :show, %User{}) do
+    if Canada.Can.can?(conn.assigns.current_user, :show, %User{}) do
       User |> order_by(:id) |> Repo.paginate(params)
     else
       %Scrivener.Page{
