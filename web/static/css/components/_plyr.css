@@ -4,11 +4,15 @@
   margin: 0 1em;
 }
 
-.plr.plyr--fullscreen-enabled {
+.plyr.plyr--fullscreen-active {
   margin: 0;
 }
 
 .plyr_playrate {
   padding: 3px 7px 4px 7px !important;
   font-size: 1em;
+}
+.plyr_playrate:focus,
+.plyr_playrate:hover {
+  background-color: #3498db;
 }
