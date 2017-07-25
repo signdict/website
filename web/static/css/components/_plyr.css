@@ -1,0 +1,14 @@
+@import "plyr/dist/plyr.css";
+
+.plyr {
+  margin: 0 1em;
+}
+
+.plr.plyr--fullscreen-enabled {
+  margin: 0;
+}
+
+.plyr_playrate {
+  padding: 3px 7px 4px 7px !important;
+  font-size: 1em;
+}
