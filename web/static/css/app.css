@@ -1,7 +1,7 @@
-@import "plyr/dist/plyr.css";
 @import "base/_colors.css";
 @import "base/_fonts.css";
 @import "components/_alerts.css";
+@import "components/_plyr.css";
 @import "components/_buttons.css";
 @import "components/_pagination.css";
 @import "components/_forms.css";

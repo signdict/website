@@ -1,0 +1,55 @@
+@import "plyr/dist/plyr.css";
+
+.plyr {
+  margin: 0 1em;
+}
+
+.plyr.plyr--fullscreen-active {
+  margin: 0;
+}
+
+.plyr_playrate {
+  padding: 3px 7px 4px 7px !important;
+  font-size: 1em;
+}
+
+button.playrate-menu--active,
+.plyr_playrate.tab-focus:focus,
+.plyr_playrate:hover {
+  background-color: #3498db;
+}
+
+.plyr--hide-controls .playrate-menu {
+  display: none;
+}
+
+.playrate-menu {
+  bottom: 3em;
+  pointer-events: auto;
+}
+
+.playrate-menu--list {
+  padding: 0 1em;
+}
+
+.playrate-menu--list li {
+  list-style-type: none;
+}
+
+.playrate-menu--link {
+  cursor: pointer;
+  width: 3em;
+  margin-bottom: 0.25em;
+  text-align: center;
+  display: inline-block;
+}
+
+.playrate-menu--link:focus,
+.playrate-menu--link:hover,
+.playrate-menu--link--selected {
+  outline: unset;
+  border-radius: 3px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+}

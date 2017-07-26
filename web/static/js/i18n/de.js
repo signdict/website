@@ -2,8 +2,8 @@ export default {
   'Back': 'Zurück',
   'Next': 'Weiter',
   'About SignDict': 'Über SignDict',
-  'SignDict Logo': 'SignDict Logo',
   'Nearly done...': 'Gleich geschafft...',
+  'SignDict Logo': 'SignDict Logo',
   'PleaseReview': 'Wenn das Video dir gefällt, kannst du unter dem Video das Hochladen starten.',
   'Please wait...': 'Bitte warten...',
   'Login required': 'Anmeldung benötigt',
@@ -32,6 +32,13 @@ export default {
   'Start recording': 'Aufnahme starten',
   'Check your position': 'Überprüfe deine Position',
   'Okay': 'Okay',
-  'Please make sure that you are as close to the body outline as possible. If you think everything looks perfect, click on the "Start recording" on the lower right.': 'Bitte versuche, so nah wie möglich an den abgebildeten Körperumriss zu kommen. Wenn du denkst das alles perfekt aussieht, klicke auf "Aufnahme starten" rechts unten.'
+  'Please make sure that you are as close to the body outline as possible. If you think everything looks perfect, click on the "Start recording" on the lower right.': 'Bitte versuche, so nah wie möglich an den abgebildeten Körperumriss zu kommen. Wenn du denkst das alles perfekt aussieht, klicke auf "Aufnahme starten" rechts unten.',
+  'Play': 'Abspielen',
+  'Pause': 'Pause',
+  'buffered': 'gepuffert',
+  'Current time': 'Aktuelle Zeit',
+  'Change playback rate': 'Abspielgeschwindigkeit ändern',
+  'Toggle Fullscreen': 'Auf Vollbild umschalten',
 }
+
 
