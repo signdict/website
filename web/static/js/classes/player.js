@@ -56,26 +56,78 @@ function addPlyr(videos) {
 }
 
 function togglePlayrateMenu(event) {
-  let plyr  = event.target.closest(".plyr");
-  let video = plyr.getElementsByTagName("video");
-  let menu  = plyr.getElementsByClassName("playrate-menu")
+  let plyr   = event.target.closest(".plyr");
+  let video  = plyr.getElementsByTagName("video");
+  let menu   = plyr.getElementsByClassName("playrate-menu")
+  let button = event.target.closest("button");
   if (menu.length == 0) {
-    showPlayrateMenu(plyr);
+    showPlayrateMenu(plyr, button);
   } else {
-    hidePlayrateMenu(menu[0]);
+    hidePlayrateMenu(menu[0], button);
   }
 }
 
-function showPlayrateMenu(plyr) {
-  console.log("showing menu!");
+function showPlayrateMenu(plyr, button) {
   let menu = document.createElement("div");
-  menu.setAttribute("class", "playrate-menu");
-  menu.innerHTML = translate("Back");
+  menu.setAttribute("class", "playrate-menu plyr__tooltip plyr__tooltip--visible");
+  menu.innerHTML =
+    "<ul class='playrate-menu--list'>" +
+      "<li><a class='playrate-menu--link' href='#' data-speed='0.25'>0.25x</a></li>" +
+      "<li><a class='playrate-menu--link' href='#' data-speed='0.5'>0.50x</a></li>" +
+      "<li><a class='playrate-menu--link' href='#' data-speed='0.75'>0.75x</a></li>" +
+      "<li><a class='playrate-menu--link' href='#' data-speed='1'>1.00x</a></li>" +
+    "</ul>"
   plyr.appendChild(menu);
+  let plyrPosition = plyr.getBoundingClientRect().left;
+  let position = button.getBoundingClientRect().left -
+                 plyrPosition + button.clientWidth / 2;
+  menu.setAttribute("style", `left: ${position}px`);
+  toggleClass(button, 'playrate-menu--active', true)
+  linkPlayrateSpeedButton(plyr);
+  highlightCurrentPlayrate(plyr, menu);
 }
 
-function hidePlayrateMenu(menu) {
+function linkPlayrateSpeedButton(plyr) {
+  let playrateButtons = plyr.getElementsByClassName("playrate-menu--link");
+  for (let element of playrateButtons) {
+    element.onclick = function(event) {
+      updatePlaybackRate(plyr, event);
+    }
+    element.onkeyup = function(event) {
+      if (getKeyCode(event) == 13) {
+        updatePlaybackRate(plyr, event);
+      }
+    }
+  }
+}
+
+function updatePlaybackRate(plyr, event) {
+  let video  = plyr.getElementsByTagName("video")[0];
+  let menu   = plyr.getElementsByClassName("playrate-menu")[0];
+  let button = plyr.getElementsByClassName("plyr_playrate")[0];
+  let speed  = parseFloat(event.target.getAttribute("data-speed"));
+  hidePlayrateMenu(menu, button);
+  video.playbackRate = speed;
+  event.preventDefault();
+}
+
+function highlightCurrentPlayrate(plyr, menu) {
+  let video  = plyr.getElementsByTagName("video")[0];
+  let playrateButtons = plyr.getElementsByClassName("playrate-menu--link");
+  for (let element of playrateButtons) {
+    let speed = parseFloat(element.getAttribute("data-speed"));
+    if (video.playbackRate == speed) {
+      toggleClass(element, 'playrate-menu--link--selected', true);
+      setTimeout(function() {
+        element.focus();
+      }, 100);
+    }
+  };
+}
+
+function hidePlayrateMenu(menu, button) {
   menu.parentElement.removeChild(menu);
+  toggleClass(button, 'playrate-menu--active', false)
 }
 
 const INGORED_ELEMENTS = [
