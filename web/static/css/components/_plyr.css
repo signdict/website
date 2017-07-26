@@ -12,7 +12,7 @@
   padding: 3px 7px 4px 7px !important;
   font-size: 1em;
 }
-.plyr_playrate:focus,
+.plyr_playrate.tab-focus:focus,
 .plyr_playrate:hover {
   background-color: #3498db;
 }
