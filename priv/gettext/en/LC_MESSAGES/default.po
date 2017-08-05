@@ -1065,12 +1065,10 @@ msgstr ""
 msgid "user.id"
 msgstr "ID"
 
-#, fuzzy
 #: web/templates/page/index.html.eex:53
 msgid "Our mission: to help in understanding each other."
 msgstr ""
 
-#, fuzzy
 #: web/templates/page/index.html.eex:16
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr ""

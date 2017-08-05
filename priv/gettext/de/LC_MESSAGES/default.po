@@ -1065,12 +1065,10 @@ msgstr "Leider brauchst du einen aktuellen Chrome Browser für die Aufnahmefunkt
 msgid "user.id"
 msgstr "ID"
 
-#, fuzzy
 #: web/templates/page/index.html.eex:53
 msgid "Our mission: to help in understanding each other."
 msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
 
-#, fuzzy
 #: web/templates/page/index.html.eex:16
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden</a> beigetragen"
