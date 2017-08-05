@@ -511,10 +511,6 @@ msgstr ""
 msgid "Newsletter sign up"
 msgstr ""
 
-#: web/templates/page/index.html.eex:53
-msgid "Our mission: to help understanding each other."
-msgstr ""
-
 #: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:34
 #: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
@@ -984,7 +980,7 @@ msgid "You think an entry is missing? Feel free do add it here. After entering t
 msgstr ""
 
 #: web/templates/search/index.html.eex:44
-msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
+msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
 #: web/controllers/entry_controller.ex:23
@@ -1006,10 +1002,6 @@ msgstr ""
 
 #: web/templates/page/welcome.html.eex:16
 msgid "Add a new sign >"
-msgstr ""
-
-#: web/templates/page/index.html.eex:16
-msgid "Currenty %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr ""
 
 #: web/email.ex:68
@@ -1071,4 +1063,12 @@ msgstr ""
 
 #: web/templates/backend/user/index.html.eex:6
 msgid "user.id"
+msgstr ""
+
+#: web/templates/page/index.html.eex:53
+msgid "Our mission: to help in understanding each other."
+msgstr ""
+
+#: web/templates/page/index.html.eex:16
+msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr ""

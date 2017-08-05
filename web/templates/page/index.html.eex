@@ -13,7 +13,7 @@
             <%= {:safe, gettext("SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>")} %>
           </p>
           <p class='so-landing--banner--stats'>
-            <%= raw(gettext("Currenty %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>",
+            <%= raw(gettext("So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>",
                   humans: @human_count, signs: @sign_count,
                   link: entry_path(@conn, :index)
              )) %>
@@ -50,7 +50,7 @@
           <%= text_to_html(gettext("SignDict believes...")) %>
           <p>
             <strong>
-              <%= gettext("Our mission: to help understanding each other.") %>
+              <%= gettext("Our mission: to help in understanding each other.") %>
             </strong>
           </p>
         </div>

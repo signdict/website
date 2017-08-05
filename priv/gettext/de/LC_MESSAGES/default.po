@@ -511,10 +511,6 @@ msgstr "Logo zweitag"
 msgid "Newsletter sign up"
 msgstr "Anmeldung zum Newsletter"
 
-#: web/templates/page/index.html.eex:53
-msgid "Our mission: to help understanding each other."
-msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
-
 #: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:34
 #: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
@@ -984,7 +980,7 @@ msgid "You think an entry is missing? Feel free do add it here. After entering t
 msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem du den Text eingegeben hast, wirst du im nächsten Schritt die Möglichkeit haben, die Gebärde aufzunehmen."
 
 #: web/templates/search/index.html.eex:44
-msgid "Missing an entry? Do you know how to sign it? Than please add it with the help of your webcam."
+msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
 #: web/controllers/entry_controller.ex:23
@@ -1007,10 +1003,6 @@ msgstr "Leider konnte ich den Eintrag nicht finden, zudem du eine Gebärde aufne
 #: web/templates/page/welcome.html.eex:16
 msgid "Add a new sign >"
 msgstr "Eine neue Gebärde hinzufügen >"
-
-#: web/templates/page/index.html.eex:16
-msgid "Currenty %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
-msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden</a> beigetragen"
 
 #: web/email.ex:68
 msgid "Your video was approved :)"
@@ -1072,3 +1064,13 @@ msgstr "Leider brauchst du einen aktuellen Chrome Browser für die Aufnahmefunkt
 #: web/templates/backend/user/index.html.eex:6
 msgid "user.id"
 msgstr "ID"
+
+#, fuzzy
+#: web/templates/page/index.html.eex:53
+msgid "Our mission: to help in understanding each other."
+msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
+
+#, fuzzy
+#: web/templates/page/index.html.eex:16
+msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
+msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden</a> beigetragen"
