@@ -1,4 +1,5 @@
 import "phoenix_html"
+import "babel-polyfill"
 
 if (window.Element && !Element.prototype.closest) {
   Element.prototype.closest = function(s) {
