@@ -941,7 +941,7 @@ msgstr "Video freigegeben"
 
 #: web/templates/entry/show.html.eex:153
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
-msgstr "Du kennst eine andere Variante für dieses Wort? Bitte helfe uns und nehme diese mit deiner Webcam auf."
+msgstr "Du kennst eine andere Variante für dieses Wort? Bitte hilf uns und nehme diese mit deiner Webcam auf."
 
 #: web/controllers/backend/review_controller.ex:30
 msgid "Video could not be approved"
