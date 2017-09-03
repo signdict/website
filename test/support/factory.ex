@@ -97,4 +97,13 @@ defmodule SignDict.Factory do
       video: build(:video)
     }
   end
+
+  def list_factory do
+    %SignDict.List{
+      name: "some content",
+      description: "description",
+      type: "categorie-list",
+      sort_order: "manual"
+    }
+  end
 end

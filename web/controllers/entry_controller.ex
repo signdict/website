@@ -7,6 +7,7 @@ defmodule SignDict.EntryController do
   alias SignDict.Language
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
+  alias SignDict.Router.Helpers
 
   def index(conn, params) do
     letter = params["letter"] || "A"
@@ -82,7 +83,7 @@ defmodule SignDict.EntryController do
            entry: entry,
            video: video,
            videos: videos,
-           share_url: SignDict.Router.Helpers.url(conn) <> conn.request_path,
+           share_url: Helpers.url(conn) <> conn.request_path,
            share_text: gettext("Watch this sign for \"%{sign}\" on @signdict", sign: entry.text),
            voted_video: voted,
            searchbar: true,

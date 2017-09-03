@@ -51,6 +51,12 @@ defmodule SignDict.Entry do
   end
 
   def for_letter(query, letter) do
+    query
+    |> query_for_letter(letter)
+    |> order_by(fragment("lower(text)"))
+  end
+
+  defp query_for_letter(query, letter) do
     cond do
       String.match?(letter, ~r/^[a-zA-Z]$/) ->
         query |> where([e], fragment("text ~* ?", ^"^#{letter}.*"))
@@ -59,7 +65,6 @@ defmodule SignDict.Entry do
       true ->
         query |> where([e], fragment("text ~* ?", ^"^A.*"))
     end
-    |> order_by(fragment("lower(text)"))
   end
 
   defp trim_fields(changeset) do

@@ -161,7 +161,7 @@ msgstr ""
 msgid "Your password reset link"
 msgstr ""
 
-#: web/plugs/allowed_for_backend.ex:11
+#: web/plugs/allowed_for_backend.ex:13
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:90
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:91
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -855,7 +855,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:103
+#: web/controllers/entry_controller.ex:104
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -991,7 +991,7 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: web/controllers/entry_controller.ex:23
+#: web/controllers/entry_controller.ex:24
 #: web/templates/shared/footer.html.eex:35
 msgid "All entries"
 msgstr ""
@@ -1033,11 +1033,11 @@ msgstr ""
 msgid "Your browser is not supported"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:47
+#: web/controllers/backend/review_controller.ex:48
 msgid "Video could not be rejected"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:42
+#: web/controllers/backend/review_controller.ex:43
 msgid "Video rejected"
 msgstr ""
 
@@ -1053,7 +1053,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:86
+#: web/controllers/entry_controller.ex:87
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
@@ -1102,6 +1102,7 @@ msgid "Listing lists"
 msgstr ""
 
 #: web/templates/backend/list/index.html.eex:38
+#: web/templates/backend/list/new.html.eex:1
 msgid "New list"
 msgstr ""
 
@@ -1126,10 +1127,6 @@ msgstr ""
 
 #: web/templates/backend/list/show.html.eex:1
 msgid "List"
-msgstr ""
-
-#: web/templates/backend/list/new.html.eex:1
-msgid "New List"
 msgstr ""
 
 #: web/templates/backend/list/form.html.eex:15

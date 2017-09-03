@@ -161,7 +161,7 @@ msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zu
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
-#: web/plugs/allowed_for_backend.ex:11
+#: web/plugs/allowed_for_backend.ex:13
 msgid "You are not allowed to do this."
 msgstr "Leider darfst du dies nicht."
 
@@ -779,7 +779,7 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:90
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:91
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
@@ -855,7 +855,7 @@ msgstr "Details >"
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
-#: web/controllers/entry_controller.ex:103
+#: web/controllers/entry_controller.ex:104
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
 
@@ -991,7 +991,7 @@ msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem d
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
-#: web/controllers/entry_controller.ex:23
+#: web/controllers/entry_controller.ex:24
 #: web/templates/shared/footer.html.eex:35
 msgid "All entries"
 msgstr "Alle Einträge"
@@ -1033,11 +1033,11 @@ msgstr "Die Webcam Aufnahme benutzt relativ neue Funktionen und momentan unterst
 msgid "Your browser is not supported"
 msgstr "Dein Webbrowser wird nicht unterstützt"
 
-#: web/controllers/backend/review_controller.ex:47
+#: web/controllers/backend/review_controller.ex:48
 msgid "Video could not be rejected"
 msgstr "Das Video konnte nicht abgelehnt werden"
 
-#: web/controllers/backend/review_controller.ex:42
+#: web/controllers/backend/review_controller.ex:43
 msgid "Video rejected"
 msgstr "Video abgelehnt"
 
@@ -1053,7 +1053,7 @@ msgstr "Video ablehnen"
 msgid "Rejection reason"
 msgstr "Ablehnungsgrund"
 
-#: web/controllers/entry_controller.ex:86
+#: web/controllers/entry_controller.ex:87
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
 
@@ -1102,6 +1102,7 @@ msgid "Listing lists"
 msgstr "Alle Listen"
 
 #: web/templates/backend/list/index.html.eex:38
+#: web/templates/backend/list/new.html.eex:1
 msgid "New list"
 msgstr "Neue Liste"
 
@@ -1127,10 +1128,6 @@ msgstr "Liste bearbeiten"
 #: web/templates/backend/list/show.html.eex:1
 msgid "List"
 msgstr "Liste"
-
-#: web/templates/backend/list/new.html.eex:1
-msgid "New List"
-msgstr "Neue Liste"
 
 #: web/templates/backend/list/form.html.eex:15
 #: web/templates/backend/list/show.html.eex:19

@@ -62,7 +62,7 @@ defmodule SignDict.Backend.ListController do
 
   defp load_lists(conn, params) do
     if Canada.Can.can?(conn.assigns.current_user, :show, %List{}) do
-      List |> order_by(:id) |> Repo.paginate(params)
+      List |> order_by(:name) |> Repo.paginate(params)
     else
       %Scrivener.Page{
         entries: [], page_number: 1, page_size: 25, total_entries: 0,
