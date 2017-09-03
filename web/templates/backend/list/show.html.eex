@@ -1,0 +1,28 @@
+<h1 class="c-heading"><%= gettext("List") %>: <%= @list.name %></h1>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.type") %></strong></div>
+    <div class="o-grid__cell"><%= @list.type %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.sort_order") %></strong></div>
+    <div class="o-grid__cell"><%= @list.sort_order %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.description") %></strong></div>
+    <div class="o-grid__cell"><%= @list.description %></div>
+  </div>
+</div>
+
+<%= if Canada.Can.can? @current_user, :edit, @list do %>
+  <p>
+    <%= link gettext("Edit"), to: backend_list_path(@conn, :edit, @list), class: "c-button" %>
+  </p>
+<% end %>

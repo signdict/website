@@ -1,0 +1,4 @@
+<h1 class="c-heading"><%= gettext("New List") %></h1>
+
+<%= render "form.html", changeset: @changeset,
+                        action: backend_list_path(@conn, :create) %>

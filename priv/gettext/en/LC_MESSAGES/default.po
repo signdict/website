@@ -30,6 +30,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:4
 #: web/templates/backend/language/form.html.eex:4
+#: web/templates/backend/list/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
 #: web/templates/entry/form.html.eex:4 web/templates/user/edit.html.eex:6
@@ -166,6 +167,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:27
 #: web/templates/backend/language/index.html.eex:10
+#: web/templates/backend/list/index.html.eex:9
 #: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:10
 msgid "Actions"
@@ -173,6 +175,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/list/index.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Delete"
@@ -182,6 +185,8 @@ msgstr ""
 #: web/templates/backend/entry/show.html.eex:25
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
+#: web/templates/backend/list/index.html.eex:25
+#: web/templates/backend/list/show.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:30
 #: web/templates/backend/user/show.html.eex:42
@@ -201,6 +206,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:41
 #: web/templates/backend/language/index.html.eex:24
+#: web/templates/backend/list/index.html.eex:24
 #: web/templates/backend/shared/videos_table.html.eex:44
 #: web/templates/backend/user/index.html.eex:29
 msgid "Show"
@@ -208,6 +214,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
+#: web/templates/backend/list/form.html.eex:33
 #: web/templates/backend/user/form.html.eex:62
 #: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
@@ -278,7 +285,7 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:49
+#: web/templates/layout/backend.html.eex:52
 msgid "Languages"
 msgstr ""
 
@@ -317,6 +324,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/list/index.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
@@ -791,7 +799,7 @@ msgstr ""
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:52
+#: web/templates/layout/backend.html.eex:55
 msgid "Worker Queue"
 msgstr ""
 
@@ -902,7 +910,7 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:105
+#: web/models/user.ex:103
 msgid "already used"
 msgstr ""
 
@@ -1072,3 +1080,64 @@ msgstr ""
 #: web/templates/page/index.html.eex:16
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr ""
+
+#: web/controllers/backend/list_controller.ex:23
+msgid "List created successfully."
+msgstr ""
+
+#: web/controllers/backend/list_controller.ex:59
+msgid "List deleted successfully."
+msgstr ""
+
+#: web/controllers/backend/list_controller.ex:48
+msgid "List updated successfully."
+msgstr ""
+
+#: web/templates/layout/backend.html.eex:49
+msgid "Lists"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:1
+msgid "Listing lists"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:38
+msgid "New list"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:6
+msgid "list.id"
+msgstr "ID"
+
+#: web/templates/backend/list/form.html.eex:9
+#: web/templates/backend/list/index.html.eex:7
+msgid "list.name"
+msgstr "Name"
+
+#: web/templates/backend/list/form.html.eex:21
+#: web/templates/backend/list/index.html.eex:8
+#: web/templates/backend/list/show.html.eex:5
+msgid "list.type"
+msgstr "Type"
+
+#: web/templates/backend/list/edit.html.eex:1
+msgid "Edit list"
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:1
+msgid "List"
+msgstr ""
+
+#: web/templates/backend/list/new.html.eex:1
+msgid "New List"
+msgstr ""
+
+#: web/templates/backend/list/form.html.eex:15
+#: web/templates/backend/list/show.html.eex:19
+msgid "list.description"
+msgstr "Description"
+
+#: web/templates/backend/list/form.html.eex:27
+#: web/templates/backend/list/show.html.eex:12
+msgid "list.sort_order"
+msgstr "Sort order"

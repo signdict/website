@@ -48,16 +48,14 @@ defmodule SignDict.User do
 
     has_many :videos, SignDict.Video
 
+    has_many :lists, SignDict.List
+
     timestamps()
   end
 
-  def roles do
-    @roles
-  end
+  def roles, do: @roles
 
-  def all_flags do
-    @all_flags
-  end
+  def all_flags, do: @all_flags
 
   def avatar_url(user)
   def avatar_url(user = %SignDict.User{avatar: avatar}) when avatar != nil do
