@@ -10,6 +10,7 @@ defmodule SignDict.List do
     field :type, :string
     field :sort_order, :string
     belongs_to :created_by, SignDict.User
+    has_one :list_entry, SignDict.ListEntry
 
     timestamps()
   end

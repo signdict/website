@@ -17,6 +17,9 @@ defmodule SignDict.Entry do
     belongs_to :language, SignDict.Language
 
     has_many :videos, Video
+    has_many :list_entries, SignDict.ListEntry
+    has_many :lists, through: [:list_entries, :list]
+
     belongs_to :current_video, Video
 
     timestamps()
