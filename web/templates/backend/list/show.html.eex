@@ -26,3 +26,12 @@
     <%= link gettext("Edit"), to: backend_list_path(@conn, :edit, @list), class: "c-button" %>
   </p>
 <% end %>
+
+<h2 class="c-heading"><%= gettext("Entries") %></h2>
+
+<%=  for list_entry <- @list.list_entries do %>
+  <% entry = list_entry.entry %>
+  <%= list_entry.entry.text %>
+
+  <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_video_path(@conn, :show, entry, entry.current_video) %>
+<% end %>

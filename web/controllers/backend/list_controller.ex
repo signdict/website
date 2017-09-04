@@ -29,6 +29,7 @@ defmodule SignDict.Backend.ListController do
 
   def show(conn, _params) do
     list = conn.assigns.list
+           |> Repo.preload(list_entries: [entry: [:current_video]])
     render(conn, "show.html", list: list)
   end
 
