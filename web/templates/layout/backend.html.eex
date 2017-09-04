@@ -57,6 +57,10 @@
         </nav>
       </div>
       <main class="o-grid__cell o-grid__cell--width-85@large o-panel-container">
+        <div>
+          <%= render SignDict.SharedView, "alerts.html", conn: @conn %>
+        </div>
+
         <%= render @view_module, @view_template, assigns %>
       </main>
     </div>

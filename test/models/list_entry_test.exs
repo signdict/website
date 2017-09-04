@@ -3,7 +3,7 @@ defmodule SignDict.ListEntryTest do
 
   alias SignDict.ListEntry
 
-  @valid_attrs %{sort_order: 42}
+  @valid_attrs %{sort_order: 42, list_id: 1, entry_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

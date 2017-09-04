@@ -133,7 +133,9 @@ defmodule SignDict.Router do
       resources "/videos", VideoController
     end
     resources "/videos", VideoController, only: [:index]
-    resources "/lists", ListController
+    resources "/lists", ListController do
+      resources "/list_entries", ListEntryController, only: [:create, :delete]
+    end
   end
 
   scope "/api", SignDict.Api, as: :api do

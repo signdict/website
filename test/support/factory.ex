@@ -106,4 +106,12 @@ defmodule SignDict.Factory do
       sort_order: "manual"
     }
   end
+
+  def list_entry_factory do
+    %SignDict.ListEntry {
+      list: build(:list),
+      entry: build(:entry),
+      sort_order: sequence(:sort_order, fn(integer) -> integer end)
+    }
+  end
 end

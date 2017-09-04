@@ -30,4 +30,9 @@ defmodule SignDict.List do
     |> validate_inclusion(:type, @types)
     |> validate_inclusion(:sort_order, @sort_orders)
   end
+
+  # TODO:
+  # * Add method that returns list entries
+  # * filter list entries without current video
+  # * sort by name or sort order
 end

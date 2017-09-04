@@ -1137,4 +1137,4 @@ msgstr "Beschreibung"
 #: web/templates/backend/list/form.html.eex:27
 #: web/templates/backend/list/show.html.eex:12
 msgid "list.sort_order"
-msgstr "Sortier-Reihenfolge"
+msgstr "Sortierung"

@@ -14,7 +14,12 @@ defmodule SignDict.ListEntry do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:sort_order])
-    |> validate_required([:sort_order])
+    |> cast(params, [:list_id, :entry_id, :sort_order])
+    |> validate_required([:list_id, :entry_id, :sort_order])
+
+    # TODO:
+    # * Check Sort Order, add it if needed (remove from controller)
+    # * validate that entry has current_video
+    # * validate that entry is unique in list
   end
 end
