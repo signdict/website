@@ -33,11 +33,34 @@ defmodule SignDict.ListEntryTest do
 
     test "is not valid if entry already exists in list" do
       list_entry = insert :list_entry
-      attributes = Map.merge(@valid_attrs, %{entry_id: list_entry.entry_id})
+      attributes = Map.merge(@valid_attrs, %{list_id: list_entry.list_id, entry_id: list_entry.entry_id, sort_order: 2})
       insert(:list_entry, entry: list_entry.entry)
 
       changeset = ListEntry.changeset(%ListEntry{}, attributes)
-      refute changeset.valid?
+      assert {:error, _changeset} = Repo.insert(changeset)
+    end
+
+    test "it checks if the sort order is unique" do
+      list_entry = insert :list_entry, sort_order: 1
+      entry      = insert :entry_with_current_video
+      attributes = Map.merge(@valid_attrs, %{list_id: list_entry.list_id, entry_id: entry.id, sort_order: 1})
+      insert(:list_entry, entry: list_entry.entry)
+
+      changeset = ListEntry.changeset(%ListEntry{}, attributes)
+      assert {:error, _changeset} = Repo.insert(changeset)
+    end
+
+    test "it adds a new sort order entry" do
+      list_entry = insert :list_entry, sort_order: 1
+      entry      = insert :entry_with_current_video
+      attributes = %{list_id: list_entry.list_id, entry_id: entry.id, sort_order: nil}
+      insert(:list_entry, entry: list_entry.entry)
+
+      changeset = ListEntry.changeset(%ListEntry{}, attributes)
+      assert {:ok, _changeset} = Repo.insert(changeset)
+
+      new_entry = SignDict.Repo.get_by(ListEntry, list_id: list_entry.list_id, entry_id: entry.id)
+      assert new_entry.sort_order == 2
     end
   end
 

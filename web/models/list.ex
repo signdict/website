@@ -35,4 +35,5 @@ defmodule SignDict.List do
   # * Add method that returns list entries
   # * filter list entries without current video
   # * sort by name or sort order
+  # * Paginate list entries
 end

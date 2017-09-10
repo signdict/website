@@ -168,6 +168,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:27
 #: web/templates/backend/language/index.html.eex:10
 #: web/templates/backend/list/index.html.eex:9
+#: web/templates/backend/list/show.html.eex:38
 #: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:10
 msgid "Actions"
@@ -176,6 +177,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/list/index.html.eex:26
+#: web/templates/backend/list/show.html.eex:55
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Delete"
@@ -325,6 +327,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/list/index.html.eex:26
+#: web/templates/backend/list/show.html.eex:55
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
@@ -349,6 +352,7 @@ msgid "Edit user"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
+#: web/templates/backend/list/show.html.eex:67
 #: web/templates/backend/shared/videos_table.html.eex:6
 #: web/templates/backend/video/show.html.eex:39
 msgid "Entry"
@@ -396,6 +400,7 @@ msgstr "Source"
 msgid "video.state"
 msgstr "State"
 
+#: web/templates/backend/list/show.html.eex:30
 #: web/templates/layout/backend.html.eex:46
 msgid "Entries"
 msgstr ""
@@ -416,6 +421,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:9
 #: web/templates/backend/entry/index.html.eex:23
+#: web/templates/backend/list/show.html.eex:37
 #: web/templates/entry/form.html.eex:9
 msgid "entry.text"
 msgstr "Text"
@@ -1085,11 +1091,11 @@ msgstr ""
 msgid "List created successfully."
 msgstr ""
 
-#: web/controllers/backend/list_controller.ex:59
+#: web/controllers/backend/list_controller.ex:60
 msgid "List deleted successfully."
 msgstr ""
 
-#: web/controllers/backend/list_controller.ex:48
+#: web/controllers/backend/list_controller.ex:49
 msgid "List updated successfully."
 msgstr ""
 
@@ -1138,3 +1144,23 @@ msgstr "Description"
 #: web/templates/backend/list/show.html.eex:12
 msgid "list.sort_order"
 msgstr "Sort order"
+
+#: web/controllers/backend/list_entry_controller.ex:16
+msgid "Entry added successfully."
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:20
+msgid "Entry could not be added."
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:35
+msgid "ID"
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:29
+msgid "List entry deleted successfully."
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:36
+msgid "Thumbnail"
+msgstr ""
