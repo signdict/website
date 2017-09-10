@@ -11,6 +11,9 @@ defmodule SignDict.Backend.ListEntryControllerTest do
   test "creates resource and redirects when data is valid", %{conn: conn} do
     list  = insert :list
     entry = insert :entry
+    insert(:video_published, %{entry: entry})
+    SignDict.Entry.update_current_video(entry)
+
     params = Map.merge(@valid_attrs, %{"entry_id" => entry.id})
     conn = conn
            |> guardian_login(insert(:admin_user))
@@ -20,15 +23,13 @@ defmodule SignDict.Backend.ListEntryControllerTest do
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    # TODO: fix this
-    #
-    #list  = insert :list
-    #entry = insert :entry
-    #params = %{"entry_id" => entry.id}
-    #conn = conn
-           #|> guardian_login(insert(:admin_user))
-           #|> post(backend_list_list_entry_path(conn, :create, list), list_entry: params)
-    #refute Repo.get_by(ListEntry, entry_id: entry.id, list_id: list.id)
+    list  = insert :list
+    entry = insert :entry
+    params = %{"entry_id" => entry.id}
+    conn
+    |> guardian_login(insert(:admin_user))
+    |> post(backend_list_list_entry_path(conn, :create, list), list_entry: params)
+    refute Repo.get_by(ListEntry, entry_id: entry.id, list_id: list.id)
   end
 
   test "deletes chosen resource", %{conn: conn} do

@@ -10,7 +10,5 @@ defmodule SignDict.Repo.Migrations.CreateListEntry do
       timestamps()
     end
     create index(:list_entries, [:list_id])
-    create index(:list_entries, [:entry_id])
-
   end
 end

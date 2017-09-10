@@ -46,7 +46,7 @@
       <%= entry.id %>
     </td>
     <td class="c-table__cell">
-      <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_video_path(@conn, :show, entry, entry.current_video) %>
+      <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_path(@conn, :show, entry) %>
     </td>
     <td class="c-table__cell">
       <%= list_entry.entry.text %>
