@@ -62,6 +62,17 @@ defmodule SignDict.List do
     |> Repo.preload(entry: [:current_video])
   end
 
+  def remove_entry_from_list(list_entry) do
+    Repo.delete!(list_entry)
+
+    from(
+      u in ListEntry,
+      where: u.list_id == ^list_entry.list_id and u.sort_order > ^list_entry.sort_order,
+      update: [set: [sort_order: fragment("sort_order - 1")]]
+    )
+    |> Repo.update_all([])
+  end
+
   # TODO:
   # * Add method to move item up/down in sort order
   # * Paginate list entries

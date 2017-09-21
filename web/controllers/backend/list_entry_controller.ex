@@ -1,5 +1,6 @@
 defmodule SignDict.Backend.ListEntryController do
   use SignDict.Web, :controller
+  alias SignDict.List
   alias SignDict.ListEntry
 
   plug :load_and_authorize_resource, model: ListEntry, except: :index
@@ -20,10 +21,7 @@ defmodule SignDict.Backend.ListEntryController do
   end
 
   def delete(conn, %{"list_id" => list_id}) do
-    Repo.delete!(conn.assigns.list_entry)
-
-    # TODO:
-    # Rebalace sort order
+    List.remove_entry_from_list(conn.assigns.list_entry)
 
     conn
     |> put_flash(:info, gettext("List entry deleted successfully."))
