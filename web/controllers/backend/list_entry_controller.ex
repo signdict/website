@@ -22,6 +22,9 @@ defmodule SignDict.Backend.ListEntryController do
   def delete(conn, %{"list_id" => list_id}) do
     Repo.delete!(conn.assigns.list_entry)
 
+    # TODO:
+    # Rebalace sort order
+
     conn
     |> put_flash(:info, gettext("List entry deleted successfully."))
     |> redirect(to: backend_list_path(conn, :show, list_id))

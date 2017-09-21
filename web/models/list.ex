@@ -1,6 +1,9 @@
 defmodule SignDict.List do
   use SignDict.Web, :model
 
+  alias SignDict.Repo
+  alias SignDict.ListEntry
+
   @types ["categorie-list"]
   @sort_orders ["manual", "alphabetical_desc", "alphabetical_asc"]
 
@@ -31,9 +34,28 @@ defmodule SignDict.List do
     |> validate_inclusion(:sort_order, @sort_orders)
   end
 
+  def entries(%SignDict.List{id: id, sort_order: "manual"}) do
+    from(entry in ListEntry, where: entry.list_id == ^id, order_by: :sort_order)
+    |> Repo.all
+    |> Repo.preload(entry: [:current_video])
+  end
+  def entries(%SignDict.List{id: id, sort_order: "alphabetical_asc"}) do
+    from(list_entry in ListEntry,
+         join: entry in assoc(list_entry, :entry),
+         where: list_entry.list_id == ^id, order_by: entry.text)
+    |> Repo.all
+    |> Repo.preload(entry: [:current_video])
+  end
+  def entries(%SignDict.List{id: id, sort_order: "alphabetical_desc"}) do
+    from(list_entry in ListEntry,
+         join: entry in assoc(list_entry, :entry),
+         where: list_entry.list_id == ^id, order_by: [desc: entry.text])
+    |> Repo.all
+    |> Repo.preload(entry: [:current_video])
+  end
+
   # TODO:
-  # * Add method that returns list entries
   # * filter list entries without current video
-  # * sort by name or sort order
   # * Paginate list entries
+  # * Add method to move item up/down in sort order
 end

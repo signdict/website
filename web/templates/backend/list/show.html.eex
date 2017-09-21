@@ -39,7 +39,7 @@
     </tr>
   </thead>
   <tbody class="c-table__body">
-<%= for list_entry <- @list.list_entries do %>
+<%= for list_entry <- @list_entries do %>
   <% entry = list_entry.entry %>
   <tr class="c-table__row">
     <td class="c-table__cell">
