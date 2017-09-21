@@ -35,27 +35,34 @@ defmodule SignDict.List do
   end
 
   def entries(%SignDict.List{id: id, sort_order: "manual"}) do
-    from(entry in ListEntry, where: entry.list_id == ^id, order_by: :sort_order)
+    from(
+      list_entry in ListEntry,
+      join: entry in assoc(list_entry, :entry),
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: :sort_order
+    )
     |> Repo.all
     |> Repo.preload(entry: [:current_video])
   end
   def entries(%SignDict.List{id: id, sort_order: "alphabetical_asc"}) do
-    from(list_entry in ListEntry,
-         join: entry in assoc(list_entry, :entry),
-         where: list_entry.list_id == ^id, order_by: entry.text)
+    from(
+      list_entry in ListEntry,
+      join: entry in assoc(list_entry, :entry),
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: entry.text
+    )
     |> Repo.all
     |> Repo.preload(entry: [:current_video])
   end
   def entries(%SignDict.List{id: id, sort_order: "alphabetical_desc"}) do
-    from(list_entry in ListEntry,
-         join: entry in assoc(list_entry, :entry),
-         where: list_entry.list_id == ^id, order_by: [desc: entry.text])
+    from(
+      list_entry in ListEntry,
+      join: entry in assoc(list_entry, :entry),
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: [desc: entry.text]
+    )
     |> Repo.all
     |> Repo.preload(entry: [:current_video])
   end
 
   # TODO:
-  # * filter list entries without current video
-  # * Paginate list entries
   # * Add method to move item up/down in sort order
+  # * Paginate list entries
 end
