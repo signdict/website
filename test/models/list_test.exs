@@ -46,6 +46,15 @@ defmodule SignDict.ListTest do
     end
 
     test "returns list entries in reversed alphabetical order" do
+      list = insert :list, sort_order: "alphabetical_desc"
+      entry_1 = insert :entry, text: "Cherry"
+      entry_2 = insert :entry, text: "Banana"
+      entry_3 = insert :entry, text: "Apple"
+      list_entry_1 = insert :list_entry, list: list, sort_order: 1, entry: entry_1
+      list_entry_2 = insert :list_entry, list: list, sort_order: 2, entry: entry_2
+      list_entry_3 = insert :list_entry, list: list, sort_order: 3, entry: entry_3
+
+      assert Enum.map(List.entries(list), &(&1.id)) == [list_entry_1.id, list_entry_2.id, list_entry_3.id]
     end
   end
 
