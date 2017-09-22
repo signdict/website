@@ -62,7 +62,7 @@ defmodule SignDict.List do
     |> Repo.preload(entry: [:current_video])
   end
 
-  def remove_entry_from_list(list_entry) do
+  def remove_entry(list_entry) do
     Repo.delete!(list_entry)
 
     from(

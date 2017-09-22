@@ -21,7 +21,7 @@ defmodule SignDict.Backend.ListEntryController do
   end
 
   def delete(conn, %{"list_id" => list_id}) do
-    List.remove_entry_from_list(conn.assigns.list_entry)
+    List.remove_entry(conn.assigns.list_entry)
 
     conn
     |> put_flash(:info, gettext("List entry deleted successfully."))
