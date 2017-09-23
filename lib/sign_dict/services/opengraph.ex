@@ -75,3 +75,18 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
     String.replace(url, "http://", "https://")
   end
 end
+
+defimpl SignDict.Services.OpenGraph, for: SignDict.List do
+  import SignDict.Gettext
+  def to_metadata(list, _sub_model \\ %{}) do
+    description   = String.trim(gettext("""
+         %{list} is a collection of signs in SignDict, a sign language dictionary.
+      """, list: list.name))
+    %{
+      "og:description"      => description,
+      "twitter:card"        => "summary",
+      "twitter:site"        => "@SignDict",
+      "twitter:description" => description,
+    }
+  end
+end
