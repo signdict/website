@@ -34,6 +34,8 @@ defmodule SignDict.List do
     |> validate_inclusion(:sort_order, @sort_orders)
   end
 
+  # TODO:
+  # * Paginate list entries
   def entries(%SignDict.List{id: id, sort_order: "manual"}) do
     from(
       list_entry in ListEntry,
@@ -73,7 +75,22 @@ defmodule SignDict.List do
     |> Repo.update_all([])
   end
 
-  # TODO:
-  # * Add method to move item up/down in sort order
-  # * Paginate list entries
+  def move_entry(list_entry, direction) do
+    target_sort_order = list_entry.sort_order + direction
+    swap_target = Repo.get_by(ListEntry,
+                           list_id: list_entry.list_id,
+                           sort_order: target_sort_order)
+    swap_list_entry_position(list_entry, swap_target)
+  end
+
+  def swap_list_entry_position(list_entry, swap_target) when is_nil(swap_target) do
+    list_entry
+  end
+  def swap_list_entry_position(list_entry, swap_target) do
+    ListEntry.update_sort_order(list_entry,  nil)
+    ListEntry.update_sort_order(swap_target, list_entry.sort_order)
+    ListEntry.update_sort_order(list_entry,  swap_target.sort_order)
+    Repo.get(ListEntry, list_entry.id)
+  end
+
 end

@@ -39,23 +39,39 @@
     </tr>
   </thead>
   <tbody class="c-table__body">
-<%= for list_entry <- @list_entries do %>
-  <% entry = list_entry.entry %>
-  <tr class="c-table__row">
-    <td class="c-table__cell">
-      <%= entry.id %>
-    </td>
-    <td class="c-table__cell">
-      <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_path(@conn, :show, entry) %>
-    </td>
-    <td class="c-table__cell">
-      <%= list_entry.entry.text %>
-    </td>
-    <td class="c-table__cell">
-      <%= link gettext("Delete"), to: backend_list_list_entry_path(@conn, :delete, @list, list_entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
-    </td>
-  </tr>
-<% end %>
+    <%= for {list_entry, position} <- Enum.with_index(@list_entries) do %>
+      <% entry = list_entry.entry %>
+      <tr class="c-table__row">
+        <td class="c-table__cell">
+          <%= entry.id %>
+        </td>
+        <td class="c-table__cell">
+          <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_path(@conn, :show, entry) %>
+        </td>
+        <td class="c-table__cell">
+          <%= list_entry.entry.text %>
+        </td>
+        <td class="c-table__cell">
+          <%= if @list.sort_order == "manual" do %>
+            <%= if position > 0 do %>
+              <span>
+                <%= link "▲", to: backend_list_list_entry_path(@conn, :move_up, @list, list_entry), method: :post, class: "c-button u-xsmall" %>
+                &nbsp;
+              </span>
+            <% end %>
+            <%= if position < length(@list_entries) - 1 do %>
+              <span>
+                <%= link "▼", to: backend_list_list_entry_path(@conn, :move_down, @list, list_entry), method: :post, class: "c-button u-xsmall " %>
+                &nbsp;
+              </span>
+            <% end %>
+          <% end %>
+          <span>
+            <%= link gettext("Delete"), to: backend_list_list_entry_path(@conn, :delete, @list, list_entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

@@ -28,4 +28,18 @@ defmodule SignDict.Backend.ListEntryController do
     |> redirect(to: backend_list_path(conn, :show, list_id))
   end
 
+  def move_up(conn, %{"list_id" => list_id}) do
+    List.move_entry(conn.assigns.list_entry, -1)
+    conn
+    |> put_flash(:info, gettext("List entry moved up."))
+    |> redirect(to: backend_list_path(conn, :show, list_id))
+  end
+
+  def move_down(conn, %{"list_id" => list_id}) do
+    List.move_entry(conn.assigns.list_entry, 1)
+    conn
+    |> put_flash(:info, gettext("List entry moved down."))
+    |> redirect(to: backend_list_path(conn, :show, list_id))
+  end
+
 end

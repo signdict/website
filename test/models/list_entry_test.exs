@@ -64,4 +64,15 @@ defmodule SignDict.ListEntryTest do
     end
   end
 
+  describe "update_sort_order/2" do
+
+    test "it changes the sort order" do
+      list_entry = insert :list_entry, sort_order: 1
+      assert {:ok, _changeset} = ListEntry.update_sort_order(list_entry, 2)
+      updated_entry = Repo.get(ListEntry, list_entry.id)
+      assert updated_entry.sort_order == 2
+    end
+
+  end
+
 end

@@ -63,4 +63,10 @@ defmodule SignDict.ListEntry do
     end
   end
 
+  def update_sort_order(entry, sort_order) do
+    entry
+    |> Ecto.Changeset.change(sort_order: sort_order)
+    |> Repo.update
+  end
+
 end

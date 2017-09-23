@@ -135,6 +135,8 @@ defmodule SignDict.Router do
     resources "/videos", VideoController, only: [:index]
     resources "/lists", ListController do
       resources "/list_entries", ListEntryController, only: [:create, :delete]
+      post "/list_entries/:id/move_up", ListEntryController, :move_up
+      post "/list_entries/:id/move_down", ListEntryController, :move_down
     end
   end
 

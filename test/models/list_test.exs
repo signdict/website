@@ -80,4 +80,46 @@ defmodule SignDict.ListTest do
     end
   end
 
+  describe "move_entry/2" do
+
+    setup do
+      list = insert :list, sort_order: "manual"
+      list_entry_1 = insert :list_entry, list: list, sort_order: 1
+      list_entry_2 = insert :list_entry, list: list, sort_order: 2
+      list_entry_3 = insert :list_entry, list: list, sort_order: 3
+
+      %{list: list, list_entry_1: list_entry_1, list_entry_2: list_entry_2,
+        list_entry_3: list_entry_3}
+    end
+
+    test "it moves a list entry up",
+          %{list: list, list_entry_1: list_entry_1, list_entry_2: list_entry_2,
+            list_entry_3: list_entry_3} do
+      list_entry_2 = List.move_entry(list_entry_2, -1)
+      assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_2.id, 1}, {list_entry_1.id, 2}, {list_entry_3.id, 3}]
+    end
+
+    test "it moves a list entry down",
+          %{list: list, list_entry_1: list_entry_1, list_entry_2: list_entry_2,
+            list_entry_3: list_entry_3} do
+      list_entry_2 = List.move_entry(list_entry_2, 1)
+      assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_1.id, 1}, {list_entry_3.id, 2}, {list_entry_2.id, 3}]
+    end
+
+    test "it does not move the entry if it is the first",
+          %{list: list, list_entry_1: list_entry_1, list_entry_2: list_entry_2,
+            list_entry_3: list_entry_3} do
+      list_entry_1 = List.move_entry(list_entry_1, -1)
+      assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_1.id, 1}, {list_entry_2.id, 2}, {list_entry_3.id, 3}]
+    end
+
+    test "it does not move the entry if it is the last",
+          %{list: list, list_entry_1: list_entry_1, list_entry_2: list_entry_2,
+            list_entry_3: list_entry_3} do
+      list_entry_3 = List.move_entry(list_entry_3, 1)
+      assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_1.id, 1}, {list_entry_2.id, 2}, {list_entry_3.id, 3}]
+    end
+
+  end
+
 end

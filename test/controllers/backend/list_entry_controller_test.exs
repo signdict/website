@@ -2,6 +2,7 @@ defmodule SignDict.Backend.ListEntryControllerTest do
   use SignDict.ConnCase
 
   import SignDict.Factory
+  alias SignDict.List
   alias SignDict.ListEntry
 
   @valid_attrs %{
@@ -39,5 +40,29 @@ defmodule SignDict.Backend.ListEntryControllerTest do
            |> delete(backend_list_list_entry_path(conn, :delete, list_entry.list_id, list_entry))
     assert redirected_to(conn) == backend_list_path(conn, :show, list_entry.list_id)
     refute Repo.get(ListEntry, list_entry.id)
+  end
+
+  test "moves list entry up", %{conn: conn} do
+    list = insert :list, sort_order: "manual"
+    list_entry_1 = insert :list_entry, list: list, sort_order: 1
+    list_entry_2 = insert :list_entry, list: list, sort_order: 2
+
+    conn
+    |> guardian_login(insert(:admin_user))
+    |> post(backend_list_list_entry_path(conn, :move_up, list, list_entry_2))
+
+    assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_2.id, 1}, {list_entry_1.id, 2}]
+  end
+
+  test "moves list entry down", %{conn: conn} do
+    list = insert :list, sort_order: "manual"
+    list_entry_1 = insert :list_entry, list: list, sort_order: 1
+    list_entry_2 = insert :list_entry, list: list, sort_order: 2
+
+    conn
+    |> guardian_login(insert(:admin_user))
+    |> post(backend_list_list_entry_path(conn, :move_down, list, list_entry_1))
+
+    assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [{list_entry_2.id, 1}, {list_entry_1.id, 2}]
   end
 end
