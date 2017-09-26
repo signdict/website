@@ -1012,12 +1012,8 @@ msgstr ""
 msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
 msgstr ""
 
-#: web/templates/page/not_supported.html.eex:16
-msgid "Firefox currently has a bug that prevents recording to work propperly. I hope\nthis is fixed soonish. As soon as it is, I will re-enable the recording\nfunctionality in Firefox.\n"
-msgstr ""
-
 #: web/templates/page/not_supported.html.eex:6
-msgid "The webcam recording functionality uses relatively new features and currently\nonly Chrome supports them. Please make sure you have the latest version of it\ninstalled. It is also not possible to record with a tablet or\nyour phone. You need to have a laptop. I hope this will change in the future,\nbut that depends on the browser manufacturers.\n"
+msgid "The webcam recording functionality uses relatively new features and currently\nonly Chrome and Firefox support them. Please make sure you have the latest version of Chrome or Firefox\ninstalled. It is also not possible to record with a tablet or\nyour phone. You need to have a laptop. I hope this will change in the future,\nbut that depends on the browser manufacturers.\n"
 msgstr ""
 
 #: web/controllers/page_controller.ex:40
