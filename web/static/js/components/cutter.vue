@@ -41,12 +41,13 @@
 <script>
 import FrameExtractor from "./frame_extractor.js";
 function createThumbnails(video, context) {
-  new FrameExtractor(video, context.videoImages).extractFrames(function() {
+  new FrameExtractor(video, duration, context.videoImages).extractFrames(function() {
     resetVideoplayerHeight();
   });
 }
 
 let store = null;
+let duration = 0;
 let cuttingStart = 0;
 let cuttingEnd   = 0;
 let currentHandle = null;
@@ -71,7 +72,6 @@ function timeToPixel(time) {
   let computedStyles = window.getComputedStyle(cutter);
   let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
   let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
-  let duration       = getVideoElement().duration;
 
   return minPos + (maxPos - minPos) / duration * time
 }
@@ -82,7 +82,6 @@ function pixelToTime(clientX) {
   let computedStyles = window.getComputedStyle(cutter);
   let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
   let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
-  let duration       = getVideoElement().duration;
   let currentPos     = 0;
 
   if (clientX < minPos) {
@@ -94,8 +93,8 @@ function pixelToTime(clientX) {
   }
 
   return duration / (maxPos - minPos) * currentPos;
-  if (time >= video.duration) {
-    time = video.duration - 0.01;
+  if (time >= duration) {
+    time = duration - 0.01;
   }
   return time;
 }
@@ -161,8 +160,8 @@ function updateVideoPosition() {
 }
 
 function initVideoPlayer(context, blobs) {
-  let duration     = context.$store.state.recordedDuration;
   let videoElement = getVideoElement();
+  duration        = context.$store.state.recordedDuration;
   cuttingStart    = context.$store.state.startTime || 0;
   cuttingEnd      = context.$store.state.endTime || duration;
   currentHandle   = null;
@@ -171,25 +170,17 @@ function initVideoPlayer(context, blobs) {
   unmounted       = false;
 
   videoElement.src = window.URL.createObjectURL(new Blob(blobs));
-  // This is a small hack. Sadly the recorded stream
-  // does not have a duration metadata entry. We jump to the
-  // last position and play it. After that the browser adds the
-  // duration automatically.
-  videoElement.currentTime = duration - 0.2;
-  videoElement.play();
-  videoElement.playbackRate = 1000.0
-  videoElement.addEventListener('durationchange',function(){
-    if (!framesExtracted && Number.isFinite(videoElement.duration) && videoElement.duration > 0) {
-      framesExtracted = true;
-      window.setTimeout(function() {
-        createThumbnails(videoElement, context);
-        if (cuttingEnd > videoElement.duration) {
-          cuttingEnd = videoElement.duration;
-        }
-        window.requestAnimationFrame(updateVideoPosition);
-      });
-    }
-  });
+
+  if (!framesExtracted && Number.isFinite(duration) && duration > 0) {
+    framesExtracted = true;
+    window.setTimeout(function() {
+      createThumbnails(videoElement, context);
+      if (cuttingEnd > duration) {
+        cuttingEnd = duration;
+      }
+      window.requestAnimationFrame(updateVideoPosition);
+    });
+  }
 
   window.onresize = resetVideoplayerHeight;
   resetVideoplayerHeight();
