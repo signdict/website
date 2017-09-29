@@ -2,11 +2,13 @@ defmodule SignDict.List do
   use SignDict.Web, :model
 
   alias SignDict.Repo
+  alias SignDict.List
   alias SignDict.ListEntry
 
   @types ["categorie-list"]
   @sort_orders ["manual", "alphabetical_desc", "alphabetical_asc"]
 
+ @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "lists" do
     field :name, :string
     field :description, :string
@@ -93,4 +95,20 @@ defmodule SignDict.List do
     Repo.get(ListEntry, list_entry.id)
   end
 
+  def lists_with_entry(entry, type \\ "categorie-list") do
+    from(
+      l in List,
+      join: e in ListEntry,
+      where: l.id == e.list_id and e.entry_id == ^entry.id and l.type == ^type
+    )
+    |> Repo.all
+  end
+
 end
+
+defimpl Phoenix.Param, for: SignDict.List do
+  def to_param(%{name: name, id: id}) do
+    SignDict.Permalink.to_permalink(id, name)
+  end
+end
+

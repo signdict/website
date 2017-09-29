@@ -122,4 +122,22 @@ defmodule SignDict.ListTest do
 
   end
 
+  describe "list_with_entry/2" do
+
+    test "it returns the lists for an entry" do
+      list_entry_1 = insert :list_entry
+      list_entry_2 = insert :list_entry
+
+      assert List.lists_with_entry(list_entry_1.entry) == [list_entry_1.list]
+      assert List.lists_with_entry(list_entry_2.entry) == [list_entry_2.list]
+    end
+
+  end
+
+  describe "Phoenix.Param" do
+    test "it creates a nice permalink for the list" do
+      assert Phoenix.Param.to_param(%List{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+    end
+  end
+
 end
