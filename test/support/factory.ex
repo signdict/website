@@ -20,7 +20,7 @@ defmodule SignDict.Factory do
   def admin_user_factory do
     %SignDict.User{
       name: "Jane Smith",
-      email: sequence(:email, &"email-#{&1}@example.com"),
+      email: sequence(:email, &"admin-#{&1}@example.com"),
       password: "correct_password",
       password_confirmation: "correct_password",
       password_hash: Bcrypt.hashpwsalt("correct_password"),
@@ -91,10 +91,32 @@ defmodule SignDict.Factory do
     %{entry_factory() | videos: build_list(4, :video_published)}
   end
 
+  def entry_with_current_video_factory do
+    entry = build(:entry_with_videos)
+    %{entry | current_video: build(:video)}
+  end
+
   def vote_factory do
     %SignDict.Vote{
       user: build(:user),
       video: build(:video)
+    }
+  end
+
+  def list_factory do
+    %SignDict.List{
+      name: "some content",
+      description: "description",
+      type: "categorie-list",
+      sort_order: "manual"
+    }
+  end
+
+  def list_entry_factory do
+    %SignDict.ListEntry {
+      list: build(:list),
+      entry: build(:entry_with_current_video),
+      sort_order: sequence(:sort_order, fn(integer) -> integer end)
     }
   end
 end

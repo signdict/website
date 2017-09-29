@@ -49,7 +49,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
       assert Repo.get(Video, video_id).state == "transcoding"
       assert_received {:check_status, ^video_id}
       assert_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
-      refute_received {:enqueue_in, 60 * 10, SignDict.Worker.RecheckVideo, [^video_id]}
+      refute_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
     end
 
     test "it publishes the video if it is done" do
@@ -58,7 +58,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
       assert Repo.get(Video, video_id).state == "waiting_for_review"
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
-      assert_received {:enqueue_in, 60 * 10, SignDict.Worker.RecheckVideo, [^video_id]}
+      assert_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
     end
 
     test "it sends an email and notifies the users" do

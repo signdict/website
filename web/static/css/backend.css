@@ -1,4 +1,8 @@
 @import "base/_fonts.css";
+@import "base/_colors.css";
+@import "base/_spacing.css";
+@import "components/_alerts.css";
+@import "components/_plyr.css";
 @import "components/_pagination.css";
 
 body {

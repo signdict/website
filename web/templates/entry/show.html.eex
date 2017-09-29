@@ -21,6 +21,16 @@
         <p><%= @entry.description %></p>
       <% end %>
 
+      <%= if length(@lists) > 0 do %>
+        <div class="sc-tags">
+          <%= for list <- @lists do %>
+            <span class="sc-tag">
+              <%= link list.name, to: list_path(@conn, :show, list) %>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+
       <div class="so-video-details--social">
         <!-- Sharingbutton Facebook -->
         <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=<%= URI.encode(@share_url) %>" target="_blank" aria-label="Facebook" rel="noopener">
@@ -107,8 +117,8 @@
       <a rel="license" href="http://creativecommons.org/licenses/<%= @video.license %>">
         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
       </a>
-
     </div>
+
     <div class="o-grid__cell o-grid__cell--width-40@small o-grid__cell--width-100">
       <div class="sc-sidebar">
         <div class="sc-sidebar--content">

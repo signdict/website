@@ -5,6 +5,7 @@ defmodule SignDict.UserSignUpTest do
 
   test "sign up user, login and logout", %{session: session} do
     session
+    |> resize_window(1200, 600)
     |> visit("/")
     |> click(Query.link("Register"))
     |> find(Query.css(".user-form"), fn(form) ->
@@ -23,6 +24,7 @@ defmodule SignDict.UserSignUpTest do
     |> Repo.update()
 
     session
+    |> resize_window(1200, 600)
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form

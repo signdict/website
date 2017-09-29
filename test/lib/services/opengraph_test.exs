@@ -64,4 +64,16 @@ defmodule SignDict.Services.OpenGraphTest do
       "twitter:player:width" => 480
     }
   end
+
+  test "it generates metadata for lists" do
+    list = insert(:list)
+
+    result = SignDict.Services.OpenGraph.to_metadata(list)
+    assert result == %{
+      "og:description" => "some content is a collection of signs in SignDict, a sign language dictionary.",
+      "twitter:card" => "summary",
+      "twitter:description" => "some content is a collection of signs in SignDict, a sign language dictionary.",
+      "twitter:site" => "@SignDict"
+    }
+  end
 end

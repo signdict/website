@@ -5,8 +5,10 @@ defmodule SignDict.EntryController do
 
   alias SignDict.Entry
   alias SignDict.Language
+  alias SignDict.List
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
+  alias SignDict.Router.Helpers
 
   def index(conn, params) do
     letter = params["letter"] || "A"
@@ -28,6 +30,7 @@ defmodule SignDict.EntryController do
     if id =~ ~r/^\d+(-.*)?\z/ do
       conn
       |> EntryVideoLoader.load_videos_for_entry(id: id)
+      |> add_lists_for_entry
       |> render_entry
     else
       redirect_to_search(conn, conn.params["id"])
@@ -37,6 +40,7 @@ defmodule SignDict.EntryController do
   def show(conn, %{"entry_id" => id, "video_id" => video_id}) do
     conn
     |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id)
+    |> add_lists_for_entry
     |> render_entry
   end
 
@@ -76,13 +80,14 @@ defmodule SignDict.EntryController do
     |> redirect(to: entry_path(conn, :show, entry))
   end
   defp render_entry(%{conn: conn, entry: entry, videos: videos,
-                      video: video, voted: voted}) do
+                      video: video, voted: voted, lists: lists}) do
     render(conn, "show.html",
            layout: {SignDict.LayoutView, "empty.html"},
            entry: entry,
            video: video,
            videos: videos,
-           share_url: SignDict.Router.Helpers.url(conn) <> conn.request_path,
+           lists: lists,
+           share_url: Helpers.url(conn) <> conn.request_path,
            share_text: gettext("Watch this sign for \"%{sign}\" on @signdict", sign: entry.text),
            voted_video: voted,
            searchbar: true,
@@ -109,6 +114,14 @@ defmodule SignDict.EntryController do
             |> String.replace("-", " ")
     conn
     |> redirect(to: search_path(conn, :index, q: query))
+  end
+
+  defp add_lists_for_entry(%{entry: entry} = params) when is_nil(entry) do
+    params
+  end
+  defp add_lists_for_entry(%{entry: entry} = params) do
+    lists = List.lists_with_entry(entry)
+    Map.merge(params, %{lists: lists})
   end
 
 end

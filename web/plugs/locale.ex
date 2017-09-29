@@ -32,7 +32,7 @@ defmodule SignDict.Plug.Locale do
   end
 
   defp store_locale(user, locale) do
-    if (user.locale != locale) do
+    if user.locale != locale do
       user
       |> User.changeset(%{locale: locale})
       |> Repo.update

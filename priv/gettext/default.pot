@@ -30,6 +30,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:4
 #: web/templates/backend/language/form.html.eex:4
+#: web/templates/backend/list/form.html.eex:4
 #: web/templates/backend/user/form.html.eex:4
 #: web/templates/backend/video/form.html.eex:4
 #: web/templates/entry/form.html.eex:4 web/templates/user/edit.html.eex:6
@@ -160,12 +161,14 @@ msgstr ""
 msgid "Your password reset link"
 msgstr ""
 
-#: web/plugs/allowed_for_backend.ex:11
+#: web/plugs/allowed_for_backend.ex:13
 msgid "You are not allowed to do this."
 msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:27
 #: web/templates/backend/language/index.html.eex:10
+#: web/templates/backend/list/index.html.eex:9
+#: web/templates/backend/list/show.html.eex:38
 #: web/templates/backend/shared/videos_table.html.eex:16
 #: web/templates/backend/user/index.html.eex:10
 msgid "Actions"
@@ -173,6 +176,8 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/list/index.html.eex:26
+#: web/templates/backend/list/show.html.eex:55
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Delete"
@@ -182,6 +187,8 @@ msgstr ""
 #: web/templates/backend/entry/show.html.eex:25
 #: web/templates/backend/language/index.html.eex:25
 #: web/templates/backend/language/show.html.eex:32
+#: web/templates/backend/list/index.html.eex:25
+#: web/templates/backend/list/show.html.eex:26
 #: web/templates/backend/shared/videos_table.html.eex:45
 #: web/templates/backend/user/index.html.eex:30
 #: web/templates/backend/user/show.html.eex:42
@@ -201,6 +208,7 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:41
 #: web/templates/backend/language/index.html.eex:24
+#: web/templates/backend/list/index.html.eex:24
 #: web/templates/backend/shared/videos_table.html.eex:44
 #: web/templates/backend/user/index.html.eex:29
 msgid "Show"
@@ -208,6 +216,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:33
 #: web/templates/backend/language/form.html.eex:33
+#: web/templates/backend/list/form.html.eex:33
 #: web/templates/backend/user/form.html.eex:62
 #: web/templates/backend/video/form.html.eex:51
 msgid "Submit"
@@ -278,7 +287,7 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:49
+#: web/templates/layout/backend.html.eex:52
 msgid "Languages"
 msgstr ""
 
@@ -317,6 +326,8 @@ msgstr ""
 
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
+#: web/templates/backend/list/index.html.eex:26
+#: web/templates/backend/list/show.html.eex:55
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
@@ -341,6 +352,7 @@ msgid "Edit user"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
+#: web/templates/backend/list/show.html.eex:67
 #: web/templates/backend/shared/videos_table.html.eex:6
 #: web/templates/backend/video/show.html.eex:39
 msgid "Entry"
@@ -388,6 +400,7 @@ msgstr ""
 msgid "video.state"
 msgstr ""
 
+#: web/templates/backend/list/show.html.eex:30
 #: web/templates/layout/backend.html.eex:46
 msgid "Entries"
 msgstr ""
@@ -408,6 +421,7 @@ msgstr ""
 
 #: web/templates/backend/entry/form.html.eex:9
 #: web/templates/backend/entry/index.html.eex:23
+#: web/templates/backend/list/show.html.eex:37
 #: web/templates/entry/form.html.eex:9
 msgid "entry.text"
 msgstr ""
@@ -771,7 +785,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:90
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:91
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -791,7 +805,7 @@ msgstr ""
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr ""
 
-#: web/templates/layout/backend.html.eex:52
+#: web/templates/layout/backend.html.eex:55
 msgid "Worker Queue"
 msgstr ""
 
@@ -847,7 +861,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:103
+#: web/controllers/entry_controller.ex:104
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -902,7 +916,7 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:105
+#: web/models/user.ex:103
 msgid "already used"
 msgstr ""
 
@@ -983,7 +997,7 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: web/controllers/entry_controller.ex:23
+#: web/controllers/entry_controller.ex:24
 #: web/templates/shared/footer.html.eex:35
 msgid "All entries"
 msgstr ""
@@ -1025,11 +1039,11 @@ msgstr ""
 msgid "Your browser is not supported"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:47
+#: web/controllers/backend/review_controller.ex:48
 msgid "Video could not be rejected"
 msgstr ""
 
-#: web/controllers/backend/review_controller.ex:42
+#: web/controllers/backend/review_controller.ex:43
 msgid "Video rejected"
 msgstr ""
 
@@ -1045,7 +1059,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:86
+#: web/controllers/entry_controller.ex:87
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
@@ -1071,4 +1085,82 @@ msgstr ""
 
 #: web/templates/page/index.html.eex:16
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
+msgstr ""
+
+#: web/controllers/backend/list_controller.ex:23
+msgid "List created successfully."
+msgstr ""
+
+#: web/controllers/backend/list_controller.ex:60
+msgid "List deleted successfully."
+msgstr ""
+
+#: web/controllers/backend/list_controller.ex:49
+msgid "List updated successfully."
+msgstr ""
+
+#: web/templates/layout/backend.html.eex:49
+msgid "Lists"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:1
+msgid "Listing lists"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:38
+#: web/templates/backend/list/new.html.eex:1
+msgid "New list"
+msgstr ""
+
+#: web/templates/backend/list/index.html.eex:6
+msgid "list.id"
+msgstr ""
+
+#: web/templates/backend/list/form.html.eex:9
+#: web/templates/backend/list/index.html.eex:7
+msgid "list.name"
+msgstr ""
+
+#: web/templates/backend/list/form.html.eex:21
+#: web/templates/backend/list/index.html.eex:8
+#: web/templates/backend/list/show.html.eex:5
+msgid "list.type"
+msgstr ""
+
+#: web/templates/backend/list/edit.html.eex:1
+msgid "Edit list"
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:1
+msgid "List"
+msgstr ""
+
+#: web/templates/backend/list/form.html.eex:15
+#: web/templates/backend/list/show.html.eex:19
+msgid "list.description"
+msgstr ""
+
+#: web/templates/backend/list/form.html.eex:27
+#: web/templates/backend/list/show.html.eex:12
+msgid "list.sort_order"
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:16
+msgid "Entry added successfully."
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:20
+msgid "Entry could not be added."
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:35
+msgid "ID"
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:29
+msgid "List entry deleted successfully."
+msgstr ""
+
+#: web/templates/backend/list/show.html.eex:36
+msgid "Thumbnail"
 msgstr ""

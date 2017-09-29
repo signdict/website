@@ -15,6 +15,7 @@ defmodule SignDict.SearchEntryTest do
 
     session
     |> visit("/")
+    |> resize_window(1200, 600)
     |> find(Query.css(".so-landing--search"), fn(form) ->
       form
       |> fill_in(Query.text_field("q"), with: "ki")

@@ -1,0 +1,98 @@
+<h1 class="c-heading"><%= gettext("List") %>: <%= @list.name %></h1>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.type") %></strong></div>
+    <div class="o-grid__cell"><%= @list.type %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.sort_order") %></strong></div>
+    <div class="o-grid__cell"><%= @list.sort_order %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.description") %></strong></div>
+    <div class="o-grid__cell"><%= @list.description %></div>
+  </div>
+</div>
+
+<%= if Canada.Can.can? @current_user, :edit, @list do %>
+  <p>
+    <%= link gettext("Edit"), to: backend_list_path(@conn, :edit, @list), class: "c-button" %>
+  </p>
+<% end %>
+
+<h2 class="c-heading"><%= gettext("Entries") %></h2>
+
+<table class="c-table c-table--striped c-table--condensed">
+  <thead class="c-table__head">
+    <tr class="c-table__row c-table__row--heading">
+      <th class="c-table__cell" scope='col'><%= gettext("ID") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("Thumbnail") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("entry.text") %></th>
+      <th class="c-table__cell" scope='col'><%= gettext("Actions") %></th>
+    </tr>
+  </thead>
+  <tbody class="c-table__body">
+    <%= for {list_entry, position} <- Enum.with_index(@list_entries) do %>
+      <% entry = list_entry.entry %>
+      <tr class="c-table__row">
+        <td class="c-table__cell">
+          <%= entry.id %>
+        </td>
+        <td class="c-table__cell">
+          <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_path(@conn, :show, entry) %>
+        </td>
+        <td class="c-table__cell">
+          <%= list_entry.entry.text %>
+        </td>
+        <td class="c-table__cell">
+          <%= if @list.sort_order == "manual" do %>
+            <%= if position > 0 do %>
+              <span>
+                <%= link "▲", to: backend_list_list_entry_path(@conn, :move_up, @list, list_entry), method: :post, class: "c-button u-xsmall" %>
+                &nbsp;
+              </span>
+            <% end %>
+            <%= if position < length(@list_entries) - 1 do %>
+              <span>
+                <%= link "▼", to: backend_list_list_entry_path(@conn, :move_down, @list, list_entry), method: :post, class: "c-button u-xsmall " %>
+                &nbsp;
+              </span>
+            <% end %>
+          <% end %>
+          <span>
+            <%= link gettext("Delete"), to: backend_list_list_entry_path(@conn, :delete, @list, list_entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="o-container--small">
+  <div class="st-margin-top st-margin-bottom">
+    <%= form_for SignDict.ListEntry.changeset(%SignDict.ListEntry{}), backend_list_list_entry_path(@conn, :create, @list) , fn f -> %>
+      <div class="o-grid">
+        <div class="o-grid__cell o-grid__cell--width-60">
+          <%= label f, :entry_id, gettext("Entry"), class: "c-label" %>
+        </div>
+      </div>
+      <div class="o-grid">
+        <div class="o-grid__cell o-grid__cell--width-60">
+          <div class="c-input-group">
+            <div class="o-field">
+              <%= text_input f, :entry_id, class: "c-field #{class_for_error(f, :name)}" %>
+            </div>
+            <button class="c-button c-button--brand">Add</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -5,6 +5,7 @@ defmodule SignDict.UserPasswordResetTest do
   test "send rest email", %{session: session} do
     user = insert(:user, email: "reset_email@example.com")
     session
+    |> resize_window(1200, 600)
     |> visit("/")
     |> click(Query.link("Sign in"))
     |> click(Query.link("Forgot password?"))
@@ -19,6 +20,7 @@ defmodule SignDict.UserPasswordResetTest do
   test "reset email and login", %{session: session} do
     user = insert(:user, email: "reset_login@example.com", password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345"))
     session
+    |> resize_window(1200, 600)
     |> visit("/password/edit?email=#{user.email}&password_reset_token=#{12345}")
     |> find(Query.css(".password-reset-form"), fn(form) ->
       form

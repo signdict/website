@@ -5,6 +5,7 @@ defmodule SignDict.ContactFormTest do
   test "sends a text via the contact form", %{session: session} do
     session
     |> visit("/contact")
+    |> resize_window(1200, 600)
     |> find(Query.css(".contact-form"), fn(form) ->
       form
       |> fill_in(Query.text_field("contact_email"), with: "elisa@example.com")

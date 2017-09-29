@@ -1,0 +1,26 @@
+<div class="o-grid o-grid--wrap">
+  <div class="o-grid__cell">
+    <h2><%= @list.name %></h2>
+    <%= text_to_html @list.description %>
+  </div>
+</div>
+
+<%= for list_entry <- @entries do %>
+  <% entry = list_entry.entry %>
+  <div class="o-grid o-grid--wrap">
+    <div class="o-grid__cell o-grid__cell--width-30">
+      <a href="<%= entry_path(@conn, :show, entry) %>">
+        <%= img_tag(entry.current_video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
+      </a>
+    </div>
+    <div class="o-grid__cell">
+      <h2>
+        <%= link entry.text, to: entry_path(@conn, :show, entry), class: "so-search-result--link" %>
+      </h2>
+
+      <%= if String.length(entry.description) > 0 do %>
+        <p><%= entry.description %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

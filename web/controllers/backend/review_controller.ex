@@ -33,7 +33,8 @@ defmodule SignDict.Backend.ReviewController do
   end
 
   def reject_video(conn, %{"video_id" => video_id, "video" => %{"rejection_reason" => rejection_reason}}) do
-    changeset = Repo.get_by(Video, id: video_id)
+    changeset = Video
+                |> Repo.get(video_id)
                 |> Video.changeset(%{rejection_reason: rejection_reason})
     case Video.reject(changeset) do
       {:ok, video} ->

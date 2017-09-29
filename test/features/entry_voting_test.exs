@@ -8,6 +8,7 @@ defmodule SignDict.EntryVotingTest do
 
     session
     |> visit("/")
+    |> resize_window(1200, 600)
     |> click(Query.link("Sign in"))
     |> find(Query.css(".login-form"), fn(form) ->
       form
