@@ -48,8 +48,6 @@ defmodule SignDict.User do
 
     has_many :videos, SignDict.Video
 
-    has_many :lists, SignDict.List
-
     timestamps()
   end
 
