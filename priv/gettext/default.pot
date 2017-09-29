@@ -177,7 +177,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/list/index.html.eex:26
-#: web/templates/backend/list/show.html.eex:55
+#: web/templates/backend/list/show.html.eex:70
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Delete"
@@ -327,7 +327,7 @@ msgstr ""
 #: web/templates/backend/entry/index.html.eex:43
 #: web/templates/backend/language/index.html.eex:26
 #: web/templates/backend/list/index.html.eex:26
-#: web/templates/backend/list/show.html.eex:55
+#: web/templates/backend/list/show.html.eex:70
 #: web/templates/backend/shared/videos_table.html.eex:46
 #: web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
@@ -352,7 +352,7 @@ msgid "Edit user"
 msgstr ""
 
 #: web/templates/backend/entry/show.html.eex:1
-#: web/templates/backend/list/show.html.eex:67
+#: web/templates/backend/list/show.html.eex:83
 #: web/templates/backend/shared/videos_table.html.eex:6
 #: web/templates/backend/video/show.html.eex:39
 msgid "Entry"
@@ -374,7 +374,7 @@ msgstr ""
 #: web/templates/backend/shared/videos_table.html.eex:9
 #: web/templates/backend/user/show.html.eex:1
 #: web/templates/backend/video/show.html.eex:46
-#: web/templates/entry/show.html.eex:90
+#: web/templates/entry/show.html.eex:100
 msgid "User"
 msgstr ""
 
@@ -668,11 +668,11 @@ msgstr ""
 msgid "video.video_url"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:147
+#: web/templates/entry/show.html.eex:157
 msgid "No other variations"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:115
+#: web/templates/entry/show.html.eex:125
 msgid "Variations »%{entry}«"
 msgstr ""
 
@@ -680,44 +680,45 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:133
+#: web/templates/entry/show.html.eex:143
 msgid "${time} ago"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:96
+#: web/templates/entry/show.html.eex:106
 msgid "Date of upload"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:130
+#: web/templates/entry/show.html.eex:140
 msgid "by"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:103
+#: web/templates/entry/show.html.eex:113
 msgid "Source:"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:122
+#: web/templates/entry/show.html.eex:132
 msgid "Choose this variant"
 msgstr ""
 
-#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:123
-#: web/templates/search/index.html.eex:26 web/templates/user/show.html.eex:42
+#: web/templates/entry/index.html.eex:57 web/templates/entry/show.html.eex:133
+#: web/templates/list/show.html.eex:13 web/templates/search/index.html.eex:26
+#: web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:79
+#: web/templates/entry/show.html.eex:89
 msgid "Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow."
 msgstr ""
 
-#: web/templates/entry/show.html.eex:51
+#: web/templates/entry/show.html.eex:61
 msgid "Don't vote this video up"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:59
+#: web/templates/entry/show.html.eex:69
 msgid "Vote this video up"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:77
+#: web/templates/entry/show.html.eex:87
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr ""
 
@@ -785,7 +786,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:91
+#: web/controllers/embed_controller.ex:37 web/controllers/entry_controller.ex:95
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -801,7 +802,7 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:75
+#: web/templates/entry/show.html.eex:85
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr ""
 
@@ -861,7 +862,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:104
+#: web/controllers/entry_controller.ex:108
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -916,7 +917,7 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: web/models/user.ex:103
+#: web/models/user.ex:101
 msgid "already used"
 msgstr ""
 
@@ -941,7 +942,7 @@ msgstr ""
 msgid "user.flags"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:155
+#: web/templates/entry/show.html.eex:165
 msgid "Record new video"
 msgstr ""
 
@@ -953,7 +954,7 @@ msgstr ""
 msgid "Video approved"
 msgstr ""
 
-#: web/templates/entry/show.html.eex:153
+#: web/templates/entry/show.html.eex:163
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
@@ -997,7 +998,7 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: web/controllers/entry_controller.ex:24
+#: web/controllers/entry_controller.ex:25
 #: web/templates/shared/footer.html.eex:35
 msgid "All entries"
 msgstr ""
@@ -1059,7 +1060,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: web/controllers/entry_controller.ex:87
+#: web/controllers/entry_controller.ex:91
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
@@ -1145,11 +1146,11 @@ msgstr ""
 msgid "list.sort_order"
 msgstr ""
 
-#: web/controllers/backend/list_entry_controller.ex:16
+#: web/controllers/backend/list_entry_controller.ex:15
 msgid "Entry added successfully."
 msgstr ""
 
-#: web/controllers/backend/list_entry_controller.ex:20
+#: web/controllers/backend/list_entry_controller.ex:19
 msgid "Entry could not be added."
 msgstr ""
 
@@ -1157,10 +1158,26 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: web/controllers/backend/list_entry_controller.ex:29
+#: web/controllers/backend/list_entry_controller.ex:28
 msgid "List entry deleted successfully."
 msgstr ""
 
 #: web/templates/backend/list/show.html.eex:36
 msgid "Thumbnail"
+msgstr ""
+
+#: lib/sign_dict/services/opengraph.ex:82
+msgid "   %{list} is a collection of signs in SignDict, a sign language dictionary.\n"
+msgstr ""
+
+#: web/controllers/list_controller.ex:20
+msgid "List \"%{name}\""
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:42
+msgid "List entry moved down."
+msgstr ""
+
+#: web/controllers/backend/list_entry_controller.ex:35
+msgid "List entry moved up."
 msgstr ""
