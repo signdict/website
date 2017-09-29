@@ -6,6 +6,7 @@ defmodule SignDict.Backend.ListEntryController do
   plug :load_and_authorize_resource, model: ListEntry, except: :index
 
   def create(conn, %{"list_entry" => list_entry_params, "list_id" => list_id}) do
+    {:ok, list_id} = SignDict.Permalink.cast(list_id)
     changeset = ListEntry.changeset(%ListEntry{}, Map.merge(%{"list_id" => list_id}, list_entry_params))
 
     case Repo.insert(changeset) do

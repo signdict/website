@@ -116,6 +116,9 @@ defmodule SignDict.EntryController do
     |> redirect(to: search_path(conn, :index, q: query))
   end
 
+  defp add_lists_for_entry(%{entry: entry} = params) when is_nil(entry) do
+    params
+  end
   defp add_lists_for_entry(%{entry: entry} = params) do
     lists = List.lists_with_entry(entry)
     Map.merge(params, %{lists: lists})

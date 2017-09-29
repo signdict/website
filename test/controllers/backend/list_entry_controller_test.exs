@@ -11,7 +11,7 @@ defmodule SignDict.Backend.ListEntryControllerTest do
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
     list  = insert :list
-    entry = insert :entry
+    entry = insert :entry_with_current_video
     insert(:video_published, %{entry: entry})
     SignDict.Entry.update_current_video(entry)
 
@@ -19,7 +19,7 @@ defmodule SignDict.Backend.ListEntryControllerTest do
     conn = conn
            |> guardian_login(insert(:admin_user))
            |> post(backend_list_list_entry_path(conn, :create, list), list_entry: params)
-    assert redirected_to(conn) == backend_list_path(conn, :show, list)
+    assert redirected_to(conn) == backend_list_path(conn, :show, list.id)
     assert Repo.get_by(ListEntry, entry_id: entry.id, list_id: list.id)
   end
 
