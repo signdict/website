@@ -97,6 +97,7 @@ function startRecording(context) {
   } catch (e) {
     console.error('Exception while creating MediaRecorder: ' + e);
     alert(context.$root.$t('Sadly there seems something wrong and we can\'t start the recording: ') + e);
+    window.location = "/notsupported"
     return;
   }
   mediaRecorder.onstop = handleStop;
