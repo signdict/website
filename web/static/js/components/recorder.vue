@@ -96,8 +96,7 @@ function startRecording(context) {
     mediaRecorder = new MediaRecorder(streamHandle, {mimeType: detectCodec()});
   } catch (e) {
     console.error('Exception while creating MediaRecorder: ' + e);
-    alert('Exception while creating MediaRecorder: '
-      + e + '. mimeType: ' + options.mimeType);
+    alert(context.$root.$t('Sadly there seems something wrong and we can\'t start the recording: ') + e);
     return;
   }
   mediaRecorder.onstop = handleStop;

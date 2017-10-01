@@ -39,6 +39,5 @@ export default {
   'Current time': 'Aktuelle Zeit',
   'Change playback rate': 'Abspielgeschwindigkeit ändern',
   'Toggle Fullscreen': 'Auf Vollbild umschalten',
+  'Sadly there seems something wrong and we can\'t start the recording: ': 'Leider ist etwas schief gelaufen und wir können die Aufnahme nicht starten: ',
 }
-
-
