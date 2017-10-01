@@ -1,8 +1,9 @@
 class FrameExtractor {
-  constructor(videoElement, targetArray) {
+  constructor(videoElement, duration, targetArray) {
     let self = this;
     this.targetArray  = targetArray;
     this.videoElement = videoElement;
+    this.duration = duration;
     this.seekEvent = function(event) {
       seekForThumbnail(self, event);
     }
@@ -68,12 +69,12 @@ function extractFrame(props) {
 
 function jumpToNextPosition(props) {
   props.extractFramePosition += 1;
-  let seekDistance = props.videoElement.duration / 10.0;
+  let seekDistance = props.duration / 10.0;
   let jumpTo = props.extractFramePosition * seekDistance;
-  if (jumpTo < props.videoElement.duration) {
+  if (jumpTo < props.duration) {
     props.videoElement.currentTime = jumpTo;
   } else {
-    props.videoElement.currentTime = props.videoElement.duration - 0.1;
+    props.videoElement.currentTime = props.duration - 0.1;
   }
 }
 
@@ -83,7 +84,6 @@ function seekForThumbnail(props, event){
     jumpToNextPosition(props);
   } else {
     props.videoElement.removeEventListener("seeked", props.seekEvent);
-    props.videoElement.playbackRate = 1
     props.videoElement.play();
     props.callback();
   }

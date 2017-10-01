@@ -3,14 +3,5 @@
     <%= gettext("You need to enable Javascript for this to work.") %>
   </p>
 </noscript>
-<script>
-  if ((window.browser.name == "chrome") && parseInt(window.browser.version) >= 59) {
-    document.write('<%= link gettext("Record new sign"), to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>');
-  } else {
-    document.write(
-      '<p class="sc-alert sc-alert--success" role="alert">' +
-      '<%= gettext("Sorry, but you need the latest Chrome Browser for recording right now.") %>' +
-      '</p>'
-    );
-  }
-</script>
+
+<%= link gettext("Record new sign"), to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
