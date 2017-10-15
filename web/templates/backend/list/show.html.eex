@@ -17,7 +17,7 @@
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("list.description") %></strong></div>
-    <div class="o-grid__cell"><%= @list.description %></div>
+    <div class="o-grid__cell"><%= text_to_html(@list.description || "") %></div>
   </div>
 </div>
 

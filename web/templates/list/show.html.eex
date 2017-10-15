@@ -1,7 +1,7 @@
 <div class="o-grid o-grid--wrap">
   <div class="o-grid__cell">
     <h2><%= @list.name %></h2>
-    <%= text_to_html @list.description %>
+    <%= text_to_html(@list.description || "") %>
   </div>
 </div>
 
