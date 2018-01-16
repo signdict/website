@@ -28,7 +28,7 @@
         </div>
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-33@medium so-footer--links--center">
           <ul class="so-footer--links--list">
-            <li><a href='//blog.signdict.org'><%= gettext("Blog") %></a></li>
+            <li><a href='http://blog.signdict.org'><%= gettext("Blog") %></a></li>
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/privacy'><%= gettext("Privacy") %></a></li>
             <li><a href='/contact'><%= gettext("Contact") %></a></li>
