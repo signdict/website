@@ -10,11 +10,12 @@ defmodule SignDict.Worker.TranscodeVideoTest do
     defmodule VideoServiceMock do
       @behaviour SignDict.Transcoder.API
       def upload_video(video) do
-        send self(), {:transcode_video, video.id}
+        send(self(), {:transcode_video, video.id})
         {:ok, video}
       end
+
       def check_status(video) do
-        send self(), {:check_status, video.id}
+        send(self(), {:check_status, video.id})
         :transcoding
       end
     end
@@ -25,7 +26,5 @@ defmodule SignDict.Worker.TranscodeVideoTest do
       assert_received {:transcode_video, ^video_id}
       assert Repo.get(Video, video_id).state == "transcoding"
     end
-
   end
 end
-

@@ -26,21 +26,21 @@ defmodule SignDict.VoteTest do
   end
 
   test "changeset with values violating uniqueness constraint" do
-    %Vote{} |> Vote.changeset(@valid_attrs) |> Repo.insert!
+    %Vote{} |> Vote.changeset(@valid_attrs) |> Repo.insert!()
     vote_changeset = %Vote{} |> Vote.changeset(@valid_attrs)
     assert {:error, changeset} = Repo.insert(vote_changeset)
     assert changeset.errors[:video_id] == {"Only one vote per video and user", []}
   end
 
   test "changeset with values respecting uniqueness constraint" do
-    %Vote{} |> Vote.changeset(%{user_id: 42, video_id: 42}) |> Repo.insert!
+    %Vote{} |> Vote.changeset(%{user_id: 42, video_id: 42}) |> Repo.insert!()
     vote_changeset = %Vote{} |> Vote.changeset(%{user_id: 42, video_id: 43})
     assert {:ok, _} = Repo.insert(vote_changeset)
   end
 
   describe "vote_video/2" do
     setup do
-      user  = insert(:user)
+      user = insert(:user)
       entry = insert(:entry)
       video = insert(:video_published, %{entry: entry})
       {:ok, user: user, entry: entry, video: video}
@@ -51,8 +51,11 @@ defmodule SignDict.VoteTest do
       assert Vote |> Repo.aggregate(:count, :id) == 1
     end
 
-    test "deletes only the already given vote by the user and sets a new one", %{user: user, video: video} do
-      %Vote{user: user, video: video} |> Repo.insert
+    test "deletes only the already given vote by the user and sets a new one", %{
+      user: user,
+      video: video
+    } do
+      %Vote{user: user, video: video} |> Repo.insert()
       insert(:vote)
 
       Vote.vote_video(user, video)
@@ -61,8 +64,7 @@ defmodule SignDict.VoteTest do
       assert Vote |> Repo.aggregate(:count, :id) == 2
     end
 
-    test "updates the current video on the entry",
-         %{user: user, video: video, entry: entry} do
+    test "updates the current video on the entry", %{user: user, video: video, entry: entry} do
       Vote.vote_video(user, video)
       assert Repo.get(Entry, entry.id).current_video_id == video.id
     end
@@ -70,7 +72,7 @@ defmodule SignDict.VoteTest do
 
   describe "delete_vote/2" do
     setup do
-      user  = insert(:user)
+      user = insert(:user)
       entry = insert(:entry)
       video = insert(:video_published, %{entry: entry})
       {:ok, user: user, entry: entry, video: video}
@@ -78,7 +80,7 @@ defmodule SignDict.VoteTest do
 
     test "it deletes the vote", %{user: user, video: video} do
       insert(:vote)
-      %Vote{user: user, video: video} |> Repo.insert
+      %Vote{user: user, video: video} |> Repo.insert()
 
       Vote.delete_vote(user, video)
       query = from(v in Vote, where: v.user_id == ^user.id and v.video_id == ^video.id)
@@ -86,5 +88,4 @@ defmodule SignDict.VoteTest do
       assert Vote |> Repo.aggregate(:count, :id) == 1
     end
   end
-
 end

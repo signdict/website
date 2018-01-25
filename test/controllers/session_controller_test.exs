@@ -11,24 +11,31 @@ defmodule SignDict.SessionControllerTest do
 
   describe "create/2" do
     test "rerenders new.html if params are missing", %{conn: conn} do
-      conn = post(conn, session_path(conn, :create),
-                  %{"session" => %{"email" => "", "password" => ""}})
+      conn =
+        post(conn, session_path(conn, :create), %{"session" => %{"email" => "", "password" => ""}})
+
       assert html_response(conn, 200) =~ "Email"
     end
 
     test "throws an error if login was wrong", %{conn: conn} do
       insert(:user)
-      conn = post(conn, session_path(conn, :create),
-                  %{"session" => %{"email" => "elisa@example.com",
-                                   "password" => "wrong_password"}})
+
+      conn =
+        post(conn, session_path(conn, :create), %{
+          "session" => %{"email" => "elisa@example.com", "password" => "wrong_password"}
+        })
+
       assert html_response(conn, 200) =~ "Email"
     end
 
     test "successfully login puts user into the session", %{conn: conn} do
       user = insert(:user)
-      conn = post(conn, session_path(conn, :create),
-                  %{"session" => %{"email" => user.email,
-                                   "password" => "correct_password"}})
+
+      conn =
+        post(conn, session_path(conn, :create), %{
+          "session" => %{"email" => user.email, "password" => "correct_password"}
+        })
+
       assert redirected_to(conn) == "/"
       assert get_flash(conn, :info) == "Successfully signed in"
     end
@@ -37,12 +44,14 @@ defmodule SignDict.SessionControllerTest do
   describe "delete/2" do
     test "delete a session", %{conn: conn} do
       user = insert(:user)
-      conn = conn
-             |> guardian_login(user)
-             |> delete(session_path(conn, :delete, user))
+
+      conn =
+        conn
+        |> guardian_login(user)
+        |> delete(session_path(conn, :delete, user))
+
       assert get_flash(conn, :info) == "Successfully signed out"
       refute Guardian.Plug.authenticated?(conn)
     end
   end
-
 end

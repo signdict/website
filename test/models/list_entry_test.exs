@@ -9,7 +9,7 @@ defmodule SignDict.ListEntryTest do
 
   describe "changeeset/1" do
     test "changeset with valid attributes" do
-      entry = insert :entry
+      entry = insert(:entry)
       insert(:video_published, %{entry: entry})
       SignDict.Entry.update_current_video(entry)
       attributes = Map.merge(@valid_attrs, %{entry_id: entry.id})
@@ -19,7 +19,7 @@ defmodule SignDict.ListEntryTest do
     end
 
     test "is not valid if entry does not have current video" do
-      entry = insert :entry
+      entry = insert(:entry)
       attributes = Map.merge(@valid_attrs, %{entry_id: entry.id})
 
       changeset = ListEntry.changeset(%ListEntry{}, attributes)
@@ -32,8 +32,15 @@ defmodule SignDict.ListEntryTest do
     end
 
     test "is not valid if entry already exists in list" do
-      list_entry = insert :list_entry
-      attributes = Map.merge(@valid_attrs, %{list_id: list_entry.list_id, entry_id: list_entry.entry_id, sort_order: 2})
+      list_entry = insert(:list_entry)
+
+      attributes =
+        Map.merge(@valid_attrs, %{
+          list_id: list_entry.list_id,
+          entry_id: list_entry.entry_id,
+          sort_order: 2
+        })
+
       insert(:list_entry, entry: list_entry.entry)
 
       changeset = ListEntry.changeset(%ListEntry{}, attributes)
@@ -41,9 +48,12 @@ defmodule SignDict.ListEntryTest do
     end
 
     test "it checks if the sort order is unique" do
-      list_entry = insert :list_entry, sort_order: 1
-      entry      = insert :entry_with_current_video
-      attributes = Map.merge(@valid_attrs, %{list_id: list_entry.list_id, entry_id: entry.id, sort_order: 1})
+      list_entry = insert(:list_entry, sort_order: 1)
+      entry = insert(:entry_with_current_video)
+
+      attributes =
+        Map.merge(@valid_attrs, %{list_id: list_entry.list_id, entry_id: entry.id, sort_order: 1})
+
       insert(:list_entry, entry: list_entry.entry)
 
       changeset = ListEntry.changeset(%ListEntry{}, attributes)
@@ -51,8 +61,8 @@ defmodule SignDict.ListEntryTest do
     end
 
     test "it adds a new sort order entry" do
-      list_entry = insert :list_entry, sort_order: 1
-      entry      = insert :entry_with_current_video
+      list_entry = insert(:list_entry, sort_order: 1)
+      entry = insert(:entry_with_current_video)
       attributes = %{list_id: list_entry.list_id, entry_id: entry.id, sort_order: nil}
       insert(:list_entry, entry: list_entry.entry)
 
@@ -65,14 +75,11 @@ defmodule SignDict.ListEntryTest do
   end
 
   describe "update_sort_order/2" do
-
     test "it changes the sort order" do
-      list_entry = insert :list_entry, sort_order: 1
+      list_entry = insert(:list_entry, sort_order: 1)
       assert {:ok, _changeset} = ListEntry.update_sort_order(list_entry, 2)
       updated_entry = Repo.get(ListEntry, list_entry.id)
       assert updated_entry.sort_order == 2
     end
-
   end
-
 end

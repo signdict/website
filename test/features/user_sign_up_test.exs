@@ -8,7 +8,7 @@ defmodule SignDict.UserSignUpTest do
     |> resize_window(1200, 600)
     |> visit("/")
     |> click(Query.link("Register"))
-    |> find(Query.css(".user-form"), fn(form) ->
+    |> find(Query.css(".user-form"), fn form ->
       form
       |> fill_in(Query.text_field("user_email"), with: "new_user@example.com")
       |> fill_in(Query.text_field("user_password"), with: "mylongpassword")
@@ -16,6 +16,7 @@ defmodule SignDict.UserSignUpTest do
       |> fill_in(Query.text_field("user_name"), with: "Elisa Example")
       |> click(Query.button("Register"))
     end)
+
     assert current_path(session) == "/"
 
     User
@@ -26,7 +27,7 @@ defmodule SignDict.UserSignUpTest do
     session
     |> resize_window(1200, 600)
     |> click(Query.link("Sign in"))
-    |> find(Query.css(".login-form"), fn(form) ->
+    |> find(Query.css(".login-form"), fn form ->
       form
       |> fill_in(Query.text_field("session_email"), with: "new_user@example.com")
       |> fill_in(Query.text_field("session_password"), with: "mylongpassword")
@@ -37,5 +38,4 @@ defmodule SignDict.UserSignUpTest do
     |> click(Query.button("Sign out"))
     |> assert_alert("Successfully signed out")
   end
-
 end

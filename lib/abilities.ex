@@ -6,10 +6,14 @@ defimpl Canada.Can, for: SignDict.User do
   def can?(%User{role: "admin"}, _, _), do: true
 
   def can?(%User{role: "editor"}, :show_backend, _), do: true
+
   def can?(%User{role: "editor"}, action, %Video{})
-    when action in [:index, :new, :create, :show, :edit, :update, :delete], do: true
+      when action in [:index, :new, :create, :show, :edit, :update, :delete],
+      do: true
+
   def can?(%User{role: "editor"}, action, %Entry{})
-    when action in [:index, :new, :create, :show, :edit, :update, :delete], do: true
+      when action in [:index, :new, :create, :show, :edit, :update, :delete],
+      do: true
 
   def can?(%User{}, action, %User{}) when action in [:show], do: true
   def can?(%User{id: user_id}, _, %User{id: user_id}), do: true

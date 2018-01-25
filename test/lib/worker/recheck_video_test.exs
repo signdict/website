@@ -8,8 +8,9 @@ defmodule SignDict.Worker.RecheckVideoTest do
   defmodule VideoServiceMockDone do
     @behaviour SignDict.Transcoder.API
     def upload_video(_video), do: :sent
+
     def check_status(video) do
-      send self(), {:check_status, video.id}
+      send(self(), {:check_status, video.id})
       :done
     end
   end
@@ -21,5 +22,4 @@ defmodule SignDict.Worker.RecheckVideoTest do
       assert_received {:check_status, ^video_id}
     end
   end
-
 end

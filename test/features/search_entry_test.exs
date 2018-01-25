@@ -16,12 +16,12 @@ defmodule SignDict.SearchEntryTest do
     session
     |> visit("/")
     |> resize_window(1200, 600)
-    |> find(Query.css(".so-landing--search"), fn(form) ->
+    |> find(Query.css(".so-landing--search"), fn form ->
       form
       |> fill_in(Query.text_field("q"), with: "ki")
       |> click(Query.button("Search ›"))
     end)
-    |> find(Query.css(".so-search-result--headline"), fn(headline) ->
+    |> find(Query.css(".so-search-result--headline"), fn headline ->
       headline
       |> has_text?("One search result for")
     end)

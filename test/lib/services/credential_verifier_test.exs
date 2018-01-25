@@ -6,7 +6,6 @@ defmodule SignDict.Services.CredentialVerifierTest do
   alias SignDict.Services.CredentialVerifier
 
   describe "verify/2" do
-
     setup do
       %{user: insert(:user)}
     end
@@ -21,9 +20,8 @@ defmodule SignDict.Services.CredentialVerifierTest do
     end
 
     test "it returns {:error, message} if the user does not exist" do
-      assert {:error, _message} = CredentialVerifier.verify("not-available@example.com", "correct_password")
+      assert {:error, _message} =
+               CredentialVerifier.verify("not-available@example.com", "correct_password")
     end
-
   end
-
 end

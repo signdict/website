@@ -3,7 +3,7 @@ defmodule SignDict.Services.VideoImporter do
   alias SignDict.Video
 
   def store_file(path, filename) do
-    file = "#{UUID.generate}-#{Path.basename(filename)}"
+    file = "#{UUID.generate()}-#{Path.basename(filename)}"
     file_with_path = Path.join([paths_for_file(file), file])
     target_file = Video.file_path(file_with_path)
     File.mkdir_p(Path.dirname(target_file))
@@ -18,5 +18,4 @@ defmodule SignDict.Services.VideoImporter do
       String.slice(filename, 4..5)
     ])
   end
-
 end

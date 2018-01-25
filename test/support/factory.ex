@@ -40,7 +40,7 @@ defmodule SignDict.Factory do
   end
 
   def language_dgs_factory do
-    %SignDict.Language {
+    %SignDict.Language{
       iso6393: "gsg",
       long_name: "Deutsche Gebärdensprache",
       short_name: "dgs",
@@ -49,17 +49,17 @@ defmodule SignDict.Factory do
   end
 
   def find_or_build_language(language) do
-    SignDict.Repo.get_by(SignDict.Language, short_name: language)
-    || build(String.to_atom("language_#{language}"))
+    SignDict.Repo.get_by(SignDict.Language, short_name: language) ||
+      build(String.to_atom("language_#{language}"))
   end
 
   def find_or_insert_language(language) do
-    SignDict.Repo.get_by(SignDict.Language, short_name: language)
-    || insert(String.to_atom("language_#{language}"))
+    SignDict.Repo.get_by(SignDict.Language, short_name: language) ||
+      insert(String.to_atom("language_#{language}"))
   end
 
   def video_factory do
-    %SignDict.Video {
+    %SignDict.Video{
       state: "created",
       copyright: "copyright",
       license: "license",
@@ -79,7 +79,7 @@ defmodule SignDict.Factory do
   end
 
   def entry_factory do
-    %SignDict.Entry {
+    %SignDict.Entry{
       description: sequence(:email, &"some content #{&1}"),
       text: "some content",
       type: "word",
@@ -113,10 +113,10 @@ defmodule SignDict.Factory do
   end
 
   def list_entry_factory do
-    %SignDict.ListEntry {
+    %SignDict.ListEntry{
       list: build(:list),
       entry: build(:entry_with_current_video),
-      sort_order: sequence(:sort_order, fn(integer) -> integer end)
+      sort_order: sequence(:sort_order, fn integer -> integer end)
     }
   end
 end

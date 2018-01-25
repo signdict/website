@@ -30,5 +30,4 @@ defmodule SignDict.PermalinkTest do
       assert SignDict.Permalink.load(1) == {:ok, 1}
     end
   end
-
 end

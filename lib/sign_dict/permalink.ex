@@ -32,7 +32,7 @@ defmodule SignDict.Permalink do
 
   defp cleanup_string(string) do
     (string || "")
-    |> String.downcase
+    |> String.downcase()
     |> String.replace(~r/[^\w-]+/u, "-")
     |> String.replace(~r/-$/, "")
   end

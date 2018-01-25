@@ -6,8 +6,7 @@ defmodule SignDict.Services.CredentialVerifier do
   alias SignDict.Repo
 
   def verify(email, password) when is_binary(email) and is_binary(password) do
-    with {:ok, user} <- find_by_email(email),
-      do: verify_password(password, user)
+    with {:ok, user} <- find_by_email(email), do: verify_password(password, user)
   end
 
   defp find_by_email(email) when is_binary(email) do
@@ -15,10 +14,10 @@ defmodule SignDict.Services.CredentialVerifier do
       nil ->
         dummy_checkpw()
         {:error, gettext("Invalid email address or password")}
+
       user ->
         {:ok, user}
     end
-
   end
 
   defp verify_password(password, %User{} = user) when is_binary(password) do

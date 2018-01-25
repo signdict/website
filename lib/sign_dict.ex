@@ -13,7 +13,7 @@ defmodule SignDict do
       # Start the Ecto repository
       supervisor(SignDict.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(SignDict.Endpoint, []),
+      supervisor(SignDict.Endpoint, [])
       # Start your own worker by calling:
       # SignDict.Worker.start_link(arg1, arg2, arg3)
       #

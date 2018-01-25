@@ -12,14 +12,16 @@ defmodule Mix.Tasks.Importer do
   find them.
   """
   def run([]) do
-    IO.puts "Please specify the path with the json files"
+    IO.puts("Please specify the path with the json files")
   end
+
   def run([path]) do
     Application.ensure_all_started(:pryin)
     ensure_started(SignDict.Repo, [])
-    IO.puts "Importing Files..."
-    Enum.each(Path.wildcard(Path.join(path, "**/*.json")), fn(file) ->
-      IO.puts file
+    IO.puts("Importing Files...")
+
+    Enum.each(Path.wildcard(Path.join(path, "**/*.json")), fn file ->
+      IO.puts(file)
       JsonImporter.import_json(file)
     end)
   end

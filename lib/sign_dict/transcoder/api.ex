@@ -3,5 +3,4 @@ defmodule SignDict.Transcoder.API do
 
   @callback upload_video(arg :: %Video{}) :: any
   @callback check_status(arg :: %Video{}) :: any
-
 end

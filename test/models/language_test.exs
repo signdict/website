@@ -3,7 +3,12 @@ defmodule SignDict.LanguageTest do
 
   alias SignDict.Language
 
-  @valid_attrs %{default_locale: "some content", iso6393: "some content", long_name: "some content", short_name: "some content"}
+  @valid_attrs %{
+    default_locale: "some content",
+    iso6393: "some content",
+    long_name: "some content",
+    short_name: "some content"
+  }
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
@@ -17,7 +22,6 @@ defmodule SignDict.LanguageTest do
   end
 
   describe "Language.name/1" do
-
     test "returns the name from the struct if no translation is found" do
       assert Language.name(%Language{iso6393: "gsg"}) == "German Sign Language"
     end

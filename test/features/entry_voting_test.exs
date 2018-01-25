@@ -3,14 +3,19 @@ defmodule SignDict.EntryVotingTest do
   import SignDict.Factory
 
   test "user votes for a video", %{session: session} do
-    insert(:user, %{email: "bob@example.com", password: "correct_password", password_confirmation: "correct_password"})
+    insert(:user, %{
+      email: "bob@example.com",
+      password: "correct_password",
+      password_confirmation: "correct_password"
+    })
+
     video = insert(:video_with_entry)
 
     session
     |> visit("/")
     |> resize_window(1200, 600)
     |> click(Query.link("Sign in"))
-    |> find(Query.css(".login-form"), fn(form) ->
+    |> find(Query.css(".login-form"), fn form ->
       form
       |> fill_in(Query.text_field("session_email"), with: "bob@example.com")
       |> fill_in(Query.text_field("session_password"), with: "correct_password")
@@ -18,15 +23,14 @@ defmodule SignDict.EntryVotingTest do
     end)
     |> visit("/entry/#{video.entry.id}")
     |> click(Query.css(".so-voting-box--vote-button"))
-    |> find(Wallaby.Query.css(".so-voting-box--count"), fn(count) ->
+    |> find(Wallaby.Query.css(".so-voting-box--count"), fn count ->
       assert count
-      |> has_text?("1")
+             |> has_text?("1")
     end)
     |> click(Query.css(".so-voting-box--vote-button"))
-    |> find(Wallaby.Query.css(".so-voting-box--count"), fn(count) ->
+    |> find(Wallaby.Query.css(".so-voting-box--count"), fn count ->
       assert count
-      |> has_text?("0")
+             |> has_text?("0")
     end)
   end
-
 end

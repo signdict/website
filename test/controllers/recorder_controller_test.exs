@@ -6,15 +6,20 @@ defmodule SignDict.RecorderControllerTest do
 
   describe "index/2" do
     test "it redirects when entry is not found", %{conn: conn} do
-      conn = conn
-             |> get(recorder_path(conn, :index, 1111111111))
+      conn =
+        conn
+        |> get(recorder_path(conn, :index, 1_111_111_111))
+
       assert redirected_to(conn) == "/"
     end
 
     test "it renders the page if entry is present", %{conn: conn} do
       entry = insert(:entry)
-      conn = conn
-             |> get(recorder_path(conn, :index, entry.id))
+
+      conn =
+        conn
+        |> get(recorder_path(conn, :index, entry.id))
+
       assert html_response(conn, 200) =~ "Welcome"
     end
   end
@@ -22,8 +27,11 @@ defmodule SignDict.RecorderControllerTest do
   describe "new/2" do
     test "it renders the page if entry is present", %{conn: conn} do
       entry = insert(:entry)
-      conn = conn
-             |> get(recorder_path(conn, :new, entry.id))
+
+      conn =
+        conn
+        |> get(recorder_path(conn, :new, entry.id))
+
       assert html_response(conn, 200) =~ "data-entry-id=\"#{entry.id}\""
     end
   end

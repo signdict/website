@@ -14,9 +14,9 @@ defmodule SignDict.AcceptanceCase do
 
       def assert_alert(page, text) do
         page
-        |> find(Wallaby.Query.css(".sc-alert--success"), fn(notification) ->
+        |> find(Wallaby.Query.css(".sc-alert--success"), fn notification ->
           assert notification
-          |> has_text?(text)
+                 |> has_text?(text)
         end)
       end
     end

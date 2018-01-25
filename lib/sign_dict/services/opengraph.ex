@@ -1,23 +1,31 @@
 defprotocol SignDict.Services.OpenGraph do
   def to_metadata(model, sub_model \\ %{})
-
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.User do
   import SignDict.Gettext
+
   def to_metadata(user, _sub_model \\ %{}) do
     thumbnail_url = SignDict.User.avatar_url(user)
-    description   = String.trim(gettext("""
-         %{user} is a user on SignDict, a sign language dictionary.
-      """, user: user.name))
+
+    description =
+      String.trim(
+        gettext(
+          """
+             %{user} is a user on SignDict, a sign language dictionary.
+          """,
+          user: user.name
+        )
+      )
+
     %{
-      "og:image"            => thumbnail_url,
+      "og:image" => thumbnail_url,
       "og:image:secure_url" => String.replace(thumbnail_url, "http://", "https://"),
-      "og:description"      => description,
-      "twitter:card"        => "summary",
-      "twitter:site"        => "@SignDict",
+      "og:description" => description,
+      "twitter:card" => "summary",
+      "twitter:site" => "@SignDict",
       "twitter:description" => description,
-      "twitter:image"       => String.replace(thumbnail_url, "http://", "https://"),
+      "twitter:image" => String.replace(thumbnail_url, "http://", "https://")
     }
   end
 end
@@ -28,44 +36,50 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
 
   def to_metadata(entry, video) do
     %{
-      "og:description"        => description(entry, video),
-      "og:image"              => video.thumbnail_url,
-      "og:image:secure_url"   => secure_url(video.thumbnail_url),
-      "og:type"               => "video.other",
-      "og:video:url"          => video.video_url,
-      "og:video:secure_url"   => video.video_url,
-      "og:video:type"         => "video/mp4",
-      "og:video:width"        => 1280,
-      "og:video:height"       => 720,
-      "twitter:card"          => "player",
-      "twitter:site"          => "@SignDict",
-      "twitter:description"   => description(entry, video),
-      "twitter:image"         => video.thumbnail_url,
-      "twitter:player"        => secure_url(
-        embed_video_url(SignDict.Endpoint, :show, entry, video)
-      ),
-      "twitter:player:width"  => 480,
-      "twitter:player:height" => 350,
+      "og:description" => description(entry, video),
+      "og:image" => video.thumbnail_url,
+      "og:image:secure_url" => secure_url(video.thumbnail_url),
+      "og:type" => "video.other",
+      "og:video:url" => video.video_url,
+      "og:video:secure_url" => video.video_url,
+      "og:video:type" => "video/mp4",
+      "og:video:width" => 1280,
+      "og:video:height" => 720,
+      "twitter:card" => "player",
+      "twitter:site" => "@SignDict",
+      "twitter:description" => description(entry, video),
+      "twitter:image" => video.thumbnail_url,
+      "twitter:player" => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
+      "twitter:player:width" => 480,
+      "twitter:player:height" => 350
     }
   end
 
   defp description(entry, video) do
-    description = gettext("""
-      This video shows the sign of "%{sign}". See more Signs on SignDict.org,
-      your sign language dictionary.
-      License: %{license} %{copyright}
-      """,
-      sign: entry.text, license: video.license,
-      copyright: copyright(video))
+    description =
+      gettext(
+        """
+        This video shows the sign of "%{sign}". See more Signs on SignDict.org,
+        your sign language dictionary.
+        License: %{license} %{copyright}
+        """,
+        sign: entry.text,
+        license: video.license,
+        copyright: copyright(video)
+      )
 
     description
     |> String.replace("\n", " ")
-    |> String.trim
+    |> String.trim()
   end
 
   defp copyright(video) do
     if String.length(video.copyright || "") > 0 do
-      gettext("by %{copyright} - %{username}", copyright: video.copyright, username: video.user.name)
+      gettext(
+        "by %{copyright} - %{username}",
+        copyright: video.copyright,
+        username: video.user.name
+      )
     else
       gettext("by %{copyright}", copyright: video.user.name)
     end
@@ -78,15 +92,23 @@ end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.List do
   import SignDict.Gettext
+
   def to_metadata(list, _sub_model \\ %{}) do
-    description   = String.trim(gettext("""
-         %{list} is a collection of signs in SignDict, a sign language dictionary.
-      """, list: list.name))
+    description =
+      String.trim(
+        gettext(
+          """
+             %{list} is a collection of signs in SignDict, a sign language dictionary.
+          """,
+          list: list.name
+        )
+      )
+
     %{
-      "og:description"      => description,
-      "twitter:card"        => "summary",
-      "twitter:site"        => "@SignDict",
-      "twitter:description" => description,
+      "og:description" => description,
+      "twitter:card" => "summary",
+      "twitter:site" => "@SignDict",
+      "twitter:description" => description
     }
   end
 end

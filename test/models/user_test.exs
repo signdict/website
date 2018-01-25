@@ -37,18 +37,23 @@ defmodule SignDict.UserTest do
     end
 
     test "it requires a password if the user is new" do
-      params = @valid_attrs
-               |> Map.delete(:password)
-               |> Map.delete(:password_confirmation)
+      params =
+        @valid_attrs
+        |> Map.delete(:password)
+        |> Map.delete(:password_confirmation)
+
       changeset = User.changeset(%User{}, params)
       refute changeset.valid?
     end
 
     test "it does not require a password if the user is already stored in the database" do
-      user = insert :user
-      params = @valid_attrs
-               |> Map.delete(:password)
-               |> Map.delete(:password_confirmation)
+      user = insert(:user)
+
+      params =
+        @valid_attrs
+        |> Map.delete(:password)
+        |> Map.delete(:password_confirmation)
+
       changeset = User.changeset(user, params)
       assert changeset.valid?
     end
@@ -57,28 +62,36 @@ defmodule SignDict.UserTest do
       params = @valid_attrs
       changeset = User.changeset(%User{email: "oldemail@example.com"}, params)
       assert changeset.valid?
-      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
+      assert {:changes, "elisa@example.com"} ==
+               Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
       assert {:data, "oldemail@example.com"} == Ecto.Changeset.fetch_field(changeset, :email)
       assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token)
-      assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token_unencrypted)
+
+      assert {:changes, _data} =
+               Ecto.Changeset.fetch_field(changeset, :confirmation_token_unencrypted)
     end
 
     test "it sets the email to nil if it is new and moves it to the unconfirmed_email field" do
       params = @valid_attrs
       changeset = User.changeset(%User{}, params)
       assert changeset.valid?
-      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
+      assert {:changes, "elisa@example.com"} ==
+               Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
       assert {:data, nil} == Ecto.Changeset.fetch_field(changeset, :email)
     end
 
     test "it is invalid if the email already exists in the unconfirmed_email field" do
-      insert :user, %{unconfirmed_email: "elisa@example.com"}
+      insert(:user, %{unconfirmed_email: "elisa@example.com"})
       changeset = User.changeset(%User{}, @valid_attrs)
       refute changeset.valid?
     end
 
     test "it is invalid if the email adready exists in the email field" do
-      insert :user, %{email: "elisa@example.com"}
+      insert(:user, %{email: "elisa@example.com"})
       changeset = User.changeset(%User{}, @valid_attrs)
       refute changeset.valid?
     end
@@ -116,18 +129,23 @@ defmodule SignDict.UserTest do
     end
 
     test "it requires a password if the user is new" do
-      params = @valid_attrs
-               |> Map.delete(:password)
-               |> Map.delete(:password_confirmation)
+      params =
+        @valid_attrs
+        |> Map.delete(:password)
+        |> Map.delete(:password_confirmation)
+
       changeset = User.admin_changeset(%User{}, params)
       refute changeset.valid?
     end
 
     test "it does not require a password if the user is already stored in the database" do
-      user = insert :user
-      params = @valid_attrs
-               |> Map.delete(:password)
-               |> Map.delete(:password_confirmation)
+      user = insert(:user)
+
+      params =
+        @valid_attrs
+        |> Map.delete(:password)
+        |> Map.delete(:password_confirmation)
+
       changeset = User.admin_changeset(user, params)
       assert changeset.valid?
     end
@@ -183,7 +201,10 @@ defmodule SignDict.UserTest do
       params = @valid_attrs
       changeset = User.register_changeset(%User{email: "oldemail@example.com"}, params)
       assert changeset.valid?
-      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
+      assert {:changes, "elisa@example.com"} ==
+               Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
       assert {:data, "oldemail@example.com"} == Ecto.Changeset.fetch_field(changeset, :email)
       assert {:changes, _data} = Ecto.Changeset.fetch_field(changeset, :confirmation_token)
     end
@@ -192,18 +213,21 @@ defmodule SignDict.UserTest do
       params = @valid_attrs
       changeset = User.register_changeset(%User{}, params)
       assert changeset.valid?
-      assert {:changes, "elisa@example.com"} == Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
+      assert {:changes, "elisa@example.com"} ==
+               Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+
       assert {:data, nil} == Ecto.Changeset.fetch_field(changeset, :email)
     end
 
     test "it is invalid if the email already exists in the unconfirmed_email field" do
-      insert :user, %{unconfirmed_email: "elisa@example.com"}
+      insert(:user, %{unconfirmed_email: "elisa@example.com"})
       changeset = User.register_changeset(%User{}, @valid_attrs)
       refute changeset.valid?
     end
 
     test "it is invalid if the email adready exists in the email field" do
-      insert :user, %{email: "elisa@example.com"}
+      insert(:user, %{email: "elisa@example.com"})
       changeset = User.register_changeset(%User{}, @valid_attrs)
       refute changeset.valid?
     end
@@ -213,7 +237,7 @@ defmodule SignDict.UserTest do
     test "it creates a new token and stores it encrypted" do
       changeset = User.create_reset_password_changeset(%User{})
       {_state, unencrypted} = Ecto.Changeset.fetch_field(changeset, :password_reset_unencrypted)
-      {_state, encrypted}   = Ecto.Changeset.fetch_field(changeset, :password_reset_token)
+      {_state, encrypted} = Ecto.Changeset.fetch_field(changeset, :password_reset_token)
       assert Comeonin.Bcrypt.checkpw(unencrypted, encrypted)
     end
   end
@@ -225,47 +249,64 @@ defmodule SignDict.UserTest do
     end
 
     test "it throws an error if token is wrong" do
-      changeset = User.reset_password_changeset(%User{
-        password_reset_token: Comeonin.Bcrypt.hashpwsalt("iamwrong")
-      }, %{
-        password_reset_unencrypted: "12345",
-        password: "newpassword",
-        password_confirmation: "newpassword"
-      })
+      changeset =
+        User.reset_password_changeset(
+          %User{
+            password_reset_token: Comeonin.Bcrypt.hashpwsalt("iamwrong")
+          },
+          %{
+            password_reset_unencrypted: "12345",
+            password: "newpassword",
+            password_confirmation: "newpassword"
+          }
+        )
+
       refute changeset.valid?
     end
 
     test "it throws an error if password and confirmation missmatch" do
-      changeset = User.reset_password_changeset(%User{
-        password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
-      }, %{
-        password_reset_unencrypted: "12345",
-        password: "newpassword",
-        password_confirmation: "wrong"
-      })
+      changeset =
+        User.reset_password_changeset(
+          %User{
+            password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
+          },
+          %{
+            password_reset_unencrypted: "12345",
+            password: "newpassword",
+            password_confirmation: "wrong"
+          }
+        )
+
       refute changeset.valid?
     end
 
     test "it updates the password if everything is correct" do
-      changeset = User.reset_password_changeset(%User{
-        password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
-      }, %{
-        password_reset_unencrypted: "12345",
-        password: "newpassword",
-        password_confirmation: "newpassword"
-      })
+      changeset =
+        User.reset_password_changeset(
+          %User{
+            password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
+          },
+          %{
+            password_reset_unencrypted: "12345",
+            password: "newpassword",
+            password_confirmation: "newpassword"
+          }
+        )
+
       assert changeset.valid?
     end
   end
 
   describe "User.avatar_url/1" do
     test "it returns a gravatar url if no image is uploaded" do
-      user = build :user, email: "bodo@tasche.me"
-      assert User.avatar_url(user) == "https://secure.gravatar.com/avatar/f3c4a818db15623a3f4fd035d781e8ee?s=256"
+      user = build(:user, email: "bodo@tasche.me")
+
+      assert User.avatar_url(user) ==
+               "https://secure.gravatar.com/avatar/f3c4a818db15623a3f4fd035d781e8ee?s=256"
     end
 
     test "it returns a user uploaded image if one was uploaded" do
-      user = build :user_with_avatar, email: "bodo@tasche.me"
+      user = build(:user_with_avatar, email: "bodo@tasche.me")
       assert User.avatar_url(user) =~ "/uploads/user/avatars/thumb.png"
     end
   end
@@ -290,69 +331,91 @@ defmodule SignDict.UserTest do
 
   describe "confirm_email_changeset/1" do
     test "it confirms the email if it is valid" do
-      user = insert(:user,
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
-        unconfirmed_email: "elisa@example.com"
-      )
-      changeset = User.confirm_email_changeset(user, %{
-        confirmation_token_unencrypted: "12345",
-      })
+      user =
+        insert(
+          :user,
+          confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+          unconfirmed_email: "elisa@example.com"
+        )
+
+      changeset =
+        User.confirm_email_changeset(user, %{
+          confirmation_token_unencrypted: "12345"
+        })
+
       assert changeset.valid?
       assert {:changes, "elisa@example.com"} = Ecto.Changeset.fetch_field(changeset, :email)
-      assert {:changes, nil}                 = Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
-      assert {:changes, _confirmed_at}       = Ecto.Changeset.fetch_field(changeset, :confirmed_at)
+      assert {:changes, nil} = Ecto.Changeset.fetch_field(changeset, :unconfirmed_email)
+      assert {:changes, _confirmed_at} = Ecto.Changeset.fetch_field(changeset, :confirmed_at)
     end
 
     test "it does not confirm if the token is wrong" do
-      changeset = User.confirm_email_changeset(%User{
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
-        unconfirmed_email: "elisa@example.com"
-      }, %{
-        confirmation_token_unencrypted: "23456",
-      })
+      changeset =
+        User.confirm_email_changeset(
+          %User{
+            confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+            unconfirmed_email: "elisa@example.com"
+          },
+          %{
+            confirmation_token_unencrypted: "23456"
+          }
+        )
+
       refute changeset.valid?
     end
 
     test "it does not confirm the email if it is already present" do
-      insert :user, email: "elisa@example.com"
-      user = insert :user,
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
-        unconfirmed_email: "elisa@example.com"
-      changeset = User.confirm_email_changeset(user, %{
-        confirmation_token_unencrypted: "12345",
-      })
+      insert(:user, email: "elisa@example.com")
+
+      user =
+        insert(
+          :user,
+          confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+          unconfirmed_email: "elisa@example.com"
+        )
+
+      changeset =
+        User.confirm_email_changeset(user, %{
+          confirmation_token_unencrypted: "12345"
+        })
+
       assert {:error, _changeset} = Repo.update(changeset)
     end
   end
 
   describe "subscribe_to_newsletter/1" do
     test "It subscribes to the newsletter with the email" do
-      user = insert :user, email: "elisa@example.com", name: "user name"
+      user = insert(:user, email: "elisa@example.com", name: "user name")
       User.subscribe_to_newsletter(user)
-      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com", %{"FULL_NAME" => "user name"}}
+
+      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com",
+                       %{"FULL_NAME" => "user name"}}
     end
 
     test "It subscribes to the newsletter with the unconfirmed_email if email is not present" do
-      user = insert :user, email: nil, unconfirmed_email: "elisa@example.com", name: "user name"
+      user = insert(:user, email: nil, unconfirmed_email: "elisa@example.com", name: "user name")
       User.subscribe_to_newsletter(user)
-      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com", %{"FULL_NAME" => "user name"}}
+
+      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com",
+                       %{"FULL_NAME" => "user name"}}
     end
   end
 
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the user" do
-      assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) == "1-my-name-is-my-castle"
+      assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) ==
+               "1-my-name-is-my-castle"
     end
   end
 
   describe "User.has_flag?" do
     test "it returns true if feature is present" do
-      user = insert :user, flags: ["recording"]
+      user = insert(:user, flags: ["recording"])
       assert User.has_flag?(user, "recording")
     end
 
     test "it returns false if feature is not present" do
-      user = insert :user, flags: ["another_flag"]
+      user = insert(:user, flags: ["another_flag"])
       refute User.has_flag?(user, "recording")
     end
 
@@ -361,18 +424,17 @@ defmodule SignDict.UserTest do
     end
 
     test "it returns false if flags is nil" do
-      user = insert :user, flags: nil
+      user = insert(:user, flags: nil)
       refute User.has_flag?(user, "recording")
     end
   end
 
   describe "User.all_editors" do
     test "it returns a list of editors" do
-      insert :admin_user
-      insert :user
-      editor = insert :editor_user
-      assert [editor.email] == Enum.map(User.all_editors, fn(user) -> user.email end)
+      insert(:admin_user)
+      insert(:user)
+      editor = insert(:editor_user)
+      assert [editor.email] == Enum.map(User.all_editors(), fn user -> user.email end)
     end
   end
-
 end

@@ -18,8 +18,11 @@ defmodule SignDict.Worker.RecheckVideo do
 
   @process_sleep_time 100
 
-  def perform(video_id, video_service \\ SignDict.Transcoder.JwPlayer,
-              sleep_ms \\ @process_sleep_time) do
+  def perform(
+        video_id,
+        video_service \\ SignDict.Transcoder.JwPlayer,
+        sleep_ms \\ @process_sleep_time
+      ) do
     Bugsnex.handle_errors %{video_id: video_id} do
       # Rate limit the workers, sadly i didn't find a better way :(
       Process.sleep(sleep_ms)
