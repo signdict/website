@@ -35,7 +35,6 @@ defmodule SignDict.Services.VideoImporterTest do
           target_file
         ])
 
-      IO.puts video_path
       assert File.exists?(video_path)
       assert length(String.split(target_file, "/")) == 4
       assert String.ends_with?(target_file, "Zug.mp4")
