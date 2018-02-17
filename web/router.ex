@@ -142,23 +142,24 @@ defmodule SignDict.Router do
   end
 
   scope "/api", as: :api do
-    pipe_through [:api]
+    pipe_through([:api])
 
-    forward "/graphiql",
+    forward(
+      "/graphiql",
       Absinthe.Plug.GraphiQL,
       schema: SignDict.Schema,
       interface: :simple
+    )
 
-    forward "/", Absinthe.Plug,
-      schema: SignDict.Schema
+    forward("/", Absinthe.Plug, schema: SignDict.Schema)
 
     # Every time pipe_through/1 is called, the new pipelines are appended to
     # the ones previously given.
-    pipe_through [:browser_session, :locale]
+    pipe_through([:browser_session, :locale])
 
-    get "/current_user", SignDict.Api.CurrentUserController, :show
-    resources "/sessions", SignDict.Api.SessionController, only: [:create]
-    resources "/register", SignDict.Api.RegisterController, only: [:create]
-    resources "/upload", SignDict.Api.UploadController, only: [:create]
+    get("/current_user", SignDict.Api.CurrentUserController, :show)
+    resources("/sessions", SignDict.Api.SessionController, only: [:create])
+    resources("/register", SignDict.Api.RegisterController, only: [:create])
+    resources("/upload", SignDict.Api.UploadController, only: [:create])
   end
 end

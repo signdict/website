@@ -89,6 +89,10 @@ defmodule SignDict.Entry do
     from q in query, preload: :videos
   end
 
+  def with_videos_and_users(query) do
+    from q in query, preload: [videos: :user]
+  end
+
   def with_language(query) do
     from q in query, preload: :language
   end

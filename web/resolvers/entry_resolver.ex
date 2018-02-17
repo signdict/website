@@ -10,11 +10,11 @@ defmodule SignDict.Resolvers.EntryResolver do
   end
 
   def search_entries(_parent, args, _resolution) do
-
     entries =
-      Gettext.get_locale(SignDict.Gettext)
+      args[:language]
       |> Entry.search_query(args[:word])
       |> Entry.with_language
+      |> Entry.with_videos_and_users
       |> Entry.for_letter(args[:letter])
       |> Repo.all
 
