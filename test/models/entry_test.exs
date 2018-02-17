@@ -153,18 +153,18 @@ defmodule SignDict.EntryTest do
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos",
          %{train: train} do
-      assert Enum.map(Entry.search("de", "tr"), & &1.id) == Enum.map([train], & &1.id)
+      assert Enum.map(Entry.search_query("de", "tr") |> Repo.all, & &1.id) == Enum.map([train], & &1.id)
     end
 
     test "it also finds words with accents when using without", %{hotel: hotel} do
-      assert Enum.map(Entry.search("de", "hotel"), & &1.id) == Enum.map([hotel], & &1.id)
+      assert Enum.map(Entry.search_query("de", "hotel") |> Repo.all, & &1.id) == Enum.map([hotel], & &1.id)
     end
 
     test "it returns the results with the best match first", %{
       house: house,
       house_boat: house_boat
     } do
-      assert Enum.map(Entry.search("de", "haus"), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "haus") |> Repo.all, & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
     end
 
@@ -172,7 +172,7 @@ defmodule SignDict.EntryTest do
       house: house,
       house_boat: house_boat
     } do
-      assert Enum.map(Entry.search("de", "häuser"), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "häuser") |> Repo.all, & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
     end
   end

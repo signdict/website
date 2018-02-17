@@ -73,7 +73,10 @@ defmodule SignDict.Mixfile do
       {:scrivener_html, "~> 1.7"},
       {:exq, "~> 0.8.6"},
       {:exq_ui, "~> 0.8.6"},
-      {:ex_chimp, "~> 0.0.2"}
+      {:ex_chimp, "~> 0.0.2"},
+      {:absinthe, "~> 1.4.0"},
+      {:absinthe_plug, "~> 1.4.0"},
+      {:poison, "~> 2.2.0"},
     ]
   end
 

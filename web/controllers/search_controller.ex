@@ -6,7 +6,9 @@ defmodule SignDict.SearchController do
   def index(conn, params) do
     [entries, title] = if params["q"] && String.length(params["q"]) > 0 do
       [
-        Entry.search(Gettext.get_locale(SignDict.Gettext), params["q"]),
+        Entry.search_query(Gettext.get_locale(SignDict.Gettext), params["q"])
+        |> Entry.with_current_video
+        |> SignDict.Repo.all,
         gettext("Search results for %{query}", query: params["q"])
       ]
     else
