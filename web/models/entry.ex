@@ -97,7 +97,7 @@ defmodule SignDict.Entry do
     from q in query, preload: :language
   end
   def with_current_video(query) do
-    from q in query, preload: :current_video
+    from q in query, preload: [current_video: :user]
   end
 
   def types do
