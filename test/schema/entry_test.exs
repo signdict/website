@@ -209,6 +209,6 @@ defmodule SignDict.Schema.EntryTest do
   end
 
   defp api_path do
-    "/api/graphql"
+    "/graphql-api/graphql"
   end
 end
