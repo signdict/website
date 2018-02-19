@@ -154,7 +154,6 @@ defmodule SignDict.Schema.EntryTest do
       )
     end
 
-
     test "returns all entries for letter 'Z'", %{conn: conn} do
       insert(:entry_with_current_video, text: "Zug")
       insert(:entry_with_current_video, text: "Zahnpasta")

@@ -13,10 +13,8 @@ defmodule SignDict.Schema do
 
     @desc "Search for entry"
     field :search, list_of(:entry) do
-      arg :language, :string, default_value: Gettext.get_locale(SignDict.Gettext), description: "Search language"
       arg :word, :string, description: "Word to search by"
       arg :letter, :string, description: "Letter to search by"
-
       resolve &EntryResolver.search_entries/3
     end
   end
