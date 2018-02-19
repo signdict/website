@@ -232,6 +232,10 @@ defmodule SignDict.EntryTest do
       }
     end
 
+    test "it returns query for empty letter" do
+      assert(Entry.for_letter(Entry, nil) == Entry)
+    end
+
     test "it returns only entries starting with a letter", %{entry_hedgehog: hedgehog} do
       entries = Entry.for_letter(Entry, "H") |> Repo.all()
       assert [hedgehog.id] == Enum.map(entries, fn x -> x.id end)
