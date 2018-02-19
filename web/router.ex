@@ -142,12 +142,12 @@ defmodule SignDict.Router do
   end
 
   scope "/api", SignDict.Api, as: :api do
-    pipe_through([:api, :browser_session, :locale])
+    pipe_through [:api, :browser_session, :locale]
 
-    get("/current_user", CurrentUserController, :show)
-    resources("/sessions", SessionController, only: [:create])
-    resources("/register", RegisterController, only: [:create])
-    resources("/upload", UploadController, only: [:create])
+    get "/current_user", CurrentUserController, :show
+    resources "/sessions", SessionController, only: [:create]
+    resources "/register", RegisterController, only: [:create]
+    resources "/upload", UploadController, only: [:create]
   end
 
   scope "/graphql-api" do
