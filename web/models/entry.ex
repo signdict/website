@@ -53,6 +53,7 @@ defmodule SignDict.Entry do
     Entry |> where([e], not is_nil(e.current_video_id))
   end
 
+  def for_letter(query, nil), do: query
   def for_letter(query, letter) do
     query
     |> query_for_letter(letter)
@@ -88,11 +89,15 @@ defmodule SignDict.Entry do
     from q in query, preload: :videos
   end
 
+  def with_videos_and_users(query) do
+    from q in query, preload: [videos: :user]
+  end
+
   def with_language(query) do
     from q in query, preload: :language
   end
   def with_current_video(query) do
-    from q in query, preload: :current_video
+    from q in query, preload: [current_video: :user]
   end
 
   def types do
@@ -139,7 +144,8 @@ defmodule SignDict.Entry do
     |> Repo.get!(entry.id)
   end
 
-  def search(locale, search) do
+  def search_query(_locale, nil), do: from(e in Entry)
+  def search_query(locale, search) do
     qry = """
       select id from entries where current_video_id is not null and
         fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
@@ -151,12 +157,9 @@ defmodule SignDict.Entry do
       ]
     )
     ids = Enum.map(res.rows, fn(row) -> List.first(row) end)
-    query = from(entry in Entry, where: entry.id in ^ids,
+    from(entry in Entry, where: entry.id in ^ids,
                  order_by: fragment("levenshtein(?, ?)", entry.text, ^search)
                )
-    query
-    |> Entry.with_current_video
-    |> Repo.all
   end
 
   defp postgres_locale(locale) do

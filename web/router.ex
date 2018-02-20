@@ -147,6 +147,19 @@ defmodule SignDict.Router do
     get "/current_user", CurrentUserController, :show
     resources "/sessions", SessionController, only: [:create]
     resources "/register", RegisterController, only: [:create]
-    resources "/upload",   UploadController, only: [:create]
+    resources "/upload", UploadController, only: [:create]
+  end
+
+  scope "/graphql-api" do
+    pipe_through([:api])
+
+    forward(
+      "/graphiql",
+      Absinthe.Plug.GraphiQL,
+      schema: SignDict.Schema,
+      interface: :simple
+    )
+
+    forward("/", Absinthe.Plug, schema: SignDict.Schema)
   end
 end
