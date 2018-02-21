@@ -12,9 +12,7 @@ config :sign_dict, SignDict.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-
-  watchers: [node: ["node_modules/gulp/bin/gulp.js", "watch",
-                  cd: Path.expand("../", __DIR__)]]
+  watchers: [node: ["node_modules/gulp/bin/gulp.js", "watch", cd: Path.expand("../", __DIR__)]]
 
 # Watch static and templates for browser reloading.
 config :sign_dict, SignDict.Endpoint,

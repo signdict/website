@@ -3,6 +3,7 @@ defmodule SignDict.Schema.Types do
 
   @desc "entry"
   object :entry do
+    field(:id, :integer)
     field(:text, :string)
     field(:description, :string)
     field(:language, :language)
