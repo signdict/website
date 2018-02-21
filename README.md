@@ -14,6 +14,8 @@ the most accurate sign language dictionary there is.
 
 **You want to help?** Awesome. [Please read this](https://github.com/signdict/website/wiki/Help-needed).
 
+We also offer an [API](https://github.com/signdict/website/wiki/API).
+
 ## Development setup
 
 SignDict uses Elixir and Phoenix. Information on how
