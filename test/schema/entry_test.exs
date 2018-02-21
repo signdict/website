@@ -99,6 +99,7 @@ defmodule SignDict.Schema.EntryTest do
       query = """
       {
         search(word: "Zug") {
+          id
           text
           description
           type
@@ -146,7 +147,8 @@ defmodule SignDict.Schema.EntryTest do
                 "current_video" => entry_1.current_video |> expected_entry_video(),
                 "text" => "#{entry_1.text}",
                 "description" => "#{entry_1.description}",
-                "type" => "#{entry_1.type}"
+                "type" => "#{entry_1.type}",
+                "id" => entry_1.id
               }
             ]
           }
