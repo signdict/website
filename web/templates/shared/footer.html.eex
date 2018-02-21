@@ -32,7 +32,7 @@
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/privacy'><%= gettext("Privacy") %></a></li>
             <li><a href='/contact'><%= gettext("Contact") %></a></li>
-            <li><a href='/graphql-api/graphiql'>API</a></li>
+            <li><a href='https://github.com/signdict/website/wiki/API'>API</a></li>
             <li><a href='/entry'><%= gettext("All entries") %></a></li>
           </ul>
         </div>
