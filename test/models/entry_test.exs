@@ -83,6 +83,22 @@ defmodule SignDict.EntryTest do
     end
   end
 
+  describe "url/1" do
+    test "returns url to entry" do
+      assert Entry.url(%Entry{id: "123"}) == "localhost/entry/123"
+    end
+  end
+
+  describe "set_url/1" do
+    test "returns entry with url attribute set" do
+      assert %Entry{id: "123", url: "localhost/entry/123"} = Entry.set_url(%Entry{id: "123"})
+    end
+
+    test "return nil if called with nil" do
+      refute Entry.set_url(nil)
+    end
+  end
+
   describe "voted_video/2" do
     test "returns an empty video if user is nil" do
       assert Entry.voted_video(%Entry{}, nil) == %Video{id: nil}
