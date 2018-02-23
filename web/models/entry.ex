@@ -14,6 +14,8 @@ defmodule SignDict.Entry do
     field(:text, :string)
     field(:description, :string)
     field(:type, :string)
+    field(:url, :string, virtual: true)
+
     belongs_to(:language, SignDict.Language)
 
     has_many(:videos, Video)
@@ -192,8 +194,13 @@ defmodule SignDict.Entry do
     end
   end
 
-  def url(entry) do
-    "url"
+  def set_url(nil), do: nil
+  def set_url(entry = %Entry{}) do
+    entry |> Map.merge(%{url: entry |> url()})
+  end
+
+  def url(entry = %Entry{}) do
+    "#{Application.get_env(:sign_dict, SignDict.Endpoint)[:url][:host]}/entry/#{entry.id}"
   end
 end
 

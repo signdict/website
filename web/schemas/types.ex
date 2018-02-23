@@ -10,6 +10,7 @@ defmodule SignDict.Schema.Types do
     field(:type, :string)
     field(:current_video, :video)
     field(:videos, list_of(:video))
+    field(:url, :string)
   end
 
   @desc "language"

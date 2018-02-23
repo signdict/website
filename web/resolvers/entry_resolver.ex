@@ -7,6 +7,7 @@ defmodule SignDict.Resolvers.EntryResolver do
       Entry
       |> Repo.get(args[:id])
       |> Repo.preload([:language, current_video: :user, videos: :user])
+      |> Entry.set_url()
 
     case entry do
       nil -> {:error, message: "Not found"}
@@ -23,6 +24,7 @@ defmodule SignDict.Resolvers.EntryResolver do
       |> Entry.with_current_video()
       |> Entry.for_letter(args[:letter])
       |> Repo.all()
+      |> Enum.map(fn e -> e |> Entry.set_url() end)
 
     case entries do
       [] -> {:ok, []}

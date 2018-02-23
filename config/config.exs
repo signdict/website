@@ -11,7 +11,7 @@ config :sign_dict,
 
 # Configures the endpoint
 config :sign_dict, SignDict.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost:4000"],
   secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
   render_errors: [view: SignDict.ErrorView, accepts: ~w(html json)],
   instrumenters: [PryIn.Instrumenter],
