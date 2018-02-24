@@ -33,5 +33,6 @@ defmodule SignDict.Schema.Types do
     field(:video_url, :string)
     field(:thumbnail_url, :string)
     field(:user, :user)
+    field(:url, :string)
   end
 end

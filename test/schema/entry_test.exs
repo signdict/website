@@ -59,7 +59,7 @@ defmodule SignDict.Schema.EntryTest do
               "text" => "#{entry.text}",
               "description" => "#{entry.description}",
               "type" => "#{entry.type}",
-              "url" => "localhost/entry/#{entry.id}",
+              "url" => "https://localhost/entry/#{entry.id}",
               "id" => entry.id
             }
           }
@@ -154,7 +154,7 @@ defmodule SignDict.Schema.EntryTest do
                 "description" => "#{entry_1.description}",
                 "type" => "#{entry_1.type}",
                 "id" => entry_1.id,
-                "url" => "localhost/entry/#{entry_1.id}"
+                "url" => "https://localhost/entry/#{entry_1.id}"
               }
             ]
           }

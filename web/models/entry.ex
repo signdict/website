@@ -193,15 +193,6 @@ defmodule SignDict.Entry do
       true -> "simple"
     end
   end
-
-  def set_url(nil), do: nil
-  def set_url(entry = %Entry{}) do
-    entry |> Map.merge(%{url: entry |> url()})
-  end
-
-  def url(entry = %Entry{}) do
-    "#{Application.get_env(:sign_dict, SignDict.Endpoint)[:url][:host]}/entry/#{entry.id}"
-  end
 end
 
 defimpl Phoenix.Param, for: SignDict.Entry do

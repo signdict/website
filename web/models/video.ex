@@ -17,6 +17,7 @@ defmodule SignDict.Video do
     field :thumbnail_url, :string
     field :plays, :integer
     field :metadata, :map
+    field :url, :string, virtual: true
 
     field :vote_count, :integer, virtual: true
 
