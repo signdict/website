@@ -14,6 +14,8 @@ defmodule SignDict.Entry do
     field(:text, :string)
     field(:description, :string)
     field(:type, :string)
+    field(:url, :string, virtual: true)
+
     belongs_to(:language, SignDict.Language)
 
     has_many(:videos, Video)
@@ -190,10 +192,6 @@ defmodule SignDict.Entry do
       locale == "en" -> "english"
       true -> "simple"
     end
-  end
-
-  def url(entry) do
-    "url"
   end
 end
 

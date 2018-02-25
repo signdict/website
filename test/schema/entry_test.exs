@@ -10,9 +10,11 @@ defmodule SignDict.Schema.EntryTest do
       query = """
       {
         entry(id: #{entry.id}) {
+          id
           text
           description
           type
+          url
           videos{
             copyright
             license
@@ -56,7 +58,9 @@ defmodule SignDict.Schema.EntryTest do
               "current_video" => entry.current_video |> expected_entry_video(),
               "text" => "#{entry.text}",
               "description" => "#{entry.description}",
-              "type" => "#{entry.type}"
+              "type" => "#{entry.type}",
+              "url" => "https://localhost/entry/#{entry.id}",
+              "id" => entry.id
             }
           }
         } == response
@@ -103,6 +107,7 @@ defmodule SignDict.Schema.EntryTest do
           text
           description
           type
+          url
           videos{
             copyright
             license
@@ -148,7 +153,8 @@ defmodule SignDict.Schema.EntryTest do
                 "text" => "#{entry_1.text}",
                 "description" => "#{entry_1.description}",
                 "type" => "#{entry_1.type}",
-                "id" => entry_1.id
+                "id" => entry_1.id,
+                "url" => "https://localhost/entry/#{entry_1.id}"
               }
             ]
           }

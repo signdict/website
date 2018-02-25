@@ -1,12 +1,14 @@
 defmodule SignDict.Resolvers.EntryResolver do
   alias SignDict.Repo
   alias SignDict.Entry
+  alias SignDict.Services.Url
 
   def show_entry(_parent, args, _resolution) do
     entry =
       Entry
       |> Repo.get(args[:id])
       |> Repo.preload([:language, current_video: :user, videos: :user])
+      |> Url.for_entry()
 
     case entry do
       nil -> {:error, message: "Not found"}
@@ -23,6 +25,9 @@ defmodule SignDict.Resolvers.EntryResolver do
       |> Entry.with_current_video()
       |> Entry.for_letter(args[:letter])
       |> Repo.all()
+      |> Enum.map(fn e ->
+        e |> Url.for_entry()
+      end)
 
     case entries do
       [] -> {:ok, []}
