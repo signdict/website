@@ -27,10 +27,10 @@
 
 .so-embed--player {
   position: absolute;
-  left: 1em;
-  top: 0.5em;
-  bottom: 1em;
-  right: 0.5em;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .plyr .so-embed--player {
