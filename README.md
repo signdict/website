@@ -5,7 +5,7 @@ A crowdsourced sign language dictionary.
 [![Build Status](https://travis-ci.org/signdict/website.svg?branch=master)](https://travis-ci.org/signdict/website)
 [![Coverage Status](https://coveralls.io/repos/github/signdict/website/badge.svg?branch=master)](https://coveralls.io/github/signdict/website?branch=master)
 [![Deps Status](https://beta.hexfaktor.org/badge/all/github/signdict/website.svg)](https://beta.hexfaktor.org/github/signdict/website)
-[![Slack invite](https://img.shields.io/badge/Slack-Invite-green.svg)](https://signdict-slack-invite.herokuapp.com/)
+[![Join the chat at https://gitter.im/signdict/lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/signdict/lobby)
 
 Here we will work on SignDict. A sign language dictionary
 where everyone can add new signs using their webcam. With
