@@ -18,8 +18,8 @@ msgstr ""
 msgid "Internal server error"
 msgstr ""
 
-#: lib/sign_dict/services/credential_verifier.ex:17
-#: lib/sign_dict/services/credential_verifier.ex:28
+#: lib/sign_dict/services/credential_verifier.ex:16
+#: lib/sign_dict/services/credential_verifier.ex:27
 #: web/controllers/session_controller.ex:28
 msgid "Invalid email address or password"
 msgstr ""
@@ -48,13 +48,13 @@ msgstr ""
 
 #: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
-#: web/templates/shared/navigation.html.eex:54 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:50 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr ""
 
 #: web/templates/layout/backend.html.eex:35 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:58
+#: web/templates/shared/navigation.html.eex:54
 msgid "Sign in"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 
 #: web/templates/backend/user/index.html.eex:20
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:49
+#: web/templates/shared/navigation.html.eex:45
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr ""
@@ -521,11 +521,7 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: web/templates/page/index.html.eex:84
-msgid "Newsletter sign up"
-msgstr ""
-
-#: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:34
+#: web/controllers/search_controller.ex:15 web/templates/page/index.html.eex:34
 #: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
 msgstr ""
@@ -538,25 +534,17 @@ msgstr ""
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:41
+#: web/templates/shared/footer.html.eex:47
 msgid "SignDict on Github"
 msgstr ""
 
-#: web/templates/shared/footer.html.eex:40
+#: web/templates/shared/footer.html.eex:46
 msgid "SignDict on Twitter"
 msgstr ""
 
 #: web/controllers/page_controller.ex:34 web/templates/page/supporter.html.eex:4
 #: web/templates/shared/footer.html.eex:7
 msgid "Supporter"
-msgstr ""
-
-#: web/templates/page/index.html.eex:81
-msgid "This page is still under construction and.."
-msgstr ""
-
-#: web/templates/page/index.html.eex:78
-msgid "Want to stay up to date?"
 msgstr ""
 
 #: web/templates/page/index.html.eex:31
@@ -634,19 +622,19 @@ msgstr ""
 msgid "User since %{since}"
 msgstr ""
 
-#: web/views/helpers/date_helper.ex:18
+#: web/views/helpers/date_helper.ex:32
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: web/views/helpers/date_helper.ex:15
+#: web/views/helpers/date_helper.ex:25
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: web/views/helpers/date_helper.ex:12
+#: web/views/helpers/date_helper.ex:18
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] ""
@@ -676,7 +664,7 @@ msgstr ""
 msgid "Variations »%{entry}«"
 msgstr ""
 
-#: web/views/helpers/date_helper.ex:19
+#: web/views/helpers/date_helper.ex:36
 msgid "today"
 msgstr ""
 
@@ -782,7 +770,7 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-#: web/controllers/search_controller.ex:10
+#: web/controllers/search_controller.ex:12
 msgid "Search results for %{query}"
 msgstr ""
 
@@ -878,19 +866,19 @@ msgstr ""
 msgid "A sign language dictionary"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:10
+#: lib/sign_dict/services/opengraph.ex:13
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:70
+#: lib/sign_dict/services/opengraph.ex:84
 msgid "by %{copyright}"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:53
+#: lib/sign_dict/services/opengraph.ex:60
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:68
+#: lib/sign_dict/services/opengraph.ex:78
 msgid "by %{copyright} - %{username}"
 msgstr ""
 
@@ -999,7 +987,7 @@ msgid "Missing an entry? Do you know how to sign it? Then please add it with the
 msgstr ""
 
 #: web/controllers/entry_controller.ex:25
-#: web/templates/shared/footer.html.eex:35
+#: web/templates/shared/footer.html.eex:40
 msgid "All entries"
 msgstr ""
 
@@ -1060,7 +1048,7 @@ msgstr ""
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
-#: web/templates/recorder/record_button.html.eex:8
+#: web/templates/recorder/record_button.html.eex:7
 msgid "Record new sign"
 msgstr ""
 
@@ -1162,7 +1150,7 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
-#: lib/sign_dict/services/opengraph.ex:82
+#: lib/sign_dict/services/opengraph.ex:99
 msgid "   %{list} is a collection of signs in SignDict, a sign language dictionary.\n"
 msgstr ""
 
@@ -1176,4 +1164,24 @@ msgstr ""
 
 #: web/controllers/backend/list_entry_controller.ex:35
 msgid "List entry moved up."
+msgstr ""
+
+#, elixir-format
+#: web/templates/page/index.html.eex:84
+msgid "Open the german documentation"
+msgstr ""
+
+#, elixir-format
+#: web/templates/page/index.html.eex:78
+msgid "Want to learn more about sign language?"
+msgstr ""
+
+#, elixir-format
+#: web/templates/page/index.html.eex:81
+msgid "We offer a nice introduction to sign language in german."
+msgstr ""
+
+#, elixir-format
+#: web/templates/shared/footer.html.eex:41
+msgid "Documentation"
 msgstr ""

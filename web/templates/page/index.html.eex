@@ -75,13 +75,13 @@
             <%= gettext("Curious?") %>
           </p>
           <h1 class="so-landing--action--text--headline">
-            <%= gettext("Want to stay up to date?") %>
+            <%= gettext("Want to learn more about sign language?") %>
           </h1>
           <p>
-            <%= gettext("This page is still under construction and..") %>
+            <%= {:safe, gettext("We offer a nice introduction to sign language in german.")} %>
           </p>
           <p class="so-landing--action--text-button">
-            <a class="sc-button" href="http://eepurl.com/ct6whn"><%= gettext("Newsletter sign up") %>&nbsp;&#8250;</a>
+            <a class="sc-button" href="http://docs.signdict.org"><%= gettext("Open the german documentation") %>&nbsp;&#8250;</a>
           </p>
         </div>
       </div>

@@ -18,8 +18,8 @@ msgstr "Anmeldung benötigt"
 msgid "Internal server error"
 msgstr "Interner Serverfehler"
 
-#: lib/sign_dict/services/credential_verifier.ex:17
-#: lib/sign_dict/services/credential_verifier.ex:28
+#: lib/sign_dict/services/credential_verifier.ex:16
+#: lib/sign_dict/services/credential_verifier.ex:27
 #: web/controllers/session_controller.ex:28
 msgid "Invalid email address or password"
 msgstr "Ungültige Email-Adresse oder Passwort"
@@ -48,13 +48,13 @@ msgstr "Bitte fülle das Formular aus"
 
 #: web/controllers/user_controller.ex:18 web/controllers/user_controller.ex:34
 #: web/templates/layout/backend.html.eex:34
-#: web/templates/shared/navigation.html.eex:54 web/templates/user/new.html.eex:3
+#: web/templates/shared/navigation.html.eex:50 web/templates/user/new.html.eex:3
 #: web/templates/user/new.html.eex:48
 msgid "Register"
 msgstr "Registrieren"
 
 #: web/templates/layout/backend.html.eex:35 web/templates/session/new.html.eex:3
-#: web/templates/shared/navigation.html.eex:58
+#: web/templates/shared/navigation.html.eex:54
 msgid "Sign in"
 msgstr "Anmelden"
 
@@ -264,7 +264,7 @@ msgstr "Erfolgreich gespeichert"
 
 #: web/templates/backend/user/index.html.eex:20
 #: web/templates/backend/user/show.html.eex:7
-#: web/templates/shared/navigation.html.eex:49
+#: web/templates/shared/navigation.html.eex:45
 #: web/templates/user/edit.html.eex:25 web/templates/user/show.html.eex:3
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
@@ -521,11 +521,7 @@ msgstr "Logo rrone"
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
-#: web/templates/page/index.html.eex:84
-msgid "Newsletter sign up"
-msgstr "Anmeldung zum Newsletter"
-
-#: web/controllers/search_controller.ex:13 web/templates/page/index.html.eex:34
+#: web/controllers/search_controller.ex:15 web/templates/page/index.html.eex:34
 #: web/templates/shared/searchbar.html.eex:10
 msgid "Search"
 msgstr "Suche"
@@ -538,11 +534,11 @@ msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gese
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: web/templates/shared/footer.html.eex:41
+#: web/templates/shared/footer.html.eex:47
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
-#: web/templates/shared/footer.html.eex:40
+#: web/templates/shared/footer.html.eex:46
 msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
@@ -550,14 +546,6 @@ msgstr "SignDict auf Twitter"
 #: web/templates/shared/footer.html.eex:7
 msgid "Supporter"
 msgstr "Unterstützer"
-
-#: web/templates/page/index.html.eex:81
-msgid "This page is still under construction and.."
-msgstr "Diese Seite befindet sich derzeit im Aufbau, daher ist noch nicht alles fertig. Willst du informiert werden, sobald es Neuigkeiten gibt? Dann trage dich doch einfach in unseren Newsletter ein."
-
-#: web/templates/page/index.html.eex:78
-msgid "Want to stay up to date?"
-msgstr "Willst du bei Neuigkeiten informiert werden?"
 
 #: web/templates/page/index.html.eex:31
 #: web/templates/shared/searchbar.html.eex:6
@@ -634,19 +622,19 @@ msgstr "Videos hochgeladen"
 msgid "User since %{since}"
 msgstr "Dabei seit %{since}"
 
-#: web/views/helpers/date_helper.ex:18
+#: web/views/helpers/date_helper.ex:32
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] "einem Tag"
 msgstr[1] "%{count} Tagen"
 
-#: web/views/helpers/date_helper.ex:15
+#: web/views/helpers/date_helper.ex:25
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] "einem Monat"
 msgstr[1] "%{count} Monaten"
 
-#: web/views/helpers/date_helper.ex:12
+#: web/views/helpers/date_helper.ex:18
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] "einem Jahr"
@@ -676,7 +664,7 @@ msgstr "Keine weiteren Variationen"
 msgid "Variations »%{entry}«"
 msgstr "Varianten »%{entry}«"
 
-#: web/views/helpers/date_helper.ex:19
+#: web/views/helpers/date_helper.ex:36
 msgid "today"
 msgstr "heute"
 
@@ -782,7 +770,7 @@ msgstr "Neue Nachricht via Kontakt-Formular"
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
-#: web/controllers/search_controller.ex:10
+#: web/controllers/search_controller.ex:12
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
@@ -878,19 +866,19 @@ msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
 msgid "A sign language dictionary"
 msgstr "Ein Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:10
+#: lib/sign_dict/services/opengraph.ex:13
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr "%{user} ist ein Nutzer auf SignDict, einem Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:70
+#: lib/sign_dict/services/opengraph.ex:84
 msgid "by %{copyright}"
 msgstr "von %{copyright}"
 
-#: lib/sign_dict/services/opengraph.ex:53
+#: lib/sign_dict/services/opengraph.ex:60
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright}\n"
 
-#: lib/sign_dict/services/opengraph.ex:68
+#: lib/sign_dict/services/opengraph.ex:78
 msgid "by %{copyright} - %{username}"
 msgstr "von %{copyright} - %{username}"
 
@@ -999,7 +987,7 @@ msgid "Missing an entry? Do you know how to sign it? Then please add it with the
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
 #: web/controllers/entry_controller.ex:25
-#: web/templates/shared/footer.html.eex:35
+#: web/templates/shared/footer.html.eex:40
 msgid "All entries"
 msgstr "Alle Einträge"
 
@@ -1060,7 +1048,7 @@ msgstr "Ablehnungsgrund"
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
 
-#: web/templates/recorder/record_button.html.eex:8
+#: web/templates/recorder/record_button.html.eex:7
 msgid "Record new sign"
 msgstr "Neue Gebärde aufnehmen"
 
@@ -1162,7 +1150,7 @@ msgstr "Listeneintrag erfolgreich gelöscht."
 msgid "Thumbnail"
 msgstr "Vorschaubild"
 
-#: lib/sign_dict/services/opengraph.ex:82
+#: lib/sign_dict/services/opengraph.ex:99
 msgid "   %{list} is a collection of signs in SignDict, a sign language dictionary.\n"
 msgstr "%{list} ist eine Sammlung von Gebärden auf SignDict, einem Gebärdensprach-Wörterbuch."
 
@@ -1177,3 +1165,23 @@ msgstr "Listeneintrage nach unten verschoben."
 #: web/controllers/backend/list_entry_controller.ex:35
 msgid "List entry moved up."
 msgstr "Listeneintrag nach oben verschoben."
+
+#, elixir-format
+#: web/templates/page/index.html.eex:84
+msgid "Open the german documentation"
+msgstr "Zur Dokumentation"
+
+#, elixir-format
+#: web/templates/page/index.html.eex:78
+msgid "Want to learn more about sign language?"
+msgstr "Willst du mehr über Gebärdensprache lernen?"
+
+#, elixir-format
+#: web/templates/page/index.html.eex:81
+msgid "We offer a nice introduction to sign language in german."
+msgstr "Zum Beispiel über das <a href='http://docs.signdict.org/dgs/4_fingeralphabet/'>Fingeralphabet</a>, <a href='http://docs.signdict.org/babysign/1_einleitung/'>Babysign</a> oder die deutsche Gebärdensprache? Großartig. Genau dafür haben wir unser <a href='http://docs.signdict.org'>Dokumentations-Projekt</a>."
+
+#, elixir-format
+#: web/templates/shared/footer.html.eex:41
+msgid "Documentation"
+msgstr "Dokumentation"
