@@ -9,8 +9,7 @@ defmodule SignDict.SearchController do
         [
           Entry.search_query(Gettext.get_locale(SignDict.Gettext), params["q"])
           |> Entry.with_current_video()
-          |> SignDict.Repo.all()
-          |> IO.inspect(),
+          |> SignDict.Repo.all(),
           gettext("Search results for %{query}", query: params["q"])
         ]
       else
