@@ -66,9 +66,9 @@ to have both started automatically.
 
 ## Deployment
 
-The system is currently deployed using [gatling](https://github.com/hashrocket/gatling).
-Simply execute `git push production master` to push to the repository on the server.
-The rest should be automated.
+The system is currently using [bootleg](https://github.com/labzero/bootleg) to
+deploy the app. Simply call `bootleg_user=USERNAME mix bootleg.update` to
+deploy it to the production environment.
 
 ## Funding
 
