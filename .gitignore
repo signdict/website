@@ -33,3 +33,6 @@ uploads/
 
 # Redis Database
 dump.rdb
+
+# Distillery releases
+releases/
