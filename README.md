@@ -4,7 +4,7 @@ A crowdsourced sign language dictionary.
 
 [![Build Status](https://travis-ci.org/signdict/website.svg?branch=master)](https://travis-ci.org/signdict/website)
 [![Coverage Status](https://coveralls.io/repos/github/signdict/website/badge.svg?branch=master)](https://coveralls.io/github/signdict/website?branch=master)
-[![Deps Status](https://beta.hexfaktor.org/badge/all/github/signdict/website.svg)](https://beta.hexfaktor.org/github/signdict/website)
+[![Dependency Badgy](https://www.versioneye.com/user/projects/5ad391a40fb24f3a025c0093/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5ad391a40fb24f3a025c0093)
 [![Join the chat at https://gitter.im/signdict/lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/signdict/lobby)
 
 Here we will work on SignDict. A sign language dictionary
