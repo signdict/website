@@ -188,8 +188,8 @@ defmodule SignDict.Entry do
     # have to change the database trigger to have
     # this new language in there, too.
     cond do
-      locale == "de" -> "german"
-      locale == "en" -> "english"
+      locale == "de" -> "german_nostop"
+      locale == "en" -> "english_nostop"
       true -> "simple"
     end
   end
