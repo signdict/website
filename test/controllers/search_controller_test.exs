@@ -26,6 +26,15 @@ defmodule SignDict.SearchControllerTest do
     assert html_response(conn, 200) =~ "Search results for lang"
   end
 
+  test "it should not use stopwords", %{conn: conn} do
+    entry =
+      insert(:entry_with_videos, text: "but")
+      |> Entry.update_current_video()
+
+    conn = get(conn, search_path(conn, :index, q: "but"))
+    assert redirected_to(conn) == entry_path(conn, :show, entry)
+  end
+
   test "it should redirect to entry if only one match was found and its an exact match", %{
     conn: conn
   } do
