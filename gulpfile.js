@@ -96,4 +96,6 @@ gulp.task('watch', function() {
   gulp.watch('web/static/js/**/*', ['js']);
 });
 
-gulp.task('default', ['clean', 'assets', 'css', 'js']);
+gulp.task('default', ['clean', 'assets'], function() {
+  gulp.start('css', 'js');
+});
