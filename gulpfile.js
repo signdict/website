@@ -21,7 +21,7 @@ function swallowError (error) {
 }
 
 gulp.task('clean', function() {
-  return del(['priv/static']);
+  return del.sync(['priv/static']);
 });
 
 gulp.task('assets', function() {
