@@ -61,6 +61,5 @@ defmodule SignDict.Endpoint do
     signing_salt: "2xqY1fFX"
   )
 
-  plug(PryIn.Plug)
   plug(SignDict.Router)
 end

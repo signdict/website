@@ -16,7 +16,6 @@ defmodule Mix.Tasks.Importer do
   end
 
   def run([path]) do
-    Application.ensure_all_started(:pryin)
     ensure_started(SignDict.Repo, [])
     IO.puts("Importing Files...")
 
