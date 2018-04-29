@@ -27,7 +27,7 @@ task :migrate do
   UI.info("Migrating database")
 
   remote :app, filter: [primary: true] do
-    "mix ecto.migrate"
+    "bin/signdict migrate"
   end
 
   UI.info("Database migrated")
