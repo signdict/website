@@ -4,6 +4,9 @@ elixir:
   - 1.4.2
 addons:
   postgresql: "9.6"
+  apt:
+    packages:
+      - erlang-dev
 
 services:
  - redis-server
