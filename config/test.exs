@@ -23,7 +23,7 @@ config :sign_dict, SignDict.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # Make crypto a bit faster for tests
-config :comeonin, :bcrypt_log_rounds, 4
+config :bcrypt_elixir, log_rounds: 4
 
 config :wallaby, screenshot_on_failure: true
 
@@ -44,4 +44,3 @@ config :bamboo, :refute_timeout, 10
 config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
-
