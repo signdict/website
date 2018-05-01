@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="<%= Gettext.get_locale(SignDictWeb.Gettext) %>" prefix="og: http://ogp.me/ns#">
+  <head>
+    <%= render SignDictWeb.SharedView, "header.html", conn: @conn,
+            current_user: @current_user,
+            ogtags: assigns[:ogtags],
+            title: assigns[:title] %>
+  </head>
+  <body>
+    <div class="o-container o-container--medium">
+      <%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
+    </div>
+
+    <%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+
+    <div>
+      <%= render SignDictWeb.SharedView, "alerts.html", conn: @conn %>
+    </div>
+
+    <div class="sc-main o-container o-container--medium">
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+    </div>
+
+    <%= render SignDictWeb.SharedView, "footer.html", conn: @conn %>
+  </body>
+</html>

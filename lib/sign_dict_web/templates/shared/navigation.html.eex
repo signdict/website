@@ -1,0 +1,67 @@
+<header class="so-navigation">
+  <div class="so-navigation__left">
+    <%= if assigns[:logo] == nil || assigns[:logo] == true do %>
+      <a href="/"><img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-navigation__logo"/></a>
+      <a href='/about' class='so-navigation__about'><%= gettext("About SignDict")%></a>
+    <% else %>
+      <a href='/about' class='so-navigation__about--no-logo'><%= gettext("About SignDict")%></a>
+    <% end %>
+  </div>
+
+  <nav role="navigation">
+    <input class="so-navigation__menu-btn" hidden type="checkbox" id="so-navigation__menu-btn" />
+    <label class="so-navigation__menu-icon" for="so-navigation__menu-btn">
+      <span class="so-navigation__navicon"></span>
+    </label>
+
+    <%= if assigns[:logo] == nil || assigns[:logo] == true do %>
+      <ul class="so-navigation__menu">
+    <% else %>
+      <ul class="so-navigation__menu so-navigation__menu--no-logo">
+    <% end %>
+
+      <%= if @current_user do %>
+        <%= if Canada.Can.can? @current_user, :show_backend, %{} do %>
+          <li>
+            <%= link "Admin", to: backend_dashboard_path(@conn, :index), data: [turbolinks: "false"] %>
+          </li>
+        <% end %>
+
+        <li>
+          <%= form_tag(session_path(@conn, :delete, @current_user), method: :delete) %>
+            <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link so-navigation__menu-item--logout' />
+          </form>
+        </li>
+
+        <li>
+        <%= if Gettext.get_locale(SignDictWeb.Gettext) == "de" do %>
+          <a href="?locale=en" data-turbolinks="false">English</a>
+        <% else %>
+          <a href="?locale=de" data-turbolinks="false">Deutsch</a>
+        <% end %>
+        </li>
+
+        <li class="so-navigation__menu-item--user">
+          <a href="<%= user_path(@conn, :show, @current_user) %>"><%= img_tag SignDict.User.avatar_url(@current_user), alt: gettext("The avatar image of this user"), class: "so-navigation__user-avatar" %><span class="so-navigation__user-name"><%= @current_user.name %></span></a>
+        </li>
+
+      <% else %>
+        <li>
+          <%= link gettext("Register"), to: user_path(@conn, :new) %>
+        </li>
+
+        <li>
+          <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+        </li>
+
+        <li>
+          <%= if Gettext.get_locale(SignDictWeb.Gettext) == "de" do %>
+            <a href="?locale=en" data-turbolinks="false">English</a>
+          <% else %>
+            <a href="?locale=de" data-turbolinks="false">Deutsch</a>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

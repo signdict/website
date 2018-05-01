@@ -1,0 +1,92 @@
+<div class="o-container o-container--medium">
+  <%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: false %>
+  <%= render SignDictWeb.SharedView, "alerts.html", conn: @conn %>
+
+  <div class='so-landing--banner'>
+    <div class="o-grid o-grid--wrap">
+      <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-15@medium">
+        <img src='/images/logo.svg' alt="<%= gettext("SignDict Logo") %>" class="so-landing--banner--logo"/>
+      </div>
+      <div class="o-grid__cell">
+        <div class='so-landing--banner--text'>
+          <p class='so-landing--banner--headline'>
+            <%= {:safe, gettext("SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>")} %>
+          </p>
+          <p class='so-landing--banner--stats'>
+            <%= raw(gettext("So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>",
+                  humans: @human_count, signs: @sign_count,
+                  link: entry_path(@conn, :index)
+             )) %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="o-container o-container--medium">
+    <form action="/search" class='so-landing--search'>
+      <div class="o-grid o-grid--wrap">
+        <div class="o-grid__cell--width-80@medium o-grid__cell--width-100">
+          <input class="so-landing--search--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>"/>
+        </div>
+        <div class="o-grid__cell so-landing--search--submit-cell">
+          <input class="so-landing--search--submit" type="submit" value="<%= gettext("Search") %> &#8250;" />
+        </div>
+      </div>
+    </form>
+</div>
+
+<div class="so-landing--motivation">
+  <div class="o-container o-container--medium so-landing--motivation--inner">
+    <div class="o-grid o-grid--wrap">
+      <div class="o-grid__cell">
+        <h1 class="so-landing--motivation--header">
+          <span class="so-landing--motivation--header--inner">
+            <%= gettext("Language barrier") %>
+          </span>
+        </h1>
+        <div class="so-landing--motivation--text">
+          <%= text_to_html(gettext("SignDict believes...")) %>
+          <p>
+            <strong>
+              <%= gettext("Our mission: to help in understanding each other.") %>
+            </strong>
+          </p>
+        </div>
+      </div>
+      <div class="so-landing--motivation--hand o-grid__cell o-grid__cell--width-25@medium o-grid__cell--width-100">
+        <img src='/images/hand-speechbubble.svg' class="so-landing--motivation--hand--image" alt="<%= gettext("A hand with a speech bubble") %>"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="so-landing--action">
+  <div class="o-container o-container--medium">
+
+    <div class="o-grid o-grid--wrap">
+      <div class="o-grid__cell o-grid__cell--width-40@medium o-grid__cell--width-100">
+        <img src='/images/hands.svg' class="so-landing--action--image" alt="<%= gettext("Two hands waving") %>"/>
+      </div>
+      <div class="o-grid__cell">
+        <div class="so-landing--action--text">
+          <p class="so-landing--action--text--beforeheadline">
+            <%= gettext("Curious?") %>
+          </p>
+          <h1 class="so-landing--action--text--headline">
+            <%= gettext("Want to learn more about sign language?") %>
+          </h1>
+          <p>
+            <%= {:safe, gettext("We offer a nice introduction to sign language in german.")} %>
+          </p>
+          <p class="so-landing--action--text-button">
+            <a class="sc-button" href="http://docs.signdict.org"><%= gettext("Open the german documentation") %>&nbsp;&#8250;</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render SignDictWeb.SharedView, "footer.html", conn: @conn %>

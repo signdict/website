@@ -4,7 +4,7 @@ config :sign_dict, :environment, :test
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :sign_dict, SignDict.Endpoint,
+config :sign_dict, SignDictWeb.Endpoint,
   http: [port: 4001],
   server: true
 
@@ -29,11 +29,11 @@ config :wallaby, screenshot_on_failure: true
 
 # Using english locale for tests, this makes it
 # easier for non german speaking people
-config :sign_dict, SignDict.Gettext, default_locale: "en"
+config :sign_dict, SignDictWeb.Gettext, default_locale: "en"
 
 config :sign_dict, :upload_path, "./test/uploads"
 
-config :sign_dict, SignDict.Mailer,
+config :sign_dict, SignDictWeb.Mailer,
   adapter: Bamboo.TestAdapter
 
 config :sign_dict, :queue,

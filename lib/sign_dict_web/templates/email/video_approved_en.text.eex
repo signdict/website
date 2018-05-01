@@ -1,0 +1,9 @@
+Hi <%= @user.name %>,
+Your video for "<%= @entry.text %>" is now approved 🎉.
+
+Open the video:
+<%= entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+
+Thanks for your help to complete the dictionary.
+
+Greetings from the SignDict team.

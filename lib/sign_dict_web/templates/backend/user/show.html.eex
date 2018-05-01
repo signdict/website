@@ -1,0 +1,50 @@
+<h1 class="c-heading"><%= gettext("User") %>: <%= @user.name %></h1>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-20"><strong><%= gettext("user.avatar") %></strong></div>
+    <div class="o-grid__cell">
+      <%= img_tag SignDict.User.avatar_url(@user), alt: gettext("The avatar image of this user"), width: 64 %>
+    </div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-20"><strong><%= gettext("user.email") %></strong></div>
+    <div class="o-grid__cell"><%= @user.email %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-20"><strong><%= gettext("user.role") %></strong></div>
+    <div class="o-grid__cell"><%= @user.role %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-20"><strong><%= gettext("user.flags") %></strong></div>
+    <div class="o-grid__cell"><%= @user.flags %></div>
+  </div>
+</div>
+
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-20"><strong><%= gettext("user.biography") %></strong></div>
+    <div class="o-grid__cell"><%= @user.biography %></div>
+  </div>
+</div>
+
+<%= if Canada.Can.can? @current_user, :edit, @user do %>
+  <p>
+    <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, @user), class: "c-button" %>
+  </p>
+<% end %>
+
+<h2 class="c-heading"><%= gettext("Videos") %></h2>
+
+<%= render SignDictWeb.Backend.SharedView, "videos_table.html", conn: @conn, videos: @videos.entries %>
+
+<%= pagination_links @videos %>

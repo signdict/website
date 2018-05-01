@@ -19,7 +19,7 @@ defmodule SignDict.Services.Url do
   end
 
   defp host do
-    "https://#{Application.get_env(:sign_dict, SignDict.Endpoint)[:url][:host]}"
+    "https://#{Application.get_env(:sign_dict, SignDictWeb.Endpoint)[:url][:host]}"
   end
 
   defp video_url(entry = %Entry{}, video = %Video{}) do

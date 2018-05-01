@@ -1,0 +1,5 @@
+<h1 class="c-heading"><%= gettext("Listing videos") %></h1>
+
+<%= render SignDictWeb.Backend.SharedView, "videos_table.html", conn: @conn, videos: @videos.entries %>
+
+<%= pagination_links @videos %>

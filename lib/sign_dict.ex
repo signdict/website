@@ -1,7 +1,7 @@
 defmodule SignDict do
   use Application
 
-  alias SignDict.Endpoint
+  alias SignDictWeb.Endpoint
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -13,7 +13,7 @@ defmodule SignDict do
       # Start the Ecto repository
       supervisor(SignDict.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(SignDict.Endpoint, [])
+      supervisor(Endpoint, [])
       # Start your own worker by calling:
       # SignDict.Worker.start_link(arg1, arg2, arg3)
       #
