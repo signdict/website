@@ -1,5 +1,5 @@
 defmodule SignDict.SearchEntryTest do
-  use SignDict.AcceptanceCase, async: true
+  use SignDict.AcceptanceCase
   import SignDict.Factory
 
   alias SignDict.Entry

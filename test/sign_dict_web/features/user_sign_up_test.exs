@@ -1,5 +1,5 @@
 defmodule SignDict.UserSignUpTest do
-  use SignDict.AcceptanceCase, async: true
+  use SignDict.AcceptanceCase
 
   alias SignDict.User
 
