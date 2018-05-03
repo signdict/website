@@ -74,7 +74,7 @@ defmodule SignDict.Mixfile do
       {:scrivener_html, "~> 1.7"},
       {:exq, "~> 0.10.1"},
       {:exq_ui, "~> 0.9.0"},
-      {:ex_chimp, github: "signdict/ex_chimp"},
+      {:ex_chimp, "~> 0.0.3"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
       {:poison, "~> 3.1.0"}
