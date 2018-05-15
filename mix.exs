@@ -57,7 +57,7 @@ defmodule SignDict.Mixfile do
       {:guardian, "~> 0.14.0"},
       {:comeonin, "~> 3.0"},
       {:ex_machina, "~> 2.1"},
-      {:wallaby, "~> 0.17.0", only: :test},
+      {:wallaby, "~> 0.20.0", only: :test},
       {:canary, "~> 1.1.0"},
       {:secure_random, "~> 0.5"},
       {:bamboo, "~> 0.8"},
