@@ -1,7 +1,10 @@
 language: elixir
 dist: trusty
 elixir:
-  - 1.4.2
+  - 1.6.3
+otp_release:
+  - 20.0
+
 addons:
   postgresql: "9.6"
 

@@ -10,7 +10,7 @@ defmodule SignDict.AcceptanceCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import SignDict.Router.Helpers
+      import SignDictWeb.Router.Helpers
 
       def assert_alert(page, text) do
         page

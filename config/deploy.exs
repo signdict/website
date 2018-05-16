@@ -13,8 +13,10 @@ task :phoenix_digest do
   mix_env = Keyword.get(config(), :mix_env, "prod")
 
   remote :build do
-    "[ -f package.json ] && yarn || true"
-    "[ -f package.json ] && npm run deploy || true"
+    "cd assets"
+    "yarn || true"
+    "npm run deploy || true"
+    "cd .."
     "[ -d deps/phoenix ] && MIX_ENV=#{mix_env} mix phoenix.digest || true"
   end
 

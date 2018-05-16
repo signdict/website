@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="<%= Gettext.get_locale(SignDictWeb.Gettext) %>" prefix="og: http://ogp.me/ns#">
+  <head>
+    <%= render SignDictWeb.SharedView, "header.html", conn: @conn,
+            current_user: @current_user,
+            ogtags: assigns[:ogtags],
+            title: assigns[:title] %>
+  </head>
+
+  <body class='so-embed'>
+    <%= render @view_module, @view_template, assigns %>
+  </body>
+</html>

@@ -3,7 +3,7 @@ defprotocol SignDict.Services.OpenGraph do
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.User do
-  import SignDict.Gettext
+  import SignDictWeb.Gettext
 
   def to_metadata(user, _sub_model \\ %{}) do
     thumbnail_url = SignDict.User.avatar_url(user)
@@ -31,8 +31,8 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.User do
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
-  import SignDict.Gettext
-  import SignDict.Router.Helpers
+  import SignDictWeb.Gettext
+  import SignDictWeb.Router.Helpers
 
   def to_metadata(entry, video) do
     %{
@@ -49,7 +49,7 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
       "twitter:site" => "@SignDict",
       "twitter:description" => description(entry, video),
       "twitter:image" => video.thumbnail_url,
-      "twitter:player" => secure_url(embed_video_url(SignDict.Endpoint, :show, entry, video)),
+      "twitter:player" => secure_url(embed_video_url(SignDictWeb.Endpoint, :show, entry, video)),
       "twitter:player:width" => 480,
       "twitter:player:height" => 350
     }
@@ -91,7 +91,7 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.List do
-  import SignDict.Gettext
+  import SignDictWeb.Gettext
 
   def to_metadata(list, _sub_model \\ %{}) do
     description =

@@ -1,6 +1,6 @@
 defmodule SignDict.Services.CredentialVerifier do
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
-  import SignDict.Gettext
+  import SignDictWeb.Gettext
 
   alias SignDict.User
   alias SignDict.Repo

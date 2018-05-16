@@ -7,8 +7,8 @@ defmodule SignDict.Worker.CheckVideoStatus do
   # 10 minutes
   @recheck_transcoder_result_time 60 * 10
 
-  alias SignDict.Email
-  alias SignDict.Mailer
+  alias SignDictWeb.Email
+  alias SignDictWeb.Mailer
   alias SignDict.Repo
   alias SignDict.Video
 

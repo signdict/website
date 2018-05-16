@@ -2,4 +2,4 @@
 default: serve ;
 
 serve:
-	mix phoenix.server
+	mix phx.server

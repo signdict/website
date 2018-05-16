@@ -33,50 +33,51 @@ defmodule SignDict.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
-  defp elixirc_paths(_), do: ["lib", "web"]
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.2.3"},
+      {:phoenix, "~> 1.3.2"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.0"},
-      {:plug, "~> 1.3.3"},
+      {:plug, "~> 1.5.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.6"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.13"},
       {:cowboy, "~> 1.0"},
-      {:credo, "~> 0.5", only: [:dev, :test]},
+      {:credo, "~> 0.9.2", only: [:dev, :test]},
       {:state_mc, "~> 0.1.0"},
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 0.6", only: :dev, runtime: false},
       {:excoveralls, "~> 0.6", only: :test},
-      {:guardian, "~> 0.14.0"},
-      {:comeonin, "~> 3.0"},
+      {:guardian, "~> 1.0.1"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
       {:ex_machina, "~> 2.1"},
-      {:wallaby, "~> 0.17.0", only: :test},
+      {:wallaby, "~> 0.20.0", only: :test},
       {:canary, "~> 1.1.0"},
       {:secure_random, "~> 0.5"},
       {:bamboo, "~> 0.8"},
-      {:bamboo_smtp, "~> 1.3.0"},
-      {:bugsnex, "~> 0.3.0"},
+      {:bamboo_smtp, "~> 1.4.0"},
+      {:bugsnex, "~> 0.3.1"},
       {:arc, "~> 0.8.0"},
-      {:arc_ecto, "~> 0.7.0"},
+      {:arc_ecto, "~> 0.8.0"},
       {:exgravatar, "~> 2.0.0"},
       {:distillery, "~> 1.5", runtime: false},
       {:bootleg, "~> 0.7", runtime: false},
       {:timex, "~> 3.2"},
       {:scrivener_ecto, "~> 1.0"},
       {:scrivener_html, "~> 1.7"},
-      {:exq, "~> 0.8.6"},
-      {:exq_ui, "~> 0.8.6"},
-      {:ex_chimp, "~> 0.0.2"},
+      {:exq, "~> 0.11"},
+      {:exq_ui, "~> 0.9.0"},
+      {:ex_chimp, "~> 0.0.3"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
-      {:poison, "~> 2.2.0"}
+      {:poison, "~> 3.1.0"}
     ]
   end
 

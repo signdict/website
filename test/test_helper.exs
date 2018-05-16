@@ -6,4 +6,4 @@ ExUnit.start()
 
 Ecto.Adapters.SQL.Sandbox.mode(SignDict.Repo, :manual)
 
-Application.put_env(:wallaby, :base_url, SignDict.Endpoint.url())
+Application.put_env(:wallaby, :base_url, SignDictWeb.Endpoint.url())

@@ -1,0 +1,18 @@
+<p>
+  Hallo <%= @user.name %>,
+</p>
+<p>
+  Dein Video für "<%= @entry.text %>" wurde nun freigegeben 🎉.
+</p>
+
+<p>
+  <%= link "Zum Video", to: entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+</p>
+
+<p>
+  Danke das du uns hilfst, das Wörterbuch weiter zu vervollständigen.
+</p>
+
+<p>
+  Gruß vom SignDict Team.
+</p>
