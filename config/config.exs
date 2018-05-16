@@ -22,14 +22,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :guardian, Guardian,
+config :sign_dict, SignDict.Guardian,
   allowed_algos: ["HS512"], # optional
-  verify_module: Guardian.JWT,  # optional
   issuer: "SignDict",
   ttl: {30, :days},
   verify_issuer: true, # optional
-  secret_key: "ogqsU0chmc/6sNe2piXqwHpGldTcZUXhql6HNQusM2kLQOZI/0dm0oz7xlVW3VmJ",
-  serializer: SignDict.GuardianSerializer
+  secret_key: "ogqsU0chmc/6sNe2piXqwHpGldTcZUXhql6HNQusM2kLQOZI/0dm0oz7xlVW3VmJ"
 
 # For now the default is german. We might want to
 # do something smarter later where we detect the language

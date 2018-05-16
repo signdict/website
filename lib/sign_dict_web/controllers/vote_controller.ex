@@ -1,7 +1,7 @@
 defmodule SignDictWeb.VoteController do
   use SignDictWeb, :controller
 
-  plug Guardian.Plug.EnsureAuthenticated, handler: SignDictWeb.GuardianErrorHandler
+  plug Guardian.Plug.EnsureAuthenticated, error_handler: SignDictWeb.GuardianErrorHandler
 
   alias SignDict.Vote
   alias SignDict.Video

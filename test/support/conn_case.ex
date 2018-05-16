@@ -37,7 +37,7 @@ defmodule SignDict.ConnCase do
         conn
         |> bypass_through(SignDictWeb.Router, [:browser])
         |> get("/")
-        |> Guardian.Plug.sign_in(user, token, opts)
+        |> SignDict.Guardian.Plug.sign_in(user, token, opts)
         |> send_resp(200, "Flush the session yo")
         |> recycle()
       end

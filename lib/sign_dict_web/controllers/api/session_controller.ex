@@ -1,7 +1,7 @@
 defmodule SignDictWeb.Api.SessionController do
   use SignDictWeb, :controller
 
-  alias Guardian.Plug
+  alias SignDict.Guardian.Plug
 
   def create(conn, %{"email" => email, "password" => password}) do
     case SignDict.Services.CredentialVerifier.verify(email, password) do

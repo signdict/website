@@ -3,7 +3,7 @@ defmodule SignDictWeb.SessionController do
   """
   use SignDictWeb, :controller
 
-  alias Guardian.Plug
+  alias SignDict.Guardian.Plug
 
   def new(conn, _params) do
     render conn, "new.html"

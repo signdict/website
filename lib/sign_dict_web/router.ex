@@ -28,14 +28,12 @@ defmodule SignDictWeb.Router do
   end
 
   pipeline :browser_session do
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
+    plug SignDictWeb.GuardianAuth
     plug SignDictWeb.Plug.CurrentUser
   end
 
   pipeline :auth do
-    plug Guardian.Plug.EnsureAuthenticated,
-         handler: SignDictWeb.GuardianErrorHandler
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :backend do

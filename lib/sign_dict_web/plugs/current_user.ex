@@ -1,6 +1,6 @@
 defmodule SignDictWeb.Plug.CurrentUser do
   import Plug.Conn
-  import Guardian.Plug
+  import SignDict.Guardian.Plug
 
   def init(opts), do: opts
 

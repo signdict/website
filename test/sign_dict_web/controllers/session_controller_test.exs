@@ -51,7 +51,7 @@ defmodule SignDict.SessionControllerTest do
         |> delete(session_path(conn, :delete, user))
 
       assert get_flash(conn, :info) == "Successfully signed out"
-      refute Guardian.Plug.authenticated?(conn)
+      refute SignDict.Guardian.Plug.authenticated?(conn)
     end
   end
 end
