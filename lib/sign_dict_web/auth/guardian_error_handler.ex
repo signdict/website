@@ -38,4 +38,11 @@ defmodule SignDictWeb.GuardianErrorHandler do
     |> halt
   end
 
+  def handle_unauthorized(conn) do
+    auth_error(conn, {:unauthorized, nil}, nil)
+  end
+
+  def handle_resource_not_found(conn) do
+    auth_error(conn, {:no_resource_found, nil}, nil)
+  end
 end
