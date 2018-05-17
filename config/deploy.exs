@@ -4,7 +4,8 @@ role(
   :build,
   "signdict.org",
   user: System.get_env("bootleg_user"),
-  workspace: "/tmp/bootleg/signdict/"
+  workspace: "/tmp/bootleg/signdict/",
+  silently_accept_hosts: true
 )
 
 task :phoenix_digest do
