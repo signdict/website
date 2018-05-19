@@ -3,7 +3,6 @@
     <h2><%= gettext("Contact") %></h2>
 
     <%= form_for @conn, contact_path(@conn, :create), [method: :post, as: :contact, class: "contact-form"], fn f -> %>
-
       <div>
         <%= label f, :email, gettext("Email"), class: "sentinel control-label", class: "sc-label" %>
         <%= text_input f, :email, placeholder: gettext("Email"), class: "sc-input", value: @email %>
@@ -13,6 +12,10 @@
         <%= label f, :content, gettext("Content"), class: "sentinel control-label", class: "sc-label" %>
         <%= textarea f, :content, placeholder: gettext("Content"), class: "sc-input", rows: 4 %>
       </div>
+
+      <%= if is_nil(@email) do %>
+        <%= raw Recaptcha.Template.display %>
+      <% end %>
 
       <div class="sc-actions">
         <%= submit gettext("Sent"), class: "sc-button" %>
