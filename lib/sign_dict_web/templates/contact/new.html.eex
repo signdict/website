@@ -14,7 +14,7 @@
       </div>
 
       <%= if @current_user == nil do %>
-        <%= raw Recaptcha.Template.display %>
+        <%= raw Recaptcha.Template.display(hl: Gettext.get_locale(SignDictWeb.Gettext), noscript: true) %>
       <% end %>
 
       <div class="sc-actions">
