@@ -113,6 +113,16 @@
       findet sich <a href="https://www.jwplayer.com/privacy/">hier</a>.
     </p>
 
+    <h2>Google ReCaptcha</h2>
+
+    <p>
+      Wir binden die Funktion zur Erkennung von Bots, z.B. bei Eingaben in
+      Onlineformularen ("ReCaptcha") des Anbieters Google LLC, 1600 Amphitheatre
+      Parkway, Mountain View, CA 94043, USA, ein. Datenschutzerklärung:
+      <a href="https://www.google.com/policies/privacy">https://www.google.com/policies/privacy</a>,
+      <a href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a>.
+    </p>
+
     <h2>SSL-Verschlüsselung</h2>
 
     <p>
@@ -140,5 +150,7 @@
       im Impressum angegebenen Adresse oder mit Hilfe des
       <a href="/contact">Kontaktformulares</a> an uns wenden.
     </p>
+
+
   </div>
 </div>

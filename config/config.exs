@@ -79,8 +79,16 @@ config :sign_dict, :queue,
 config :sign_dict, :newsletter,
   subscriber: SignDict.MockChimp
 
+config :sign_dict, :recaptcha,
+  library: Recaptcha
+
 config :ex_chimp,
   api_key: "yourapikeyhere-us12"
+
+# these keys only work for localhost
+config :recaptcha,
+  public_key: "6Lf3OloUAAAAAI4CYsojC7vmbpxmuq8U0nrxtkj9",
+  secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

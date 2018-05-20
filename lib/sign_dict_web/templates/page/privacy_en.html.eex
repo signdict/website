@@ -99,6 +99,16 @@
       <a href="https://www.jwplayer.com/privacy/">here</a>.
     </p>
 
+    <h2>Google ReCaptcha</h2>
+
+    <p>
+      To detect bos, for example in our forms, we use ReCaptcha by 
+      Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. The privacy policy
+      of Google can be found here:
+      <a href="https://www.google.com/policies/privacy">https://www.google.com/policies/privacy</a>,
+      <a href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a>.
+    </p>
+
     <h2>SSL-Encryption</h2>
 
     <p>
