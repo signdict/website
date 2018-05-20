@@ -44,3 +44,6 @@ config :bamboo, :refute_timeout, 10
 config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
+
+config :sign_dict, :recaptcha,
+  library: SignDict.MockRecaptcha

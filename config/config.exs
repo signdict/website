@@ -79,6 +79,9 @@ config :sign_dict, :queue,
 config :sign_dict, :newsletter,
   subscriber: SignDict.MockChimp
 
+config :sign_dict, :recaptcha,
+  library: Recaptcha
+
 config :ex_chimp,
   api_key: "yourapikeyhere-us12"
 
