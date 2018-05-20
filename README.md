@@ -11,7 +11,8 @@ where everyone can add new signs using their webcam. With
 this unique crowdsourcing approach we together can create
 the most accurate sign language dictionary there is.
 
-**You want to help?** Awesome. [Please read this](https://github.com/signdict/website/wiki/Help-needed).
+**You want to help?** Awesome. Scroll through the issues, open a new one, join our [Gitter Community](https://gitter.im/signdict/Lobby) or just send
+a short notice using the [contact form](https://signdict.org/contact). We are happy about every person who wants to help.
 
 We also offer an [API](https://github.com/signdict/website/wiki/API).
 
