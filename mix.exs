@@ -54,7 +54,7 @@ defmodule SignDict.Mixfile do
       {:state_mc, "~> 0.1.0"},
       {:mix_test_watch, "~> 0.6", only: :dev, runtime: false},
       {:excoveralls, "~> 0.6", only: :test},
-      {:guardian, "~> 1.0.1"},
+      {:guardian, "~> 1.1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:ex_machina, "~> 2.1"},
