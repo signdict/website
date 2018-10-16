@@ -18,7 +18,7 @@ defmodule SignDictWeb.Endpoint do
     gzip: false,
     only: ~w(css fonts images js video_files
              favicon.ico favicon_152.png favicon_64.png
-             robots.txt)
+             robots.txt google4a6daf1364f4678b.html)
   )
 
   plug(
