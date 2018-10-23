@@ -29,6 +29,7 @@ defmodule SignDictWeb.EmbedController do
   end
   defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
     render(conn, "show.html",
+           autoplay: conn.params["autoplay"],
            layout: {SignDictWeb.LayoutView, "embed.html"},
            entry: entry,
            entry_path: entry_link,

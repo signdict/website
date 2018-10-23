@@ -75,7 +75,7 @@ defmodule SignDict.Mixfile do
       {:exq, "~> 0.11"},
       {:exq_ui, "~> 0.9.0"},
       {:ex_chimp, "~> 0.0.3"},
-      {:absinthe, "~> 1.4.0"},
+      {:absinthe, "~> 1.4.13"},
       {:absinthe_plug, "~> 1.4.0"},
       {:poison, "~> 3.1.0"},
       {:recaptcha, git: "https://github.com/samueljseay/recaptcha"} # using master because of httpoision depdendency

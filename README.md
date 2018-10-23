@@ -34,7 +34,7 @@ After you installed everything, the setup is as follows:
 mix deps.get
 mix ecto.setup
 yarn
-mix phoenix.server
+mix phx.server
 ```
 
 ### Linux instructions:
@@ -47,7 +47,8 @@ mix ecto.setup
 sudo apt install npm
 sudo npm install -g yarn
 yarn
-mix phoenix.server
+cd assets/ && yarn install && cd..
+mix phx.server
 ```
 
 With that you have a running system and a default admin user called
@@ -63,6 +64,12 @@ This project is using [yarn](http://yarnjs.com/) for javascript dependency manag
 You can also use the included `Procfile` to start redis and the phoenix server at
 the same time. Install `foreman` with `gem install foreman` and execute `foreman start`
 to have both started automatically.
+
+### How to run the suite
+
+```bash
+mix test
+```
 
 ## Deployment
 
