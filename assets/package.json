@@ -28,7 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-postcss": "^7.0.0",
     "gulp-rsync": "^0.0.8",
-    "gulp-sourcemaps": "^2.6.0",
+    "gulp-sourcemaps": "^2.6.4",
     "postcss-advanced-variables": "^1.2.2",
     "postcss-cli": "^4.0.0",
     "postcss-partial-import": "^4.1.0",
