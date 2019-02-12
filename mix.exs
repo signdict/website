@@ -67,7 +67,7 @@ defmodule SignDict.Mixfile do
       {:arc, "~> 0.8.0"},
       {:arc_ecto, "~> 0.8.0"},
       {:exgravatar, "~> 2.0.0"},
-      {:distillery, "~> 1.5", runtime: false},
+      {:distillery, "~> 2.0", runtime: false},
       {:bootleg, "~> 0.7", runtime: false},
       {:timex, "~> 3.2"},
       {:scrivener_ecto, "~> 1.0"},
