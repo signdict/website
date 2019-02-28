@@ -32,7 +32,7 @@
         <div class="o-grid__cell o-grid__cell--width-20">
           <router-link
             to="/recorder"
-            class="cutter--navbar--next"
+            class="position--navbar--next"
           >{{ $t('Start recording') }} &gt;&gt;</router-link>
         </div>
       </div>
@@ -141,6 +141,14 @@ body {
 .position--navbar--back {
   margin-left: 1em;
   margin-top: 2em;
+}
+
+.position--navbar--next {
+  padding-right: 1em;
+  margin-top: 2em;
+  display: inline-block;
+  text-align: right;
+  width: 100%;
 }
 
 .position--video_flip {

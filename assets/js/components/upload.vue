@@ -292,7 +292,9 @@ export default {
       currentUser: null,
       currentPanel: "loading",
       submitted: false,
-      progress: 0
+      progress: 0,
+      loginEmail: "",
+      loginPassword: ""
     };
   },
   mounted() {

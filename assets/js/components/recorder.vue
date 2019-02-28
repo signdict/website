@@ -35,6 +35,7 @@ var store;
 
 function handleSuccess(stream) {
   var previewVideo = document.getElementsByClassName("recorder--video")[0];
+  streamHandle = stream;
   previewVideo.srcObject = stream;
 }
 
