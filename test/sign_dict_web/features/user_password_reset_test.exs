@@ -25,7 +25,7 @@ defmodule SignDict.UserPasswordResetTest do
       insert(
         :user,
         email: "reset_login@example.com",
-        password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
+        password_reset_token: Bcrypt.hash_pwd_salt("12345")
       )
 
     session

@@ -9,7 +9,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       insert(
         :user,
         unconfirmed_email: "confirm-1@example.com",
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken")
+        confirmation_token: Bcrypt.hash_pwd_salt("encryptedtoken")
       )
 
       conn =
@@ -31,7 +31,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       insert(
         :user,
         unconfirmed_email: "confirm-2@example.com",
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken")
+        confirmation_token: Bcrypt.hash_pwd_salt("encryptedtoken")
       )
 
       conn =
@@ -55,7 +55,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       insert(
         :user,
         unconfirmed_email: "confirm-3@example.com",
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken")
+        confirmation_token: Bcrypt.hash_pwd_salt("encryptedtoken")
       )
 
       conn =
@@ -78,7 +78,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       insert(
         :user,
         unconfirmed_email: "confirm-3@example.com",
-        confirmation_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken")
+        confirmation_token: Bcrypt.hash_pwd_salt("encryptedtoken")
       )
 
       conn =

@@ -71,7 +71,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
       video_id = insert(:video_with_entry, %{state: "transcoding"}).id
       assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "New video added for \"some content\"",
         to: [{"Bodo", "mail@signdict.org"}],
         bcc: [{editor.name, editor.email}]

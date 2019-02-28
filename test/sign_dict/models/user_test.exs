@@ -238,7 +238,7 @@ defmodule SignDict.UserTest do
       changeset = User.create_reset_password_changeset(%User{})
       {_state, unencrypted} = Ecto.Changeset.fetch_field(changeset, :password_reset_unencrypted)
       {_state, encrypted} = Ecto.Changeset.fetch_field(changeset, :password_reset_token)
-      assert Comeonin.Bcrypt.checkpw(unencrypted, encrypted)
+      assert Bcrypt.verify_pass(unencrypted, encrypted)
     end
   end
 
@@ -252,7 +252,7 @@ defmodule SignDict.UserTest do
       changeset =
         User.reset_password_changeset(
           %User{
-            password_reset_token: Comeonin.Bcrypt.hashpwsalt("iamwrong")
+            password_reset_token: Bcrypt.hash_pwd_salt("iamwrong")
           },
           %{
             password_reset_unencrypted: "12345",
@@ -268,7 +268,7 @@ defmodule SignDict.UserTest do
       changeset =
         User.reset_password_changeset(
           %User{
-            password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
+            password_reset_token: Bcrypt.hash_pwd_salt("12345")
           },
           %{
             password_reset_unencrypted: "12345",
@@ -284,7 +284,7 @@ defmodule SignDict.UserTest do
       changeset =
         User.reset_password_changeset(
           %User{
-            password_reset_token: Comeonin.Bcrypt.hashpwsalt("12345")
+            password_reset_token: Bcrypt.hash_pwd_salt("12345")
           },
           %{
             password_reset_unencrypted: "12345",
@@ -334,7 +334,7 @@ defmodule SignDict.UserTest do
       user =
         insert(
           :user,
-          confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+          confirmation_token: Bcrypt.hash_pwd_salt("12345"),
           unconfirmed_email: "elisa@example.com"
         )
 
@@ -353,7 +353,7 @@ defmodule SignDict.UserTest do
       changeset =
         User.confirm_email_changeset(
           %User{
-            confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+            confirmation_token: Bcrypt.hash_pwd_salt("12345"),
             unconfirmed_email: "elisa@example.com"
           },
           %{
@@ -370,7 +370,7 @@ defmodule SignDict.UserTest do
       user =
         insert(
           :user,
-          confirmation_token: Comeonin.Bcrypt.hashpwsalt("12345"),
+          confirmation_token: Bcrypt.hash_pwd_salt("12345"),
           unconfirmed_email: "elisa@example.com"
         )
 

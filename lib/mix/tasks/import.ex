@@ -1,6 +1,5 @@
 defmodule Mix.Tasks.Importer do
   use Mix.Task
-  import Mix.Ecto
 
   alias SignDict.Importer.JsonImporter
 
@@ -16,7 +15,7 @@ defmodule Mix.Tasks.Importer do
   end
 
   def run([path]) do
-    ensure_started(SignDict.Repo, [])
+    Application.ensure_started(SignDict.Repo, [])
     IO.puts("Importing Files...")
 
     Enum.each(Path.wildcard(Path.join(path, "**/*.json")), fn file ->

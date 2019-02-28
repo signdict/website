@@ -6,19 +6,21 @@
             ogtags: assigns[:ogtags],
             title: assigns[:title] %>
     <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
-    <script>
-      (function(f, a, t, h, o, m){
-        a[h]=a[h]||function(){
-          (a[h].q=a[h].q||[]).push(arguments)
-        };
-        o=f.createElement('script'),
-          m=f.getElementsByTagName('script')[0];
-        o.async=1; o.src=t; o.id='fathom-script';
-        m.parentNode.insertBefore(o,m)
-      })(document, window, '//ping.bitboxer.de/tracker.js', 'fathom');
-      fathom('set', 'siteId', 'VIAYD');
-      fathom('trackPageview');
-    </script>
+    <%= if Application.get_env(:sign_dict, :environment) != :test do %>
+      <script>
+        (function(f, a, t, h, o, m){
+          a[h]=a[h]||function(){
+            (a[h].q=a[h].q||[]).push(arguments)
+          };
+          o=f.createElement('script'),
+            m=f.getElementsByTagName('script')[0];
+          o.async=1; o.src=t; o.id='fathom-script';
+          m.parentNode.insertBefore(o,m)
+        })(document, window, '//ping.bitboxer.de/tracker.js', 'fathom');
+        fathom('set', 'siteId', 'VIAYD');
+        fathom('trackPageview');
+      </script>
+    <% end %>
     <!-- / Fathom -->
   </head>
   <body>

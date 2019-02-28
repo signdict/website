@@ -1,5 +1,4 @@
 defmodule SignDict.Services.CredentialVerifier do
-  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
   import SignDictWeb.Gettext
 
   alias SignDict.User
@@ -12,7 +11,7 @@ defmodule SignDict.Services.CredentialVerifier do
   defp find_by_email(email) when is_binary(email) do
     case Repo.get_by(User, email: email) do
       nil ->
-        dummy_checkpw()
+        Bcrypt.no_user_verify()
         {:error, gettext("Invalid email address or password")}
 
       user ->
@@ -21,7 +20,7 @@ defmodule SignDict.Services.CredentialVerifier do
   end
 
   defp verify_password(password, %User{} = user) when is_binary(password) do
-    if checkpw(password, user.password_hash) do
+    if Bcrypt.verify_pass(password, user.password_hash) do
       {:ok, user}
     else
       {:error, gettext("Invalid email address or password")}

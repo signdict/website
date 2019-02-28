@@ -47,7 +47,7 @@ defmodule SignDictWeb.Api.RegisterControllerTest do
     test "it sends an email to confirm the user email address", %{conn: conn} do
       post(conn, api_register_path(conn, :create), user: @valid_attrs)
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Please confirm your email address",
         to: [{"user name", "elisa-register@example.com"}]
       )

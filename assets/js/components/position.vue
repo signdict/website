@@ -9,11 +9,15 @@
           <button type="button" class="c-button c-button--close" v-on:click="closeModal">×</button>
           <h2 class="c-heading">{{ $t('Check your position') }}</h2>
         </header>
-        <div class="c-card__body">
-          {{ $t('Please make sure that you are as close to the body outline as possible. If you think everything looks perfect, click on the "Start recording" on the lower right.') }}
-        </div>
+        <div
+          class="c-card__body"
+        >{{ $t('Please make sure that you are as close to the body outline as possible. If you think everything looks perfect, click on the "Start recording" on the lower right.') }}</div>
         <footer class="c-card__footer">
-          <button type="button" class="c-button c-button--brand" v-on:click="closeModal">{{ $t('Okay') }}</button>
+          <button
+            type="button"
+            class="c-button c-button--brand"
+            v-on:click="closeModal"
+          >{{ $t('Okay') }}</button>
         </footer>
       </div>
     </div>
@@ -21,17 +25,15 @@
       <div class="o-grid o-grid--no-gutter">
         <div class="o-grid__cell o-grid__cell--width-20">
           <div class="position--navbar--back">
-            <a :href="'/recorder/' + entryId">
-              &lt;&lt; {{ $t('Back') }}
-            </a>
+            <a :href="'/recorder/' + entryId">&lt;&lt; {{ $t('Back') }}</a>
           </div>
         </div>
-        <div class="o-grid__cell o-grid__cell--width-60">
-        </div>
+        <div class="o-grid__cell o-grid__cell--width-60"></div>
         <div class="o-grid__cell o-grid__cell--width-20">
-          <router-link to="/recorder" class="cutter--navbar--next">
-            {{ $t('Start recording') }} &gt;&gt;
-          </router-link>
+          <router-link
+            to="/recorder"
+            class="position--navbar--next"
+          >{{ $t('Start recording') }} &gt;&gt;</router-link>
         </div>
       </div>
     </div>
@@ -39,31 +41,32 @@
 </template>
 
 <script>
-import browser from 'detect-browser';
-import { getMediaConstraint } from './media_device.js';
+import detectBrowser from "detect-browser";
+import { getMediaConstraint } from "./media_device.js";
 
 function handleSuccess(stream) {
   var previewVideo = document.getElementsByClassName("position--video")[0];
-  if (window.URL) {
-    previewVideo.src = window.URL.createObjectURL(stream);
-  } else {
-    previewVideo.src = stream;
-  }
+  previewVideo.srcObject = stream;
 }
 
 function handleError(error) {
-  console.log("nope, not working!");
+  console.log("nope, not working! :(");
   console.log(error);
 }
 
 function initRecorder() {
-  navigator.mediaDevices.getUserMedia(getMediaConstraint()).
-    then(handleSuccess).catch(handleError);
+  navigator.mediaDevices
+    .getUserMedia(getMediaConstraint())
+    .then(handleSuccess)
+    .catch(handleError);
 }
 
 function checkBrowser() {
-  if (browser.name == "chrome" && parseInt(browser.version) >= 59 ||
-    browser.name == "firefox" && parseInt(browser.version) >= 55) {
+  const browser = detectBrowser.detect();
+  if (
+    (browser.name == "chrome" && parseInt(browser.version) >= 59) ||
+    (browser.name == "firefox" && parseInt(browser.version) >= 55)
+  ) {
     return true;
   } else {
     return false;
@@ -77,15 +80,15 @@ export default {
       recording: false,
       recordingStartedAt: 0,
       entryId: 0,
-      explainModal: true,
-    }
+      explainModal: true
+    };
   },
   mounted() {
     this.entryId = document.getElementById("app").getAttribute("data-entry-id");
     if (checkBrowser()) {
       initRecorder();
     } else {
-      window.location = "/notsupported"
+      window.location = "/notsupported";
     }
   },
   methods: {
@@ -93,11 +96,12 @@ export default {
       this.explainModal = false;
     }
   }
-}
+};
 </script>
 
-<style lang="sass">
-html, body {
+<style lang="scss">
+html,
+body {
   height: 100%;
 }
 
@@ -137,6 +141,14 @@ html, body {
 .position--navbar--back {
   margin-left: 1em;
   margin-top: 2em;
+}
+
+.position--navbar--next {
+  padding-right: 1em;
+  margin-top: 2em;
+  display: inline-block;
+  text-align: right;
+  width: 100%;
 }
 
 .position--video_flip {

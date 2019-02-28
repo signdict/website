@@ -14,8 +14,7 @@ config :sign_dict, SignDictWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
   render_errors: [view: SignDictWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SignDict.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: SignDict.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -23,10 +22,12 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :sign_dict, SignDict.Guardian,
-  allowed_algos: ["HS512"], # optional
+  # optional
+  allowed_algos: ["HS512"],
   issuer: "SignDict",
   ttl: {30, :days},
-  verify_issuer: true, # optional
+  # optional
+  verify_issuer: true,
   secret_key: "ogqsU0chmc/6sNe2piXqwHpGldTcZUXhql6HNQusM2kLQOZI/0dm0oz7xlVW3VmJ"
 
 # For now the default is german. We might want to
@@ -34,12 +35,12 @@ config :sign_dict, SignDict.Guardian,
 # sent from the browser to set a reasonable default
 config :sign_dict, SignDictWeb.Gettext, default_locale: "de"
 
-config :canary, repo: SignDict.Repo,
+config :canary,
+  repo: SignDict.Repo,
   unauthorized_handler: {SignDictWeb.GuardianErrorHandler, :handle_unauthorized},
   not_found_handler: {SignDictWeb.GuardianErrorHandler, :handle_resource_not_found}
 
-config :sign_dict, SignDictWeb.Mailer,
-  adapter: Bamboo.LocalAdapter
+config :sign_dict, SignDictWeb.Mailer, adapter: Bamboo.LocalAdapter
 
 config :bugsnex, :opt_app, :sign_dict
 config :bugsnex, :repository_url, "https://github.com/signdict/website"
@@ -51,9 +52,6 @@ config :arc,
 
 config :sign_dict, :upload_path, "./uploads"
 
-config :sign_dict, SignDict.Repo,
-  loggers: [Ecto.LogEntry]
-
 config :scrivener_html,
   routes_helper: SignDictWeb.Router.Helpers,
   # If you use a single view style everywhere, you can configure it here. See View Styles below for more info.
@@ -62,9 +60,11 @@ config :scrivener_html,
 config :exq,
   scheduler_enable: true,
   queues: [
-    {"transcoder", 1}, # the transcoder queue is rate limited by jw_player => only 1 worker
+    # the transcoder queue is rate limited by jw_player => only 1 worker
+    {"transcoder", 1},
     {"default", 3}
-  ]
+  ],
+  json_library: Jason
 
 config :exq_ui,
   server: false
@@ -73,14 +73,11 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
-config :sign_dict, :queue,
-  library: Exq
+config :sign_dict, :queue, library: Exq
 
-config :sign_dict, :newsletter,
-  subscriber: SignDict.MockChimp
+config :sign_dict, :newsletter, subscriber: SignDict.MockChimp
 
-config :sign_dict, :recaptcha,
-  library: Recaptcha
+config :sign_dict, :recaptcha, library: Recaptcha
 
 config :ex_chimp,
   api_key: "yourapikeyhere-us12"
@@ -90,6 +87,8 @@ config :recaptcha,
   public_key: "6Lf3OloUAAAAAI4CYsojC7vmbpxmuq8U0nrxtkj9",
   secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P"
 
+config :phoenix, :json_library, Jason
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
