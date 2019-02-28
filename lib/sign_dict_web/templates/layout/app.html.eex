@@ -6,7 +6,7 @@
             ogtags: assigns[:ogtags],
             title: assigns[:title] %>
     <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
-    <%= if Application.get_env(:sign_dic, :environment) != :test do %>
+    <%= if Application.get_env(:sign_dict, :environment) != :test do %>
       <script>
         (function(f, a, t, h, o, m){
           a[h]=a[h]||function(){

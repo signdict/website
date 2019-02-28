@@ -34,7 +34,8 @@ defmodule SignDictWeb.GuardianErrorHandler do
   def auth_error(conn, {:no_resource_found, _reason}, _opts) do
     conn
     |> put_status(:not_found)
-    |> render(SignDictWeb.ErrorView, "404.html")
+    |> put_view(SignDictWeb.ErrorView)
+    |> render("404.html")
     |> halt
   end
 

@@ -29,7 +29,10 @@ defmodule SignDict.VoteTest do
     %Vote{} |> Vote.changeset(@valid_attrs) |> Repo.insert!()
     vote_changeset = %Vote{} |> Vote.changeset(@valid_attrs)
     assert {:error, changeset} = Repo.insert(vote_changeset)
-    assert changeset.errors[:video_id] == {"Only one vote per video and user", []}
+
+    assert changeset.errors[:video_id] ==
+             {"Only one vote per video and user",
+              [constraint: :unique, constraint_name: "votes_user_video_id_index"]}
   end
 
   test "changeset with values respecting uniqueness constraint" do
