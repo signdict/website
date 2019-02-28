@@ -6,7 +6,6 @@ defmodule SignDict.User do
   use SignDictWeb, :model
   use Arc.Ecto.Schema
 
-  alias Comeonin.Bcrypt
   alias Ecto.Changeset
   alias SignDictWeb.Avatar
   alias SignDictWeb.Gettext
@@ -217,7 +216,7 @@ defmodule SignDict.User do
   defp validate_token(%{valid?: true} = changeset, field_encrypted, field_unencrypted) do
     {:ok, reset_unencrypted} = Changeset.fetch_change(changeset, field_unencrypted)
     {_, reset_encrypted} = Changeset.fetch_field(changeset, field_encrypted)
-    token_matches = Bcrypt.checkpw(reset_unencrypted, reset_encrypted)
+    token_matches = Bcrypt.verify_pass(reset_unencrypted, reset_encrypted)
     do_validate_token(token_matches, changeset, field_encrypted)
   end
 
@@ -258,7 +257,7 @@ defmodule SignDict.User do
     hashed_password =
       changeset
       |> get_field(:password)
-      |> Bcrypt.hashpwsalt()
+      |> Bcrypt.hash_pwd_salt()
 
     changeset
     |> put_change(:password_hash, hashed_password)
@@ -266,7 +265,7 @@ defmodule SignDict.User do
 
   defp generate_token do
     unencrypted_token = SecureRandom.urlsafe_base64(32)
-    {unencrypted_token, Bcrypt.hashpwsalt(unencrypted_token)}
+    {unencrypted_token, Bcrypt.hash_pwd_salt(unencrypted_token)}
   end
 
   def subscribe_to_newsletter(user) do

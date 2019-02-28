@@ -5,7 +5,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   import SignDict.Factory
 
   setup do
-    [user: insert(:user, password_reset_token: Comeonin.Bcrypt.hashpwsalt("encryptedtoken"))]
+    [user: insert(:user, password_reset_token: Bcrypt.hash_pwd_salt("encryptedtoken"))]
   end
 
   test "renders form for new resources", %{conn: conn} do

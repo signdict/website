@@ -1,15 +1,13 @@
 defmodule SignDict.Factory do
   use ExMachina.Ecto, repo: SignDict.Repo
 
-  alias Comeonin.Bcrypt
-
   def user_factory do
     %SignDict.User{
       name: "Jane Smith",
       email: sequence(:email, &"email-#{&1}@example.com"),
       password: "correct_password",
       password_confirmation: "correct_password",
-      password_hash: Bcrypt.hashpwsalt("correct_password")
+      password_hash: Bcrypt.hash_pwd_salt("correct_password")
     }
   end
 
@@ -23,7 +21,7 @@ defmodule SignDict.Factory do
       email: sequence(:email, &"admin-#{&1}@example.com"),
       password: "correct_password",
       password_confirmation: "correct_password",
-      password_hash: Bcrypt.hashpwsalt("correct_password"),
+      password_hash: Bcrypt.hash_pwd_salt("correct_password"),
       role: "admin"
     }
   end
@@ -34,7 +32,7 @@ defmodule SignDict.Factory do
       email: sequence(:email, &"editor-#{&1}@example.com"),
       password: "correct_password",
       password_confirmation: "correct_password",
-      password_hash: Bcrypt.hashpwsalt("correct_password"),
+      password_hash: Bcrypt.hash_pwd_salt("correct_password"),
       role: "editor"
     }
   end
