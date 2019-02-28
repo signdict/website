@@ -35,7 +35,7 @@ defmodule SignDict.UserControllerTest do
     test "it sends an email to confirm the user email address", %{conn: conn} do
       post(conn, user_path(conn, :create), user: @valid_attrs)
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Please confirm your email address",
         to: [{"user name", "elisa@example.com"}]
       )
@@ -79,7 +79,9 @@ defmodule SignDict.UserControllerTest do
       conn = get(conn, user_path(conn, :show, video_a.user))
       assert html_response(conn, 200) =~ video_a.user.name
       assert conn.assigns.videos.total_entries == 2
-      assert Enum.sort([video_b.id, video_a.id]) == Enum.map(conn.assigns.videos.entries, fn v -> v.id end) |> Enum.sort
+
+      assert Enum.sort([video_b.id, video_a.id]) ==
+               Enum.map(conn.assigns.videos.entries, fn v -> v.id end) |> Enum.sort()
     end
   end
 
@@ -165,7 +167,7 @@ defmodule SignDict.UserControllerTest do
       |> guardian_login(user)
       |> patch(user_path(conn, :update, user), user: @valid_attrs)
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Please confirm the change of your email address",
         to: [{"user name", "elisa@example.com"}]
       )

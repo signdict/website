@@ -12,7 +12,9 @@ config :sign_dict, SignDictWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/gulp/bin/gulp.js", "watch", cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: ["node_modules/gulp/bin/gulp.js", "watch", cd: Path.expand("../assets", __DIR__)]
+  ]
 
 # Watch static and templates for browser reloading.
 config :sign_dict, SignDictWeb.Endpoint,
@@ -34,7 +36,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :sign_dict, SignDict.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "signdict_dev",

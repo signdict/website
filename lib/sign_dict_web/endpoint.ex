@@ -1,7 +1,10 @@
 defmodule SignDictWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :sign_dict
 
-  socket("/socket", SignDictWeb.UserSocket)
+  socket("/socket", SignDictWeb.UserSocket,
+    websocket: true,
+    longpoll: false
+  )
 
   if Application.get_env(:sign_dict, :sql_sandbox) do
     plug(Phoenix.Ecto.SQL.Sandbox)

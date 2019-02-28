@@ -26,7 +26,10 @@ defmodule SignDict.ResetPasswordControllerTest do
     assert get_flash(conn, :info) ==
              "You'll receive an email with instructions about how to reset your password in a few minutes."
 
-    assert_delivered_with(subject: "Your password reset link", to: [{user.name, user.email}])
+    assert_email_delivered_with(
+      subject: "Your password reset link",
+      to: [{user.name, user.email}]
+    )
   end
 
   test "silently fails if the user does not exist", %{conn: conn} do

@@ -72,7 +72,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       |> guardian_login(insert(:editor_user))
       |> post(backend_review_path(conn, :approve_video, video.id))
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Your video was approved :)",
         to: [{video.user.name, video.user.email}]
       )
@@ -86,7 +86,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       |> guardian_login(insert(:editor_user))
       |> post(backend_review_path(conn, :approve_video, video.id))
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Dein Video wurde freigegeben :)",
         to: [{video.user.name, video.user.email}]
       )
@@ -156,7 +156,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
         video: %{rejection_reason: "wrong sign"}
       })
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Your video was rejected",
         to: [{video.user.name, video.user.email}]
       )
@@ -172,7 +172,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
         video: %{rejection_reason: "wrong sign"}
       })
 
-      assert_delivered_with(
+      assert_email_delivered_with(
         subject: "Dein Video wurde abgelehnt",
         to: [{video.user.name, video.user.email}]
       )

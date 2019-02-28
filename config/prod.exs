@@ -66,7 +66,6 @@ config :sign_dict, SignDictWeb.Endpoint, secret_key_base: System.get_env("SECRET
 config :sign_dict, :upload_path, "/var/signdict/uploads"
 
 config :sign_dict, SignDict.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: System.get_env("DB_USERNAME"),
   password: System.get_env("DB_PASSWORD"),
   database: System.get_env("DB_DATABASE"),
@@ -96,6 +95,6 @@ config :sign_dict, :jw_player,
   api_key: System.get_env("JW_PLAYER_API_KEY"),
   api_secret: System.get_env("JW_PLAYER_API_SECRET")
 
- config :recaptcha,
-    public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
-    secret: {:system, "RECAPTCHA_PRIVATE_KEY"}
+config :recaptcha,
+  public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
+  secret: {:system, "RECAPTCHA_PRIVATE_KEY"}
