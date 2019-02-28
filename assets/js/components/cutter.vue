@@ -1,24 +1,22 @@
 <template>
   <div class="cutter">
-    <video class='cutter--player' loop preload v-bind:data-playing="playing"></video>
-    <div class='cutter--navbar'>
-      <ul class='cutter--previews'>
-        <li class='cutter--previews--item' v-for="image in videoImages">
-          <img class='cutter--previews--item--image' v-bind:src="image" />
+    <video class="cutter--player" loop preload v-bind:data-playing="playing"></video>
+    <div class="cutter--navbar">
+      <ul class="cutter--previews">
+        <li class="cutter--previews--item" v-for="image in videoImages">
+          <img class="cutter--previews--item--image" v-bind:src="image">
         </li>
       </ul>
-      <div class='cutter--handles'>
-        <div class='cutter--handles--left-bar'></div>
-        <div class='cutter--handles--right-bar'></div>
-        <div class='cutter--handles--left'></div>
-        <div class='cutter--handles--right'></div>
-        <div class='cutter--handles--position'></div>
+      <div class="cutter--handles">
+        <div class="cutter--handles--left-bar"></div>
+        <div class="cutter--handles--right-bar"></div>
+        <div class="cutter--handles--left"></div>
+        <div class="cutter--handles--right"></div>
+        <div class="cutter--handles--position"></div>
       </div>
       <div class="o-grid o-grid--no-gutter cutter--navbar--buttons">
         <div class="o-grid__cell o-grid__cell--width-20">
-          <router-link to="/recorder" class="cutter--navbar--back">
-            &lt;&lt; {{ $t('Back') }}
-          </router-link>
+          <router-link to="/recorder" class="cutter--navbar--back">&lt;&lt; {{ $t('Back') }}</router-link>
         </div>
         <div class="o-grid__cell o-grid__cell--width-60">
           <div v-if="playing" class="cutter--navbar--pause">
@@ -29,9 +27,7 @@
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-20">
-          <router-link to="/upload" class="cutter--navbar--next">
-            {{ $t('Next') }} &gt;&gt;
-          </router-link>
+          <router-link to="/upload" class="cutter--navbar--next">{{ $t('Next') }} &gt;&gt;</router-link>
         </div>
       </div>
     </div>
@@ -41,48 +37,50 @@
 <script>
 import FrameExtractor from "./frame_extractor.js";
 function createThumbnails(video, context) {
-  new FrameExtractor(video, duration, context.videoImages).extractFrames(function() {
-    resetVideoplayerHeight();
-  });
+  new FrameExtractor(video, duration, context.videoImages).extractFrames(
+    function() {
+      resetVideoplayerHeight();
+    }
+  );
 }
 
 let store = null;
 let duration = 0;
 let cuttingStart = 0;
-let cuttingEnd   = 0;
+let cuttingEnd = 0;
 let currentHandle = null;
 let dragging = false;
 let framesExtracted = false;
 let unmounted = false;
 
 function resetCutterHandles() {
-  let height        = getCutterPreviews().clientHeight + "px";
-  getCutterElement().style.height  = height;
-  getHandleLeft().style.height     = height;
-  getHandleRight().style.height    = height;
-  getHandleLeftBar().style.height  = height;
+  let height = getCutterPreviews().clientHeight + "px";
+  getCutterElement().style.height = height;
+  getHandleLeft().style.height = height;
+  getHandleRight().style.height = height;
+  getHandleLeftBar().style.height = height;
   getHandleRightBar().style.height = height;
   getHandlePosition().style.height = height;
   repositionHandles();
 }
 
 function timeToPixel(time) {
-  let cutter         = getCutterPreviews();
-  let rect           = cutter.getBoundingClientRect();
+  let cutter = getCutterPreviews();
+  let rect = cutter.getBoundingClientRect();
   let computedStyles = window.getComputedStyle(cutter);
-  let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
-  let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
+  let minPos = rect.left + parseFloat(computedStyles.paddingLeft);
+  let maxPos = rect.right - parseFloat(computedStyles.paddingRight);
 
-  return minPos + (maxPos - minPos) / duration * time
+  return minPos + ((maxPos - minPos) / duration) * time;
 }
 
 function pixelToTime(clientX) {
-  let cutter         = getCutterPreviews();
-  let rect           = cutter.getBoundingClientRect();
+  let cutter = getCutterPreviews();
+  let rect = cutter.getBoundingClientRect();
   let computedStyles = window.getComputedStyle(cutter);
-  let minPos         = rect.left + parseFloat(computedStyles.paddingLeft);
-  let maxPos         = rect.right  - parseFloat(computedStyles.paddingRight);
-  let currentPos     = 0;
+  let minPos = rect.left + parseFloat(computedStyles.paddingLeft);
+  let maxPos = rect.right - parseFloat(computedStyles.paddingRight);
+  let currentPos = 0;
 
   if (clientX < minPos) {
     currentPos = 0;
@@ -92,7 +90,7 @@ function pixelToTime(clientX) {
     currentPos = clientX - minPos;
   }
 
-  return duration / (maxPos - minPos) * currentPos;
+  return (duration / (maxPos - minPos)) * currentPos;
   if (time >= duration) {
     time = duration - 0.01;
   }
@@ -132,8 +130,9 @@ function getHandlePosition() {
 }
 
 function resetVideoplayerHeight() {
-  let navbar       = document.getElementsByClassName("cutter--navbar")[0];
-  getVideoElement().style.height = window.innerHeight - navbar.clientHeight + "px";
+  let navbar = document.getElementsByClassName("cutter--navbar")[0];
+  getVideoElement().style.height =
+    window.innerHeight - navbar.clientHeight + "px";
   resetCutterHandles();
 }
 
@@ -151,7 +150,8 @@ function updateVideoPosition() {
           player.currentTime = cuttingStart;
         }
       }
-      getHandlePosition().style.left = timeToPixel(getVideoElement().currentTime) + "px";
+      getHandlePosition().style.left =
+        timeToPixel(getVideoElement().currentTime) + "px";
     }
   }
   if (!unmounted) {
@@ -161,13 +161,13 @@ function updateVideoPosition() {
 
 function initVideoPlayer(context, blobs) {
   let videoElement = getVideoElement();
-  duration        = context.$store.state.recordedDuration;
-  cuttingStart    = context.$store.state.startTime || 0;
-  cuttingEnd      = context.$store.state.endTime || duration;
-  currentHandle   = null;
-  dragging        = false;
+  duration = context.$store.state.recordedDuration;
+  cuttingStart = context.$store.state.startTime || 0;
+  cuttingEnd = context.$store.state.endTime || duration;
+  currentHandle = null;
+  dragging = false;
   framesExtracted = false;
-  unmounted       = false;
+  unmounted = false;
 
   videoElement.src = window.URL.createObjectURL(new Blob(blobs));
 
@@ -196,7 +196,7 @@ function setCursor(element, cursor) {
 }
 
 function nearestHandle(left, right, clientX) {
-  let leftPos  = parseFloat(window.getComputedStyle(left).left);
+  let leftPos = parseFloat(window.getComputedStyle(left).left);
   let rightPos = parseFloat(window.getComputedStyle(right).left);
 
   if (Math.abs(leftPos - clientX) < Math.abs(rightPos - clientX)) {
@@ -210,15 +210,15 @@ function repositionHandles() {
   let startPosition = timeToPixel(cuttingStart);
   let endPosition = timeToPixel(cuttingEnd);
 
-  getHandleLeft().style.left  = startPosition + "px";
+  getHandleLeft().style.left = startPosition + "px";
   getHandleRight().style.left = endPosition + "px";
-  getHandleLeftBar().style.width  = startPosition + "px";
-  getHandleRightBar().style.left  = endPosition + "px";
+  getHandleLeftBar().style.width = startPosition + "px";
+  getHandleRightBar().style.left = endPosition + "px";
   getHandleRightBar().style.width = window.innerWidth - endPosition + "px";
 
   if (store) {
-    store.commit('setStartTime', cuttingStart);
-    store.commit('setEndTime', cuttingEnd);
+    store.commit("setStartTime", cuttingStart);
+    store.commit("setEndTime", cuttingEnd);
   }
 }
 
@@ -256,8 +256,8 @@ function dragStart(event) {
   event.stopImmediatePropagation();
   dragging = true;
 
-  let handleLeft    = getHandleLeft();
-  let handleRight   = getHandleRight();
+  let handleLeft = getHandleLeft();
+  let handleRight = getHandleRight();
 
   setCursor(document.body, "grabbing");
   setCursor(handleLeft, "grabbing");
@@ -301,13 +301,13 @@ function destroyCutter() {
 }
 
 export default {
-  data () {
+  data() {
     return {
       playing: true,
       videoImages: []
-    }
+    };
   },
-  mounted () {
+  mounted() {
     let blobs = this.$store.state.recordedBlobs;
     if (blobs.length == 0) {
       this.$router.replace("/");
@@ -331,11 +331,10 @@ export default {
       this.playing = true;
     }
   }
-}
+};
 </script>
 
-<style lang="sass">
-
+<style lang="scss">
 .cutter {
   width: 100%;
   height: 100%;
@@ -454,7 +453,7 @@ export default {
 .cutter--navbar--pause {
   text-align: center;
   font-size: 4em;
-  color: #46B472;
+  color: #46b472;
 }
 .cutter--navbar--pause i {
   cursor: pointer;
@@ -463,10 +462,9 @@ export default {
 .cutter--navbar--play {
   text-align: center;
   font-size: 4em;
-  color: #46B472;
+  color: #46b472;
 }
 .cutter--navbar--play i {
   cursor: pointer;
 }
-
 </style>

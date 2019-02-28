@@ -2,20 +2,14 @@
   <div class="recorder">
     <video class="recorder--video recorder--video_flip" autoplay muted></video>
     <div v-if="!recording" class="recorder--countdown">
-      <div class="recorder--countdown--number">
-        {{ countdown }}
-      </div>
+      <div class="recorder--countdown--number">{{ countdown }}</div>
     </div>
-    <div v-if="recording" class="recorder--rec">
-      REC
-    </div>
+    <div v-if="recording" class="recorder--rec">REC</div>
     <div class="recorder--navbar">
       <div class="o-grid o-grid--no-gutter">
         <div class="o-grid__cell o-grid__cell--width-20">
           <div class="recorder--navbar--back">
-            <router-link to="/">
-              &lt;&lt; {{ $t('Back') }}
-            </router-link>
+            <router-link to="/">&lt;&lt; {{ $t('Back') }}</router-link>
           </div>
         </div>
         <div class="o-grid__cell o-grid__cell--width-60">
@@ -23,16 +17,14 @@
             <i class="fa fa-stop-circle-o" aria-label="Stop" v-on:click="stopRecording"></i>
           </div>
         </div>
-        <div class="o-grid__cell o-grid__cell--width-20">
-        </div>
+        <div class="o-grid__cell o-grid__cell--width-20"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import browser from 'detect-browser';
-import { getMediaConstraint } from './media_device.js';
+import { getMediaConstraint } from "./media_device.js";
 
 const MAX_RECORDING_SECONDS = 60 * 5; // 5 Minutes maximum recording time
 var streamHandle;
@@ -43,12 +35,7 @@ var store;
 
 function handleSuccess(stream) {
   var previewVideo = document.getElementsByClassName("recorder--video")[0];
-  streamHandle = stream;
-  if (window.URL) {
-    previewVideo.src = window.URL.createObjectURL(stream);
-  } else {
-    previewVideo.src = stream;
-  }
+  previewVideo.srcObject = stream;
 }
 
 function handleError(error) {
@@ -57,14 +44,16 @@ function handleError(error) {
 }
 
 function initRecorder() {
-  navigator.mediaDevices.getUserMedia(getMediaConstraint()).
-    then(handleSuccess).catch(handleError);
+  navigator.mediaDevices
+    .getUserMedia(getMediaConstraint())
+    .then(handleSuccess)
+    .catch(handleError);
 }
 
 function handleStop(event) {
   streamHandle.getTracks()[0].stop();
-  store.commit('setRecordedBlobs', recordedBlobs);
-  router.push({path: "/cutter"});
+  store.commit("setRecordedBlobs", recordedBlobs);
+  router.push({ path: "/cutter" });
 }
 
 function handleDataAvailable(event, context) {
@@ -73,31 +62,35 @@ function handleDataAvailable(event, context) {
     let duration = (new Date() - context.recordingStartedAt) / 1000;
     if (duration > MAX_RECORDING_SECONDS) {
       context.stopRecording();
-      alert(
-        context.$root.$t("You cannot record longer than 5 minutes.")
-      );
+      alert(context.$root.$t("You cannot record longer than 5 minutes."));
     }
   }
 }
 
 function detectCodec() {
-  return ['video/webm;codecs=vp9',
-    'video/webm;codecs=vp8',
-    'video/webm'].find(function(codec) {
+  return ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"].find(
+    function(codec) {
       return MediaRecorder.isTypeSupported(codec);
-    });
+    }
+  );
 }
 
 function startRecording(context) {
   context.recording = true;
   context.recordingStartedAt = new Date();
-  recordedBlobs = []
+  recordedBlobs = [];
   try {
-    mediaRecorder = new MediaRecorder(streamHandle, {mimeType: detectCodec()});
+    mediaRecorder = new MediaRecorder(streamHandle, {
+      mimeType: detectCodec()
+    });
   } catch (e) {
-    console.error('Exception while creating MediaRecorder: ' + e);
-    alert(context.$root.$t('Sadly there seems something wrong and we can\'t start the recording: ') + e);
-    window.location = "/notsupported"
+    console.error("Exception while creating MediaRecorder: " + e);
+    alert(
+      context.$root.$t(
+        "Sadly there seems something wrong and we can't start the recording: "
+      ) + e
+    );
+    window.location = "/notsupported";
     return;
   }
   mediaRecorder.onstop = handleStop;
@@ -128,12 +121,12 @@ export default {
       countdown: 5,
       recording: false,
       recordingStartedAt: 0
-    }
+    };
   },
   mounted() {
     initRecorder();
     router = this.$router;
-    store  = this.$store;
+    store = this.$store;
     startCountdown(this);
   },
 
@@ -145,16 +138,16 @@ export default {
     stopRecording: function(event) {
       this.recording = false;
       let duration = (new Date() - this.recordingStartedAt) / 1000;
-      this.$store.commit('setRecordedDuration', duration);
-      this.$store.commit('setEndTime', duration);
-      this.$store.commit('setStartTime', 0);
+      this.$store.commit("setRecordedDuration", duration);
+      this.$store.commit("setEndTime", duration);
+      this.$store.commit("setStartTime", 0);
       stopRecording();
     }
   }
-}
+};
 </script>
 
-<style lang="sass">
+<style lang="scss">
 .recorder {
   width: 100%;
   height: 100%;
@@ -204,23 +197,26 @@ export default {
   right: 3em;
   color: #fff;
   font-weight: 800;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 .recorder--rec:before {
   animation: blinker 1s linear infinite;
   position: absolute;
   margin-left: -1.3em;
   margin-top: 0.05em;
-  content: '';
-  background-color:#FF0000;
-  border-radius:50%;
-  opacity:0.8;
+  content: "";
+  background-color: #ff0000;
+  border-radius: 50%;
+  opacity: 0.8;
   width: 1em;
   height: 1em;
   pointer-events: none;
 }
 @keyframes blinker {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .recorder--navbar {
