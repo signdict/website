@@ -100,6 +100,7 @@ gulp.task("js", function() {
 });
 
 gulp.task("watch", function() {
+  gulp.series(["static", "css", "js"]);
   gulp.watch("static/**/*", gulp.series("static"));
   gulp.watch("css/**/*", gulp.series("css"));
   gulp.watch("js/**/*", gulp.series("js"));
