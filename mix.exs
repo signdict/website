@@ -43,7 +43,7 @@ defmodule SignDict.Mixfile do
     [
       {:absinthe_plug, "~> 1.4.0"},
       # I got compile errors on higher versions of absinthe
-      {:absinthe, "1.4.13"},
+      {:absinthe, "1.4.15"},
       {:arc_ecto, "~> 0.11.1"},
       {:arc, "~> 0.11.0"},
       {:bamboo_smtp, "~> 1.6.0"},
