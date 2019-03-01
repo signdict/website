@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
 
-<link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+<link rel="apple-touch-icon-precomposed" href="/favicon_152.png">
 <link rel="icon" href="/favicon_64.png" sizes="64x64">
 
 <link href="https://cdn.jwplayer.com" rel="preconnect" crossorigin>
