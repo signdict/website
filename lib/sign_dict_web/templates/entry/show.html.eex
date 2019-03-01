@@ -173,9 +173,31 @@
       <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
 
       <div>
-        <img class="so-video-details--signimage" src="/images/deleges/signimages-1.png">
-        <img class="so-video-details--signimage" src="/images/deleges/signimages-2.png">
-        <img class="so-video-details--signimage" src="/images/deleges/signimages-3.png">
+        <div class="so-video-details--signimage">
+          <img src="/images/deleges/signimages-1.png">
+          <div class="so-video-details--signimage--report">
+            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
+              <i class="fa fa-exclamation-triangle"></i>
+            </a>
+          </div>
+        </div>
+        <div class="so-video-details--signimage">
+          <img src="/images/deleges/signimages-2.png">
+          <div class="so-video-details--signimage--report">
+            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
+              <i class="fa fa-exclamation-triangle"></i>
+            </a>
+          </div>
+        </div>
+        <div class="so-video-details--signimage">
+          <img src="/images/deleges/signimages-3.png">
+          <div class="so-video-details--signimage--report">
+            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
+              <i class="fa fa-exclamation-triangle"></i>
+            </a>
+          </div>
+        </div>
+
       </div>
     
       <div class="so-video-details--signimage-deleges">
