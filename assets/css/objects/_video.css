@@ -43,6 +43,29 @@
   text-overflow: ellipsis;
 }
 
+.so-video-details--si {
+  color: $deactive;
+  font-size: 0.7em;
+  margin-bottom: 0.5em;
+}
+
+.so-video-details--voting {
+  margin-top: 1em;
+}
+
+.so-video-details--signimage {
+  border: 1px solid $deactive;
+  padding: 1em;
+  margin-right: 1em;
+}
+
+.so-video-details--signimage-deleges {
+  color: $deactive;
+  font-size: 0.7em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
 @media all and (max-width: 48em) {
   .so-video--player {
     padding: 0;

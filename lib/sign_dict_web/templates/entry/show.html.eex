@@ -45,7 +45,7 @@
         </a>
       </div>
 
-      <div class="o-grid o-grid--no-gutter">
+      <div class="o-grid o-grid--no-gutter so-video-details--voting">
         <div class="o-grid__cell o-grid__cell--width-15">
           <div class="so-voting-box">
             <div class="so-voting-box--upvote">
@@ -94,26 +94,25 @@
       </div>
 
       <div class="o-grid o-grid--bottom o-grid--wrap o-grid--no-gutter so-video-details">
-        <div class="o-grid__cell o-grid__cell--width-50@small o-grid__cell--width-100 st-margin-right">
-          <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
-          <div class="so-video-details--label">
-            <%= gettext("User") %>
-          </div>
+        <div class="o-grid__cell o-grid__cell--width-100">
+          <span class="so-video-details--label"><%= gettext("User") %></span> <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
         </div>
-        <div class="o-grid__cell">
-          <%= Date.to_string @video.inserted_at %>
-          <div class="so-video-details--label">
+        <div class="o-grid__cell o-grid__cell--width-100">
+          <span class="so-video-details--label">
             <%= gettext("Date of upload") %>
-          </div>
+          </span>
+          <%= Date.to_string @video.inserted_at %>
         </div>
+        <%= if @video.original_href do %>
+          <div class="o-grid__cell o-grid__cell--width-100">
+            <span class="so-video-details--label">
+              <%= gettext("Source") %>
+            <span>
+            <%= link @video.copyright, to: @video.original_href %>
+          </div>
+        <% end %>
       </div>
 
-      <%= if @video.original_href do %>
-        <p class="so-video-details--source">
-          <%= gettext("Source:") %>
-          <%= link @video.copyright, to: @video.original_href %>
-        </p>
-      <% end %>
       <a rel="license" href="http://creativecommons.org/licenses/<%= @video.license %>">
         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
       </a>
@@ -166,6 +165,28 @@
           </div>
         </div>
       </div>
+    </div>
+   
+    <div class="o-grid__cell o-grid__cell--width-100">
+      <h2><%= gettext("SignWriting") %></h2>
+
+      <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
+
+      <div>
+        <img class="so-video-details--signimage" src="/images/deleges/signimages-1.png">
+        <img class="so-video-details--signimage" src="/images/deleges/signimages-2.png">
+        <img class="so-video-details--signimage" src="/images/deleges/signimages-3.png">
+      </div>
+    
+      <div class="so-video-details--signimage-deleges">
+        <%= raw gettext("Thanks to <a href='https://delegs.de/'>deleges</a> for offering this service.") %>
+      <div>
+      <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+          <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
+        </a>
+      </p>
+
     </div>
   </div>
 
