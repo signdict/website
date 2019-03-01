@@ -12,11 +12,18 @@ defmodule SignDict.Services.FetchDelegesDataFroEntryTest do
       # TODO: test result
     end
 
-    test "it will not update anything if last update younter than three days" do
+    test "it will not update anything if last update younger than three days" do
       # todo: implement
     end
 
     test "does not update image if image is not modified" do
+      # todo: implement
+    end
+
+    test "only update images that are active" do
+    end
+
+    test "delete items that are no longer returend by the deleges api" do
       # todo: implement
     end
   end

@@ -29,11 +29,23 @@ defmodule SignDict.Services.FetchDelegesDataFroEntry do
       }
     end)
     |> Enum.map(fn entry ->
-      # TODO: upsert
-      %SignWriting{}
-      |> SignWriting.changeset(entry)
-      |> SignDict.Repo.insert!()
+      sign_writing = find_sign_writing(entry.deleges_id)
+
+      if sign_writing do
+        sign_writing
+        |> SignWriting.changeset(Map.delete(entry, :entry_id))
+        |> SignDict.Repo.update!()
+      else
+        %SignWriting{}
+        |> SignWriting.changeset(entry)
+        |> SignDict.Repo.insert!()
+      end
     end)
+  end
+
+  defp find_sign_writing(deleges_id) do
+    SignDict.Repo.get_by(SignWriting, deleges_id: deleges_id)
+    |> SignDict.Repo.preload(:entry)
   end
 
   defp fetch_images(sign_writings) do
