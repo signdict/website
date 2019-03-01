@@ -42,7 +42,6 @@ defmodule SignDict.Mixfile do
   defp deps do
     [
       {:absinthe_plug, "~> 1.4.0"},
-      # I got compile errors on higher versions of absinthe
       {:absinthe, "1.4.16"},
       {:arc_ecto, "~> 0.11.1"},
       {:arc, "~> 0.11.0"},

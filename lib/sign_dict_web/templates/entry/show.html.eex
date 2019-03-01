@@ -167,6 +167,7 @@
       </div>
     </div>
    
+    <%# TODO: render this with dynamic data and add thing to mark as wrong %>
     <div class="o-grid__cell o-grid__cell--width-100">
       <h2><%= gettext("SignWriting") %></h2>
 

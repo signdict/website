@@ -8,15 +8,15 @@ defmodule SignDict.List do
   @types ["categorie-list"]
   @sort_orders ["manual", "alphabetical_desc", "alphabetical_asc"]
 
- @primary_key {:id, SignDict.Permalink, autogenerate: true}
+  @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "lists" do
-    field :name, :string
-    field :description, :string
-    field :type, :string
-    field :sort_order, :string
-    belongs_to :created_by, SignDict.User
-    has_many :list_entries, SignDict.ListEntry
-    has_many :entries, through: [:list_entries, :entry]
+    field(:name, :string)
+    field(:description, :string)
+    field(:type, :string)
+    field(:sort_order, :string)
+    belongs_to(:created_by, SignDict.User)
+    has_many(:list_entries, SignDict.ListEntry)
+    has_many(:entries, through: [:list_entries, :entry])
 
     timestamps()
   end
@@ -36,33 +36,37 @@ defmodule SignDict.List do
     |> validate_inclusion(:sort_order, @sort_orders)
   end
 
-  # TODO:
-  # * Paginate list entries
+  # TODO: Paginate list entries
   def entries(%SignDict.List{id: id, sort_order: "manual"}) do
     from(
       list_entry in ListEntry,
       join: entry in assoc(list_entry, :entry),
-      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: :sort_order
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id),
+      order_by: :sort_order
     )
-    |> Repo.all
+    |> Repo.all()
     |> Repo.preload(entry: [:current_video])
   end
+
   def entries(%SignDict.List{id: id, sort_order: "alphabetical_asc"}) do
     from(
       list_entry in ListEntry,
       join: entry in assoc(list_entry, :entry),
-      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: entry.text
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id),
+      order_by: entry.text
     )
-    |> Repo.all
+    |> Repo.all()
     |> Repo.preload(entry: [:current_video])
   end
+
   def entries(%SignDict.List{id: id, sort_order: "alphabetical_desc"}) do
     from(
       list_entry in ListEntry,
       join: entry in assoc(list_entry, :entry),
-      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id), order_by: [desc: entry.text]
+      where: list_entry.list_id == ^id and not is_nil(entry.current_video_id),
+      order_by: [desc: entry.text]
     )
-    |> Repo.all
+    |> Repo.all()
     |> Repo.preload(entry: [:current_video])
   end
 
@@ -79,19 +83,24 @@ defmodule SignDict.List do
 
   def move_entry(list_entry, direction) do
     target_sort_order = list_entry.sort_order + direction
-    swap_target = Repo.get_by(ListEntry,
-                           list_id: list_entry.list_id,
-                           sort_order: target_sort_order)
+
+    swap_target =
+      Repo.get_by(ListEntry,
+        list_id: list_entry.list_id,
+        sort_order: target_sort_order
+      )
+
     swap_list_entry_position(list_entry, swap_target)
   end
 
   def swap_list_entry_position(list_entry, swap_target) when is_nil(swap_target) do
     list_entry
   end
+
   def swap_list_entry_position(list_entry, swap_target) do
-    ListEntry.update_sort_order(list_entry,  nil)
+    ListEntry.update_sort_order(list_entry, nil)
     ListEntry.update_sort_order(swap_target, list_entry.sort_order)
-    ListEntry.update_sort_order(list_entry,  swap_target.sort_order)
+    ListEntry.update_sort_order(list_entry, swap_target.sort_order)
     Repo.get(ListEntry, list_entry.id)
   end
 
@@ -101,9 +110,8 @@ defmodule SignDict.List do
       join: e in ListEntry,
       where: l.id == e.list_id and e.entry_id == ^entry.id and l.type == ^type
     )
-    |> Repo.all
+    |> Repo.all()
   end
-
 end
 
 defimpl Phoenix.Param, for: SignDict.List do
@@ -111,4 +119,3 @@ defimpl Phoenix.Param, for: SignDict.List do
     SignDict.Permalink.to_permalink(id, name)
   end
 end
-
