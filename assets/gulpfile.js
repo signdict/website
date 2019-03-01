@@ -106,4 +106,8 @@ gulp.task("watch", function() {
   gulp.watch("js/**/*", gulp.series("js"));
 });
 
-gulp.task("default", gulp.series(["clean", "static", "css", "js"]));
+gulp.task("build", gulp.series(["static", "css", "js"]));
+
+gulp.task("build-watch", gulp.series(["build", "watch"]));
+
+gulp.task("default", gulp.series(["clean", "build"]));
