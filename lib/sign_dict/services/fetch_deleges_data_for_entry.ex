@@ -3,9 +3,11 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
   alias SignDict.Entry
   alias SignDict.Repo
 
-  def fetch_for(entry) do
+  import Ecto.Query
+
+  def fetch_for(entry, http_poison \\ HTTPoison) do
     result =
-      HTTPoison.get!(
+      http_poison.get!(
         "https://server.delegs.de/delegseditor/signwritingeditor/signitems?word=#{
           URI.encode(entry.text)
         }"
@@ -14,7 +16,8 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
     if result.status_code == 200 do
       entry
       |> parse_data(result.body)
-      |> fetch_images()
+      |> delete_outdated_items(entry)
+      |> fetch_images(http_poison)
 
       entry
       |> Entry.deleges_updated_at_changeset(%{deleges_updated_at: DateTime.utc_now()})
@@ -58,17 +61,17 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
     |> SignDict.Repo.preload(:entry)
   end
 
-  defp fetch_images(sign_writings) do
+  defp fetch_images(sign_writings, http_poison) do
     sign_writings
     |> Enum.filter(fn writing -> writing.state == "active" end)
     |> Enum.sort_by(& &1.deleges_id)
     |> Enum.take(5)
-    |> Enum.each(fn writing -> fetch_image(writing) end)
+    |> Enum.each(fn writing -> fetch_image(writing, http_poison) end)
   end
 
-  defp fetch_image(sign_writing) do
+  defp fetch_image(sign_writing, http_poison) do
     result =
-      HTTPoison.get!(
+      http_poison.get!(
         "https://server.delegs.de/delegseditor/signwritingeditor/signimages?upperId=#{
           sign_writing.deleges_id
         }&lowerId=#{URI.encode(sign_writing.word)}&signlocale=DGS",
@@ -90,6 +93,17 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
       })
       |> Repo.update!()
     end
+  end
+
+  defp delete_outdated_items(sign_writings, entry) do
+    deleges_ids = Enum.map(sign_writings, & &1.deleges_id)
+    entry_id = entry.id
+
+    SignWriting
+    |> where([p], p.entry_id == ^entry_id and p.deleges_id not in ^deleges_ids)
+    |> Repo.delete_all()
+
+    sign_writings
   end
 
   defp last_modified_of(%SignWriting{image: nil}) do

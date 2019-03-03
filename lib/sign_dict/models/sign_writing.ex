@@ -40,7 +40,8 @@ defmodule SignDict.SignWriting do
       :word,
       :width,
       :deleges_id,
-      :entry_id
+      :entry_id,
+      :state
     ])
     |> cast_attachments(params, [:image])
     |> validate_required([
