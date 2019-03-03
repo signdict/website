@@ -6,6 +6,7 @@ defmodule SignDict.EntryControllerTest do
   alias SignDict.Entry
   alias SignDict.Vote
 
+  # TODO sign writings jobs enqueued
   describe "show/2 entry attributes" do
     setup do
       entry = insert(:entry)

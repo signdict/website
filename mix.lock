@@ -9,6 +9,7 @@
   "base64url": {:hex, :base64url, "0.0.1", "36a90125f5948e3afd7be97662a1504b934dd5dac78451ca6e9abf85a10286be", [:rebar], [], "hexpm"},
   "bcrypt_elixir": {:hex, :bcrypt_elixir, "2.0.1", "1061e2114aaac554c12e5c1e4608bf4aadaca839f30d1b85224272facd5e6427", [:make, :mix], [{:comeonin, "~> 5.1", [hex: :comeonin, repo: "hexpm", optional: false]}, {:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
   "bootleg": {:hex, :bootleg, "0.10.0", "1deacdfa8e82aa52a9a45e52d8249a72fe6983b7bcef5593a903bc7d78ae84b5", [:mix], [{:ssh_client_key_api, "~> 0.2.1", [hex: :ssh_client_key_api, repo: "hexpm", optional: false]}, {:sshkit, "0.1.0", [hex: :sshkit, repo: "hexpm", optional: false]}], "hexpm"},
+  "briefly": {:hex, :briefly, "0.3.0", "16e6b76d2070ebc9cbd025fa85cf5dbaf52368c4bd896fb482b5a6b95a540c2f", [:mix], [], "hexpm"},
   "bugsnex": {:hex, :bugsnex, "0.4.1", "aba69ab5b6a8504553805b3e2f9491038e4edb22274a4a948f1f4c47f72f3200", [:mix], [{:httpoison, "~> 1.5.0", [hex: :httpoison, repo: "hexpm", optional: false]}, {:plug, "~> 1.6", [hex: :plug, repo: "hexpm", optional: false]}, {:poison, ">= 1.5.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm"},
   "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm"},
   "canada": {:hex, :canada, "1.0.2", "040e4c47609b0a67d5773ac1fbe5e99f840cef173d69b739beda7c98453e0770", [:mix], [], "hexpm"},

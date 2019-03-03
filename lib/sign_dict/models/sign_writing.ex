@@ -1,5 +1,6 @@
 defmodule SignDict.SignWriting do
   use SignDictWeb, :model
+  use Arc.Ecto.Schema
   import StateMc.EctoSm
 
   alias SignDict.Repo
@@ -11,8 +12,7 @@ defmodule SignDict.SignWriting do
     field(:width, :integer)
     field(:deleges_id, :integer)
     field(:state, :string, default: "active")
-    # TODO: change this to the image uploader
-    field(:image, :string)
+    field(:image, SignDictWeb.SignWritingImage.Type)
 
     belongs_to(:entry, SignDict.Entry)
     timestamps()
@@ -40,9 +40,9 @@ defmodule SignDict.SignWriting do
       :word,
       :width,
       :deleges_id,
-      :image,
       :entry_id
     ])
+    |> cast_attachments(params, [:image])
     |> validate_required([
       :word,
       :width,

@@ -1,8 +1,9 @@
 defmodule SignDict.Services.FetchDelegesDataFroEntry do
   alias SignDict.SignWriting
+  alias SignDict.Entry
+  alias SignDict.Repo
 
   def fetch_for(entry) do
-    # TODO: do not execute when last update younger than three days
     result =
       HTTPoison.get!(
         "https://server.delegs.de/delegseditor/signwritingeditor/signitems?word=#{
@@ -11,8 +12,13 @@ defmodule SignDict.Services.FetchDelegesDataFroEntry do
       )
 
     if result.status_code == 200 do
-      parse_data(entry, result.body)
+      entry
+      |> parse_data(result.body)
       |> fetch_images()
+
+      entry
+      |> Entry.deleges_updated_at_changeset(%{deleges_updated_at: DateTime.utc_now()})
+      |> Repo.update!()
     end
   end
 
@@ -29,18 +35,22 @@ defmodule SignDict.Services.FetchDelegesDataFroEntry do
       }
     end)
     |> Enum.map(fn entry ->
-      sign_writing = find_sign_writing(entry.deleges_id)
-
-      if sign_writing do
-        sign_writing
-        |> SignWriting.changeset(Map.delete(entry, :entry_id))
-        |> SignDict.Repo.update!()
-      else
-        %SignWriting{}
-        |> SignWriting.changeset(entry)
-        |> SignDict.Repo.insert!()
-      end
+      entry.deleges_id
+      |> find_sign_writing()
+      |> create_or_update_sign_writing(entry)
     end)
+  end
+
+  defp create_or_update_sign_writing(nil, entry) do
+    %SignWriting{}
+    |> SignWriting.changeset(entry)
+    |> Repo.insert!()
+  end
+
+  defp create_or_update_sign_writing(sign_writing, entry) do
+    sign_writing
+    |> SignWriting.changeset(Map.delete(entry, :entry_id))
+    |> Repo.update!()
   end
 
   defp find_sign_writing(deleges_id) do
@@ -49,6 +59,44 @@ defmodule SignDict.Services.FetchDelegesDataFroEntry do
   end
 
   defp fetch_images(sign_writings) do
-    # TODO: fetch the images
+    sign_writings
+    |> Enum.filter(fn writing -> writing.state == "active" end)
+    |> Enum.sort_by(& &1.deleges_id)
+    |> Enum.take(5)
+    |> Enum.each(fn writing -> fetch_image(writing) end)
+  end
+
+  defp fetch_image(sign_writing) do
+    result =
+      HTTPoison.get!(
+        "https://server.delegs.de/delegseditor/signwritingeditor/signimages?upperId=#{
+          sign_writing.deleges_id
+        }&lowerId=#{URI.encode(sign_writing.word)}&signlocale=DGS",
+        %{
+          "If-Modified-Since" => last_modified_of(sign_writing)
+        }
+      )
+
+    if result.status_code == 200 do
+      {:ok, filename} = Briefly.create()
+      File.write!(filename, result.body)
+
+      SignWriting.changeset(sign_writing, %{
+        image: %Plug.Upload{
+          content_type: "image/png",
+          filename: "file.png",
+          path: filename
+        }
+      })
+      |> Repo.update!()
+    end
+  end
+
+  defp last_modified_of(%SignWriting{image: nil}) do
+    nil
+  end
+
+  defp last_modified_of(sign_writing) do
+    Timex.format!(Timex.to_datetime(sign_writing.updated_at, "GMT"), "{RFC1123}")
   end
 end

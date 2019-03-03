@@ -167,39 +167,27 @@
       </div>
     </div>
    
-    <%# TODO: render this with dynamic data and add thing to mark as wrong %>
-    <div class="o-grid__cell o-grid__cell--width-100">
-      <h2><%= gettext("SignWriting") %></h2>
+    <%= if  Enum.count(@entry.sign_writings) > 0 do %>
+      <div class="o-grid__cell o-grid__cell--width-100">
+        <h2><%= gettext("SignWriting") %></h2>
 
-      <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
+        <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
 
-      <div>
-        <div class="so-video-details--signimage">
-          <img src="/images/deleges/signimages-1.png">
-          <div class="so-video-details--signimage--report">
-            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
-              <i class="fa fa-exclamation-triangle"></i>
-            </a>
-          </div>
+        <div>
+          <%= for sign_writing <- Enum.sort_by(@entry.sign_writings, &(&1.deleges_id)) do %>
+            <div class="so-video-details--signimage">
+              <%= img_tag(SignDictWeb.SignWritingImage.url({sign_writing.image, sign_writing})) %>
+              <!--
+              <div class="so-video-details--signimage--report">
+                <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
+                  <i class="fa fa-exclamation-triangle"></i>
+                </a>
+              </div>
+              -->
+            </div>
+          <% end %>
         </div>
-        <div class="so-video-details--signimage">
-          <img src="/images/deleges/signimages-2.png">
-          <div class="so-video-details--signimage--report">
-            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
-              <i class="fa fa-exclamation-triangle"></i>
-            </a>
-          </div>
-        </div>
-        <div class="so-video-details--signimage">
-          <img src="/images/deleges/signimages-3.png">
-          <div class="so-video-details--signimage--report">
-            <a href="#" title="<%= gettext("Click here if this image is wrong") %>">
-              <i class="fa fa-exclamation-triangle"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
+      <% end %>
     
       <div class="so-video-details--signimage-deleges">
         <%= raw gettext("Thanks to <a href='https://delegs.de/'>deleges</a> for offering this service.") %>

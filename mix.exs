@@ -79,7 +79,8 @@ defmodule SignDict.Mixfile do
       {:state_mc, "~> 0.1.0"},
       {:timex, "~> 3.2"},
       {:wallaby, "~> 0.22.0", only: :test},
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+      {:briefly, "~> 0.3"}
     ]
   end
 

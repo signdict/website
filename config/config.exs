@@ -62,7 +62,8 @@ config :exq,
   queues: [
     # the transcoder queue is rate limited by jw_player => only 1 worker
     {"transcoder", 1},
-    {"default", 3}
+    {"default", 3},
+    {"sign_writings", 1}
   ],
   json_library: Jason
 

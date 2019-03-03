@@ -33,6 +33,7 @@ defmodule SignDictWeb.EntryController do
       conn
       |> EntryVideoLoader.load_videos_for_entry(id: id)
       |> add_lists_for_entry
+      |> refresh_sign_writings
       |> render_entry
     else
       redirect_to_search(conn, conn.params["id"])
@@ -40,10 +41,10 @@ defmodule SignDictWeb.EntryController do
   end
 
   def show(conn, %{"entry_id" => id, "video_id" => video_id}) do
-    # TODO: trigger refresh of signwritings
     conn
     |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id)
     |> add_lists_for_entry
+    |> refresh_sign_writings
     |> render_entry
   end
 
@@ -95,6 +96,8 @@ defmodule SignDictWeb.EntryController do
          voted: voted,
          lists: lists
        }) do
+    entry = SignDict.Repo.preload(entry, :sign_writings)
+
     render(conn, "show.html",
       layout: {SignDictWeb.LayoutView, "empty.html"},
       entry: entry,
@@ -140,5 +143,15 @@ defmodule SignDictWeb.EntryController do
   defp add_lists_for_entry(%{entry: entry} = params) do
     lists = List.lists_with_entry(entry)
     Map.merge(params, %{lists: lists})
+  end
+
+  defp refresh_sign_writings(%{entry: entry} = params) do
+    if entry.deleges_updated_at == nil ||
+         Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do
+      queue = Application.get_env(:sign_dict, :queue)[:library]
+      queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
+    end
+
+    params
   end
 end
