@@ -8,18 +8,15 @@ defmodule SignDict.Worker.RefreshSignWritings do
 
   def perform(
         entry_id,
+        fetch_service \\ SignDict.Services.FetchDelegesDataForEntry,
         sleep_ms \\ @process_sleep_time
       ) do
-    IO.puts("trying things")
-
     Bugsnex.handle_errors %{entry_id: entry_id} do
       # Rate limit the workers, sadly i didn't find a better way :(
       Process.sleep(sleep_ms)
 
-      IO.puts("refreshing it!")
-
-      entry = Repo.get(Entry, entry_id) |> IO.inspect()
-      SignDict.Services.FetchDelegesDataForEntry.fetch_for(entry)
+      entry = Repo.get(Entry, entry_id)
+      fetch_service.fetch_for(entry)
     end
   end
 end

@@ -6,7 +6,6 @@ defmodule SignDict.EntryControllerTest do
   alias SignDict.Entry
   alias SignDict.Vote
 
-  # TODO sign writings jobs enqueued
   describe "show/2 entry attributes" do
     setup do
       entry = insert(:entry)
@@ -98,6 +97,36 @@ defmodule SignDict.EntryControllerTest do
       assert html_response(conn, 200) =~ entry.text
       assert html_response(conn, 200) =~ entry.type
       assert html_response(conn, 200) =~ "User 2"
+    end
+
+    test "enqueus sign_writing refresh if never run ", %{conn: conn, entry: entry} do
+      get(conn, entry_path(conn, :show, entry))
+      entry_id = entry.id
+
+      assert_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
+                       [^entry_id]}
+    end
+
+    test "enqueus sign_writing refresh if never run with video in the url ", %{
+      conn: conn,
+      entry: entry,
+      video_2: video
+    } do
+      get(conn, entry_video_path(conn, :show, entry, video))
+      entry_id = entry.id
+
+      assert_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
+                       [^entry_id]}
+    end
+
+    test "does not enque if younger than three days", %{conn: conn} do
+      entry = insert(:entry, deleges_updated_at: Timex.shift(Timex.now(), days: -1))
+
+      get(conn, entry_path(conn, :show, entry))
+      entry_id = entry.id
+
+      refute_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
+                       [^entry_id]}
     end
   end
 

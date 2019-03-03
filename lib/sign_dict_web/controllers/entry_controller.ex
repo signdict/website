@@ -146,10 +146,12 @@ defmodule SignDictWeb.EntryController do
   end
 
   defp refresh_sign_writings(%{entry: entry} = params) do
-    if entry.deleges_updated_at == nil ||
-         Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do
-      queue = Application.get_env(:sign_dict, :queue)[:library]
-      queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
+    if entry do
+      if entry.deleges_updated_at == nil ||
+           Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do
+        queue = Application.get_env(:sign_dict, :queue)[:library]
+        queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
+      end
     end
 
     params

@@ -12,10 +12,6 @@ defmodule SignDict.Services.FetchDelegesDataForEntryTest do
       # TODO: test result
     end
 
-    test "it will not update anything if last update younger than three days" do
-      # todo: implement
-    end
-
     test "does not update image if image is not modified" do
       # todo: implement
     end

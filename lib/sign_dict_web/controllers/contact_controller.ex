@@ -6,29 +6,37 @@ defmodule SignDictWeb.ContactController do
   @recaptcha Application.get_env(:sign_dict, :recaptcha)[:library]
 
   def new(conn, _params) do
-    IO.inspect Application.get_env(:sign_dict, :recaptcha)
     email = user_email(conn.assigns)
-    render conn, "new.html", layout: {SignDictWeb.LayoutView, "app.html"},
-      email: email, content: ""
+
+    render(conn, "new.html",
+      layout: {SignDictWeb.LayoutView, "app.html"},
+      email: email,
+      content: ""
+    )
   end
 
-  def create(conn = %{assigns: %{current_user: current_user}}, params) when not is_nil(current_user) do
+  def create(conn = %{assigns: %{current_user: current_user}}, params)
+      when not is_nil(current_user) do
     %{"contact" => %{"email" => email, "content" => content}} = params
     send_email(conn, email, content)
   end
 
   def create(conn, params) do
     %{"contact" => %{"email" => email, "content" => content}} = params
+
     case @recaptcha.verify(params["g-recaptcha-response"]) do
       {:ok, _response} ->
         send_email(conn, email, content)
-      {:error, _errors} -> show_error(conn, email, content)
+
+      {:error, _errors} ->
+        show_error(conn, email, content)
     end
   end
 
   defp send_email(conn, email, content) do
     mail = Email.contact_form(email, content)
     Mailer.deliver_later(mail)
+
     conn
     |> put_flash(:info, gettext("The email was sent."))
     |> redirect(to: "/")
@@ -37,8 +45,11 @@ defmodule SignDictWeb.ContactController do
   defp show_error(conn, email, content) do
     conn
     |> put_flash(:error, gettext("The recaptcha was wrong, email not sent."))
-    |> render("new.html", layout: {SignDictWeb.LayoutView, "app.html"},
-      email: email, content: content)
+    |> render("new.html",
+      layout: {SignDictWeb.LayoutView, "app.html"},
+      email: email,
+      content: content
+    )
   end
 
   defp user_email(%{assigns: %{current_user: %{email: email}}}) when not is_nil(email) do
