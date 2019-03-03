@@ -1,13 +1,13 @@
-defmodule SignDict.Services.FetchDelegesDataFroEntryTest do
+defmodule SignDict.Services.FetchDelegesDataForEntryTest do
   use SignDict.ModelCase, async: true
   import SignDict.Factory
   alias SignDict.Entry
-  alias SignDict.Services.FetchDelegesDataFroEntry
+  alias SignDict.Services.FetchDelegesDataForEntry
 
   describe "fetch_for/1" do
     test "it will load all datasets into the database and updates the images" do
       entry = insert(:entry, text: "Hallo")
-      FetchDelegesDataFroEntry.fetch_for(entry)
+      FetchDelegesDataForEntry.fetch_for(entry)
 
       # TODO: test result
     end

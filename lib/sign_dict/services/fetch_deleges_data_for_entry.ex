@@ -1,4 +1,4 @@
-defmodule SignDict.Services.FetchDelegesDataFroEntry do
+defmodule SignDict.Services.FetchDelegesDataForEntry do
   alias SignDict.SignWriting
   alias SignDict.Entry
   alias SignDict.Repo

@@ -19,7 +19,7 @@ defmodule SignDict.Worker.RefreshSignWritings do
       IO.puts("refreshing it!")
 
       entry = Repo.get(Entry, entry_id) |> IO.inspect()
-      SignDict.Services.FetchDelegesDataFroEntry.fetch_for(entry)
+      SignDict.Services.FetchDelegesDataForEntry.fetch_for(entry)
     end
   end
 end
