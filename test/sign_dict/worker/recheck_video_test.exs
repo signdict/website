@@ -21,5 +21,9 @@ defmodule SignDict.Worker.RecheckVideoTest do
       assert RecheckVideo.perform(video_id, VideoServiceMockDone, 0) == :done
       assert_received {:check_status, ^video_id}
     end
+
+    test "Does not crash if the video doesn't exist anymore" do
+      assert RecheckVideo.perform(0, VideoServiceMockDone, 0) == :deleted
+    end
   end
 end

@@ -28,7 +28,12 @@ defmodule SignDict.Worker.RecheckVideo do
       Process.sleep(sleep_ms)
 
       video = Repo.get(Video, video_id)
-      video_service.check_status(video)
+
+      if video do
+        video_service.check_status(video)
+      else
+        :deleted
+      end
     end
   end
 end
