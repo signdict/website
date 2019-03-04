@@ -174,7 +174,10 @@
         <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
 
         <div>
-          <%= for sign_writing <- Enum.sort_by(@entry.sign_writings, &(&1.deleges_id)) do %>
+          <%= for sign_writing <- 
+                Enum.filter(@entry.sign_writings, fn entry -> entry.image != nil && entry.state == "active" end ) 
+                |> Enum.sort_by(&(&1.deleges_id)) 
+                |> Enum.take(3) do %>
             <div class="so-video-details--signimage">
               <%= img_tag(SignDictWeb.SignWritingImage.url({sign_writing.image, sign_writing})) %>
               <!--
