@@ -42,7 +42,6 @@ defmodule SignDict.Mixfile do
   defp deps do
     [
       {:absinthe_plug, "~> 1.4.0"},
-      # I got compile errors on higher versions of absinthe
       {:absinthe, "1.4.16"},
       {:arc_ecto, "~> 0.11.1"},
       {:arc, "~> 0.11.0"},
@@ -80,7 +79,8 @@ defmodule SignDict.Mixfile do
       {:state_mc, "~> 0.1.0"},
       {:timex, "~> 3.2"},
       {:wallaby, "~> 0.22.0", only: :test},
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+      {:briefly, "~> 0.3"}
     ]
   end
 

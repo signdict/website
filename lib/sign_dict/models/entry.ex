@@ -4,6 +4,7 @@ defmodule SignDict.Entry do
   alias SignDict.Video
   alias SignDict.Repo
   alias SignDict.Entry
+  alias SignDict.SignWriting
   alias Ecto.Adapters.SQL
   alias SignDict.PostgresQueryHelper
 
@@ -15,11 +16,13 @@ defmodule SignDict.Entry do
     field(:description, :string)
     field(:type, :string)
     field(:url, :string, virtual: true)
+    field(:deleges_updated_at, :utc_datetime)
 
     belongs_to(:language, SignDict.Language)
 
     has_many(:videos, Video)
     has_many(:list_entries, SignDict.ListEntry)
+    has_many(:sign_writings, SignWriting)
     has_many(:lists, through: [:list_entries, :list])
 
     belongs_to(:current_video, Video)
@@ -35,6 +38,12 @@ defmodule SignDict.Entry do
     |> validate_required([:text, :type, :language_id])
     |> validate_inclusion(:type, @types)
     |> foreign_key_constraint(:language_id)
+  end
+
+  def deleges_updated_at_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:deleges_updated_at])
+    |> validate_required(:deleges_updated_at)
   end
 
   def find_by_changeset(changeset) do

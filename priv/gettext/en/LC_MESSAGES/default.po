@@ -18,8 +18,8 @@ msgstr ""
 msgid "Internal server error"
 msgstr ""
 
-#: lib/sign_dict/services/credential_verifier.ex:16
-#: lib/sign_dict/services/credential_verifier.ex:27
+#: lib/sign_dict/services/credential_verifier.ex:15
+#: lib/sign_dict/services/credential_verifier.ex:26
 #: lib/sign_dict_web/controllers/session_controller.ex:28
 msgid "Invalid email address or password"
 msgstr ""
@@ -154,20 +154,20 @@ msgstr ""
 msgid "Send password reset instructions"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:28
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:49
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:39
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:70
 msgid "Invalid password reset link. Please try again."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:38
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:55
 msgid "Password successfully changed"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:42
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:60
 msgid "Unable to change your password"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:17
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:20
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr ""
 
@@ -389,7 +389,7 @@ msgstr ""
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:9
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:1
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:46
-#: lib/sign_dict_web/templates/entry/show.html.eex:100
+#: lib/sign_dict_web/templates/entry/show.html.eex:98
 msgid "User"
 msgstr ""
 
@@ -676,11 +676,11 @@ msgstr "Thumbnail"
 msgid "video.video_url"
 msgstr "Video"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:157
+#: lib/sign_dict_web/templates/entry/show.html.eex:156
 msgid "No other variations"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:125
+#: lib/sign_dict_web/templates/entry/show.html.eex:124
 msgid "Variations »%{entry}«"
 msgstr ""
 
@@ -688,28 +688,28 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:143
+#: lib/sign_dict_web/templates/entry/show.html.eex:142
 msgid "${time} ago"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:106
+#: lib/sign_dict_web/templates/entry/show.html.eex:102
 msgid "Date of upload"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:140
+#: lib/sign_dict_web/templates/entry/show.html.eex:139
 msgid "by"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:113
-msgid "Source:"
+#: lib/sign_dict_web/templates/entry/show.html.eex:109
+msgid "Source"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:132
+#: lib/sign_dict_web/templates/entry/show.html.eex:131
 msgid "Choose this variant"
 msgstr ""
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:57
-#: lib/sign_dict_web/templates/entry/show.html.eex:133
+#: lib/sign_dict_web/templates/entry/show.html.eex:132
 #: lib/sign_dict_web/templates/list/show.html.eex:13
 #: lib/sign_dict_web/templates/search/index.html.eex:26
 #: lib/sign_dict_web/templates/user/show.html.eex:42
@@ -790,7 +790,7 @@ msgid "New message via contact form"
 msgstr ""
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:10
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:24
+#: lib/sign_dict_web/controllers/reset_password_controller.ex:33
 msgid "Reset password"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/embed_controller.ex:37
+#: lib/sign_dict_web/controllers/embed_controller.ex:38
 #: lib/sign_dict_web/controllers/entry_controller.ex:95
 msgid "Sign for %{sign}"
 msgstr ""
@@ -880,7 +880,7 @@ msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
 #: lib/sign_dict_web/controllers/embed_controller.ex:22
-#: lib/sign_dict_web/controllers/embed_controller.ex:43
+#: lib/sign_dict_web/controllers/embed_controller.ex:44
 msgid "Sorry, no sign found"
 msgstr ""
 
@@ -931,7 +931,7 @@ msgstr ""
 msgid "Unable to confirm your email address."
 msgstr ""
 
-#: lib/sign_dict/models/user.ex:102
+#: lib/sign_dict/models/user.ex:109
 msgid "already used"
 msgstr ""
 
@@ -956,7 +956,7 @@ msgstr "Yes, I want to subscribe to the newsletter"
 msgid "user.flags"
 msgstr "Feature flags"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:165
+#: lib/sign_dict_web/templates/entry/show.html.eex:164
 msgid "Record new video"
 msgstr ""
 
@@ -968,7 +968,7 @@ msgstr ""
 msgid "Video approved"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:163
+#: lib/sign_dict_web/templates/entry/show.html.eex:162
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
@@ -1226,4 +1226,19 @@ msgstr ""
 #, elixir-format
 #: lib/sign_dict_web/controllers/contact_controller.ex:39
 msgid "The recaptcha was wrong, email not sent."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/entry/show.html.eex:173
+msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/templates/entry/show.html.eex:171
+msgid "SignWriting"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/entry/show.html.eex:182
+msgid "Thanks to <a href='https://delegs.de/'>deleges</a> for offering this service."
 msgstr ""
