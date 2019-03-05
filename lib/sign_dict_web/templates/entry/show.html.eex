@@ -193,7 +193,7 @@
       <% end %>
     
       <div class="so-video-details--signimage-deleges">
-        <%= raw gettext("Thanks to <a href='https://delegs.de/'>deleges</a> for offering this service.") %>
+        <%= raw gettext("Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service.") %>
       <div>
       <p>
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
