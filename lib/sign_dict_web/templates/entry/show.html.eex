@@ -167,7 +167,7 @@
       </div>
     </div>
    
-    <%= if  Enum.count(@entry.sign_writings) > 0 do %>
+    <%= if Enum.count(@entry.sign_writings) > 0 do %>
       <div class="o-grid__cell o-grid__cell--width-100">
         <h2><%= gettext("SignWriting") %></h2>
 
@@ -190,16 +190,16 @@
             </div>
           <% end %>
         </div>
-      <% end %>
     
-      <div class="so-video-details--signimage-deleges">
-        <%= raw gettext("Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service.") %>
-      <div>
-      <p>
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
-          <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
-        </a>
-      </p>
+        <div class="so-video-details--signimage-deleges">
+          <%= raw gettext("Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service.") %>
+        <div>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
+          </a>
+        </p>
+    <% end %>
 
     </div>
   </div>
