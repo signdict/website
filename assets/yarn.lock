@@ -658,10 +658,10 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
-"@types/node@^11.9.5":
-  version "11.10.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.0.tgz#08eeb736ae678ccf9ca0922063f3a08795894ede"
-  integrity sha512-6Mb9+PPq9UzRpQrlPzZAbhEvodWDTnsIakddUAtSDpKYF6eu5zAdW31n8x7UZStvqGnDC7dCJnvU188ylv/Ytw==
+"@types/node@^11.11.6":
+  version "11.11.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.6.tgz#df929d1bb2eee5afdda598a41930fe50b43eaa6a"
+  integrity sha512-Exw4yUWMBXM3X+8oqzJNRqZSwUAaS4+7NdvHqQuFi/d+synz++xmX3QIf+BFqneW8N31R8Ky+sikfZUXq07ggQ==
 
 "@types/q@^1.5.1":
   version "1.5.1"
@@ -5846,13 +5846,13 @@ rollup@^0.49.2:
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.49.3.tgz#4cce32643dd8cf2154c69ff0e43470067db0adbf"
   integrity sha512-n/vHRX4GhMIyGZEQRANcSFVtvz99bSRbNMuoC33ar9f4CViqffyF9WklLb2mxIQ6I/uFf7wDEpc66bXBFE7FvA==
 
-rollup@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.7.0.tgz#2f5063c0f344f2225d1077655dc54d105a512bb2"
-  integrity sha512-hjuWSCgoQsFSTsmsNP4AH1l1kfkFqW82gW00V9nL81Zr3JtnKn3rvxh18jUAAEMb7qNoHj21PR5SqbK2mhBgMg==
+rollup@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.7.3.tgz#cade518b92e23efa72026e264e29d9a56cbf8eb9"
+  integrity sha512-U3/HaZujvGofNZQldfIknKoaNFNRS+j8/uCS/jSy3FrxF9t0FBsgZW4+VXLHG7l1daTgE6+jEy0Dv7cVCB2NPg==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^11.9.5"
+    "@types/node" "^11.11.6"
     acorn "^6.1.1"
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
