@@ -70,7 +70,7 @@ defmodule SignDict.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix, "~> 1.4.1"},
-      {:plug, "~> 1.7.2"},
+      {:plug, "~> 1.8.0"},
       {:postgrex, "~> 0.14.1"},
       {:recaptcha, "~> 2.3.0"},
       {:scrivener_ecto, "~> 2.1.0"},
