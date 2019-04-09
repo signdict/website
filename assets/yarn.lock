@@ -1960,10 +1960,10 @@ dependency-graph@^0.8.0:
   resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.8.0.tgz#2da2d35ed852ecc24a5d6c17788ba57c3708755b"
   integrity sha512-DCvzSq2UiMsuLnj/9AL484ummEgLtZIcRS7YvtO38QnpX3vqh9nJ8P+zhu8Ja+SmLrBHO2iDbva20jq38qvBkQ==
 
-detect-browser@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-4.2.0.tgz#d46bcb3c69b25bd94c4433a3f90b971c22d0b2f8"
-  integrity sha512-x0kNC8p3pVYoiyGwQskqN7iupBe90jWDwLNThPtl8JxftfkdDWMxL+ESzo3JlAR5xBtl6HMqxkA5kk0scFcSRQ==
+detect-browser@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-4.2.1.tgz#b48fbd867513a21c57d64e16d897487fda0d5282"
+  integrity sha512-6+Uo6k9QaiFJXH/eVYnXJ/Kauw4M5wvSDB2jEZ9ngfSsJuTPNKSGG16+cPCreLpBEJeNdQngHRUV6RJGF/vNtQ==
 
 detect-file@^1.0.0:
   version "1.0.0"
