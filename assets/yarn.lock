@@ -5103,10 +5103,10 @@ plugin-error@^1.0.1:
     arr-union "^3.1.0"
     extend-shallow "^3.0.2"
 
-plyr@^3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.5.3.tgz#42e616fd1cf6294f47dc6aa788b8fd3ed329e485"
-  integrity sha512-drxaK8kq4FYHb5DoExlMKAP28z0cD8/3L/7Cuv8XigxJBp1Sz9VZCGapejA4DLWkurp9YbN/1+FcmEQRCodqfg==
+plyr@^3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.5.4.tgz#21ee9e2f06c3a88568eb432689c70de0b6d43dfb"
+  integrity sha512-ECS2uzeDyPfM0+1X3oTNdRDmLN+dxoo2GcJYeWsfnyH4CHLoRA/w1Fvp4sMhM+k2QBRxFH/bu46nogduS1DPhQ==
   dependencies:
     core-js "^3.0.1"
     custom-event-polyfill "^1.0.7"
