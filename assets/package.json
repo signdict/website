@@ -23,7 +23,7 @@
     "@babel/core": "^7.4.3",
     "autoprefixer": "^9.5.1",
     "cssnano": "^4.1.10",
-    "del": "^4.1.0",
+    "del": "^4.1.1",
     "gulp": "^4.0.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rsync": "^0.0.8",
