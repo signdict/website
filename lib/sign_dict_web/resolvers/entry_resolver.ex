@@ -17,8 +17,12 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
   end
 
   def search_entries(_parent, args, _resolution) do
+    language =
+      args
+      |> Map.get(:language, Gettext.get_locale(SignDictWeb.Gettext))
+
     entries =
-      args[:language]
+      language
       |> Entry.search_query(args[:word])
       |> Entry.with_language()
       |> Entry.with_videos_and_users()
