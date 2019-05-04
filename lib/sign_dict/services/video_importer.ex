@@ -6,8 +6,12 @@ defmodule SignDict.Services.VideoImporter do
     file = "#{UUID.generate()}-#{Path.basename(filename)}"
     file_with_path = Path.join([paths_for_file(file), file])
     target_file = Video.file_path(file_with_path)
-    File.mkdir_p(Path.dirname(target_file))
-    File.rename(path, target_file)
+
+    File.mkdir_p(Path.dirname(target_file)) |> IO.inspect
+    if {:error, :exdev} === File.rename(path, target_file) do
+      File.copy(path, target_file)
+      File.rm(path)
+    end
     file_with_path
   end
 
