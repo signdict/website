@@ -193,6 +193,31 @@ defmodule SignDict.Schema.EntryTest do
         } == response
       )
     end
+
+    test "returns all entries matching search text", %{conn: conn} do
+      insert(:entry_with_current_video, text: "Familie")
+      insert(:entry_with_current_video, text: "Familienfest")
+
+      query = """
+      {
+        search(word: "Familie") {
+          text
+        }
+      }
+      """
+
+      response =
+        conn
+        |> post(api_path(), AbsintheHelper.query_skeleton(query, "search"))
+        |> json_response(200)
+
+      assert(
+        ["Familie", "Familienfest"] ==
+          response["data"]["search"]
+          |> Enum.map(&Map.get(&1, "text"))
+          |> Enum.sort()
+      )
+    end
   end
 
   defp expected_entry_video(video) do
