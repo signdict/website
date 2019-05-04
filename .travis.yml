@@ -9,23 +9,21 @@ addons:
   postgresql: "9.6"
 
 services:
- - redis-server
+  - redis-server
 
 env:
- global:
-   - MIX_ENV=test
-   - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
-   - TRAVIS_NODE_VERSION="6.10.1"
+  global:
+    - MIX_ENV=test
+    - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
+    - TRAVIS_NODE_VERSION="6.10.1"
 
 cache:
   yarn: true
-  directories:
-    — /home/travis/.rvm/
+  directories: — /home/travis/.rvm/
     - travis_phantomjs
     - node_modules
 
 before_install:
-  # Upgrade PhantomJS to v2.1.1.
   - "export PHANTOMJS_VERSION=2.1.1"
   - "export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
   - "if [ ! -e $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin ]; then rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs; fi"
@@ -44,3 +42,4 @@ before_script:
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
   - mix coveralls.travis
+  - cd assets && yarn run gulp build

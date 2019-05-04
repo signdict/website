@@ -33,7 +33,7 @@ After you installed everything, the setup is as follows:
 ```bash
 mix deps.get
 mix ecto.setup
-yarn
+cd assets/ && yarn install && cd ..
 mix phx.server
 ```
 
