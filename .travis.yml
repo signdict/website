@@ -37,7 +37,7 @@ before_script:
   - rvm reload
   - rvm install ruby-2.3.1
   - gem install pronto-credo
-  - cd assets && yarn
+  - cd assets && yarn && cd ..
 
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
