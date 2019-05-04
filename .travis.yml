@@ -15,7 +15,7 @@ env:
   global:
     - MIX_ENV=test
     - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
-    - TRAVIS_NODE_VERSION="6.10.1"
+    - TRAVIS_NODE_VERSION="10.15.2"
 
 cache:
   yarn: true
