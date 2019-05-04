@@ -4,6 +4,8 @@ elixir:
   - 1.6.3
 otp_release:
   - 20.0
+node_js:
+  - "10"
 
 addons:
   postgresql: "9.6"
@@ -15,7 +17,6 @@ env:
   global:
     - MIX_ENV=test
     - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
-    - TRAVIS_NODE_VERSION="6.10.1"
 
 cache:
   yarn: true
