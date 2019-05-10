@@ -53,3 +53,12 @@ button.playrate-menu--active,
   color: white;
   text-decoration: none;
 }
+
+.plyr__progress {
+  width: 100%;
+}
+
+.plyr__control,
+.plyr__time {
+  margin: 0 0.3em;
+}
