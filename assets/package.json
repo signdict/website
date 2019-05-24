@@ -28,7 +28,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rsync": "^0.0.8",
     "gulp-sourcemaps": "^2.6.5",
-    "merge-stream": "^1.0.1",
+    "merge-stream": "^2.0.0",
     "node-sass": "^4.11.0",
     "postcss": "^7.0.16",
     "postcss-advanced-variables": "^3.0.0",
