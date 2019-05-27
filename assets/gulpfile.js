@@ -19,7 +19,9 @@ var fs = require("fs"),
 function swallowError(error) {
   console.log(error.toString());
   console.log(error);
-  this.emit("end");
+  if (process.env.NODE_ENV != "production") {
+    this.emit("end");
+  }
 }
 
 gulp.task("clean", function() {
