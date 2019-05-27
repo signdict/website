@@ -191,6 +191,12 @@ defmodule SignDict.Entry do
     )
   end
 
+  def paginate(query, page, size) do
+    from query,
+      limit: type(^size, :integer),
+      offset: type(^((page-1) * size), :integer)
+  end
+
   defp postgres_locale(locale) do
     # The locale is mapped to a postgres string
     # here. If you add a new language here, you also

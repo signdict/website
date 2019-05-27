@@ -3,6 +3,86 @@ defmodule SignDict.Schema.EntryTest do
   import SignDict.Factory
   alias SignDict.Test.Helpers.Absinthe, as: AbsintheHelper
 
+  describe "Get all entries" do
+    test "Paginates entries", %{conn: conn} do
+      insert(:entry_with_current_video, text: "Coconuts")
+      insert(:entry_with_current_video, text: "Bananas")
+      entry_3 = insert(:entry_with_current_video, text: "Blueberries")
+      entry_4 = insert(:entry, text: "Grapes")
+
+      query = """
+        {
+          index(perPage: 2, page: 2){
+          current_video{
+            copyright
+            license
+            originalHref
+            videoUrl
+            thumbnailUrl
+              user{
+                name
+              }
+            }
+            description
+            id
+            language{
+              iso6393
+              longName
+              shortName
+            }
+            text
+            type
+            url
+            videos{
+              copyright
+              license
+              originalHref
+              videoUrl
+              thumbnailUrl
+              user{
+                name
+              }
+            }
+          }
+        }
+      """
+
+      response =
+        conn
+        |> post(api_path(), AbsintheHelper.query_skeleton(query, "entry"))
+        |> json_response(200)
+
+      assert(
+        %{
+          "data" => %{
+            "index" => [
+              %{
+                "language" => entry_3.language |> expected_language(),
+                "videos" => entry_3.videos |> Enum.map(fn v -> expected_entry_video(v) end),
+                "current_video" => entry_3.current_video |> expected_entry_video(),
+                "text" => "#{entry_3.text}",
+                "description" => "#{entry_3.description}",
+                "type" => "#{entry_3.type}",
+                "url" => "https://localhost/entry/#{entry_3.id}",
+                "id" => entry_3.id
+              },
+              %{
+                "language" => entry_4.language |> expected_language(),
+                "videos" => [],
+                "current_video" => nil,
+                "text" => "#{entry_4.text}",
+                "description" => "#{entry_4.description}",
+                "type" => "#{entry_4.type}",
+                "url" => "https://localhost/entry/#{entry_4.id}",
+                "id" => entry_4.id
+              }
+            ]
+          }
+        } == response
+      )
+    end
+  end
+
   describe "Get entry by ID" do
     test "Successfully returns entry", %{conn: conn} do
       entry = insert(:entry_with_current_video)
