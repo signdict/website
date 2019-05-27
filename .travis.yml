@@ -42,4 +42,4 @@ before_script:
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
   - mix coveralls.travis
-  - cd assets && yarn run gulp build
+  - cd assets && yarn run deploy
