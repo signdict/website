@@ -45,7 +45,7 @@ defmodule SignDict.Mixfile do
       {:absinthe, "1.4.16"},
       {:arc_ecto, "~> 0.11.1"},
       {:arc, "~> 0.11.0"},
-      {:bamboo_smtp, "~> 1.6.0"},
+      {:bamboo_smtp, "~> 1.7.0"},
       {:bamboo, "~> 1.2.0"},
       {:bcrypt_elixir, "~> 2.0.1"},
       {:bootleg, "~> 0.7", runtime: false},
