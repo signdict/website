@@ -34,7 +34,7 @@
     "postcss-advanced-variables": "^3.0.0",
     "postcss-cli": "^6.1.2",
     "postcss-partial-import": "^4.1.0",
-    "rollup": "^1.15.4",
+    "rollup": "^1.15.6",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^8.4.0",
     "rollup-plugin-node-resolve": "^4.0.1",
