@@ -6,7 +6,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
 
   def entries(_parent, args, _resolution) do
     page = Map.get(args, :page, 1)
-    size = Map.get(args, :per_page, 50)
+    size = Enum.min([100, Map.get(args, :per_page, 50)])
 
     entries =
       Entry
