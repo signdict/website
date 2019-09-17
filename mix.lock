@@ -65,7 +65,7 @@
   "poolboy": {:hex, :poolboy, "1.5.2", "392b007a1693a64540cead79830443abf5762f5d30cf50bc95cb2c1aaafa006b", [:rebar3], [], "hexpm"},
   "postgrex": {:hex, :postgrex, "0.15.1", "23ce3417de70f4c0e9e7419ad85bdabcc6860a6925fe2c6f3b1b5b1e8e47bf2f", [:mix], [{:connection, "~> 1.0", [hex: :connection, repo: "hexpm", optional: false]}, {:db_connection, "~> 2.1", [hex: :db_connection, repo: "hexpm", optional: false]}, {:decimal, "~> 1.5", [hex: :decimal, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: true]}], "hexpm"},
   "ranch": {:hex, :ranch, "1.7.1", "6b1fab51b49196860b733a49c07604465a47bdb78aa10c1c16a3d199f7f8c881", [:rebar3], [], "hexpm"},
-  "recaptcha": {:hex, :recaptcha, "2.3.0", "de5ffca969c98407c954492ba042c59ebea4241f08fb482cb146e195fc7c52fc", [:mix], [{:httpoison, ">= 0.12.0", [hex: :httpoison, repo: "hexpm", optional: false]}, {:poison, "~> 3.1.0 or ~> 2.2.0 or ~> 1.5.2", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm"},
+  "recaptcha": {:hex, :recaptcha, "3.0.0", "9c4d3ee688d69605d6de9629f0ae51670748d023f7b5700d0fe788877932c95c", [:mix], [{:httpoison, ">= 0.12.0", [hex: :httpoison, repo: "hexpm", optional: false]}, {:poison, "~> 3.1.0 or ~> 2.2.0 or ~> 1.5.2", [hex: :poison, repo: "hexpm", optional: true]}], "hexpm"},
   "recon": {:hex, :recon, "2.3.4", "b406c2fccdeaa0d94e23b5e30ae3d635a2d461e363a5c9c6316897037cf050d2", [:rebar3], [], "hexpm"},
   "redix": {:hex, :redix, "0.10.2", "a9eabf47898aa878650df36194aeb63966d74f5bd69d9caa37babb32dbb93c5d", [:mix], [{:telemetry, "~> 0.4.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm"},
   "scrivener": {:hex, :scrivener, "2.7.0", "fa94cdea21fad0649921d8066b1833d18d296217bfdf4a5389a2f45ee857b773", [:mix], [], "hexpm"},
