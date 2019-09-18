@@ -72,7 +72,7 @@ defmodule SignDict.Mixfile do
       {:phoenix, "~> 1.4.1"},
       {:plug, "~> 1.8.0"},
       {:postgrex, "~> 0.15.0"},
-      {:recaptcha, "~> 2.3.0"},
+      {:recaptcha, "~> 3.0.0"},
       {:scrivener_ecto, "~> 2.2.0"},
       {:scrivener_html, "~> 1.7"},
       {:secure_random, "~> 0.5"},
