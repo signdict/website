@@ -45,7 +45,7 @@ gulp.task("css", function() {
   var plugins = [
     require("postcss-partial-import"),
     require("postcss-advanced-variables"),
-    autoprefixer({ browsers: ["last 3 versions"] }),
+    autoprefixer(),
     cssnano()
   ];
   return gulp

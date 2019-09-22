@@ -7,6 +7,7 @@
             <%= link gettext("Supporter"), to: page_path(@conn, :supporter) %>
           </h1>
           <p>
+            <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.svg" alt="<%= gettext("Logo Wishlephant") %>"/></a>
             <a href="https://bmbf.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="/images/logo-bmbf.svg" alt="<%= gettext("Logo Bundesministerium für Bildung und Forschung") %>"/></a>
             <a href="https://prototypefund.de"><img class="so-footer--sponsorlogo so-footer--prototype" src="/images/logo-prototype.svg" alt="<%= gettext("Logo Prototype Fund") %>"/></a>
             <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>

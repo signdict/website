@@ -3,10 +3,12 @@ defmodule SignDictWeb.GuardianErrorHandler do
   """
   use SignDictWeb, :controller
 
+  alias SignDict.Guardian
+
   def auth_error(conn, {:invalid_token, _reason}, _opts) do
     conn
-    |> put_flash(:error, gettext("Invalid token"))
-    |> redirect(to: session_path(conn, :new))
+    |> Guardian.Plug.sign_out()
+    |> redirect(to: "/")
     |> halt
   end
 

@@ -77,7 +77,7 @@ defmodule SignDict.Mixfile do
       {:scrivener_html, "~> 1.7"},
       {:secure_random, "~> 0.5"},
       {:state_mc, "~> 0.1.0"},
-      {:timex, "~> 3.2"},
+      {:timex, "~> 3.6"},
       {:wallaby, "~> 0.23.0", only: :test},
       {:jason, "~> 1.1"},
       {:briefly, "~> 0.3"}

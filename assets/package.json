@@ -46,5 +46,8 @@
     "vinyl-source-stream": "^2.0.0",
     "vue-template-compiler": "^2.6.7",
     "watch": "^1.0.2"
-  }
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
 }

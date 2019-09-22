@@ -28,6 +28,11 @@
   padding-top: 2em;
 }
 
+.so-footer--wishlephant {
+  padding-top: 2em;
+  height: 7em;
+}
+
 .so-footer--rrbone {
   padding-top: 2em;
 }
@@ -61,7 +66,6 @@
 .so-footer--links--social--text {
   font-size: 2em;
 }
-
 
 @media all and (max-width: 48em) {
   .so-footer--links--list {
