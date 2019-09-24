@@ -6,7 +6,7 @@
     "watch": "gulp build-watch"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
     "babel-polyfill": "^6.26.0",
     "detect-browser": "^4.7.0",
     "phoenix": "file:../deps/phoenix",
