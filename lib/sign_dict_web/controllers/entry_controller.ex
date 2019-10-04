@@ -73,7 +73,7 @@ defmodule SignDictWeb.EntryController do
 
       {:error, changeset} ->
         languages = Repo.all(Language)
-        render(conn, "new.html", changeset: changeset, languages: languages)
+        render(conn, "new.html", changeset: changeset, languages: languages, text: conn.params["text"])
     end
   end
 
