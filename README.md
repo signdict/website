@@ -46,10 +46,21 @@ mix deps.get
 mix ecto.setup
 sudo apt install npm
 sudo npm install -g yarn
-yarn
 cd assets/ && yarn install && cd..
 mix phx.server
 ```
+
+### Docker instructions:
+
+First, make the PostgreSQL and redis servers point to the docker services. Change `hostname: "localhost"` to `hostname: "db"` in `config/dev.exs`, and add `host: "redis"` to the `:exq` section in `config/config.exs`.
+
+Then run
+
+```bash
+docker-compose up
+```
+
+to install all dependencies and start the PostgreSQL, redis and web server services (including code reloading). The website is available at http://localhost:4000.
 
 With that you have a running system and a default admin user called
 `admin@example.com` with the password `thepasswordisalie`.
