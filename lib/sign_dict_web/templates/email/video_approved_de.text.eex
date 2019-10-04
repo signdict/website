@@ -6,6 +6,6 @@ Zum Video:
 
 <%= entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
 
-Danke das du uns hilfst, das Wörterbuch weiter zu vervollständigen.
+Danke, dass du uns hilfst, das Wörterbuch weiter zu vervollständigen.
 
 Gruß vom SignDict Team.
