@@ -44,7 +44,7 @@
       <%= gettext("Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam.") %>
     </p>
     <p>
-      <%= link gettext("Add new entry"), to: entry_path(@conn, :new), class: "sc-button sc-button--small" %>
+      <%= link gettext("Add new entry"), to: entry_path(@conn, :new, text: @conn.params["q"]), class: "sc-button sc-button--small" %>
     </p>
   </div>
 </div>

@@ -7,7 +7,7 @@
 
   <div class="o-form-element">
     <%= label f, :text, gettext("entry.text"), class: "c-label" %>
-    <%= text_input f, :text, class: "c-field #{class_for_error(f, :text)}" %>
+    <%= text_input f, :text, value: "#{@text}", class: "c-field #{class_for_error(f, :text)}" %>
     <%= error_tag f, :text %>
   </div>
 
