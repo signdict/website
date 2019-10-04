@@ -14,7 +14,7 @@
           </p>
           <p class='so-landing--banner--stats'>
             <%= raw(gettext("So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>",
-                  humans: @human_count, signs: @sign_count,
+                  humans: @contributor_count, signs: @sign_count,
                   link: entry_path(@conn, :index)
              )) %>
           </p>
