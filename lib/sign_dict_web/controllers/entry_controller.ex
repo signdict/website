@@ -51,7 +51,7 @@ defmodule SignDictWeb.EntryController do
   def new(conn, _params) do
     changeset = Entry.changeset(%Entry{})
     languages = Repo.all(Language)
-    render(conn, "new.html", changeset: changeset, languages: languages, text: conn.params["text"])
+    render(conn, "new.html", changeset: changeset, languages: languages, text: _params["text"])
   end
 
   def create(conn, %{"entry" => entry_params}) do
