@@ -2,9 +2,8 @@ defmodule SignDictWeb.PageController do
   use SignDictWeb, :controller
 
   def index(conn, _params) do
-    human_count = Repo.aggregate(SignDict.User, :count, :id)
     render conn, "index.html", layout: {SignDictWeb.LayoutView, "empty.html"},
-      human_count: human_count, sign_count: sign_count()
+      contributor_count: contributor_count(), sign_count: sign_count()
   end
 
   def imprint(conn, _params) do
@@ -45,5 +44,13 @@ defmodule SignDictWeb.PageController do
     SignDict.Video
     |> where(state: "published")
     |> Repo.aggregate(:count, :id)
+  end
+
+  defp contributor_count do
+    SignDict.Video
+    |> where(state: "published")
+    |> select([v], v.user_id)
+    |> distinct(true)
+    |> Repo.aggregate(:count, :user_id)
   end
 end
