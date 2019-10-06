@@ -216,4 +216,24 @@ defmodule SignDict.EntryControllerTest do
       refute body =~ "Marmot"
     end
   end
+
+  describe "latest/2" do
+    test "it shows newest videos first", %{conn: conn} do
+      sloth_entry = insert(:entry, %{text: "Sloth"})
+      insert(:video_published, %{entry: sloth_entry})
+      Entry.update_current_video(sloth_entry)
+
+      marmot_entry = insert(:entry, %{text: "Marmot"})
+      insert(:video_published, %{entry: marmot_entry})
+      Entry.update_current_video(marmot_entry)
+
+      conn =
+        conn
+        |> get(entry_path(conn, :latest))
+
+      body = html_response(conn, 200)
+      assert Regex.match?(~r/entry.*sloth.*entry.*marmot/s, body)
+      refute Regex.match?(~r/marmot.*sloth/s, body)
+    end
+  end
 end
