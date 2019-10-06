@@ -73,6 +73,8 @@ defmodule SignDictWeb.Router do
     resources "/entry", EntryController, only: [:index, :show, :new, :create] do
       get "/video/:video_id", EntryController, :show, as: :video
     end
+    
+    get "/latest", EntryController, :latest
 
     post "/video/:video_id/vote", VoteController, :create
     delete "/video/:video_id/vote", VoteController, :delete

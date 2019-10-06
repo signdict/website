@@ -27,6 +27,21 @@ defmodule SignDictWeb.EntryController do
       title: gettext("All entries")
     )
   end
+  
+  def latest(conn, params) do
+    entries =
+      Entry.active_entries()
+      |> Entry.with_current_video()
+      |> order_by(desc: :updated_at)
+      |> Repo.paginate(params)
+
+    render(conn, "latest.html",
+      layout: {SignDictWeb.LayoutView, "app.html"},
+      entries: entries,
+      searchbar: true,
+      title: gettext("Recently created entries")
+    )
+  end
 
   def show(conn, %{"id" => id}) do
     if id =~ ~r/^\d+(-.*)?\z/ do
