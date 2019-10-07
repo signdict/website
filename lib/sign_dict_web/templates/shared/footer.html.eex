@@ -39,7 +39,7 @@
           <ul class="so-footer--links--list">
             <li><a href='https://github.com/signdict/website/wiki/API'>API</a></li>
             <li><a href='/entry'><%= gettext("All entries") %></a></li>
-            <li><a href='/latest'><%= gettext("New entries") %></a></li>
+            <li><a href='/latest'><%= gettext("New videos") %></a></li>
             <li><a href='http://docs.signdict.org'><%= gettext("Documentation") %></a></li>
           </ul>
         </div>
