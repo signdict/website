@@ -8,6 +8,7 @@ defmodule SignDictWeb.EntryController do
   alias SignDict.List
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
+  alias SignDict.Video
   alias SignDictWeb.Router.Helpers
 
   def index(conn, params) do
@@ -29,17 +30,18 @@ defmodule SignDictWeb.EntryController do
   end
   
   def latest(conn, params) do
-    entries =
-      Entry.active_entries()
-      |> Entry.with_current_video()
-      |> order_by(desc: :updated_at)
-      |> Repo.paginate(params)
+    query = from v in Video,
+      where: v.state == ^"published",
+      join: e in assoc(v, :entry),
+      order_by: [desc: v.inserted_at],
+      preload: :entry
+    videos = Repo.paginate(query, params)
 
     render(conn, "latest.html",
       layout: {SignDictWeb.LayoutView, "app.html"},
-      entries: entries,
+      videos: videos,
       searchbar: true,
-      title: gettext("Recently created entries")
+      title: gettext("Recently created videos")
     )
   end
 

@@ -1251,11 +1251,11 @@ msgstr ""
 
 #, elixir-format
 #: lib/sign_dict_web/templates/shared/footer.html.eex:42
-msgid "New entries"
-msgstr "Neue Einträge"
+msgid "New videos"
+msgstr "Neue Videos"
 
 #, elixir-format
 #: lib/sign_dict_web/controllers/entry_controller.ex:42
 #: lib/sign_dict_web/templates/entry/latest.html.eex:5
-msgid "Recently created entries"
-msgstr "Zuletzt angelegte Einträge"
+msgid "Recently created videos"
+msgstr "Zuletzt angelegte Videos"
