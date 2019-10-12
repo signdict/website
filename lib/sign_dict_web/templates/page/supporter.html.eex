@@ -58,6 +58,9 @@
             <li><a href="https://github.com/signdict/website/blob/master/mix.exs"><%= gettext("All libraries we are using to develop SignDict") %></a></li>
             <li><a href="https://github.com/signdict/website/graphs/contributors"><%= gettext("All contributors.") %></a></li>
             <li><%= gettext("and YOU for reading this <3") %></li>
+            <li> <%= link gettext(
+                  "and YOU if you want to donate."
+                ), to: "https://github.com/users/bitboxer/sponsorship" %></li>
           </ul>
         </div>
       </div>
