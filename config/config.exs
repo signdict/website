@@ -6,8 +6,7 @@
 use Mix.Config
 
 # General application configuration
-config :sign_dict,
-  ecto_repos: [SignDict.Repo]
+config :sign_dict, ecto_repos: [SignDict.Repo]
 
 # Configures the endpoint
 config :sign_dict, SignDictWeb.Endpoint,
@@ -47,8 +46,7 @@ config :bugsnex, :repository_url, "https://github.com/signdict/website"
 config :bugsnex, :release_stage, "development"
 config :bugsnex, :use_logger, false
 
-config :arc,
-  storage: Arc.Storage.Local
+config :arc, storage: Arc.Storage.Local
 
 config :sign_dict, :upload_path, "./uploads"
 
@@ -67,8 +65,7 @@ config :exq,
   ],
   json_library: Jason
 
-config :exq_ui,
-  server: false
+config :exq_ui, server: false
 
 config :sign_dict, :jw_player,
   api_key: "API_KEY",
@@ -80,13 +77,13 @@ config :sign_dict, :newsletter, subscriber: SignDict.MockChimp
 
 config :sign_dict, :recaptcha, library: Recaptcha
 
-config :ex_chimp,
-  api_key: "yourapikeyhere-us12"
+config :ex_chimp, api_key: "yourapikeyhere-us12"
 
 # these keys only work for localhost
 config :recaptcha,
   public_key: "6Lf3OloUAAAAAI4CYsojC7vmbpxmuq8U0nrxtkj9",
-  secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P"
+  secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P",
+  json_library: Jason
 
 config :phoenix, :json_library, Jason
 
