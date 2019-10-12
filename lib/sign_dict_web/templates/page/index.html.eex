@@ -28,7 +28,7 @@
     <form action="/search" class='so-landing--search'>
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell--width-80@medium o-grid__cell--width-100">
-          <input class="so-landing--search--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>"/>
+          <input class="so-landing--search--input"  placeholder="<%= gettext("Search a word to see the GSL sign") %>" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>"/>
         </div>
         <div class="o-grid__cell so-landing--search--submit-cell">
           <input class="so-landing--search--submit" type="submit" value="<%= gettext("Search") %> &#8250;" />

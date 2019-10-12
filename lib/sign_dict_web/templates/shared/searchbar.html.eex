@@ -3,7 +3,7 @@
     <div class="o-container o-container--medium">
       <form action="/search">
         <div class="so-searchbar--container">
-          <input class="so-searchbar--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search in SignDict...") %>" value="<%= @conn.params["q"] %>"/>
+          <input class="so-searchbar--input" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search a word to see the GSL sign") %>" value="<%= @conn.params["q"] %>"/>
           <button class="so-searchbar--submit" type="submit">
             <i class="fa fa-search so-searchbar--icon" aria-hidden="true"></i>
             <span class="so-searchbar--text">
