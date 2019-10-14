@@ -7,9 +7,9 @@ A crowdsourced sign language dictionary.
 [![Join the chat at https://gitter.im/signdict/lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/signdict/lobby)
 
 Here we will work on SignDict. A sign language dictionary
-where everyone can add new signs using their webcam. With
-this unique crowdsourcing approach we together can create
-the most accurate sign language dictionary there is.
+where registered users can add new signs using their webcam.
+With the crowdsourcing approach we can create the most accurate
+and largest German sign language dictionary together.
 
 **You want to help?** Awesome. Scroll through the issues, open a new one, join our [Gitter Community](https://gitter.im/signdict/Lobby) or just send
 a short notice using the [contact form](https://signdict.org/contact). We are happy about every person who wants to help.
@@ -95,4 +95,3 @@ and is part of the 1st batch of the [prototype fund](http://prototypefund.de).
 
 ![Logo of the German Federal Ministry of Education and Research](images/support-bmbf.png)
 ![Prototype Fund Logo](images/support-prototype.png)
-
