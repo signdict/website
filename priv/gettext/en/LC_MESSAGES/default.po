@@ -500,7 +500,7 @@ msgid "SignDict is an open dictionary for sign language. <strong>Everyone is inv
 msgstr ""
 
 #: lib/sign_dict_web/templates/contact/new.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:35
+#: lib/sign_dict_web/templates/shared/footer.html.eex:40
 msgid "Contact"
 msgstr ""
 
@@ -510,7 +510,7 @@ msgstr ""
 
 #: lib/sign_dict_web/controllers/page_controller.ex:11
 #: lib/sign_dict_web/templates/page/imprint.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:33
+#: lib/sign_dict_web/templates/shared/footer.html.eex:38
 msgid "Imprint"
 msgstr ""
 
@@ -548,15 +548,15 @@ msgstr ""
 msgid "SignDict believes..."
 msgstr "SignDict believes that communication is the key to an open society. To increase the integration of deaf communities, we created a living dictionary and invite everyone to participate."
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:28
+#: lib/sign_dict_web/templates/shared/footer.html.eex:33
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:49
+#: lib/sign_dict_web/templates/shared/footer.html.eex:54
 msgid "SignDict on Github"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:48
+#: lib/sign_dict_web/templates/shared/footer.html.eex:53
 msgid "SignDict on Twitter"
 msgstr ""
 
@@ -575,7 +575,7 @@ msgstr ""
 msgid "A hand with a speech bubble"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:32
+#: lib/sign_dict_web/templates/shared/footer.html.eex:37
 msgid "Blog"
 msgstr ""
 
@@ -800,7 +800,7 @@ msgid "Search results for %{query}"
 msgstr ""
 
 #: lib/sign_dict_web/controllers/embed_controller.ex:38
-#: lib/sign_dict_web/controllers/entry_controller.ex:127
+#: lib/sign_dict_web/controllers/entry_controller.ex:129
 msgid "Sign for %{sign}"
 msgstr ""
 
@@ -828,7 +828,7 @@ msgstr ""
 msgid "Please enter a word in the field above to search for signs."
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:17
+#: lib/sign_dict_web/templates/shared/footer.html.eex:22
 msgid "The complete list of supporters."
 msgstr ""
 
@@ -876,7 +876,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:141
+#: lib/sign_dict_web/controllers/entry_controller.ex:143
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
@@ -912,7 +912,7 @@ msgstr ""
 #: lib/sign_dict_web/controllers/page_controller.ex:28
 #: lib/sign_dict_web/templates/page/privacy_de.html.eex:3
 #: lib/sign_dict_web/templates/page/privacy_en.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:34
+#: lib/sign_dict_web/templates/shared/footer.html.eex:39
 msgid "Privacy"
 msgstr ""
 
@@ -1014,8 +1014,8 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:27
-#: lib/sign_dict_web/templates/shared/footer.html.eex:41
+#: lib/sign_dict_web/controllers/entry_controller.ex:28
+#: lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr ""
 
@@ -1072,7 +1072,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:123
+#: lib/sign_dict_web/controllers/entry_controller.ex:125
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
@@ -1210,7 +1210,7 @@ msgid "We offer a nice introduction to sign language in german."
 msgstr "For example about <a href='http://docs.signdict.org/dgs/4_fingeralphabet/'>fingerspelling</a>, <a href='http://docs.signdict.org/babysign/1_einleitung/'>baby sign</a> or the german sign language? You will find all of that and more in our german <a href='http://docs.signdict.org'>documentation project</a>."
 
 #, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:43
+#: lib/sign_dict_web/templates/shared/footer.html.eex:48
 msgid "Documentation"
 msgstr ""
 
@@ -1250,12 +1250,22 @@ msgid "Logo Wishlephant"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:42
+#: lib/sign_dict_web/templates/shared/footer.html.eex:47
 msgid "New videos"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/controllers/entry_controller.ex:42
+#: lib/sign_dict_web/controllers/entry_controller.ex:44
 #: lib/sign_dict_web/templates/entry/latest.html.eex:5
 msgid "Recently created videos"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/shared/footer.html.eex:17
+msgid "Love SignDict? Sponsor us to help cover the server costs."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/page/supporter.html.eex:61
+msgid "and YOU if you want to donate."
 msgstr ""

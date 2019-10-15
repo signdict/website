@@ -14,6 +14,11 @@
             <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
           </p>
           <p class="so-footer--sponsorabout">
+            <%= link gettext(
+                  "Love SignDict? Sponsor us to help cover the server costs."
+                ), to: "https://github.com/users/bitboxer/sponsorship" %>
+          </p>
+          <p class="so-footer--sponsorabout">
             <%= link gettext("The complete list of supporters."), to: page_path(@conn, :supporter) %>
           </p>
         </div>
