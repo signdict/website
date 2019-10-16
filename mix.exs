@@ -80,7 +80,8 @@ defmodule SignDict.Mixfile do
       {:timex, "~> 3.6"},
       {:wallaby, "~> 0.23.0", only: :test},
       {:jason, "~> 1.1"},
-      {:briefly, "~> 0.3"}
+      {:briefly, "~> 0.3"},
+      {:tzdata, "~> 1.0.1"}
     ]
   end
 
