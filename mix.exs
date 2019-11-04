@@ -59,7 +59,7 @@ defmodule SignDict.Mixfile do
       {:ex_machina, "~> 2.1"},
       {:excoveralls, "~> 0.6", only: :test},
       {:exgravatar, "~> 2.0.0"},
-      {:exq_ui, "~> 0.10.0"},
+      {:exq_ui, "~> 0.11.0"},
       {:exq, "~> 0.11"},
       {:gettext, "~> 0.13"},
       {:guardian, "~> 2.0.0"},
