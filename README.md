@@ -84,6 +84,12 @@ mix test
 
 ## Deployment
 
+The server is configured using [ansible](https://www.ansible.com/) with [this playbook](/ansible/playbook.yml) and can be updated with:
+
+```bash
+ansible-playbook ansible/playbook.yml -i ansible/hosts --extra-vars '{"username": "******"}'
+```
+
 The system is currently using [bootleg](https://github.com/labzero/bootleg) to
 deploy the app. Simply call `bootleg_user=USERNAME mix bootleg.update` to
 deploy it to the production environment.

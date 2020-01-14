@@ -8,4 +8,4 @@ use Bootleg.Config
 #  - `password`: password to be used for SSH authentication
 #  - `identity`: local path to an identity file that will be used for SSH authentication instead of a password
 #  - `workspace`: remote file system path to be used for building and deploying this Elixir project
-role(:app, ["signdict.org"], workspace: "/var/signdict/", user: System.get_env("bootleg_user"))
+role(:app, ["new.signdict.org"], workspace: "/var/signdict/", user: System.get_env("bootleg_user"))

@@ -2,7 +2,7 @@ use Bootleg.Config
 
 role(
   :build,
-  "signdict.org",
+  "new.signdict.org",
   user: System.get_env("bootleg_user"),
   workspace: "/tmp/bootleg/signdict/",
   silently_accept_hosts: true
