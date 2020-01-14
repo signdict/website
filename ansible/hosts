@@ -1,0 +1,5 @@
+[signdict]
+31.172.52.62
+
+[signdict:vars]
+ansible_python_interpreter=/usr/bin/python3
