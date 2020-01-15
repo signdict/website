@@ -4,7 +4,7 @@
 server {
   listen         80;
   listen    [::]:80;
-  server_name    new.signdict.org;
+  server_name    signdict.org new.signdict.org;
 
   server_tokens off;
 
