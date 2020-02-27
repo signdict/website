@@ -54,5 +54,5 @@ server {
   listen         80;
   listen    [::]:80;
   server_name    signdict.org new.signdict.org;
-  return         301 https://new.signdict.org$request_uri;
+  return         301 https://signdict.org$request_uri;
 }
