@@ -18,8 +18,8 @@ defmodule SignDictWeb.Email do
 
   def confirm_email(user) do
     user
-    |> User.confirm_sent_at_changeset
-    |> Repo.update
+    |> User.confirm_sent_at_changeset()
+    |> Repo.update()
 
     base_email()
     |> to(user)
@@ -30,8 +30,8 @@ defmodule SignDictWeb.Email do
 
   def confirm_email_change(user) do
     user
-    |> User.confirm_sent_at_changeset
-    |> Repo.update
+    |> User.confirm_sent_at_changeset()
+    |> Repo.update()
 
     base_email()
     |> to(user)
@@ -50,8 +50,9 @@ defmodule SignDictWeb.Email do
 
   def video_waiting_for_review(video) do
     entry = Repo.get_by(Entry, id: video.entry_id)
+
     base_email()
-    |> bcc(User.all_editors)
+    |> bcc(User.all_editors())
     |> to({"Bodo", "mail@signdict.org"})
     |> subject("New video added for \"#{entry.text}\"")
     |> assign(:entry, entry)
@@ -60,9 +61,12 @@ defmodule SignDictWeb.Email do
   end
 
   def video_approved(video) do
-    video  = video |> Repo.preload(:user) |> Repo.preload(:entry)
-    locale = video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
-    Gettext.with_locale SignDictWeb.Gettext, locale, fn ->
+    video = video |> Repo.preload(:user) |> Repo.preload(:entry)
+
+    locale =
+      video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
+
+    Gettext.with_locale(SignDictWeb.Gettext, locale, fn ->
       base_email()
       |> to({video.user.name, video.user.email})
       |> subject(gettext("Your video was approved :)"))
@@ -70,13 +74,16 @@ defmodule SignDictWeb.Email do
       |> assign(:user, video.user)
       |> assign(:entry, video.entry)
       |> render(String.to_atom("video_approved_#{locale}"))
-    end
+    end)
   end
 
   def video_rejected(video) do
-    video  = video |> Repo.preload(:user) |> Repo.preload(:entry)
-    locale = video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
-    Gettext.with_locale SignDictWeb.Gettext, locale, fn ->
+    video = video |> Repo.preload(:user) |> Repo.preload(:entry)
+
+    locale =
+      video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
+
+    Gettext.with_locale(SignDictWeb.Gettext, locale, fn ->
       base_email()
       |> to({video.user.name, video.user.email})
       |> subject(gettext("Your video was rejected"))
@@ -84,7 +91,7 @@ defmodule SignDictWeb.Email do
       |> assign(:user, video.user)
       |> assign(:entry, video.entry)
       |> render(String.to_atom("video_rejected_#{locale}"))
-    end
+    end)
   end
 
   defp base_email do

@@ -62,7 +62,7 @@ defmodule SignDict.Entry do
     end
   end
 
-  def active_entries do
+  def active_entries(domain) do
     Entry |> where([e], not is_nil(e.current_video_id))
   end
 

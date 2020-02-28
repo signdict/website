@@ -22,6 +22,7 @@ defmodule SignDict.Language do
   def name(struct) do
     lang_key = "signlanguage." <> struct.iso6393
     name = Gettext.dgettext(SignDictWeb.Gettext, "signlanguages", lang_key)
+
     if name != lang_key do
       name
     else

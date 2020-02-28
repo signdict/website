@@ -20,7 +20,6 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
     {:ok, entries}
   end
 
-
   def show_entry(_parent, args, _resolution) do
     entry =
       Entry

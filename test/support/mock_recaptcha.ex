@@ -1,5 +1,4 @@
 defmodule SignDict.MockRecaptcha do
-
   def verify("working") do
     {:ok, "sendemail"}
   end
@@ -7,6 +6,4 @@ defmodule SignDict.MockRecaptcha do
   def verify(_param) do
     {:error, "wrong"}
   end
-
 end
-

@@ -15,7 +15,7 @@ defmodule SignDictWeb.EntryController do
     letter = params["letter"] || "A"
 
     entries =
-      Entry.active_entries()
+      Entry.active_entries(conn.host)
       |> Entry.with_current_video()
       |> Entry.for_letter(letter)
       |> Repo.paginate(params)
@@ -28,13 +28,16 @@ defmodule SignDictWeb.EntryController do
       title: gettext("All entries")
     )
   end
-  
+
   def latest(conn, params) do
-    query = from v in Video,
-      where: v.state == ^"published",
-      join: e in assoc(v, :entry),
-      order_by: [desc: v.inserted_at],
-      preload: :entry
+    query =
+      from(v in Video,
+        where: v.state == ^"published",
+        join: e in assoc(v, :entry),
+        order_by: [desc: v.inserted_at],
+        preload: :entry
+      )
+
     videos = Repo.paginate(query, params)
 
     render(conn, "latest.html",
@@ -90,7 +93,12 @@ defmodule SignDictWeb.EntryController do
 
       {:error, changeset} ->
         languages = Repo.all(Language)
-        render(conn, "new.html", changeset: changeset, languages: languages, text: conn.params["text"])
+
+        render(conn, "new.html",
+          changeset: changeset,
+          languages: languages,
+          text: conn.params["text"]
+        )
     end
   end
 

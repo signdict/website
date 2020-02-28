@@ -11,8 +11,10 @@ defmodule SignDictWeb.ListController do
   def show(conn, _params) do
     list = conn.assigns.list
     entries = List.entries(list)
+
     render(
-      conn, "show.html",
+      conn,
+      "show.html",
       list: list,
       entries: entries,
       searchbar: true,
@@ -20,5 +22,4 @@ defmodule SignDictWeb.ListController do
       title: gettext("List \"%{name}\"", name: list.name)
     )
   end
-
 end

@@ -9,6 +9,7 @@ defmodule SignDictWeb.EmailConfirmationController do
     user = Repo.get_by(User, unconfirmed_email: email)
     do_update(conn, user, token, params["change"] == "true")
   end
+
   def update(conn, _params) do
     do_update(conn, nil, nil, false)
   end
@@ -18,14 +19,20 @@ defmodule SignDictWeb.EmailConfirmationController do
     |> put_flash(:error, gettext("Invalid confirmation link."))
     |> redirect(to: "/")
   end
+
   defp do_update(conn, user, token, change) do
-    changeset = User.confirm_email_changeset(user,
-                  %{confirmation_token_unencrypted: token})
+    changeset =
+      User.confirm_email_changeset(
+        user,
+        %{confirmation_token_unencrypted: token}
+      )
+
     case Repo.update(changeset) do
       {:ok, _user_changeset} ->
         conn
         |> Plug.sign_in(user)
         |> redirect_success(change)
+
       {:error, _user_changeset} ->
         conn
         |> put_flash(:error, gettext("Unable to confirm your email address."))
@@ -38,9 +45,9 @@ defmodule SignDictWeb.EmailConfirmationController do
     |> put_flash(:info, gettext("Your new email address is now confirmed."))
     |> redirect(to: "/")
   end
+
   defp redirect_success(conn, false) do
     conn
     |> redirect(to: page_path(conn, :welcome))
   end
-
 end
