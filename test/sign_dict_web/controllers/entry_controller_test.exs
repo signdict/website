@@ -142,7 +142,7 @@ defmodule SignDict.EntryControllerTest do
 
   describe "create/2" do
     test "it redirects to the record page if entry could be stored", %{conn: conn} do
-      language = SignDict.Factory.find_or_insert_language("dgs")
+      language = SignDict.Factory.find_or_insert_language("DGS")
 
       conn =
         conn
@@ -163,7 +163,7 @@ defmodule SignDict.EntryControllerTest do
     test "it redirects to an already existing page if the entry was already in the database", %{
       conn: conn
     } do
-      {:ok, language} = SignDict.Factory.find_or_build_language("dgs") |> Repo.insert()
+      {:ok, language} = SignDict.Factory.find_or_build_language("DGS") |> Repo.insert()
       entry = insert(:entry, text: "Another excelent entry", description: "", type: "word")
 
       conn =
