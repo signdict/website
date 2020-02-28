@@ -25,6 +25,8 @@ defmodule SignDict.Entry do
     has_many(:sign_writings, SignWriting)
     has_many(:lists, through: [:list_entries, :list])
 
+    many_to_many(:domains, SignDict.Domain, join_through: "domains_entries")
+
     belongs_to(:current_video, Video)
 
     timestamps()
@@ -192,9 +194,10 @@ defmodule SignDict.Entry do
   end
 
   def paginate(query, page, size) do
-    from query,
+    from(query,
       limit: type(^size, :integer),
-      offset: type(^((page-1) * size), :integer)
+      offset: type(^((page - 1) * size), :integer)
+    )
   end
 
   defp postgres_locale(locale) do
