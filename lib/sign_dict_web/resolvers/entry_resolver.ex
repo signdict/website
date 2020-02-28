@@ -4,6 +4,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
   alias SignDict.Services.Url
   import Ecto.Query, only: [preload: 2]
 
+  # TODO: make sure it only uses signdict.org stuff here :)
   def entries(_parent, args, _resolution) do
     page = Map.get(args, :page, 1)
     size = Enum.min([100, Map.get(args, :per_page, 50)])
@@ -40,7 +41,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
 
     entries =
       language
-      |> Entry.search_query(args[:word])
+      |> Entry.search_query("signdict.org", args[:word])
       |> Entry.with_language()
       |> Entry.with_videos_and_users()
       |> Entry.with_current_video()

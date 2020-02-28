@@ -153,12 +153,12 @@ defmodule SignDict.EntryTest do
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos",
          %{train: train} do
-      assert Enum.map(Entry.search_query("de", "tr") |> Repo.all(), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "signdict.org", "tr") |> Repo.all(), & &1.id) ==
                Enum.map([train], & &1.id)
     end
 
     test "it also finds words with accents when using without", %{hotel: hotel} do
-      assert Enum.map(Entry.search_query("de", "hotel") |> Repo.all(), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "signdict.org", "hotel") |> Repo.all(), & &1.id) ==
                Enum.map([hotel], & &1.id)
     end
 
@@ -166,7 +166,7 @@ defmodule SignDict.EntryTest do
       house: house,
       house_boat: house_boat
     } do
-      assert Enum.map(Entry.search_query("de", "haus") |> Repo.all(), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "signdict.org", "haus") |> Repo.all(), & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
     end
 
@@ -174,7 +174,7 @@ defmodule SignDict.EntryTest do
       house: house,
       house_boat: house_boat
     } do
-      assert Enum.map(Entry.search_query("de", "häuser") |> Repo.all(), & &1.id) ==
+      assert Enum.map(Entry.search_query("de", "signdict.org", "häuser") |> Repo.all(), & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
     end
   end
@@ -207,7 +207,7 @@ defmodule SignDict.EntryTest do
       insert(:video_published, %{entry: sheep_entry})
       Entry.update_current_video(sheep_entry)
 
-      entries = Entry.active_entries() |> Repo.all()
+      entries = Entry.active_entries("signdict.org") |> Repo.all()
 
       assert [sheep_entry.id] == Enum.map(entries, fn x -> x.id end)
     end

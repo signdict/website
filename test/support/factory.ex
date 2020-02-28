@@ -46,6 +46,14 @@ defmodule SignDict.Factory do
     }
   end
 
+  def domain_factory do
+    %SignDict.Domain{domain: "signdict.org"}
+  end
+
+  def find_or_build_domain(domain) do
+    SignDict.Repo.get_by(SignDict.Domain, domain: domain) || build(:domain, domain: domain)
+  end
+
   def find_or_build_language(language) do
     SignDict.Repo.get_by(SignDict.Language, short_name: language) ||
       build(String.to_atom("language_#{String.downcase(language)}"))
@@ -81,7 +89,8 @@ defmodule SignDict.Factory do
       description: sequence(:email, &"some content #{&1}"),
       text: "some content",
       type: "word",
-      language: find_or_build_language("DGS")
+      language: find_or_build_language("DGS"),
+      domains: [find_or_build_domain("signdict.org")]
     }
   end
 

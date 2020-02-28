@@ -40,10 +40,10 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     video_1: video_1,
     video_2: video_2
   } do
-    conn = %{assigns: %{current_user: nil}}
+    conn = %{assigns: %{current_user: nil}, host: "signdict.org"}
     result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id)
     assert result.conn == conn
-    assert result.entry == entry
+    assert result.entry |> SignDict.Repo.preload(:domains) == entry
     assert result.video == video_1
     assert result.voted == %Video{}
     assert result.videos == [video_1, video_2]
@@ -55,10 +55,12 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     video_2: video_2,
     user_3: user
   } do
-    conn = %{assigns: %{current_user: user}}
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
+
     result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id)
+
     assert result.conn == conn
-    assert result.entry == entry
+    assert result.entry |> SignDict.Repo.preload(:domains) == entry
     assert result.video == video_2
     assert result.voted == video_2
     assert result.videos == [video_1, video_2]
@@ -70,10 +72,10 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     video_2: video_2,
     user_3: user
   } do
-    conn = %{assigns: %{current_user: user}}
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
     result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id, video_id: video_1.id)
     assert result.conn == conn
-    assert result.entry == entry
+    assert result.entry |> SignDict.Repo.preload(:domains) == entry
     assert result.video == video_1
     assert result.voted == video_2
     assert result.videos == [video_1, video_2]
@@ -85,17 +87,17 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     video_2: video_2,
     user_3: user
   } do
-    conn = %{assigns: %{current_user: user}}
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
     result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id, video_id: 0)
     assert result.conn == conn
-    assert result.entry == entry
+    assert result.entry |> SignDict.Repo.preload(:domains) == entry
     assert result.video == nil
     assert result.voted == video_2
     assert result.videos == [video_1, video_2]
   end
 
   test "it returns nil if no entry be found and an entry is given" do
-    conn = %{assigns: %{current_user: nil}}
+    conn = %{assigns: %{current_user: nil}, host: "signdict.org"}
     result = EntryVideoLoader.load_videos_for_entry(conn, id: 0, video_id: 0)
     assert result.conn == conn
     assert result.entry == nil

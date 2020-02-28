@@ -173,7 +173,12 @@ defmodule SignDict.Entry do
     |> Repo.get!(entry.id)
   end
 
-  def search_query(_locale, nil), do: from(e in Entry)
+  def search_query(_locale, domain, nil),
+    do:
+      from(entry in Entry,
+        join: domain in assoc(entry, :domains),
+        where: domain.domain == ^domain
+      )
 
   def search_query(locale, domain, search) do
     qry = """
