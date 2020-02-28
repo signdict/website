@@ -38,6 +38,7 @@ defmodule SignDictWeb do
 
       import SignDictWeb.Router.Helpers
       import SignDictWeb.Gettext
+      import SignDictWeb.Helpers.LayoutHelper
     end
   end
 
@@ -61,6 +62,7 @@ defmodule SignDictWeb do
       import SignDictWeb.BlazeHelpers
       import SignDictWeb.Gettext
       import SignDictWeb.Helpers.DateHelper
+      import SignDictWeb.Helpers.LayoutHelper
     end
   end
 

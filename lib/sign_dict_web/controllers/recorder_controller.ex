@@ -12,7 +12,6 @@ defmodule SignDictWeb.RecorderController do
       render(
         conn,
         "index_#{Gettext.get_locale(SignDictWeb.Gettext)}.html",
-        layout: {SignDictWeb.LayoutView, "app.html"},
         entry: entry
       )
     end

@@ -21,7 +21,6 @@ defmodule SignDictWeb.EntryController do
       |> Repo.paginate(params)
 
     render(conn, "index.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       entries: entries,
       searchbar: true,
       letter: letter,
@@ -30,18 +29,20 @@ defmodule SignDictWeb.EntryController do
   end
 
   def latest(conn, params) do
+    domain = conn.host
+
     query =
-      from(v in Video,
-        where: v.state == ^"published",
-        join: e in assoc(v, :entry),
-        order_by: [desc: v.inserted_at],
+      from(video in Video,
+        join: entry in assoc(video, :entry),
+        join: domain in assoc(entry, :domains),
+        where: video.state == ^"published" and domain.domain == ^domain,
+        order_by: [desc: video.inserted_at],
         preload: :entry
       )
 
     videos = Repo.paginate(query, params)
 
     render(conn, "latest.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       videos: videos,
       searchbar: true,
       title: gettext("Recently created videos")
@@ -75,6 +76,7 @@ defmodule SignDictWeb.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
+    # TODO: use domain here
     changeset = Entry.changeset(%Entry{}, entry_params)
     entry = Entry.find_by_changeset(changeset)
 
@@ -124,7 +126,7 @@ defmodule SignDictWeb.EntryController do
     entry = SignDict.Repo.preload(entry, :sign_writings)
 
     render(conn, "show.html",
-      layout: {SignDictWeb.LayoutView, "empty.html"},
+      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
       entry: entry,
       video: video,
       videos: videos,

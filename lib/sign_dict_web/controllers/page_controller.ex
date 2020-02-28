@@ -2,18 +2,15 @@ defmodule SignDictWeb.PageController do
   use SignDictWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html",
-      layout: {SignDictWeb.LayoutView, "empty.html"},
+    render(conn, get_layout_for(conn.host, "index.html"),
+      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
       contributor_count: contributor_count(conn.host),
       sign_count: sign_count(conn.host)
     )
   end
 
   def imprint(conn, _params) do
-    render(conn, "imprint.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
-      title: gettext("Imprint")
-    )
+    render(conn, "imprint.html", title: gettext("Imprint"))
   end
 
   def welcome(conn, _params) do
@@ -26,7 +23,6 @@ defmodule SignDictWeb.PageController do
 
   def about(conn, _params) do
     render(conn, "about_#{Gettext.get_locale(SignDictWeb.Gettext)}.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       searchbar: true,
       title: gettext("About")
     )
@@ -34,7 +30,6 @@ defmodule SignDictWeb.PageController do
 
   def privacy(conn, _params) do
     render(conn, "privacy_#{Gettext.get_locale(SignDictWeb.Gettext)}.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       searchbar: true,
       title: gettext("Privacy")
     )
@@ -42,7 +37,6 @@ defmodule SignDictWeb.PageController do
 
   def supporter(conn, _params) do
     render(conn, "supporter.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       title: gettext("Supporter"),
       supporter_footer: false,
       searchbar: true
@@ -51,7 +45,6 @@ defmodule SignDictWeb.PageController do
 
   def not_supported(conn, _params) do
     render(conn, "not_supported.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       title: gettext("Your browser is not supported"),
       supporter_footer: false,
       searchbar: true

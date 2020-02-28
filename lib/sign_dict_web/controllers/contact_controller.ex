@@ -9,7 +9,6 @@ defmodule SignDictWeb.ContactController do
     email = user_email(conn.assigns)
 
     render(conn, "new.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       email: email,
       content: ""
     )
@@ -46,7 +45,6 @@ defmodule SignDictWeb.ContactController do
     conn
     |> put_flash(:error, gettext("The recaptcha was wrong, email not sent."))
     |> render("new.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       email: email,
       content: content
     )

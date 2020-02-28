@@ -63,7 +63,10 @@ defmodule SignDict.Entry do
   end
 
   def active_entries(domain) do
-    Entry |> where([e], not is_nil(e.current_video_id))
+    from(entry in SignDict.Entry,
+      join: domain in assoc(entry, :domains),
+      where: not is_nil(entry.current_video_id) and domain.domain == ^domain
+    )
   end
 
   def for_letter(query, nil), do: query
@@ -172,7 +175,7 @@ defmodule SignDict.Entry do
 
   def search_query(_locale, nil), do: from(e in Entry)
 
-  def search_query(locale, search) do
+  def search_query(locale, domain, search) do
     qry = """
       select id from entries where current_video_id is not null and
         fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
@@ -188,7 +191,8 @@ defmodule SignDict.Entry do
 
     from(
       entry in Entry,
-      where: entry.id in ^ids,
+      join: domain in assoc(entry, :domains),
+      where: entry.id in ^ids and domain.domain == ^domain,
       order_by: fragment("levenshtein(?, ?)", entry.text, ^search)
     )
   end
