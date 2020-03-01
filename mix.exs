@@ -51,7 +51,7 @@ defmodule SignDict.Mixfile do
       {:bootleg, "~> 0.7", runtime: false},
       {:bugsnex, "~> 0.4.1"},
       {:canary, "~> 1.1.0"},
-      {:comeonin, "~> 5.2.0"},
+      {:comeonin, "~> 5.3.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.2.0", only: [:dev, :test]},
       {:distillery, "~> 2.0.12", runtime: false},
