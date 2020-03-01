@@ -5276,10 +5276,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-postcss-advanced-variables@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-advanced-variables/-/postcss-advanced-variables-3.0.0.tgz#d1ca9a0da920c0be41213dd33ce6033d14f0b150"
-  integrity sha512-e5tcG0+l2qaqV65+qQCAW91vX4+mYbh2m5tdBYrzOhYjFgtNmtehmZWotvzWTGbtgbP11tgGirEYy2P7m6HceQ==
+postcss-advanced-variables@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-advanced-variables/-/postcss-advanced-variables-3.0.1.tgz#260a6ec1fc7256e94798824a742580249926db13"
+  integrity sha512-JqVjfkmqPoazMobVeQYzbt7djcDGJfMlpwBd9abTqmzWR40tvIUMXpTU5w3riqz7h+wYPY7V6GF8BIXL/ybEfg==
   dependencies:
     "@csstools/sass-import-resolve" "^1.0.0"
     postcss "^7.0.6"
