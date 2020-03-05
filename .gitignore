@@ -36,3 +36,6 @@ dump.rdb
 
 # Distillery releases
 releases/
+
+# Temporary data folder
+sign2mint/
