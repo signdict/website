@@ -9,7 +9,8 @@ defmodule SignDict.EntryVotingTest do
       password_confirmation: "correct_password"
     })
 
-    video = insert(:video_with_entry)
+    domain = insert(:domain, domain: "localhost")
+    video = insert(:video_with_entry, domains: [domain])
 
     session
     |> visit("/")
