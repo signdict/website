@@ -1,4 +1,20 @@
 <div class="so-footer">
+  <%= if @conn.assigns[:supporter_footer] == nil || @conn.assigns[:supporter_footer] == true do %>
+    <div class="o-container o-container--medium">
+      <div class="o-grid o-grid--wrap">
+        <div class="o-grid__cell">
+          <h1 class="so-footer--sponsorheader">
+            <%= link gettext("Supporter"), to: page_path(@conn, :supporter) %>
+          </h1>
+          <p>
+            <a href="https://www.bmas.de"><img class="so-footer--sponsorlogo so-footer--bmbf" src="/images/deleges/bmas.png" alt="<%= gettext("Logo Bundesministerium für Arbeit und Soziales") %>"/></a>
+            <a href="https://www.wps.de/"><img class="so-footer--sponsorlogo so-footer--prototype" src="/images/deleges/wps.png" alt="<%= gettext("Logo WPS GmbH") %>"/></a>
+            <a href="https://www.maxplanckfoundation.org/"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/deleges/maxplanck.png" alt="<%= gettext("Logo Max Planck") %>"/></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div class="so-footer--links">
     <div class="o-container o-container--medium">
       <div class="o-grid o-grid--wrap">
