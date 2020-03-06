@@ -128,6 +128,23 @@ defmodule SignDict.EntryControllerTest do
       refute_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
                        [^entry_id]}
     end
+
+    test "it searches if entry is for other domain and no video is given", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+      conn = get(conn, entry_path(conn, :show, entry))
+      assert redirected_to(conn) == search_path(conn, :index, q: "apple")
+    end
+
+    test "it redirects if entry is for other domain", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+      conn = get(conn, entry_video_path(conn, :show, entry, entry.current_video_id))
+      assert redirected_to(conn) == "/"
+      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+    end
   end
 
   describe "new/2" do
@@ -143,7 +160,7 @@ defmodule SignDict.EntryControllerTest do
   describe "create/2" do
     test "it redirects to the record page if entry could be stored", %{conn: conn} do
       language = SignDict.Factory.find_or_insert_language("DGS")
-      insert(:domain)
+      domain = insert(:domain)
 
       conn =
         conn
@@ -157,7 +174,8 @@ defmodule SignDict.EntryControllerTest do
           }
         )
 
-      entry = Repo.get_by!(Entry, text: "New Entry")
+      entry = Repo.get_by!(Entry, text: "New Entry") |> Repo.preload(:domains)
+      assert entry.domains == [domain]
       assert redirected_to(conn) == recorder_path(conn, :index, entry.id)
     end
 
@@ -202,13 +220,11 @@ defmodule SignDict.EntryControllerTest do
 
   describe "index/2" do
     test "it shows only entries for a certain letter", %{conn: conn} do
-      sloth_entry = insert(:entry, %{text: "Sloth"})
-      insert(:video_published, %{entry: sloth_entry})
-      Entry.update_current_video(sloth_entry)
+      insert(:entry_with_current_video, text: "Sloth")
+      insert(:entry_with_current_video, text: "Marmot")
 
-      marmot_entry = insert(:entry, %{text: "Marmot"})
-      insert(:video_published, %{entry: marmot_entry})
-      Entry.update_current_video(marmot_entry)
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Snake", domains: [domain])
 
       conn =
         conn
@@ -217,18 +233,17 @@ defmodule SignDict.EntryControllerTest do
       body = html_response(conn, 200)
       assert body =~ "Sloth"
       refute body =~ "Marmot"
+      refute body =~ "Snake"
     end
   end
 
   describe "latest/2" do
     test "it shows newest videos first", %{conn: conn} do
-      sloth_entry = insert(:entry, %{text: "Sloth"})
-      insert(:video_published, %{entry: sloth_entry})
-      Entry.update_current_video(sloth_entry)
+      insert(:entry_with_current_video, text: "Sloth")
+      insert(:entry_with_current_video, text: "Marmot")
 
-      marmot_entry = insert(:entry, %{text: "Marmot"})
-      insert(:video_published, %{entry: marmot_entry})
-      Entry.update_current_video(marmot_entry)
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Snake", domains: [domain])
 
       conn =
         conn
@@ -237,6 +252,7 @@ defmodule SignDict.EntryControllerTest do
       body = html_response(conn, 200)
       assert Regex.match?(~r/entry.*sloth.*entry.*marmot/s, body)
       refute Regex.match?(~r/marmot.*sloth/s, body)
+      refute body =~ "Snake"
     end
   end
 end

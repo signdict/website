@@ -1,4 +1,3 @@
-# TODO: Show domain
 defmodule SignDictWeb.Backend.EntryController do
   use SignDictWeb, :controller
   alias SignDict.Entry

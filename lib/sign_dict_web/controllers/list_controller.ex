@@ -1,4 +1,3 @@
-# TODO: ADD DOMAIN TEESTS
 defmodule SignDictWeb.ListController do
   @moduledoc """
   """
