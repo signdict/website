@@ -1,16 +1,18 @@
 defmodule SignDict.Services.EntryVideoLoader do
+  import Ecto.Query
+
   alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.Video
 
   def load_videos_for_entry(conn, id: entry_id, video_id: video_id) do
-    result = do_load_entry_and_videos(entry_id, conn.assigns.current_user)
+    result = do_load_entry_and_videos(entry_id, conn.host, conn.assigns.current_user)
     video = do_load_video(%{video_id: video_id, videos: result.videos})
     Map.merge(result, %{conn: conn, video: video})
   end
 
   def load_videos_for_entry(conn, id: entry_id) do
-    result = do_load_entry_and_videos(entry_id, conn.assigns.current_user)
+    result = do_load_entry_and_videos(entry_id, conn.host, conn.assigns.current_user)
 
     video =
       if !is_nil(result[:entry]) do
@@ -46,8 +48,14 @@ defmodule SignDict.Services.EntryVideoLoader do
     nil
   end
 
-  def do_load_entry_and_videos(entry_id, current_user) do
-    Entry
+  def do_load_entry_and_videos(entry_id, domain, current_user) do
+    query =
+      from(entry in Entry,
+        join: domain in assoc(entry, :domains),
+        where: domain.domain == ^domain
+      )
+
+    query
     |> Entry.with_language()
     |> Repo.get(entry_id)
     |> do_fetch_videos_for_entry(current_user)

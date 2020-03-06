@@ -5,7 +5,7 @@ defmodule SignDictWeb.Backend.LanguageController do
   plug :load_and_authorize_resource, model: Language, except: :index
 
   def index(conn, _params) do
-    languages = Language |> order_by(asc: :short_name) |> Repo.all
+    languages = Language |> order_by(asc: :short_name) |> Repo.all()
     render(conn, "index.html", languages: languages)
   end
 
@@ -22,6 +22,7 @@ defmodule SignDictWeb.Backend.LanguageController do
         conn
         |> put_flash(:info, gettext("Language created successfully."))
         |> redirect(to: backend_language_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -46,6 +47,7 @@ defmodule SignDictWeb.Backend.LanguageController do
         conn
         |> put_flash(:info, gettext("Language updated successfully."))
         |> redirect(to: backend_language_path(conn, :show, language))
+
       {:error, changeset} ->
         render(conn, "edit.html", language: language, changeset: changeset)
     end

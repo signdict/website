@@ -34,6 +34,8 @@ config :sign_dict, :upload_path, "./test/uploads"
 
 config :sign_dict, SignDictWeb.Mailer, adapter: Bamboo.TestAdapter
 
+config :sign_dict, :newsletter, subscriber: SignDict.MockChimp
+
 config :sign_dict, :queue, library: SignDict.MockExq
 
 config :bamboo, :refute_timeout, 10

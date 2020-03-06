@@ -210,10 +210,10 @@ defmodule SignDict.User do
     |> validate_password
   end
 
-  defp validate_token(%{valid?: false} = changeset, _field_encrypted, _field_unencrypted),
+  defp validate_token(changeset = %{valid?: false}, _field_encrypted, _field_unencrypted),
     do: changeset
 
-  defp validate_token(%{valid?: true} = changeset, field_encrypted, field_unencrypted) do
+  defp validate_token(changeset = %{valid?: true}, field_encrypted, field_unencrypted) do
     {:ok, reset_unencrypted} = Changeset.fetch_change(changeset, field_unencrypted)
     {_, reset_encrypted} = Changeset.fetch_field(changeset, field_encrypted)
     token_matches = Bcrypt.verify_pass(reset_unencrypted, reset_encrypted)
@@ -251,9 +251,9 @@ defmodule SignDict.User do
     |> hash_password()
   end
 
-  defp hash_password(%{valid?: false} = changeset), do: changeset
+  defp hash_password(changeset = %{valid?: false}), do: changeset
 
-  defp hash_password(%{valid?: true} = changeset) do
+  defp hash_password(changeset = %{valid?: true}) do
     hashed_password =
       changeset
       |> get_field(:password)

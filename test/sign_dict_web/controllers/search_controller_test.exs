@@ -54,4 +54,14 @@ defmodule SignDict.SearchControllerTest do
     conn = get(conn, search_path(conn, :index, q: "Language"))
     assert redirected_to(conn) == entry_path(conn, :show, entry)
   end
+
+  test "it should not find something with a wrong domain", %{conn: conn} do
+    domain = insert(:domain, domain: "example.com")
+    insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+    conn = get(conn, search_path(conn, :index, q: "Apple"))
+    assert conn.assigns.entries == []
+
+    assert html_response(conn, 200) =~ "Search results for Apple"
+  end
 end

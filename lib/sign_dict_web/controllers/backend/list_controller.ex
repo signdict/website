@@ -22,6 +22,7 @@ defmodule SignDictWeb.Backend.ListController do
         conn
         |> put_flash(:info, gettext("List created successfully."))
         |> redirect(to: backend_list_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -48,6 +49,7 @@ defmodule SignDictWeb.Backend.ListController do
         conn
         |> put_flash(:info, gettext("List updated successfully."))
         |> redirect(to: backend_list_path(conn, :show, list))
+
       {:error, changeset} ->
         render(conn, "edit.html", list: list, changeset: changeset)
     end
@@ -66,7 +68,10 @@ defmodule SignDictWeb.Backend.ListController do
       List |> order_by(:name) |> Repo.paginate(params)
     else
       %Scrivener.Page{
-        entries: [], page_number: 1, page_size: 25, total_entries: 0,
+        entries: [],
+        page_number: 1,
+        page_size: 25,
+        total_entries: 0,
         total_pages: 1
       }
     end

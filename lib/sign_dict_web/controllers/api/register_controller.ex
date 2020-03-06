@@ -6,16 +6,19 @@ defmodule SignDictWeb.Api.RegisterController do
   alias SignDict.User
 
   def create(conn, %{"user" => user_params}) do
-    result = %User{}
-             |> User.register_changeset(user_params)
-             |> Repo.insert()
+    result =
+      %User{}
+      |> User.register_changeset(user_params)
+      |> Repo.insert()
 
     case result do
       {:ok, user} ->
         send_user_mails(user)
+
         conn
         |> put_session(:registered_user_id, user.id)
         |> render(user: user)
+
       {:error, changeset} ->
         conn
         |> put_status(400)
@@ -27,8 +30,7 @@ defmodule SignDictWeb.Api.RegisterController do
     if user.want_newsletter, do: User.subscribe_to_newsletter(user)
 
     user
-    |> Email.confirm_email
-    |> Mailer.deliver_later
+    |> Email.confirm_email()
+    |> Mailer.deliver_later()
   end
-
 end

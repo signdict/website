@@ -21,5 +21,4 @@ defmodule SignDictWeb.Avatar do
   def storage_dir(_version, {_file, scope}) do
     "uploads/user/avatars/#{scope.id}"
   end
-
 end

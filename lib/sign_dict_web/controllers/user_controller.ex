@@ -13,30 +13,37 @@ defmodule SignDictWeb.UserController do
   plug :load_and_authorize_resource, model: User
 
   def new(conn, _params) do
-    render conn, "new.html",
+    render(conn, "new.html",
       changeset: User.register_changeset(%User{}),
       title: gettext("Register")
+    )
   end
 
   def create(conn, %{"user" => user_params}) do
-    result = %User{}
-             |> User.register_changeset(user_params)
-             |> Repo.insert()
+    result =
+      %User{}
+      |> User.register_changeset(user_params)
+      |> Repo.insert()
 
     case result do
       {:ok, user} ->
         if user.want_newsletter, do: User.subscribe_to_newsletter(user)
+
         conn
         |> sent_confirm_email(user)
         |> redirect(to: "/")
+
       {:error, changeset} ->
-        render conn, "new.html", changeset: changeset,
+        render(conn, "new.html",
+          changeset: changeset,
           title: gettext("Register")
+        )
     end
   end
 
   def show(conn, params) do
     user = conn.assigns.user
+
     render(conn, "show.html",
       user: user,
       searchbar: true,
@@ -49,6 +56,7 @@ defmodule SignDictWeb.UserController do
   def edit(conn, _params) do
     user = conn.assigns.user
     changeset = User.changeset(user)
+
     render(conn, "edit.html",
       user: user,
       changeset: changeset,
@@ -67,35 +75,48 @@ defmodule SignDictWeb.UserController do
         |> put_flash(:info, gettext("Updated successfully."))
         |> sent_confirm_email_change(user, changeset)
         |> redirect(to: user_path(conn, :show, user))
+
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
   end
 
   defp load_videos(user, params) do
-    query = from v in Video,
-      where: v.state == ^"published" and v.user_id == ^user.id,
-      join: e in assoc(v, :entry),
-      order_by: e.text,
-      preload: :entry
+    query =
+      from v in Video,
+        where: v.state == ^"published" and v.user_id == ^user.id,
+        join: e in assoc(v, :entry),
+        order_by: e.text,
+        preload: :entry
+
     Repo.paginate(query, params)
   end
 
   defp sent_confirm_email(conn, user) do
     user
-    |> Email.confirm_email
-    |> Mailer.deliver_later
+    |> Email.confirm_email()
+    |> Mailer.deliver_later()
+
     conn
-    |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm your account."))
+    |> put_flash(
+      :info,
+      gettext("Please click on the link in the email we just sent to confirm your account.")
+    )
   end
 
   defp sent_confirm_email_change(conn, user, changeset) do
     if Changeset.fetch_change(changeset, :unconfirmed_email) != :error do
       user
-      |> Email.confirm_email_change
-      |> Mailer.deliver_later
+      |> Email.confirm_email_change()
+      |> Mailer.deliver_later()
+
       conn
-      |> put_flash(:info, gettext("Please click on the link in the email we just sent to confirm the change of your email."))
+      |> put_flash(
+        :info,
+        gettext(
+          "Please click on the link in the email we just sent to confirm the change of your email."
+        )
+      )
     else
       conn
     end

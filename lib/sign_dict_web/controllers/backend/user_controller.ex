@@ -23,6 +23,7 @@ defmodule SignDictWeb.Backend.UserController do
         conn
         |> put_flash(:info, gettext("User created successfully."))
         |> redirect(to: backend_user_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -30,10 +31,13 @@ defmodule SignDictWeb.Backend.UserController do
 
   def show(conn, params) do
     user = conn.assigns.user |> Repo.preload(videos: :entry)
-    videos = Video
-             |> where([video], video.user_id == ^user.id)
-             |> preload(:entry)
-             |> Repo.paginate(params)
+
+    videos =
+      Video
+      |> where([video], video.user_id == ^user.id)
+      |> preload(:entry)
+      |> Repo.paginate(params)
+
     render(conn, "show.html", user: user, videos: videos)
   end
 
@@ -52,6 +56,7 @@ defmodule SignDictWeb.Backend.UserController do
         conn
         |> put_flash(:info, gettext("User updated successfully."))
         |> redirect(to: backend_user_path(conn, :show, user))
+
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -70,7 +75,10 @@ defmodule SignDictWeb.Backend.UserController do
       User |> order_by(:id) |> Repo.paginate(params)
     else
       %Scrivener.Page{
-        entries: [], page_number: 1, page_size: 25, total_entries: 0,
+        entries: [],
+        page_number: 1,
+        page_size: 25,
+        total_entries: 0,
         total_pages: 1
       }
     end

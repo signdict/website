@@ -60,7 +60,7 @@ defmodule SignDict.Importer.JsonImporter do
   end
 
   defp do_find_or_create_entry_for(text, description) do
-    language = find_or_create_language_for("dgs")
+    language = find_or_create_language_for("DGS")
 
     query =
       if description == nil || String.length(description) == 0 do

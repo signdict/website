@@ -8,7 +8,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
   @valid_attrs %{
     iso6393: "gsg2",
     long_name: "German Sign Language",
-    short_name: "dgs",
+    short_name: "DGS",
     default_locale: "DE"
   }
   @invalid_attrs %{

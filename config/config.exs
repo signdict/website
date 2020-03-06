@@ -73,7 +73,7 @@ config :sign_dict, :jw_player,
 
 config :sign_dict, :queue, library: Exq
 
-config :sign_dict, :newsletter, subscriber: SignDict.MockChimp
+config :sign_dict, :newsletter, subscriber: ExChimp.List
 
 config :sign_dict, :recaptcha, library: Recaptcha
 

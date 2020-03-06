@@ -41,19 +41,27 @@ defmodule SignDict.Factory do
     %SignDict.Language{
       iso6393: "gsg",
       long_name: "Deutsche Gebärdensprache",
-      short_name: "dgs",
+      short_name: "DGS",
       default_locale: "DE"
     }
   end
 
+  def domain_factory do
+    %SignDict.Domain{domain: "signdict.org"}
+  end
+
+  def find_or_build_domain(domain) do
+    SignDict.Repo.get_by(SignDict.Domain, domain: domain) || build(:domain, domain: domain)
+  end
+
   def find_or_build_language(language) do
     SignDict.Repo.get_by(SignDict.Language, short_name: language) ||
-      build(String.to_atom("language_#{language}"))
+      build(String.to_atom("language_#{String.downcase(language)}"))
   end
 
   def find_or_insert_language(language) do
     SignDict.Repo.get_by(SignDict.Language, short_name: language) ||
-      insert(String.to_atom("language_#{language}"))
+      insert(String.to_atom("language_#{String.downcase(language)}"))
   end
 
   def video_factory do
@@ -81,7 +89,8 @@ defmodule SignDict.Factory do
       description: sequence(:email, &"some content #{&1}"),
       text: "some content",
       type: "word",
-      language: find_or_build_language("dgs")
+      language: find_or_build_language("DGS"),
+      domains: [find_or_build_domain("signdict.org")]
     }
   end
 

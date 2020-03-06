@@ -10,6 +10,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
 
     entries =
       Entry
+      |> Entry.for_domain("signdict.org")
       |> Entry.paginate(page, size)
       |> preload([:language, current_video: :user, videos: :user])
       |> Repo.all()
@@ -20,10 +21,10 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
     {:ok, entries}
   end
 
-
   def show_entry(_parent, args, _resolution) do
     entry =
       Entry
+      |> Entry.for_domain("signdict.org")
       |> Repo.get(args[:id])
       |> Repo.preload([:language, current_video: :user, videos: :user])
       |> Url.for_entry()
@@ -41,7 +42,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
 
     entries =
       language
-      |> Entry.search_query(args[:word])
+      |> Entry.search_query("signdict.org", args[:word])
       |> Entry.with_language()
       |> Entry.with_videos_and_users()
       |> Entry.with_current_video()
