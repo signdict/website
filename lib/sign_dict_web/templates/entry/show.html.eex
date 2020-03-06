@@ -111,11 +111,18 @@
             <%= link @video.copyright, to: @video.original_href %>
           </div>
         <% end %>
+
+        <%= if String.match?(@video.license, ~r/((?:zero)|(?:by[-\w\/\.]*))/) do %>
+          <a rel="license" class="so-video-details--cc" href="http://creativecommons.org/licenses/<%= @video.license %>">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
+          </a>
+        <% else %>
+          <span class="so-video-details--label">
+            <%= gettext("License") %> <%= @video.license %>
+          </span>
+        <% end %>
       </div>
 
-      <a rel="license" href="http://creativecommons.org/licenses/<%= @video.license %>">
-        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
-      </a>
     </div>
 
     <div class="o-grid__cell o-grid__cell--width-40@small o-grid__cell--width-100">
