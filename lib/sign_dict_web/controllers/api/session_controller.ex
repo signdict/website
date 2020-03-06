@@ -10,11 +10,11 @@ defmodule SignDictWeb.Api.SessionController do
         |> Plug.sign_in(user)
         |> assign(:current_user, user)
         |> render(user: user)
+
       {:error, _reason} ->
         conn
         |> put_status(401)
         |> render(error: "Email and/or password invalid")
     end
   end
-
 end

@@ -15,5 +15,4 @@ defmodule SignDictWeb.Plug.AllowedForBackend do
       |> halt()
     end
   end
-
 end

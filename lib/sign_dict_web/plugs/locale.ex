@@ -8,15 +8,13 @@ defmodule SignDictWeb.Plug.Locale do
 
   def call(conn, _opts) do
     case fetch_locale(conn) do
-      nil     -> conn
-      locale  -> update_user_locale(conn, locale)
+      nil -> conn
+      locale -> update_user_locale(conn, locale)
     end
   end
 
   defp fetch_locale(conn) do
-    conn.params["locale"] ||
-      get_user_locale(conn) ||
-      get_session(conn, :locale)
+    conn.params["locale"] || get_user_locale(conn) || get_session(conn, :locale)
   end
 
   defp get_user_locale(conn) do
@@ -35,8 +33,7 @@ defmodule SignDictWeb.Plug.Locale do
     if user.locale != locale do
       user
       |> User.changeset(%{locale: locale})
-      |> Repo.update
+      |> Repo.update()
     end
   end
-
 end

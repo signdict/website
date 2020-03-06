@@ -1,7 +1,6 @@
 var fs = require("fs"),
   gulp = require("gulp"),
   del = require("del"),
-  rsync = require("gulp-rsync"),
   postcss = require("gulp-postcss"),
   autoprefixer = require("autoprefixer"),
   cssnano = require("cssnano"),
@@ -29,16 +28,8 @@ gulp.task("clean", function() {
 });
 
 gulp.task("static", function() {
-  return gulp
-    .src("static/**")
-    .on("error", swallowError)
-    .pipe(
-      rsync({
-        root: "static/",
-        destination: "../priv/static/",
-        silent: true
-      })
-    );
+  return gulp.src('static/**')
+    .pipe(gulp.dest('../priv/static'));
 });
 
 gulp.task("css", function() {

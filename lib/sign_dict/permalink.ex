@@ -36,4 +36,8 @@ defmodule SignDict.Permalink do
     |> String.replace(~r/[^\w-]+/u, "-")
     |> String.replace(~r/-$/, "")
   end
+
+  def embed_as(_), do: :self
+
+  def equal?(left, right), do: left == right
 end

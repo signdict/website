@@ -38,6 +38,7 @@ defmodule SignDictWeb do
 
       import SignDictWeb.Router.Helpers
       import SignDictWeb.Gettext
+      import SignDictWeb.Helpers.LayoutHelper
     end
   end
 
@@ -46,9 +47,12 @@ defmodule SignDictWeb do
       use Phoenix.View, root: "lib/sign_dict_web/templates", namespace: SignDictWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [
-        get_csrf_token: 0, get_flash: 2, view_module: 1
-      ]
+      import Phoenix.Controller,
+        only: [
+          get_csrf_token: 0,
+          get_flash: 2,
+          view_module: 1
+        ]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
@@ -58,6 +62,7 @@ defmodule SignDictWeb do
       import SignDictWeb.BlazeHelpers
       import SignDictWeb.Gettext
       import SignDictWeb.Helpers.DateHelper
+      import SignDictWeb.Helpers.LayoutHelper
     end
   end
 

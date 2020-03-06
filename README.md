@@ -94,6 +94,10 @@ The system is currently using [bootleg](https://github.com/labzero/bootleg) to
 deploy the app. Simply call `bootleg_user=USERNAME mix bootleg.update` to
 deploy it to the production environment.
 
+## Importing files manually
+
+You can import a file using a json file with `mix importer file.json`. The json should have [this](test/fixtures/videos/Zug.json) format.
+
 ## Funding
 
 This project is government funded by the [German Federal Ministry of Education and Research](http://bmbf.de)

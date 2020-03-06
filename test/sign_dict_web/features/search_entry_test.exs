@@ -5,11 +5,13 @@ defmodule SignDict.SearchEntryTest do
   alias SignDict.Entry
 
   test "Search for a sign", %{session: session} do
-    kid_entry = insert(:entry, %{text: "kid"})
+    domain = insert(:domain, domain: "localhost")
+
+    kid_entry = insert(:entry, %{text: "kid", domains: [domain]})
     insert(:video_published, %{entry: kid_entry})
     Entry.update_current_video(kid_entry)
 
-    school_entry = insert(:entry, %{text: "school"})
+    school_entry = insert(:entry, %{text: "school", domains: [domain]})
     insert(:video_published, %{entry: school_entry})
     Entry.update_current_video(school_entry)
 

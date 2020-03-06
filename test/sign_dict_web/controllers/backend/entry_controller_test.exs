@@ -47,7 +47,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
   end
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
-    langauge = find_or_insert_language("dgs")
+    langauge = find_or_insert_language("DGS")
 
     conn =
       conn

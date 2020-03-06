@@ -5,6 +5,9 @@ defmodule SignDict.Schema.EntryTest do
 
   describe "Get all entries" do
     test "Paginates entries", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
       insert(:entry_with_current_video, text: "Coconuts")
       insert(:entry_with_current_video, text: "Bananas")
       entry_3 = insert(:entry_with_current_video, text: "Blueberries")
@@ -173,10 +176,43 @@ defmodule SignDict.Schema.EntryTest do
         } = response
       )
     end
+
+    test "Returns message if entry not found for signdict domain", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+      query = """
+      {
+        entry(id: #{entry.id}) {
+          text
+        }
+      }
+      """
+
+      response =
+        conn
+        |> post(api_path(), AbsintheHelper.query_skeleton(query, "entry"))
+        |> json_response(200)
+
+      assert(
+        %{
+          "data" => %{"entry" => nil},
+          "errors" => [
+            %{
+              "message" => "Not found",
+              "path" => ["entry"]
+            }
+          ]
+        } = response
+      )
+    end
   end
 
   describe "Search entry by word" do
     test "Successfully returns entry", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Zugfahrt", domains: [domain])
+
       entry_1 = insert(:entry_with_current_video, text: "Zug")
       insert(:entry_with_current_video, text: "Eisenbahn")
 
@@ -248,6 +284,9 @@ defmodule SignDict.Schema.EntryTest do
       insert(:entry_with_current_video, text: "Zirkel")
       insert(:entry_with_current_video, text: "Elefant")
 
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Zugfahrt", domains: [domain])
+
       query = """
       {
         search(letter: "Z") {
@@ -277,6 +316,8 @@ defmodule SignDict.Schema.EntryTest do
     test "returns all entries matching search text", %{conn: conn} do
       insert(:entry_with_current_video, text: "Familie")
       insert(:entry_with_current_video, text: "Familienfest")
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Familienausflug", domains: [domain])
 
       query = """
       {

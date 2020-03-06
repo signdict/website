@@ -26,7 +26,6 @@
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
-    "gulp-rsync": "^0.0.8",
     "gulp-sourcemaps": "^2.6.5",
     "merge-stream": "^2.0.0",
     "node-sass": "^4.13.1",

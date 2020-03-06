@@ -31,10 +31,10 @@ defmodule SignDict.ListEntry do
     entry_id = get_field(changeset, :entry_id)
 
     entry =
-      if !is_nil(entry_id) do
-        Repo.get(Entry, entry_id)
-      else
+      if is_nil(entry_id) do
         nil
+      else
+        Repo.get(Entry, entry_id)
       end
 
     if is_nil(entry) || is_nil(entry.current_video_id) do

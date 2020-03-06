@@ -25,6 +25,8 @@ defmodule SignDict.Entry do
     has_many(:sign_writings, SignWriting)
     has_many(:lists, through: [:list_entries, :list])
 
+    many_to_many(:domains, SignDict.Domain, join_through: "domains_entries")
+
     belongs_to(:current_video, Video)
 
     timestamps()
@@ -60,8 +62,11 @@ defmodule SignDict.Entry do
     end
   end
 
-  def active_entries do
-    Entry |> where([e], not is_nil(e.current_video_id))
+  def active_entries(domain) do
+    from(entry in SignDict.Entry,
+      join: domain in assoc(entry, :domains),
+      where: not is_nil(entry.current_video_id) and domain.domain == ^domain
+    )
   end
 
   def for_letter(query, nil), do: query
@@ -113,6 +118,13 @@ defmodule SignDict.Entry do
 
   def with_current_video(query) do
     from(q in query, preload: [current_video: :user])
+  end
+
+  def for_domain(query, domain) do
+    from(q in query,
+      join: domain in assoc(q, :domains),
+      where: domain.domain == ^domain
+    )
   end
 
   def types do
@@ -168,9 +180,14 @@ defmodule SignDict.Entry do
     |> Repo.get!(entry.id)
   end
 
-  def search_query(_locale, nil), do: from(e in Entry)
+  def search_query(_locale, domain, nil),
+    do:
+      from(entry in Entry,
+        join: domain in assoc(entry, :domains),
+        where: domain.domain == ^domain
+      )
 
-  def search_query(locale, search) do
+  def search_query(locale, domain, search) do
     qry = """
       select id from entries where current_video_id is not null and
         fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
@@ -186,15 +203,17 @@ defmodule SignDict.Entry do
 
     from(
       entry in Entry,
-      where: entry.id in ^ids,
+      join: domain in assoc(entry, :domains),
+      where: entry.id in ^ids and domain.domain == ^domain,
       order_by: fragment("levenshtein(?, ?)", entry.text, ^search)
     )
   end
 
   def paginate(query, page, size) do
-    from query,
+    from(query,
       limit: type(^size, :integer),
-      offset: type(^((page-1) * size), :integer)
+      offset: type(^((page - 1) * size), :integer)
+    )
   end
 
   defp postgres_locale(locale) do

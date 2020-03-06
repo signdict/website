@@ -6,18 +6,24 @@ defmodule SignDictWeb.SharedView do
 
   def ogtags(conn) do
     description = gettext("A sign language dictionary")
-    image_url   = Helpers.url(conn) <> "/images/logo.png"
-    ogtags = Map.merge(%{
-                "og:title"            => title(conn),
-                "og:description"      => description,
-                "og:type"             => "website",
-                "og:image"            => image_url,
-                "og:url"              => Helpers.url(conn) <> conn.request_path,
-                "twitter:card"        => "summary",
-                "twitter:site"        => "@SignDict",
-                "twitter:description" => description,
-                "twitter:image"       => String.replace(image_url, "http://", "https://"),
-              }, (conn.assigns[:ogtags] || %{}))
+    image_url = Helpers.url(conn) <> "/images/logo.png"
+
+    ogtags =
+      Map.merge(
+        %{
+          "og:title" => title(conn),
+          "og:description" => description,
+          "og:type" => "website",
+          "og:image" => image_url,
+          "og:url" => Helpers.url(conn) <> conn.request_path,
+          "twitter:card" => "summary",
+          "twitter:site" => "@SignDict",
+          "twitter:description" => description,
+          "twitter:image" => String.replace(image_url, "http://", "https://")
+        },
+        conn.assigns[:ogtags] || %{}
+      )
+
     render_metatags(ogtags)
   end
 
@@ -31,8 +37,8 @@ defmodule SignDictWeb.SharedView do
   defp title(%{assigns: %{title: title}}) do
     "SignDict - #{title}"
   end
+
   defp title(_args) do
     "SignDict"
   end
-
 end

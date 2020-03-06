@@ -21,5 +21,13 @@ defmodule SignDict.FeelingLuckyControllerTest do
       conn = get(conn, feeling_lucky_path(conn, :index))
       assert redirected_to(conn) == "/"
     end
+
+    test "does not redirect to an entry on a wrong domain", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+      conn = get(conn, feeling_lucky_path(conn, :index))
+      assert redirected_to(conn) == "/"
+    end
   end
 end

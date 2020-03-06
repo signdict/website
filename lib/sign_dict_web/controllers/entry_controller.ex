@@ -3,6 +3,7 @@ defmodule SignDictWeb.EntryController do
   """
   use SignDictWeb, :controller
 
+  alias SignDict.Domain
   alias SignDict.Entry
   alias SignDict.Language
   alias SignDict.List
@@ -15,30 +16,34 @@ defmodule SignDictWeb.EntryController do
     letter = params["letter"] || "A"
 
     entries =
-      Entry.active_entries()
+      Entry.active_entries(conn.host)
       |> Entry.with_current_video()
       |> Entry.for_letter(letter)
       |> Repo.paginate(params)
 
     render(conn, "index.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       entries: entries,
       searchbar: true,
       letter: letter,
       title: gettext("All entries")
     )
   end
-  
+
   def latest(conn, params) do
-    query = from v in Video,
-      where: v.state == ^"published",
-      join: e in assoc(v, :entry),
-      order_by: [desc: v.inserted_at],
-      preload: :entry
+    domain = conn.host
+
+    query =
+      from(video in Video,
+        join: entry in assoc(video, :entry),
+        join: domain in assoc(entry, :domains),
+        where: video.state == ^"published" and domain.domain == ^domain,
+        order_by: [desc: video.inserted_at],
+        preload: :entry
+      )
+
     videos = Repo.paginate(query, params)
 
     render(conn, "latest.html",
-      layout: {SignDictWeb.LayoutView, "app.html"},
       videos: videos,
       searchbar: true,
       title: gettext("Recently created videos")
@@ -72,7 +77,8 @@ defmodule SignDictWeb.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
-    changeset = Entry.changeset(%Entry{}, entry_params)
+    domain = Domain.for(conn.host)
+    changeset = Entry.changeset(%Entry{domains: [domain]}, entry_params)
     entry = Entry.find_by_changeset(changeset)
 
     if entry do
@@ -90,12 +96,17 @@ defmodule SignDictWeb.EntryController do
 
       {:error, changeset} ->
         languages = Repo.all(Language)
-        render(conn, "new.html", changeset: changeset, languages: languages, text: conn.params["text"])
+
+        render(conn, "new.html",
+          changeset: changeset,
+          languages: languages,
+          text: conn.params["text"]
+        )
     end
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry})
-       when length(videos) == 0 and not is_nil(entry) do
+       when videos == [] and not is_nil(entry) do
     redirect_no_videos(conn)
   end
 
@@ -116,7 +127,7 @@ defmodule SignDictWeb.EntryController do
     entry = SignDict.Repo.preload(entry, :sign_writings)
 
     render(conn, "show.html",
-      layout: {SignDictWeb.LayoutView, "empty.html"},
+      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
       entry: entry,
       video: video,
       videos: videos,
@@ -157,12 +168,12 @@ defmodule SignDictWeb.EntryController do
     params
   end
 
-  defp add_lists_for_entry(%{entry: entry} = params) do
+  defp add_lists_for_entry(params = %{entry: entry}) do
     lists = List.lists_with_entry(entry)
     Map.merge(params, %{lists: lists})
   end
 
-  defp refresh_sign_writings(%{entry: entry} = params) do
+  defp refresh_sign_writings(params = %{entry: entry}) do
     if entry do
       if entry.deleges_updated_at == nil ||
            Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do

@@ -47,9 +47,8 @@ defmodule JwPlayer.Client do
 
   defp encode_values(params) do
     params
-    |> Enum.map(fn {k, v} ->
+    |> Enum.into(%{}, fn {k, v} ->
       {URI.encode(Atom.to_string(k)), URI.encode(v)}
     end)
-    |> Enum.into(%{})
   end
 end

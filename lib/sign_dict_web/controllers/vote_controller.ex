@@ -12,12 +12,13 @@ defmodule SignDictWeb.VoteController do
     case Vote.vote_video(conn.assigns.current_user, video) do
       {:ok, _vote} ->
         conn
-          |> put_flash(:info, gettext("Thanks for voting!"))
-          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+        |> put_flash(:info, gettext("Thanks for voting!"))
+        |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+
       {:error, _changeset} ->
         conn
-          |> put_flash(:error, gettext("Sadly your voting failed."))
-          |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+        |> put_flash(:error, gettext("Sadly your voting failed."))
+        |> redirect(to: entry_video_path(conn, :show, video.entry, video))
     end
   end
 

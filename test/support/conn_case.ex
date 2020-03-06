@@ -51,6 +51,6 @@ defmodule SignDict.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(SignDict.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: Phoenix.ConnTest.build_conn() |> Map.put(:host, "signdict.org")}
   end
 end

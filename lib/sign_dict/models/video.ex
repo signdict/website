@@ -5,8 +5,16 @@ defmodule SignDict.Video do
   alias SignDict.Repo
   alias SignDict.Vote
 
-  @states [:created, :uploaded, :prepared, :transcoding, :waiting_for_review,
-           :published, :deleted, :rejected]
+  @states [
+    :created,
+    :uploaded,
+    :prepared,
+    :transcoding,
+    :waiting_for_review,
+    :published,
+    :deleted,
+    :rejected
+  ]
 
   schema "videos" do
     field :state, :string, default: "created"
@@ -32,54 +40,72 @@ defmodule SignDict.Video do
   end
 
   statemc :state do
-    defstate @states
+    defstate(@states)
 
-    defevent :upload, %{from: [:created], to: :uploaded}, fn (changeset) ->
+    defevent(:upload, %{from: [:created], to: :uploaded}, fn changeset ->
       changeset |> Repo.update()
-    end
+    end)
 
-    defevent :prepare, %{from: [:uploaded], to: :prepared},
-        fn(changeset) ->
+    defevent(:prepare, %{from: [:uploaded], to: :prepared}, fn changeset ->
       changeset |> Repo.update()
-    end
+    end)
 
-    defevent :transcode, %{from: [:uploaded, :prepared], to: :transcoding},
-        fn(changeset) ->
+    defevent(:transcode, %{from: [:uploaded, :prepared], to: :transcoding}, fn changeset ->
       changeset |> Repo.update()
-    end
+    end)
 
-    defevent :wait_for_review, %{from: [:transcoding],
-                                 to: :waiting_for_review}, fn(changeset) ->
+    defevent(:wait_for_review, %{from: [:transcoding], to: :waiting_for_review}, fn changeset ->
       changeset |> Repo.update()
-    end
+    end)
 
-    defevent :publish, %{from: [:waiting_for_review, :rejected],
-                         to: :published}, fn(changeset) ->
+    defevent(:publish, %{from: [:waiting_for_review, :rejected], to: :published}, fn changeset ->
       changeset |> Repo.update()
-    end
+    end)
 
-    defevent :reject, %{from: [:waiting_for_review, :published],
-                        to: :rejected}, fn(changeset) ->
+    defevent(:reject, %{from: [:waiting_for_review, :published], to: :rejected}, fn changeset ->
       changeset
       |> validate_rejection_reason
       |> Repo.update()
-    end
+    end)
 
     # Allow deletion from every state:
-    defevent :delete, %{from: [:created, :uploaded, :transcoding,
-                               :waiting_for_review, :published, :rejected],
-                        to: :deleted}, fn(changeset) ->
-      changeset |> Repo.update()
-    end
+    defevent(
+      :delete,
+      %{
+        from: [:created, :uploaded, :transcoding, :waiting_for_review, :published, :rejected],
+        to: :deleted
+      },
+      fn changeset ->
+        changeset |> Repo.update()
+      end
+    )
   end
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:state, :copyright, :license, :original_href,
-                     :user_id, :entry_id, :video_url, :thumbnail_url,
-                     :plays, :metadata, :rejection_reason])
-    |> validate_required([:state, :copyright, :license, :original_href,
-                          :entry_id, :user_id, :video_url, :thumbnail_url])
+    |> cast(params, [
+      :state,
+      :copyright,
+      :license,
+      :original_href,
+      :user_id,
+      :entry_id,
+      :video_url,
+      :thumbnail_url,
+      :plays,
+      :metadata,
+      :rejection_reason
+    ])
+    |> validate_required([
+      :state,
+      :copyright,
+      :license,
+      :original_href,
+      :entry_id,
+      :user_id,
+      :video_url,
+      :thumbnail_url
+    ])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
     |> validate_state()
@@ -96,9 +122,18 @@ defmodule SignDict.Video do
 
   def changeset_transcoder(struct, params \\ %{}) do
     struct
-    |> cast(params, [:state, :copyright, :license, :original_href,
-                     :user_id, :entry_id, :video_url, :thumbnail_url,
-                     :plays, :metadata])
+    |> cast(params, [
+      :state,
+      :copyright,
+      :license,
+      :original_href,
+      :user_id,
+      :entry_id,
+      :video_url,
+      :thumbnail_url,
+      :plays,
+      :metadata
+    ])
     |> validate_required([:state, :license, :entry_id, :user_id])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
@@ -126,6 +161,7 @@ defmodule SignDict.Video do
 
   defp validate_rejection_reason(changeset) do
     reason = get_field(changeset, :rejection_reason)
+
     if is_nil(reason) || String.length(reason) == 0 do
       add_error(changeset, :rejection_reason, "should not be empty")
     else
@@ -139,7 +175,8 @@ defmodule SignDict.Video do
       where: video.entry_id == ^entry.id and video.state == ^"published",
       order_by: [desc: count(up.id), asc: video.inserted_at],
       group_by: video.id,
-      select: %{video | vote_count: count(up.id)})
+      select: %{video | vote_count: count(up.id)}
+    )
   end
 
   def with_vote_count(video) when not is_nil(video) do
@@ -150,6 +187,7 @@ defmodule SignDict.Video do
       video
     end
   end
+
   def with_vote_count(_video) do
     nil
   end
