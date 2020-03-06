@@ -72,6 +72,6 @@ defmodule SignDictWeb.PageController do
         where: video.state == "published" and domain.domain == ^domain
       )
 
-    Repo.aggregate(query, :count, :id)
+    Repo.aggregate(query, :count, :user_id)
   end
 end

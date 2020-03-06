@@ -3,7 +3,10 @@ defmodule SignDict.ReleaseTasks do
     :crypto,
     :ssl,
     :postgrex,
-    :ecto
+    :ecto,
+    :ecto_sql,
+    :logger,
+    :telemetry
   ]
 
   def signdict, do: Application.get_application(__MODULE__)
@@ -11,34 +14,44 @@ defmodule SignDict.ReleaseTasks do
   def repos, do: Application.get_env(signdict(), :ecto_repos, [])
 
   def seed do
+    start_services()
+    migrate()
+    Enum.each(repos(), &run_seeds_for/1)
+    stop_services()
+  end
+
+  def migrate do
+    start_services()
+    run_migrations()
+    stop_services()
+  end
+
+  def priv_dir(app), do: "#{:code.priv_dir(app)}"
+
+  defp start_services do
     me = signdict()
 
     IO.puts("Loading #{me}..")
-    # Load the code for signdict, but don't start it
-    :ok = Application.load(me)
+
+    Application.load(me)
 
     IO.puts("Starting dependencies..")
     # Start apps necessary for executing migrations
     Enum.each(@start_apps, &Application.ensure_all_started/1)
 
-    # Start the Repo(s) for signdict
+    # Start the Repo(s) for app
     IO.puts("Starting repos..")
-    Enum.each(repos(), & &1.start_link(pool_size: 1))
+    Enum.each(repos(), & &1.start_link(pool_size: 2))
+  end
 
-    # Run migrations
-    migrate()
-
-    # Run seed script
-    Enum.each(repos(), &run_seeds_for/1)
-
-    # Signal shutdown
+  defp stop_services do
     IO.puts("Success!")
     :init.stop()
   end
 
-  def migrate, do: Enum.each(repos(), &run_migrations_for/1)
-
-  def priv_dir(app), do: "#{:code.priv_dir(app)}"
+  defp run_migrations do
+    Enum.each(repos(), &run_migrations_for/1)
+  end
 
   defp run_migrations_for(repo) do
     app = Keyword.get(repo.config, :otp_app)
