@@ -82,7 +82,7 @@ defmodule SignDict.Mixfile do
       {:jason, "~> 1.1"},
       {:briefly, "~> 0.3"},
       {:tzdata, "~> 1.0.1"},
-      {:ex_check, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false}
     ]
   end
 
