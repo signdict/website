@@ -120,6 +120,13 @@ defmodule SignDict.Entry do
     from(q in query, preload: [current_video: :user])
   end
 
+  def for_domain(query, domain) do
+    from(q in query,
+      join: domain in assoc(q, :domains),
+      where: domain.domain == ^domain
+    )
+  end
+
   def types do
     @types
   end
