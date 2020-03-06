@@ -16,7 +16,7 @@ defmodule SignDictWeb.EmbedController do
     |> render_entry(entry_video_path(conn, :show, id, video_id))
   end
 
-  defp render_entry(%{conn: conn, videos: videos}, _entry_link) when Enum.empty?(videos) do
+  defp render_entry(%{conn: conn, videos: videos}, _entry_link) when videos == [] do
     render(conn, "show_no_video.html",
       layout: {SignDictWeb.LayoutView, "embed.html"},
       title: gettext("Sorry, no sign found")

@@ -105,7 +105,7 @@ defmodule SignDictWeb.EntryController do
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry})
-       when Enum.empty(videos) and not is_nil(entry) do
+       when videos == [] and not is_nil(entry) do
     redirect_no_videos(conn)
   end
 

@@ -36,7 +36,6 @@ defmodule SignDict.List do
     |> validate_inclusion(:sort_order, @sort_orders)
   end
 
-  # TODO: Paginate list entries
   def entries(%SignDict.List{id: id, sort_order: "manual"}) do
     from(
       list_entry in ListEntry,

@@ -43,7 +43,7 @@ defmodule SignDictWeb.Router do
   end
 
   if Application.get_env(:sign_dict, :environment) == :dev do
-    forward "/sent_emails", Bamboo.EmailPreviewPlug
+    forward "/sent_emails", Bamboo.SentEmailViewerPlug
   end
 
   scope "/", SignDictWeb do
