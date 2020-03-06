@@ -21,7 +21,7 @@ server {
 server {
   listen 443 ssl http2 default_server;
   listen [::]:443 ssl http2 default_server;
-  server_name signdict.org new.signdict.org;
+  server_name signdict.org *.signdict.org;
 
   recursive_error_pages on;
 
@@ -53,6 +53,6 @@ server {
 server {
   listen         80;
   listen    [::]:80;
-  server_name    signdict.org new.signdict.org;
+  server_name    signdict.org *.signdict.org;
   return         301 https://signdict.org$request_uri;
 }
