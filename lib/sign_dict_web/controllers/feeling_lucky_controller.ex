@@ -25,7 +25,7 @@ defmodule SignDictWeb.FeelingLuckyController do
       |> Repo.one()
 
     if entry == nil && count < 10 do
-      load_entry(count)
+      load_entry(domain, count)
     else
       entry
     end

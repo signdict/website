@@ -10,7 +10,8 @@ defmodule SignDict.EntryVotingTest do
     })
 
     domain = insert(:domain, domain: "localhost")
-    video = insert(:video_with_entry, domains: [domain])
+    entry = insert(:entry, domains: [domain])
+    video = insert(:video_with_entry, entry: entry)
 
     session
     |> visit("/")
