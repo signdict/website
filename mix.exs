@@ -81,7 +81,8 @@ defmodule SignDict.Mixfile do
       {:wallaby, "~> 0.23.0", only: :test},
       {:jason, "~> 1.1"},
       {:briefly, "~> 0.3"},
-      {:tzdata, "~> 1.0.1"}
+      {:tzdata, "~> 1.0.1"},
+      {:ex_check, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 

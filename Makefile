@@ -7,6 +7,9 @@ start:
 run-test:
 		mix test.watch
 
+check:
+		mix check
+
 i18n:
 		mix gettext.extract
 		mix gettext.merge priv/gettext
