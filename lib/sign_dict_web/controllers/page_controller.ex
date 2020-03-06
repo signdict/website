@@ -51,6 +51,7 @@ defmodule SignDictWeb.PageController do
     )
   end
 
+  # TODO: ADD DOMAIN TEESTS
   defp sign_count(domain) do
     query =
       from(video in SignDict.Video,

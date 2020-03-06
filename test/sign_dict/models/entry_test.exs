@@ -177,6 +177,26 @@ defmodule SignDict.EntryTest do
       assert Enum.map(Entry.search_query("de", "signdict.org", "häuser") |> Repo.all(), & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
     end
+
+    test "returns a list of all entries for the current domain if no search text is given" do
+      domain = insert(:domain, domain: "example.com")
+      other_domain_entry = insert(:entry, %{text: "hausbau", domains: [domain]})
+      insert(:video_published, %{entry: other_domain_entry})
+      Entry.update_current_video(other_domain_entry)
+
+      assert Enum.map(Entry.search_query("de", "example.com", nil) |> Repo.all(), & &1.id) ==
+               Enum.map([other_domain_entry], & &1.id)
+    end
+
+    test "it fails when the domain is wrong" do
+      domain = insert(:domain, domain: "example.com")
+      other_domain_entry = insert(:entry, %{text: "hausbau", domains: [domain]})
+      insert(:video_published, %{entry: other_domain_entry})
+      Entry.update_current_video(other_domain_entry)
+
+      assert Enum.map(Entry.search_query("de", "example.com", "haus") |> Repo.all(), & &1.id) ==
+               Enum.map([other_domain_entry], & &1.id)
+    end
   end
 
   describe "find_by_changeset/1" do
@@ -201,11 +221,16 @@ defmodule SignDict.EntryTest do
   end
 
   describe "active_entries/0" do
-    test "it returns only entries with current_videos" do
+    test "it returns only entries with current_videos and the correct domain" do
       insert(:entry, %{text: "Dog"})
       sheep_entry = insert(:entry, %{text: "Sheep"})
       insert(:video_published, %{entry: sheep_entry})
       Entry.update_current_video(sheep_entry)
+
+      domain = insert(:domain, domain: "example.com")
+      cat_entry = insert(:entry, %{text: "Cat", domains: [domain]})
+      insert(:video_published, %{entry: cat_entry})
+      Entry.update_current_video(cat_entry)
 
       entries = Entry.active_entries("signdict.org") |> Repo.all()
 
@@ -251,6 +276,16 @@ defmodule SignDict.EntryTest do
     test "it returns entries with A when nothing matches", %{entry_alpaca: entry_alpaca} do
       entries = Entry.for_letter(Entry, "error") |> Repo.all()
       assert [entry_alpaca.id] == Enum.map(entries, fn x -> x.id end)
+    end
+  end
+
+  describe "for_domain/2" do
+    test "it limits the entry to entries for a domain" do
+      entry_alpaca = insert(:entry, %{text: "Alpaca"})
+      entries = Entry.for_domain(Entry, "signdict.org") |> Repo.all()
+      assert [entry_alpaca.id] == Enum.map(entries, fn x -> x.id end)
+
+      assert 0 == Entry.for_domain(Entry, "example.com") |> Repo.aggregate(:count, :id)
     end
   end
 

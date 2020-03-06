@@ -96,6 +96,30 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     assert result.videos == [video_1, video_2]
   end
 
+  test "it rerturns nil if the entry has the wrong domain", %{} do
+    domain = insert(:domain, domain: "example.com")
+    entry = insert(:entry, domains: [domain])
+    _video = insert(:video_with_entry, entry: entry)
+
+    conn = %{assigns: %{current_user: nil}, host: "signdict.org"}
+    result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id)
+    assert result.conn == conn
+    assert result.entry == nil
+    assert result.videos == []
+  end
+
+  test "it rerturns nil if the video has the wrong domain", %{} do
+    domain = insert(:domain, domain: "example.com")
+    entry = insert(:entry, domains: [domain])
+    video = insert(:video_with_entry, entry: entry)
+
+    conn = %{assigns: %{current_user: nil}, host: "signdict.org"}
+    result = EntryVideoLoader.load_videos_for_entry(conn, id: entry.id, video_id: video.id)
+    assert result.conn == conn
+    assert result.entry == nil
+    assert result.videos == []
+  end
+
   test "it returns nil if no entry be found and an entry is given" do
     conn = %{assigns: %{current_user: nil}, host: "signdict.org"}
     result = EntryVideoLoader.load_videos_for_entry(conn, id: 0, video_id: 0)
