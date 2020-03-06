@@ -3,6 +3,7 @@ defmodule SignDictWeb.EntryController do
   """
   use SignDictWeb, :controller
 
+  alias SignDict.Domain
   alias SignDict.Entry
   alias SignDict.Language
   alias SignDict.List
@@ -76,8 +77,8 @@ defmodule SignDictWeb.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
-    # TODO: use domain here
-    changeset = Entry.changeset(%Entry{}, entry_params)
+    domain = Domain.for(conn.host)
+    changeset = Entry.changeset(%Entry{domains: [domain]}, entry_params)
     entry = Entry.find_by_changeset(changeset)
 
     if entry do

@@ -143,6 +143,7 @@ defmodule SignDict.EntryControllerTest do
   describe "create/2" do
     test "it redirects to the record page if entry could be stored", %{conn: conn} do
       language = SignDict.Factory.find_or_insert_language("DGS")
+      insert(:domain)
 
       conn =
         conn
@@ -182,6 +183,8 @@ defmodule SignDict.EntryControllerTest do
     end
 
     test "it shows the form if the validation of the entry failed", %{conn: conn} do
+      insert(:domain)
+
       conn =
         conn
         |> post(
