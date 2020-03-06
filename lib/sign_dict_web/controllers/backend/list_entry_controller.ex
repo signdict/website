@@ -1,6 +1,5 @@
 defmodule SignDictWeb.Backend.ListEntryController do
   use SignDictWeb, :controller
-  alias SignDict.List
   alias SignDict.ListEntry
 
   plug :load_and_authorize_resource, model: ListEntry, except: :index
@@ -25,7 +24,7 @@ defmodule SignDictWeb.Backend.ListEntryController do
   end
 
   def delete(conn, %{"list_id" => list_id}) do
-    List.remove_entry(conn.assigns.list_entry)
+    SignDict.List.remove_entry(conn.assigns.list_entry)
 
     conn
     |> put_flash(:info, gettext("List entry deleted successfully."))
@@ -33,7 +32,7 @@ defmodule SignDictWeb.Backend.ListEntryController do
   end
 
   def move_up(conn, %{"list_id" => list_id}) do
-    List.move_entry(conn.assigns.list_entry, -1)
+    SignDict.List.move_entry(conn.assigns.list_entry, -1)
 
     conn
     |> put_flash(:info, gettext("List entry moved up."))
@@ -41,7 +40,7 @@ defmodule SignDictWeb.Backend.ListEntryController do
   end
 
   def move_down(conn, %{"list_id" => list_id}) do
-    List.move_entry(conn.assigns.list_entry, 1)
+    SignDict.List.move_entry(conn.assigns.list_entry, 1)
 
     conn
     |> put_flash(:info, gettext("List entry moved down."))
