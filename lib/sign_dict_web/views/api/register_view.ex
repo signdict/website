@@ -13,9 +13,8 @@ defmodule SignDictWeb.Api.RegisterView do
 
   defp errors_to_map(errors) do
     errors
-    |> Enum.map(fn {field, detail} ->
+    |> Enum.into(%{}, fn {field, detail} ->
       {field, SignDictWeb.ErrorHelpers.translate_error(detail)}
     end)
-    |> Enum.into(%{})
   end
 end

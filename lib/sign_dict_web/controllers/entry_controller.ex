@@ -105,7 +105,7 @@ defmodule SignDictWeb.EntryController do
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry})
-       when length(videos) == 0 and not is_nil(entry) do
+       when Enum.empty(videos) and not is_nil(entry) do
     redirect_no_videos(conn)
   end
 
@@ -167,12 +167,12 @@ defmodule SignDictWeb.EntryController do
     params
   end
 
-  defp add_lists_for_entry(%{entry: entry} = params) do
+  defp add_lists_for_entry(params = %{entry: entry}) do
     lists = List.lists_with_entry(entry)
     Map.merge(params, %{lists: lists})
   end
 
-  defp refresh_sign_writings(%{entry: entry} = params) do
+  defp refresh_sign_writings(params = %{entry: entry}) do
     if entry do
       if entry.deleges_updated_at == nil ||
            Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do
