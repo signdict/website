@@ -1,6 +1,6 @@
 <template>
   <div class="position">
-    <img class="position--body" src="/images/body.svg" alt="the optimal body position">
+    <img class="position--body" src="/images/body.svg" alt="the optimal body position" />
     <video class="position--video position--video_flip" autoplay muted></video>
 
     <div class="o-modal u-higher position--modal" v-if="explainModal">
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import detectBrowser from "detect-browser";
+import { detect } from "detect-browser";
 import { getMediaConstraint } from "./media_device.js";
 
 function handleSuccess(stream) {
@@ -62,7 +62,7 @@ function initRecorder() {
 }
 
 function checkBrowser() {
-  const browser = detectBrowser.detect();
+  const browser = detect();
   if (
     (browser.name == "chrome" && parseInt(browser.version) >= 59) ||
     (browser.name == "firefox" && parseInt(browser.version) >= 55)

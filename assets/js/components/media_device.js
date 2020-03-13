@@ -1,8 +1,8 @@
-import detectBrowser from "detect-browser";
+import {detect} from "detect-browser";
 
 function getMediaConstraint() {
   let constraints = { audio: true, video: true };
-  const browser = detectBrowser.detect();
+  const browser = detect();
   if (browser.name == "firefox") {
     constraints = {
       video: {
