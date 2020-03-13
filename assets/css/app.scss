@@ -1,0 +1,70 @@
+@import "base/_colors.scss";
+@import "base/_fonts.scss";
+@import "base/_spacing.scss";
+@import "components/_alerts.scss";
+@import "components/_plyr.scss";
+@import "components/_buttons.scss";
+@import "components/_pagination.scss";
+@import "components/_forms.scss";
+@import "components/_sidebar.scss";
+@import "components/_tags.scss";
+@import "objects/_embed.scss";
+@import "objects/_entry-index.scss";
+@import "objects/_footer.scss";
+@import "objects/_landing.scss";
+@import "objects/_navigation.scss";
+@import "objects/_recorder.scss";
+@import "objects/_searchbar.scss";
+@import "objects/_supporter.scss";
+@import "objects/_user-show.scss";
+@import "objects/_video-list.scss";
+@import "objects/_video.scss";
+@import "objects/_voting-box.scss";
+@import "objects/_welcome.scss";
+@import "vendor/_font-awesome.min.scss";
+@import "vendor/_socialbuttons.scss";
+
+a {
+  color: $highlight;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  line-height: 2em;
+}
+
+body {
+  font-family: "SignDict", "Helvetica Neue";
+  font-weight: 100;
+  padding: 1em;
+  color: $dark_font;
+}
+
+input {
+  font-family: "SignDict", "Helvetica Neue";
+}
+
+@media all and (max-width: 48em) {
+  .sc-main {
+    min-height: 10em;
+  }
+}
+
+@media all and (min-width: 48em) {
+  .sc-main {
+    min-height: 30em;
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $highlight;
+}

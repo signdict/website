@@ -6,6 +6,8 @@
             ogtags: assigns[:ogtags],
             title: assigns[:title],
             appjs: false %>
+    
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/recorder.css") %>">
 
     <%= if Application.get_env(:sign_dict, :environment) == :prod do %>
       <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="053a0d2caf8b6e940418d09bad85f308"></script>

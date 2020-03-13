@@ -32,12 +32,15 @@ dgs =
     default_locale: "de"
   })
 
+domain = SignDict.Repo.insert!(%SignDict.Domain{domain: "localhost"})
+
 aufnehmen =
   SignDict.Repo.insert!(%SignDict.Entry{
     language: dgs,
     text: "Zug",
     description: "",
-    type: "word"
+    type: "word",
+    domains: [domain]
   })
 
 File.mkdir("priv/static/video_files")
