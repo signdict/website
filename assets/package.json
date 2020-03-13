@@ -36,10 +36,12 @@
     "mini-css-extract-plugin": "^0.9.0",
     "mutationobserver-shim": "^0.3.3",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "terser-webpack-plugin": "^2.3.2",
     "webpack": "4.41.6",
     "webpack-bugsnag-plugins": "^1.4.3",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "last 3 versions"

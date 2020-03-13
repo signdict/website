@@ -1,23 +1,25 @@
 const path = require("path");
 const glob = require("glob");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = (env, options) => ({
   devtool: "source-map",
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: true }),
-      new OptimizeCSSAssetsPlugin({})
+      new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),      new OptimizeCSSAssetsPlugin({})
     ]
   },
   entry: {
-    "./js/app.js": ["./js/app.js"].concat(glob.sync("./vendor/**/*.js")),
+    "app": ["./js/app.js"].concat(glob.sync("./vendor/**/*.js")),
+    "backend": ["./js/backend.js"],
+    "recorder": ["./js/recorder.js"].concat(glob.sync("./vendor/**/*.js")),
   },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, "../priv/static/js")
   },
   module: {
@@ -34,6 +36,10 @@ module.exports = (env, options) => ({
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
+        test: /\.vue$/,
+        use: 'vue-loader'
+      },
+      {
         test: /\.(svg|woff|woff2|eot|ttf|json?)$/,
         use: [
           {
@@ -48,7 +54,8 @@ module.exports = (env, options) => ({
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "../css/app.css" }),
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({ filename: "../css/[name].css" }),
     new CopyWebpackPlugin([{ from: "static/", to: "../" }])
   ]
 });
