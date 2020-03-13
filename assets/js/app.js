@@ -17,8 +17,8 @@ if (window.Element && !Element.prototype.closest) {
 import Turbolinks from "turbolinks";
 Turbolinks.start();
 
-import browser from "detect-browser";
-window.browser = browser;
+import {detect} from "detect-browser";
+window.browser = detect();
 
 import Player from "./classes/player.js";
 new Player().init();
