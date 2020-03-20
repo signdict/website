@@ -42,6 +42,7 @@ defmodule SignDictWeb.Backend.EntryController do
       conn.assigns.entry
       |> Repo.preload(videos: :user)
       |> Repo.preload(:language)
+      |> Repo.preload(:domains)
 
     render(conn, "show.html", entry: entry)
   end
