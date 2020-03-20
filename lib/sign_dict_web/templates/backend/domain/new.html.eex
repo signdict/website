@@ -1,0 +1,4 @@
+<h1 class="c-heading"><%= gettext("New domain") %></h1>
+
+<%= render "form.html", changeset: @changeset,
+                        action: backend_domain_path(@conn, :create) %>
