@@ -43,6 +43,9 @@
             <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
           <% end %>
           <%= nav_active_link @conn, gettext("Review Queue"), backend_review_path(@conn, :index) %>
+          <%= if Canada.Can.can?(@current_user, "show", %SignDict.Domain{}) do %>
+            <%= nav_active_link @conn, gettext("Domains"), backend_domain_path(@conn, :index) %>
+          <% end %>
           <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
           <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
           <%= if Canada.Can.can?(@current_user, "show", %SignDict.List{}) do %>

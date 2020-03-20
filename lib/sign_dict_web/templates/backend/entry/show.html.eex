@@ -21,6 +21,17 @@
   </div>
 </div>
 
+<div class="o-container--small">
+  <div class="o-grid">
+    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("Domains") %></strong></div>
+    <div class="o-grid__cell">
+      <%= for domain <- @entry.domains do %>
+        <%= link domain.domain, to: backend_domain_path(@conn, :show, domain) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <p>
   <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, @entry), class: "c-button" %>
 </p>

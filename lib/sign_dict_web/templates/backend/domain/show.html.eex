@@ -1,0 +1,13 @@
+<h1 class="c-heading"><%= gettext("Domain") %>: <%= @domain.domain %></h1>
+
+<%= if Canada.Can.can? @current_user, :edit, @domain do %>
+  <p>
+    <%= link gettext("Edit"), to: backend_domain_path(@conn, :edit, @domain), class: "c-button" %>
+  </p>
+<% end %>
+
+<h2 class="c-heading"><%= gettext("Entries") %></h2>
+
+<%= render SignDictWeb.Backend.SharedView, "entries_table.html", conn: @conn, entries: @entries %>
+
+<%#= pagination_links @entries %>

@@ -27,11 +27,11 @@ msgstr "Ungültige Email-Adresse oder Passwort"
 msgid "Log in"
 msgstr "Anmelden"
 
-#: lib/sign_dict_web/templates/backend/entry/form.html.eex:4
-#: lib/sign_dict_web/templates/backend/language/form.html.eex:4 lib/sign_dict_web/templates/backend/list/form.html.eex:4
-#: lib/sign_dict_web/templates/backend/user/form.html.eex:4 lib/sign_dict_web/templates/backend/video/form.html.eex:4
-#: lib/sign_dict_web/templates/entry/form.html.eex:4 lib/sign_dict_web/templates/user/edit.html.eex:6
-#: lib/sign_dict_web/templates/user/new.html.eex:12
+#: lib/sign_dict_web/templates/backend/domain/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/entry/form.html.eex:4 lib/sign_dict_web/templates/backend/language/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/list/form.html.eex:4 lib/sign_dict_web/templates/backend/user/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:4 lib/sign_dict_web/templates/entry/form.html.eex:4
+#: lib/sign_dict_web/templates/user/edit.html.eex:6 lib/sign_dict_web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder."
 
@@ -158,24 +158,25 @@ msgstr "Dein Passwort Link"
 msgid "You are not allowed to do this."
 msgstr "Leider darfst du dies nicht."
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:27
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:8
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:10 lib/sign_dict_web/templates/backend/list/index.html.eex:9
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:38 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:16
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:10
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:38 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:16 lib/sign_dict_web/templates/backend/user/index.html.eex:10
 msgid "Actions"
 msgstr "Aktionen"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:43
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46 lib/sign_dict_web/templates/backend/user/index.html.eex:31
 msgid "Delete"
 msgstr "Löschen"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:42
-#: lib/sign_dict_web/templates/backend/entry/show.html.eex:25 lib/sign_dict_web/templates/backend/language/index.html.eex:25
-#: lib/sign_dict_web/templates/backend/language/show.html.eex:32 lib/sign_dict_web/templates/backend/list/index.html.eex:25
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:26 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:45
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:23
+#: lib/sign_dict_web/templates/backend/domain/show.html.eex:5 lib/sign_dict_web/templates/backend/entry/show.html.eex:25
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:25 lib/sign_dict_web/templates/backend/language/show.html.eex:32
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:25 lib/sign_dict_web/templates/backend/list/show.html.eex:26
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:23 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:45
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:30 lib/sign_dict_web/templates/backend/user/show.html.eex:42
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:131 lib/sign_dict_web/templates/user/show.html.eex:23
 msgid "Edit"
@@ -190,15 +191,17 @@ msgstr "Alle Nutzer"
 msgid "New user"
 msgstr "Neuer Nutzer"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:41
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:22
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:24 lib/sign_dict_web/templates/backend/list/index.html.eex:24
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44 lib/sign_dict_web/templates/backend/user/index.html.eex:29
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:22 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:29
 msgid "Show"
 msgstr "Anzeigen"
 
-#: lib/sign_dict_web/templates/backend/entry/form.html.eex:33
-#: lib/sign_dict_web/templates/backend/language/form.html.eex:33 lib/sign_dict_web/templates/backend/list/form.html.eex:33
-#: lib/sign_dict_web/templates/backend/user/form.html.eex:62 lib/sign_dict_web/templates/backend/video/form.html.eex:51
+#: lib/sign_dict_web/templates/backend/domain/form.html.eex:15
+#: lib/sign_dict_web/templates/backend/entry/form.html.eex:33 lib/sign_dict_web/templates/backend/language/form.html.eex:33
+#: lib/sign_dict_web/templates/backend/list/form.html.eex:33 lib/sign_dict_web/templates/backend/user/form.html.eex:62
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:51
 msgid "Submit"
 msgstr "Absenden"
 
@@ -224,7 +227,7 @@ msgid "Users"
 msgstr "Nutzer"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:28
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:46 lib/sign_dict_web/templates/layout/backend.html.eex:47
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:46 lib/sign_dict_web/templates/layout/backend.html.eex:50
 msgid "Videos"
 msgstr "Videos"
 
@@ -264,7 +267,7 @@ msgstr "Sprache erfolgreich gelöscht."
 msgid "Language updated successfully."
 msgstr "Sprache erfolgreich aktualisiert."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:52
+#: lib/sign_dict_web/templates/layout/backend.html.eex:55
 msgid "Languages"
 msgstr "Sprachen"
 
@@ -297,10 +300,10 @@ msgstr "Abkürzung"
 msgid "Only enter a password if you want to change it"
 msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:43
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46 lib/sign_dict_web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
@@ -312,8 +315,8 @@ msgstr "Dashboad"
 msgid "Edit language"
 msgstr "Bearbeite Sprache"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/entry/show.html.eex:19 lib/sign_dict_web/templates/backend/language/show.html.eex:1
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:19
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:1 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:7
 msgid "Language"
 msgstr "Sprache"
 
@@ -365,8 +368,8 @@ msgstr "Quelle"
 msgid "video.state"
 msgstr "Status"
 
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:30
-#: lib/sign_dict_web/templates/layout/backend.html.eex:46
+#: lib/sign_dict_web/templates/backend/domain/show.html.eex:9
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:30 lib/sign_dict_web/templates/layout/backend.html.eex:49
 msgid "Entries"
 msgstr "Einträge"
 
@@ -379,25 +382,25 @@ msgstr ""
 msgid "Listing entries"
 msgstr "Alle Einträge"
 
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:55
+#: lib/sign_dict_web/templates/backend/entry/index.html.eex:25
 #: lib/sign_dict_web/templates/backend/entry/new.html.eex:1
 msgid "New entry"
 msgstr "Neuer Eintrag"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:9
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:23 lib/sign_dict_web/templates/backend/list/show.html.eex:37
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:37 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:4
 #: lib/sign_dict_web/templates/entry/form.html.eex:9
 msgid "entry.text"
 msgstr "Text"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:21
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:25 lib/sign_dict_web/templates/backend/entry/show.html.eex:12
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:12 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:6
 #: lib/sign_dict_web/templates/entry/form.html.eex:24
 msgid "entry.type"
 msgstr "Typ"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:15
-#: lib/sign_dict_web/templates/backend/entry/index.html.eex:24 lib/sign_dict_web/templates/backend/entry/show.html.eex:5
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:5 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:5
 #: lib/sign_dict_web/templates/entry/form.html.eex:15
 msgid "entry.description"
 msgstr "Beschreibung"
@@ -768,7 +771,7 @@ msgstr "Willkommen"
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:55
+#: lib/sign_dict_web/templates/layout/backend.html.eex:58
 msgid "Worker Queue"
 msgstr ""
 
@@ -908,7 +911,7 @@ msgstr "Feature flags"
 msgid "Record new video"
 msgstr "Neues Video aufnehmen"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:45
+#: lib/sign_dict_web/templates/layout/backend.html.eex:48
 msgid "Review Queue"
 msgstr "Neue Videos"
 
@@ -1061,7 +1064,7 @@ msgstr "Liste erfolgreich gelöscht."
 msgid "List updated successfully."
 msgstr "Liste erfolgreich aktualisiert."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:49
+#: lib/sign_dict_web/templates/layout/backend.html.eex:52
 msgid "Lists"
 msgstr "Listen"
 
@@ -1254,7 +1257,7 @@ msgstr "Sign2Mint ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jed
 msgid "License"
 msgstr ""
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/sign_dict_web/templates/shared/sign2mint_footer.html.eex:10
 msgid "Logo Bundesministerium für Arbeit und Soziales"
 msgstr "Logo Bundesministerium für Arbeit und Soziales"
@@ -1268,3 +1271,55 @@ msgstr ""
 #: lib/sign_dict_web/templates/shared/sign2mint_footer.html.eex:11
 msgid "Logo WPS GmbH"
 msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/domain/show.html.eex:1
+msgid "Domain"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:25
+msgid "Domain created successfully."
+msgstr "Eintrag erfolgreich angelegt."
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:72
+msgid "Domain deleted successfully."
+msgstr "Eintrag erfolgreich gelöscht."
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:60
+msgid "Domain updated successfully."
+msgstr "Eintrag erfolgreich aktualisiert."
+
+#, elixir-format
+#: lib/sign_dict_web/templates/layout/backend.html.eex:46
+msgid "Domains"
+msgstr "Domains"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/domain/edit.html.eex:1
+msgid "Edit domain"
+msgstr "Domain bearbeiten"
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:1
+msgid "Listing domains"
+msgstr "Alle Videos"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:36
+#: lib/sign_dict_web/templates/backend/domain/new.html.eex:1
+msgid "New domain"
+msgstr "Neue Domain"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/domain/form.html.eex:9
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:7
+msgid "domain.domain"
+msgstr "Domainname"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/domain/index.html.eex:6
+msgid "domain.id"
+msgstr "ID"
