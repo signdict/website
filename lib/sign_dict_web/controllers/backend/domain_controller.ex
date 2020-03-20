@@ -2,7 +2,6 @@ defmodule SignDictWeb.Backend.DomainController do
   use SignDictWeb, :controller
   alias SignDict.Domain
   alias SignDict.Entry
-  alias SignDict.Video
 
   plug :load_and_authorize_resource, model: Domain, except: :index
 
