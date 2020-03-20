@@ -14,6 +14,12 @@ defmodule SignDict.Domain do
     timestamps()
   end
 
+  def admin_changeset(domain, params \\ %{}) do
+    domain
+    |> cast(params, [:domain])
+    |> validate_required([:domain])
+  end
+
   def for(domain) do
     Repo.one!(from d in Domain, where: d.domain == ^domain)
   end

@@ -131,6 +131,7 @@ defmodule SignDictWeb.Router do
 
     resources "/users", UserController
     resources "/languages", LanguageController
+    resources "/domains", DomainController
 
     resources "/entries", EntryController do
       resources "/videos", VideoController
