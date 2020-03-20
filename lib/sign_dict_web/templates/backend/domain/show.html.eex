@@ -10,4 +10,4 @@
 
 <%= render SignDictWeb.Backend.SharedView, "entries_table.html", conn: @conn, entries: @entries %>
 
-<%#= pagination_links @entries %>
+<%= pagination_links @entries %>
