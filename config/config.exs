@@ -71,6 +71,8 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
+config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: "test.local"
+
 config :sign_dict, :queue, library: Exq
 
 config :sign_dict, :newsletter, subscriber: ExChimp.List

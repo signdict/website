@@ -31,6 +31,9 @@ defmodule SignDict.Video do
 
     field :rejection_reason, :string
 
+    field :external_id, :string
+    field :auto_publish, :boolean
+
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
 
@@ -58,9 +61,13 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end)
 
-    defevent(:publish, %{from: [:waiting_for_review, :rejected], to: :published}, fn changeset ->
-      changeset |> Repo.update()
-    end)
+    defevent(
+      :publish,
+      %{from: [:transcoding, :waiting_for_review, :rejected], to: :published},
+      fn changeset ->
+        changeset |> Repo.update()
+      end
+    )
 
     defevent(:reject, %{from: [:waiting_for_review, :published], to: :rejected}, fn changeset ->
       changeset
