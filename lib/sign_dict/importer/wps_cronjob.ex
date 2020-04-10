@@ -20,10 +20,11 @@ defmodule SignDict.WpsCronjob do
   end
 
   def calculate_next_cycle_delay(now) do
-    Timex.shift(now, hours: 1)
+    now
+    |> Timex.shift(hours: 1)
+    |> Timex.diff(now, :milliseconds)
     # |> Timex.set(hour: 2, minute: 0, second: 0)
     # |> maybe_shift_a_day(now)
-    # |> Timex.diff(now, :milliseconds)
   end
 
   #  defp maybe_shift_a_day(next_run, now) do
