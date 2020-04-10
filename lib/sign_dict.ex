@@ -13,7 +13,7 @@ defmodule SignDict do
       # Start the Ecto repository
       supervisor(SignDict.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Endpoint, [])
+      supervisor(Endpoint, []),
       # Workers ->
       worker(SignDict.WpsCronjob, [])
     ]
