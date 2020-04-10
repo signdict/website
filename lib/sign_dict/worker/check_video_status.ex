@@ -9,6 +9,7 @@ defmodule SignDict.Worker.CheckVideoStatus do
 
   alias SignDictWeb.Email
   alias SignDictWeb.Mailer
+  alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.Video
 
@@ -52,16 +53,36 @@ defmodule SignDict.Worker.CheckVideoStatus do
       [video.id]
     )
 
-    {:ok, video} = Video.wait_for_review(video)
-
-    video
-    |> Email.video_waiting_for_review()
-    |> Mailer.deliver_later()
+    if video.auto_publish do
+      publish_video(video)
+    else
+      mark_video_to_review(video)
+    end
 
     :done
   end
 
   defp process_video(_video, _state, _exq) do
     {:error, :unknown_status}
+  end
+
+  defp publish_video(video) do
+    {:ok, video} = Video.publish(video)
+
+    if entry = Repo.get(Entry, video.entry_id) do
+      Entry.update_current_video(entry)
+    end
+
+    video
+  end
+
+  defp mark_video_to_review(video) do
+    {:ok, video} = Video.wait_for_review(video)
+
+    video
+    |> Email.video_waiting_for_review()
+    |> Mailer.deliver_later()
+
+    video
   end
 end

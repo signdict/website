@@ -27,7 +27,7 @@ defmodule SignDict.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {SignDict, []},
+      mod: {SignDict, [env: Mix.env()]},
       extra_applications: [:canada, :elixir_make, :exq, :exq_ui, :recaptcha]
     ]
   end
@@ -82,7 +82,9 @@ defmodule SignDict.Mixfile do
       {:jason, "~> 1.1"},
       {:briefly, "~> 0.3"},
       {:tzdata, "~> 1.0.1"},
-      {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false}
+      {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false},
+      {:httpoison, "~> 1.4"},
+      {:downstream, "~> 1.0.0"}
     ]
   end
 
