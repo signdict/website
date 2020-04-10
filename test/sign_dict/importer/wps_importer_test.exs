@@ -102,6 +102,20 @@ defmodule SignDict.Importer.WpsImporterTest do
       assert length(videos) == 0
     end
 
+    test "does not crash on empty response via the api" do
+      start_time = Timex.parse!("2020-04-01T12:30:30+00:00", "%FT%T%:z", :strftime)
+
+      %ImporterConfig{}
+      |> ImporterConfig.changeset(%{
+        name: "WPS",
+        configuration: %{last_requested: start_time}
+      })
+      |> Repo.insert!()
+
+      videos = WpsImporter.import_json(ExqMock)
+      assert length(videos) == 0
+    end
+
     test "it moves the video to another entry if the word changes and does not trigger a retranscode" do
       start_time = Timex.parse!("2020-02-01T12:30:30+00:00", "%FT%T%:z", :strftime)
 

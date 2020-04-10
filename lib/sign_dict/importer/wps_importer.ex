@@ -36,7 +36,11 @@ defmodule SignDict.Importer.WpsImporter do
              [Accept: "text/json", "User-Agent": "Mozilla/5.0 +signdict.org"],
              follow_redirect: true
            ) do
-      Poison.decode!(res.body)
+      if String.length(res.body) > 0 do
+        Poison.decode!(res.body)
+      else
+        []
+      end
     end
   end
 
