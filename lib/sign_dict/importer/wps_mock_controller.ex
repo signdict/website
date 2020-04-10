@@ -42,6 +42,9 @@ defmodule SignDict.Importer.WpsMockController do
           }
         ])
 
+      ~D[2020-04-01] ->
+        Plug.Conn.send_resp(conn, 200, "")
+
       _ ->
         success(conn, [
           %{
