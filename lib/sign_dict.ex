@@ -15,7 +15,7 @@ defmodule SignDict do
       # Start the endpoint when the application starts
       supervisor(Endpoint, [])
       # Workers ->
-      # worker(SignDict.WpsCronjob, [])
+      worker(SignDict.WpsCronjob, [])
     ]
 
     children =
