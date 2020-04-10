@@ -23,6 +23,7 @@ defmodule SignDict.WpsCronjob do
     now
     |> Timex.shift(hours: 1)
     |> Timex.diff(now, :milliseconds)
+
     # |> Timex.set(hour: 2, minute: 0, second: 0)
     # |> maybe_shift_a_day(now)
   end
