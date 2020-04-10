@@ -95,6 +95,10 @@ config :sign_dict, :jw_player,
   api_key: System.get_env("JW_PLAYER_API_KEY"),
   api_secret: System.get_env("JW_PLAYER_API_SECRET")
 
+config :sign_dict, :wps_importer,
+  url: System.get_env("WPS_IMPORT_ROOM"),
+  domain: System.get_env("WPS_IMPORT_DOMAIN")
+
 config :recaptcha,
   public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
   secret: {:system, "RECAPTCHA_PRIVATE_KEY"}

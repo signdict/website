@@ -4,6 +4,7 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
 
   import SignDict.Factory
 
+  alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.Video
   alias SignDict.Worker.CheckVideoStatus
@@ -57,13 +58,32 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
       refute_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
     end
 
-    test "it publishes the video if it is done" do
+    test "it set the the video to waiting_for_review if it is done" do
       video_id = insert(:video_with_entry, %{state: "transcoding"}).id
       assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
       assert Repo.get(Video, video_id).state == "waiting_for_review"
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
       assert_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
+    end
+
+    test "it publishes the video if it is done and set to auto_publish" do
+      video_id = insert(:video_with_entry, %{auto_publish: true, state: "transcoding"}).id
+      assert CheckVideoStatus.perform(video_id, VideoServiceMockDone, ExqMock, 0) == :done
+
+      video = Repo.get(Video, video_id)
+      entry = Repo.get(Entry, video.entry_id)
+
+      assert video.state == "published"
+      assert entry.current_video_id == video_id
+      assert_received {:check_status, ^video_id}
+      refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
+      assert_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
+
+      refute_email_delivered_with(
+        subject: "New video added for \"some content\"",
+        to: [{"Bodo", "mail@signdict.org"}]
+      )
     end
 
     test "it sends an email and notifies the users" do
