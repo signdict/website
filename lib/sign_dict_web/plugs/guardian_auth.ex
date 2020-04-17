@@ -1,4 +1,5 @@
 defmodule SignDictWeb.GuardianAuth do
+  @behaviour Plug
   @claims %{typ: "access"}
 
   use Guardian.Plug.Pipeline,
