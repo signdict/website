@@ -20,7 +20,12 @@ defmodule SignDictWeb.FeelingLuckyController do
 
     entry =
       Entry.active_entries(domain)
-      |> offset(fragment("floor(random()*(SELECT count(*) FROM entries))"))
+      |> offset(
+        fragment(
+          "floor(random()*(SELECT count(entries.id) FROM entries join domains_entries on (entries.id = domains_entries.entry_id) join domains on (domains_entries.domain_id = domains.id) where domains.domain = ?))",
+          ^domain
+        )
+      )
       |> first
       |> Repo.one()
 
