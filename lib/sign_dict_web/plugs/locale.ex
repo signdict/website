@@ -1,4 +1,5 @@
 defmodule SignDictWeb.Plug.Locale do
+  @behaviour Plug
   import Plug.Conn
 
   alias SignDict.Repo

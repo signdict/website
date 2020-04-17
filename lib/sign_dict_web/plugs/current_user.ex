@@ -1,4 +1,5 @@
 defmodule SignDictWeb.Plug.CurrentUser do
+  @behaviour Plug
   import Plug.Conn
   import SignDict.Guardian.Plug
 
