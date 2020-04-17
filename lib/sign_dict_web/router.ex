@@ -37,6 +37,10 @@ defmodule SignDictWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :graphql do
+    plug SignDictWeb.Plug.GraphqlContext
+  end
+
   pipeline :backend do
     plug :put_layout, {SignDictWeb.LayoutView, :backend}
     plug SignDictWeb.Plug.AllowedForBackend
@@ -156,7 +160,7 @@ defmodule SignDictWeb.Router do
   end
 
   scope "/graphql-api" do
-    pipe_through([:api])
+    pipe_through([:api, :graphql])
 
     forward(
       "/graphiql",
