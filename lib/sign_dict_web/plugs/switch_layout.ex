@@ -1,4 +1,5 @@
 defmodule SignDictWeb.Plug.SwitchLayout do
+  @behaviour Plug
   import SignDictWeb.Helpers.LayoutHelper
 
   def init(opts), do: opts
