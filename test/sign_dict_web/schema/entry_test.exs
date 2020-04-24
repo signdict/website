@@ -68,7 +68,7 @@ defmodule SignDict.Schema.EntryTest do
                 "text" => "#{entry_3.text}",
                 "description" => "#{entry_3.description}",
                 "type" => "#{entry_3.type}",
-                "url" => "https://localhost/entry/#{entry_3.id}",
+                "url" => "https://signdict.org/entry/#{entry_3.id}",
                 "id" => entry_3.id
               },
               %{
@@ -78,7 +78,7 @@ defmodule SignDict.Schema.EntryTest do
                 "text" => "#{entry_4.text}",
                 "description" => "#{entry_4.description}",
                 "type" => "#{entry_4.type}",
-                "url" => "https://localhost/entry/#{entry_4.id}",
+                "url" => "https://signdict.org/entry/#{entry_4.id}",
                 "id" => entry_4.id
               }
             ]
@@ -174,7 +174,7 @@ defmodule SignDict.Schema.EntryTest do
               "text" => "#{entry.text}",
               "description" => "#{entry.description}",
               "type" => "#{entry.type}",
-              "url" => "https://localhost/entry/#{entry.id}",
+              "url" => "https://signdict.org/entry/#{entry.id}",
               "id" => entry.id
             }
           }
@@ -304,7 +304,7 @@ defmodule SignDict.Schema.EntryTest do
                 "description" => "#{entry_1.description}",
                 "type" => "#{entry_1.type}",
                 "id" => entry_1.id,
-                "url" => "https://localhost/entry/#{entry_1.id}"
+                "url" => "https://signdict.org/entry/#{entry_1.id}"
               }
             ]
           }

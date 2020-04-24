@@ -19,7 +19,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
         |> preload([:language, current_video: :user, videos: :user])
         |> Repo.all()
         |> Enum.map(fn e ->
-          e |> Url.for_entry()
+          Url.for_entry(e, domain)
         end)
 
       {:ok, entries}
@@ -32,7 +32,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
       |> Entry.for_domain(domain)
       |> Repo.get(args[:id])
       |> Repo.preload([:language, current_video: :user, videos: :user])
-      |> Url.for_entry()
+      |> Url.for_entry(domain)
 
     case entry do
       nil -> {:error, message: "Not found"}
@@ -54,7 +54,7 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
       |> Entry.for_letter(args[:letter])
       |> Repo.all()
       |> Enum.map(fn e ->
-        e |> Url.for_entry()
+        Url.for_entry(e, domain)
       end)
 
     case entries do
