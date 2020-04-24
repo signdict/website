@@ -21,6 +21,7 @@ defmodule SignDict.Schema.EntryTest do
             license
             originalHref
             videoUrl
+            updatedAt
             thumbnailUrl
               user{
                 name
@@ -42,6 +43,7 @@ defmodule SignDict.Schema.EntryTest do
               originalHref
               videoUrl
               thumbnailUrl
+              updatedAt
               user{
                 name
               }
@@ -104,6 +106,7 @@ defmodule SignDict.Schema.EntryTest do
             originalHref
             videoUrl
             thumbnailUrl
+            updatedAt
             user{
               name
             }
@@ -114,6 +117,7 @@ defmodule SignDict.Schema.EntryTest do
             originalHref
             videoUrl
             thumbnailUrl
+            updatedAt
             user{
               name
             }
@@ -230,6 +234,7 @@ defmodule SignDict.Schema.EntryTest do
             originalHref
             videoUrl
             thumbnailUrl
+            updatedAt
             user{
               name
             }
@@ -240,6 +245,7 @@ defmodule SignDict.Schema.EntryTest do
             originalHref
             videoUrl
             thumbnailUrl
+            updatedAt
             user{
               name
             }
@@ -348,6 +354,7 @@ defmodule SignDict.Schema.EntryTest do
       "originalHref" => "#{video.original_href}",
       "thumbnailUrl" => "#{video.thumbnail_url}",
       "videoUrl" => "#{video.video_url}",
+      "updatedAt" => "#{video.updated_at}",
       "user" => %{
         "name" => "#{video.user.name}"
       }

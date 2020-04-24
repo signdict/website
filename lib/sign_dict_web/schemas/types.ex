@@ -34,5 +34,6 @@ defmodule SignDictWeb.Schema.Types do
     field(:thumbnail_url, :string)
     field(:user, :user)
     field(:url, :string)
+    field(:updated_at, :string)
   end
 end
