@@ -86,6 +86,34 @@ defmodule SignDict.Schema.EntryTest do
         } == response
       )
     end
+
+    test "does not throw error when index is below 1", %{conn: conn} do
+      query = """
+        {
+          index(perPage: 2, page: 0){
+            text
+          }
+        }
+      """
+
+      response =
+        conn
+        |> post(api_path(), AbsintheHelper.query_skeleton(query, "entry"))
+        |> json_response(200)
+
+      assert(
+        %{
+          "data" => %{"index" => nil},
+          "errors" => [
+            %{
+              "locations" => [%{"column" => 0, "line" => 2}],
+              "message" => "Page must be >= 1",
+              "path" => ["index"]
+            }
+          ]
+        } == response
+      )
+    end
   end
 
   describe "Get entry by ID" do

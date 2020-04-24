@@ -6,19 +6,24 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
 
   def entries(_parent, args, %{context: %{domain: domain}}) do
     page = Map.get(args, :page, 1)
-    size = Enum.min([100, Map.get(args, :per_page, 50)])
 
-    entries =
-      Entry
-      |> Entry.for_domain(domain)
-      |> Entry.paginate(page, size)
-      |> preload([:language, current_video: :user, videos: :user])
-      |> Repo.all()
-      |> Enum.map(fn e ->
-        e |> Url.for_entry()
-      end)
+    if page < 1 do
+      {:error, "Page must be >= 1"}
+    else
+      size = Enum.min([100, Map.get(args, :per_page, 50)])
 
-    {:ok, entries}
+      entries =
+        Entry
+        |> Entry.for_domain(domain)
+        |> Entry.paginate(page, size)
+        |> preload([:language, current_video: :user, videos: :user])
+        |> Repo.all()
+        |> Enum.map(fn e ->
+          e |> Url.for_entry()
+        end)
+
+      {:ok, entries}
+    end
   end
 
   def show_entry(_parent, args, %{context: %{domain: domain}}) do
