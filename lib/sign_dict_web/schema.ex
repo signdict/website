@@ -6,7 +6,7 @@ defmodule SignDictWeb.Schema do
   query do
     @desc "List all entries"
     field :index, list_of(:entry) do
-      arg(:page, :integer, description: "Page number (default is 1)")
+      arg(:page, :integer, description: "Page number (default is 1, must be >= 1)")
       arg(:per_page, :integer, description: "Entries per page (default is 50).")
       resolve(&EntryResolver.entries/3)
     end
