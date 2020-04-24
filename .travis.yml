@@ -14,7 +14,6 @@ services:
 env:
   global:
     - MIX_ENV=test
-    - PRONTO_PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
     - TRAVIS_NODE_VERSION="10.15.2"
 
 cache:
@@ -36,11 +35,9 @@ before_install:
 before_script:
   - rvm reload
   - rvm install ruby-2.3.1
-  - gem install pronto-credo
   - cd assets && yarn && cd ..
 
 script:
-  - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr; fi
   - mix check
   - mix coveralls.travis
   - cd assets && yarn run deploy
