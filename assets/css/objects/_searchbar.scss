@@ -10,12 +10,22 @@
 }
 
 .so-searchbar--input {
-  border: none;
-  border-radius: 0;
-  font-size: 1em;
-  padding: 0.8em 1em;
   width: 85%;
+}
+
+.so-searchbar--input--with-border {
+  border-left: 1px solid $deactive !important;
+  border-right: 1px solid $deactive !important;
+  border-top: 1px solid $deactive !important;
+}
+
+.so-searchbar--input--inner {
+  width: 100%;
+  font-size: 1em;
+  border-radius: 0;
+  border: none;
   height: 3em;
+  padding: 0.8em 1em;
 }
 
 .so-searchbar--submit {
@@ -36,6 +46,42 @@
 
 .fa.so-searchbar--icon {
   display: none;
+}
+
+.so-search-hints {
+  position: absolute;
+  background-color: white;
+  border-left: 1px solid $deactive;
+  border-right: 1px solid $deactive;
+  border-bottom: 1px solid $deactive;
+  z-index: 10;
+}
+
+.so-search-hints--list {
+  padding: 0.5em 0.5em 0 0.5em;
+  margin: 0;
+  min-width: 30em;
+}
+
+.so-search-hints--item {
+  list-style-type: none;
+  padding-bottom: 0.5em;
+}
+
+.so-search-hints--item--link {
+  display: flex;
+  align-items: center;
+}
+
+.so-search-hints--item--text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.so-search-hints--item--image {
+  width: 5em;
+  padding-right: 1em;
 }
 
 @media all and (max-width: 48em) {
