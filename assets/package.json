@@ -10,7 +10,7 @@
     "babel-polyfill": "^6.26.0",
     "detect-browser": "^5.0.0",
     "file-loader": "^6.0.0",
-    "minimist": "^1.2.2",
+    "minimist": "^1.2.5",
     "node-sass": "^4.14.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
