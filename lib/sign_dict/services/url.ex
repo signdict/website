@@ -2,31 +2,31 @@ defmodule SignDict.Services.Url do
   alias SignDict.Entry
   alias SignDict.Video
 
-  def for_entry(nil), do: nil
+  def for_entry(nil, _domain), do: nil
 
-  def for_entry(%Entry{videos: videos} = entry) when is_list(videos) do
+  def for_entry(%Entry{videos: videos} = entry, domain) when is_list(videos) do
     videos_with_url =
       videos
       |> Enum.map(fn video ->
-        video |> Map.merge(%{url: video_url(entry, video)})
+        video |> Map.merge(%{url: video_url(domain, entry, video)})
       end)
 
-    entry |> Map.merge(%{url: entry |> entry_url(), videos: videos_with_url})
+    entry |> Map.merge(%{url: entry_url(domain, entry), videos: videos_with_url})
   end
 
-  def for_entry(entry = %Entry{}) do
-    entry |> Map.merge(%{url: entry |> entry_url()})
+  def for_entry(entry = %Entry{}, domain) do
+    entry |> Map.merge(%{url: entry_url(domain, entry)})
   end
 
-  defp host do
-    "https://#{Application.get_env(:sign_dict, SignDictWeb.Endpoint)[:url][:host]}"
+  defp host(domain) do
+    "https://#{domain || Application.get_env(:sign_dict, SignDictWeb.Endpoint)[:url][:host]}"
   end
 
-  defp video_url(entry = %Entry{}, video = %Video{}) do
-    "#{host()}/entry/#{entry.id}/video/#{video.id}"
+  defp video_url(domain, entry = %Entry{}, video = %Video{}) do
+    "#{host(domain)}/entry/#{entry.id}/video/#{video.id}"
   end
 
-  defp entry_url(entry = %Entry{}) do
-    "#{host()}/entry/#{entry.id}"
+  defp entry_url(domain, entry = %Entry{}) do
+    "#{host(domain)}/entry/#{entry.id}"
   end
 end
