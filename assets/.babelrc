@@ -1,4 +1,17 @@
 {
-  "presets": [["@babel/preset-env", {}]],
-  "plugins": []
+  "presets": [
+    [
+      "@babel/preset-env",
+      {}
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "jsxElem"
+      }
+    ]
+  ]
 }
