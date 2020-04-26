@@ -6,7 +6,7 @@ defmodule SignDict.Repo.Migrations.AddFulltextIndexToEntries do
       add :fulltext_search, :tsvector
     end
     execute("CREATE INDEX entries_fulltext_search ON entries USING gin(fulltext_search);")
-    execute("CREATE EXTENSION unaccent;")
+    execute("CREATE EXTENSION IF NOT EXISTS unaccent;")
 
     add_trigger_function()
     activate_trigger()
