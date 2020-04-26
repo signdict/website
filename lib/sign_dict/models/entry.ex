@@ -190,22 +190,24 @@ defmodule SignDict.Entry do
   def search_query(locale, domain, search) do
     qry = """
       select id from entries where current_video_id is not null and
-        fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
-                                      unaccent($1));
+        (fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
+                                      unaccent($1)) or text ilike $2);
     """
 
     res =
       SQL.query!(Repo, qry, [
-        PostgresQueryHelper.format_search_query(search)
+        PostgresQueryHelper.format_search_query(search),
+        "%#{search}%"
       ])
 
     ids = Enum.map(res.rows, fn row -> List.first(row) end)
+    downcase_search = String.downcase(search)
 
     from(
       entry in Entry,
       join: domain in assoc(entry, :domains),
       where: entry.id in ^ids and domain.domain == ^domain,
-      order_by: fragment("levenshtein(?, ?)", entry.text, ^search)
+      order_by: fragment("levenshtein(?, lower(?), 1, 10, 20)", ^downcase_search, entry.text)
     )
   end
 
