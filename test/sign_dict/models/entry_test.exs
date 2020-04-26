@@ -143,12 +143,17 @@ defmodule SignDict.EntryTest do
       insert(:video_published, %{entry: house_entry})
       Entry.update_current_video(house_entry)
 
+      rubberboat_entry = insert(:entry, %{text: "schlauchboot"})
+      insert(:video_published, %{entry: rubberboat_entry})
+      Entry.update_current_video(rubberboat_entry)
+
       {:ok,
        train: train_entry,
        tree: tree_entry,
        hotel: hotel_entry,
        house: house_entry,
-       house_boat: houseboat_entry}
+       house_boat: houseboat_entry,
+       rubber_boat: rubberboat_entry}
     end
 
     test "it returns the correct entry when searching for a word and only uses entries with published videos",
@@ -176,6 +181,14 @@ defmodule SignDict.EntryTest do
     } do
       assert Enum.map(Entry.search_query("de", "signdict.org", "häuser") |> Repo.all(), & &1.id) ==
                Enum.map([house, house_boat], & &1.id)
+    end
+
+    test "it also finds the partial matches inside of a word", %{
+      rubber_boat: rubber_boat,
+      house_boat: house_boat
+    } do
+      assert Enum.map(Entry.search_query("de", "signdict.org", "boot") |> Repo.all(), & &1.id) ==
+               Enum.map([house_boat, rubber_boat], & &1.id)
     end
 
     test "returns a list of all entries for the current domain if no search text is given" do
