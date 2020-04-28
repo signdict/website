@@ -5,7 +5,7 @@
         <%= ngettext(
               "One search result for »%{query}«",
               "%{count} search results for »%{query}«",
-              length(@entries), query: @conn.params["q"]) %>
+              @result.total_entries, query: @conn.params["q"]) %>
       </h1>
     </div>
   </div>
@@ -19,7 +19,7 @@
   </div>
 <% end %>
 
-<%= for entry <- @entries do %>
+<%= for entry <- @result.entries do %>
   <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell o-grid__cell--width-30">
       <a href="<%= entry_path(@conn, :show, entry) %>">
@@ -36,6 +36,10 @@
       <% end %>
     </div>
   </div>
+<% end %>
+
+<%= if @result.total_entries > 0 do %>
+  <%= pagination_links @result,  q: @conn.params["q"]%>
 <% end %>
 
 <div class="o-grid o-grid--wrap">
