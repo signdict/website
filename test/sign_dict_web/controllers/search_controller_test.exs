@@ -12,7 +12,7 @@ defmodule SignDict.SearchControllerTest do
 
   test "it should show an empty page when no result was found", %{conn: conn} do
     conn = get(conn, search_path(conn, :index, q: "language"))
-    assert conn.assigns.entries == []
+    assert conn.assigns.result.entries == []
     assert html_response(conn, 200) =~ "Search results for lang"
   end
 
@@ -22,7 +22,7 @@ defmodule SignDict.SearchControllerTest do
       |> Entry.update_current_video()
 
     conn = get(conn, search_path(conn, :index, q: "lang"))
-    assert conn.assigns.entries == [entry]
+    assert conn.assigns.result.entries == [entry]
     assert html_response(conn, 200) =~ "Search results for lang"
   end
 
@@ -60,7 +60,7 @@ defmodule SignDict.SearchControllerTest do
     insert(:entry_with_current_video, text: "Apple", domains: [domain])
 
     conn = get(conn, search_path(conn, :index, q: "Apple"))
-    assert conn.assigns.entries == []
+    assert conn.assigns.result.entries == []
 
     assert html_response(conn, 200) =~ "Search results for Apple"
   end

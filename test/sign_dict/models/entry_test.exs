@@ -201,6 +201,14 @@ defmodule SignDict.EntryTest do
                Enum.map([other_domain_entry], & &1.id)
     end
 
+    test "returns a list of entries sorted alphabetically if less than 3 characters in search", %{
+      house: house,
+      house_boat: house_boat
+    } do
+      assert Enum.map(Entry.search_query("de", "signdict.org", "ha") |> Repo.all(), & &1.id) ==
+               Enum.map([house, house_boat], & &1.id)
+    end
+
     test "it fails when the domain is wrong" do
       domain = insert(:domain, domain: "example.com")
       other_domain_entry = insert(:entry, %{text: "hausbau", domains: [domain]})

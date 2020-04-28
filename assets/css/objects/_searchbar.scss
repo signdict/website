@@ -78,9 +78,21 @@
   text-overflow: ellipsis;
 }
 
+.so-search-hitns--item--text--description {
+  color: $deactive;
+}
+
 .so-search-hints--item--image {
+  flex-shrink: 0;
   width: 5em;
   padding-right: 1em;
+}
+
+.so-search-hints--more--link {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+  text-align: center;
 }
 
 @media all and (max-width: 48em) {

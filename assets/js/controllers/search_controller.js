@@ -1,5 +1,6 @@
 import {Controller} from 'stimulus';
 import jsxElem, {render} from 'jsx-no-react';
+import {i18next} from '../i18next.js';
 
 const CACHE_DURATION = 10 * 60 * 1000; // Cache for 10 minutes
 
@@ -31,9 +32,9 @@ export default class extends Controller {
     if (this.element.value.length == 0) {
       this.resetSearch();
     } else {
-      const items = this.getFromCache(this.element.value);
-      if (items) {
-        this.displayResults(items);
+      const entry = this.getFromCache(this.element.value);
+      if (entry) {
+        this.displayResults(entry.items, entry.hasMore);
       } else {
         this.timeout = window.setTimeout(this.doSearch, 200);
       }
@@ -77,6 +78,7 @@ export default class extends Controller {
           query aSearch($search: String!) {
             search(word: $search) {
               text
+              description
               url
               currentVideo {
                 thumbnailUrl
@@ -90,10 +92,11 @@ export default class extends Controller {
     }).then((result) => {
       if (this.element.value == searchValue && result.status === 200) {
         result.json().then((result) => {
+          const hasMore = result.data.search.length > 5;
           const items = this.filterEmptyResults(result.data.search).slice(0, 5);
           if (items.length > 0) {
-            this.addToCache(searchValue, items);
-            this.displayResults(items);
+            this.addToCache(searchValue, items, hasMore);
+            this.displayResults(items, hasMore);
           } else {
             this.resetSearch();
           }
@@ -108,7 +111,7 @@ export default class extends Controller {
     });
   };
 
-  displayResults = (results) => {
+  displayResults = (results, hasMore) => {
     this.currentResults = results;
     const searchPopup = this.findOrCreatePopup();
     searchPopup.innerHTML = '';
@@ -124,11 +127,23 @@ export default class extends Controller {
                     src={item.currentVideo.thumbnailUrl}
                     aria-hidden="true"
                   />
-                  <span className="so-search-hints--item--text">{item.text}</span>
+                  <div className="so-search-hints--item--text">
+                    {item.text}{' '}
+                    {item.description.length > 0 && (
+                      <span className="so-search-hitns--item--text--description">({item.description})</span>
+                    )}
+                  </div>
                 </a>
               </li>
             );
           })}
+          {hasMore && (
+            <li className="so-search-hints--more">
+              <a className="so-search-hints--more--link" href={`/search?q=${encodeURIComponent(this.element.value)}`}>
+                {i18next.t('More')}...
+              </a>
+            </li>
+          )}
         </ul>
       </div>,
       searchPopup
@@ -148,17 +163,18 @@ export default class extends Controller {
     return popup;
   };
 
-  addToCache = (searchTerm, items) => {
+  addToCache = (searchTerm, items, hasMore) => {
     this.cache[searchTerm] = {
       time: new Date(),
       items,
+      hasMore,
     };
   };
 
   getFromCache = (searchTerm) => {
     const cacheEntry = this.cache[searchTerm];
     if (cacheEntry && cacheEntry.time > new Date() - CACHE_DURATION) {
-      return cacheEntry.items;
+      return cacheEntry;
     }
   };
 }

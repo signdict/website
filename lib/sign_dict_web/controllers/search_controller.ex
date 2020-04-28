@@ -4,27 +4,27 @@ defmodule SignDictWeb.SearchController do
   alias SignDict.Entry
 
   def index(conn, params) do
-    [entries, title] =
+    [result, title] =
       if params["q"] && String.length(params["q"]) > 0 do
         [
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
           |> Entry.with_current_video()
-          |> SignDict.Repo.all(),
+          |> SignDict.Repo.paginate(params),
           gettext("Search results for %{query}", query: params["q"])
         ]
       else
-        [[], gettext("Search")]
+        [%{entries: [], total_entries: 0}, gettext("Search")]
       end
 
-    if perfect_match?(params["q"], entries) do
-      redirect(conn, to: entry_path(conn, :show, List.first(entries)))
+    if perfect_match?(params["q"], result.entries) do
+      redirect(conn, to: entry_path(conn, :show, List.first(result.entries)))
     else
       render(
         conn,
         "index.html",
         conn: conn,
         searchbar: true,
-        entries: entries,
+        result: result,
         title: title
       )
     end
