@@ -188,6 +188,27 @@ defmodule SignDict.Entry do
       )
 
   def search_query(locale, domain, search) do
+    if String.length(search) < 3 do
+      do_simple_search(locale, domain, search)
+    else
+      do_complex_search(locale, domain, search)
+    end
+  end
+
+  defp do_simple_search(_locale, domain, search) do
+    search_query = "#{search}%"
+
+    from(
+      entry in Entry,
+      join: domain in assoc(entry, :domains),
+      where:
+        domain.domain == ^domain and not is_nil(entry.current_video_id) and
+          ilike(entry.text, ^search_query),
+      order_by: entry.text
+    )
+  end
+
+  defp do_complex_search(locale, domain, search) do
     qry = """
       select id from entries where current_video_id is not null and
         (fulltext_search @@ to_tsquery('#{postgres_locale(locale)}',
@@ -207,7 +228,8 @@ defmodule SignDict.Entry do
       entry in Entry,
       join: domain in assoc(entry, :domains),
       where: entry.id in ^ids and domain.domain == ^domain,
-      order_by: fragment("levenshtein(?, lower(?), 1, 10, 20)", ^downcase_search, entry.text)
+      order_by:
+        fragment("levenshtein(?, lower(?), 1, 10, 20), text", ^downcase_search, entry.text)
     )
   end
 
