@@ -27,6 +27,7 @@ defmodule SignDictWeb.Schema.Types do
 
   @desc "video"
   object :video do
+    field(:id, :integer)
     field(:copyright, :string)
     field(:license, :string)
     field(:original_href, :string)
