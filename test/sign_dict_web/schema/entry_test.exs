@@ -17,6 +17,7 @@ defmodule SignDict.Schema.EntryTest do
         {
           index(perPage: 2, page: 2){
           current_video{
+            id
             copyright
             license
             originalHref
@@ -38,6 +39,7 @@ defmodule SignDict.Schema.EntryTest do
             type
             url
             videos{
+              id
               copyright
               license
               originalHref
@@ -129,6 +131,7 @@ defmodule SignDict.Schema.EntryTest do
           type
           url
           videos{
+            id
             copyright
             license
             originalHref
@@ -140,6 +143,7 @@ defmodule SignDict.Schema.EntryTest do
             }
           }
           current_video{
+            id
             copyright
             license
             originalHref
@@ -169,7 +173,11 @@ defmodule SignDict.Schema.EntryTest do
           "data" => %{
             "entry" => %{
               "language" => entry.language |> expected_language(),
-              "videos" => entry.videos |> Enum.map(fn v -> expected_entry_video(v) end),
+              "videos" =>
+                entry.videos
+                |> Enum.sort_by(&Map.fetch(&1, :id))
+                |> Enum.reverse()
+                |> Enum.map(fn v -> expected_entry_video(v) end),
               "current_video" => entry.current_video |> expected_entry_video(),
               "text" => "#{entry.text}",
               "description" => "#{entry.description}",
@@ -257,6 +265,7 @@ defmodule SignDict.Schema.EntryTest do
           type
           url
           videos{
+            id
             copyright
             license
             originalHref
@@ -268,6 +277,7 @@ defmodule SignDict.Schema.EntryTest do
             }
           }
           current_video{
+            id
             copyright
             license
             originalHref
@@ -298,7 +308,11 @@ defmodule SignDict.Schema.EntryTest do
             "search" => [
               %{
                 "language" => expected_language(entry_1.language),
-                "videos" => entry_1.videos |> Enum.map(fn v -> expected_entry_video(v) end),
+                "videos" =>
+                  entry_1.videos
+                  |> Enum.sort_by(&Map.fetch(&1, :id))
+                  |> Enum.reverse()
+                  |> Enum.map(fn v -> expected_entry_video(v) end),
                 "current_video" => entry_1.current_video |> expected_entry_video(),
                 "text" => "#{entry_1.text}",
                 "description" => "#{entry_1.description}",
@@ -377,6 +391,7 @@ defmodule SignDict.Schema.EntryTest do
 
   defp expected_entry_video(video) do
     %{
+      "id" => video.id,
       "copyright" => "#{video.copyright}",
       "license" => "#{video.license}",
       "originalHref" => "#{video.original_href}",
