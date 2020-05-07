@@ -24,7 +24,9 @@ config :sign_dict, SignDict.Repo,
 # Make crypto a bit faster for tests
 config :bcrypt_elixir, log_rounds: 4
 
-config :wallaby, screenshot_on_failure: true
+config :wallaby,
+  screenshot_on_failure: true,
+  driver: Wallaby.Experimental.Chrome
 
 # Using english locale for tests, this makes it
 # easier for non german speaking people

@@ -26,6 +26,8 @@ mac, install it via `brew install redis-server`, or `sudo apt install redis-serv
 
 As database it uses [PostgreSQL](http://postgresql.org).
 
+For testing you need [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/).
+
 After you installed everything, the setup is as follows:
 
 ### Mac instructions:
