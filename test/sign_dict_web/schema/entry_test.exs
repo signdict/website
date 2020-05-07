@@ -246,6 +246,35 @@ defmodule SignDict.Schema.EntryTest do
         } = response
       )
     end
+
+    test "Returns message if entry id is missing", %{conn: conn} do
+      insert(:domain, domain: "example.com")
+
+      query = """
+      {
+        entry {
+          text
+        }
+      }
+      """
+
+      response =
+        conn
+        |> post(api_path(), AbsintheHelper.query_skeleton(query, "entry"))
+        |> json_response(200)
+
+      assert(
+        %{
+          "data" => %{"entry" => nil},
+          "errors" => [
+            %{
+              "message" => "parameter 'id' missing",
+              "path" => ["entry"]
+            }
+          ]
+        } = response
+      )
+    end
   end
 
   describe "Search entry by word" do
