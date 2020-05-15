@@ -12,11 +12,12 @@ defmodule SignDict.Entry do
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "entries" do
-    field(:text, :string)
-    field(:description, :string)
-    field(:type, :string)
-    field(:url, :string, virtual: true)
-    field(:deleges_updated_at, :utc_datetime)
+    field :text, :string
+    field :description, :string
+    field :type, :string
+    field :url, :string, virtual: true
+    field :deleges_updated_at, :utc_datetime
+    field :view_count, :integer, default: 0
 
     belongs_to(:language, SignDict.Language)
 

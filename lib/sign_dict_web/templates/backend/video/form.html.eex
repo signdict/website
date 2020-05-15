@@ -42,12 +42,6 @@
   </div>
 
   <div class="o-form-element">
-    <%= label f, :plays, gettext("video.plays"), class: "c-label" %>
-    <%= text_input f, :plays, type: :number, class: "c-field #{class_for_error(f, :plays)}" %>
-    <%= error_tag f, :plays%>
-  </div>
-
-  <div class="o-form-element">
     <%= submit gettext("Submit"), class: "c-button" %>
   </div>
 <% end %>
