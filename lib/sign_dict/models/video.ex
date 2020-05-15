@@ -23,7 +23,6 @@ defmodule SignDict.Video do
     field :original_href, :string
     field :video_url, :string
     field :thumbnail_url, :string
-    field :plays, :integer
     field :metadata, :map
     field :url, :string, virtual: true
 
@@ -33,6 +32,8 @@ defmodule SignDict.Video do
 
     field :external_id, :string
     field :auto_publish, :boolean
+
+    field :view_count, :integer, default: 0
 
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
@@ -99,7 +100,6 @@ defmodule SignDict.Video do
       :entry_id,
       :video_url,
       :thumbnail_url,
-      :plays,
       :metadata,
       :rejection_reason
     ])
@@ -138,7 +138,6 @@ defmodule SignDict.Video do
       :entry_id,
       :video_url,
       :thumbnail_url,
-      :plays,
       :metadata
     ])
     |> validate_required([:state, :license, :entry_id, :user_id])

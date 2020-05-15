@@ -1,6 +1,7 @@
 defmodule SignDictWeb.EmbedController do
   use SignDictWeb, :controller
 
+  alias SignDict.Domain
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
 
@@ -30,6 +31,12 @@ defmodule SignDictWeb.EmbedController do
   end
 
   defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
+    SignDict.Analytics.increase_video_count(
+      Domain.for(conn.host),
+      conn.assigns.current_user,
+      video
+    )
+
     render(conn, "show.html",
       autoplay: conn.params["autoplay"],
       layout: {SignDictWeb.LayoutView, "embed.html"},
