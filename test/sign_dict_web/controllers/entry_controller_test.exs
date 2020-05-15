@@ -160,6 +160,23 @@ defmodule SignDict.EntryControllerTest do
       assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id, user_id: user.id) !=
                nil
     end
+
+    test "increases the view count for an anonymous user", %{
+      conn: conn,
+      entry: entry,
+      video_1: video
+    } do
+      conn |> get(entry_video_path(conn, :show, entry, video))
+
+      video = Repo.get!(Video, video.id)
+      assert video.view_count == 1
+
+      entry = Repo.get!(Entry, entry.id)
+      assert entry.view_count == 1
+
+      assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id) !=
+               nil
+    end
   end
 
   describe "new/2" do
