@@ -5,6 +5,7 @@
           <th class="c-table__cell" scope='col'><%= gettext("entry.description") %></th>
           <th class="c-table__cell" scope='col'><%= gettext("entry.type") %></th>
           <th class="c-table__cell" scope='col'><%= gettext("Language") %></th>
+          <th class="c-table__cell" scope='col'><%= gettext("entry.view_count") %></th>
           <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
         </tr>
       </thead>
@@ -15,6 +16,7 @@
           <td class="c-table__cell"><%= entry.description %></td>
           <td class="c-table__cell"><%= entry.type %></td>
           <td class="c-table__cell"><%= link entry.language.short_name, to: backend_language_path(@conn, :show, entry.language) %></div>
+          <td class="c-table__cell"><%= entry.view_count %></td>
 
           <td class="c-table__cell">
             <div class="o-grid o-grid--no-gutter">
