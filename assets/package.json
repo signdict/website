@@ -35,7 +35,7 @@
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.0.1",
     "css-loader": "^3.5.3",
     "jest": "^26.0.1",
     "jsx-no-react": "^0.3.0",
