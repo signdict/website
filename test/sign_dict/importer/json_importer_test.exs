@@ -46,7 +46,10 @@ defmodule SignDict.Importer.JsonImporterTest do
     end
 
     test "it imports the data into the video", %{path: path} do
-      video = JsonImporter.import_json(Path.join(path, "Zug.json"), ExqMock)
+      video =
+        JsonImporter.import_json(Path.join(path, "Zug.json"), ExqMock)
+        |> Repo.preload(entry: [:domains])
+
       video_id = video.id
       assert video.copyright == "Henrike Maria Falke - Gebärden lernen"
       assert video.license == "by-nc-sa/3.0/de"
@@ -74,6 +77,7 @@ defmodule SignDict.Importer.JsonImporterTest do
 
       assert video.entry.text == "Zug"
       assert video.entry.description == "Eisenbahn"
+      assert List.first(video.entry.domains).domain == "signdict.org"
       assert video.user.name == "Gebärden lernen"
       assert Video.current_state(video) == :uploaded
       assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
