@@ -11,6 +11,8 @@ role(
 task :download_ua_files do
   alias Bootleg.UI
 
+  mix_env = Keyword.get(config(), :mix_env, "prod")
+
   remote :build do
     "[ -d deps/phoenix ] && MIX_ENV=#{mix_env} mix ua_inspector.download --force || true"
   end
@@ -47,6 +49,6 @@ task :migrate do
   UI.info("Database migrated")
 end
 
-before_task(:compile, :download_ua_files)
+after_task(:compile, :download_ua_files)
 after_task(:compile, :phoenix_digest)
 before_task(:start, :migrate)
