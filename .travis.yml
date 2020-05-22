@@ -38,6 +38,7 @@ before_script:
   - cd assets && yarn && cd ..
 
 script:
+  - mix ua_inspector.download --force
   - mix check
   - mix coveralls.travis
   - cd assets && yarn run deploy

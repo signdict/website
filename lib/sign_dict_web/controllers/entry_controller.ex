@@ -6,7 +6,6 @@ defmodule SignDictWeb.EntryController do
   alias SignDict.Domain
   alias SignDict.Entry
   alias SignDict.Language
-  alias SignDict.List
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
   alias SignDict.Video
@@ -128,6 +127,7 @@ defmodule SignDictWeb.EntryController do
 
     SignDict.Analytics.increase_video_count(
       Domain.for(conn.host),
+      conn |> get_req_header("user-agent") |> List.first(),
       conn.assigns.current_user,
       video
     )
@@ -175,7 +175,7 @@ defmodule SignDictWeb.EntryController do
   end
 
   defp add_lists_for_entry(params = %{entry: entry}) do
-    lists = List.lists_with_entry(entry)
+    lists = SignDict.List.lists_with_entry(entry)
     Map.merge(params, %{lists: lists})
   end
 

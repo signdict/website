@@ -41,3 +41,6 @@ releases/
 
 # Temporary data folder
 sign2mint/
+
+# Folder for browser user agent detection files
+priv/ua_inspector

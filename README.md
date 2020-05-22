@@ -31,6 +31,7 @@ After you installed everything, the setup is as follows:
 ### Mac instructions:
 
 ```bash
+mix ua_inspector.download
 mix deps.get
 mix ecto.setup
 cd assets/ && yarn install && cd ..
