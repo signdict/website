@@ -33,6 +33,7 @@ defmodule SignDictWeb.EmbedController do
   defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
     SignDict.Analytics.increase_video_count(
       Domain.for(conn.host),
+      conn |> get_req_header("user-agent") |> List.first(),
       conn.assigns.current_user,
       video
     )

@@ -102,3 +102,6 @@ config :sign_dict, :wps_importer,
 config :recaptcha,
   public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
   secret: {:system, "RECAPTCHA_PRIVATE_KEY"}
+
+config :ua_inspector,
+  database_path: System.get_env("UA_INSPECTOR_PATH")
