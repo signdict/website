@@ -22,19 +22,25 @@ defmodule SignDictWeb.Backend.CSVExportController do
 
     {:ok, conn} =
       Repo.transaction(fn ->
-        build_export_query(Domain.for(conn.host))
-        |> Enum.reduce_while(conn, fn data, conn ->
-          case chunk(conn, data) do
-            {:ok, conn} ->
-              {:cont, conn}
-
-            {:error, :closed} ->
-              {:halt, conn}
-          end
-        end)
+        conn.host
+        |> Domain.for()
+        |> build_export_query()
+        |> chunk_data(conn)
       end)
 
     conn
+  end
+
+  defp chunk_data(data, conn) do
+    Enum.reduce_while(data, conn, fn data, conn ->
+      case chunk(conn, data) do
+        {:ok, conn} ->
+          {:cont, conn}
+
+        {:error, :closed} ->
+          {:halt, conn}
+      end
+    end)
   end
 
   def build_export_query(domain, batch_size \\ 500) do
