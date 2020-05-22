@@ -39,17 +39,24 @@
       <div class="o-grid__cell--width-15 o-grid__cell--hidden o-grid__cell--visible@large o-panel-container">
         <nav class="c-nav c-nav--light o-panel">
           <%= nav_active_link @conn, gettext("Dashboard"), backend_dashboard_path(@conn, :index)  %>
-          <%= if Canada.Can.can?(@current_user, "show", %SignDict.User{}) do %>
-            <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
-          <% end %>
-          <%= nav_active_link @conn, gettext("Review Queue"), backend_review_path(@conn, :index) %>
           <%= if Canada.Can.can?(@current_user, "show", %SignDict.Domain{}) do %>
             <%= nav_active_link @conn, gettext("Domains"), backend_domain_path(@conn, :index) %>
           <% end %>
-          <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
-          <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
+          <%= if Canada.Can.can?(@current_user, "show", %SignDict.User{}) do %>
+            <%= nav_active_link @conn, gettext("Users"), backend_user_path(@conn, :index) %>
+          <% end %>
+          <%= if Canada.Can.can?(@current_user, "edit", %SignDict.Entry{}) do %>
+            <%= nav_active_link @conn, gettext("Entries"), backend_entry_path(@conn, :index) %>
+          <% end %>
+          <%= if Canada.Can.can?(@current_user, "edit", %SignDict.Video{}) do %>
+            <%= nav_active_link @conn, gettext("Videos"), backend_video_path(@conn, :index) %>
+            <%= nav_active_link @conn, gettext("Review Queue"), backend_review_path(@conn, :index) %>
+          <% end %>
           <%= if Canada.Can.can?(@current_user, "show", %SignDict.List{}) do %>
             <%= nav_active_link @conn, gettext("Lists"), backend_list_path(@conn, :index) %>
+          <% end %>
+          <%= if Canada.Can.can?(@current_user, "statistic", %SignDict.Entry{}) do %>
+            <%= nav_active_link @conn, gettext("Statistic"), backend_statistic_path(@conn, :index) %>
           <% end %>
           <%= if Canada.Can.can?(@current_user, "show", %SignDict.Language{}) do %>
             <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>

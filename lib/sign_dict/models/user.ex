@@ -13,7 +13,7 @@ defmodule SignDict.User do
   alias SignDict.User
 
   @all_flags ~w(recording)
-  @roles ~w(user admin editor)
+  @roles ~w(user admin editor statistic)
   @subscriber Application.get_env(:sign_dict, :newsletter)[:subscriber]
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
