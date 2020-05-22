@@ -143,6 +143,9 @@ defmodule SignDictWeb.Router do
 
     resources "/videos", VideoController, only: [:index]
 
+    resources "/statistic", StatisticController, only: [:index]
+    resources "/csv_export", CSVExportController, only: [:show], singleton: true
+
     resources "/lists", ListController do
       resources "/list_entries", ListEntryController, only: [:create, :delete]
       post "/list_entries/:id/move_up", ListEntryController, :move_up

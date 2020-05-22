@@ -1,0 +1,9 @@
+<h1 class="c-heading"><%= gettext("Statistic") %></h2>
+
+<p>
+  <%= gettext("Please click the button below to download a CSV with all views. The file can be large, please be a bit patient.") %>
+</p>
+
+<p>
+  <%= link "Download CSV", to: backend_csv_export_path(@conn, :show), class: "c-button", download: "statistic.csv" %>
+</p>

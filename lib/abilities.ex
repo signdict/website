@@ -15,6 +15,11 @@ defimpl Canada.Can, for: SignDict.User do
       when action in [:index, :new, :create, :show, :edit, :update, :delete],
       do: true
 
+  def can?(%User{role: "statistic"}, :show_backend, _), do: true
+
+  def can?(%User{role: "statistic"}, "statistic", %Entry{}),
+    do: true
+
   def can?(%User{}, action, %User{}) when action in [:show], do: true
   def can?(%User{id: user_id}, _, %User{id: user_id}), do: true
 

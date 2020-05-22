@@ -222,12 +222,12 @@ msgstr ""
 msgid "user.role"
 msgstr "Role"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:43
+#: lib/sign_dict_web/templates/layout/backend.html.eex:46
 msgid "Users"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:39
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:46 lib/sign_dict_web/templates/layout/backend.html.eex:50
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:46 lib/sign_dict_web/templates/layout/backend.html.eex:52
 msgid "Videos"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:55
+#: lib/sign_dict_web/templates/layout/backend.html.eex:62
 msgid "Languages"
 msgstr ""
 
@@ -750,7 +750,7 @@ msgstr ""
 msgid "Search results for %{query}"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/embed_controller.ex:47
+#: lib/sign_dict_web/controllers/embed_controller.ex:48
 #: lib/sign_dict_web/controllers/entry_controller.ex:146
 msgid "Sign for %{sign}"
 msgstr ""
@@ -771,7 +771,7 @@ msgstr ""
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr ""
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:58
+#: lib/sign_dict_web/templates/layout/backend.html.eex:65
 msgid "Worker Queue"
 msgstr ""
 
@@ -832,7 +832,7 @@ msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
 #: lib/sign_dict_web/controllers/embed_controller.ex:23
-#: lib/sign_dict_web/controllers/embed_controller.ex:54
+#: lib/sign_dict_web/controllers/embed_controller.ex:55
 msgid "Sorry, no sign found"
 msgstr ""
 
@@ -911,7 +911,7 @@ msgstr "Feature flags"
 msgid "Record new video"
 msgstr ""
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:45
+#: lib/sign_dict_web/templates/layout/backend.html.eex:53
 msgid "Review Queue"
 msgstr ""
 
@@ -964,7 +964,7 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:28
+#: lib/sign_dict_web/controllers/entry_controller.ex:27
 #: lib/sign_dict_web/templates/shared/footer.html.eex:46 lib/sign_dict_web/templates/shared/sign2mint_footer.html.eex:33
 msgid "All entries"
 msgstr ""
@@ -1064,7 +1064,7 @@ msgstr ""
 msgid "List updated successfully."
 msgstr ""
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:52
+#: lib/sign_dict_web/templates/layout/backend.html.eex:56
 msgid "Lists"
 msgstr ""
 
@@ -1210,7 +1210,7 @@ msgid "New videos"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/controllers/entry_controller.ex:49
+#: lib/sign_dict_web/controllers/entry_controller.ex:48
 #: lib/sign_dict_web/templates/entry/latest.html.eex:5
 msgid "Recently created videos"
 msgstr ""
@@ -1294,7 +1294,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:26
-#: lib/sign_dict_web/templates/layout/backend.html.eex:47
+#: lib/sign_dict_web/templates/layout/backend.html.eex:43
 msgid "Domains"
 msgstr ""
 
@@ -1325,7 +1325,24 @@ msgstr "Domain name"
 msgid "domain.id"
 msgstr "ID"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
 msgid "entry.view_count"
 msgstr "View Counts"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:4
+msgid "Please click the button below to download a CSV with all views. The file can be large, please be a bit patient."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:1
+#: lib/sign_dict_web/templates/layout/backend.html.eex:59
+msgid "Statistic"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/controllers/backend/csv_export_controller.ex:11
+#: lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
+msgid "You cannot view this page."
+msgstr ""
