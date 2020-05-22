@@ -57,4 +57,24 @@ defmodule Canada.CanTest do
   test "a normal user can't edit languages" do
     refute Canada.Can.can?(%User{}, :edit, %Language{})
   end
+
+  test "a statistic user can't edit entries" do
+    refute Canada.Can.can?(%User{role: "statistic"}, :edit, %Language{})
+  end
+
+  test "a statistic user can't edit users" do
+    refute Canada.Can.can?(%User{role: "statistic", id: 1}, :edit, %User{})
+  end
+
+  test "a statistic user can't edit vidoes" do
+    refute Canada.Can.can?(%User{role: "statistic"}, :edit, %Video{})
+  end
+
+  test "a statistic user can see the backend" do
+    assert Canada.Can.can?(%User{role: "statistic"}, :show_backend, %{})
+  end
+
+  test "a statistic user can see the statistic" do
+    assert Canada.Can.can?(%User{role: "statistic"}, "statistic", %Entry{})
+  end
 end

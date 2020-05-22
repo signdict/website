@@ -37,6 +37,17 @@ defmodule SignDict.Factory do
     }
   end
 
+  def statistic_user_factory do
+    %SignDict.User{
+      name: "Rebecca Smith",
+      email: sequence(:email, &"editor-#{&1}@example.com"),
+      password: "correct_password",
+      password_confirmation: "correct_password",
+      password_hash: Bcrypt.hash_pwd_salt("correct_password"),
+      role: "statistic"
+    }
+  end
+
   def language_dgs_factory do
     %SignDict.Language{
       iso6393: "gsg",
