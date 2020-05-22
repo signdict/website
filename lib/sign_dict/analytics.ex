@@ -6,9 +6,17 @@ defmodule SignDict.Analytics do
   alias SignDict.Repo
   alias SignDict.Video
 
-  def increase_video_count(domain, user, video) do
+  def increase_video_count(domain, user_agent, user, video) do
     Repo.get!(Video, video.id)
 
+    if UAInspector.bot?(user_agent) do
+      nil
+    else
+      do_increase_video_count(domain, user, video)
+    end
+  end
+
+  defp do_increase_video_count(domain, user, video) do
     from(
       e in Entry,
       where: e.id == ^video.entry_id,
