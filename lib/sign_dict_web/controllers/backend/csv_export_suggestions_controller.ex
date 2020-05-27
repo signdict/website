@@ -1,4 +1,4 @@
-defmodule SignDictWeb.Backend.CSVExportController do
+defmodule SignDictWeb.Backend.CSVExportSuggestionsController do
   use SignDictWeb, :controller
 
   alias SignDict.Domain
@@ -16,7 +16,7 @@ defmodule SignDictWeb.Backend.CSVExportController do
   defp do_export(conn) do
     conn =
       conn
-      |> put_resp_header("content-disposition", "attachment; filename=statistic.csv")
+      |> put_resp_header("content-disposition", "attachment; filename=statistic_suggestions.csv")
       |> put_resp_content_type("text/csv")
       |> send_chunked(200)
 
@@ -45,15 +45,12 @@ defmodule SignDictWeb.Backend.CSVExportController do
 
   def build_export_query(domain, batch_size \\ 500) do
     query = """
-      select entries.id::text, video_analytics.video_id::text, entries.text, entries.description, trim(both '"' from to_json(video_analytics.inserted_at)::text)
-        from video_analytics
-        join videos on video_analytics.video_id = videos.id
-        join entries on videos.entry_id = entries.id
-        join domains_entries on entries.id = domains_entries.entry_id
-        where domains_entries.domain_id = $1
+      select word, description, trim(both '"' from to_json(inserted_at)::text)
+        from suggestions
+        where domain_id = $1
     """
 
-    csv_header = [["Entry ID", "Video ID", "Title", "Description", "Time"]]
+    csv_header = [["Word", "Description", "Time"]]
 
     Ecto.Adapters.SQL.stream(Repo, query, [domain.id], max_rows: batch_size)
     |> Stream.flat_map(fn item ->

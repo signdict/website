@@ -45,10 +45,10 @@
 <div class="o-grid o-grid--wrap">
   <div class="o-grid__cell">
     <p>
-      <%= gettext("Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam.") %>
+      <%= gettext("Missing an entry and want to have it added?") %>
     </p>
     <p>
-      <%= link gettext("Add new entry"), to: entry_path(@conn, :new, text: @conn.params["q"]), class: "sc-button sc-button--small" %>
+      <%= link gettext("Suggest a new entry"), to: suggestion_path(@conn, :index, word: @conn.params["q"]), class: "sc-button sc-button--small" %>
     </p>
   </div>
 </div>

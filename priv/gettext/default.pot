@@ -31,7 +31,8 @@ msgstr ""
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:4 lib/sign_dict_web/templates/backend/language/form.html.eex:4
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:4 lib/sign_dict_web/templates/backend/user/form.html.eex:4
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:4 lib/sign_dict_web/templates/entry/form.html.eex:4
-#: lib/sign_dict_web/templates/user/edit.html.eex:6 lib/sign_dict_web/templates/user/new.html.eex:12
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:33 lib/sign_dict_web/templates/user/edit.html.eex:6
+#: lib/sign_dict_web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -928,7 +929,6 @@ msgid "Video could not be approved"
 msgstr ""
 
 #: lib/sign_dict_web/templates/entry/new.html.eex:1
-#: lib/sign_dict_web/templates/search/index.html.eex:51
 msgid "Add new entry"
 msgstr ""
 
@@ -1342,7 +1342,103 @@ msgid "Statistic"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/controllers/backend/csv_export_controller.ex:11
-#: lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
+#: lib/sign_dict_web/controllers/backend/csv_export_suggestions_controller.ex:11
+#: lib/sign_dict_web/controllers/backend/csv_export_views_controller.ex:11 lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
 msgid "You cannot view this page."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:15
+msgid "Suggestions"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:7
+msgid "Views"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:17
+msgid "This will include all suggestions made by users."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:9
+msgid "This will include all views of all videos."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:12
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:20
+msgid "Download CSV"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:17
+msgid "Add the video yourself"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/search/index.html.eex:48
+msgid "Missing an entry and want to have it added?"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:46
+msgid "Please describe the word or use it in a sentence. This helps us to find the right sign."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:53
+msgid "Send"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/search/index.html.eex:51
+msgid "Suggest a new entry"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:10
+msgid "Suggest a new word!"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:25
+msgid "Suggest the word"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:28
+msgid "You cannot sign the word? No problem, just add it here and someone will sign it for you:"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:44
+msgid "suggestion.description"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:38
+msgid "suggestion.word"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:13
+msgid "SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:21
+msgid "You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>."
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/controllers/suggestion_controller.ex:30
+msgid "There were problems saving your entry"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/controllers/suggestion_controller.ex:25
+msgid "Thanks for suggesting a new entry."
 msgstr ""

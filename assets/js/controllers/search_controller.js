@@ -1,13 +1,13 @@
 import {Controller} from 'stimulus';
 import jsxElem, {render} from 'jsx-no-react';
-import {i18next} from '../i18next.js';
+import {i18next, i18n} from '../i18next.js';
 
 const CACHE_DURATION = 10 * 60 * 1000; // Cache for 10 minutes
 
 export default class extends Controller {
   connect() {
     this.cache = {};
-    this.currentResults = [];
+    this.currentResults = null;
     this.element.setAttribute('autocomplete', 'off');
     this.element.addEventListener('input', this.resetTimer);
     this.element.addEventListener('focus', () => {
@@ -42,7 +42,7 @@ export default class extends Controller {
   };
 
   showPopup = () => {
-    if (this.currentResults && this.currentResults.length > 0) {
+    if (this.currentResults) {
       const searchPopup = this.findOrCreatePopup();
       searchPopup.style.width = this.element.getBoundingClientRect().width + 'px';
       searchPopup.style.display = 'block';
@@ -60,7 +60,7 @@ export default class extends Controller {
   resetSearch = () => {
     const searchPopup = this.findOrCreatePopup();
     searchPopup.innerHTML = '';
-    this.currentResults = [];
+    this.currentResults = null;
     this.hidePopup();
   };
 
@@ -98,7 +98,7 @@ export default class extends Controller {
             this.addToCache(searchValue, items, hasMore);
             this.displayResults(items, hasMore);
           } else {
-            this.resetSearch();
+            this.showHint();
           }
         });
       }
@@ -175,6 +175,32 @@ export default class extends Controller {
     const cacheEntry = this.cache[searchTerm];
     if (cacheEntry && cacheEntry.time > new Date() - CACHE_DURATION) {
       return cacheEntry;
+    }
+  };
+
+  raw = (string) => {
+    const htmlCollection = new DOMParser().parseFromString(string, 'text/html').body.childNodes;
+    const array = [].slice.call(htmlCollection);
+    return array;
+  };
+
+  showHint = () => {
+    this.currentResults = [];
+    const searchPopup = this.findOrCreatePopup();
+    searchPopup.innerHTML = '';
+    render(
+      <div className="so-search-hints--empty">
+        {this.raw(
+          i18next.t('SearchController.WordNotFound', {
+            where: '/suggestion?word=' + encodeURIComponent(this.element.value),
+            interpolation: {escapeValue: false},
+          })
+        )}
+      </div>,
+      searchPopup
+    );
+    if (this.element == document.activeElement) {
+      this.showPopup();
     }
   };
 }

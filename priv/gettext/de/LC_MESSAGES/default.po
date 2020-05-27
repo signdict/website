@@ -31,7 +31,8 @@ msgstr "Anmelden"
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:4 lib/sign_dict_web/templates/backend/language/form.html.eex:4
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:4 lib/sign_dict_web/templates/backend/user/form.html.eex:4
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:4 lib/sign_dict_web/templates/entry/form.html.eex:4
-#: lib/sign_dict_web/templates/user/edit.html.eex:6 lib/sign_dict_web/templates/user/new.html.eex:12
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:33 lib/sign_dict_web/templates/user/edit.html.eex:6
+#: lib/sign_dict_web/templates/user/new.html.eex:12
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder."
 
@@ -928,7 +929,6 @@ msgid "Video could not be approved"
 msgstr "Video konnte nicht freigegeben werden"
 
 #: lib/sign_dict_web/templates/entry/new.html.eex:1
-#: lib/sign_dict_web/templates/search/index.html.eex:51
 msgid "Add new entry"
 msgstr "Neuen Eintrag hinzufügen"
 
@@ -1255,7 +1255,7 @@ msgstr "Sign2Mint ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jed
 #, elixir-format
 #: lib/sign_dict_web/templates/entry/show.html.eex:121
 msgid "License"
-msgstr ""
+msgstr "Lizenz"
 
 #, elixir-format
 #: lib/sign_dict_web/templates/shared/sign2mint_footer.html.eex:10
@@ -1342,7 +1342,103 @@ msgid "Statistic"
 msgstr "Statistik"
 
 #, elixir-format
-#: lib/sign_dict_web/controllers/backend/csv_export_controller.ex:11
-#: lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
+#: lib/sign_dict_web/controllers/backend/csv_export_suggestions_controller.ex:11
+#: lib/sign_dict_web/controllers/backend/csv_export_views_controller.ex:11 lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
 msgid "You cannot view this page."
 msgstr "Du darfst diese Seite nicht sehen."
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:15
+msgid "Suggestions"
+msgstr "Vorschläge"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:7
+msgid "Views"
+msgstr "Aufrufe"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:17
+msgid "This will include all suggestions made by users."
+msgstr "Diese Datei behinhaltet alle Vorschläge von Nutzer:innen"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:9
+msgid "This will include all views of all videos."
+msgstr "Diese Datei enthält alle Informationen wann ein Video gesehen wurde."
+
+#, elixir-format
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:12
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:20
+msgid "Download CSV"
+msgstr "CSV runterladen"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:17
+msgid "Add the video yourself"
+msgstr "Füge das Video selber hinzu"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/search/index.html.eex:48
+msgid "Missing an entry and want to have it added?"
+msgstr "Vermisst du eine Gebärde?"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:46
+msgid "Please describe the word or use it in a sentence. This helps us to find the right sign."
+msgstr "Bitte beschreibe das Wort in einem Satz. Dies Hilft uns, die richtige Gebärde zu finden."
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:53
+msgid "Send"
+msgstr "Absenden"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/search/index.html.eex:51
+msgid "Suggest a new entry"
+msgstr "Einen Eintrag vorschlagen"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:10
+msgid "Suggest a new word!"
+msgstr "Ein neues Wort vorschlagen!"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:25
+msgid "Suggest the word"
+msgstr "Ein Wort vorschlagen"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:28
+msgid "You cannot sign the word? No problem, just add it here and someone will sign it for you:"
+msgstr "Du kannst das Wort nicht gebärden? Kein Problem, schlag es hier vor und jemand anderes wird es für dich gebärden:"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:44
+msgid "suggestion.description"
+msgstr "Beschreibung"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:38
+msgid "suggestion.word"
+msgstr "Wort"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:13
+msgid "SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:"
+msgstr "SignDict ist ein offenes Wörterbuch. Jede:r kann helfen, es besser zu machen. Du vermisst einen Eintrag und willst helfen? Großartig! Es gibt zwei Wege dafür:"
+
+#, elixir-format
+#: lib/sign_dict_web/templates/suggestion/index.html.eex:21
+msgid "You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>."
+msgstr "Du kannst das fehlende Wort gebärden und besitzt eine Webcam? Füge das Wort selber hinzu <a href=\"%{login_url}\">auf dieser Seite</a>."
+
+#, elixir-format
+#: lib/sign_dict_web/controllers/suggestion_controller.ex:30
+msgid "There were problems saving your entry"
+msgstr "Es gab Probleme beim Absenden deines Vorschlages"
+
+#, elixir-format
+#: lib/sign_dict_web/controllers/suggestion_controller.ex:25
+msgid "Thanks for suggesting a new entry."
+msgstr "Danke für deinen Vorschlag."
