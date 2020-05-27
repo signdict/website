@@ -1,4 +1,4 @@
-defmodule SignDictWeb.Backend.CSVExportControllerTest do
+defmodule SignDictWeb.Backend.CSVExportViewsControllerTest do
   use SignDict.ConnCase
   use Bamboo.Test, shared: true
 
@@ -28,7 +28,7 @@ defmodule SignDictWeb.Backend.CSVExportControllerTest do
       conn =
         conn
         |> guardian_login(insert(:statistic_user))
-        |> get(backend_csv_export_path(conn, :show))
+        |> get(backend_csv_export_views_path(conn, :show))
 
       assert response_content_type(conn, :csv) =~ "charset=utf-8"
 
@@ -46,7 +46,7 @@ defmodule SignDictWeb.Backend.CSVExportControllerTest do
       conn =
         conn
         |> guardian_login(insert(:user))
-        |> get(backend_csv_export_path(conn, :show))
+        |> get(backend_csv_export_views_path(conn, :show))
 
       assert redirected_to(conn, 302) == "/"
     end

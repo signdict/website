@@ -48,4 +48,7 @@ export default {
   "Sadly there seems something wrong and we can't start the recording: ":
     'Leider ist etwas schief gelaufen und wir können die Aufnahme nicht starten: ',
   More: 'Mehr',
+  SearchController: {
+    WordNotFound: 'Leider konnte das Wort nicht gefunden werden. Bitte <a href="{{where}}">schlage es hier vor</a>.',
+  },
 };

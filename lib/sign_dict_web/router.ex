@@ -64,6 +64,7 @@ defmodule SignDictWeb.Router do
     resources "/users", UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/list", ListController, only: [:show]
+    resources "/suggestion", SuggestionController, only: [:index, :create]
 
     get "/recorder/:entry_id", RecorderController, :index
     get "/recorder/new/:entry_id", RecorderController, :new
@@ -144,7 +145,11 @@ defmodule SignDictWeb.Router do
     resources "/videos", VideoController, only: [:index]
 
     resources "/statistic", StatisticController, only: [:index]
-    resources "/csv_export", CSVExportController, only: [:show], singleton: true
+    resources "/csv_export_views", CSVExportViewsController, only: [:show], singleton: true
+
+    resources "/csv_export_suggestions", CSVExportSuggestionsController,
+      only: [:show],
+      singleton: true
 
     resources "/lists", ListController do
       resources "/list_entries", ListEntryController, only: [:create, :delete]
