@@ -4,7 +4,7 @@
       <form action="/search">
         <div class="so-searchbar--container">
           <div class="so-searchbar--input">
-           <input class="so-searchbar--input--inner" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search a word to see the GSL sign") %>" value="<%= @conn.params["q"] %>" data-controller="search"/>
+           <input class="so-searchbar--input--inner" type="text" name="q" aria-label="<%= gettext("Enter word to search") %>" placeholder="<%= gettext("Search a word to see the GSL sign") %>" value="<%= @conn.params["q"] %>" data-controller="search" autofocus/>
           </div>
           <button class="so-searchbar--submit" type="submit">
             <i class="fa fa-search so-searchbar--icon" aria-hidden="true"></i>
