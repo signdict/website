@@ -85,15 +85,17 @@ defmodule SignDict.Transcoder.JwPlayer do
 
     json = Poison.decode!(result.body)
 
-    changeset =
-      Video.changeset_transcoder(video, %{
-        video_url: get_video_from_response(json),
-        thumbnail_url: get_thumbnail_from_response(json)
-      })
+    if json["playlist"] do
+      changeset =
+        Video.changeset_transcoder(video, %{
+          video_url: get_video_from_response(json),
+          thumbnail_url: get_thumbnail_from_response(json)
+        })
 
-    changeset
-    |> add_jw_answer_to_video(json)
-    |> Repo.update()
+      changeset
+      |> add_jw_answer_to_video(json)
+      |> Repo.update()
+    end
   end
 
   defp get_video_from_response(json) do
