@@ -4,7 +4,6 @@ defmodule SignDictWeb.PageController do
   def index(conn, _params) do
     render(conn, get_layout_for(conn.host, "index.html"),
       layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
-      contributor_count: contributor_count(conn.host),
       sign_count: sign_count(conn.host)
     )
   end
@@ -60,18 +59,5 @@ defmodule SignDictWeb.PageController do
       )
 
     Repo.aggregate(query, :count, :id)
-  end
-
-  defp contributor_count(domain) do
-    query =
-      from(video in SignDict.Video,
-        join: entry in assoc(video, :entry),
-        join: domain in assoc(entry, :domains),
-        select: video.user_id,
-        distinct: true,
-        where: video.state == "published" and domain.domain == ^domain
-      )
-
-    Repo.aggregate(query, :count, :user_id)
   end
 end
