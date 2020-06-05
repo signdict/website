@@ -10,8 +10,8 @@
             <%= {:safe, gettext("Sign2Mint is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>")} %>
           </p>
           <p class='so-landing--banner--stats'>
-            <%= raw(gettext("So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>",
-                  humans: @contributor_count, signs: @sign_count,
+            <%= raw(gettext("<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users.",
+                  signs: @sign_count,
                   link: entry_path(@conn, :index)
              )) %>
           </p>
