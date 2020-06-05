@@ -90,12 +90,13 @@ defmodule SignDict.VideoTest do
       assert Video.can_delete?(v)
     end
 
-    test "allow transition from waiting_for_review to published and deleted" do
+    test "allow transition from waiting_for_review to published and deleted and waiting_for_review" do
       v = %Video{state: "waiting_for_review"}
 
       assert Video.current_state(v) == :waiting_for_review
       assert Video.can_publish?(v)
       assert Video.can_delete?(v)
+      assert Video.can_wait_for_review?(v)
     end
 
     test "allow transition from rejected to published and deleted" do
