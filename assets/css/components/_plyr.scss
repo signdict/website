@@ -1,4 +1,4 @@
-@import "../node_modules/plyr/dist/plyr.css";
+@import '../node_modules/plyr/dist/plyr.css';
 
 .plyr {
   margin: 0 1em;
@@ -26,6 +26,7 @@ button.playrate-menu--active,
 .playrate-menu {
   bottom: 3em;
   pointer-events: auto;
+  z-index: 10;
 }
 
 .playrate-menu--list {
