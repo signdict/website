@@ -58,9 +58,13 @@ defmodule SignDict.Video do
       changeset |> Repo.update()
     end)
 
-    defevent(:wait_for_review, %{from: [:transcoding], to: :waiting_for_review}, fn changeset ->
-      changeset |> Repo.update()
-    end)
+    defevent(
+      :wait_for_review,
+      %{from: [:transcoding, :waiting_for_review], to: :waiting_for_review},
+      fn changeset ->
+        changeset |> Repo.update()
+      end
+    )
 
     defevent(
       :publish,
