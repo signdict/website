@@ -176,6 +176,12 @@ defmodule SignDict.Transcoder.JwPlayerTest do
              }
     end
 
+    test "it does not crash if the jwplayed service renders an empty playlist" do
+      video = insert(:video_with_entry, %{metadata: %{"jw_video_id" => "empty_playlist"}})
+      result = SignDict.Transcoder.JwPlayer.check_status(video, MockHTTPoisonDone)
+      assert result == :done
+    end
+
     test "it returns :transcoding when the video is still in progress" do
       video =
         insert(:video_with_entry, %{
