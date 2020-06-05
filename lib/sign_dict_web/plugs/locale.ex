@@ -8,9 +8,17 @@ defmodule SignDictWeb.Plug.Locale do
   def init(_opts), do: nil
 
   def call(conn, _opts) do
-    case fetch_locale(conn) do
+    case conn |> fetch_locale() |> filter_allowed_locale() do
       nil -> conn
       locale -> update_user_locale(conn, locale)
+    end
+  end
+
+  defp filter_allowed_locale(locale) do
+    if Enum.member?(["de", "en"], locale) do
+      locale
+    else
+      nil
     end
   end
 

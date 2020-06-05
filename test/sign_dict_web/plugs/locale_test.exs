@@ -48,4 +48,15 @@ defmodule SignDict.Plug.LocaleTest do
     assert Gettext.get_locale(SignDictWeb.Gettext) == "de"
     assert get_session(conn, :locale) == "de"
   end
+
+  test "does not set an unknown locale", %{conn: conn} do
+    conn =
+      conn
+      |> get("/", %{"locale" => "unknown"})
+      |> recycle()
+      |> get("/")
+
+    assert Gettext.get_locale(SignDictWeb.Gettext) == "en"
+    assert get_session(conn, :locale) == nil
+  end
 end
