@@ -20,7 +20,7 @@ abide by its terms.**
 * Open a pull-request and work on a feature branch. During the work on your branch:
     * [Credo](https://github.com/rrrene/credo) will check for common code quality problems
     * A CI server provides feedback for your branch. We're using [Travis CI](http://travis-ci.org) to help us with this job.
-* As soon as your feature is ready to be merged, you rebase the branch onto master and clean up your commit history
+* As soon as your feature is ready to be merged, you rebase the branch onto main and clean up your commit history
     * When you're ready, create a pull request.
     * We will review your branch and signal its readiness with a :shipit: or a
       GIF of our choosing. If there's feedback, we will discuss it with you.
