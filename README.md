@@ -2,8 +2,8 @@
 
 A crowdsourced sign language dictionary.
 
-[![Build Status](https://travis-ci.com/signdict/website.svg?branch=master)](https://travis-ci.com/signdict/website)
-[![Coverage Status](https://coveralls.io/repos/github/signdict/website/badge.svg?branch=master)](https://coveralls.io/github/signdict/website?branch=master)
+[![Build Status](https://travis-ci.com/signdict/website.svg?branch=main)](https://travis-ci.com/signdict/website)
+[![Coverage Status](https://coveralls.io/repos/github/signdict/website/badge.svg?branch=main)](https://coveralls.io/github/signdict/website?branch=main)
 [![Join the chat at https://gitter.im/signdict/lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/signdict/lobby)
 
 Here we will work on SignDict. A sign language dictionary
