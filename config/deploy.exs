@@ -1,5 +1,7 @@
 use Bootleg.Config
 
+config(:refspec, "main")
+
 role(
   :build,
   "signdict.org",
