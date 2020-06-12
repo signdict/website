@@ -47,7 +47,7 @@ defmodule SignDictWeb.UserController do
     render(conn, "show.html",
       user: user,
       searchbar: true,
-      videos: load_videos(user, params),
+      videos: load_videos(conn.host, user, params),
       ogtags: OpenGraph.to_metadata(conn.assigns.user),
       title: gettext("User %{user}", user: conn.assigns.user.name)
     )
@@ -81,11 +81,12 @@ defmodule SignDictWeb.UserController do
     end
   end
 
-  defp load_videos(user, params) do
+  defp load_videos(domain, user, params) do
     query =
       from v in Video,
-        where: v.state == ^"published" and v.user_id == ^user.id,
         join: e in assoc(v, :entry),
+        join: domain in assoc(e, :domains),
+        where: v.state == ^"published" and v.user_id == ^user.id and domain.domain == ^domain,
         order_by: e.text,
         preload: :entry
 
