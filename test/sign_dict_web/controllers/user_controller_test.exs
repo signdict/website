@@ -83,6 +83,16 @@ defmodule SignDict.UserControllerTest do
       assert Enum.sort([video_b.id, video_a.id]) ==
                Enum.map(conn.assigns.videos.entries, fn v -> v.id end) |> Enum.sort()
     end
+
+    test "it does not show entries from a wrong domain", %{conn: conn} do
+      domain = insert(:domain, domain: "example.com")
+      entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
+
+      conn = get(conn, user_path(conn, :show, entry.current_video.user))
+      assert html_response(conn, 200) =~ entry.current_video.user.name
+
+      assert conn.assigns.videos.total_entries == 0
+    end
   end
 
   describe "edit/2" do
