@@ -34,3 +34,20 @@ import { definitionsFromContext } from "stimulus/webpack-helpers"
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
+
+// Set autofocus to search bar on non-mobile devices
+window.onload = function() {
+  var em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+  // Breakpoint is 48em, the same as in the CSS
+  if (window.innerWidth > 48 * em) {
+    // There is never more than one element with one of these classes, therefore this works
+    var searchbar_classes = ["so-searchbar--input--inner", "so-landing--search--input"];
+    searchbar_classes.map((classname) => {
+      var searchbars = document.getElementsByClassName(classname);
+      if (searchbars[0]) {
+        searchbars[0].focus();
+      }
+    })
+  }
+};
