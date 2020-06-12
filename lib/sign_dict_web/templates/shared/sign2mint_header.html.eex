@@ -1,6 +1,6 @@
 <title><%= gettext("Sign2Mint") %><%= if assigns[:title] do %> - <%= assigns[:title] %><% end %></title>
 
-<%= ogtags(@conn) %>
+<%= ogtags(@conn, gettext("Sign2Mint")) %>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

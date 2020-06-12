@@ -1,6 +1,6 @@
-<title><%= gettext("SignDict") %><%= if assigns[:title] do %> - <%= assigns[:title] %><% end %></title>
+<title><%= gettext("Sign2MINT") %><%= if assigns[:title] do %> - <%= assigns[:title] %><% end %></title>
 
-<%= ogtags(@conn, gettext("SignDict")) %>
+<%= ogtags(@conn, gettext("Sign2MINT")) %>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
 <meta name="description" content="<%= gettext("SignDict - A sign language dictionary") %>">
 <meta name="author" content="SignDict">
 
-<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+<link rel="stylesheet" href="<%= static_path(@conn, "/css/sign2mint.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
 
 <link rel="apple-touch-icon-precomposed" href="/favicon_152.png">

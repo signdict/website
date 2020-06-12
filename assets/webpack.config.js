@@ -1,26 +1,25 @@
-const path = require("path");
-const glob = require("glob");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const glob = require('glob');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = (env, options) => ({
-  devtool: "source-map",
+  devtool: 'source-map',
   optimization: {
-    minimizer: [
-      new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),      new OptimizeCSSAssetsPlugin({})
-    ]
+    minimizer: [new TerserPlugin({cache: true, parallel: true, sourceMap: false}), new OptimizeCSSAssetsPlugin({})],
   },
   entry: {
-    "app": ["./js/app.js"].concat(glob.sync("./vendor/**/*.js")),
-    "backend": ["./js/backend.js"],
-    "recorder": ["./js/recorder.js"].concat(glob.sync("./vendor/**/*.js")),
+    app: ['./js/app.js'].concat(glob.sync('./vendor/**/*.js')),
+    backend: ['./js/backend.js'],
+    sign2mint: ['./js/sign2mint.js'],
+    recorder: ['./js/recorder.js'].concat(glob.sync('./vendor/**/*.js')),
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, "../priv/static/js")
+    path: path.resolve(__dirname, '../priv/static/js'),
   },
   module: {
     rules: [
@@ -28,34 +27,34 @@ module.exports = (env, options) => ({
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.vue$/,
-        use: 'vue-loader'
+        use: 'vue-loader',
       },
       {
         test: /\.(svg|woff|woff2|eot|ttf|json?)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "../fonts"
-            }
-          }
-        ]
-      }
-    ]
+              name: '[name].[ext]',
+              outputPath: '../fonts',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({ filename: "../css/[name].css" }),
-    new CopyWebpackPlugin([{ from: "static/", to: "../" }])
-  ]
+    new MiniCssExtractPlugin({filename: '../css/[name].css'}),
+    new CopyWebpackPlugin([{from: 'static/', to: '../'}]),
+  ],
 });
