@@ -1,0 +1,166 @@
+@import 'sign2mint/base/_fonts.scss';
+
+$accent: #006c66;
+$text-color: #555555;
+$background: #eeeeee;
+$dark_background: #10134b;
+$deactive: #aeb0b0;
+$highlight: #50d8c8;
+$bright_font: #ffffff;
+
+@import 'objects/_searchbar';
+
+.s2m--header {
+  padding: 1rem;
+  background-color: $accent;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  &--logo {
+    padding-right: 2rem;
+  }
+
+  &--about {
+    padding-left: 2rem;
+  }
+}
+
+.s2m--welcome {
+  text-align: center;
+  width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: $text-color;
+
+  &--title {
+    font-family: 'Merriweather', serif;
+    font-size: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: $accent;
+  }
+
+  &--description {
+    font-size: 1.5rem;
+  }
+
+  &--invite {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &--suggest {
+    background-color: $accent;
+    color: white;
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin-top: 2rem;
+  }
+}
+
+.s2m--welcome-searchbar {
+  background-color: $background;
+  padding: 1rem 2rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+
+  &--input-wrapper {
+    flex-grow: 1;
+  }
+
+  &--input {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+
+  &--submit {
+    font-family: 'Roboto', sans-serif;
+    background-color: $accent;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  &--all-letters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+    color: $accent;
+    text-decoration: none;
+
+    &:visited {
+      color: $accent;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.s2m--supporter {
+  margin-top: 10rem !important;
+  &--header {
+    font-size: 1rem;
+  }
+
+  &--logo {
+    height: 4rem;
+    margin-right: 3rem;
+  }
+}
+
+footer {
+  margin-top: 3rem;
+  background-color: $background;
+  color: $text-color;
+  padding: 1rem 0;
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.s2m--footer {
+  display: flex;
+  flex-direction: row;
+
+  &--text {
+    width: 15rem;
+  }
+
+  &--first-links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rem;
+  }
+
+  &--last-links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rem;
+  }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $accent;
+}

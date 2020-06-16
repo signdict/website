@@ -1,0 +1,72 @@
+<header class="s2m--header">
+  <div class="s2m--header--logo">
+    <a href="/">
+      <img src="/images/sign2mint/sign2mint-logo.png" alt="Sign2MINT Logo">
+    </a>
+  </div>
+  <div class="s2m--header--about">
+    Über Sign2MINT
+  </div>
+</header>
+
+<div class="o-container o-container--xlarge">
+  <div class="s2m--welcome">
+    <div class="s2m--welcome--title">
+      Sign2MINT
+    </div>
+    <div class="s2m--welcome--description">
+      Sign2MINT ist eine offene Fachgebärdensammlung der Bereiche Mathematik,
+      Informatik, Naturwissenschaften und Technik (MINT).
+    </div>
+    <div class="s2m--welcome--invite">
+      Jede:r ist eingeladen mitzumachen!
+    </div>
+
+    <a href="/suggestion" class="s2m--welcome--suggest">
+      Gebärde vorschlagen &gt;
+    </a>
+  </div>
+
+  <form action="/search" class='s2m--welcome-searchbar'>
+    <div class="s2m--welcome-searchbar--input-wrapper">
+      <input class="s2m--welcome-searchbar--input"  placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen"  data-controller="search"/>
+    </div>
+    <input class="s2m--welcome-searchbar--submit" type="submit" value="Suche >" />
+
+    <a href="/entry" class="s2m--welcome-searchbar--all-letters">
+      A - Z &gt;
+    </a>
+  </form>
+
+</div>
+
+<div class="o-container o-container--xlarge s2m--supporter">
+  <h1 class="s2m--supporter--header">
+    Unterstützer
+  </h1>
+  <p>
+    <a href="https://www.bmas.de"><img class="s2m--supporter--logo" src="/images/deleges/bmas.png" alt="Logo Bundesministerium für Arbeit und Soziales"/></a>
+    <a href="https://www.wps.de/"><img class="s2m--supporter--logo" src="/images/deleges/wps.png" alt="Logo WPS GmbH"/></a>
+    <a href="https://www.maxplanckfoundation.org/"><img class="s2m--supporter--logo" src="/images/deleges/maxplanck.png" alt="Logo Max Planck"/></a>
+  </p>
+</div>
+
+<footer>
+  <div class="o-container o-container--xlarge s2m--footer">
+    <div class="s2m--footer--text">
+      Sign2MINT ist eine Fachgebärdensammlung bei dem jede:r mitmachen kann.
+    </div>
+
+    <div class="s2m--footer--first-links">
+      <a href="/imprint">Impressum</a>
+      <a href="/privacy">Datenschutz</a>
+      <a href="/contact">Kontakt</a>
+    </div>
+
+    <div class="s2m--footer--last-links">
+      <a href="/entry">Alle Einträge</a>
+      <a href="/latest">Neue Videos</a>
+      <a href="/">Dokumentation</a>
+    </div>
+  </div>
+</footer>

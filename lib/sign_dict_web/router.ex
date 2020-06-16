@@ -58,6 +58,12 @@ defmodule SignDictWeb.Router do
     end
   end
 
+  scope "/", Sign2MintWeb, host: Application.get_env(:sign_dict, :sign2mint_domain) do
+    pipe_through [:browser, :browser_session, :locale]
+
+    get "/", PageController, :index
+  end
+
   scope "/", SignDictWeb do
     pipe_through [:browser, :browser_session, :locale]
 

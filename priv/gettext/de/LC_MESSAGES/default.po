@@ -375,7 +375,7 @@ msgid "Entries"
 msgstr "Einträge"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:10
-#: lib/sign_dict_web/templates/shared/header.html.eex:1
+#: lib/sign_dict_web/templates/shared/header.html.eex:1 lib/sign_dict_web/templates/shared/header.html.eex:3
 msgid "SignDict"
 msgstr ""
 
@@ -491,9 +491,9 @@ msgstr "Logo rrone"
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
-#: lib/sign_dict_web/controllers/search_controller.ex:16
-#: lib/sign_dict_web/templates/page/index.html.eex:33 lib/sign_dict_web/templates/page/sign2mint_index.html.eex:31
-#: lib/sign_dict_web/templates/shared/searchbar.html.eex:12
+#: lib/sign2mint_web/templates/page/index.html.eex:36
+#: lib/sign_dict_web/controllers/search_controller.ex:16 lib/sign_dict_web/templates/page/index.html.eex:33
+#: lib/sign_dict_web/templates/page/sign2mint_index.html.eex:31 lib/sign_dict_web/templates/shared/searchbar.html.eex:12
 msgid "Search"
 msgstr "Suche"
 
@@ -756,6 +756,7 @@ msgstr "Suchergebnisse für %{query}"
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
+#: lib/sign2mint_web/templates/shared/header.html.eex:8
 #: lib/sign_dict_web/templates/shared/header.html.eex:8
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
@@ -841,7 +842,7 @@ msgstr "Entschuldigung, keine Gebärde gefunden"
 msgid "Sorry, no sign was found"
 msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
 
-#: lib/sign_dict_web/views/shared_view.ex:8
+#: lib/sign_dict/opengraph_tags.ex:9
 msgid "A sign language dictionary"
 msgstr "Ein Gebärdensprach-Wörterbuch"
 
@@ -871,7 +872,7 @@ msgstr "Datenschutz"
 msgid "Invalid confirmation link."
 msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:103
+#: lib/sign_dict_web/controllers/user_controller.ex:104
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
 
@@ -887,7 +888,7 @@ msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 msgid "already used"
 msgstr "wird schon benutzt"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:116
+#: lib/sign_dict_web/controllers/user_controller.ex:117
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
 
@@ -1238,7 +1239,7 @@ msgstr "Über Sign2Mint"
 
 #, elixir-format
 #: lib/sign_dict_web/templates/shared/sign2mint_header.html.eex:1
-#: lib/sign_dict_web/templates/shared/sign2mint_header.html.eex:8
+#: lib/sign_dict_web/templates/shared/sign2mint_header.html.eex:3 lib/sign_dict_web/templates/shared/sign2mint_header.html.eex:8
 msgid "Sign2Mint"
 msgstr "Sign2Mint"
 
@@ -1448,3 +1449,9 @@ msgstr "Danke für deinen Vorschlag."
 #: lib/sign_dict_web/templates/page/sign2mint_index.html.eex:13
 msgid "<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users."
 msgstr "<a href=\"%{link}\">%{signs} Gebärden</a> wurden von tollen Nutzer:innen hinzugefügt."
+
+#, elixir-format
+#: lib/sign2mint_web/templates/shared/header.html.eex:1
+#: lib/sign2mint_web/templates/shared/header.html.eex:3
+msgid "Sign2MINT"
+msgstr "Sign2MINT"
