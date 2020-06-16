@@ -4,7 +4,7 @@ defmodule SignDictWeb.PageController do
   def index(conn, _params) do
     render(conn, get_layout_for(conn.host, "index.html"),
       layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
-      sign_count: sign_count(conn.host)
+      sign_count: SignDict.Entries.sign_count(conn.host)
     )
   end
 
@@ -15,7 +15,7 @@ defmodule SignDictWeb.PageController do
   def welcome(conn, _params) do
     render(conn, "welcome.html",
       layout: {SignDictWeb.LayoutView, "empty.html"},
-      sign_count: sign_count(conn.host),
+      sign_count: SignDict.Entries.sign_count(conn.host),
       title: gettext("Welcome")
     )
   end
@@ -48,16 +48,5 @@ defmodule SignDictWeb.PageController do
       supporter_footer: false,
       searchbar: true
     )
-  end
-
-  defp sign_count(domain) do
-    query =
-      from(video in SignDict.Video,
-        join: entry in assoc(video, :entry),
-        join: domain in assoc(entry, :domains),
-        where: video.state == "published" and domain.domain == ^domain
-      )
-
-    Repo.aggregate(query, :count, :id)
   end
 end

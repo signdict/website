@@ -79,6 +79,8 @@ config :sign_dict, :newsletter, subscriber: ExChimp.List
 
 config :sign_dict, :recaptcha, library: Recaptcha
 
+config :sign_dict, :sign2mint_domain, "sign2mint.local"
+
 config :ex_chimp, api_key: "yourapikeyhere-us12"
 
 # these keys only work for localhost
