@@ -133,7 +133,7 @@ defmodule SignDictWeb.EntryController do
     )
 
     render(conn, "show.html",
-      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
+      layout: get_layout_for(conn.host, "empty.html"),
       entry: entry,
       video: video,
       videos: videos,

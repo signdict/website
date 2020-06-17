@@ -10,7 +10,7 @@ defmodule SignDictWeb.SuggestionController do
     render(conn, "index.html",
       changeset: Suggestions.changeset(),
       word: params["word"],
-      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")}
+      layout: get_layout_for(conn.host, "empty.html")
     )
   end
 
@@ -31,7 +31,7 @@ defmodule SignDictWeb.SuggestionController do
         |> render("index.html",
           changeset: changeset,
           word: word,
-          layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")}
+          layout: get_layout_for(conn.host, "empty.html")
         )
     end
   end

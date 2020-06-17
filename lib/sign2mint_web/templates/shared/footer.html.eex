@@ -1,0 +1,19 @@
+<footer>
+  <div class="o-container o-container--xlarge s2m--footer">
+    <div class="s2m--footer--text">
+      Sign2MINT ist eine Fachgebärdensammlung bei dem jede:r mitmachen kann.
+    </div>
+
+    <div class="s2m--footer--first-links">
+      <a href="/imprint">Impressum</a>
+      <a href="/privacy">Datenschutz</a>
+      <a href="/contact">Kontakt</a>
+    </div>
+
+    <div class="s2m--footer--last-links">
+      <a href="/entry">Alle Einträge</a>
+      <a href="/latest">Neue Videos</a>
+      <a href="/">Dokumentation</a>
+    </div>
+  </div>
+</footer>

@@ -24,9 +24,7 @@
     <!-- / Fathom -->
   </head>
   <body>
-    <div class="o-container o-container--medium">
-      <%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
-    </div>
+    <%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user %>
 
     <%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
 

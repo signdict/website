@@ -2,8 +2,8 @@ defmodule SignDictWeb.PageController do
   use SignDictWeb, :controller
 
   def index(conn, _params) do
-    render(conn, get_layout_for(conn.host, "index.html"),
-      layout: {SignDictWeb.LayoutView, get_layout_for(conn.host, "empty.html")},
+    render(conn, "index.html",
+      layout: {SignDictWeb.LayoutView, "empty.html"},
       sign_count: SignDict.Entries.sign_count(conn.host)
     )
   end
