@@ -1,6 +1,5 @@
 <%= render_shared @conn.host, "navigation.html", conn: @conn, current_user: @current_user %>
-
-<%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: true %>
+<%= render_shared @conn.host, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: true %>
 
 <div class="o-container o-container--medium">
   <div class="o-grid o-grid--wrap">
