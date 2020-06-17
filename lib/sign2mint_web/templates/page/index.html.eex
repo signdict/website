@@ -1,13 +1,4 @@
-<header class="s2m--header">
-  <div class="s2m--header--logo">
-    <a href="/">
-      <img src="/images/sign2mint/sign2mint-logo.png" alt="Sign2MINT Logo">
-    </a>
-  </div>
-  <div class="s2m--header--about">
-    Über Sign2MINT
-  </div>
-</header>
+<%= render Sign2MintWeb.SharedView, "navigation.html", conn: @conn %>
 
 <div class="o-container o-container--xlarge">
   <div class="s2m--welcome">
@@ -29,7 +20,7 @@
 
   <form action="/search" class='s2m--welcome-searchbar'>
     <div class="s2m--welcome-searchbar--input-wrapper">
-      <input class="s2m--welcome-searchbar--input"  placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen"  data-controller="search"/>
+      <input name="q" class="s2m--welcome-searchbar--input"  placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen"  data-controller="search"/>
     </div>
     <input class="s2m--welcome-searchbar--submit" type="submit" value="Suche >" />
 
@@ -51,22 +42,4 @@
   </p>
 </div>
 
-<footer>
-  <div class="o-container o-container--xlarge s2m--footer">
-    <div class="s2m--footer--text">
-      Sign2MINT ist eine Fachgebärdensammlung bei dem jede:r mitmachen kann.
-    </div>
-
-    <div class="s2m--footer--first-links">
-      <a href="/imprint">Impressum</a>
-      <a href="/privacy">Datenschutz</a>
-      <a href="/contact">Kontakt</a>
-    </div>
-
-    <div class="s2m--footer--last-links">
-      <a href="/entry">Alle Einträge</a>
-      <a href="/latest">Neue Videos</a>
-      <a href="/">Dokumentation</a>
-    </div>
-  </div>
-</footer>
+<%= render Sign2MintWeb.SharedView, "footer.html", conn: @conn %>
