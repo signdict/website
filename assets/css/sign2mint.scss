@@ -1,18 +1,82 @@
 @import 'sign2mint/base/_fonts.scss';
+@import 'sign2mint/base/_colors.scss';
+@import 'base/_spacing.scss';
+@import 'components/_alerts.scss';
+@import 'components/_plyr.scss';
+@import 'components/_buttons.scss';
+@import 'components/_pagination.scss';
+@import 'components/_forms.scss';
+@import 'components/_sidebar.scss';
+@import 'components/_tags.scss';
+@import 'objects/_embed.scss';
+@import 'objects/_entry-index.scss';
+@import 'objects/_footer.scss';
+@import 'objects/_landing.scss';
+@import 'objects/_navigation.scss';
+@import 'objects/_recorder.scss';
+@import 'objects/_searchbar.scss';
+@import 'objects/_supporter.scss';
+@import 'objects/_user-show.scss';
+@import 'objects/_video-list.scss';
+@import 'objects/_video.scss';
+@import 'objects/_voting-box.scss';
+@import 'objects/_welcome.scss';
+@import 'vendor/_font-awesome.min.scss';
+@import 'vendor/_socialbuttons.scss';
 
-$accent: #006c66;
-$text-color: #555555;
-$background: #eeeeee;
-$dark_background: #10134b;
-$deactive: #aeb0b0;
-$highlight: #50d8c8;
-$bright_font: #ffffff;
+a {
+  color: $highlight;
+  text-decoration: none;
+}
 
-@import 'objects/_searchbar';
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  line-height: 2em;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  color: $dark_font;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+input {
+  font-family: 'SignDict', 'Helvetica Neue';
+}
+
+@media all and (max-width: 48em) {
+  .sc-main {
+    min-height: 10em;
+  }
+}
+
+@media all and (min-width: 48em) {
+  .sc-main {
+    min-height: 30em;
+    flex-grow: 1;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $highlight;
+}
 
 .s2m--header {
   padding: 1rem;
-  background-color: $accent;
+  background-color: $highlight;
   color: white;
 
   display: flex;
@@ -20,10 +84,22 @@ $bright_font: #ffffff;
 
   &--logo {
     padding-right: 2rem;
+
+    img {
+      height: 2rem;
+    }
   }
 
   &--about {
     padding-left: 2rem;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -32,28 +108,28 @@ $bright_font: #ffffff;
   width: 45rem;
   margin-left: auto;
   margin-right: auto;
-  color: $text-color;
+  color: $dark_font;
 
   &--title {
     font-family: 'Merriweather', serif;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
-    color: $accent;
+    color: $highlight;
   }
 
   &--description {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   &--invite {
     margin-top: 2rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
   }
 
   &--suggest {
-    background-color: $accent;
+    background-color: $highlight;
     color: white;
     display: inline-block;
     padding: 8px 16px;
@@ -63,7 +139,7 @@ $bright_font: #ffffff;
 }
 
 .s2m--welcome-searchbar {
-  background-color: $background;
+  background-color: $light_background;
   padding: 1rem 2rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
@@ -83,7 +159,7 @@ $bright_font: #ffffff;
 
   &--submit {
     font-family: 'Roboto', sans-serif;
-    background-color: $accent;
+    background-color: $highlight;
     color: white;
     font-size: 1rem;
     border: none;
@@ -96,11 +172,11 @@ $bright_font: #ffffff;
     justify-content: center;
     align-items: center;
     padding-left: 2rem;
-    color: $accent;
+    color: $highlight;
     text-decoration: none;
 
     &:visited {
-      color: $accent;
+      color: $highlight;
     }
 
     &:hover {
@@ -111,6 +187,7 @@ $bright_font: #ffffff;
 
 .s2m--supporter {
   margin-top: 10rem !important;
+  width: 45rem;
   &--header {
     font-size: 1rem;
   }
@@ -123,12 +200,12 @@ $bright_font: #ffffff;
 
 footer {
   margin-top: 3rem;
-  background-color: $background;
-  color: $text-color;
+  background-color: $light_background;
+  color: $dark_font;
   padding: 1rem 0;
 
   a {
-    color: $text-color;
+    color: $dark_font;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -139,6 +216,7 @@ footer {
 .s2m--footer {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   &--text {
     width: 15rem;
@@ -155,12 +233,4 @@ footer {
     flex-direction: column;
     margin-left: 10rem;
   }
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
-a {
-  color: $accent;
 }

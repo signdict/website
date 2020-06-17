@@ -1,5 +1,5 @@
+<%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: false %>
 <div class="o-container o-container--medium">
-  <%= render SignDictWeb.SharedView, "navigation.html", conn: @conn, current_user: @current_user, logo: false %>
   <%= render SignDictWeb.SharedView, "alerts.html", conn: @conn %>
 
   <div class='so-landing--banner'>

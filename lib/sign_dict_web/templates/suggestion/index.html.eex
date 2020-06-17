@@ -1,6 +1,4 @@
-<div class="o-container o-container--medium">
-  <%= render SignDictWeb.SharedView, get_layout_for(@conn.host, "navigation.html"), conn: @conn, current_user: @current_user %>
-</div>
+<%= render_shared @conn.host, "navigation.html", conn: @conn, current_user: @current_user %>
 
 <%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: true %>
 
@@ -57,4 +55,4 @@
   </div>
 </div>
 
-<%= render SignDictWeb.SharedView, get_layout_for(@conn.host, "footer.html"), conn: @conn %>
+<%= render_shared @conn.host, "footer.html", conn: @conn %>

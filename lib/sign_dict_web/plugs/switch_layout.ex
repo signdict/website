@@ -7,7 +7,7 @@ defmodule SignDictWeb.Plug.SwitchLayout do
   def call(conn, _opts) do
     Phoenix.Controller.put_layout(
       conn,
-      {SignDictWeb.LayoutView, get_layout_for(conn.host, "app.html")}
+      get_layout_for(conn.host, "app.html")
     )
   end
 end

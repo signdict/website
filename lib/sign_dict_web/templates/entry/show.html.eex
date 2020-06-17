@@ -1,6 +1,4 @@
-<div class="o-container o-container--medium">
-  <%= render SignDictWeb.SharedView, get_layout_for(@conn.host, "navigation.html"), conn: @conn, current_user: @current_user %>
-</div>
+<%= render_shared @conn.host, "navigation.html", conn: @conn, current_user: @current_user %>
 
 <%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
 
@@ -173,7 +171,7 @@
         </div>
       </div>
     </div>
-   
+
     <%= if Enum.count(@entry.sign_writings) > 0 do %>
       <div class="o-grid__cell o-grid__cell--width-100">
         <h2><%= gettext("SignWriting") %></h2>
@@ -181,9 +179,9 @@
         <p><%= raw gettext("Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:") %></p>
 
         <div>
-          <%= for sign_writing <- 
-                Enum.filter(@entry.sign_writings, fn entry -> entry.image != nil && entry.state == "active" end ) 
-                |> Enum.sort_by(&(&1.deleges_id)) 
+          <%= for sign_writing <-
+                Enum.filter(@entry.sign_writings, fn entry -> entry.image != nil && entry.state == "active" end )
+                |> Enum.sort_by(&(&1.deleges_id))
                 |> Enum.take(3) do %>
             <div class="so-video-details--signimage">
               <%= img_tag(SignDictWeb.SignWritingImage.url({sign_writing.image, sign_writing})) %>
@@ -197,7 +195,7 @@
             </div>
           <% end %>
         </div>
-    
+
         <div class="so-video-details--signimage-deleges">
           <%= raw gettext("Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service.") %>
         <div>
@@ -213,4 +211,4 @@
 
 </div>
 
-<%= render SignDictWeb.SharedView, get_layout_for(@conn.host, "footer.html"), conn: @conn %>
+<%= render_shared @conn.host, "footer.html", conn: @conn %>
