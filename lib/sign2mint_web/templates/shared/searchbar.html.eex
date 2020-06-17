@@ -1,0 +1,21 @@
+<%= if assigns[:searchbar] == true do %>
+  <div class="s2m-searchbar">
+    <div class="o-container o-container--medium">
+      <form action="/search">
+        <div class="s2m-searchbar--container">
+          <div class="s2m-searchbar--input">
+           <input class="s2m-searchbar--input--inner" type="text" name="q" placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen" value="<%= @conn.params["q"] %>" data-controller="search"/>
+          </div>
+          <button class="s2m-searchbar--submit" type="submit">
+            <span class="s2m-searchbar--text">
+              Suche &gt;
+            </span>
+          </button>
+          <a href="/entry" class="s2m-searchbar--all-letters">
+            A - Z &gt;
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>

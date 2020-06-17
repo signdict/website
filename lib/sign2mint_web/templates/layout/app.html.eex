@@ -25,7 +25,7 @@
   </head>
   <body>
     <%= render Sign2MintWeb.SharedView, "navigation.html", conn: @conn %>
-    <%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+    <%= render Sign2MintWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
     <%= render SignDictWeb.SharedView, "alerts.html", conn: @conn %>
 
     <div class="sc-main o-container o-container--medium">

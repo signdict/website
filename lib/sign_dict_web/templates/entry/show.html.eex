@@ -1,6 +1,6 @@
 <%= render_shared @conn.host, "navigation.html", conn: @conn, current_user: @current_user %>
 
-<%= render SignDictWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+<%= render_shared @conn.host, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
 
 <div class="so-video">
   <div class="o-container o-container--medium">
