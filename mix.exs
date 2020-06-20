@@ -78,7 +78,7 @@ defmodule SignDict.Mixfile do
       {:secure_random, "~> 0.5"},
       {:state_mc, "~> 0.1.0"},
       {:timex, "~> 3.6"},
-      {:wallaby, "~> 0.24.0", only: :test},
+      {:wallaby, "~> 0.26.2", only: :test},
       {:jason, "~> 1.1"},
       {:briefly, "~> 0.3"},
       {:tzdata, "~> 1.0.1"},
