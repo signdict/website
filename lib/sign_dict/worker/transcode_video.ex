@@ -1,6 +1,4 @@
 defmodule SignDict.Worker.TranscodeVideo do
-  require Bugsnex
-
   alias SignDict.Repo
   alias SignDict.Video
 
@@ -13,11 +11,12 @@ defmodule SignDict.Worker.TranscodeVideo do
         sleep_ms \\ 1000,
         exq \\ Exq
       ) do
-    Bugsnex.handle_errors %{video_id: video_id} do
-      upload_and_transcode(video_id, video_service, exq)
-      # Rate limit the workers, sadly i didn't find a better way :(
-      Process.sleep(sleep_ms)
-    end
+    upload_and_transcode(video_id, video_service, exq)
+    # Rate limit the workers, sadly i didn't find a better way :(
+    Process.sleep(sleep_ms)
+  rescue
+    exception ->
+      Bugsnag.report(exception, metadata: %{video_id: video_id})
   end
 
   defp upload_and_transcode(video_id, video_service, exq) do

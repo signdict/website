@@ -74,9 +74,10 @@ config :sign_dict, SignDict.Repo,
 
 config :phoenix, :serve_endpoints, true
 
-config :bugsnex, :release_stage, "production"
-config :bugsnex, :use_logger, true
-config :bugsnex, :api_key, System.get_env("BUGSNAG_API_KEY")
+config :bugsnag,
+  release_stage: "production",
+  use_logger: true,
+  api_key: System.get_env("BUGSNAG_API_KEY")
 
 config :sign_dict, :newsletter, subscriber: ExChimp.List
 config :ex_chimp, api_key: System.get_env("MAILCHIMP_API_KEY")
