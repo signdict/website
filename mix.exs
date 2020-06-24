@@ -87,7 +87,8 @@ defmodule SignDict.Mixfile do
       {:httpoison, "~> 1.4"},
       {:downstream, "~> 1.0.0"},
       {:ua_inspector, "~> 2.0"},
-      {:csv, "~> 2.3"}
+      {:csv, "~> 2.3"},
+      {:poison, "~> 3.1.0"}
     ]
   end
 
