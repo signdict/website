@@ -11,7 +11,6 @@ defmodule SignDict.Worker.RecheckVideo do
   This gives JWPlayer enough time to finish
   everything.
   """
-  require Bugsnex
 
   alias SignDict.Repo
   alias SignDict.Video
@@ -23,17 +22,18 @@ defmodule SignDict.Worker.RecheckVideo do
         video_service \\ SignDict.Transcoder.JwPlayer,
         sleep_ms \\ @process_sleep_time
       ) do
-    Bugsnex.handle_errors %{video_id: video_id} do
-      # Rate limit the workers, sadly i didn't find a better way :(
-      Process.sleep(sleep_ms)
+    # Rate limit the workers, sadly i didn't find a better way :(
+    Process.sleep(sleep_ms)
 
-      video = Repo.get(Video, video_id)
+    video = Repo.get(Video, video_id)
 
-      if video do
-        video_service.check_status(video)
-      else
-        :deleted
-      end
+    if video do
+      video_service.check_status(video)
+    else
+      :deleted
     end
+  rescue
+    exception ->
+      Bugsnag.report(exception, metadata: %{video_id: video_id})
   end
 end
