@@ -1,6 +1,4 @@
 defmodule SignDict.Worker.CheckVideoStatus do
-  require Bugsnex
-
   @process_sleep_time 100
   # 60 seconds
   @check_transcoder_result_time 60
@@ -19,15 +17,16 @@ defmodule SignDict.Worker.CheckVideoStatus do
         exq \\ Exq,
         sleep_ms \\ @process_sleep_time
       ) do
-    Bugsnex.handle_errors %{video_id: video_id} do
-      video = Repo.get(SignDict.Video, video_id)
-      status = video_service.check_status(video)
+    video = Repo.get(SignDict.Video, video_id)
+    status = video_service.check_status(video)
 
-      # Rate limit the workers, sadly i didn't find a better way :(
-      Process.sleep(sleep_ms)
+    # Rate limit the workers, sadly i didn't find a better way :(
+    Process.sleep(sleep_ms)
 
-      process_video(video, status, exq)
-    end
+    process_video(video, status, exq)
+  rescue
+    exception ->
+      Bugsnag.report(exception, metadata: %{video_id: video_id})
   end
 
   defp process_video(video, state, exq)

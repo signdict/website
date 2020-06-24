@@ -41,10 +41,10 @@ config :canary,
 
 config :sign_dict, SignDictWeb.Mailer, adapter: Bamboo.LocalAdapter
 
-config :bugsnex, :opt_app, :sign_dict
-config :bugsnex, :repository_url, "https://github.com/signdict/website"
-config :bugsnex, :release_stage, "development"
-config :bugsnex, :use_logger, false
+config :bugsnag,
+  release_stage: "development",
+  use_logger: false,
+  exception_filter: SignDict.ExceptionFilter
 
 config :arc, storage: Arc.Storage.Local
 

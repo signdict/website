@@ -1,6 +1,6 @@
 defmodule SignDictWeb.Router do
   use SignDictWeb, :router
-  use Bugsnex.Plug
+  use Plugsnag
 
   pipeline :locale do
     plug SignDictWeb.Plug.Locale
