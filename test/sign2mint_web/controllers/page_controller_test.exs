@@ -1,6 +1,5 @@
 defmodule Sign2Mint.PageControllerTest do
   use SignDict.ConnCase
-  import SignDict.Factory
 
   describe "index/2" do
     test "should render the index page", %{conn: conn} do

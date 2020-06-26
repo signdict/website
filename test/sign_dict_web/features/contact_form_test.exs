@@ -3,6 +3,7 @@ defmodule SignDict.ContactFormTest do
   use Bamboo.Test, shared: true
   import SignDict.Factory
 
+  @tag wallaby: true
   test "sends a text via the contact form with logged in user", %{session: session} do
     insert(:user, %{
       email: "elisa@example.com",

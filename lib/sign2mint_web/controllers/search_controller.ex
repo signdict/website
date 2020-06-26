@@ -1,5 +1,5 @@
-defmodule SignDictWeb.SearchController do
-  use SignDictWeb, :controller
+defmodule Sign2MintWeb.SearchController do
+  use Sign2MintWeb, :controller
 
   alias SignDict.Entry
 
@@ -8,8 +8,8 @@ defmodule SignDictWeb.SearchController do
       if params["q"] && String.length(params["q"]) > 0 do
         [
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
-          |> Entry.with_current_video()
-          |> SignDict.Repo.paginate(params),
+          |> Entry.with_videos()
+          |> SignDict.Repo.paginate(Map.merge(params, %{page_size: 20})),
           gettext("Search results for %{query}", query: params["q"])
         ]
       else

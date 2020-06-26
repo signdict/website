@@ -9,12 +9,14 @@
 @import 'components/_sidebar.scss';
 @import 'components/_tags.scss';
 @import 'objects/_embed.scss';
+@import 'sign2mint/objects/_entry.scss';
 @import 'objects/_entry-index.scss';
 @import 'objects/_footer.scss';
 @import 'objects/_landing.scss';
 @import 'objects/_navigation.scss';
 @import 'objects/_recorder.scss';
 @import 'sign2mint/objects/_searchbar.scss';
+@import 'objects/_search-result.scss';
 @import 'objects/_supporter.scss';
 @import 'objects/_user-show.scss';
 @import 'objects/_video-list.scss';
@@ -48,6 +50,13 @@ body {
 
 input {
   font-family: 'SignDict', 'Helvetica Neue';
+}
+
+.s2m-main {
+  width: 100%;
+  max-width: 1247px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @media all and (max-width: 48em) {

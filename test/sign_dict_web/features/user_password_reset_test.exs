@@ -2,6 +2,7 @@ defmodule SignDict.UserPasswordResetTest do
   use SignDict.AcceptanceCase, async: true
   import SignDict.Factory
 
+  @tag wallaby: true
   test "send rest email", %{session: session} do
     user = insert(:user, email: "reset_email@example.com")
 
@@ -20,6 +21,7 @@ defmodule SignDict.UserPasswordResetTest do
     )
   end
 
+  @tag wallaby: true
   test "reset email and login", %{session: session} do
     user =
       insert(
