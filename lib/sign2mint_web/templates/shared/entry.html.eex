@@ -1,0 +1,12 @@
+<div class="s2m-entry" data-controller="open" data-open-href="<%= entry_path(@conn, :show, @entry) %>">
+  <h2 class="s2m-entry--title">
+    <%= link @entry.text, to: entry_path(@conn, :show, @entry) %>
+  </h2>
+
+  <p class="s2m-entry--description"><%= @entry.description %></p>
+
+  <p class="s2m-entry--variant">(<%= ngettext(
+              "1 variant",
+              "%{count} variants",
+              length(@entry.videos)) %>)</p>
+</div>

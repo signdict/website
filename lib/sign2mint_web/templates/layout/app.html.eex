@@ -28,7 +28,7 @@
     <%= render Sign2MintWeb.SharedView, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
     <%= render SignDictWeb.SharedView, "alerts.html", conn: @conn %>
 
-    <div class="sc-main o-container o-container--medium">
+    <div class="s2m-main o-container">
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>

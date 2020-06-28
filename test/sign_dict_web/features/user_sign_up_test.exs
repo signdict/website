@@ -3,6 +3,7 @@ defmodule SignDict.UserSignUpTest do
 
   alias SignDict.User
 
+  @tag wallaby: true
   test "sign up user, login and logout", %{session: session} do
     session
     |> resize_window(1200, 600)
