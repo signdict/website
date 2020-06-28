@@ -4,6 +4,7 @@ defmodule SignDict.SearchEntryTest do
 
   alias SignDict.Entry
 
+  @tag wallaby: true
   test "Search for a sign", %{session: session} do
     domain = insert(:domain, domain: "localhost")
 

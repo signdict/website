@@ -2,6 +2,7 @@ defmodule SignDict.EntryVotingTest do
   use SignDict.AcceptanceCase, async: true
   import SignDict.Factory
 
+  @tag wallaby: true
   test "user votes for a video", %{session: session} do
     insert(:user, %{
       email: "bob@example.com",

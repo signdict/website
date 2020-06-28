@@ -1,0 +1,51 @@
+.s2m-entry-list {
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.s2m-entry-index__letter-links {
+  a {
+    display: inline-block;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    color: $dark_font;
+  }
+}
+
+.s2m-entry {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.s2m-entry--title {
+  margin: 0;
+  a {
+    color: $dark_font;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.s2m-entry--variant {
+  font-size: 12px;
+  margin-bottom: 0;
+  justify-self: flex-end;
+}
+
+.s2m-entry--description {
+  flex: 1 1;
+  margin-top: 0;
+  font-size: 11px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 45px;
+}

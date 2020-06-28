@@ -7,6 +7,9 @@ otp_release:
 
 addons:
   postgresql: "9.6"
+  apt:
+    - chromium-browser
+    - chromium-chromedriver
 
 services:
   - redis-server
@@ -19,26 +22,21 @@ env:
 cache:
   yarn: true
   directories: — /home/travis/.rvm/
-    - travis_phantomjs
     - node_modules
 
 before_install:
-  - "export PHANTOMJS_VERSION=2.1.1"
-  - "export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
-  - "if [ ! -e $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin ]; then rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs; fi"
-  - "if [ ! -e $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi"
-  - "if [ ! -e $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
-  - "phantomjs --version"
   - nvm install $TRAVIS_NODE_VERSION
   - npm install -g yarn
 
 before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   - rvm reload
   - rvm install ruby-2.3.1
   - cd assets && yarn && cd ..
 
 script:
   - mix ua_inspector.download --force
-  - mix check
-  - mix coveralls.travis
+  - mix credo
+  - mix test --exclude wallaby:true
+  - mix coveralls.travis --exclude wallaby:true
   - cd assets && yarn run deploy
