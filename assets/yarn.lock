@@ -5359,10 +5359,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jsx-no-react@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/jsx-no-react/-/jsx-no-react-0.3.0.tgz#b0e2a97ed6df0b9a453f69142507f2bdbadfec62"
-  integrity sha512-UYm7Sh0oyQLWNzYszY5vrjmzxFPwIOOSgetJ2lX3d5dMDddKcDfGGK/VbIwx4g3Yy7mUhdegkyZO1m2ZvxiHiA==
+jsx-no-react@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/jsx-no-react/-/jsx-no-react-0.4.1.tgz#db7446fa48a592ce90a27041bb44988f5f06d3f3"
+  integrity sha512-zg0oNPCBm3Mi27G07fhSzhFerUuPCGmCYCz3ZDhcIDScKtMRdSpFO97U4KUZXnNUF2jpIGsdpeTeF9Kmmnuv3Q==
 
 keyv@3.0.0:
   version "3.0.0"
