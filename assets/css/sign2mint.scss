@@ -15,7 +15,9 @@
 @import 'objects/_landing.scss';
 @import 'objects/_navigation.scss';
 @import 'objects/_recorder.scss';
+@import 'sign2mint/objects/_filter_overview.scss';
 @import 'sign2mint/objects/_searchbar.scss';
+@import 'sign2mint/objects/_select_multiple.scss';
 @import 'objects/_search-result.scss';
 @import 'objects/_supporter.scss';
 @import 'objects/_user-show.scss';
@@ -114,7 +116,7 @@ strong {
 
 .s2m--welcome {
   text-align: center;
-  width: 45rem;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   color: $dark_font;
@@ -145,6 +147,11 @@ strong {
     text-decoration: none;
     margin-top: 2rem;
   }
+}
+
+.s2m--welcome--header {
+  width: 45em;
+  margin: 0 auto;
 }
 
 .s2m--welcome-searchbar {

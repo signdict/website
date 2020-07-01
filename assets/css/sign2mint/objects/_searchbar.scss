@@ -107,6 +107,19 @@
   padding-left: 1rem;
 }
 
+.s2m-filter {
+  display: flex;
+  flex-direction: row;
+  > div {
+    flex: 1 1;
+    margin-right: 2rem;
+  }
+
+  > div:last-child {
+    margin-right: 0;
+  }
+}
+
 @media all and (max-width: 48em) {
   .s2m-searchbar {
     padding-bottom: 2em;

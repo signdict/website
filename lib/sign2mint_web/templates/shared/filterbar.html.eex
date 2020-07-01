@@ -1,0 +1,37 @@
+<div class="s2m-main o-container">
+    <div class="o-grid">
+      <div class="o-grid__cell s2m-filter">
+        <div class="s2m-select-multiple" data-controller="select-multiple">
+          <label for="fachbereich" class="s2m-filter--label">Fachbereich</label>
+          <select id="fachbereich" class="s2m-filter--select" multiple>
+            <option value="biologie" >Biologie</option>
+            <option value="chemie">Chemie</option>
+            <option value="geowissenschaften">Geowissenschaften</option>
+            <option value="informatik">Informatik</option>
+            <option value="mathematik">Mathematik</option>
+            <option value="medizin">Medizin</option>
+            <option value="physik">Physik</option>
+          </select>
+        </div>
+
+         <div class="s2m-select-multiple" data-controller="select-multiple">
+          <label for="herkunft" class="s2m-filter--label">Herkunft</label>
+          <select id="herkunft" class="s2m-filter--select" multiple>
+            <option value="neu">Neu</option>
+            <option value="standard">Standard</option>
+            <option value="international" >International</option>
+          </select>
+        </div>
+
+        <div class="s2m-select-multiple" data-controller="select-multiple">
+          <label for="anwendungsbereich" class="s2m-filter--label">Anwendungsbereich</label>
+          <select id="anwendungsbereich" class="s2m-filter--select" multiple>
+            <option value="schule">Schule</option>
+            <option value="universitaet">Universität</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div data-controller="filter-overview" data-filter-overview-source="s2m-filter">
+    </div>
+  </div>
