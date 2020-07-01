@@ -1,0 +1,59 @@
+.s2m-filter-overview {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.s2m-filter-overview--list {
+  padding: 0 1rem;
+  flex: 1 1;
+}
+
+.s2m-filter-overview--title {
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.s2m-filter-overview--reset button {
+  cursor: pointer;
+  border: 1px solid $highlight;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: 'Roboto', sans-serif;
+  color: $highlight;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+}
+
+.s2m-filter-overview--item--remove {
+  border: none;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  padding-right: 1rem;
+
+  background-color: rgba(0, 0, 0, 0);
+  svg {
+    path {
+      fill: $highlight;
+    }
+  }
+}
+
+.s2m-filter-overview--list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.s2m-filter-overview--item {
+  border: 1px solid $highlight;
+  color: $highlight;
+  font-size: 0.8rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem 1rem 0;
+  padding: 6px 8px 6px 16px;
+}

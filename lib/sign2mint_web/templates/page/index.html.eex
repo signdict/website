@@ -1,7 +1,7 @@
 <%= render Sign2MintWeb.SharedView, "navigation.html", conn: @conn %>
 
-<div class="o-container o-container--xlarge">
-  <div class="s2m--welcome">
+<div class="o-container o-container--xlarge s2m--welcome">
+  <div class="s2m--welcome--header">
     <div class="s2m--welcome--title">
       Sign2MINT
     </div>
@@ -18,15 +18,18 @@
     </a>
   </div>
 
-  <form action="/search" class='s2m--welcome-searchbar'>
-    <div class="s2m--welcome-searchbar--input-wrapper">
-      <input name="q" class="s2m--welcome-searchbar--input"  placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen"  data-controller="search"/>
-    </div>
-    <input class="s2m--welcome-searchbar--submit" type="submit" value="Suche >" />
+  <form action="/search"'>
+    <div class='s2m--welcome-searchbar'>
+      <div class="s2m--welcome-searchbar--input-wrapper">
+        <input name="q" class="s2m--welcome-searchbar--input"  placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen"  data-controller="search"/>
+      </div>
+      <input class="s2m--welcome-searchbar--submit" type="submit" value="Suche >" />
 
-    <a href="/entry" class="s2m--welcome-searchbar--all-letters">
-      A - Z &gt;
-    </a>
+      <a href="/entry" class="s2m--welcome-searchbar--all-letters">
+        A - Z &gt;
+      </a>
+    </div>
+    <%= render Sign2MintWeb.SharedView, "filterbar.html", conn: @conn %>
   </form>
 
 </div>

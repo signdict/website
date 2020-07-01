@@ -6562,7 +6562,7 @@ performance-now@^2.1.0:
   version "1.4.17"
 
 "phoenix_html@file:../deps/phoenix_html":
-  version "2.14.1"
+  version "2.14.2"
 
 picomatch@^2.0.4, picomatch@^2.0.5:
   version "2.2.1"

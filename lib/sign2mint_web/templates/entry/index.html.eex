@@ -53,5 +53,7 @@
     <% end %>
   </div>
 
-  <%= pagination_links @entries, letter: @letter %>
+  <%= if @entries.total_pages > 1 do %>
+    <%= pagination_links @entries, letter: @letter %>
+  <% end %>
 </div>
