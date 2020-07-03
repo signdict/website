@@ -45,6 +45,14 @@ defmodule SignDict.Importer.WpsMockController do
       ~D[2020-04-01] ->
         Plug.Conn.send_resp(conn, 200, "")
 
+      ~D[2020-05-01] ->
+        success(conn, [
+          %{
+            "dokumentId" => "123123123:12",
+            "deleted" => "true"
+          }
+        ])
+
       _ ->
         success(conn, [
           %{
