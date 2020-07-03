@@ -193,5 +193,35 @@ defmodule SignDict.Importer.WpsImporterTest do
 
       assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
+
+    test "it deleted the file if it is marked for deletion" do
+      start_time = Timex.parse!("2020-05-01T12:30:30+00:00", "%FT%T%:z", :strftime)
+
+      %ImporterConfig{}
+      |> ImporterConfig.changeset(%{
+        name: "WPS",
+        configuration: %{last_requested: start_time}
+      })
+      |> Repo.insert!()
+
+      videos = WpsImporter.import_json(ExqMock)
+      video = List.first(videos)
+
+      assert length(videos) == 1
+
+      assert video.state == "deleted"
+
+      assert 1 ==
+               Video
+               |> where(external_id: "123123123:12")
+               |> Repo.aggregate(:count, :id)
+
+      new_entry = Repo.get(Entry, video.entry_id) |> Repo.preload(:videos)
+
+      assert new_entry.text == "Zug"
+      assert new_entry.current_video_id == nil
+      assert List.first(new_entry.videos).id == video.id
+      assert List.first(new_entry.videos).state == "deleted"
+    end
   end
 end
