@@ -20,8 +20,12 @@ defmodule SignDict.Importer.WpsImporter do
 
     videos =
       Enum.map(json, fn json_entry ->
-        entry = find_or_create_entry_for(json_entry)
-        insert_or_update_video(entry, user, json_entry, exq)
+        if json_entry["deleted"] == "true" do
+          delete_video(json_entry)
+        else
+          entry = find_or_create_entry_for(json_entry)
+          insert_or_update_video(entry, user, json_entry, exq)
+        end
       end)
 
     touch_last_request_time(config, current_time)
@@ -127,6 +131,16 @@ defmodule SignDict.Importer.WpsImporter do
     config
     |> ImporterConfig.changeset(%{configuration: updated_config})
     |> Repo.update()
+  end
+
+  defp delete_video(json_entry) do
+    video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
+
+    if video do
+      {:ok, video} = Video.delete(video)
+      Entry.update_current_video(video.entry)
+      video
+    end
   end
 
   defp insert_or_update_video(entry, user, json_entry, exq) do
