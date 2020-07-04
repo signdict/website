@@ -160,7 +160,7 @@ defmodule SignDict.Importer.WpsImporterTest do
 
       assert File.exists?(
                Path.join([
-                 Application.get_env(:sign_dict, :upload_path),
+                 "uploads",
                  "video_sign_writing",
                  Integer.to_string(video.id),
                  "original.png"

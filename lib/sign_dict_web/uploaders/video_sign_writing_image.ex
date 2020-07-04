@@ -15,7 +15,7 @@ defmodule SignDictWeb.VideoSignWritingImage do
 
   def storage_dir(_version, {_file, scope}) do
     Path.join([
-      Application.get_env(:sign_dict, :upload_path),
+      "uploads",
       "video_sign_writing",
       "#{scope.id}"
     ])
