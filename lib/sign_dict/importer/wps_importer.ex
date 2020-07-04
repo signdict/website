@@ -164,12 +164,14 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
-    result = HTTPoison.get!(image_url)
+    if String.length(image_url) > 0 do
+      result = HTTPoison.get!(image_url)
 
-    if result.status_code == 200 do
-      {:ok, filename} = Briefly.create()
-      File.write!(filename, result.body)
-      filename
+      if result.status_code == 200 do
+        {:ok, filename} = Briefly.create()
+        File.write!(filename, result.body)
+        filename
+      end
     end
   end
 
