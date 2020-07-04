@@ -958,8 +958,8 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:27
-#: lib/sign_dict_web/templates/shared/footer.html.eex:46
+#: lib/sign2mint_web/controllers/entry_controller.ex:21
+#: lib/sign_dict_web/controllers/entry_controller.ex:27 lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr ""
 
@@ -967,6 +967,7 @@ msgstr ""
 msgid "Browse results for %{letter}"
 msgstr ""
 
+#: lib/sign2mint_web/templates/entry/index.html.eex:5
 #: lib/sign_dict_web/templates/entry/index.html.eex:5
 msgid "Browse through SignDict"
 msgstr ""
@@ -1169,7 +1170,7 @@ msgid "The recaptcha was wrong, email not sent."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:179
+#: lib/sign_dict_web/templates/entry/show.html.eex:188
 msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr ""
 
@@ -1179,12 +1180,12 @@ msgid "SignWriting"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:200
+#: lib/sign_dict_web/templates/entry/show.html.eex:210
 msgid "Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:190
+#: lib/sign_dict_web/templates/entry/show.html.eex:199
 msgid "Click here if this image is wrong"
 msgstr ""
 
@@ -1423,3 +1424,8 @@ msgid "1 variant"
 msgid_plural "%{count} variants"
 msgstr[0] ""
 msgstr[1] ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/entry/show.html.eex:180
+msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
+msgstr ""

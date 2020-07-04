@@ -958,8 +958,8 @@ msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem d
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:27
-#: lib/sign_dict_web/templates/shared/footer.html.eex:46
+#: lib/sign2mint_web/controllers/entry_controller.ex:21
+#: lib/sign_dict_web/controllers/entry_controller.ex:27 lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr "Alle Einträge"
 
@@ -967,6 +967,7 @@ msgstr "Alle Einträge"
 msgid "Browse results for %{letter}"
 msgstr "Alle Einträge für %{letter}"
 
+#: lib/sign2mint_web/templates/entry/index.html.eex:5
 #: lib/sign_dict_web/templates/entry/index.html.eex:5
 msgid "Browse through SignDict"
 msgstr "Alle Einträge"
@@ -1169,7 +1170,7 @@ msgid "The recaptcha was wrong, email not sent."
 msgstr "Der Recaptcha war falsch, Email nicht versendet."
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:179
+#: lib/sign_dict_web/templates/entry/show.html.eex:188
 msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr "Einige Beispiele dieses Eintrages in <a href='https://delegs.de/gebaerdenschrift/'>GebärdenSchrift</a>:"
 
@@ -1179,12 +1180,12 @@ msgid "SignWriting"
 msgstr "GebärdenSchrift"
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:200
+#: lib/sign_dict_web/templates/entry/show.html.eex:210
 msgid "Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service."
 msgstr "Danke an <a href='https://delegs.de'>delegs</a> für diesen Service."
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:190
+#: lib/sign_dict_web/templates/entry/show.html.eex:199
 msgid "Click here if this image is wrong"
 msgstr ""
 
@@ -1423,3 +1424,8 @@ msgid "1 variant"
 msgid_plural "%{count} variants"
 msgstr[0] "1 Variante"
 msgstr[1] "%{count} Varianten"
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/templates/entry/show.html.eex:180
+msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
+msgstr "Dieser Eintrag in <a href='https://delegs.de/gebaerdenschrift/'>GebärdenSchrift</a>:"

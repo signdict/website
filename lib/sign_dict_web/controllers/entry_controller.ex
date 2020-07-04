@@ -179,15 +179,23 @@ defmodule SignDictWeb.EntryController do
     Map.merge(params, %{lists: lists})
   end
 
-  defp refresh_sign_writings(params = %{entry: entry}) do
+  defp refresh_sign_writings(params = %{entry: entry, videos: videos}) do
     if entry do
-      if entry.deleges_updated_at == nil ||
-           Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3)) do
+      if last_update_too_old?(entry) && at_least_one_video_has_no_sign_writing(videos) do
         queue = Application.get_env(:sign_dict, :queue)[:library]
         queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
       end
     end
 
     params
+  end
+
+  defp at_least_one_video_has_no_sign_writing(videos) do
+    Enum.find(videos, fn video -> video.sign_writing == nil end) != nil
+  end
+
+  defp last_update_too_old?(entry) do
+    entry.deleges_updated_at == nil ||
+      Timex.before?(entry.deleges_updated_at, Timex.shift(Timex.now(), days: -3))
   end
 end
