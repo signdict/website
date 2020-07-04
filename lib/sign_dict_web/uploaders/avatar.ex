@@ -19,6 +19,11 @@ defmodule SignDictWeb.Avatar do
   end
 
   def storage_dir(_version, {_file, scope}) do
-    "uploads/user/avatars/#{scope.id}"
+    Path.join([
+      Application.get_env(:sign_dict, :upload_path),
+      "user",
+      "avatars",
+      "#{scope.id}"
+    ])
   end
 end

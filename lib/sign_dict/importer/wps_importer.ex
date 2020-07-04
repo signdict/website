@@ -146,26 +146,42 @@ defmodule SignDict.Importer.WpsImporter do
   defp insert_or_update_video(entry, user, json_entry, exq) do
     video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
 
+    sign_writing = fetch_sign_writing(json_entry)
+
     if video do
       old_metadata = video.metadata
 
       video
-      |> update_metadata(json_entry)
+      |> update_metadata(json_entry, sign_writing)
       |> move_to_other_entry_if_needed()
       |> transcode_video_if_needed(old_metadata, exq)
     else
       video_filename = download_file(json_entry)
 
-      insert_video(entry, user, json_entry, video_filename)
+      insert_video(entry, user, json_entry, video_filename, sign_writing)
       |> transcode_video(exq)
     end
+  end
+
+  defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
+    result = HTTPoison.get!(image_url)
+
+    if result.status_code == 200 do
+      {:ok, filename} = Briefly.create()
+      File.write!(filename, result.body)
+      filename
+    end
+  end
+
+  defp fetch_sign_writing(_) do
+    nil
   end
 
   defp find_by_external_id(external_id) do
     Repo.one(from v in Video, where: v.external_id == ^external_id)
   end
 
-  defp insert_video(entry, user, json_entry, video_filename) do
+  defp insert_video(entry, user, json_entry, video_filename, sign_writing) do
     Repo.insert!(%Video{
       copyright: "sign2mint",
       license: "by-nc-sa/3.0/de",
@@ -178,7 +194,12 @@ defmodule SignDict.Importer.WpsImporter do
       entry: entry,
       state: "uploaded",
       external_id: json_entry["dokumentId"],
-      auto_publish: true
+      auto_publish: true,
+      sign_writing: %Plug.Upload{
+        content_type: "image/png",
+        filename: "file.png",
+        path: sign_writing
+      }
     })
   end
 
@@ -224,10 +245,15 @@ defmodule SignDict.Importer.WpsImporter do
     end
   end
 
-  defp update_metadata(video, json_entry) do
+  defp update_metadata(video, json_entry, sign_writing) do
     video
     |> Video.changeset_uploader(%{
-      metadata: Map.merge(video.metadata, %{"source_json" => json_entry})
+      metadata: Map.merge(video.metadata, %{"source_json" => json_entry}),
+      sign_writing: %Plug.Upload{
+        content_type: "image/png",
+        filename: "file.png",
+        path: sign_writing
+      }
     })
     |> Repo.update!()
   end

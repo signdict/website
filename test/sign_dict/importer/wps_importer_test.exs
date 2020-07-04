@@ -148,7 +148,8 @@ defmodule SignDict.Importer.WpsImporterTest do
       assert video.metadata["source_json"] == %{
                "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
                "dokumentId" => "123123123:12",
-               "fachbegriff" => "Rechnen"
+               "fachbegriff" => "Rechnen",
+               "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png"
              }
 
       new_entry = Repo.get(Entry, video.entry_id) |> Repo.preload(:videos)
@@ -156,6 +157,15 @@ defmodule SignDict.Importer.WpsImporterTest do
       assert new_entry.id != entry.id
       assert new_entry.text == "Rechnen"
       assert List.first(new_entry.videos).id == video_id
+
+      assert File.exists?(
+               Path.join([
+                 Application.get_env(:sign_dict, :upload_path),
+                 "video_sign_writing",
+                 Integer.to_string(video.id),
+                 "original.png"
+               ])
+             )
 
       refute_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
