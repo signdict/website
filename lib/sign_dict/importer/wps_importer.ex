@@ -182,25 +182,39 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp insert_video(entry, user, json_entry, video_filename, sign_writing) do
-    Repo.insert!(%Video{
-      copyright: "sign2mint",
-      license: "by-nc-sa/3.0/de",
-      original_href: "https://delegs.de/",
-      metadata: %{
-        source_json: json_entry,
-        source_mp4: video_filename
-      },
-      user: user,
-      entry: entry,
-      state: "uploaded",
-      external_id: json_entry["dokumentId"],
-      auto_publish: true,
+    Repo.insert!(
+      Map.merge(
+        %Video{
+          copyright: "sign2mint",
+          license: "by-nc-sa/3.0/de",
+          original_href: "https://delegs.de/",
+          metadata: %{
+            source_json: json_entry,
+            source_mp4: video_filename
+          },
+          user: user,
+          entry: entry,
+          state: "uploaded",
+          external_id: json_entry["dokumentId"],
+          auto_publish: true
+        },
+        generate_sign_writing_plug(sign_writing)
+      )
+    )
+  end
+
+  defp generate_sign_writing_plug(nil) do
+    %{}
+  end
+
+  defp generate_sign_writing_plug(sign_writing) do
+    %{
       sign_writing: %Plug.Upload{
         content_type: "image/png",
         filename: "file.png",
         path: sign_writing
       }
-    })
+    }
   end
 
   defp transcode_video_if_needed(video, old_metadata, exq) do
@@ -243,6 +257,14 @@ defmodule SignDict.Importer.WpsImporter do
     else
       video
     end
+  end
+
+  defp update_metadata(video, json_entry, nil) do
+    video
+    |> Video.changeset_uploader(%{
+      metadata: Map.merge(video.metadata, %{"source_json" => json_entry})
+    })
+    |> Repo.update!()
   end
 
   defp update_metadata(video, json_entry, sign_writing) do

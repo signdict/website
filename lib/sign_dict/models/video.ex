@@ -87,7 +87,15 @@ defmodule SignDict.Video do
     defevent(
       :delete,
       %{
-        from: [:created, :uploaded, :transcoding, :waiting_for_review, :published, :rejected, :deleted],
+        from: [
+          :created,
+          :uploaded,
+          :transcoding,
+          :waiting_for_review,
+          :published,
+          :rejected,
+          :deleted
+        ],
         to: :deleted
       },
       fn changeset ->
