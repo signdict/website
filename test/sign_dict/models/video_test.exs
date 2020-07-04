@@ -107,6 +107,12 @@ defmodule SignDict.VideoTest do
       assert Video.can_delete?(v)
     end
 
+    test "allow transition from deleted to deleted" do
+      v = %Video{state: "deleted"}
+
+      assert Video.can_delete?(v)
+    end
+
     test "allows transition from waiting_for_review to rejected" do
       v = insert(:video, state: "waiting_for_review", rejection_reason: "reason")
 

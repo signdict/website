@@ -1,6 +1,7 @@
 defmodule SignDict.Video do
   use SignDictWeb, :model
   import StateMc.EctoSm
+  use Arc.Ecto.Schema
 
   alias SignDict.Repo
   alias SignDict.Vote
@@ -34,6 +35,8 @@ defmodule SignDict.Video do
     field :auto_publish, :boolean
 
     field :view_count, :integer, default: 0
+
+    field :sign_writing, SignDictWeb.VideoSignWritingImage.Type
 
     belongs_to :entry, SignDict.Entry
     belongs_to :user, SignDict.User
@@ -84,7 +87,15 @@ defmodule SignDict.Video do
     defevent(
       :delete,
       %{
-        from: [:created, :uploaded, :transcoding, :waiting_for_review, :published, :rejected],
+        from: [
+          :created,
+          :uploaded,
+          :transcoding,
+          :waiting_for_review,
+          :published,
+          :rejected,
+          :deleted
+        ],
         to: :deleted
       },
       fn changeset ->
@@ -126,6 +137,7 @@ defmodule SignDict.Video do
     struct
     |> cast(params, [:license, :user_id, :entry_id, :metadata, :state])
     |> validate_required([:license, :entry_id, :user_id])
+    |> cast_attachments(params, [:sign_writing])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
     |> validate_state()
