@@ -11,6 +11,11 @@ defmodule SignDict.Importer.WpsMockController do
     from: "test/fixtures/videos",
     only: ~w(Zug.mp4 Zug2.mp4)
 
+  plug Plug.Static,
+    at: "/images",
+    from: "test/fixtures/images",
+    only: ~w(russland.png)
+
   plug :match
   plug :dispatch
 
@@ -29,7 +34,8 @@ defmodule SignDict.Importer.WpsMockController do
           %{
             "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Rechnen"
+            "fachbegriff" => "Rechnen",
+            "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png"
           }
         ])
 

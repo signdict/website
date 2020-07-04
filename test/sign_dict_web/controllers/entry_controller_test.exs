@@ -131,6 +131,38 @@ defmodule SignDict.EntryControllerTest do
                        [^entry_id]}
     end
 
+    test "does not enqueue if all videos have a sign_writing attached to it", %{
+      conn: conn,
+      entry: entry,
+      video_1: video_one,
+      video_2: video_two
+    } do
+      Video.changeset_uploader(video_one, %{
+        sign_writing: %Plug.Upload{
+          content_type: "image/png",
+          filename: "file.png",
+          path: "test/fixtures/images/russland.png"
+        }
+      })
+      |> SignDict.Repo.update!()
+
+      Video.changeset_uploader(video_two, %{
+        sign_writing: %Plug.Upload{
+          content_type: "image/png",
+          filename: "file.png",
+          path: "test/fixtures/images/russland.png"
+        }
+      })
+      |> SignDict.Repo.update!()
+
+      get(conn, entry_path(conn, :show, entry))
+
+      entry_id = entry.id
+
+      refute_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
+                       [^entry_id]}
+    end
+
     test "it searches if entry is for other domain and no video is given", %{conn: conn} do
       domain = insert(:domain, domain: "example.com")
       entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
