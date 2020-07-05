@@ -73,9 +73,7 @@ config :sign_dict, :jw_player,
 
 config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: "test.local"
 
-config :sign_dict, :wps_sign_importer,
-  url:
-    "http://localhost:8081/sign_writing"
+config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
 
 config :sign_dict, :queue, library: Exq
 

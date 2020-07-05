@@ -20,6 +20,7 @@ defmodule SignDict.Importer.WpsSignImporter do
           update_video(video, json_entry)
         end
       end)
+      |> Enum.filter(fn item -> item != nil end)
 
     touch_last_request_time(config, current_time)
 
@@ -88,10 +89,15 @@ defmodule SignDict.Importer.WpsSignImporter do
     end
   end
 
+  defp fetch_sign_writing(_) do
+    nil
+  end
+
   defp find_video(%{"videoUrl" => video_url}) do
     Repo.one(from v in Video, where: v.video_url == ^video_url)
   end
-  defp find_video(_other) do
+
+  defp find_video(_) do
     nil
   end
 
