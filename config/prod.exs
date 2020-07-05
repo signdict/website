@@ -100,6 +100,8 @@ config :sign_dict, :wps_importer,
   url: System.get_env("WPS_IMPORT_ROOM"),
   domain: System.get_env("WPS_IMPORT_DOMAIN")
 
+config :sign_dict, :wps_sign_importer, url: System.get_env("WPS_SIGN_IMPORT_ROOM")
+
 config :recaptcha,
   public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
   secret: {:system, "RECAPTCHA_PRIVATE_KEY"}
