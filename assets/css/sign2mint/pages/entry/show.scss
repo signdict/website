@@ -1,0 +1,74 @@
+.s2m-entry-show--top {
+  display: flex;
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.s2m-entry-show--video {
+  flex: 1 1;
+  max-height: 26rem;
+  background-color: black;
+}
+
+.s2m-entry-show--signwriting {
+  width: 34rem;
+  max-width: 29rem;
+  padding-left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.s2m-entry-show--signwriting--entry {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  img {
+    min-width: 4rem;
+    min-height: 10rem;
+    object-fit: contain;
+  }
+}
+
+.s2m-entry-show--signwriting--hint {
+  color: $deactive;
+  font-size: 0.8rem;
+}
+
+.s2m-entry-show--content {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0rem 2rem;
+  display: flex;
+
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+.s2m-entry-show--content--details {
+  flex: 1 1;
+}
+
+.s2m-entry-show--content--variations {
+  width: 34rem;
+  max-width: 29rem;
+  padding-left: 1rem;
+}
+
+.s2m-entry-show--license {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}

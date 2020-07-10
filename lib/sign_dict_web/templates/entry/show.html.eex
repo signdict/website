@@ -126,7 +126,7 @@
     <div class="o-grid__cell o-grid__cell--width-40@small o-grid__cell--width-100">
       <div class="sc-sidebar">
         <div class="sc-sidebar--content">
-          <h1><%= gettext("Variations »%{entry}«", entry: @entry.text) %></h1>
+          <h1><%= gettext("Variations for »%{entry}«", entry: @entry.text) %></h1>
           <%= if Enum.count(@videos) > 0 do %>
             <ul class="so-video-list">
               <%= for video <- @videos do %>

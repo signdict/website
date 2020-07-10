@@ -64,7 +64,7 @@ defmodule SignDictWeb.Router do
     get "/", PageController, :index
     get "/search", SearchController, :index
 
-    resources "/entry", EntryController, only: [:index]
+    resources "/entry", EntryController, only: [:index, :show]
   end
 
   scope "/", SignDictWeb do

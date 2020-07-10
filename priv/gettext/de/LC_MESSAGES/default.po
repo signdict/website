@@ -621,6 +621,7 @@ msgstr "Vorschaubild"
 msgid "video.video_url"
 msgstr "Video"
 
+#: lib/sign2mint_web/templates/entry/show.html.eex:71
 #: lib/sign_dict_web/templates/entry/show.html.eex:161
 msgid "No other variations"
 msgstr "Keine weiteren Variationen"
@@ -633,6 +634,7 @@ msgstr "Varianten »%{entry}«"
 msgid "today"
 msgstr "heute"
 
+#: lib/sign2mint_web/templates/entry/show.html.eex:57
 #: lib/sign_dict_web/templates/entry/show.html.eex:147
 msgid "${time} ago"
 msgstr "Vor ${time}"
@@ -641,6 +643,7 @@ msgstr "Vor ${time}"
 msgid "Date of upload"
 msgstr "Uploaddatum"
 
+#: lib/sign2mint_web/templates/entry/show.html.eex:54
 #: lib/sign_dict_web/templates/entry/show.html.eex:144
 msgid "by"
 msgstr "von"
@@ -649,14 +652,15 @@ msgstr "von"
 msgid "Source"
 msgstr "Quelle"
 
+#: lib/sign2mint_web/templates/entry/show.html.eex:46
 #: lib/sign_dict_web/templates/entry/show.html.eex:136
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
-#: lib/sign_dict_web/templates/entry/index.html.eex:57
-#: lib/sign_dict_web/templates/entry/latest.html.eex:16 lib/sign_dict_web/templates/entry/show.html.eex:137
-#: lib/sign_dict_web/templates/list/show.html.eex:13 lib/sign_dict_web/templates/search/index.html.eex:27
-#: lib/sign_dict_web/templates/user/show.html.eex:42
+#: lib/sign2mint_web/templates/entry/show.html.eex:47
+#: lib/sign_dict_web/templates/entry/index.html.eex:57 lib/sign_dict_web/templates/entry/latest.html.eex:16
+#: lib/sign_dict_web/templates/entry/show.html.eex:137 lib/sign_dict_web/templates/list/show.html.eex:13
+#: lib/sign_dict_web/templates/search/index.html.eex:27 lib/sign_dict_web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
@@ -743,8 +747,8 @@ msgstr "Passwort zurücksetzen"
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
-#: lib/sign_dict_web/controllers/embed_controller.ex:48
-#: lib/sign_dict_web/controllers/entry_controller.ex:146
+#: lib/sign2mint_web/controllers/entry_controller.ex:82
+#: lib/sign_dict_web/controllers/embed_controller.ex:48 lib/sign_dict_web/controllers/entry_controller.ex:146
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
@@ -822,6 +826,7 @@ msgstr "Details >"
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
+#: lib/sign2mint_web/controllers/entry_controller.ex:96
 #: lib/sign_dict_web/controllers/entry_controller.ex:160
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
@@ -914,6 +919,7 @@ msgstr "Neue Videos"
 msgid "Video approved"
 msgstr "Video freigegeben"
 
+#: lib/sign2mint_web/templates/entry/show.html.eex:77
 #: lib/sign_dict_web/templates/entry/show.html.eex:167
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte hilf uns und nehme diese mit deiner Webcam auf."
@@ -958,7 +964,7 @@ msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem d
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:21
+#: lib/sign2mint_web/controllers/entry_controller.ex:25
 #: lib/sign_dict_web/controllers/entry_controller.ex:27 lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr "Alle Einträge"
@@ -1017,6 +1023,7 @@ msgstr "Video ablehnen"
 msgid "Rejection reason"
 msgstr "Ablehnungsgrund"
 
+#: lib/sign2mint_web/controllers/entry_controller.ex:78
 #: lib/sign_dict_web/controllers/entry_controller.ex:142
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
@@ -1222,6 +1229,7 @@ msgid "Search a word to see the GSL sign"
 msgstr "Suche ein Wort um die Gebärde in DGS zu sehen"
 
 #, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:92
 #: lib/sign_dict_web/templates/entry/show.html.eex:119
 msgid "License"
 msgstr "Lizenz"
@@ -1425,7 +1433,38 @@ msgid_plural "%{count} variants"
 msgstr[0] "1 Variante"
 msgstr[1] "%{count} Varianten"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/sign_dict_web/templates/entry/show.html.eex:180
 msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr "Dieser Eintrag in <a href='https://delegs.de/gebaerdenschrift/'>GebärdenSchrift</a>:"
+
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:17
+msgid "Sadly we don't have a sign writing for this entry yet."
+msgstr "Leider haben wir keinen Gebärdenschrift-Eintrag für diesen Eintrag."
+
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:22
+msgid "Sign writing created with <a href='https://delegs.de/'>delegeseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>"
+msgstr "Gebärdenschirt erstellt im <a href='https://delegs.de/'>delegeseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>Was ist Gebärdenschrift?</a>"
+
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:11
+msgid "Signwriting"
+msgstr "Gebärdenschrift"
+
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:32
+msgid "Definition"
+msgstr "Definition"
+
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:39
+#: lib/sign_dict_web/templates/entry/show.html.eex:129
+msgid "Variations for »%{entry}«"
+msgstr "Varianten für »%{entry}«"
+
+#, elixir-format, fuzzy
+#: lib/sign2mint_web/templates/entry/show.html.eex:79
+msgid "Suggest Sign"
+msgstr "Gebärde vorschlagen"
