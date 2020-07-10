@@ -25,6 +25,7 @@
 @import 'objects/_video.scss';
 @import 'objects/_voting-box.scss';
 @import 'objects/_welcome.scss';
+@import 'sign2mint/pages/entry/show.scss';
 @import 'vendor/_font-awesome.min.scss';
 @import 'vendor/_socialbuttons.scss';
 
@@ -119,6 +120,7 @@ strong {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10rem !important;
   color: $dark_font;
 
   &--title {
@@ -202,8 +204,10 @@ strong {
 }
 
 .s2m--supporter {
-  margin-top: 10rem !important;
-  width: 45rem;
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 2rem;
   &--header {
     font-size: 1rem;
   }

@@ -34,15 +34,4 @@
 
 </div>
 
-<div class="o-container o-container--xlarge s2m--supporter">
-  <h1 class="s2m--supporter--header">
-    Unterstützer
-  </h1>
-  <p>
-    <a href="https://www.bmas.de"><img class="s2m--supporter--logo" src="/images/deleges/bmas.png" alt="Logo Bundesministerium für Arbeit und Soziales"/></a>
-    <a href="https://www.wps.de/"><img class="s2m--supporter--logo" src="/images/deleges/wps.png" alt="Logo WPS GmbH"/></a>
-    <a href="https://www.maxplanckfoundation.org/"><img class="s2m--supporter--logo" src="/images/deleges/maxplanck.png" alt="Logo Max Planck"/></a>
-  </p>
-</div>
-
 <%= render Sign2MintWeb.SharedView, "footer.html", conn: @conn %>
