@@ -1,0 +1,89 @@
+<%= render_shared @conn.host, "navigation.html", conn: @conn, current_user: @current_user %>
+
+<%= render_shared @conn.host, "searchbar.html", conn: @conn, current_user: @current_user, searchbar: assigns[:searchbar] %>
+
+<div class="s2m-entry-show--top">
+  <div class="s2m-entry-show--video">
+    <video autoplay playsinline controls loop src="<%= @video.video_url %>" poster="<%= @video.thumbnail_url %>"></video>
+  </div>
+
+  <div class="s2m-entry-show--signwriting">
+    <h2><%= gettext("Signwriting") %></h2>
+
+    <div class="s2m-entry-show--signwriting--entry">
+        <%= if @video.sign_writing do %>
+          <%= img_tag(SignDictWeb.VideoSignWritingImage.url({@video.sign_writing, @video})) %>
+        <% else %>
+          <%= gettext("Sadly we don't have a sign writing for this entry yet.") %>
+        <% end %>
+    </div>
+
+    <div class="s2m-entry-show--signwriting--hint">
+      <%= raw gettext("Sign writing created with <a href='https://delegs.de/'>delegseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>") %>.
+    </div>
+  </div>
+</div>
+
+<div class="s2m-entry-show--actions">
+  <a href="<%= @video.video_url %>" target="_blank" download="video.mp4"><i class="fa fa-download"></i> <%= gettext("Download Video") %></a>
+  <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/>
+</div>
+
+<div class="s2m-entry-show--content">
+  <div class="s2m-entry-show--content--details">
+    <h1><%= @entry.text %>
+
+    <%= if String.length(@entry.description) > 0 do %>
+      <h2><%= gettext("Definition") %></h2>
+
+      <p><%= @entry.description %></p>
+    <% end %>
+  </div>
+
+  <div class="s2m-entry-show--content--variations">
+    <h2><%= gettext("Variations for »%{entry}«", entry: @entry.text) %></h2>
+    <%= if Enum.count(@videos) > 0 do %>
+      <ul class="s2m-entry-show--content--variations--list">
+        <%= for video <- @videos do %>
+          <li class="s2m-entry-show--content--variations--list-item <%= if video.id == @video.id, do: "s2m-entry-show--content--variations--list-selected" %>">
+            <div class="s2m-entry-show--content--variations--list-video">
+              <a href='<%= entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
+                <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
+              </a>
+              <i class="s2m-entry-show--content--variations--list-play" aria-hidden="true"></i>
+            </div>
+            <%= if video.sign_writing do %>
+              <%= img_tag(SignDictWeb.VideoSignWritingImage.url({video.sign_writing, video}), class: "s2m-entry-show--content--variations--sign-writing") %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>
+        <%= gettext("No other variations") %>
+      </p>
+    <% end %>
+
+    <div class="so-video-list--details--add-video">
+      <p class="so-video-list--details--add-video--text">
+        <%= gettext("Know another variation for this word? You do? Please help us and record it with your webcam.") %>
+      </p>
+      <%= link gettext("Suggest Sign"), to: recorder_path(@conn, :index, @video.entry_id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+    </div>
+  </div>
+
+</div>
+
+<div class="s2m-entry-show--license">
+  <%= if String.match?(@video.license, ~r/((?:zero)|(?:by[-\w\/\.]*))/) do %>
+    <a rel="license" class="so-video-details--cc" href="http://creativecommons.org/licenses/<%= @video.license %>">
+      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<%= @video.license %>/88x31.png" />
+    </a>
+  <% else %>
+    <span class="so-video-details--label">
+      <%= gettext("License") %> <%= @video.license %>
+    </span>
+  <% end %>
+</div>
+
+<%= render_shared @conn.host, "footer.html", conn: @conn %>

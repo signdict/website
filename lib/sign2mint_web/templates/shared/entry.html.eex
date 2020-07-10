@@ -1,5 +1,5 @@
 <div class="s2m-entry" data-controller="open" data-open-href="<%= entry_path(@conn, :show, @entry) %>">
-  <h2 class="s2m-entry--title">
+  <h2 class="s2m-entry--title" title="<% @entry.text %>">
     <%= link @entry.text, to: entry_path(@conn, :show, @entry) %>
   </h2>
 

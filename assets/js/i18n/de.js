@@ -51,4 +51,5 @@ export default {
   SearchController: {
     WordNotFound: 'Leider konnte das Wort nicht gefunden werden. Bitte <a href="{{where}}">schlage es hier vor</a>.',
   },
+  'Copy URL': 'URL kopieren',
 };

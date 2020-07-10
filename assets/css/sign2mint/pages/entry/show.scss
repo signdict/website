@@ -1,0 +1,170 @@
+.s2m-entry-show--top {
+  display: flex;
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.s2m-entry-show--video {
+  flex: 1 1;
+  max-height: 26rem;
+  background-color: black;
+}
+
+.s2m-entry-show--signwriting {
+  width: 34rem;
+  max-width: 29rem;
+  padding-left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.s2m-entry-show--signwriting--entry {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  img {
+    min-width: 4rem;
+    min-height: 10rem;
+    object-fit: contain;
+  }
+}
+
+.s2m-entry-show--signwriting--hint {
+  color: $deactive;
+  font-size: 0.8rem;
+}
+
+.s2m-entry-show--actions {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+
+  a,
+  button {
+    padding-right: 1rem;
+  }
+  i {
+    padding-right: 0.2rem;
+  }
+}
+
+.s2m-entry-show--actions--copy {
+  button {
+    border: none;
+    color: $highlight;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.s2m-entry-show--content {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0rem 2rem;
+  display: flex;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+}
+
+.s2m-entry-show--content--details {
+  flex: 1 1;
+}
+
+.s2m-entry-show--content--variations {
+  width: 34rem;
+  max-width: 29rem;
+  padding-left: 1rem;
+}
+
+.s2m-entry-show--license {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+
+.s2m-entry-show--content--variations {
+  h2 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+  }
+}
+
+.s2m-entry-show--content--variations--list {
+  list-style: none;
+  padding: 0;
+}
+
+.s2m-entry-show--content--variations--list-item {
+  margin-bottom: 1rem;
+  display: flex;
+  border-left: 5px solid white;
+}
+
+.s2m-entry-show--content--variations--list-selected {
+  border-left: 5px solid $highlight;
+}
+
+.s2m-entry-show--content--variations--list-video {
+  position: relative;
+
+  img {
+    width: 16rem;
+    height: 9rem;
+    object-fit: cover;
+  }
+}
+
+.s2m-entry-show--content--variations--list-play {
+  position: absolute;
+  top: 50%;
+  left: 8rem;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-image: url(/images/speechbubble-play.svg);
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.s2m-entry-show--content--variations--list-item:hover .s2m-entry-show--content--variations--list-play {
+  display: inline-block;
+}
+
+.s2m-entry-show--content--variations--sign-writing {
+  max-width: 100%;
+  height: 9rem;
+  margin-left: 1rem;
+}
