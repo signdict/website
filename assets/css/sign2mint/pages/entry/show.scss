@@ -44,6 +44,38 @@
   font-size: 0.8rem;
 }
 
+.s2m-entry-show--actions {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+
+  a,
+  button {
+    padding-right: 1rem;
+  }
+  i {
+    padding-right: 0.2rem;
+  }
+}
+
+.s2m-entry-show--actions--copy {
+  button {
+    border: none;
+    color: $highlight;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .s2m-entry-show--content {
   width: 100%;
   max-width: 78rem;
@@ -51,8 +83,13 @@
   padding: 0rem 2rem;
   display: flex;
 
+  h1 {
+    margin-top: 0;
+  }
+
   h2 {
     font-size: 1rem;
+    margin-top: 0;
   }
 }
 
@@ -75,6 +112,7 @@
 
 .s2m-entry-show--content--variations {
   h2 {
+    margin-top: 0;
     font-size: 1rem;
   }
 

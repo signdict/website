@@ -19,9 +19,14 @@
     </div>
 
     <div class="s2m-entry-show--signwriting--hint">
-      <%= raw gettext("Sign writing created with <a href='https://delegs.de/'>delegeseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>") %>.
+      <%= raw gettext("Sign writing created with <a href='https://delegs.de/'>delegseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>") %>.
     </div>
   </div>
+</div>
+
+<div class="s2m-entry-show--actions">
+  <a href="<%= @video.video_url %>" target="_blank" download="video.mp4"><i class="fa fa-download"></i> <%= gettext("Download Video") %></a>
+  <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/>
 </div>
 
 <div class="s2m-entry-show--content">
