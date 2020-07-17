@@ -87,7 +87,7 @@ defmodule SignDict.Importer.Wps.Importer do
     VideoImporter.store_file(temp_file, Path.basename(temp_file))
   end
 
-  defp find_or_create_entry_for(%{"fachbegriff" => text}) do
+  defp find_or_create_entry_for(%{"Fachbegriff" => text}) do
     language = find_or_create_language_for("DGS")
 
     language
@@ -167,7 +167,7 @@ defmodule SignDict.Importer.Wps.Importer do
   defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
     url = UrlExtractor.extract(image_url)
 
-    if String.length(url) > 0 do
+    if url && String.length(url) > 0 do
       result = HTTPoison.get!(url)
 
       if result.status_code == 200 do
@@ -246,7 +246,7 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp move_to_other_entry_if_needed(video) do
-    if video.entry.text != video.metadata["source_json"]["fachbegriff"] do
+    if video.entry.text != video.metadata["source_json"]["Fachbegriff"] do
       old_entry = video.entry
       entry = find_or_create_entry_for(video.metadata["source_json"])
 

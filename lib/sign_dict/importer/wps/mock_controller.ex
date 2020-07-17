@@ -34,7 +34,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Rechnen",
+            "Fachbegriff" => "Rechnen",
             "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
           }
         ])
@@ -44,7 +44,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug2.mp4]",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Zug"
+            "Fachbegriff" => "Zug"
           }
         ])
 
@@ -64,7 +64,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "4347009787320352:59",
-            "fachbegriff" => "Pi"
+            "Fachbegriff" => "Pi"
           }
         ])
     end
@@ -85,7 +85,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Rechnen"
+            "Fachbegriff" => "Rechnen"
           }
         ])
 
@@ -94,7 +94,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Rechnen",
+            "Fachbegriff" => "Rechnen",
             "gebaerdenSchriftUrl" => ""
           }
         ])
@@ -115,7 +115,7 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Another.mp4]",
             "dokumentId" => "123123123:12",
-            "fachbegriff" => "Rechnen",
+            "Fachbegriff" => "Rechnen",
             "gebaerdenSchriftUrl" => ""
           }
         ])
@@ -125,8 +125,23 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "4347009787320352:59",
-            "fachbegriff" => "Pi",
-            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
+            "Fachbegriff" => "Pi",
+            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]",
+            "Filmproduzent:" => "Jung-Woo Kim",
+            "CC / Ort:" => "MPI Halle",
+            "Aufnahmedatum:" => "24.01.2020",
+            "Bedeutungsnummer:" => "",
+            "Herkunft:" => "neu",
+            "Anwendungsbereich:" => "Schule,Akademie",
+            "Freigabedatum:" => "",
+            "Sprache:" => "",
+            "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
+            "Empfehlung:" => "X",
+            "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
+            "deleted" => "false",
+            "Fachgebiet:" => "Medizin",
+            "Gebärdender:" => "Katja Hopfenzitz",
+            "Hochladedatum:" => "04.05.2020"
           }
         ])
     end
