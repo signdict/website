@@ -1,8 +1,8 @@
-defmodule SignDict.Importer.WpsImporterTest do
+defmodule SignDict.Importer.Wps.ImporterTest do
   use SignDict.ModelCase
   import SignDict.Factory
 
-  alias SignDict.Importer.WpsImporter
+  alias SignDict.Importer.Wps.Importer
   alias SignDict.Importer.ImporterConfig
   alias SignDict.Entry
   alias SignDict.Repo
@@ -31,7 +31,7 @@ defmodule SignDict.Importer.WpsImporterTest do
         original_href: "https://delegs.de/",
         metadata: %{
           source_json: %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Zug"
           },
@@ -48,7 +48,7 @@ defmodule SignDict.Importer.WpsImporterTest do
     end
 
     test "it imports the data into the video" do
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
 
       assert length(videos) == 1
 
@@ -64,7 +64,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       assert video.metadata[:source_json] == %{
                "dokumentId" => "4347009787320352:59",
                "fachbegriff" => "Pi",
-               "videoUrl" => "http://localhost:8081/videos/Zug.mp4"
+               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]"
              }
 
       assert File.exists?(
@@ -98,7 +98,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
       assert length(videos) == 0
     end
 
@@ -112,7 +112,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
       assert length(videos) == 0
     end
 
@@ -126,7 +126,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
       video = List.first(videos)
       video_id = video.id
 
@@ -146,10 +146,10 @@ defmodule SignDict.Importer.WpsImporterTest do
       assert entry.videos == []
 
       assert video.metadata["source_json"] == %{
-               "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
                "dokumentId" => "123123123:12",
                "fachbegriff" => "Rechnen",
-               "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png"
+               "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
              }
 
       new_entry = Repo.get(Entry, video.entry_id) |> Repo.preload(:videos)
@@ -180,7 +180,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
       video = List.first(videos)
       video_id = video.id
 
@@ -214,7 +214,7 @@ defmodule SignDict.Importer.WpsImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsImporter.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock)
       video = List.first(videos)
 
       assert length(videos) == 1

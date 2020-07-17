@@ -1,8 +1,8 @@
-defmodule SignDict.Importer.WpsSignImporterTest do
+defmodule SignDict.Importer.Wps.SignImporterTest do
   use SignDict.ModelCase
   import SignDict.Factory
 
-  alias SignDict.Importer.WpsSignImporter
+  alias SignDict.Importer.Wps.SignImporter
   alias SignDict.Importer.ImporterConfig
   alias SignDict.Repo
   alias SignDict.Video
@@ -36,7 +36,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
     end
 
     test "it imports the data into the video" do
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
 
       assert length(videos) == 1
 
@@ -45,8 +45,8 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       assert video.metadata["source_sign_json"] == %{
                "dokumentId" => "4347009787320352:59",
                "fachbegriff" => "Pi",
-               "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png",
-               "videoUrl" => "http://localhost:8081/videos/Zug.mp4"
+               "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]",
+               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]"
              }
 
       assert File.exists?(
@@ -74,7 +74,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
 
@@ -88,7 +88,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
 
@@ -102,7 +102,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
 
@@ -116,7 +116,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
 
@@ -130,7 +130,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
 
@@ -144,7 +144,7 @@ defmodule SignDict.Importer.WpsSignImporterTest do
       })
       |> Repo.insert!()
 
-      videos = WpsSignImporter.import_json()
+      videos = SignImporter.import_json()
       assert length(videos) == 0
     end
   end

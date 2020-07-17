@@ -1,4 +1,4 @@
-defmodule SignDict.Importer.WpsImporter do
+defmodule SignDict.Importer.Wps.Importer do
   import Ecto.Query
 
   alias SignDict.Domain
@@ -9,6 +9,7 @@ defmodule SignDict.Importer.WpsImporter do
   alias SignDict.User
   alias SignDict.Video
   alias SignDict.Importer.ImporterConfig
+  alias SignDict.Importer.Wps.UrlExtractor
 
   @default_start_time "2016-01-01T00:30:30+00:00"
 
@@ -75,11 +76,11 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp download_file(%{"videoUrl" => video_url}) do
-    url = URI.parse(video_url)
+    url = video_url |> UrlExtractor.extract() |> URI.parse()
     file_name = Path.basename(url.path)
     File.mkdir(Path.join([System.tmp_dir(), "wps_importer"]))
     file = File.open!(Path.join([System.tmp_dir(), "wps_importer", file_name]), [:write])
-    {:ok, _result} = Downstream.get(video_url, file)
+    {:ok, _result} = Downstream.get(url, file)
     File.close(file)
     temp_file = Path.join([System.tmp_dir(), "wps_importer", file_name])
 
@@ -164,8 +165,10 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
-    if String.length(image_url) > 0 do
-      result = HTTPoison.get!(image_url)
+    url = UrlExtractor.extract(image_url)
+
+    if String.length(url) > 0 do
+      result = HTTPoison.get!(url)
 
       if result.status_code == 200 do
         {:ok, filename} = Briefly.create()

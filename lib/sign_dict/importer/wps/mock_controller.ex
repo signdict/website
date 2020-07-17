@@ -1,4 +1,4 @@
-defmodule SignDict.Importer.WpsMockController do
+defmodule SignDict.Importer.Wps.MockController do
   use Plug.Router
 
   plug Plug.Parsers,
@@ -32,17 +32,17 @@ defmodule SignDict.Importer.WpsMockController do
       ~D[2020-02-01] ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Rechnen",
-            "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png"
+            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
           }
         ])
 
       ~D[2020-03-01] ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug2.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug2.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Zug"
           }
@@ -62,7 +62,7 @@ defmodule SignDict.Importer.WpsMockController do
       _ ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "4347009787320352:59",
             "fachbegriff" => "Pi"
           }
@@ -83,7 +83,7 @@ defmodule SignDict.Importer.WpsMockController do
       ~D[2020-02-01] ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Rechnen"
           }
@@ -92,7 +92,7 @@ defmodule SignDict.Importer.WpsMockController do
       ~D[2020-03-01] ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Rechnen",
             "gebaerdenSchriftUrl" => ""
@@ -113,7 +113,7 @@ defmodule SignDict.Importer.WpsMockController do
       ~D[2020-06-01] ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Another.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Another.mp4]",
             "dokumentId" => "123123123:12",
             "fachbegriff" => "Rechnen",
             "gebaerdenSchriftUrl" => ""
@@ -123,10 +123,10 @@ defmodule SignDict.Importer.WpsMockController do
       _ ->
         success(conn, [
           %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "4347009787320352:59",
             "fachbegriff" => "Pi",
-            "gebaerdenSchriftUrl" => "http://localhost:8081/images/russland.png"
+            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
           }
         ])
     end
