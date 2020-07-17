@@ -64,7 +64,23 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
             "dokumentId" => "4347009787320352:59",
-            "Fachbegriff" => "Pi"
+            "Fachbegriff" => "Pi",
+            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]",
+            "Filmproduzent:" => "Jung-Woo Kim",
+            "CC / Ort:" => "MPI Halle",
+            "Aufnahmedatum:" => "24.01.2020",
+            "Bedeutungsnummer:" => "",
+            "Herkunft:" => "neu",
+            "Anwendungsbereich:" => "Schule,Akademie",
+            "Freigabedatum:" => "",
+            "Sprache:" => "",
+            "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
+            "Empfehlung:" => "X",
+            "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
+            "deleted" => "false",
+            "Fachgebiet:" => "Medizin",
+            "Gebärdender:" => "Katja Hopfenzitz",
+            "Hochladedatum:" => "04.05.2020"
           }
         ])
     end

@@ -64,7 +64,23 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       assert video.metadata[:source_json] == %{
                "dokumentId" => "4347009787320352:59",
                "Fachbegriff" => "Pi",
-               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]"
+               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
+               "Anwendungsbereich:" => "Schule,Akademie",
+               "Aufnahmedatum:" => "24.01.2020",
+               "Bedeutungsnummer:" => "",
+               "CC / Ort:" => "MPI Halle",
+               "Empfehlung:" => "X",
+               "Fachgebiet:" => "Medizin",
+               "Filmproduzent:" => "Jung-Woo Kim",
+               "Freigabedatum:" => "",
+               "Gebärdender:" => "Katja Hopfenzitz",
+               "Herkunft:" => "neu",
+               "Hochladedatum:" => "04.05.2020",
+               "Sprache:" => "",
+               "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
+               "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
+               "deleted" => "false",
+               "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
              }
 
       assert File.exists?(
