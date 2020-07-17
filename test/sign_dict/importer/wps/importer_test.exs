@@ -83,6 +83,12 @@ defmodule SignDict.Importer.Wps.ImporterTest do
                "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
              }
 
+      assert video.metadata[:filter_data] == %{
+               anwendungsbereich: ["Schule", "Akademie"],
+               fachgebiet: "Medizin",
+               herkunft: "neu"
+             }
+
       assert File.exists?(
                Path.join([
                  Application.get_env(:sign_dict, :upload_path),

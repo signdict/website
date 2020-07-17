@@ -197,7 +197,8 @@ defmodule SignDict.Importer.Wps.Importer do
             original_href: "https://delegs.de/",
             metadata: %{
               source_json: json_entry,
-              source_mp4: video_filename
+              source_mp4: video_filename,
+              filter_data: filter_data(json_entry)
             },
             user_id: user.id,
             entry_id: entry.id,
@@ -280,10 +281,6 @@ defmodule SignDict.Importer.Wps.Importer do
     |> Repo.update!()
   end
 
-  defp filter_data(json) do
-    %{}
-  end
-
   defp update_metadata(video, json_entry, sign_writing) do
     video
     |> Video.changeset_uploader(%{
@@ -295,5 +292,13 @@ defmodule SignDict.Importer.Wps.Importer do
       }
     })
     |> Repo.update!()
+  end
+
+  defp filter_data(json) do
+    %{
+      anwendungsbereich: String.split(json["Anwendungsbereich:"] || "", ","),
+      herkunft: json["Herkunft:"],
+      fachgebiet: json["Fachgebiet:"]
+    }
   end
 end
