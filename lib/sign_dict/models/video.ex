@@ -130,6 +130,7 @@ defmodule SignDict.Video do
     ])
     |> foreign_key_constraint(:entry_id)
     |> foreign_key_constraint(:user_id)
+    |> cast_attachments(params, [:sign_writing])
     |> validate_state()
   end
 
@@ -154,7 +155,9 @@ defmodule SignDict.Video do
       :entry_id,
       :video_url,
       :thumbnail_url,
-      :metadata
+      :metadata,
+      :auto_publish,
+      :external_id
     ])
     |> validate_required([:state, :license, :entry_id, :user_id])
     |> foreign_key_constraint(:entry_id)

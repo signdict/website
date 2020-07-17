@@ -1,9 +1,10 @@
-defmodule SignDict.Importer.WpsSignImporter do
+defmodule SignDict.Importer.Wps.SignImporter do
   import Ecto.Query
 
   alias SignDict.Repo
   alias SignDict.Video
   alias SignDict.Importer.ImporterConfig
+  alias SignDict.Importer.Wps.UrlExtractor
 
   @default_start_time "2016-01-01T00:30:30+00:00"
 
@@ -78,8 +79,10 @@ defmodule SignDict.Importer.WpsSignImporter do
   end
 
   defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
-    if String.length(image_url) > 0 do
-      result = HTTPoison.get!(image_url)
+    url = UrlExtractor.extract(image_url)
+
+    if url != nil && String.length(url) > 0 do
+      result = HTTPoison.get!(url)
 
       if result.status_code == 200 do
         {:ok, filename} = Briefly.create()
@@ -94,7 +97,8 @@ defmodule SignDict.Importer.WpsSignImporter do
   end
 
   defp find_video(%{"videoUrl" => video_url}) do
-    Repo.one(from v in Video, where: v.video_url == ^video_url)
+    url = UrlExtractor.extract(video_url)
+    Repo.one(from v in Video, where: v.video_url == ^url)
   end
 
   defp find_video(_) do

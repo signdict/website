@@ -9,8 +9,8 @@ defmodule SignDict.WpsCronjob do
   end
 
   def handle_info(:work, state) do
-    SignDict.Importer.WpsImporter.import_json()
-    SignDict.Importer.WpsSignImporter.import_json()
+    SignDict.Importer.Wps.Importer.import_json()
+    SignDict.Importer.Wps.SignImporter.import_json()
     schedule_work()
     {:noreply, state}
   end

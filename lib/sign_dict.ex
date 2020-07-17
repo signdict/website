@@ -27,7 +27,7 @@ defmodule SignDict do
           default_children ++
             [
               {Plug.Cowboy,
-               scheme: :http, plug: SignDict.Importer.WpsMockController, options: [port: 8081]}
+               scheme: :http, plug: SignDict.Importer.Wps.MockController, options: [port: 8081]}
             ]
 
         [env: :dev] ->
