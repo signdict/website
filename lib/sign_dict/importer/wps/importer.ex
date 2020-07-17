@@ -1,4 +1,4 @@
-defmodule SignDict.Importer.WpsImporter do
+defmodule SignDict.Importer.Wps.Importer do
   import Ecto.Query
 
   alias SignDict.Domain
@@ -9,6 +9,7 @@ defmodule SignDict.Importer.WpsImporter do
   alias SignDict.User
   alias SignDict.Video
   alias SignDict.Importer.ImporterConfig
+  alias SignDict.Importer.Wps.UrlExtractor
 
   @default_start_time "2016-01-01T00:30:30+00:00"
 
@@ -75,18 +76,18 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp download_file(%{"videoUrl" => video_url}) do
-    url = URI.parse(video_url)
+    url = video_url |> UrlExtractor.extract() |> URI.parse()
     file_name = Path.basename(url.path)
     File.mkdir(Path.join([System.tmp_dir(), "wps_importer"]))
     file = File.open!(Path.join([System.tmp_dir(), "wps_importer", file_name]), [:write])
-    {:ok, _result} = Downstream.get(video_url, file)
+    {:ok, _result} = Downstream.get(url, file)
     File.close(file)
     temp_file = Path.join([System.tmp_dir(), "wps_importer", file_name])
 
     VideoImporter.store_file(temp_file, Path.basename(temp_file))
   end
 
-  defp find_or_create_entry_for(%{"fachbegriff" => text}) do
+  defp find_or_create_entry_for(%{"Fachbegriff" => text}) do
     language = find_or_create_language_for("DGS")
 
     language
@@ -164,8 +165,10 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp fetch_sign_writing(%{"gebaerdenSchriftUrl" => image_url}) do
-    if String.length(image_url) > 0 do
-      result = HTTPoison.get!(image_url)
+    url = UrlExtractor.extract(image_url)
+
+    if url && String.length(url) > 0 do
+      result = HTTPoison.get!(url)
 
       if result.status_code == 200 do
         {:ok, filename} = Briefly.create()
@@ -185,24 +188,29 @@ defmodule SignDict.Importer.WpsImporter do
 
   defp insert_video(entry, user, json_entry, video_filename, sign_writing) do
     Repo.insert!(
-      Map.merge(
-        %Video{
-          copyright: "sign2mint",
-          license: "by-nc-sa/3.0/de",
-          original_href: "https://delegs.de/",
-          metadata: %{
-            source_json: json_entry,
-            source_mp4: video_filename
+      Video.changeset_transcoder(
+        %Video{},
+        Map.merge(
+          %{
+            copyright: "sign2mint",
+            license: "by-nc-sa/3.0/de",
+            original_href: "https://delegs.de/",
+            metadata: %{
+              source_json: json_entry,
+              source_mp4: video_filename,
+              filter_data: filter_data(json_entry)
+            },
+            user_id: user.id,
+            entry_id: entry.id,
+            state: "uploaded",
+            external_id: json_entry["dokumentId"],
+            auto_publish: true
           },
-          user: user,
-          entry: entry,
-          state: "uploaded",
-          external_id: json_entry["dokumentId"],
-          auto_publish: true
-        },
-        generate_sign_writing_plug(sign_writing)
+          generate_sign_writing_plug(sign_writing)
+        )
       )
     )
+    |> Repo.preload(entry: [:domains], user: [])
   end
 
   defp generate_sign_writing_plug(nil) do
@@ -243,7 +251,7 @@ defmodule SignDict.Importer.WpsImporter do
   end
 
   defp move_to_other_entry_if_needed(video) do
-    if video.entry.text != video.metadata["source_json"]["fachbegriff"] do
+    if video.entry.text != video.metadata["source_json"]["Fachbegriff"] do
       old_entry = video.entry
       entry = find_or_create_entry_for(video.metadata["source_json"])
 
@@ -264,7 +272,11 @@ defmodule SignDict.Importer.WpsImporter do
   defp update_metadata(video, json_entry, nil) do
     video
     |> Video.changeset_uploader(%{
-      metadata: Map.merge(video.metadata, %{"source_json" => json_entry})
+      metadata:
+        Map.merge(video.metadata, %{
+          "source_json" => json_entry,
+          "filter_data" => filter_data(json_entry)
+        })
     })
     |> Repo.update!()
   end
@@ -280,5 +292,13 @@ defmodule SignDict.Importer.WpsImporter do
       }
     })
     |> Repo.update!()
+  end
+
+  defp filter_data(json) do
+    %{
+      anwendungsbereich: String.split(json["Anwendungsbereich:"] || "", ","),
+      herkunft: json["Herkunft:"],
+      fachgebiet: json["Fachgebiet:"]
+    }
   end
 end
