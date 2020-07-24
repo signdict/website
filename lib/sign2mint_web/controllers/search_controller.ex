@@ -2,6 +2,7 @@ defmodule Sign2MintWeb.SearchController do
   use Sign2MintWeb, :controller
 
   alias SignDict.Entry
+  alias SignDict.Video
 
   def index(conn, params) do
     [result, title] =
@@ -9,6 +10,9 @@ defmodule Sign2MintWeb.SearchController do
         [
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
           |> Entry.with_videos()
+          |> with_filters("anwendungsbereich", params["anwendungsbereich"])
+          |> with_filters("fachgebiet", params["fachgebiet"])
+          |> with_filters("herkunft", params["herkunft"])
           |> SignDict.Repo.paginate(Map.merge(params, %{page_size: 20})),
           gettext("Search results for %{query}", query: params["q"])
         ]
@@ -42,5 +46,34 @@ defmodule Sign2MintWeb.SearchController do
 
   defp perfect_match?(_search, _entries) do
     false
+  end
+
+  defp with_filters(query, name, values)
+
+  defp with_filters(query, _name, nil) do
+    query
+  end
+
+  defp with_filters(query, _name, []) do
+    query
+  end
+
+  defp with_filters(query, _name, "") do
+    query
+  end
+
+  defp with_filters(query, name, values) do
+    conditions =
+      Enum.reduce(values, false, fn value, condition ->
+        dynamic(
+          [entry, domain, video],
+          fragment("?->'filter_data'->? @> ?", video.metadata, ^name, ^value) or ^condition
+        )
+      end)
+
+    from entry in query,
+      join: video in Video,
+      on: entry.id == video.entry_id,
+      where: ^conditions
   end
 end

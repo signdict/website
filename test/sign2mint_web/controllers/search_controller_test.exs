@@ -72,4 +72,121 @@ defmodule Sign2Mint.SearchControllerTest do
 
     assert html_response(conn, 200) =~ "Search results for Apple"
   end
+
+  describe "filtering" do
+    setup do
+      domain = insert(:domain, domain: "sign2mint.local")
+      entry = insert(:entry, text: "Apple", domains: [domain])
+
+      insert(:video,
+        state: "published",
+        entry: entry,
+        metadata: %{filter_data: %{fachgebiet: "Chemie", anwendungsbereich: "Schule"}}
+      )
+
+      Entry.update_current_video(entry)
+
+      entry2 = insert(:entry, text: "Aubergine", domains: [domain])
+
+      insert(:video,
+        state: "published",
+        entry: entry2,
+        metadata: %{filter_data: %{fachgebiet: "Biologie", anwendungsbereich: "Schule"}}
+      )
+
+      Entry.update_current_video(entry2)
+
+      {:ok, entry: entry, entry2: entry2}
+    end
+
+    test "it should filter for one criteria", %{conn: conn, entry: entry} do
+      conn =
+        get(
+          conn,
+          "http://sign2mint.local/" <>
+            search_path(conn, :index, q: "A", fachgebiet: ["Chemie"])
+        )
+
+      assert Enum.map(conn.assigns.result.entries, fn entry -> entry.id end) == [entry.id]
+      assert html_response(conn, 200) =~ "Search results for A"
+    end
+
+    test "it should filter for two criteria", %{conn: conn, entry: entry} do
+      conn =
+        get(
+          conn,
+          "http://sign2mint.local/" <>
+            search_path(conn, :index,
+              q: "A",
+              fachgebiet: ["Chemie"],
+              anwendungsbereich: ["Schule"]
+            )
+        )
+
+      assert Enum.map(conn.assigns.result.entries, fn entry -> entry.id end) == [entry.id]
+      assert html_response(conn, 200) =~ "Search results for A"
+    end
+
+    test "it should use or for two criteria in the same key", %{
+      conn: conn,
+      entry: entry,
+      entry2: entry2
+    } do
+      conn =
+        get(
+          conn,
+          "http://sign2mint.local/" <>
+            search_path(conn, :index,
+              q: "A",
+              fachgebiet: ["Chemie", "Biologie"],
+              anwendungsbereich: ["Schule"]
+            )
+        )
+
+      assert Enum.map(conn.assigns.result.entries, fn entry -> entry.id end) == [
+               entry.id,
+               entry2.id
+             ]
+
+      assert html_response(conn, 200) =~ "Search results for A"
+    end
+
+    test "it should work if filter is empty", %{conn: conn, entry: entry, entry2: entry2} do
+      conn =
+        get(
+          conn,
+          "http://sign2mint.local/" <>
+            search_path(conn, :index,
+              q: "A",
+              fachgebiet: []
+            )
+        )
+
+      assert Enum.map(conn.assigns.result.entries, fn entry -> entry.id end) == [
+               entry.id,
+               entry2.id
+             ]
+
+      assert html_response(conn, 200) =~ "Search results for A"
+    end
+
+    test "it should work if filter is nil", %{conn: conn, entry: entry, entry2: entry2} do
+      conn =
+        get(
+          conn,
+          "http://sign2mint.local/" <>
+            search_path(conn, :index,
+              q: "A",
+              fachgebiet: nil
+            )
+        )
+
+      assert Enum.map(conn.assigns.result.entries, fn entry -> entry.id end) == [
+               entry.id,
+               entry2.id
+             ]
+
+      assert html_response(conn, 200) =~ "Search results for A"
+    end
+  end
 end
