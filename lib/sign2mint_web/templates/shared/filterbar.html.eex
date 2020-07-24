@@ -3,31 +3,34 @@
       <div class="o-grid__cell s2m-filter">
         <div class="s2m-select-multiple" data-controller="select-multiple">
           <label for="fachbereich" class="s2m-filter--label">Fachbereich</label>
-          <select id="fachbereich" class="s2m-filter--select" multiple>
-            <option value="biologie" >Biologie</option>
-            <option value="chemie">Chemie</option>
-            <option value="geowissenschaften">Geowissenschaften</option>
-            <option value="informatik">Informatik</option>
-            <option value="mathematik">Mathematik</option>
-            <option value="medizin">Medizin</option>
-            <option value="physik">Physik</option>
+          <select id="fachbereich" name="fachbereich[]" class="s2m-filter--select" multiple>
+            <%= select_options([{"biologie", "Biologie"},
+                                {"chemie", "Chemie"},
+                                {"geowissenschaften", "Geowissenschaften"},
+                                {"informatik", "Informatik"},
+                                {"mathematik", "Mathematik"},
+                                {"medizin", "Medizin"},
+                                {"physik", "Physik"}
+                                ], @conn.params["fachbereich"]) %>
           </select>
         </div>
 
          <div class="s2m-select-multiple" data-controller="select-multiple">
           <label for="herkunft" class="s2m-filter--label">Herkunft</label>
-          <select id="herkunft" class="s2m-filter--select" multiple>
-            <option value="neu">Neu</option>
-            <option value="standard">Standard</option>
-            <option value="international" >International</option>
+          <select id="herkunft" name="herkunft[]" class="s2m-filter--select" multiple>
+            <%= select_options([{"neu", "Neu"},
+                                {"standard", "Standard"},
+                                {"international", "International"}
+                                ], @conn.params["herkunft"]) %>
           </select>
         </div>
 
         <div class="s2m-select-multiple" data-controller="select-multiple">
           <label for="anwendungsbereich" class="s2m-filter--label">Anwendungsbereich</label>
-          <select id="anwendungsbereich" class="s2m-filter--select" multiple>
-            <option value="schule">Schule</option>
-            <option value="universitaet">Universität</option>
+          <select id="anwendungsbereich" name="anwendungsbereich[]" class="s2m-filter--select" multiple>
+            <%= select_options([{"schule", "Schule"},
+                                {"universitaet", "Universität"}
+                               ], @conn.params["anwendungsbereich"]) %>
           </select>
         </div>
       </div>

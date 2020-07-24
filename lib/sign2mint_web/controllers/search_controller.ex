@@ -6,6 +6,8 @@ defmodule Sign2MintWeb.SearchController do
   def index(conn, params) do
     [result, title] =
       if params["q"] && String.length(params["q"]) > 0 do
+        IO.inspect(params)
+
         [
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
           |> Entry.with_videos()
