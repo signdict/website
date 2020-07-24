@@ -58,16 +58,22 @@ defmodule Sign2MintWeb.SearchController do
     query
   end
 
-  defp with_filters(query, name, values) do
-    Enum.reduce(values, query, fn value, q ->
-      with_filter(q, name, value)
-    end)
+  defp with_filters(query, _name, "") do
+    query
   end
 
-  defp with_filter(query, name, value) do
+  defp with_filters(query, name, values) do
+    conditions =
+      Enum.reduce(values, false, fn value, condition ->
+        dynamic(
+          [entry, domain, video],
+          fragment("?->'filter_data'->? @> ?", video.metadata, ^name, ^value) or ^condition
+        )
+      end)
+
     from entry in query,
       join: video in Video,
       on: entry.id == video.entry_id,
-      where: fragment("?->'filter_data'->? @> ?", video.metadata, ^name, ^value)
+      where: ^conditions
   end
 end

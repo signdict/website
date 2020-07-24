@@ -9,7 +9,7 @@ defmodule Sign2MintWeb.SharedView do
 
       content_tag(:option, content,
         value: value,
-        selected: selected != nil && Enum.member?(selected, value)
+        selected: selected != nil && is_list(selected) && Enum.member?(selected, value)
       )
     end)
   end
