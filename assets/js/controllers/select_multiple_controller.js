@@ -24,6 +24,7 @@ export default class extends Controller {
       this.element.querySelector('.js-select-multiple-dropdown').remove();
     }
   };
+
   documentKeydown = (event) => {
     if (event.key === 'Escape' && this.optionsVisible && !this.element.contains(event.target)) {
       this.setOptionsVisible(false);
@@ -40,7 +41,13 @@ export default class extends Controller {
   synchValues = () => {
     this.options.forEach((option) => {
       this.element.querySelector(`#${this.getCheckboxId(option)}`).checked = option.selected;
+      if (option.selected) {
+        option.setAttribute('selected', 'selected');
+      } else {
+        option.removeAttribute('selected');
+      }
     });
+    this.element.querySelector('select').dispatchEvent(new Event('change'));
   };
 
   toggleCheckbox = (event) => {
@@ -50,6 +57,7 @@ export default class extends Controller {
     } else {
       option.removeAttribute('selected');
     }
+    this.element.querySelector('select').dispatchEvent(new Event('change'));
   };
 
   getCheckboxId = (option) => {

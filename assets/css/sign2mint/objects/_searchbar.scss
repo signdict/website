@@ -12,6 +12,42 @@
 
 .s2m-searchbar--input {
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+
+  &:focus-within {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: Highlight;
+  }
+}
+
+// Chrome gets its own focus
+@media (-webkit-min-device-pixel-ratio: 0) {
+  .s2m-searchbar--input {
+    &:focus-within {
+      outline-color: -webkit-focus-ring-color;
+      outline-style: auto;
+    }
+  }
+}
+
+.s2m-searchbar--filtertoggle {
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+
+  &:hover {
+    color: $highlight;
+  }
+}
+
+.s2m-searchbar--filtertoggle--active {
+  color: $highlight;
 }
 
 .s2m-searchbar--input--with-border {
@@ -21,6 +57,10 @@
   border-bottom: none;
 }
 
+.s2m-searchbar--input--wrapper {
+  width: 100%;
+}
+
 .s2m-searchbar--input--inner {
   width: 100%;
   font-size: 1em;
@@ -28,6 +68,10 @@
   border: none;
   height: 3em;
   padding: 0.8em 1em;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .s2m-searchbar--submit {
