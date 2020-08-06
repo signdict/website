@@ -1,11 +1,14 @@
 <%= if assigns[:searchbar] == true do %>
-  <form action="/search">
+  <form action="/search" data-controller="toggle-filter">
     <div class="s2m-searchbar">
       <div class="o-container o-container--medium">
 
           <div class="s2m-searchbar--container">
             <div class="s2m-searchbar--input">
-            <input class="s2m-searchbar--input--inner" type="text" name="q" placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen" value="<%= @conn.params["q"] %>" data-controller="search"/>
+              <div class="s2m-searchbar--input--wrapper">
+                <input class="s2m-searchbar--input--inner" type="text" name="q" placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen" value="<%= @conn.params["q"] %>" data-controller="search"/>
+              </div>
+              <button type="button" class="s2m-searchbar--filtertoggle" data-target="toggle-filter.button" text="Filter zeigen oder verstecken"><i class="fa fa-filter"></i></button>
             </div>
             <button class="s2m-searchbar--submit" type="submit">
               <span class="s2m-searchbar--text">
@@ -19,6 +22,8 @@
 
       </div>
     </div>
-    <%= render Sign2MintWeb.SharedView, "filterbar.html", conn: @conn %>
+    <div data-target="toggle-filter.filterbar">
+      <%= render Sign2MintWeb.SharedView, "filterbar.html", conn: @conn %>
+    </div>
   </form>
 <% end %>

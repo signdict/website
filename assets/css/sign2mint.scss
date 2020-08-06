@@ -26,6 +26,7 @@
 @import 'objects/_voting-box.scss';
 @import 'objects/_welcome.scss';
 @import 'sign2mint/pages/entry/show.scss';
+@import 'sign2mint/pages/pages/about.scss';
 @import 'vendor/_font-awesome.min.scss';
 @import 'vendor/_socialbuttons.scss';
 
@@ -148,6 +149,7 @@ strong {
     padding: 8px 16px;
     text-decoration: none;
     margin-top: 2rem;
+    margin-bottom: 0.5rem;
   }
 }
 
