@@ -44,6 +44,10 @@
   &:hover {
     color: $highlight;
   }
+
+  &:focus {
+    color: highlight;
+  }
 }
 
 .s2m-searchbar--filtertoggle--active {
@@ -148,7 +152,7 @@
 }
 
 .s2m-searchbar--all-letters {
-  padding-left: 1rem;
+  margin-left: 1rem;
 }
 
 .s2m-filter {
