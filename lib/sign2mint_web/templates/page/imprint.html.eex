@@ -1,0 +1,13 @@
+<div class="o-container o-container--medium">
+  <div class="o-grid__cell o-grid__cell--offset-15@small">
+    <h1 class="so-landing--banner--headline"><%= gettext("Imprint") %></h1>
+    <p>
+      Angaben gemäß § 5 TMG:
+    </p>
+    <p>
+      Max-Planck-Institut für Mikrostrukturphysik – Sign2MINT<br/>
+      Weinberg 2<br/>
+      06120 Halle (Saale)
+    </p>
+  </div>
+</div>

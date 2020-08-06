@@ -62,6 +62,8 @@ defmodule SignDictWeb.Router do
     pipe_through [:browser, :browser_session, :locale]
 
     get "/", PageController, :index
+    get "/imprint", PageController, :imprint
+    get "/about", PageController, :about
     get "/search", SearchController, :index
 
     resources "/entry", EntryController, only: [:index, :show] do
