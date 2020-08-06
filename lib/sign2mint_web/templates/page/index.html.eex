@@ -16,6 +16,10 @@
     <a href="/suggestion" class="s2m--welcome--suggest">
       Gebärde vorschlagen &gt;
     </a>
+
+    <p>
+      Aktuell entählt das Lexikon <a href="/entry"><%= @sign_count %> Einträge</a>.
+    </p>
   </div>
 
   <form action="/search"'>
