@@ -3,7 +3,7 @@ dist: trusty
 elixir:
   - 1.8.2
 otp_release:
-  - 22.0
+  - 22.3.1
 
 addons:
   postgresql: "9.6"
