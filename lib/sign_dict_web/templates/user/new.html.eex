@@ -44,6 +44,8 @@
         </label>
       </div>
 
+      <%= raw Recaptcha.Template.display(hl: Gettext.get_locale(SignDictWeb.Gettext), noscript: true) %>
+
       <div class="sc-actions">
         <%= submit gettext("Register"), class: "sc-button" %>
       </div>
