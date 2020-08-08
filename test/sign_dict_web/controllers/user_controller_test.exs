@@ -22,18 +22,42 @@ defmodule SignDict.UserControllerTest do
 
   describe "create/2" do
     test "creates a user with valid form data", %{conn: conn} do
-      conn = post(conn, user_path(conn, :create), user: @valid_attrs)
+      conn =
+        post(conn, user_path(conn, :create), %{
+          "user" => @valid_attrs,
+          "g-recaptcha-response" => "working"
+        })
+
       assert redirected_to(conn) == "/"
       assert Repo.get_by(SignDict.User, unconfirmed_email: "elisa@example.com")
     end
 
+    test "does not creates a user with valid form data and invalid recaptcha", %{conn: conn} do
+      conn =
+        post(conn, user_path(conn, :create), %{
+          "user" => @valid_attrs,
+          "g-recaptcha-response" => "wrong"
+        })
+
+      assert redirected_to(conn) == "/users/new"
+      refute Repo.get_by(SignDict.User, unconfirmed_email: "elisa@example.com")
+    end
+
     test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, user_path(conn, :create), user: @invalid_attrs)
+      conn =
+        post(conn, user_path(conn, :create), %{
+          "user" => @invalid_attrs,
+          "g-recaptcha-response" => "working"
+        })
+
       assert html_response(conn, 200) =~ "Email"
     end
 
     test "it sends an email to confirm the user email address", %{conn: conn} do
-      post(conn, user_path(conn, :create), user: @valid_attrs)
+      post(conn, user_path(conn, :create), %{
+        "user" => @valid_attrs,
+        "g-recaptcha-response" => "working"
+      })
 
       assert_email_delivered_with(
         subject: "Please confirm your email address",
@@ -45,7 +69,10 @@ defmodule SignDict.UserControllerTest do
       post(
         conn,
         user_path(conn, :create),
-        user: Map.merge(@valid_attrs, %{want_newsletter: false})
+        %{
+          "user" => Map.merge(@valid_attrs, %{want_newsletter: false}),
+          "g-recaptcha-response" => "working"
+        }
       )
 
       refute_received {:mock_chimp, "f96556b89f", "elisa@example.com",
@@ -56,7 +83,10 @@ defmodule SignDict.UserControllerTest do
       post(
         conn,
         user_path(conn, :create),
-        user: Map.merge(@valid_attrs, %{want_newsletter: true})
+        %{
+          "user" => Map.merge(@valid_attrs, %{want_newsletter: true}),
+          "g-recaptcha-response" => "working"
+        }
       )
 
       assert_received {:mock_chimp, "f96556b89f", "elisa@example.com",
