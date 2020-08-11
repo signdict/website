@@ -51,7 +51,7 @@ export default class extends Controller {
         <div class="s2m-filter-overview--list">
           {selected.map((item) => {
             return (
-              <div class="s2m-filter-overview--item">
+              <div class={`s2m--colors--${item.getAttribute('data-target').toLowerCase()} s2m-filter-overview--item`}>
                 {this.optionNames[item.getAttribute('data-target')]}
                 <button
                   type="button"

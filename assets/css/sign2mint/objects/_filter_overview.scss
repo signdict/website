@@ -44,11 +44,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  color: $highlight;
 }
 
 .s2m-filter-overview--item {
   border: 1px solid $highlight;
-  color: $highlight;
   font-size: 0.8rem;
   border-radius: 16px;
   display: flex;

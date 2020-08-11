@@ -15,3 +15,33 @@ $dark_background: #10134b;
 
 $border: #707070;
 $border_highlight: #00a098;
+
+$s2m-biologie: #009300;
+$s2m-chemie: #bc9f00;
+$s2m-geowissenschaften: #c45e00;
+$s2m-informatik: #707070;
+$s2m-mathematik: #c90022;
+$s2m-medizin: #040e8b;
+$s2m-physik: #0085bd;
+
+.s2m--colors--biologie {
+  color: $s2m-biologie;
+}
+.s2m--colors--chemie {
+  color: $s2m-chemie;
+}
+.s2m--colors--geowissenschaften {
+  color: $s2m-geowissenschaften;
+}
+.s2m--colors--informatik {
+  color: $s2m-informatik;
+}
+.s2m--colors--mathematik {
+  color: $s2m-mathematik;
+}
+.s2m--colors--medizin {
+  color: $s2m-medizin;
+}
+.s2m--colors--physik {
+  color: $s2m-physik;
+}

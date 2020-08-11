@@ -104,6 +104,21 @@
 
 .s2m-entry-show--content--details {
   flex: 1 1;
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.s2m-entry-show--content--tags {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+}
+
+.s2m-entry-show--content--tags--item {
+  padding: 0 1rem 0.5rem 1rem;
 }
 
 .s2m-entry-show--content--variations {
