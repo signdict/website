@@ -54,6 +54,7 @@
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
+  align-items: center;
 
   a,
   button {
@@ -78,6 +79,10 @@
       text-decoration: underline;
     }
   }
+}
+
+.s2m-entry-show--actions--recommend {
+  height: 2rem;
 }
 
 .s2m-entry-show--content {

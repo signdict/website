@@ -26,12 +26,22 @@
 
 <div class="s2m-entry-show--actions">
   <a href="<%= @video.video_url %>" target="_blank" download="video.mp4"><i class="fa fa-download"></i> <%= gettext("Download Video") %></a>
-  <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/>
+  <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/></span>
+
+  <%= if is_recommended(@video) do %>
+    <span><img class="s2m-entry-show--actions--recommend" src="/images/sign2mint/recommended.png" title="Dieses Video ist empfehlenswert" /></span>
+  <% end %>
 </div>
 
 <div class="s2m-entry-show--content">
   <div class="s2m-entry-show--content--details">
-    <h1><%= @entry.text %>
+    <h1><%= @entry.text %></h1>
+
+    <div>
+      <div>Fachbereich:</div>
+      <div>Herkunft:</div>
+      <div>Anwendungsbereich:</div>
+    </div>
 
     <%= if String.length(@entry.description) > 0 do %>
       <h2><%= gettext("Definition") %></h2>
