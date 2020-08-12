@@ -28,9 +28,10 @@ $s2m-color-list: (
   'biologie': $s2m-biologie,
   'chemie': $s2m-chemie,
   'geowissenschaften': $s2m-geowissenschaften,
+  'mathematik': $s2m-mathematik,
   'informatik': $s2m-informatik,
   'medizin': $s2m-medizin,
-  'phyisk': $s2m-physik,
+  'physik': $s2m-physik,
 );
 
 @each $name, $color in $s2m-color-list {

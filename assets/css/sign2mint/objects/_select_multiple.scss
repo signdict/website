@@ -56,6 +56,17 @@
   border-top: 3px solid $border_highlight;
   z-index: 20;
 
+  @each $name, $color in $s2m-color-list {
+    [type='checkbox']:checked + label.js-checkbox-color-#{$name}:before {
+      border: 2px solid $color;
+    }
+
+    [type='checkbox']:not(:checked) + label.js-checkbox-color-#{$name}:after,
+    [type='checkbox']:checked + label.js-checkbox-color-#{$name}:after {
+      background-color: $color;
+    }
+  }
+
   .js-select-multiple--options-row {
     line-height: 2rem;
     text-overflow: ellipsis;
