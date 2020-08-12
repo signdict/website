@@ -57,3 +57,17 @@
   margin: 0 1rem 1rem 0;
   padding: 6px 8px 6px 16px;
 }
+
+@each $name, $color in $s2m-color-list {
+  .s2m-filter-overview--item.s2m--colors--#{$name} {
+    border-color: $color;
+
+    .s2m-filter-overview--item--remove {
+      svg {
+        path {
+          fill: $color;
+        }
+      }
+    }
+  }
+}

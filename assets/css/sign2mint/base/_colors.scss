@@ -24,24 +24,17 @@ $s2m-mathematik: #c90022;
 $s2m-medizin: #040e8b;
 $s2m-physik: #0085bd;
 
-.s2m--colors--biologie {
-  color: $s2m-biologie;
-}
-.s2m--colors--chemie {
-  color: $s2m-chemie;
-}
-.s2m--colors--geowissenschaften {
-  color: $s2m-geowissenschaften;
-}
-.s2m--colors--informatik {
-  color: $s2m-informatik;
-}
-.s2m--colors--mathematik {
-  color: $s2m-mathematik;
-}
-.s2m--colors--medizin {
-  color: $s2m-medizin;
-}
-.s2m--colors--physik {
-  color: $s2m-physik;
+$s2m-color-list: (
+  'biologie': $s2m-biologie,
+  'chemie': $s2m-chemie,
+  'geowissenschaften': $s2m-geowissenschaften,
+  'informatik': $s2m-informatik,
+  'medizin': $s2m-medizin,
+  'phyisk': $s2m-physik,
+);
+
+@each $name, $color in $s2m-color-list {
+  .s2m--colors--#{$name} {
+    color: $color;
+  }
 }
