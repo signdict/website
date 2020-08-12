@@ -15,6 +15,7 @@ defmodule Sign2MintWeb.EntryController do
     entries =
       Entry.active_entries(conn.host)
       |> Entry.with_videos()
+      |> Entry.with_current_video()
       |> Entry.for_letter(letter)
       |> SignDict.Repo.paginate(Map.merge(params, %{page_size: 20}))
 

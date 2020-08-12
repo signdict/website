@@ -2,6 +2,7 @@ defmodule Sign2MintWeb.SharedView do
   use Sign2MintWeb, :view
 
   import SignDict.OpengraphTags
+  import Sign2MintWeb.Helpers.VideoHelper
 
   def select_options(options, selected) do
     Enum.map(options, fn option ->
