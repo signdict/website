@@ -3,7 +3,18 @@
     <%= link @entry.text, to: entry_path(@conn, :show, @entry) %>
   </h2>
 
-  <p class="s2m-entry--description"><%= @entry.description %></p>
+  <p class="s2m-entry--department">
+    <% departments =  department(@entry.current_video)%>
+    <%= if length(departments) > 1 do %>
+      Fachbereiche:
+    <% else %>
+      Fachbereich:
+    <% end  %>
+    <br/>
+    <%= Enum.map department(@entry.current_video), fn department -> %>
+      <span class="<%= color_for_department(department) %>"><%= department %></span>
+    <% end %>
+  </p>
 
   <p class="s2m-entry--variant">(<%= ngettext(
               "1 variant",

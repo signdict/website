@@ -64,6 +64,10 @@ export default class extends Controller {
     return `js-checkbox-${option.value}`;
   };
 
+  getClassName = (option) => {
+    return `js-checkbox-color-${option.value.toLowerCase()}`;
+  };
+
   toggleDropDown = () => {
     this.setOptionsVisible(!this.optionsVisible);
   };
@@ -100,7 +104,9 @@ export default class extends Controller {
                 onChange={this.toggleCheckbox}
                 data-target={option.value}
               />
-              <label for={this.getCheckboxId(option)}>{option.innerText}</label>
+              <label for={this.getCheckboxId(option)} class={this.getClassName(option)}>
+                {option.innerText}
+              </label>
             </div>
           ))}
         </div>
