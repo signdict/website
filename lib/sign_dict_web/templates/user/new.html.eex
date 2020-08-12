@@ -44,7 +44,11 @@
         </label>
       </div>
 
-      <%= raw Recaptcha.Template.display(hl: Gettext.get_locale(SignDictWeb.Gettext), noscript: true) %>
+      <%= if Application.get_env(:sign_dict, :environment) != :test do %>
+        <%= raw Recaptcha.Template.display(hl: Gettext.get_locale(SignDictWeb.Gettext), noscript: true) %>
+      <% else %>
+        <input type="hidden" name="g-recaptcha-response" value="working" />
+      <% end %>
 
       <div class="sc-actions">
         <%= submit gettext("Register"), class: "sc-button" %>

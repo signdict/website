@@ -6,7 +6,7 @@
           <select id="fachgebiet" name="fachgebiet[]" class="s2m-filter--select" multiple>
             <%= select_options([{"Biologie", "Biologie"},
                                 {"Chemie", "Chemie"},
-                                {"Geowissenschaften", "Geowissenschaften"},
+                                {"Geowissenschaft", "Geowissenschaft"},
                                 {"Informatik", "Informatik"},
                                 {"Mathematik", "Mathematik"},
                                 {"Medizin", "Medizin"},
