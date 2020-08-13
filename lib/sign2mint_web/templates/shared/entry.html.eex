@@ -6,9 +6,9 @@
   <p class="s2m-entry--department">
     <% departments =  department(@entry.current_video)%>
     <%= if length(departments) > 1 do %>
-      Fachbereiche:
+      Fachgebiete:
     <% else %>
-      Fachbereich:
+      Fachgebiet:
     <% end  %>
     <br/>
     <%= Enum.map department(@entry.current_video), fn department -> %>
