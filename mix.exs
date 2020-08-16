@@ -49,7 +49,7 @@ defmodule SignDict.Mixfile do
       {:bamboo, "~> 1.5.0"},
       {:bcrypt_elixir, "~> 2.2.0"},
       {:bootleg, "~> 0.7", runtime: false},
-      {:bugsnag, "~> 2.0.0"},
+      {:bugsnag, "~> 2.1.0"},
       {:plugsnag, "~> 1.5.0"},
       {:canary, "~> 1.1.0"},
       {:comeonin, "~> 5.3.1"},
