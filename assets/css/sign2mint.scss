@@ -123,6 +123,7 @@ strong {
   margin-right: auto;
   margin-bottom: 10rem !important;
   color: $dark_font;
+  padding: 0 2rem;
 
   &--title {
     font-family: 'Merriweather', serif;
@@ -154,7 +155,7 @@ strong {
 }
 
 .s2m--welcome--header {
-  width: 45em;
+  max-width: 45em;
   margin: 0 auto;
 }
 
@@ -194,6 +195,7 @@ strong {
     padding-left: 2rem;
     color: $highlight;
     text-decoration: none;
+    white-space: nowrap;
 
     &:visited {
       color: $highlight;
@@ -247,12 +249,49 @@ footer {
   &--first-links {
     display: flex;
     flex-direction: column;
-    margin-left: 10rem;
+    padding-left: 10rem;
   }
 
   &--last-links {
     display: flex;
     flex-direction: column;
-    margin-left: 10rem;
+    padding-left: 10rem;
+  }
+}
+
+@media all and (max-width: 48em) {
+  .s2m--header {
+    justify-content: space-between;
+  }
+
+  .s2m--welcome-searchbar {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .s2m--welcome--filterbar {
+    display: none;
+  }
+
+  .s2m--footer {
+    flex-direction: column;
+    text-align: center;
+    a {
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .s2m--footer--text {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .s2m--footer--first-links {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .s2m--footer--last-links {
+    padding-left: 1rem;
   }
 }
