@@ -1,13 +1,17 @@
 .s2m-entry-show--top {
-  display: flex;
+  display: grid;
   width: 100%;
   max-width: 78rem;
   margin: 0 auto;
   padding: 2rem 2rem 0 2rem;
+
+  grid-template-areas:
+    'video signwriting'
+    'actions none';
 }
 
 .s2m-entry-show--video {
-  flex: 1 1;
+  grid-area: video;
   max-height: 26rem;
   background-color: black;
 
@@ -17,6 +21,7 @@
 }
 
 .s2m-entry-show--signwriting {
+  grid-area: signwriting;
   width: 34rem;
   max-width: 29rem;
   padding-left: 1rem;
@@ -49,12 +54,14 @@
 }
 
 .s2m-entry-show--actions {
+  grid-area: actions;
   width: 100%;
   max-width: 78rem;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   a,
   button {
@@ -81,7 +88,7 @@
   }
 }
 
-.s2m-entry-show--actions--recommend {
+.s2m-entry-show--actions--recommend--image {
   height: 2rem;
 }
 
