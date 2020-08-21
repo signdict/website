@@ -199,3 +199,35 @@
   height: 9rem;
   margin-left: 1rem;
 }
+
+@media all and (max-width: 48em) {
+  .s2m-entry-show--top {
+    padding: 0;
+    grid-template-areas:
+      'video'
+      'actions'
+      'signwriting';
+  }
+
+  .s2m-entry-show--actions {
+    padding: 1rem 2rem;
+  }
+
+  .s2m-entry-show--signwriting {
+    width: 100%;
+    max-width: unset;
+    padding: 0rem 2rem 2rem 2rem;
+  }
+
+  .s2m-entry-show--signwriting--entry {
+    padding: 2rem 2rem;
+  }
+
+  .s2m-entry-show--content--variations {
+    padding: 1rem 0;
+  }
+
+  .s2m-entry-show--content {
+    flex-direction: column;
+  }
+}

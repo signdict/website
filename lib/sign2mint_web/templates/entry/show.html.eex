@@ -7,6 +7,17 @@
     <video autoplay playsinline controls loop src="<%= @video.video_url %>" poster="<%= @video.thumbnail_url %>"></video>
   </div>
 
+  <div class="s2m-entry-show--actions">
+    <div>
+      <a href="<%= @video.video_url %>" target="_blank" download="video.mp4"><i class="fa fa-download"></i> <%= gettext("Download Video") %></a>
+      <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/></span>
+    </div>
+
+    <%= if is_recommended(@video) do %>
+      <span class="s2m-entry-show--actions--recommend"><img class="s2m-entry-show--actions--recommend--image" src="/images/sign2mint/recommended.png" title="Dieses Video ist empfehlenswert" /></span>
+    <% end %>
+  </div>
+
   <div class="s2m-entry-show--signwriting">
     <h2><%= gettext("Signwriting") %></h2>
 
@@ -23,16 +34,6 @@
     </div>
   </div>
 
-  <div class="s2m-entry-show--actions">
-    <div>
-      <a href="<%= @video.video_url %>" target="_blank" download="video.mp4"><i class="fa fa-download"></i> <%= gettext("Download Video") %></a>
-      <span data-controller="copy-url" class="s2m-entry-show--actions--copy" data-copy-url-link="<%= entry_video_url(@conn, :show, @entry, @video.id) %>"/></span>
-    </div>
-
-    <%= if is_recommended(@video) do %>
-      <span class="s2m-entry-show--actions--recommend"><img class="s2m-entry-show--actions--recommend--image" src="/images/sign2mint/recommended.png" title="Dieses Video ist empfehlenswert" /></span>
-    <% end %>
-  </div>
 </div>
 
 
