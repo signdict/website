@@ -33,7 +33,9 @@
         A - Z &gt;
       </a>
     </div>
-    <%= render Sign2MintWeb.SharedView, "filterbar.html", conn: @conn %>
+    <div class='s2m--welcome--filterbar'>
+      <%= render Sign2MintWeb.SharedView, "filterbar.html", conn: @conn %>
+    </div>
   </form>
 
 </div>
