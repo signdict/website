@@ -259,6 +259,11 @@ footer {
   }
 }
 
+.s2m--page {
+  word-break: break-word;
+  hyphens: auto;
+}
+
 @media all and (max-width: 48em) {
   .s2m--header {
     justify-content: space-between;
