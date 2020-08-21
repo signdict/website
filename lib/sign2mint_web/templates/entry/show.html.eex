@@ -34,19 +34,15 @@
     </div>
   </div>
 
-</div>
-
-
-<div class="s2m-entry-show--content">
-  <div class="s2m-entry-show--content--details">
+  <div class="s2m-entry-show--details">
     <h1><%= @entry.text %></h1>
 
-    <div class="s2m-entry-show--content--tags">
-      <div class="s2m-entry-show--content--tags--item">Fachgebiet: <%= Enum.map department(@video), fn department -> %>
+    <div class="s2m-entry-show--tags">
+      <div class="s2m-entry-show--tags--item">Fachgebiet: <%= Enum.map department(@video), fn department -> %>
         <span class="<%= color_for_department(department) %>"><%= department %></span>
       <% end %></div>
-      <div class="s2m-entry-show--content--tags--item">Herkunft: <%= Enum.join(source(@video), ", ") %></div>
-      <div class="s2m-entry-show--content--tags--item">Anwendungsbereich: <%= Enum.join(application(@video), " und ") %></div>
+      <div class="s2m-entry-show--tags--item">Herkunft: <%= Enum.join(source(@video), ", ") %></div>
+      <div class="s2m-entry-show--tags--item">Anwendungsbereich: <%= Enum.join(application(@video), " und ") %></div>
     </div>
 
     <%= if String.length(@entry.description) > 0 do %>
@@ -56,20 +52,20 @@
     <% end %>
   </div>
 
-  <div class="s2m-entry-show--content--variations">
+  <div class="s2m-entry-show--variations">
     <h2><%= gettext("Variations for »%{entry}«", entry: @entry.text) %></h2>
     <%= if Enum.count(@videos) > 0 do %>
-      <ul class="s2m-entry-show--content--variations--list">
+      <ul class="s2m-entry-show--variations--list">
         <%= for video <- @videos do %>
-          <li class="s2m-entry-show--content--variations--list-item <%= if video.id == @video.id, do: "s2m-entry-show--content--variations--list-selected" %>">
-            <div class="s2m-entry-show--content--variations--list-video">
+          <li class="s2m-entry-show--variations--list-item <%= if video.id == @video.id, do: "s2m-entry-show--variations--list-selected" %>">
+            <div class="s2m-entry-show--variations--list-video">
               <a href='<%= entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
                 <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
               </a>
-              <i class="s2m-entry-show--content--variations--list-play" aria-hidden="true"></i>
+              <i class="s2m-entry-show--variations--list-play" aria-hidden="true"></i>
             </div>
             <%= if video.sign_writing do %>
-              <%= img_tag(SignDictWeb.VideoSignWritingImage.url({video.sign_writing, video}), class: "s2m-entry-show--content--variations--sign-writing") %>
+              <%= img_tag(SignDictWeb.VideoSignWritingImage.url({video.sign_writing, video}), class: "s2m-entry-show--variations--sign-writing") %>
             <% end %>
           </li>
         <% end %>
