@@ -55,6 +55,8 @@ defmodule SignDict.Transcoder.JwPlayerTest do
              }
 
       assert_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
+      assert_received {:enqueue_in, 300, SignDict.Worker.CheckVideoStatus, [^video_id]}
+      assert_received {:enqueue_in, 600, SignDict.Worker.CheckVideoStatus, [^video_id]}
     end
 
     test "if the upload fails, the video is updated accordingly" do
