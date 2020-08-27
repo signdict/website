@@ -1,62 +1,65 @@
-.s2m-select-multiple {
-  text-align: left;
-  margin-top: 1rem;
-  label {
-    font-family: 'Roboto', sans-serif;
-    display: block;
-    color: $dark_font;
-  }
-  select {
-    margin-top: 0.5rem;
-    color: $dark_font;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-  }
+.s2m-sidebar-filter {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  z-index: 10;
+  cursor: default;
 }
 
-.js-select-multiple {
-  text-align: left;
-  border-bottom: 1px solid $border;
-  max-width: 400px;
-  margin-top: 1rem;
-  position: relative;
-}
+.s2m-sidebar-filter--list {
+  width: 378px;
+  margin-left: auto;
+  background-color: white;
+  box-shadow: -3px 0px 5px #444;
+  border-left: 1px solid #999;
 
-.js-select-multiple--title {
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-  color: $dark_font;
   display: flex;
-  flex-direction: row;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  font-size: 1rem;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
-  cursor: pointer;
-}
-
-.js-select-multiple--title--opened {
-  .js-select-multiple--text {
-    color: $success;
-  }
-
-  svg {
-    path {
-      fill: $success;
-    }
-  }
-}
-
-.js-select-multiple--options {
+  flex-direction: column;
   position: absolute;
-  top: 27px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.s2m-sidebar-filter--headline {
+  padding: 1.5rem;
+  background-color: #eee;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.s2m-sidebar-filter--close {
+  cursor: pointer;
+  border: none;
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+.s2m-sidebar-filter--areas {
+  overflow: auto;
+  min-height: 0;
+  flex-grow: 1;
+}
+
+.s2m-sidebar-filter--area:not(:last-child) {
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border;
+}
+
+.s2m-sidebar-filter--label {
+  font-size: 20px;
+  padding: 16px 32px;
+}
+
+.s2m-sidebar-filter--options {
   background-color: white;
   width: 100%;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  padding: 8px 16px;
-  border-top: 3px solid $border_highlight;
-  z-index: 20;
+  padding: 0 32px;
 
   @each $name, $color in $s2m-color-list {
     [type='checkbox']:checked + label.js-checkbox-color-#{$name}:before {
@@ -69,8 +72,8 @@
     }
   }
 
-  .js-select-multiple--options-row {
-    line-height: 2rem;
+  .s2m-sidebar-filter--options-row {
+    line-height: 2.4rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

@@ -7,16 +7,15 @@ export default class extends Controller {
   }
 
   initView = () => {
-    this.checkboxes = Array.from(document.querySelectorAll(`.${this.data.get('source')} input[type="checkbox"]`));
-    this.checkboxes.forEach((item) => {
+    const selects = Array.from(document.querySelectorAll(`.${this.data.get('source')} select`));
+    selects.forEach((item) => {
       item.addEventListener('change', this.refreshItems);
     });
 
-    const options = Array.from(document.querySelectorAll(`.${this.data.get('source')} option`));
-    this.optionNames = options.reduce(function (map, option) {
-      map[option.value] = option.innerText;
-      return map;
-    }, {});
+    this.options = Array.from(document.querySelectorAll(`.${this.data.get('source')} option`));
+    this.options.forEach((item) => {
+      item.addEventListener('change', this.refreshItems);
+    });
 
     this.refreshItems();
   };
@@ -27,19 +26,18 @@ export default class extends Controller {
   };
 
   removeItem = (item) => {
-    if (item.checked) {
-      item.click();
-    }
+    item.removeAttribute('selected');
+    item.parentNode.dispatchEvent(new Event('change'));
   };
 
   resetFilter = () => {
-    this.checkboxes.forEach((item) => {
+    this.options.forEach((item) => {
       this.removeItem(item);
     });
   };
 
   renderFilter = () => {
-    const selected = this.checkboxes.filter((item) => item.checked);
+    const selected = this.options.filter((item) => item.getAttribute('selected'));
 
     if (selected.length == 0) {
       return <div />;
@@ -51,8 +49,8 @@ export default class extends Controller {
         <div class="s2m-filter-overview--list">
           {selected.map((item) => {
             return (
-              <div class={`s2m--colors--${item.getAttribute('data-target').toLowerCase()} s2m-filter-overview--item`}>
-                {this.optionNames[item.getAttribute('data-target')]}
+              <div class={`s2m--colors--${item.getAttribute('value').toLowerCase()} s2m-filter-overview--item`}>
+                {item.innerText}
                 <button
                   type="button"
                   class="s2m-filter-overview--item--remove"
