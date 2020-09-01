@@ -1,37 +1,47 @@
 <div class="s2m-main o-container">
     <div class="o-grid">
       <div class="o-grid__cell s2m-filter">
-        <div class="s2m-select-multiple" data-controller="select-multiple">
-          <label for="fachgebiet" class="s2m-filter--label">Fachgebiet</label>
-          <select id="fachgebiet" name="fachgebiet[]" class="s2m-filter--select" multiple>
-            <%= select_options([{"Biologie", "Biologie"},
-                                {"Chemie", "Chemie"},
-                                {"Geowissenschaft", "Geowissenschaft"},
-                                {"Informatik", "Informatik"},
-                                {"Mathematik", "Mathematik"},
-                                {"Medizin", "Medizin"},
-                                {"Physik", "Physik"}
-                                ], @conn.params["fachgebiet"]) %>
-          </select>
-        </div>
+        <button class="s2m-filter--small" data-controller="sidebar-filter">
+          <div class="s2m-filter--small--text">Filter auswählen...</div>
+          <div class="s2m-filter--small--arrow">
+            <svg width="17" height="8" viewBox="0 0 17 8">
+              <path d="M8.5,0,17,8H0Z" transform="translate(17 8) rotate(180)" fill="#707070" />
+            </svg>
+          </div>
+        </button>
+        <div class="s2m-filter--big">
+          <div class="s2m-select-multiple" data-controller="select-multiple">
+            <label for="fachgebiet" class="s2m-filter--label">Fachgebiet</label>
+            <select id="fachgebiet" name="fachgebiet[]" class="s2m-filter--select" multiple>
+              <%= select_options([{"Biologie", "Biologie"},
+                                  {"Chemie", "Chemie"},
+                                  {"Geowissenschaft", "Geowissenschaft"},
+                                  {"Informatik", "Informatik"},
+                                  {"Mathematik", "Mathematik"},
+                                  {"Medizin", "Medizin"},
+                                  {"Physik", "Physik"}
+                                  ], @conn.params["fachgebiet"]) %>
+            </select>
+          </div>
 
-         <div class="s2m-select-multiple" data-controller="select-multiple">
-          <label for="herkunft" class="s2m-filter--label">Herkunft</label>
-          <select id="herkunft" name="herkunft[]" class="s2m-filter--select" multiple>
-            <%= select_options([{"neu", "Neu"},
-                                {"standard", "Standard"},
-                                {"international", "International"}
-                                ], @conn.params["herkunft"]) %>
-          </select>
-        </div>
+          <div class="s2m-select-multiple" data-controller="select-multiple">
+            <label for="herkunft" class="s2m-filter--label">Herkunft</label>
+            <select id="herkunft" name="herkunft[]" class="s2m-filter--select" multiple>
+              <%= select_options([{"neu", "Neu"},
+                                  {"standard", "Standard"},
+                                  {"international", "International"}
+                                  ], @conn.params["herkunft"]) %>
+            </select>
+          </div>
 
-        <div class="s2m-select-multiple" data-controller="select-multiple">
-          <label for="anwendungsbereich" class="s2m-filter--label">Anwendungsbereich</label>
-          <select id="anwendungsbereich" name="anwendungsbereich[]" class="s2m-filter--select" multiple>
-            <%= select_options([{"Schule", "Schule"},
-                                {"Akademie", "Akademie"}
-                               ], @conn.params["anwendungsbereich"]) %>
-          </select>
+          <div class="s2m-select-multiple" data-controller="select-multiple">
+            <label for="anwendungsbereich" class="s2m-filter--label">Anwendungsbereich</label>
+            <select id="anwendungsbereich" name="anwendungsbereich[]" class="s2m-filter--select" multiple>
+              <%= select_options([{"Schule", "Schule"},
+                                  {"Akademie", "Akademie"}
+                                ], @conn.params["anwendungsbereich"]) %>
+            </select>
+          </div>
         </div>
       </div>
     </div>
