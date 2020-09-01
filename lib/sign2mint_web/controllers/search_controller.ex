@@ -10,6 +10,7 @@ defmodule Sign2MintWeb.SearchController do
         [
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
           |> Entry.with_videos()
+          |> Entry.with_current_video()
           |> with_filters("anwendungsbereich", params["anwendungsbereich"])
           |> with_filters("fachgebiet", params["fachgebiet"])
           |> with_filters("herkunft", params["herkunft"])
