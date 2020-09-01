@@ -71,3 +71,13 @@
     }
   }
 }
+
+@media all and (max-width: 40em) {
+  .s2m-filter-overview {
+    flex-direction: column;
+  }
+
+  .s2m-filter-overview--list {
+    padding: 1rem 0 0 0;
+  }
+}

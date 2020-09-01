@@ -6,13 +6,17 @@ export default class extends Controller {
     this.options = Array.from(this.element.querySelectorAll('.s2m-filter--select option'));
     this.label = this.element.querySelector('.s2m-filter--label');
     this.label.style.display = 'none';
-    this.element.querySelector('select').style.display = 'none';
     this.element.classList.remove('s2m-select-multiple');
     this.element.classList.add('js-select-multiple');
     this.cleanUp();
     render(this.renderDropdown(), this.element);
-    this.synchValues();
+    this.element.querySelector('select').style.display = 'none';
     this.setOptionsVisible(false);
+
+    const select = this.element.querySelector('select');
+    select.style.display = 'none';
+    select.addEventListener('change', this.loadValues);
+    this.synchValues();
 
     document.addEventListener('click', this.documentClick);
     document.addEventListener('keydown', this.documentKeydown);
@@ -36,6 +40,12 @@ export default class extends Controller {
       event.preventDefault();
       this.setOptionsVisible(false);
     }
+  };
+
+  loadValues = () => {
+    this.options.forEach((option) => {
+      this.element.querySelector(`#${this.getCheckboxId(option)}`).checked = option.hasAttribute('selected');
+    });
   };
 
   synchValues = () => {
