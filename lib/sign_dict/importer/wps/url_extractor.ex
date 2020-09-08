@@ -5,11 +5,11 @@ defmodule SignDict.Importer.Wps.UrlExtractor do
     nil
   end
 
-  def extract("[]") do
+  def extract([]) do
     nil
   end
 
-  def extract(url) do
-    Regex.named_captures(~r/\[(?<url>[^,]*).*\]/, url)["url"]
+  def extract([head | _]) do
+    head
   end
 end

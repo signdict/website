@@ -81,7 +81,7 @@ defmodule Sign2Mint.SearchControllerTest do
       insert(:video,
         state: "published",
         entry: entry,
-        metadata: %{filter_data: %{fachgebiet: "Chemie", anwendungsbereich: "Schule"}}
+        metadata: %{filter_data: %{fachgebiet: ["Chemie"], anwendungsbereich: ["Schule"]}}
       )
 
       Entry.update_current_video(entry)
@@ -91,7 +91,7 @@ defmodule Sign2Mint.SearchControllerTest do
       insert(:video,
         state: "published",
         entry: entry2,
-        metadata: %{filter_data: %{fachgebiet: "Biologie", anwendungsbereich: "Schule"}}
+        metadata: %{filter_data: %{fachgebiet: ["Biologie"], anwendungsbereich: ["Schule"]}}
       )
 
       Entry.update_current_video(entry2)

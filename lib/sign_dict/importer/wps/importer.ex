@@ -24,7 +24,7 @@ defmodule SignDict.Importer.Wps.Importer do
         if json_entry["deleted"] == "true" do
           delete_video(json_entry)
         else
-          entry = find_or_create_entry_for(json_entry)
+          entry = find_or_create_entry_for(json_entry["metadata"])
           insert_or_update_video(entry, user, json_entry, exq)
         end
       end)
@@ -39,6 +39,8 @@ defmodule SignDict.Importer.Wps.Importer do
            HTTPoison.get(
              add_time_to_url(Application.get_env(:sign_dict, :wps_importer)[:url], config),
              [Accept: "text/json", "User-Agent": "Mozilla/5.0 +signdict.org"],
+             timeout: 50_000,
+             recv_timeout: 50_000,
              follow_redirect: true
            ) do
       if String.length(res.body) > 0 do
@@ -135,7 +137,7 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp delete_video(json_entry) do
-    video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
+    video = find_by_external_id(json_entry["documentId"]) |> Repo.preload(:entry)
 
     if video do
       {:ok, video} = Video.delete(video)
@@ -145,7 +147,7 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp insert_or_update_video(entry, user, json_entry, exq) do
-    video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
+    video = find_by_external_id(json_entry["documentId"]) |> Repo.preload(:entry)
 
     sign_writing = fetch_sign_writing(json_entry)
 
@@ -203,7 +205,7 @@ defmodule SignDict.Importer.Wps.Importer do
             user_id: user.id,
             entry_id: entry.id,
             state: "uploaded",
-            external_id: json_entry["dokumentId"],
+            external_id: json_entry["documentId"],
             auto_publish: true
           },
           generate_sign_writing_plug(sign_writing)
@@ -251,9 +253,9 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp move_to_other_entry_if_needed(video) do
-    if video.entry.text != video.metadata["source_json"]["Fachbegriff"] do
+    if video.entry.text != video.metadata["source_json"]["metadata"]["Fachbegriff"] do
       old_entry = video.entry
-      entry = find_or_create_entry_for(video.metadata["source_json"])
+      entry = find_or_create_entry_for(video.metadata["source_json"]["metadata"])
 
       video =
         video
@@ -296,9 +298,9 @@ defmodule SignDict.Importer.Wps.Importer do
 
   defp filter_data(json) do
     %{
-      anwendungsbereich: String.split(json["Anwendungsbereich:"] || "", ","),
-      herkunft: json["Herkunft:"],
-      fachgebiet: json["Fachgebiet:"]
+      anwendungsbereich: json["metadata"]["Anwendungsbereich:"],
+      herkunft: json["metadata"]["Herkunft:"],
+      fachgebiet: json["metadata"]["Fachgebiet:"]
     }
   end
 end
