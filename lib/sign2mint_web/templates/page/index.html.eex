@@ -18,7 +18,7 @@
     </a>
 
     <p>
-      Aktuell entählt das Lexikon <a href="/entry"><%= @sign_count %> Einträge</a>.
+      Aktuell enthält das Lexikon <a href="/entry"><%= @sign_count %> Einträge</a>.
     </p>
   </div>
 
