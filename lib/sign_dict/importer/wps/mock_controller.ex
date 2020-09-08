@@ -33,7 +33,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
             "metadata" => %{
               "Fachbegriff" => "Rechnen"
@@ -45,7 +45,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug2.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Zug"
             }
@@ -58,7 +58,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-05-01] ->
         success(conn, [
           %{
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "deleted" => "true"
           }
         ])
@@ -67,7 +67,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "4347009787320352:59",
+            "documentId" => "4347009787320352:59",
             "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
             "metadata" => %{
               "Fachbegriff" => "Pi",
@@ -118,7 +118,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Rechnen"
             }
@@ -129,7 +129,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "gebaerdenSchriftUrl" => [],
             "metadata" => %{
               "Fachbegriff" => "Rechnen"
@@ -143,7 +143,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-05-01] ->
         success(conn, [
           %{
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "deleted" => "true"
           }
         ])
@@ -152,7 +152,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Another.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "gebaerdenSchriftUrl" => [],
             "metadata" => %{
               "Fachbegriff" => "Rechnen"
@@ -164,7 +164,7 @@ defmodule SignDict.Importer.Wps.MockController do
         success(conn, [
           %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "4347009787320352:59",
+            "documentId" => "4347009787320352:59",
             "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
             "metadata" => %{
               "Fachbegriff" => "Zug",

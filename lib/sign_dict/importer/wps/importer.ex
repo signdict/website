@@ -137,7 +137,7 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp delete_video(json_entry) do
-    video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
+    video = find_by_external_id(json_entry["documentId"]) |> Repo.preload(:entry)
 
     if video do
       {:ok, video} = Video.delete(video)
@@ -147,7 +147,7 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp insert_or_update_video(entry, user, json_entry, exq) do
-    video = find_by_external_id(json_entry["dokumentId"]) |> Repo.preload(:entry)
+    video = find_by_external_id(json_entry["documentId"]) |> Repo.preload(:entry)
 
     sign_writing = fetch_sign_writing(json_entry)
 
@@ -205,7 +205,7 @@ defmodule SignDict.Importer.Wps.Importer do
             user_id: user.id,
             entry_id: entry.id,
             state: "uploaded",
-            external_id: json_entry["dokumentId"],
+            external_id: json_entry["documentId"],
             auto_publish: true
           },
           generate_sign_writing_plug(sign_writing)

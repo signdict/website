@@ -1,5 +1,5 @@
 defmodule Sign2MintWeb.Helpers.VideoHelper do
-  def department(%{metadata: %{filter_data: %{"fachgebiet" => department}}}) do
+  def department(%{metadata: %{"filter_data" => %{"fachgebiet" => department}}}) do
     department
   end
 
@@ -11,7 +11,7 @@ defmodule Sign2MintWeb.Helpers.VideoHelper do
     "s2m--colors--#{String.downcase(department)}"
   end
 
-  def source(%{metadata: %{filter_data: %{"herkunft" => source}}}) do
+  def source(%{metadata: %{"filter_data" => %{"herkunft" => source}}}) do
     source
   end
 
@@ -19,7 +19,7 @@ defmodule Sign2MintWeb.Helpers.VideoHelper do
     []
   end
 
-  def application(%{metadata: %{filter_data: %{"anwendungsbereich" => application}}}) do
+  def application(%{metadata: %{"filter_data" => %{"anwendungsbereich" => application}}}) do
     application
   end
 

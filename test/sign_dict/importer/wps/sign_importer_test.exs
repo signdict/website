@@ -19,7 +19,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
         metadata: %{
           source_json: %{
             "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Zug"
             }
@@ -46,7 +46,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
 
       assert video.metadata["source_sign_json"] ==
                %{
-                 "dokumentId" => "4347009787320352:59",
+                 "documentId" => "4347009787320352:59",
                  "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
                  "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
                  "metadata" => %{

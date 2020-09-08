@@ -32,7 +32,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
         metadata: %{
           source_json: %{
             "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Zug"
             }
@@ -64,7 +64,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       assert video.external_id == "4347009787320352:59"
 
       assert video.metadata[:source_json] == %{
-               "dokumentId" => "4347009787320352:59",
+               "documentId" => "4347009787320352:59",
                "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
                "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
                "metadata" => %{
@@ -171,7 +171,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       assert entry.videos == []
 
       assert video.metadata["source_json"] == %{
-               "dokumentId" => "123123123:12",
+               "documentId" => "123123123:12",
                "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
                "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
                "metadata" => %{"Fachbegriff" => "Rechnen"}

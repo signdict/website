@@ -10,7 +10,7 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            filter_data: %{
+            "filter_data" => %{
               "fachgebiet" => ["Medizin", "Chemie"]
             }
           }
@@ -37,7 +37,7 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            filter_data: %{
+            "filter_data" => %{
               "herkunft" => ["neu", "international"]
             }
           }
@@ -58,7 +58,7 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            filter_data: %{
+            "filter_data" => %{
               "anwendungsbereich" => ["Schule", "Akademie"]
             }
           }
