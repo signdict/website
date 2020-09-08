@@ -39,6 +39,8 @@ defmodule SignDict.Importer.Wps.Importer do
            HTTPoison.get(
              add_time_to_url(Application.get_env(:sign_dict, :wps_importer)[:url], config),
              [Accept: "text/json", "User-Agent": "Mozilla/5.0 +signdict.org"],
+             timeout: 50_000,
+             recv_timeout: 50_000,
              follow_redirect: true
            ) do
       if String.length(res.body) > 0 do
