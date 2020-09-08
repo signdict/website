@@ -89,8 +89,10 @@ defmodule SignDict.Importer.Wps.Importer do
     VideoImporter.store_file(temp_file, Path.basename(temp_file))
   end
 
-  defp find_or_create_entry_for(%{"Fachbegriff" => text}) do
+  defp find_or_create_entry_for(%{"Fachbegriff" => text, "Fachgebiet:" => fachgebiet}) do
     language = find_or_create_language_for("DGS")
+
+    IO.inspect(fachgebiet)
 
     language
     |> query_for_entry(text)
