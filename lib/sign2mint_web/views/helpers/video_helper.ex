@@ -1,6 +1,6 @@
 defmodule Sign2MintWeb.Helpers.VideoHelper do
-  def department(%{metadata: %{"source_json" => %{"Fachgebiet:" => department}}}) do
-    String.split(department, ",")
+  def department(%{metadata: %{filter_data: %{"fachgebiet" => department}}}) do
+    department
   end
 
   def department(_) do
@@ -11,23 +11,23 @@ defmodule Sign2MintWeb.Helpers.VideoHelper do
     "s2m--colors--#{String.downcase(department)}"
   end
 
-  def source(%{metadata: %{"source_json" => %{"Herkunft:" => source}}}) do
-    String.split(source, ",")
+  def source(%{metadata: %{filter_data: %{"herkunft" => source}}}) do
+    source
   end
 
   def source(_) do
     []
   end
 
-  def application(%{metadata: %{"source_json" => %{"Anwendungsbereich:" => application}}}) do
-    String.split(application, ",")
+  def application(%{metadata: %{filter_data: %{"anwendungsbereich" => application}}}) do
+    application
   end
 
   def application(_) do
     []
   end
 
-  def is_recommended(%{metadata: %{"source_json" => %{"Empfehlung:" => "X"}}}) do
+  def is_recommended(%{metadata: %{"source_json" => %{"metadata" => %{"Empfehlung:" => "X"}}}}) do
     true
   end
 

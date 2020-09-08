@@ -24,7 +24,7 @@ defmodule SignDict.Importer.Wps.Importer do
         if json_entry["deleted"] == "true" do
           delete_video(json_entry)
         else
-          entry = find_or_create_entry_for(json_entry)
+          entry = find_or_create_entry_for(json_entry["metadata"])
           insert_or_update_video(entry, user, json_entry, exq)
         end
       end)
@@ -251,9 +251,9 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp move_to_other_entry_if_needed(video) do
-    if video.entry.text != video.metadata["source_json"]["Fachbegriff"] do
+    if video.entry.text != video.metadata["source_json"]["metadata"]["Fachbegriff"] do
       old_entry = video.entry
-      entry = find_or_create_entry_for(video.metadata["source_json"])
+      entry = find_or_create_entry_for(video.metadata["source_json"]["metadata"])
 
       video =
         video
@@ -296,9 +296,9 @@ defmodule SignDict.Importer.Wps.Importer do
 
   defp filter_data(json) do
     %{
-      anwendungsbereich: String.split(json["Anwendungsbereich:"] || "", ","),
-      herkunft: json["Herkunft:"],
-      fachgebiet: json["Fachgebiet:"]
+      anwendungsbereich: json["metadata"]["Anwendungsbereich:"],
+      herkunft: json["metadata"]["Herkunft:"],
+      fachgebiet: json["metadata"]["Fachgebiet:"]
     }
   end
 end

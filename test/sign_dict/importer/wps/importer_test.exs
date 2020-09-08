@@ -31,9 +31,11 @@ defmodule SignDict.Importer.Wps.ImporterTest do
         original_href: "https://delegs.de/",
         metadata: %{
           source_json: %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
             "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Zug"
+            "metadata" => %{
+              "Fachbegriff" => "Zug"
+            }
           },
           source_mp4: "source.mp4"
         },
@@ -63,30 +65,31 @@ defmodule SignDict.Importer.Wps.ImporterTest do
 
       assert video.metadata[:source_json] == %{
                "dokumentId" => "4347009787320352:59",
-               "Fachbegriff" => "Pi",
-               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-               "Anwendungsbereich:" => "Schule,Akademie",
-               "Aufnahmedatum:" => "24.01.2020",
-               "Bedeutungsnummer:" => "",
-               "CC / Ort:" => "MPI Halle",
-               "Empfehlung:" => "X",
-               "Fachgebiet:" => "Medizin",
-               "Filmproduzent:" => "Jung-Woo Kim",
-               "Freigabedatum:" => "",
-               "Gebärdender:" => "Katja Hopfenzitz",
-               "Herkunft:" => "neu",
-               "Hochladedatum:" => "04.05.2020",
-               "Sprache:" => "",
-               "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
-               "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
-               "deleted" => "false",
-               "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
+               "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+               "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+               "metadata" => %{
+                 "Anwendungsbereich:" => ["Akademie", "Schule"],
+                 "Aufnahmedatum:" => "2019-09-23 00:00:00",
+                 "Bedeutungsnummer:" => "1",
+                 "CC / Ort:" => "MPI",
+                 "Empfehlung:" => "",
+                 "Fachbegriff" => "Pi",
+                 "Fachgebiet:" => ["Chemie", "Geowissenschaft", "Informatik"],
+                 "Filmproduzent:" => "Jung-Woo Kim",
+                 "Freigabedatum:" => "",
+                 "Gebärdender:" => "Robert Jasko",
+                 "Herkunft:" => ["neu", "international"],
+                 "Hochladedatum:" => "2020-03-23 00:00:00",
+                 "Sprache:" => ["DGS", "BSL"],
+                 "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
+                 "Wiktionary:" => "https://de.wiktionary.org/wiki/anorganisch"
+               }
              }
 
       assert video.metadata[:filter_data] == %{
-               anwendungsbereich: ["Schule", "Akademie"],
-               fachgebiet: "Medizin",
-               herkunft: "neu"
+               anwendungsbereich: ["Akademie", "Schule"],
+               fachgebiet: ["Chemie", "Geowissenschaft", "Informatik"],
+               herkunft: ["neu", "international"]
              }
 
       assert File.exists?(
@@ -168,10 +171,10 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       assert entry.videos == []
 
       assert video.metadata["source_json"] == %{
-               "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
                "dokumentId" => "123123123:12",
-               "Fachbegriff" => "Rechnen",
-               "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
+               "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+               "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+               "metadata" => %{"Fachbegriff" => "Rechnen"}
              }
 
       new_entry = Repo.get(Entry, video.entry_id) |> Repo.preload(:videos)

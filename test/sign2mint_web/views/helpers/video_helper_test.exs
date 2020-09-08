@@ -10,8 +10,8 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            "source_json" => %{
-              "Fachgebiet:" => "Medizin,Chemie"
+            filter_data: %{
+              "fachgebiet" => ["Medizin", "Chemie"]
             }
           }
         )
@@ -37,8 +37,8 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            "source_json" => %{
-              "Herkunft:" => "neu,international"
+            filter_data: %{
+              "herkunft" => ["neu", "international"]
             }
           }
         )
@@ -58,8 +58,8 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
       video =
         insert(:video,
           metadata: %{
-            "source_json" => %{
-              "Anwendungsbereich:" => "Schule,Akademie"
+            filter_data: %{
+              "anwendungsbereich" => ["Schule", "Akademie"]
             }
           }
         )
@@ -80,7 +80,9 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
         insert(:video,
           metadata: %{
             "source_json" => %{
-              "Empfehlung:" => "X"
+              "metadata" => %{
+                "Empfehlung:" => "X"
+              }
             }
           }
         )
@@ -93,7 +95,9 @@ defmodule Sign2MintWeb.Helpers.VideoHelperTest do
         insert(:video,
           metadata: %{
             "source_json" => %{
-              "Empfehlung:" => ""
+              "metadata" => %{
+                "Empfehlung:" => ""
+              }
             }
           }
         )
