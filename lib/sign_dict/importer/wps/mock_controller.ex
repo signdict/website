@@ -32,19 +32,23 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-02-01] ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-            "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Rechnen",
-            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]"
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "123123123:12",
+            "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+            "metadata" => %{
+              "Fachbegriff" => "Rechnen"
+            }
           }
         ])
 
       ~D[2020-03-01] ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug2.mp4]",
-            "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Zug"
+            "videoUrl" => ["http://localhost:8081/videos/Zug2.mp4"],
+            "documentId" => "123123123:12",
+            "metadata" => %{
+              "Fachbegriff" => "Zug"
+            }
           }
         ])
 
@@ -54,7 +58,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-05-01] ->
         success(conn, [
           %{
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "deleted" => "true"
           }
         ])
@@ -62,25 +66,39 @@ defmodule SignDict.Importer.Wps.MockController do
       _ ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-            "dokumentId" => "4347009787320352:59",
-            "Fachbegriff" => "Pi",
-            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]",
-            "Filmproduzent:" => "Jung-Woo Kim",
-            "CC / Ort:" => "MPI Halle",
-            "Aufnahmedatum:" => "24.01.2020",
-            "Bedeutungsnummer:" => "",
-            "Herkunft:" => "neu",
-            "Anwendungsbereich:" => "Schule,Akademie",
-            "Freigabedatum:" => "",
-            "Sprache:" => "",
-            "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
-            "Empfehlung:" => "X",
-            "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
-            "deleted" => "false",
-            "Fachgebiet:" => "Medizin",
-            "Gebärdender:" => "Katja Hopfenzitz",
-            "Hochladedatum:" => "04.05.2020"
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "4347009787320352:59",
+            "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+            "metadata" => %{
+              "Fachbegriff" => "Pi",
+              "Filmproduzent:" => "Jung-Woo Kim",
+              "CC / Ort:" => "MPI",
+              "Aufnahmedatum:" => "2019-09-23 00:00:00",
+              "Bedeutungsnummer:" => "1",
+              "Herkunft:" => [
+                "neu",
+                "international"
+              ],
+              "Anwendungsbereich:" => [
+                "Akademie",
+                "Schule"
+              ],
+              "Freigabedatum:" => "",
+              "Sprache:" => [
+                "DGS",
+                "BSL"
+              ],
+              "Wiktionary:" => "https://de.wiktionary.org/wiki/anorganisch",
+              "Empfehlung:" => "",
+              "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
+              "Fachgebiet:" => [
+                "Chemie",
+                "Geowissenschaft",
+                "Informatik"
+              ],
+              "Gebärdender:" => "Robert Jasko",
+              "Hochladedatum:" => "2020-03-23 00:00:00"
+            }
           }
         ])
     end
@@ -99,19 +117,23 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-02-01] ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-            "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Rechnen"
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "123123123:12",
+            "metadata" => %{
+              "Fachbegriff" => "Rechnen"
+            }
           }
         ])
 
       ~D[2020-03-01] ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-            "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Rechnen",
-            "gebaerdenSchriftUrl" => ""
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "123123123:12",
+            "gebaerdenSchriftUrl" => [],
+            "metadata" => %{
+              "Fachbegriff" => "Rechnen"
+            }
           }
         ])
 
@@ -121,7 +143,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-05-01] ->
         success(conn, [
           %{
-            "dokumentId" => "123123123:12",
+            "documentId" => "123123123:12",
             "deleted" => "true"
           }
         ])
@@ -129,35 +151,51 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-06-01] ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Another.mp4]",
-            "dokumentId" => "123123123:12",
-            "Fachbegriff" => "Rechnen",
-            "gebaerdenSchriftUrl" => ""
+            "videoUrl" => ["http://localhost:8081/videos/Another.mp4"],
+            "documentId" => "123123123:12",
+            "gebaerdenSchriftUrl" => [],
+            "metadata" => %{
+              "Fachbegriff" => "Rechnen"
+            }
           }
         ])
 
       _ ->
         success(conn, [
           %{
-            "videoUrl" => "[http://localhost:8081/videos/Zug.mp4]",
-            "dokumentId" => "4347009787320352:59",
-            "Fachbegriff" => "Pi",
-            "gebaerdenSchriftUrl" => "[http://localhost:8081/images/russland.png]",
-            "Filmproduzent:" => "Jung-Woo Kim",
-            "CC / Ort:" => "MPI Halle",
-            "Aufnahmedatum:" => "24.01.2020",
-            "Bedeutungsnummer:" => "",
-            "Herkunft:" => "neu",
-            "Anwendungsbereich:" => "Schule,Akademie",
-            "Freigabedatum:" => "",
-            "Sprache:" => "",
-            "Wiktionary:" => "https://de.wiktionary.org/wiki/Ultraschalluntersuchung",
-            "Empfehlung:" => "X",
-            "Wikipedia:" => "https://de.wikipedia.org/wiki/Sonografie",
-            "deleted" => "false",
-            "Fachgebiet:" => "Medizin",
-            "Gebärdender:" => "Katja Hopfenzitz",
-            "Hochladedatum:" => "04.05.2020"
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "4347009787320352:59",
+            "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+            "metadata" => %{
+              "Fachbegriff" => "Zug",
+              "Filmproduzent:" => "Jung-Woo Kim",
+              "CC / Ort:" => "MPI",
+              "Aufnahmedatum:" => "2019-09-23 00:00:00",
+              "Bedeutungsnummer:" => "1",
+              "Herkunft:" => [
+                "neu",
+                "international"
+              ],
+              "Anwendungsbereich:" => [
+                "Akademie",
+                "Schule"
+              ],
+              "Freigabedatum:" => "",
+              "Sprache:" => [
+                "DGS",
+                "BSL"
+              ],
+              "Wiktionary:" => "https://de.wiktionary.org/wiki/anorganisch",
+              "Empfehlung:" => "",
+              "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
+              "Fachgebiet:" => [
+                "Chemie",
+                "Geowissenschaft",
+                "Informatik"
+              ],
+              "Gebärdender:" => "Robert Jasko",
+              "Hochladedatum:" => "2020-03-23 00:00:00"
+            }
           }
         ])
     end
