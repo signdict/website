@@ -19,6 +19,11 @@ defmodule SignDict.Importer.Wps.MockController do
   plug :match
   plug :dispatch
 
+  get "/doesnotexist.mp4" do
+    conn
+    |> Plug.Conn.send_resp(404, "not found")
+  end
+
   get "/pi_json" do
     date =
       conn.params["lastRequestedDate"]
@@ -96,6 +101,17 @@ defmodule SignDict.Importer.Wps.MockController do
               ],
               "Gebärdender:" => "Robert Jasko",
               "Hochladedatum:" => "2020-03-23 00:00:00"
+            }
+          }
+        ])
+
+      ~D[2020-07-01] ->
+        success(conn, [
+          %{
+            "videoUrl" => ["http://localhost:8081/doesnotexist.mp4"],
+            "documentId" => "123123123:12",
+            "metadata" => %{
+              "Fachbegriff" => "Zug"
             }
           }
         ])

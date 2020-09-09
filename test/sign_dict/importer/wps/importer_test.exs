@@ -101,7 +101,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
              )
 
       assert video.entry.text == "Pi"
-      assert video.entry.description == ""
+      assert video.entry.description == "Fachgebärde aus dem Sign2MINT-Projekt"
       assert video.user.name == "WPS"
       assert List.first(video.entry.domains).domain == "test.local"
       assert Video.current_state(video) == :uploaded
@@ -244,6 +244,20 @@ defmodule SignDict.Importer.Wps.ImporterTest do
 
       assert video.entry_id != entry.id
       assert video.entry.text == "Zug"
+    end
+
+    test "it does not crash if the video does not exist" do
+      start_time = Timex.parse!("2020-07-01T12:30:30+00:00", "%FT%T%:z", :strftime)
+
+      %ImporterConfig{}
+      |> ImporterConfig.changeset(%{
+        name: "WPS",
+        configuration: %{last_requested: start_time}
+      })
+      |> Repo.insert!()
+
+      videos = Importer.import_json(ExqMock)
+      assert videos == []
     end
 
     test "it deleted the file if it is marked for deletion" do
