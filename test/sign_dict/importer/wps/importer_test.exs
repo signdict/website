@@ -104,7 +104,8 @@ defmodule SignDict.Importer.Wps.ImporterTest do
                Path.join([
                  Application.get_env(:sign_dict, :upload_path),
                  "video_sign_writing",
-                 "#{video.id}"
+                 "#{video.id}",
+                 "original.png"
                ])
              )
 
