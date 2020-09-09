@@ -18,8 +18,6 @@ defmodule SignDict.Transcoder.JwPlayer do
       |> Repo.update()
 
       exq.enqueue_in(Exq, "transcoder", 60, CheckVideoStatus, [video.id])
-      exq.enqueue_in(Exq, "transcoder", 300, CheckVideoStatus, [video.id])
-      exq.enqueue_in(Exq, "transcoder", 600, CheckVideoStatus, [video.id])
       {:ok, video}
     else
       video

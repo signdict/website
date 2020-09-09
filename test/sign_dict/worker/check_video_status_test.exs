@@ -65,6 +65,8 @@ defmodule SignDict.Worker.CheckVideoStatusTest do
       assert_received {:check_status, ^video_id}
       refute_received {:enqueue_in, 60, SignDict.Worker.CheckVideoStatus, [^video_id]}
       assert_received {:enqueue_in, 600, SignDict.Worker.RecheckVideo, [^video_id]}
+      assert_received {:enqueue_in, 1200, SignDict.Worker.RecheckVideo, [^video_id]}
+      assert_received {:enqueue_in, 1800, SignDict.Worker.RecheckVideo, [^video_id]}
     end
 
     test "it publishes the video if it is done and set to auto_publish" do
