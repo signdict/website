@@ -229,7 +229,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       assert_received {:enqueue, SignDict.Worker.TranscodeVideo, [^video_id]}
     end
 
-    test "it creates a new entry if the fachgebiet is different for the video", %{entry: entry} do
+    test "it creates a new entry if the entry for this domain doesn't exist yet", %{entry: entry} do
       start_time = Timex.parse!("2020-06-01T12:30:30+00:00", "%FT%T%:z", :strftime)
 
       %ImporterConfig{}

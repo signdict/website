@@ -89,10 +89,8 @@ defmodule SignDict.Importer.Wps.Importer do
     VideoImporter.store_file(temp_file, Path.basename(temp_file))
   end
 
-  defp find_or_create_entry_for(%{"Fachbegriff" => text, "Fachgebiet:" => fachgebiet}) do
+  defp find_or_create_entry_for(%{"Fachbegriff" => text}) do
     language = find_or_create_language_for("DGS")
-
-    IO.inspect(fachgebiet)
 
     language
     |> query_for_entry(text)
@@ -100,11 +98,15 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   def query_for_entry(language, text) do
+    domain_name = find_or_create_domain().domain
+
     from(
       entry in Entry,
+      join: domain in assoc(entry, :domains),
       where:
         entry.language_id == ^language.id and entry.text == ^text and
-          (entry.description == "" or is_nil(entry.description))
+          (entry.description == "" or is_nil(entry.description)) and
+          domain.domain == ^domain_name
     )
   end
 
@@ -119,7 +121,14 @@ defmodule SignDict.Importer.Wps.Importer do
 
   def generate_entry(language, text) do
     domain = find_or_create_domain()
-    %Entry{text: text, description: "", language: language, type: "word", domains: [domain]}
+
+    %Entry{
+      text: text,
+      description: "Fachgebärde aus dem Sign2MINT-Projekt",
+      language: language,
+      type: "word",
+      domains: [domain]
+    }
   end
 
   defp find_or_create_domain() do
