@@ -119,6 +119,25 @@ defmodule SignDict.EntryTest do
       entry = Entry.update_current_video(entry)
       assert entry.current_video.id == video2.id
     end
+
+    test "it sets the video with the 'empfehlungssigel' as current video for sign2mint" do
+      entry = insert(:entry)
+      insert(:video_published, %{entry: entry})
+
+      insert(:video_published, %{
+        entry: entry,
+        metadata: %{"source_json" => %{"metadata" => %{"Empfehlung:" => ""}}}
+      })
+
+      video =
+        insert(:video_published, %{
+          entry: entry,
+          metadata: %{"source_json" => %{"metadata" => %{"Empfehlung:" => "X"}}}
+        })
+
+      entry = Entry.update_current_video(entry)
+      assert entry.current_video.id == video.id
+    end
   end
 
   describe "search/1" do
