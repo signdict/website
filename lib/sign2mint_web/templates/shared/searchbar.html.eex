@@ -8,7 +8,7 @@
               <div class="s2m-searchbar--input--wrapper">
                 <input class="s2m-searchbar--input--inner" type="text" name="q" placeholder="Tippe ein Wort ein, um die Gebärde in DGS zu sehen" value="<%= @conn.params["q"] %>" data-controller="search"/>
               </div>
-              <button type="button" class="s2m-searchbar--filtertoggle" data-target="toggle-filter.button" text="Filter zeigen oder verstecken"><i class="fa fa-filter"></i></button>
+              <button type="button" class="s2m-searchbar--filtertoggle" data-target="toggle-filter.button" text="Filter zeigen oder verstecken" title="Filter"><i class="fa fa-filter"></i></button>
             </div>
             <button class="s2m-searchbar--submit" type="submit">
               <span class="s2m-searchbar--text">

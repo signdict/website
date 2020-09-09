@@ -28,6 +28,7 @@ defmodule SignDict.Importer.Wps.Importer do
           insert_or_update_video(entry, user, json_entry, exq)
         end
       end)
+      |> Enum.filter(&(!is_nil(&1)))
 
     touch_last_request_time(config, current_time)
 
@@ -82,11 +83,13 @@ defmodule SignDict.Importer.Wps.Importer do
     file_name = Path.basename(url.path)
     File.mkdir(Path.join([System.tmp_dir(), "wps_importer"]))
     file = File.open!(Path.join([System.tmp_dir(), "wps_importer", file_name]), [:write])
-    {:ok, _result} = Downstream.get(url, file)
-    File.close(file)
-    temp_file = Path.join([System.tmp_dir(), "wps_importer", file_name])
 
-    VideoImporter.store_file(temp_file, Path.basename(temp_file))
+    with {:ok, _result} <- Downstream.get(url, file) do
+      File.close(file)
+      temp_file = Path.join([System.tmp_dir(), "wps_importer", file_name])
+
+      {:ok, VideoImporter.store_file(temp_file, Path.basename(temp_file))}
+    end
   end
 
   defp find_or_create_entry_for(%{"Fachbegriff" => text}) do
@@ -98,11 +101,14 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   def query_for_entry(language, text) do
+    domain_name = find_or_create_domain().domain
+
     from(
       entry in Entry,
+      join: domain in assoc(entry, :domains),
       where:
         entry.language_id == ^language.id and entry.text == ^text and
-          (entry.description == "" or is_nil(entry.description))
+          domain.domain == ^domain_name
     )
   end
 
@@ -117,7 +123,14 @@ defmodule SignDict.Importer.Wps.Importer do
 
   def generate_entry(language, text) do
     domain = find_or_create_domain()
-    %Entry{text: text, description: "", language: language, type: "word", domains: [domain]}
+
+    %Entry{
+      text: text,
+      description: "Fachgebärde aus dem Sign2MINT-Projekt",
+      language: language,
+      type: "word",
+      domains: [domain]
+    }
   end
 
   defp find_or_create_domain() do
@@ -159,10 +172,14 @@ defmodule SignDict.Importer.Wps.Importer do
       |> move_to_other_entry_if_needed()
       |> transcode_video_if_needed(old_metadata, exq)
     else
-      video_filename = download_file(json_entry)
+      case download_file(json_entry) do
+        {:ok, video_filename} ->
+          insert_video(entry, user, json_entry, video_filename, sign_writing)
+          |> transcode_video(exq)
 
-      insert_video(entry, user, json_entry, video_filename, sign_writing)
-      |> transcode_video(exq)
+        _ ->
+          nil
+      end
     end
   end
 
@@ -231,17 +248,21 @@ defmodule SignDict.Importer.Wps.Importer do
 
   defp transcode_video_if_needed(video, old_metadata, exq) do
     if video.metadata["source_json"]["videoUrl"] != old_metadata["source_json"]["videoUrl"] do
-      video_filename = download_file(video.metadata["source_json"])
+      case download_file(video.metadata["source_json"]) do
+        {:ok, video_filename} ->
+          video =
+            video
+            |> Video.changeset_uploader(%{
+              metadata: Map.merge(video.metadata, %{"source_mp4" => video_filename}),
+              state: "uploaded"
+            })
+            |> Repo.update!()
 
-      video =
-        video
-        |> Video.changeset_uploader(%{
-          metadata: Map.merge(video.metadata, %{"source_mp4" => video_filename}),
-          state: "uploaded"
-        })
-        |> Repo.update!()
+          transcode_video(video, exq)
 
-      transcode_video(video, exq)
+        _ ->
+          nil
+      end
     else
       video
     end

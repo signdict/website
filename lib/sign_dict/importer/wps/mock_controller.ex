@@ -19,6 +19,11 @@ defmodule SignDict.Importer.Wps.MockController do
   plug :match
   plug :dispatch
 
+  get "/doesnotexist.mp4" do
+    conn
+    |> Plug.Conn.send_resp(404, "not found")
+  end
+
   get "/pi_json" do
     date =
       conn.params["lastRequestedDate"]
@@ -60,6 +65,54 @@ defmodule SignDict.Importer.Wps.MockController do
           %{
             "documentId" => "123123123:12",
             "deleted" => "true"
+          }
+        ])
+
+      ~D[2020-06-01] ->
+        success(conn, [
+          %{
+            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "documentId" => "43470097873208899:59",
+            "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+            "metadata" => %{
+              "Fachbegriff" => "Zug",
+              "Filmproduzent:" => "Jung-Woo Kim",
+              "CC / Ort:" => "MPI",
+              "Aufnahmedatum:" => "2019-09-23 00:00:00",
+              "Bedeutungsnummer:" => "1",
+              "Herkunft:" => [
+                "neu",
+                "international"
+              ],
+              "Anwendungsbereich:" => [
+                "Akademie",
+                "Schule"
+              ],
+              "Freigabedatum:" => "",
+              "Sprache:" => [
+                "DGS",
+                "BSL"
+              ],
+              "Wiktionary:" => "https://de.wiktionary.org/wiki/anorganisch",
+              "Empfehlung:" => "",
+              "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
+              "Fachgebiet:" => [
+                "Biologie"
+              ],
+              "Gebärdender:" => "Robert Jasko",
+              "Hochladedatum:" => "2020-03-23 00:00:00"
+            }
+          }
+        ])
+
+      ~D[2020-07-01] ->
+        success(conn, [
+          %{
+            "videoUrl" => ["http://localhost:8081/doesnotexist.mp4"],
+            "documentId" => "123123123:12",
+            "metadata" => %{
+              "Fachbegriff" => "Zug"
+            }
           }
         ])
 
