@@ -108,7 +108,6 @@ defmodule SignDict.Importer.Wps.Importer do
       join: domain in assoc(entry, :domains),
       where:
         entry.language_id == ^language.id and entry.text == ^text and
-          entry.description == "Fachgebärde aus dem Sign2MINT-Projekt" and
           domain.domain == ^domain_name
     )
   end
@@ -173,11 +172,13 @@ defmodule SignDict.Importer.Wps.Importer do
       |> move_to_other_entry_if_needed()
       |> transcode_video_if_needed(old_metadata, exq)
     else
-      with {:ok, video_filename} <- download_file(json_entry) do
-        insert_video(entry, user, json_entry, video_filename, sign_writing)
-        |> transcode_video(exq)
-      else
-        {:error, _} -> nil
+      case download_file(json_entry) do
+        {:ok, video_filename} ->
+          insert_video(entry, user, json_entry, video_filename, sign_writing)
+          |> transcode_video(exq)
+
+        _ ->
+          nil
       end
     end
   end
@@ -247,18 +248,20 @@ defmodule SignDict.Importer.Wps.Importer do
 
   defp transcode_video_if_needed(video, old_metadata, exq) do
     if video.metadata["source_json"]["videoUrl"] != old_metadata["source_json"]["videoUrl"] do
-      with {:ok, video_filename} <- download_file(video.metadata["source_json"]) do
-        video =
-          video
-          |> Video.changeset_uploader(%{
-            metadata: Map.merge(video.metadata, %{"source_mp4" => video_filename}),
-            state: "uploaded"
-          })
-          |> Repo.update!()
+      case download_file(video.metadata["source_json"]) do
+        {:ok, video_filename} ->
+          video =
+            video
+            |> Video.changeset_uploader(%{
+              metadata: Map.merge(video.metadata, %{"source_mp4" => video_filename}),
+              state: "uploaded"
+            })
+            |> Repo.update!()
 
-        transcode_video(video, exq)
-      else
-        {:error, _} -> nil
+          transcode_video(video, exq)
+
+        _ ->
+          nil
       end
     else
       video
