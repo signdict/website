@@ -100,6 +100,15 @@ defmodule SignDict.Importer.Wps.ImporterTest do
                ])
              )
 
+      assert File.exists?(
+               Path.join([
+                 Application.get_env(:sign_dict, :upload_path),
+                 "video_sign_writing",
+                 "#{video.id}",
+                 "original.png"
+               ])
+             )
+
       assert video.entry.text == "Pi"
       assert video.entry.description == "Fachgebärde aus dem Sign2MINT-Projekt"
       assert video.user.name == "WPS"
@@ -185,7 +194,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
 
       assert File.exists?(
                Path.join([
-                 "uploads",
+                 Application.get_env(:sign_dict, :upload_path),
                  "video_sign_writing",
                  Integer.to_string(video.id),
                  "original.png"

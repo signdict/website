@@ -206,10 +206,10 @@ defmodule SignDict.Importer.Wps.Importer do
   end
 
   defp insert_video(entry, user, json_entry, video_filename, sign_writing) do
-    Repo.insert!(
-      Video.changeset_transcoder(
-        %Video{},
-        Map.merge(
+    video =
+      Repo.insert!(
+        Video.changeset_transcoder(
+          %Video{},
           %{
             copyright: "sign2mint",
             license: "by-nc-sa/3.0/de",
@@ -224,12 +224,21 @@ defmodule SignDict.Importer.Wps.Importer do
             state: "uploaded",
             external_id: json_entry["documentId"],
             auto_publish: true
-          },
+          }
+        )
+      )
+
+    if sign_writing do
+      Repo.update!(
+        Video.changeset_transcoder(
+          video,
           generate_sign_writing_plug(sign_writing)
         )
       )
-    )
-    |> Repo.preload(entry: [:domains], user: [])
+      |> Repo.preload(entry: [:domains], user: [])
+    else
+      Repo.preload(video, entry: [:domains], user: [])
+    end
   end
 
   defp generate_sign_writing_plug(nil) do

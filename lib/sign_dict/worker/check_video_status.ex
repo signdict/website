@@ -1,9 +1,9 @@
 defmodule SignDict.Worker.CheckVideoStatus do
-  @process_sleep_time 100
+  @process_sleep_time 1000
   # 60 seconds
   @check_transcoder_result_time 60
-  # 10 minutes
-  @recheck_transcoder_result_time 60 * 10
+  # 10 minutes, 20 minutes, 30 minutes
+  @recheck_transcoder_result_time [60 * 10, 60 * 20, 60 * 30]
 
   alias SignDictWeb.Email
   alias SignDictWeb.Mailer
@@ -44,13 +44,15 @@ defmodule SignDict.Worker.CheckVideoStatus do
   end
 
   defp process_video(video, :done, exq) do
-    exq.enqueue_in(
-      Exq,
-      "transcoder",
-      @recheck_transcoder_result_time,
-      SignDict.Worker.RecheckVideo,
-      [video.id]
-    )
+    Enum.each(@recheck_transcoder_result_time, fn delay ->
+      exq.enqueue_in(
+        Exq,
+        "transcoder",
+        delay,
+        SignDict.Worker.RecheckVideo,
+        [video.id]
+      )
+    end)
 
     if video.auto_publish do
       publish_video(video)

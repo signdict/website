@@ -15,7 +15,7 @@ defmodule SignDict.Worker.RecheckVideo do
   alias SignDict.Repo
   alias SignDict.Video
 
-  @process_sleep_time 100
+  @process_sleep_time 1000
 
   def perform(
         video_id,
