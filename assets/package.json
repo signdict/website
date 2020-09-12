@@ -43,7 +43,7 @@
     "mutationobserver-shim": "^0.3.7",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "2.1.1",
-    "terser-webpack-plugin": "^4.1.0",
+    "terser-webpack-plugin": "^4.2.0",
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "webpack": "4.44.1",
