@@ -44,10 +44,10 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:18
-#: lib/sign_dict_web/controllers/user_controller.ex:39 lib/sign_dict_web/templates/layout/backend.html.eex:34
+#: lib/sign_dict_web/controllers/user_controller.ex:20
+#: lib/sign_dict_web/controllers/user_controller.ex:52 lib/sign_dict_web/templates/layout/backend.html.eex:34
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:51 lib/sign_dict_web/templates/user/new.html.eex:3
-#: lib/sign_dict_web/templates/user/new.html.eex:48
+#: lib/sign_dict_web/templates/user/new.html.eex:54
 msgid "Register"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:75
+#: lib/sign_dict_web/controllers/user_controller.ex:88
 msgid "Updated successfully."
 msgstr ""
 
@@ -486,7 +486,7 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/search_controller.ex:16
+#: lib/sign2mint_web/controllers/search_controller.ex:21
 #: lib/sign_dict_web/controllers/search_controller.ex:16 lib/sign_dict_web/templates/page/index.html.eex:33
 #: lib/sign_dict_web/templates/shared/searchbar.html.eex:12
 msgid "Search"
@@ -621,8 +621,7 @@ msgstr "Thumbnail"
 msgid "video.video_url"
 msgstr "Video"
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:63
-#: lib/sign_dict_web/templates/entry/show.html.eex:161
+#: lib/sign_dict_web/templates/entry/show.html.eex:168
 msgid "No other variations"
 msgstr ""
 
@@ -634,7 +633,7 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:147
+#: lib/sign_dict_web/templates/entry/show.html.eex:154
 msgid "${time} ago"
 msgstr ""
 
@@ -642,7 +641,7 @@ msgstr ""
 msgid "Date of upload"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:144
+#: lib/sign_dict_web/templates/entry/show.html.eex:151
 msgid "by"
 msgstr ""
 
@@ -650,14 +649,14 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:50
-#: lib/sign_dict_web/templates/entry/show.html.eex:136
+#: lib/sign2mint_web/templates/entry/show.html.eex:62
+#: lib/sign_dict_web/templates/entry/show.html.eex:143
 msgid "Choose this variant"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:51
+#: lib/sign2mint_web/templates/entry/show.html.eex:63
 #: lib/sign_dict_web/templates/entry/index.html.eex:57 lib/sign_dict_web/templates/entry/latest.html.eex:16
-#: lib/sign_dict_web/templates/entry/show.html.eex:137 lib/sign_dict_web/templates/list/show.html.eex:13
+#: lib/sign_dict_web/templates/entry/show.html.eex:144 lib/sign_dict_web/templates/list/show.html.eex:13
 #: lib/sign_dict_web/templates/search/index.html.eex:27 lib/sign_dict_web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
 msgstr ""
@@ -722,7 +721,7 @@ msgstr "Metadata"
 msgid "About"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:64
+#: lib/sign_dict_web/controllers/user_controller.ex:77
 msgid "Edit profile"
 msgstr ""
 
@@ -740,12 +739,12 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/search_controller.ex:13
+#: lib/sign2mint_web/controllers/search_controller.ex:18
 #: lib/sign_dict_web/controllers/search_controller.ex:13
 msgid "Search results for %{query}"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:82
+#: lib/sign2mint_web/controllers/entry_controller.ex:78
 #: lib/sign_dict_web/controllers/embed_controller.ex:48 lib/sign_dict_web/controllers/entry_controller.ex:146
 msgid "Sign for %{sign}"
 msgstr ""
@@ -755,7 +754,7 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:52
+#: lib/sign_dict_web/controllers/user_controller.ex:65
 msgid "User %{user}"
 msgstr ""
 
@@ -824,7 +823,7 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:96
+#: lib/sign2mint_web/controllers/entry_controller.ex:92
 #: lib/sign_dict_web/controllers/entry_controller.ex:160
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
@@ -868,7 +867,7 @@ msgstr ""
 msgid "Invalid confirmation link."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:104
+#: lib/sign_dict_web/controllers/user_controller.ex:117
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr ""
 
@@ -884,7 +883,7 @@ msgstr ""
 msgid "already used"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:117
+#: lib/sign_dict_web/controllers/user_controller.ex:130
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr ""
 
@@ -905,7 +904,7 @@ msgstr "Yes, I want to subscribe to the newsletter"
 msgid "user.flags"
 msgstr "Feature flags"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:169
+#: lib/sign_dict_web/templates/entry/show.html.eex:176
 msgid "Record new video"
 msgstr ""
 
@@ -917,8 +916,8 @@ msgstr ""
 msgid "Video approved"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:69
-#: lib/sign_dict_web/templates/entry/show.html.eex:167
+#: lib/sign2mint_web/templates/entry/show.html.eex:81
+#: lib/sign_dict_web/templates/entry/show.html.eex:174
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
@@ -962,7 +961,7 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:25
+#: lib/sign2mint_web/controllers/entry_controller.ex:26
 #: lib/sign_dict_web/controllers/entry_controller.ex:27 lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr ""
@@ -1021,7 +1020,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:78
+#: lib/sign2mint_web/controllers/entry_controller.ex:74
 #: lib/sign_dict_web/controllers/entry_controller.ex:142
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
@@ -1175,22 +1174,22 @@ msgid "The recaptcha was wrong, email not sent."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:188
+#: lib/sign_dict_web/templates/entry/show.html.eex:195
 msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:177
+#: lib/sign_dict_web/templates/entry/show.html.eex:184
 msgid "SignWriting"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:210
+#: lib/sign_dict_web/templates/entry/show.html.eex:217
 msgid "Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:199
+#: lib/sign_dict_web/templates/entry/show.html.eex:206
 msgid "Click here if this image is wrong"
 msgstr ""
 
@@ -1227,8 +1226,8 @@ msgid "Search a word to see the GSL sign"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:84
-#: lib/sign_dict_web/templates/entry/show.html.eex:119
+#: lib/sign2mint_web/templates/entry/show.html.eex:96
+#: lib/sign_dict_web/templates/entry/show.html.eex:126
 msgid "License"
 msgstr ""
 
@@ -1425,49 +1424,59 @@ msgid "Record a new entry"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/shared/entry.html.eex:8
+#: lib/sign2mint_web/templates/shared/entry.html.eex:19
 msgid "1 variant"
 msgid_plural "%{count} variants"
 msgstr[0] ""
 msgstr[1] ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:180
+#: lib/sign_dict_web/templates/entry/show.html.eex:187
 msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:17
+#: lib/sign2mint_web/templates/entry/show.html.eex:28
 msgid "Sadly we don't have a sign writing for this entry yet."
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:22
+#: lib/sign2mint_web/templates/entry/show.html.eex:33
 msgid "Sign writing created with <a href='https://delegs.de/'>delegseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:11
+#: lib/sign2mint_web/templates/entry/show.html.eex:22
 msgid "Signwriting"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:37
+#: lib/sign2mint_web/templates/entry/show.html.eex:49
 msgid "Definition"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:44
-#: lib/sign_dict_web/templates/entry/show.html.eex:129
+#: lib/sign2mint_web/templates/entry/show.html.eex:56
+#: lib/sign_dict_web/templates/entry/show.html.eex:136
 msgid "Variations for »%{entry}«"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:71
+#: lib/sign2mint_web/templates/entry/show.html.eex:83
 msgid "Suggest Sign"
 msgstr ""
 
-#, elixir-format, fuzzy
-#: lib/sign2mint_web/templates/entry/show.html.eex:28
+#, elixir-format
+#: lib/sign2mint_web/templates/entry/show.html.eex:12
 msgid "Download Video"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/sign_dict_web/templates/entry/show.html.eex:115
+msgid "Download"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/entry/show.html.eex:117
+msgid "MP4-File"
 msgstr ""

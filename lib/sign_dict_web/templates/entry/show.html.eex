@@ -105,10 +105,17 @@
           <div class="o-grid__cell o-grid__cell--width-100">
             <span class="so-video-details--label">
               <%= gettext("Source") %>
-            <span>
+            </span>
             <%= link @video.copyright, to: @video.original_href %>
           </div>
         <% end %>
+
+        <div class="o-grid__cell o-grid__cell--width-100">
+          <span class="so-video-details--label">
+            <%= gettext("Download") %>
+          </span>
+          <%= link gettext("MP4-File"), to: @video.video_url %>
+        </div>
 
         <%= if String.match?(@video.license, ~r/((?:zero)|(?:by[-\w\/\.]*))/) do %>
           <a rel="license" class="so-video-details--cc" href="http://creativecommons.org/licenses/<%= @video.license %>">
