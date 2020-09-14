@@ -72,7 +72,7 @@
       </ul>
     <% else %>
       <p>
-        <%= gettext("No other variations") %>
+        Keine Varianten vorhanden.
       </p>
     <% end %>
 
