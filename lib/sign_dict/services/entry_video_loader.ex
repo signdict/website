@@ -5,10 +5,30 @@ defmodule SignDict.Services.EntryVideoLoader do
   alias SignDict.Repo
   alias SignDict.Video
 
+  def load_videos_for_entry(conn, id: entry_id, video_id: video_id, filter_videos: should_filter) do
+    result = load_videos_for_entry(conn, id: entry_id, video_id: video_id)
+
+    if should_filter do
+      Map.merge(result, %{videos: filter_videos(result)})
+    else
+      result
+    end
+  end
+
   def load_videos_for_entry(conn, id: entry_id, video_id: video_id) do
     result = do_load_entry_and_videos(entry_id, conn.host, conn.assigns.current_user)
     video = do_load_video(%{video_id: video_id, videos: result.videos})
     Map.merge(result, %{conn: conn, video: video})
+  end
+
+  def load_videos_for_entry(conn, id: entry_id, filter_videos: should_filter) do
+    result = load_videos_for_entry(conn, id: entry_id)
+
+    if should_filter do
+      Map.merge(result, %{videos: filter_videos(result)})
+    else
+      result
+    end
   end
 
   def load_videos_for_entry(conn, id: entry_id) do
@@ -20,6 +40,12 @@ defmodule SignDict.Services.EntryVideoLoader do
       end
 
     Map.merge(result, %{conn: conn, video: video})
+  end
+
+  defp filter_videos(%{video: source_video, videos: videos}) do
+    Enum.filter(videos, fn video ->
+      video.id != source_video.id
+    end)
   end
 
   defp do_load_video(%{video_id: video_id, videos: videos}) when length(videos) > 0 do

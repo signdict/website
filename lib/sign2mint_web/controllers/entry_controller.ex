@@ -30,7 +30,7 @@ defmodule Sign2MintWeb.EntryController do
   def show(conn, %{"id" => id}) do
     if id =~ ~r/^\d+(-.*)?\z/ do
       conn
-      |> EntryVideoLoader.load_videos_for_entry(id: id)
+      |> EntryVideoLoader.load_videos_for_entry(id: id, filter_videos: true)
       |> render_entry
     else
       redirect_to_search(conn, conn.params["id"])
@@ -39,13 +39,8 @@ defmodule Sign2MintWeb.EntryController do
 
   def show(conn, %{"entry_id" => id, "video_id" => video_id}) do
     conn
-    |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id)
+    |> EntryVideoLoader.load_videos_for_entry(id: id, video_id: video_id, filter_videos: true)
     |> render_entry
-  end
-
-  defp render_entry(%{conn: conn, videos: videos, entry: entry})
-       when videos == [] and not is_nil(entry) do
-    redirect_no_videos(conn)
   end
 
   defp render_entry(%{conn: conn, entry: entry, video: video})

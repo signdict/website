@@ -96,7 +96,7 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     assert result.videos == [video_1, video_2]
   end
 
-  test "it rerturns nil if the entry has the wrong domain", %{} do
+  test "it returns nil if the entry has the wrong domain", %{} do
     domain = insert(:domain, domain: "example.com")
     entry = insert(:entry, domains: [domain])
     _video = insert(:video_with_entry, entry: entry)
@@ -126,5 +126,84 @@ defmodule SignDict.Services.EntryVideoLoaderTest do
     assert result.conn == conn
     assert result.entry == nil
     assert result.videos == []
+  end
+
+  test "it removes the current video from videos if filter_videos is true", %{
+    entry: entry,
+    video_1: video_1,
+    video_2: video_2,
+    user_3: user
+  } do
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
+
+    result =
+      EntryVideoLoader.load_videos_for_entry(conn,
+        id: entry.id,
+        filter_videos: true
+      )
+
+    assert result.video == video_2
+    assert result.voted == video_2
+    assert result.videos == [video_1]
+  end
+
+  test "it does not remove the current video from videos if filter_videos is false", %{
+    entry: entry,
+    video_1: video_1,
+    video_2: video_2,
+    user_3: user
+  } do
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
+
+    result =
+      EntryVideoLoader.load_videos_for_entry(conn,
+        id: entry.id,
+        filter_videos: false
+      )
+
+    assert result.video == video_2
+    assert result.voted == video_2
+    assert result.videos == [video_1, video_2]
+  end
+
+  test "it removes the current video from videos if video is given and filter_videos is true", %{
+    entry: entry,
+    video_1: video_1,
+    video_2: video_2,
+    user_3: user
+  } do
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
+
+    result =
+      EntryVideoLoader.load_videos_for_entry(conn,
+        id: entry.id,
+        video_id: video_1.id,
+        filter_videos: true
+      )
+
+    assert result.video == video_1
+    assert result.voted == video_2
+    assert result.videos == [video_2]
+  end
+
+  test "it does not remove the current video from videos if video is given and filter_videos is false",
+       %{
+         entry: entry,
+         video_1: video_1,
+         video_2: video_2,
+         user_3: user
+       } do
+    conn = %{assigns: %{current_user: user}, host: "signdict.org"}
+
+    result =
+      EntryVideoLoader.load_videos_for_entry(conn,
+        id: entry.id,
+        video_id: video_1.id,
+        filter_videos: false
+      )
+
+    assert result.video == video_1
+    assert result.voted == video_2
+    assert result.videos == [video_1, video_2]
   end
 end
