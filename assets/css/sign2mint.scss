@@ -45,10 +45,13 @@ p {
 }
 
 button,
-input {
+input,
+.sc-input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.5rem;
 }
 
 body {
@@ -58,10 +61,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-input {
-  font-family: 'SignDict', 'Helvetica Neue';
 }
 
 .s2m-main {

@@ -3,7 +3,7 @@
 <div class="o-container o-container--xlarge s2m--welcome">
   <div class="s2m--welcome--header">
     <div class="s2m--welcome--title">
-      Sign2MINT
+      <img src="/images/sign2mint/sign2mint_logo.png" alt="Sign2MINT Logo">
     </div>
     <div class="s2m--welcome--description">
       Sign2MINT ist eine offene Fachgebärdensammlung der Bereiche Mathematik,
