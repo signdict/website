@@ -46,7 +46,7 @@ mix deps.get
 mix ecto.setup
 sudo apt install npm
 sudo npm install -g yarn
-cd assets/ && yarn install && cd..
+cd assets/ && yarn install && cd ..
 mix phx.server
 ```
 
