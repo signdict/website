@@ -15,6 +15,16 @@ defmodule SignDict.Importer.Wps.WiktionaryTest do
     end
 
     def get!(
+          "https://de.wiktionary.org/w/api.php?action=parse&page=Spannung&prop=wikitext&formatversion=2&format=json"
+        ) do
+      %{
+        status_code: 200,
+        body:
+          "{\"parse\":{\"title\":\"Spannung\",\"pageid\":39150,\"wikitext\":\"== Spannung ({{Sprache|Deutsch}}) ==\n=== {{Wortart|Substantiv|Deutsch}}, {{f}} ===\n\n{{Deutsch Substantiv Übersicht\n|Genus=f\n|Nominativ Singular=Spannung\n|Nominativ Plural=Spannungen\n|Genitiv Singular=Spannung\n|Genitiv Plural=Spannungen\n|Dativ Singular=Spannung\n|Dativ Plural=Spannungen\n|Akkusativ Singular=Spannung\n|Akkusativ Plural=Spannungen\n}}\n\n{{Worttrennung}}\n:Span·nung, {{Pl.}} Span·nun·gen\n\n{{Aussprache}}\n:{{IPA}} {{Lautschrift|ˈʃpanʊŋ}}\n:{{Hörbeispiele}} {{Audio|De-Spannung.ogg}}\n:{{Reime}} {{Reim|anʊŋ|Deutsch}}\n\n{{Bedeutungen}}\n:[1] {{K|Physik|Elektrizität}} (»elektrische Spannung«) die (nutzbare) Potenzialdifferenz zwischen zwei Orten im elektrischen Feld\n:[2] {{K|Physik|Mechanik}} (»mechanische Spannung«) die nutzbare Potentialdifferenz zwischen zwei Formzuständen im Kraftfeld\n:[3] {{K|Psychologie}} das Gefühl in Form eines Konflikts nach einer emotional aufladenden Situation\n:[4] {{K|Physiologie}} Anspannung/Verspannung als Zwischenresultat einer zu bewältigenden Problemlage\n:[5] {{K|Unterhaltung}} Ergebnis einer Spielhandlung, welches im Publikum Interesse auslöst\n\n\"}}"
+      }
+    end
+
+    def get!(
           "https://de.wiktionary.org/w/api.php?action=parse&page=unknown_word&prop=wikitext&formatversion=2&format=json"
         ) do
       %{
@@ -45,6 +55,13 @@ defmodule SignDict.Importer.Wps.WiktionaryTest do
                MockHttPoison
              ) ==
                "Linguistik, von Lauten oder Buchstaben: ohne morphologische Notwendigkeit, zumeist aus phonologischen Gründen eingeschoben"
+
+      assert Wiktionary.extract_description(
+               "https://de.wiktionary.org/wiki/Spannung",
+               "1",
+               MockHttPoison
+             ) ==
+               "Physik, Elektrizität: (»elektrische Spannung«) die (nutzbare) Potenzialdifferenz zwischen zwei Orten im elektrischen Feld"
     end
 
     test "returns empty if definition cannot be found" do

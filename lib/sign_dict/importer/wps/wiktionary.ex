@@ -23,7 +23,7 @@ defmodule SignDict.Importer.Wps.Wiktionary do
     result = http_lib.get!(url)
 
     if result.status_code == 200 do
-      Poison.decode!(result.body)["parse"]["wikitext"]
+      Poison.decode!(result.body)["parse"]["wikitext"] || ""
     else
       ""
     end
@@ -41,6 +41,7 @@ defmodule SignDict.Importer.Wps.Wiktionary do
     |> remove_text("[[", "]]", "\\[\\[", "\\]\\]")
     |> remove_text("''", "''")
     |> remove_text("*", "*", "\\*", "\\*")
+    |> replace_categorie()
   end
 
   defp remove_text(text, start_str, end_str) do
@@ -57,6 +58,29 @@ defmodule SignDict.Importer.Wps.Wiktionary do
           String.length(start_str),
           String.length(item) - String.length(start_str) - String.length(end_str)
         )
+      else
+        item
+      end
+    end)
+    |> Enum.join()
+    |> String.trim()
+  end
+
+  defp replace_categorie(text) do
+    (text || "")
+    |> String.split(Regex.compile!("{{.*?}}"), include_captures: true)
+    |> Enum.map(fn item ->
+      if String.starts_with?(item, "{{") && String.ends_with?(item, "}}") do
+        value =
+          String.slice(
+            item,
+            2..-3
+          )
+          |> String.split("|")
+          |> Enum.drop(1)
+          |> Enum.join(", ")
+
+        value <> ":"
       else
         item
       end
