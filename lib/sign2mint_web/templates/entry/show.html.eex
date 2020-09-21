@@ -48,7 +48,7 @@
     <%= if String.length(@entry.description) > 0 do %>
       <h2><%= gettext("Definition") %></h2>
 
-      <p><%#= @entry.description %></p>
+      <p><%= @entry.description %></p>
     <% end %>
   </div>
 
