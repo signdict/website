@@ -43,6 +43,11 @@ defmodule SignDict.Entry do
     |> foreign_key_constraint(:language_id)
   end
 
+  def changeset_desc(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:description])
+  end
+
   def deleges_updated_at_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:deleges_updated_at])
