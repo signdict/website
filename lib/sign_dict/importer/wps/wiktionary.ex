@@ -41,7 +41,6 @@ defmodule SignDict.Importer.Wps.Wiktionary do
     |> remove_text("[[", "]]", "\\[\\[", "\\]\\]")
     |> remove_text("''", "''")
     |> remove_text("*", "*", "\\*", "\\*")
-    |> clean_semikolon()
   end
 
   defp remove_text(text, start_str, end_str) do
@@ -50,24 +49,19 @@ defmodule SignDict.Importer.Wps.Wiktionary do
 
   defp remove_text(text, start_str, end_str, start_reg, end_reg) do
     (text || "")
-    |>String.split(Regex.compile!("#{start_reg}.*?#{end_reg}"), include_captures: true)
+    |> String.split(Regex.compile!("#{start_reg}.*?#{end_reg}"), include_captures: true)
     |> Enum.map(fn item ->
       if String.starts_with?(item, start_str) && String.ends_with?(item, end_str) do
-        String.slice(item, String.length(start_str), String.length(item) - String.length(start_str) - String.length(end_str))
+        String.slice(
+          item,
+          String.length(start_str),
+          String.length(item) - String.length(start_str) - String.length(end_str)
+        )
       else
         item
       end
     end)
     |> Enum.join()
     |> String.trim()
-  end
-
-  defp clean_semikolon(text) do
-    if String.ends_with?(text, ";") do
-      {result, _} = String.split_at(text, -1)
-      result
-    else
-      text
-    end
   end
 end

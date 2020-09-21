@@ -21,6 +21,12 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       end
     end
 
+    defmodule WiktionaryMock do
+      def extract_description(_url, _number) do
+        "Example Description"
+      end
+    end
+
     setup do
       entry = insert(:entry, %{text: "Zug", description: ""})
       user = insert(:user, %{name: "WPS"})
@@ -50,7 +56,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
     end
 
     test "it imports the data into the video" do
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
 
       assert length(videos) == 1
 
@@ -110,7 +116,10 @@ defmodule SignDict.Importer.Wps.ImporterTest do
              )
 
       assert video.entry.text == "Pi"
-      assert video.entry.description == "Fachgebärde aus dem Sign2MINT-Projekt"
+
+      assert video.entry.description ==
+               "Example Description"
+
       assert video.user.name == "WPS"
       assert List.first(video.entry.domains).domain == "test.local"
       assert Video.current_state(video) == :uploaded
@@ -132,7 +141,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       assert length(videos) == 0
     end
 
@@ -146,7 +155,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       assert length(videos) == 0
     end
 
@@ -160,7 +169,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       video = List.first(videos)
       video_id = video.id
 
@@ -214,7 +223,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       video = List.first(videos)
       video_id = video.id
 
@@ -248,7 +257,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       video = List.first(videos)
 
       assert video.entry_id != entry.id
@@ -265,7 +274,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       assert videos == []
     end
 
@@ -279,7 +288,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
       })
       |> Repo.insert!()
 
-      videos = Importer.import_json(ExqMock)
+      videos = Importer.import_json(ExqMock, WiktionaryMock)
       video = List.first(videos)
 
       assert length(videos) == 1
