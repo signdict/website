@@ -1,6 +1,8 @@
 defmodule SignDict.Importer.Wps.Importer do
   import Ecto.Query
 
+  import SignDict.Services.Blank
+
   alias SignDict.Domain
   alias SignDict.Entry
   alias SignDict.Language
@@ -13,7 +15,7 @@ defmodule SignDict.Importer.Wps.Importer do
 
   @default_start_time "2016-01-01T00:30:30+00:00"
 
-  def import_json(exq \\ Exq) do
+  def import_json(exq \\ Exq, wiktionary \\ SignDict.Importer.Wps.Wiktionary) do
     current_time = Timex.now()
     config = find_or_create_config()
     json = get_json(config)
@@ -24,8 +26,10 @@ defmodule SignDict.Importer.Wps.Importer do
         if json_entry["deleted"] == "true" do
           delete_video(json_entry)
         else
-          entry = find_or_create_entry_for(json_entry["metadata"])
-          insert_or_update_video(entry, user, json_entry, exq)
+          json_entry["metadata"]
+          |> find_or_create_entry_for()
+          |> update_description(json_entry["metadata"], wiktionary)
+          |> insert_or_update_video(user, json_entry, exq)
         end
       end)
       |> Enum.filter(&(!is_nil(&1)))
@@ -49,6 +53,21 @@ defmodule SignDict.Importer.Wps.Importer do
       else
         []
       end
+    end
+  end
+
+  defp update_description(entry, json, wiktionary) do
+    if !is_blank?(json["Wiktionary:"]) && !is_blank?(json["Bedeutungsnummer:"]) do
+      description = wiktionary.extract_description(json["Wiktionary:"], json["Bedeutungsnummer:"])
+
+      Repo.update!(
+        Entry.changeset_desc(
+          entry,
+          %{"description" => description}
+        )
+      )
+    else
+      entry
     end
   end
 
@@ -169,7 +188,7 @@ defmodule SignDict.Importer.Wps.Importer do
 
       video
       |> update_metadata(json_entry, sign_writing)
-      |> move_to_other_entry_if_needed()
+      |> move_to_other_entry_if_needed(entry)
       |> transcode_video_if_needed(old_metadata, exq)
     else
       case download_file(json_entry) do
@@ -282,10 +301,9 @@ defmodule SignDict.Importer.Wps.Importer do
     video
   end
 
-  defp move_to_other_entry_if_needed(video) do
+  defp move_to_other_entry_if_needed(video, entry) do
     if video.entry.text != video.metadata["source_json"]["metadata"]["Fachbegriff"] do
       old_entry = video.entry
-      entry = find_or_create_entry_for(video.metadata["source_json"]["metadata"])
 
       video =
         video
