@@ -18,25 +18,26 @@ defmodule SignDict.Importer.Wps.Importer do
   def import_json(exq \\ Exq, wiktionary \\ SignDict.Importer.Wps.Wiktionary) do
     current_time = Timex.now()
     config = find_or_create_config()
-    json = get_json(config)
     user = find_or_create_user_for("WPS")
 
-    videos =
-      Enum.map(json, fn json_entry ->
-        if json_entry["deleted"] == "true" do
-          delete_video(json_entry)
-        else
-          json_entry["metadata"]
-          |> find_or_create_entry_for()
-          |> update_description(json_entry["metadata"], wiktionary)
-          |> insert_or_update_video(user, json_entry, exq)
-        end
-      end)
-      |> Enum.filter(&(!is_nil(&1)))
+    with {:ok, json} <- get_json(config) do
+      videos =
+        Enum.map(json, fn json_entry ->
+          if json_entry["deleted"] == "true" do
+            delete_video(json_entry)
+          else
+            json_entry["metadata"]
+            |> find_or_create_entry_for()
+            |> update_description(json_entry["metadata"], wiktionary)
+            |> insert_or_update_video(user, json_entry, exq)
+          end
+        end)
+        |> Enum.filter(&(!is_nil(&1)))
 
-    touch_last_request_time(config, current_time)
+      touch_last_request_time(config, current_time)
 
-    videos
+      videos
+    end
   end
 
   defp get_json(config) do
@@ -49,9 +50,9 @@ defmodule SignDict.Importer.Wps.Importer do
              follow_redirect: true
            ) do
       if String.length(res.body) > 0 do
-        Poison.decode!(res.body)
+        {:ok, Poison.decode!(res.body)}
       else
-        []
+        {:ok, []}
       end
     end
   end
