@@ -4,7 +4,7 @@
 
 <div class="s2m-entry-show--top">
   <div class="s2m-entry-show--video">
-    <video autoplay playsinline controls loop src="<%= @video.video_url %>" poster="<%= @video.thumbnail_url %>"></video>
+    <video autoplay playsinline controls src="<%= @video.video_url %>" poster="<%= @video.thumbnail_url %>" data-plyr-manual-loop="true"></video>
   </div>
 
   <div class="s2m-entry-show--actions">
