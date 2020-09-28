@@ -143,6 +143,10 @@ defmodule SignDict.Importer.Wps.ImporterTest do
 
       videos = Importer.import_json(ExqMock, WiktionaryMock)
       assert length(videos) == 0
+
+      config = ImporterConfig.for("WPS")
+      {:ok, last_parsed} = Timex.parse(config.configuration["last_requested"], "{ISO:Extended:Z}")
+      assert DateTime.compare(last_parsed, Timex.shift(Timex.now(), minutes: -1)) == :gt
     end
 
     test "does not crash on empty response via the api" do
