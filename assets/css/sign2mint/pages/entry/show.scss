@@ -23,8 +23,7 @@
 
 .s2m-entry-show--signwriting {
   grid-area: signwriting;
-  width: 34rem;
-  max-width: 29rem;
+  width: unquote('min(30vw, 29rem)');
   padding-left: 1rem;
 
   display: flex;
@@ -45,6 +44,7 @@
   img {
     min-width: 4rem;
     min-height: 10rem;
+    max-width: 100%;
     object-fit: contain;
   }
 }
@@ -115,8 +115,7 @@
 
 .s2m-entry-show--variations {
   grid-area: variations;
-  width: 34rem;
-  max-width: 29rem;
+  width: unquote('min(30vw, 29rem)');
   padding-left: 1rem;
 }
 
