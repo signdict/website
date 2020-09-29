@@ -95,6 +95,10 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
 
       videos = SignImporter.import_json()
       assert length(videos) == 0
+
+      config = ImporterConfig.for("WPS-Sign")
+      {:ok, last_parsed} = Timex.parse(config.configuration["last_requested"], "{ISO:Extended:Z}")
+      assert DateTime.compare(last_parsed, Timex.shift(Timex.now(), minutes: -1)) == :gt
     end
 
     test "it does not crash it there is no sign writing" do

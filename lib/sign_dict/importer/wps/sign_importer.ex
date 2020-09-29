@@ -71,7 +71,7 @@ defmodule SignDict.Importer.Wps.SignImporter do
   defp touch_last_request_time(config, current_time) do
     updated_config =
       (config.configuration || %{})
-      |> Map.put(:last_requested, Timex.format!(current_time, "{ISO:Extended:Z}"))
+      |> Map.put("last_requested", Timex.format!(current_time, "{ISO:Extended:Z}"))
 
     config
     |> ImporterConfig.changeset(%{configuration: updated_config})
