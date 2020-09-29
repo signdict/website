@@ -2,6 +2,24 @@ defmodule SignDict.Services.Url do
   alias SignDict.Entry
   alias SignDict.Video
 
+  def base_url_from_conn(%Plug.Conn{scheme: scheme, host: host, port: port}) do
+    protocol =
+      if scheme == :http do
+        "http"
+      else
+        "https"
+      end
+
+    host_port =
+      if port != 80 && port != 443 do
+        ":#{port}"
+      else
+        ""
+      end
+
+    "#{protocol}://#{host}#{host_port}"
+  end
+
   def for_entry(nil, _domain), do: nil
 
   def for_entry(%Entry{videos: videos} = entry, domain) when is_list(videos) do
