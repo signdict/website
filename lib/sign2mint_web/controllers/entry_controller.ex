@@ -65,7 +65,9 @@ defmodule Sign2MintWeb.EntryController do
       video
     )
 
-    render(conn, "show.html",
+    conn
+    |> put_router_url(SignDict.Services.Url.base_url_from_conn(conn))
+    |> render("show.html",
       layout: get_layout_for(conn.host, "empty.html"),
       entry: entry,
       video: video,
