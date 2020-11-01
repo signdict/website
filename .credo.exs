@@ -10,6 +10,7 @@
       },
       checks: [
         {Credo.Check.Readability.Specs, false},
+        {Credo.Check.Warning.ApplicationConfigInModuleAttribute, false},
         {Credo.Check.Readability.ModuleDoc, false}
       ]
     }
