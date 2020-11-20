@@ -11,7 +11,7 @@ mix ecto.setup
 
 echo "============" yarn
 cd assets
-yarn install
+yarn install --force
 cd ..
 
 echo "============" start server
