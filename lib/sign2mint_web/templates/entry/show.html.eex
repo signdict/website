@@ -41,8 +41,8 @@
       <div class="s2m-entry-show--tags--item">Fachgebiet: <%= Enum.map department(@video), fn department -> %>
         <span class="<%= color_for_department(department) %>"><%= department %></span>
       <% end %></div>
-      <div class="s2m-entry-show--tags--item">Herkunft: <%= Enum.join(source(@video), ", ") %></div>
-      <div class="s2m-entry-show--tags--item">Anwendungsbereich: <%= Enum.join(application(@video), " und ") %></div>
+      <div class="s2m-entry-show--tags--item">Ursprung: <%= Enum.join(source(@video), ", ") %></div>
+      <div class="s2m-entry-show--tags--item">Verwendungskontext: <%= Enum.join(application(@video), " und ") %></div>
     </div>
 
     <%= if String.length(@entry.description) > 0 do %>

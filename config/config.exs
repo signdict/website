@@ -63,7 +63,8 @@ config :exq,
     {"default", 3},
     {"sign_writings", 1}
   ],
-  json_library: Jason
+  json_library: Jason,
+  host: "redis"
 
 config :exq_ui, server: false
 
@@ -71,9 +72,13 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
-config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: "test.local"
+config :sign_dict, :wps_importer, url: "https://apps.delegs.de/delegseditor/signwritingeditor/formular?deepLink=https://apps.delegs.de/delegseditor/%23Gepr%C3%BCfte%20Geb%C3%A4rden/Test/", domain: "sign2mint.local"
 
-config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
+config :sign_dict, :wps_sign_importer, url: "https://apps.delegs.de/delegseditor/signwritingeditor/formular?deepLink=https://apps.delegs.de/delegseditor/%23Gepr%C3%BCfte%20Geb%C3%A4rden/Test/"
+
+#config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: "test.local"
+
+#config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
 
 config :sign_dict, :queue, library: Exq
 

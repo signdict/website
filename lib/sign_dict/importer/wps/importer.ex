@@ -347,8 +347,8 @@ defmodule SignDict.Importer.Wps.Importer do
 
   defp filter_data(json) do
     %{
-      anwendungsbereich: json["metadata"]["Anwendungsbereich:"],
-      herkunft: json["metadata"]["Herkunft:"],
+      verwendungskontext: json["metadata"]["Verwendungskontext:"],
+      ursprung: json["metadata"]["Ursprung:"],
       fachgebiet: json["metadata"]["Fachgebiet:"]
     }
   end

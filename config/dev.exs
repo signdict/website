@@ -42,8 +42,8 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :sign_dict, SignDict.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "signdict",
+  password: "signdict",
   database: "signdict_dev",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10

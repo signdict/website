@@ -74,7 +74,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
                "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
                "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
                "metadata" => %{
-                 "Anwendungsbereich:" => ["Akademie", "Schule"],
+                 "Verwendungskontext:" => ["Akademie", "Schule"],
                  "Aufnahmedatum:" => "2019-09-23 00:00:00",
                  "Bedeutungsnummer:" => "1",
                  "CC / Ort:" => "MPI",
@@ -84,7 +84,7 @@ defmodule SignDict.Importer.Wps.ImporterTest do
                  "Filmproduzent:" => "Jung-Woo Kim",
                  "Freigabedatum:" => "",
                  "Gebärdender:" => "Robert Jasko",
-                 "Herkunft:" => ["neu", "international"],
+                 "Ursprung:" => ["neu", "international"],
                  "Hochladedatum:" => "2020-03-23 00:00:00",
                  "Sprache:" => ["DGS", "BSL"],
                  "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
@@ -93,9 +93,9 @@ defmodule SignDict.Importer.Wps.ImporterTest do
              }
 
       assert video.metadata[:filter_data] == %{
-               anwendungsbereich: ["Akademie", "Schule"],
+               verwendungskontext: ["Akademie", "Schule"],
                fachgebiet: ["Chemie", "Geowissenschaft", "Informatik"],
-               herkunft: ["neu", "international"]
+               ursprung: ["neu", "international"]
              }
 
       assert File.exists?(

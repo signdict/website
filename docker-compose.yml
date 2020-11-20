@@ -2,6 +2,10 @@ version: "3.5"
 services:
   db:
     image: "postgres:11"
+    environment:
+      POSTGRES_USER: signdict
+      POSTGRES_PASSWORD: signdict
+      POSTGRES_DB: signdict_dev
     ports:
       - "5432:5432"
   redis:

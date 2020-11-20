@@ -11,9 +11,9 @@ defmodule Sign2MintWeb.SearchController do
           Entry.search_query(Gettext.get_locale(SignDictWeb.Gettext), conn.host, params["q"])
           |> Entry.with_videos()
           |> Entry.with_current_video()
-          |> with_filters("anwendungsbereich", params["anwendungsbereich"])
+          |> with_filters("verwendungskontext", params["verwendungskontext"])
           |> with_filters("fachgebiet", params["fachgebiet"])
-          |> with_filters("herkunft", params["herkunft"])
+          |> with_filters("ursprung", params["ursprung"])
           |> SignDict.Repo.paginate(Map.merge(params, %{page_size: 20})),
           gettext("Search results for %{query}", query: params["q"])
         ]

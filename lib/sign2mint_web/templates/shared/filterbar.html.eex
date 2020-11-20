@@ -25,21 +25,21 @@
           </div>
 
           <div class="s2m-select-multiple" data-controller="select-multiple">
-            <label for="herkunft" class="s2m-filter--label">Herkunft</label>
-            <select id="herkunft" name="herkunft[]" class="s2m-filter--select" multiple>
+            <label for="ursprung" class="s2m-filter--label">Ursprung</label>
+            <select id="ursprung" name="ursprung[]" class="s2m-filter--select" multiple>
               <%= select_options([{"neu", "Neu"},
                                   {"standard", "Standard"},
                                   {"international", "International"}
-                                  ], @conn.params["herkunft"]) %>
+                                  ], @conn.params["ursprung"]) %>
             </select>
           </div>
 
           <div class="s2m-select-multiple" data-controller="select-multiple">
-            <label for="anwendungsbereich" class="s2m-filter--label">Anwendungsbereich</label>
-            <select id="anwendungsbereich" name="anwendungsbereich[]" class="s2m-filter--select" multiple>
+            <label for="verwendungskontext" class="s2m-filter--label">Verwendungskontext</label>
+            <select id="verwendungskontext" name="verwendungskontext[]" class="s2m-filter--select" multiple>
               <%= select_options([{"Schule", "Schule"},
                                   {"Akademie", "Akademie"}
-                                ], @conn.params["anwendungsbereich"]) %>
+                                ], @conn.params["verwendungskontext"]) %>
             </select>
           </div>
         </div>
