@@ -80,11 +80,11 @@ defmodule SignDict.Importer.Wps.MockController do
               "CC / Ort:" => "MPI",
               "Aufnahmedatum:" => "2019-09-23 00:00:00",
               "Bedeutungsnummer:" => "1",
-              "Herkunft:" => [
+              "Ursprung:" => [
                 "neu",
                 "international"
               ],
-              "Anwendungsbereich:" => [
+              "Verwendungskontext:" => [
                 "Akademie",
                 "Schule"
               ],
@@ -128,11 +128,11 @@ defmodule SignDict.Importer.Wps.MockController do
               "CC / Ort:" => "MPI",
               "Aufnahmedatum:" => "2019-09-23 00:00:00",
               "Bedeutungsnummer:" => "1",
-              "Herkunft:" => [
+              "Ursprung:" => [
                 "neu",
                 "international"
               ],
-              "Anwendungsbereich:" => [
+              "Verwendungskontext:" => [
                 "Akademie",
                 "Schule"
               ],
@@ -225,11 +225,11 @@ defmodule SignDict.Importer.Wps.MockController do
               "CC / Ort:" => "MPI",
               "Aufnahmedatum:" => "2019-09-23 00:00:00",
               "Bedeutungsnummer:" => "1",
-              "Herkunft:" => [
+              "Ursprung:" => [
                 "neu",
                 "international"
               ],
-              "Anwendungsbereich:" => [
+              "Verwendungskontext:" => [
                 "Akademie",
                 "Schule"
               ],

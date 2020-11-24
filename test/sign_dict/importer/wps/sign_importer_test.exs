@@ -50,7 +50,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
                  "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
                  "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
                  "metadata" => %{
-                   "Anwendungsbereich:" => ["Akademie", "Schule"],
+                   "Verwendungskontext:" => ["Akademie", "Schule"],
                    "Aufnahmedatum:" => "2019-09-23 00:00:00",
                    "Bedeutungsnummer:" => "1",
                    "CC / Ort:" => "MPI",
@@ -60,7 +60,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
                    "Filmproduzent:" => "Jung-Woo Kim",
                    "Freigabedatum:" => "",
                    "Gebärdender:" => "Robert Jasko",
-                   "Herkunft:" => ["neu", "international"],
+                   "Ursprung:" => ["neu", "international"],
                    "Hochladedatum:" => "2020-03-23 00:00:00",
                    "Sprache:" => ["DGS", "BSL"],
                    "Wikipedia:" => "https://de.wikipedia.org/wiki/Anorganische_Chemie",
