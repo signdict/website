@@ -50,7 +50,7 @@ defmodule SignDict.Mixfile do
       {:bcrypt_elixir, "~> 2.2.0"},
       {:bootleg, "~> 0.7", runtime: false},
       {:bugsnag, "~> 2.1.0"},
-      {:plugsnag, "~> 1.5.0"},
+      {:plugsnag, "~> 1.6.0"},
       {:canary, "~> 1.1.0"},
       {:comeonin, "~> 5.3.1"},
       {:plug_cowboy, "~> 2.0"},
