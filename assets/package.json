@@ -34,7 +34,7 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.7",
     "babel-jest": "^26.6.3",
-    "babel-loader": "^8.2.1",
+    "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "copy-webpack-plugin": "^6.3.2",
     "css-loader": "^5.0.1",
