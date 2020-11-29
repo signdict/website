@@ -115,7 +115,8 @@ defmodule SignDict.Entry do
   end
 
   def with_videos_and_users(query) do
-    from(q in query, preload: [videos: :user])
+    videos_query = from video in Video, order_by: video.id, preload: [:user]
+    from(q in query, preload: [videos: ^videos_query])
   end
 
   def with_language(query) do

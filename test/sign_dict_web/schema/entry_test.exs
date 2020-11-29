@@ -176,7 +176,6 @@ defmodule SignDict.Schema.EntryTest do
               "videos" =>
                 entry.videos
                 |> Enum.sort_by(&Map.fetch(&1, :id))
-                |> Enum.reverse()
                 |> Enum.map(fn v -> expected_entry_video(v) end),
               "current_video" => entry.current_video |> expected_entry_video(),
               "text" => "#{entry.text}",
@@ -340,7 +339,6 @@ defmodule SignDict.Schema.EntryTest do
                 "videos" =>
                   entry_1.videos
                   |> Enum.sort_by(&Map.fetch(&1, :id))
-                  |> Enum.reverse()
                   |> Enum.map(fn v -> expected_entry_video(v) end),
                 "current_video" => entry_1.current_video |> expected_entry_video(),
                 "text" => "#{entry_1.text}",

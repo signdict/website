@@ -13,13 +13,12 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
     else
       size = Enum.min([100, Map.get(args, :per_page, 50)])
 
-      video_query = from video in Video, order_by: video.id, preload: [:user]
-
       entries =
         Entry
         |> Entry.for_domain(domain)
         |> Entry.paginate(page, size)
-        |> preload([:language, current_video: :user, videos: ^video_query])
+        |> preload([:language, current_video: :user])
+        |> Entry.with_videos_and_users()
         |> Repo.all()
         |> Enum.map(fn e ->
           Url.for_entry(e, domain)
@@ -33,11 +32,13 @@ defmodule SignDictWeb.Resolvers.EntryResolver do
     if args[:id] == nil do
       {:error, "parameter 'id' missing"}
     else
+      video_query = from video in Video, order_by: video.id, preload: [:user]
+
       entry =
         Entry
         |> Entry.for_domain(domain)
         |> Repo.get(args[:id])
-        |> Repo.preload([:language, current_video: :user, videos: :user])
+        |> Repo.preload([:language, current_video: :user, videos: video_query])
         |> Url.for_entry(domain)
 
       case entry do
