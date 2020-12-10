@@ -6,7 +6,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-env": "^7.12.10",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-env": "^7.12.10",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
