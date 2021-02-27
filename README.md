@@ -21,7 +21,7 @@ SignDict uses Elixir and Phoenix. Information on how
 to install Elixir can be found [here](http://elixir-lang.org/install.html).
 
 For the video transcoding it uses [redis](http://redis.io). On
-mac, install it via `brew install redis-server`, or `sudo apt install redis-server` for Linux and start it.
+mac, install it via `brew install --cask redis`, or `sudo apt install redis-server` for Linux and start it.
 
 As database it uses [PostgreSQL](http://postgresql.org).
 
