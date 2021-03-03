@@ -8868,10 +8868,10 @@ vue-loader@^15.9.6:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-resource@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.5.1.tgz#0f3d685e3254d21800bebd966edcf56c34b3b6e4"
-  integrity sha512-o6V4wNgeqP+9v9b2bPXrr20CGNQPEXjpbUWdZWq9GJhqVeAGcYoeTtn/D4q059ZiyN0DIrDv/ADrQUmlUQcsmg==
+vue-resource@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.5.2.tgz#bd1e9944c62e9f2218baca8433f2604109aee299"
+  integrity sha512-rH87jlb+TMqx+pGvG7VOThL6V38z/kneXyljntewIvsNWL5nOUJ8OMywbqZfrhGjDWC3xyh3C+0Y+wR4DScWlg==
   dependencies:
     got "^8.0.3"
 
