@@ -41,3 +41,5 @@ releases/
 
 # Folder for browser user agent detection files
 priv/ua_inspector
+
+priv/plts
