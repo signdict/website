@@ -2,7 +2,7 @@
 
 A crowdsourced sign language dictionary.
 
-[![Build Status](https://travis-ci.com/signdict/website.svg?branch=main)](https://travis-ci.com/signdict/website)
+[![Build Status](https://github.com/signdict/website/actions/workflows/elixir.yml/badge.svg?branch=main)](https://github.com/signdict/website/actions/workflows/elixir.yml)
 [![Coverage Status](https://coveralls.io/repos/github/signdict/website/badge.svg?branch=main)](https://coveralls.io/github/signdict/website?branch=main)
 
 Here we will work on SignDict. A sign language dictionary

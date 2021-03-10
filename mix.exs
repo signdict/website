@@ -18,7 +18,15 @@ defmodule SignDict.Mixfile do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
-      ]
+      ],
+      dialyzer: dialyzer()
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 
@@ -88,7 +96,8 @@ defmodule SignDict.Mixfile do
       {:downstream, "~> 1.0.0"},
       {:ua_inspector, "~> 2.0"},
       {:csv, "~> 2.3"},
-      {:poison, "~> 3.1.0"}
+      {:poison, "~> 3.1.0"},
+      {:dialyxir, "~> 1.0", only: :dev}
     ]
   end
 
