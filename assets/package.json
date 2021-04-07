@@ -20,7 +20,7 @@
     "sass-loader": "^10.1.0",
     "stimulus": "^2.0.0",
     "turbolinks": "^5.2.0",
-    "i18next": "^20.1.0",
+    "i18next": "^20.2.0",
     "i18next-xhr-backend": "^3.2.2",
     "voo-i18n": "MattyRad/vue-i18n#feature/vue-2",
     "vue": "^2.6.12",
