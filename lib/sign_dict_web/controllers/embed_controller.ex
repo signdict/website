@@ -30,7 +30,8 @@ defmodule SignDictWeb.EmbedController do
     |> redirect(to: embed_path(conn, :show, entry))
   end
 
-  defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link) do
+  defp render_entry(%{conn: conn, entry: entry, video: video}, entry_link)
+       when not is_nil(video) do
     SignDict.Analytics.increase_video_count(
       Domain.for(conn.host),
       conn |> get_req_header("user-agent") |> List.first(),

@@ -26,7 +26,8 @@ defmodule SignDict.Mixfile do
   defp dialyzer do
     [
       plt_core_path: "priv/plts",
-      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
+      plt_add_apps: [:mix]
     ]
   end
 
@@ -97,7 +98,7 @@ defmodule SignDict.Mixfile do
       {:ua_inspector, "~> 2.0"},
       {:csv, "~> 2.3"},
       {:poison, "~> 3.1.0"},
-      {:dialyxir, "~> 1.0", only: :dev}
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 

@@ -104,7 +104,7 @@ defmodule SignDict.Importer.Wps.Importer do
     File.mkdir(Path.join([System.tmp_dir(), "wps_importer"]))
     file = File.open!(Path.join([System.tmp_dir(), "wps_importer", file_name]), [:write])
 
-    with {:ok, _result} <- Downstream.get(url, file) do
+    with {:ok, _result} <- Downstream.get(URI.to_string(url), file) do
       File.close(file)
       temp_file = Path.join([System.tmp_dir(), "wps_importer", file_name])
 

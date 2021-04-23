@@ -67,7 +67,7 @@ defmodule SignDict.Importer.Wps.Wiktionary do
   end
 
   defp replace_categorie(text) do
-    (text || "")
+    text
     |> String.split(Regex.compile!("{{.*?}}"), include_captures: true)
     |> Enum.map(fn item ->
       if String.starts_with?(item, "{{") && String.ends_with?(item, "}}") do
