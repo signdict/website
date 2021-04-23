@@ -62,7 +62,7 @@
             <%= nav_active_link @conn, gettext("Languages"), backend_language_path(@conn, :index) %>
           <% end %>
           <%= if Canada.Can.can?(@current_user, "show_queue", %{}) do %>
-            <%= nav_active_link @conn, gettext("Worker Queue"), "/exq/", [{"data-turbolinks", "false"}] %>
+            <a class="c-nav__item" href="/exq" data-turbolinks="false"><%= gettext("Worker Queue") %></a>
           <% end %>
         </nav>
       </div>

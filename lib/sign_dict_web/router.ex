@@ -1,6 +1,7 @@
 defmodule SignDictWeb.Router do
   use SignDictWeb, :router
   use Plugsnag
+  @dialyzer {:no_return, {:__checks__, 0}}
 
   pipeline :locale do
     plug SignDictWeb.Plug.Locale

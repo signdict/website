@@ -171,7 +171,7 @@ defmodule SignDict.Video do
 
   # Makes sure that the video-state is in the list of possible states.
   defp validate_state(changeset) do
-    if changeset && changeset.valid? do
+    if changeset.valid? do
       state = get_field(changeset, :state)
 
       if valid_state?(state) do
