@@ -2,7 +2,6 @@ on: push
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     services:
       db:
@@ -49,11 +48,11 @@ jobs:
         uses: actions/cache@v1
         id: mix-cache # id to use in retrieve action
         with:
-            path: deps
-            key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
-            restore-keys: |
-              ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
-              ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-
+          path: deps
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-
 
       - name: Install Mix Dependencies
         if: steps.mix-cache.outputs.cache-hit != 'true'
@@ -67,10 +66,10 @@ jobs:
         id: plt-cache
         with:
           path: priv/plts
-          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts2-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
-            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-
+            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts2-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+            ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts2-
 
       - name: Create PLTs
         if: steps.plt-cache.outputs.cache-hit != 'true'
@@ -88,7 +87,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }} 
+          node-version: ${{ matrix.node }}
 
       - name: Build javascript bundle
         run: cd assets && yarn install && yarn deploy
