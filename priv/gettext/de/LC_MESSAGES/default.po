@@ -692,7 +692,7 @@ msgstr "Danke für deine Stimme."
 #: lib/sign_dict_web/templates/search/index.html.eex:5
 msgid "One search result for »%{query}«"
 msgid_plural "%{count} search results for »%{query}«"
-msgstr[0] "Ein Suchergebniss für »%{query}«"
+msgstr[0] "Ein Suchergebnis für »%{query}«"
 msgstr[1] "%{count} Suchergebnisse für »%{query}«"
 
 #: lib/sign_dict_web/templates/contact/new.html.eex:12
@@ -1408,7 +1408,7 @@ msgstr "Sign2MINT"
 #: lib/sign_dict_web/templates/search/index.html.eex:5
 msgid "One search result for"
 msgid_plural "%{count} search results for"
-msgstr[0] "Ein Suchergebniss für"
+msgstr[0] "Ein Suchergebnis für"
 msgstr[1] "%{count} Suchergebnisse für"
 
 #, elixir-format
