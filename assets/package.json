@@ -44,7 +44,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "2.3.0",
     "terser-webpack-plugin": "^4.2.3",
-    "vue-loader": "^15.9.6",
+    "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.6.12",
     "webpack": "5.37.0",
     "webpack-bugsnag-plugins": "^1.6.0",
