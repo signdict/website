@@ -13,7 +13,7 @@
     "detect-browser": "^5.2.0",
     "file-loader": "^6.2.0",
     "minimist": "^1.2.5",
-    "node-sass": "^5.0.0",
+    "node-sass": "^6.0.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "plyr": "^3.6.8",
