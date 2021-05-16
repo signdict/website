@@ -344,7 +344,7 @@ msgstr ""
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:9
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:1 lib/sign_dict_web/templates/backend/video/show.html.eex:46
-#: lib/sign_dict_web/templates/entry/show.html.eex:96
+#: lib/sign_dict_web/templates/entry/show.html.eex:112
 msgid "User"
 msgstr ""
 
@@ -449,7 +449,7 @@ msgid "SignDict is an open dictionary for sign language. <strong>Everyone is inv
 msgstr ""
 
 #: lib/sign_dict_web/templates/contact/new.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:40
+#: lib/sign_dict_web/templates/shared/footer.html.eex:38
 msgid "Contact"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgid "Curious?"
 msgstr ""
 
 #: lib/sign_dict_web/controllers/page_controller.ex:12
-#: lib/sign_dict_web/templates/page/imprint.html.eex:3 lib/sign_dict_web/templates/shared/footer.html.eex:38
+#: lib/sign_dict_web/templates/page/imprint.html.eex:3 lib/sign_dict_web/templates/shared/footer.html.eex:36
 msgid "Imprint"
 msgstr ""
 
@@ -467,22 +467,20 @@ msgid "Language barrier"
 msgstr ""
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:14
-#: lib/sign_dict_web/templates/shared/footer.html.eex:11
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr ""
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:13
-#: lib/sign_dict_web/templates/shared/footer.html.eex:12
 msgid "Logo Prototype Fund"
 msgstr ""
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:25
-#: lib/sign_dict_web/templates/shared/footer.html.eex:13
+#: lib/sign_dict_web/templates/shared/footer.html.eex:11
 msgid "Logo rrone"
 msgstr ""
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:36
-#: lib/sign_dict_web/templates/shared/footer.html.eex:14
+#: lib/sign_dict_web/templates/shared/footer.html.eex:12
 msgid "Logo zweitag"
 msgstr ""
 
@@ -495,15 +493,15 @@ msgstr ""
 msgid "SignDict believes..."
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:33
+#: lib/sign_dict_web/templates/shared/footer.html.eex:31
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:54
+#: lib/sign_dict_web/templates/shared/footer.html.eex:52
 msgid "SignDict on Github"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:53
+#: lib/sign_dict_web/templates/shared/footer.html.eex:51
 msgid "SignDict on Twitter"
 msgstr ""
 
@@ -521,7 +519,7 @@ msgstr ""
 msgid "A hand with a speech bubble"
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:37
+#: lib/sign_dict_web/templates/shared/footer.html.eex:35
 msgid "Blog"
 msgstr ""
 
@@ -615,7 +613,7 @@ msgstr ""
 msgid "video.video_url"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:168
+#: lib/sign_dict_web/templates/entry/show.html.eex:184
 msgid "No other variations"
 msgstr ""
 
@@ -627,28 +625,28 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:154
+#: lib/sign_dict_web/templates/entry/show.html.eex:170
 msgid "${time} ago"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:100
+#: lib/sign_dict_web/templates/entry/show.html.eex:116
 msgid "Date of upload"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:151
+#: lib/sign_dict_web/templates/entry/show.html.eex:167
 msgid "by"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:107
+#: lib/sign_dict_web/templates/entry/show.html.eex:123
 msgid "Source"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:143
+#: lib/sign_dict_web/templates/entry/show.html.eex:159
 msgid "Choose this variant"
 msgstr ""
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:57
-#: lib/sign_dict_web/templates/entry/latest.html.eex:16 lib/sign_dict_web/templates/entry/show.html.eex:144
+#: lib/sign_dict_web/templates/entry/latest.html.eex:16 lib/sign_dict_web/templates/entry/show.html.eex:160
 #: lib/sign_dict_web/templates/list/show.html.eex:13 lib/sign_dict_web/templates/search/index.html.eex:27
 #: lib/sign_dict_web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
@@ -765,7 +763,7 @@ msgstr ""
 msgid "Please enter a word in the field above to search for signs."
 msgstr ""
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:22
+#: lib/sign_dict_web/templates/shared/footer.html.eex:20
 msgid "The complete list of supporters."
 msgstr ""
 
@@ -777,11 +775,11 @@ msgstr ""
 msgid "supporter_prototype"
 msgstr ""
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:59
+#: lib/sign_dict_web/templates/page/supporter.html.eex:56
 msgid "All contributors."
 msgstr ""
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:58
+#: lib/sign_dict_web/templates/page/supporter.html.eex:55
 msgid "All libraries we are using to develop SignDict"
 msgstr ""
 
@@ -801,7 +799,7 @@ msgstr ""
 msgid "supporter_zweitag"
 msgstr ""
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:60
+#: lib/sign_dict_web/templates/page/supporter.html.eex:57
 msgid "and YOU for reading this <3"
 msgstr ""
 
@@ -848,7 +846,7 @@ msgstr ""
 
 #: lib/sign_dict_web/controllers/page_controller.ex:33
 #: lib/sign_dict_web/templates/page/privacy_de.html.eex:3 lib/sign_dict_web/templates/page/privacy_en.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:39
+#: lib/sign_dict_web/templates/shared/footer.html.eex:37
 msgid "Privacy"
 msgstr ""
 
@@ -893,7 +891,7 @@ msgstr ""
 msgid "user.flags"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:176
+#: lib/sign_dict_web/templates/entry/show.html.eex:192
 msgid "Record new video"
 msgstr ""
 
@@ -905,7 +903,7 @@ msgstr ""
 msgid "Video approved"
 msgstr ""
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:174
+#: lib/sign_dict_web/templates/entry/show.html.eex:190
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
@@ -950,7 +948,7 @@ msgid "Missing an entry? Do you know how to sign it? Then please add it with the
 msgstr ""
 
 #: lib/sign_dict_web/controllers/entry_controller.ex:27
-#: lib/sign_dict_web/templates/shared/footer.html.eex:46
+#: lib/sign_dict_web/templates/shared/footer.html.eex:44
 msgid "All entries"
 msgstr ""
 
@@ -1144,7 +1142,7 @@ msgid "We offer a nice introduction to sign language in german."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:48
+#: lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "Documentation"
 msgstr ""
 
@@ -1159,22 +1157,22 @@ msgid "The recaptcha was wrong, email not sent."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:195
+#: lib/sign_dict_web/templates/entry/show.html.eex:211
 msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:184
+#: lib/sign_dict_web/templates/entry/show.html.eex:200
 msgid "SignWriting"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:217
+#: lib/sign_dict_web/templates/entry/show.html.eex:233
 msgid "Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:206
+#: lib/sign_dict_web/templates/entry/show.html.eex:222
 msgid "Click here if this image is wrong"
 msgstr ""
 
@@ -1184,7 +1182,7 @@ msgid "Logo Wishlephant"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:47
+#: lib/sign_dict_web/templates/shared/footer.html.eex:45
 msgid "New videos"
 msgstr ""
 
@@ -1195,12 +1193,12 @@ msgid "Recently created videos"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:17
+#: lib/sign_dict_web/templates/shared/footer.html.eex:15
 msgid "Love SignDict? Sponsor us to help cover the server costs."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/page/supporter.html.eex:61
+#: lib/sign_dict_web/templates/page/supporter.html.eex:58
 msgid "and YOU if you want to donate."
 msgstr ""
 
@@ -1211,7 +1209,7 @@ msgid "Search a word to see the GSL sign"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:126
+#: lib/sign_dict_web/templates/entry/show.html.eex:142
 msgid "License"
 msgstr ""
 
@@ -1378,21 +1376,26 @@ msgid "Record a new entry"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:187
+#: lib/sign_dict_web/templates/entry/show.html.eex:203
 msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:136
+#: lib/sign_dict_web/templates/entry/show.html.eex:152
 msgid "Variations for »%{entry}«"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:115
+#: lib/sign_dict_web/templates/entry/show.html.eex:131
 msgid "Download"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:117
+#: lib/sign_dict_web/templates/entry/show.html.eex:133
 msgid "MP4-File"
+msgstr ""
+
+#, elixir-format
+#: lib/sign_dict_web/templates/entry/show.html.eex:95
+msgid "Advertisement"
 msgstr ""

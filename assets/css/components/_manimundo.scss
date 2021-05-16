@@ -1,0 +1,36 @@
+.sc-manimundo {
+  background-color: $light_background;
+  font-size: 0.8em;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+
+  a {
+    color: $dark_font;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sc-manimundo--voucher {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sc-manimundo--logo {
+  img {
+    display: inline-block;
+    width: 90px;
+    height: 60px;
+  }
+  margin-bottom: 1rem;
+}
