@@ -14,7 +14,6 @@ module.exports = (env, options) => ({
   entry: {
     app: ['./js/app.js'].concat(glob.sync('./vendor/**/*.js')),
     backend: ['./js/backend.js'],
-    sign2mint: ['./js/sign2mint.js'],
     recorder: ['./js/recorder.js'].concat(glob.sync('./vendor/**/*.js')),
   },
   output: {

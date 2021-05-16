@@ -3,10 +3,6 @@ defmodule SignDict.EmbedControllerTest do
 
   import SignDict.Factory
 
-  alias SignDict.Analytics.VideoAnalytic
-  alias SignDict.Entry
-  alias SignDict.Video
-
   describe "show/2 entry attributes" do
     setup do
       entry = insert(:entry, text: "Zug")
@@ -76,36 +72,6 @@ defmodule SignDict.EmbedControllerTest do
     test "shows a specific video if given in the url", %{conn: conn, entry: entry, video_2: video} do
       conn = get(conn, embed_video_path(conn, :show, entry, video))
       assert html_response(conn, 200) =~ "User 2"
-    end
-
-    test "increases the view count", %{conn: conn, entry: entry, user_1: user, video_1: video} do
-      conn |> guardian_login(user) |> get(embed_video_path(conn, :show, entry, video))
-
-      video = Repo.get!(Video, video.id)
-      assert video.view_count == 1
-
-      entry = Repo.get!(Entry, entry.id)
-      assert entry.view_count == 1
-
-      assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id, user_id: user.id) !=
-               nil
-    end
-
-    test "increases the view count for an anonymous user", %{
-      conn: conn,
-      entry: entry,
-      video_1: video
-    } do
-      conn |> get(embed_video_path(conn, :show, entry, video))
-
-      video = Repo.get!(Video, video.id)
-      assert video.view_count == 1
-
-      entry = Repo.get!(Entry, entry.id)
-      assert entry.view_count == 1
-
-      assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id) !=
-               nil
     end
   end
 end

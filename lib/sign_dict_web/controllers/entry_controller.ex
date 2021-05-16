@@ -125,15 +125,8 @@ defmodule SignDictWeb.EntryController do
        }) do
     entry = SignDict.Repo.preload(entry, :sign_writings)
 
-    SignDict.Analytics.increase_video_count(
-      Domain.for(conn.host),
-      conn |> get_req_header("user-agent") |> List.first(),
-      conn.assigns.current_user,
-      video
-    )
-
     render(conn, "show.html",
-      layout: get_layout_for(conn.host, "empty.html"),
+      layout: {SignDictWeb.LayoutView, "empty.html"},
       entry: entry,
       video: video,
       videos: videos,

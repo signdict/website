@@ -17,7 +17,6 @@ defmodule SignDict.Entry do
     field :type, :string
     field :url, :string, virtual: true
     field :deleges_updated_at, :utc_datetime
-    field :view_count, :integer, default: 0
 
     belongs_to(:language, SignDict.Language)
 
@@ -174,14 +173,9 @@ defmodule SignDict.Entry do
       Repo,
       """
         UPDATE entries SET current_video_id = (
-          COALESCE(
-            (SELECT videos.id from videos
-              WHERE videos.entry_id = $1::integer AND videos.state = 'published' AND
-                    metadata->'source_json'->'metadata' -> 'Empfehlung:' = '"X"' limit 1),
-            (SELECT videos.id FROM videos LEFT OUTER JOIN votes ON (votes.video_id = videos.id)
+            SELECT videos.id FROM videos LEFT OUTER JOIN votes ON (votes.video_id = videos.id)
               WHERE videos.entry_id = $1::integer AND videos.state = 'published'
-              GROUP BY videos.entry_id, videos.id ORDER BY count(votes.id) desc, videos.inserted_at ASC LIMIT 1)
-          )
+              GROUP BY videos.entry_id, videos.id ORDER BY count(votes.id) desc, videos.inserted_at ASC LIMIT 1
         ) WHERE entries.id = $1::integer;
       """,
       [entry.id]
