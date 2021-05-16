@@ -29,7 +29,7 @@ task :phoenix_digest do
 
   remote :build, cd: "assets" do
     "yarn || true"
-    "npm run deploy || true"
+    "yarn run deploy || true"
   end
 
   remote :build do
