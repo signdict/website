@@ -34,8 +34,6 @@ defmodule SignDict.Video do
     field :external_id, :string
     field :auto_publish, :boolean
 
-    field :view_count, :integer, default: 0
-
     field :sign_writing, SignDictWeb.VideoSignWritingImage.Type
 
     belongs_to :entry, SignDict.Entry

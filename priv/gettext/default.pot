@@ -160,15 +160,15 @@ msgstr ""
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:8
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:10 lib/sign_dict_web/templates/backend/list/index.html.eex:9
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:38 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:9
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:16 lib/sign_dict_web/templates/backend/user/index.html.eex:10
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:38 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:15 lib/sign_dict_web/templates/backend/user/index.html.eex:10
 msgid "Actions"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:26
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46 lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44 lib/sign_dict_web/templates/backend/user/index.html.eex:31
 msgid "Delete"
 msgstr ""
 
@@ -176,9 +176,9 @@ msgstr ""
 #: lib/sign_dict_web/templates/backend/domain/show.html.eex:5 lib/sign_dict_web/templates/backend/entry/show.html.eex:36
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:25 lib/sign_dict_web/templates/backend/language/show.html.eex:32
 #: lib/sign_dict_web/templates/backend/list/index.html.eex:25 lib/sign_dict_web/templates/backend/list/show.html.eex:26
-#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:25 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:45
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:23 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:43
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:30 lib/sign_dict_web/templates/backend/user/show.html.eex:42
-#: lib/sign_dict_web/templates/backend/video/show.html.eex:131 lib/sign_dict_web/templates/user/show.html.eex:23
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:124 lib/sign_dict_web/templates/user/show.html.eex:23
 msgid "Edit"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgstr ""
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:22
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:24 lib/sign_dict_web/templates/backend/list/index.html.eex:24
-#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:22 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:42
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:29
 msgid "Show"
 msgstr ""
@@ -301,8 +301,8 @@ msgstr ""
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:26
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:46 lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44 lib/sign_dict_web/templates/backend/user/index.html.eex:31
 msgid "Are you sure?"
 msgstr ""
 
@@ -358,7 +358,7 @@ msgstr ""
 msgid "video.license"
 msgstr ""
 
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:15
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:14
 msgid "video.orignal_href"
 msgstr ""
 
@@ -486,9 +486,8 @@ msgstr ""
 msgid "Logo zweitag"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/search_controller.ex:21
-#: lib/sign_dict_web/controllers/search_controller.ex:16 lib/sign_dict_web/templates/page/index.html.eex:33
-#: lib/sign_dict_web/templates/shared/searchbar.html.eex:12
+#: lib/sign_dict_web/controllers/search_controller.ex:16
+#: lib/sign_dict_web/templates/page/index.html.eex:33 lib/sign_dict_web/templates/shared/searchbar.html.eex:12
 msgid "Search"
 msgstr ""
 
@@ -606,11 +605,6 @@ msgid_plural "%{count} years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:14
-#: lib/sign_dict_web/templates/backend/video/show.html.eex:118
-msgid "video.view_count"
-msgstr ""
-
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:39
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:105
 msgid "video.thumbnail_url"
@@ -649,15 +643,14 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:62
 #: lib/sign_dict_web/templates/entry/show.html.eex:143
 msgid "Choose this variant"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:63
-#: lib/sign_dict_web/templates/entry/index.html.eex:57 lib/sign_dict_web/templates/entry/latest.html.eex:16
-#: lib/sign_dict_web/templates/entry/show.html.eex:144 lib/sign_dict_web/templates/list/show.html.eex:13
-#: lib/sign_dict_web/templates/search/index.html.eex:27 lib/sign_dict_web/templates/user/show.html.eex:42
+#: lib/sign_dict_web/templates/entry/index.html.eex:57
+#: lib/sign_dict_web/templates/entry/latest.html.eex:16 lib/sign_dict_web/templates/entry/show.html.eex:144
+#: lib/sign_dict_web/templates/list/show.html.eex:13 lib/sign_dict_web/templates/search/index.html.eex:27
+#: lib/sign_dict_web/templates/user/show.html.eex:42
 msgid "Thumbnail for Video"
 msgstr ""
 
@@ -713,7 +706,7 @@ msgstr ""
 msgid "The email was sent."
 msgstr ""
 
-#: lib/sign_dict_web/templates/backend/video/show.html.eex:125
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:118
 msgid "video.metadata"
 msgstr ""
 
@@ -739,17 +732,15 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/search_controller.ex:18
 #: lib/sign_dict_web/controllers/search_controller.ex:13
 msgid "Search results for %{query}"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:78
-#: lib/sign_dict_web/controllers/embed_controller.ex:48 lib/sign_dict_web/controllers/entry_controller.ex:146
+#: lib/sign_dict_web/controllers/embed_controller.ex:41
+#: lib/sign_dict_web/controllers/entry_controller.ex:139
 msgid "Sign for %{sign}"
 msgstr ""
 
-#: lib/sign2mint_web/templates/shared/header.html.eex:8
 #: lib/sign_dict_web/templates/shared/header.html.eex:8
 msgid "SignDict - A sign language dictionary"
 msgstr ""
@@ -770,7 +761,6 @@ msgstr ""
 msgid "Worker Queue"
 msgstr ""
 
-#: lib/sign2mint_web/templates/search/index.html.eex:17
 #: lib/sign_dict_web/templates/search/index.html.eex:17
 msgid "Please enter a word in the field above to search for signs."
 msgstr ""
@@ -823,13 +813,12 @@ msgstr ""
 msgid "Open SignDict"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:92
-#: lib/sign_dict_web/controllers/entry_controller.ex:160
+#: lib/sign_dict_web/controllers/entry_controller.ex:153
 msgid "Sorry, I could not find an entry for this."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/embed_controller.ex:23
-#: lib/sign_dict_web/controllers/embed_controller.ex:55
+#: lib/sign_dict_web/controllers/embed_controller.ex:22
+#: lib/sign_dict_web/controllers/embed_controller.ex:48
 msgid "Sorry, no sign found"
 msgstr ""
 
@@ -916,7 +905,6 @@ msgstr ""
 msgid "Video approved"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/show.html.eex:81
 #: lib/sign_dict_web/templates/entry/show.html.eex:174
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
@@ -961,8 +949,8 @@ msgstr ""
 msgid "Missing an entry? Do you know how to sign it? Then please add it with the help of your webcam."
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:26
-#: lib/sign_dict_web/controllers/entry_controller.ex:27 lib/sign_dict_web/templates/shared/footer.html.eex:46
+#: lib/sign_dict_web/controllers/entry_controller.ex:27
+#: lib/sign_dict_web/templates/shared/footer.html.eex:46
 msgid "All entries"
 msgstr ""
 
@@ -970,7 +958,6 @@ msgstr ""
 msgid "Browse results for %{letter}"
 msgstr ""
 
-#: lib/sign2mint_web/templates/entry/index.html.eex:5
 #: lib/sign_dict_web/templates/entry/index.html.eex:5
 msgid "Browse through SignDict"
 msgstr ""
@@ -1020,8 +1007,7 @@ msgstr ""
 msgid "Rejection reason"
 msgstr ""
 
-#: lib/sign2mint_web/controllers/entry_controller.ex:74
-#: lib/sign_dict_web/controllers/entry_controller.ex:142
+#: lib/sign_dict_web/controllers/entry_controller.ex:135
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr ""
 
@@ -1046,7 +1032,6 @@ msgid "Our mission: to help in understanding each other."
 msgstr ""
 
 #: lib/sign_dict_web/templates/page/index.html.eex:16
-#: lib/sign_dict_web/templates/page/sign2mint_index.html.eex:13
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr ""
 
@@ -1226,7 +1211,6 @@ msgid "Search a word to see the GSL sign"
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:96
 #: lib/sign_dict_web/templates/entry/show.html.eex:126
 msgid "License"
 msgstr ""
@@ -1285,16 +1269,6 @@ msgid "domain.id"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
-msgid "entry.view_count"
-msgstr ""
-
-#, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:4
-msgid "Please click the button below to download a CSV with all views. The file can be large, please be a bit patient."
-msgstr ""
-
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:1
 #: lib/sign_dict_web/templates/layout/backend.html.eex:59
 msgid "Statistic"
@@ -1302,33 +1276,22 @@ msgstr ""
 
 #, elixir-format
 #: lib/sign_dict_web/controllers/backend/csv_export_suggestions_controller.ex:11
-#: lib/sign_dict_web/controllers/backend/csv_export_views_controller.ex:11 lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
+#: lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
 msgid "You cannot view this page."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:15
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:3
 msgid "Suggestions"
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:7
-msgid "Views"
-msgstr ""
-
-#, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:17
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:5
 msgid "This will include all suggestions made by users."
 msgstr ""
 
 #, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:9
-msgid "This will include all views of all videos."
-msgstr ""
-
-#, elixir-format
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:12
-#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:20
+#: lib/sign_dict_web/templates/backend/statistic/index.html.eex:8
 msgid "Download CSV"
 msgstr ""
 
@@ -1398,13 +1361,6 @@ msgid "<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users."
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/shared/header.html.eex:1
-#: lib/sign2mint_web/templates/shared/header.html.eex:3
-msgid "Sign2MINT"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/search/index.html.eex:5
 #: lib/sign_dict_web/templates/search/index.html.eex:5
 msgid "One search result for"
 msgid_plural "%{count} search results for"
@@ -1412,23 +1368,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/search/index.html.eex:36
 #: lib/sign_dict_web/templates/search/index.html.eex:49
 msgid "Missing an entry? Do you know how to sign it? Please add that sign using your webcam."
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/search/index.html.eex:39
 #: lib/sign_dict_web/templates/search/index.html.eex:52
 msgid "Record a new entry"
 msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/shared/entry.html.eex:19
-msgid "1 variant"
-msgid_plural "%{count} variants"
-msgstr[0] ""
-msgstr[1] ""
 
 #, elixir-format
 #: lib/sign_dict_web/templates/entry/show.html.eex:187
@@ -1436,39 +1383,8 @@ msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignW
 msgstr ""
 
 #, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:28
-msgid "Sadly we don't have a sign writing for this entry yet."
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:33
-msgid "Sign writing created with <a href='https://delegs.de/'>delegseditor</a>. <a href='https://delegs.de/gebaerdenschrift/'>What is sign writing?</a>"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:22
-msgid "Signwriting"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:49
-msgid "Definition"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:56
 #: lib/sign_dict_web/templates/entry/show.html.eex:136
 msgid "Variations for »%{entry}«"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:83
-msgid "Suggest Sign"
-msgstr ""
-
-#, elixir-format
-#: lib/sign2mint_web/templates/entry/show.html.eex:12
-msgid "Download Video"
 msgstr ""
 
 #, elixir-format

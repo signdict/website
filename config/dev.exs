@@ -13,7 +13,7 @@ config :sign_dict, SignDictWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: [
+    yarn: [
       "run",
       "watch",
       cd: Path.expand("../assets", __DIR__)

@@ -1,17 +1,5 @@
 <h1 class="c-heading"><%= gettext("Statistic") %></h2>
 
-<p>
-  <%= gettext("Please click the button below to download a CSV with all views. The file can be large, please be a bit patient.") %>
-</p>
-
-<h2><%= gettext("Views") %></h2>
-
-<p><%= gettext("This will include all views of all videos.") %></p>
-
-<p>
-  <%= link gettext("Download CSV"), to: backend_csv_export_views_path(@conn, :show), class: "c-button", download: "statistic_views.csv" %>
-</p>
-
 <h2><%= gettext("Suggestions") %></h2>
 
 <p><%= gettext("This will include all suggestions made by users.") %></p>

@@ -115,13 +115,6 @@
 
 <div class="o-container--small">
   <div class="o-grid">
-    <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.view_count") %></strong></div>
-    <div class="o-grid__cell"><%= @video.view_count %></div>
-  </div>
-</div>
-
-<div class="o-container--small">
-  <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("video.metadata") %></strong></div>
     <div class="o-grid__cell"><code><pre><%= format_metadata(@video) %></pre></code></div>
   </div>

@@ -59,19 +59,6 @@ defmodule SignDictWeb.Router do
     end
   end
 
-  scope "/", Sign2MintWeb, host: Application.get_env(:sign_dict, :sign2mint_domain) do
-    pipe_through [:browser, :browser_session, :locale]
-
-    get "/", PageController, :index
-    get "/imprint", PageController, :imprint
-    get "/about", PageController, :about
-    get "/search", SearchController, :index
-
-    resources "/entry", EntryController, only: [:index, :show] do
-      get "/video/:video_id", EntryController, :show, as: :video
-    end
-  end
-
   scope "/", SignDictWeb do
     pipe_through [:browser, :browser_session, :locale]
 
@@ -159,7 +146,6 @@ defmodule SignDictWeb.Router do
     resources "/videos", VideoController, only: [:index]
 
     resources "/statistic", StatisticController, only: [:index]
-    resources "/csv_export_views", CSVExportViewsController, only: [:show], singleton: true
 
     resources "/csv_export_suggestions", CSVExportSuggestionsController,
       only: [:show],

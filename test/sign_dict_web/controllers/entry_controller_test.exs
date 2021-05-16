@@ -3,7 +3,6 @@ defmodule SignDict.EntryControllerTest do
 
   import SignDict.Factory
 
-  alias SignDict.Analytics.VideoAnalytic
   alias SignDict.Entry
   alias SignDict.Vote
   alias SignDict.Video
@@ -178,36 +177,6 @@ defmodule SignDict.EntryControllerTest do
       conn = get(conn, entry_video_path(conn, :show, entry, entry.current_video_id))
       assert redirected_to(conn) == "/"
       assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
-    end
-
-    test "increases the view count", %{conn: conn, entry: entry, user_1: user, video_1: video} do
-      conn |> guardian_login(user) |> get(entry_video_path(conn, :show, entry, video))
-
-      video = Repo.get!(Video, video.id)
-      assert video.view_count == 1
-
-      entry = Repo.get!(Entry, entry.id)
-      assert entry.view_count == 1
-
-      assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id, user_id: user.id) !=
-               nil
-    end
-
-    test "increases the view count for an anonymous user", %{
-      conn: conn,
-      entry: entry,
-      video_1: video
-    } do
-      conn |> get(entry_video_path(conn, :show, entry, video))
-
-      video = Repo.get!(Video, video.id)
-      assert video.view_count == 1
-
-      entry = Repo.get!(Entry, entry.id)
-      assert entry.view_count == 1
-
-      assert Repo.get_by(VideoAnalytic, video_id: video.id, entry_id: entry.id) !=
-               nil
     end
   end
 

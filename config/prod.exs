@@ -108,5 +108,3 @@ config :recaptcha,
 
 config :ua_inspector,
   database_path: System.get_env("UA_INSPECTOR_PATH")
-
-config :sign_dict, :sign2mint_domain, System.get_env("SIGN2MINT_DOMAIN")

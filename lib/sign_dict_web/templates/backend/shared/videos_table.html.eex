@@ -11,7 +11,6 @@
       <th class="c-table__cell" scope='col'><%= gettext("video.state") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.copyright") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.license") %></th>
-      <th class="c-table__cell" scope='col'><%= gettext("video.view_count") %></th>
       <th class="c-table__cell" scope='col'><%= gettext("video.orignal_href") %></th>
       <th class="c-table__cell" scope='col' style='text-align: right'><%= gettext("Actions") %></th>
     </tr>
@@ -31,7 +30,6 @@
       <td class="c-table__cell"><%= video.state %></td>
       <td class="c-table__cell"><%= video.copyright %></td>
       <td class="c-table__cell"><%= video.license %></td>
-      <td class="c-table__cell"><%= video.view_count %></td>
       <td class="c-table__cell">
         <%= if video.original_href do %>
           <%= link video.original_href, to: video.original_href, target: "_blank", rel: "noopener" %>
