@@ -94,7 +94,7 @@ defmodule SignDict.Mixfile do
       {:tzdata, "~> 1.1.0"},
       {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.4"},
-      {:downstream, "~> 1.0.0"},
+      {:downstream, "~> 1.1.0"},
       {:ua_inspector, "~> 2.0"},
       {:csv, "~> 2.3"},
       {:poison, "~> 3.1.0"},
