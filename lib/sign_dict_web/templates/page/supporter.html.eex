@@ -46,13 +46,10 @@
         <div class="o-grid__cell">
           <p><%= gettext("SignDict also wants to thank the following services and people:") %></p>
           <ul>
-            <li><a href="https://bitcrowd.net">bitcrowd - <%= gettext("for always beeing there for me.") %></a></li>
             <li><a href="https://github.com">GitHub</a></li>
             <li><a href="https://jwplayer.com/">JW Player</a></li>
             <li><a href="https://www.bugsnag.com/">Bugsnag</a></li>
             <li><a href="https://coveralls.io/">Coveralls</a></li>
-            <li><a href="https://travis-ci.org/">Travis CI</a></li>
-            <li><a href="https://fossa.io/">Fossa</a></li>
             <li><a href="https://elixir-lang.org/">Elixir</a></li>
             <li><a href="http://www.phoenixframework.org/">Phoenix</a></li>
             <li><a href="https://github.com/signdict/website/blob/main/mix.exs"><%= gettext("All libraries we are using to develop SignDict") %></a></li>

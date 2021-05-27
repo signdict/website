@@ -91,6 +91,22 @@
         </div>
       </div>
 
+      <div class="sc-manimundo">
+        <h4><%= gettext("Advertisement")%></h4>
+        <p>
+          Interessante Gebärde! Du möchtest mehr?
+          Bei <a href="https://manimundo.de">manimundo.de</a> kannst Du die schönste Sprache der Welt online lernen.
+        </p>
+        <div class="sc-manimundo--voucher">
+          <p>
+            Nutze den SignDict-Rabattcode von 5%:<br/>
+            6-Monats-Selbstlernkurs: <strong>SignDictSLK6</strong><br/>
+            12-Monats-Selbstlernkurs: <strong>SignDictSLK12</strong>
+          </p>
+          <a class="sc-manimundo--logo" href="https://manimundo.de"><img src="/images/manimundo.png" alt="Logo von Manimundo"/></a>
+        </div>
+      </div>
+
       <div class="o-grid o-grid--bottom o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-100">
           <span class="so-video-details--label"><%= gettext("User") %></span> <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>

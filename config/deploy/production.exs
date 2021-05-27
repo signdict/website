@@ -1,4 +1,4 @@
-use Bootleg.Config
+use Bootleg.DSL
 
 # Configure the following roles to match your environment.
 # `app` defines what remote servers your distillery release should be deployed and managed on.

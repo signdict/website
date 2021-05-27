@@ -1,4 +1,4 @@
-use Bootleg.Config
+use Bootleg.DSL
 
 config(:refspec, "main")
 
@@ -51,6 +51,13 @@ task :migrate do
   UI.info("Database migrated")
 end
 
+task :clear_start_erl do
+  remote :app do
+    "rm -f var/start_erl.data"
+  end
+end
+
 after_task(:compile, :download_ua_files)
 after_task(:compile, :phoenix_digest)
+after_task(:deploy, :clear_start_erl)
 before_task(:start, :migrate)
