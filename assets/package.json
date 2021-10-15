@@ -39,7 +39,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.4.0",
     "jest": "^27.2.0",
-    "mini-css-extract-plugin": "^2.3.0",
+    "mini-css-extract-plugin": "^2.4.2",
     "mutationobserver-shim": "^0.3.7",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "prettier": "2.4.1",
