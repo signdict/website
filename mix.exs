@@ -65,7 +65,7 @@ defmodule SignDict.Mixfile do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.6.1", only: [:dev, :test]},
       {:distillery, "~> 2.1.1", runtime: false},
-      {:ex_chimp, "~> 0.0.3"},
+      {:ex_chimp, "~> 0.1.0"},
       {:ex_machina, "~> 2.1"},
       {:excoveralls, "~> 0.6", only: :test},
       {:exgravatar, "~> 2.0.0"},
