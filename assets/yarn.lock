@@ -5541,10 +5541,10 @@ pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-plyr@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.7.0.tgz#fbb0a3cf7333df977c0e52ccc731a167ff62da6d"
-  integrity sha512-2RQWKWE4yprvM+TSQGccE41hUE4eoCrp4cOAgnajt1RA46pjN4nT6LwbRe4ZhAhj/XevEObP6m420SW40IcQOw==
+plyr@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.7.2.tgz#183d2397e7401a577700c8319fe133692b4aff54"
+  integrity sha512-I0ZC/OI4oJ0iWG9s2rrnO0YFO6aLyrPiQBq9kum0FqITYljwTPBbYL3TZZu8UJQJUq7tUWN18Q7ACwNCkGKABQ==
   dependencies:
     core-js "^3.22.0"
     custom-event-polyfill "^1.0.7"
