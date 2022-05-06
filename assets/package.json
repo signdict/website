@@ -38,7 +38,7 @@
     "babel-polyfill": "^6.26.0",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "mini-css-extract-plugin": "^2.6.0",
     "mutationobserver-shim": "^0.3.7",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
