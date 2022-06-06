@@ -3960,10 +3960,10 @@ i18next-xhr-backend@^3.2.2:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-i18next@^21.6.16:
-  version "21.6.16"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.6.16.tgz#8cff8c3ba2ffaf8438a8c83fe284083f15cf3941"
-  integrity sha512-xJlzrVxG9CyAGsbMP1aKuiNr1Ed2m36KiTB7hjGMG2Zo4idfw3p9THUEu+GjBwIgEZ7F11ZbCzJcfv4uyfKNuw==
+i18next@^21.8.8:
+  version "21.8.8"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.8.8.tgz#725a05f2529689d059bce17221cf86fcdccf7665"
+  integrity sha512-iN/5JuWStyivyBgmUgy5BRiFs0lZrgCRaeV9q4yVH/eR9NID7pZSMt3rpF8C16GplchoEjDP0JalKwZMJ1CJAA==
   dependencies:
     "@babel/runtime" "^7.17.2"
 
