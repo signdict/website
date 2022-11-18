@@ -4033,10 +4033,10 @@ i18next-xhr-backend@^3.2.2:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-i18next@^21.8.8:
-  version "21.8.8"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.8.8.tgz#725a05f2529689d059bce17221cf86fcdccf7665"
-  integrity sha512-iN/5JuWStyivyBgmUgy5BRiFs0lZrgCRaeV9q4yVH/eR9NID7pZSMt3rpF8C16GplchoEjDP0JalKwZMJ1CJAA==
+i18next@^22.0.6:
+  version "22.0.6"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-22.0.6.tgz#d7029912f8aa74ff295c0d9afd1b7dea45859b49"
+  integrity sha512-RlreNGoPIdDP4QG+qSA9PxZKGwlzmcozbI9ObI6+OyUa/Rp0EjZZA9ubyBjw887zVNZsC+7FI3sXX8oiTzAfig==
   dependencies:
     "@babel/runtime" "^7.17.2"
 
