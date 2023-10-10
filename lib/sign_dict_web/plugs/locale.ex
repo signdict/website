@@ -27,8 +27,15 @@ defmodule SignDictWeb.Plug.Locale do
   end
 
   defp get_user_locale(conn) do
-    if conn.assigns[:current_user] do
-      conn.assigns[:current_user].locale
+    accept_language = Plug.Conn.get_req_header(conn, "accept-language") |> Plug.Conn.get_accept_language()
+
+    case accept_language do
+      [locale | _rest] ->
+        locale
+      [] when conn.assigns[:current_user] ->
+        conn.assigns[:current_user].locale
+      _ ->
+        nil
     end
   end
 
