@@ -51,6 +51,7 @@ defmodule SignDictWeb.Endpoint do
     read_timeout: 60_000
   )
 
+  plug(Plug.Accepts)
   plug(Plug.MethodOverride)
   plug(Plug.Head)
 
