@@ -45,7 +45,7 @@ jobs:
           otp-version: ${{ matrix.otp }} # Define the OTP version [required]
 
       - name: Retrieve Mix Dependencies Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: mix-cache # id to use in retrieve action
         with:
           path: deps
@@ -62,7 +62,7 @@ jobs:
           mix deps.get
 
       - name: Retrieve PLT Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: plt-cache
         with:
           path: priv/plts
