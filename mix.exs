@@ -72,7 +72,7 @@ defmodule SignDict.Mixfile do
       {:exq_ui, "~> 0.11.0"},
       {:exq, "~> 0.11"},
       {:gettext, "~> 0.13"},
-      {:guardian, "~> 2.2.0"},
+      {:guardian, "~> 2.3.1"},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.0"},
