@@ -4,17 +4,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = (env, options) => ({
   devtool: 'source-map',
   optimization: {
-    minimizer: [new TerserPlugin({cache: true, parallel: true, sourceMap: false}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
   entry: {
     app: ['./js/app.js'].concat(glob.sync('./vendor/**/*.js')),
     backend: ['./js/backend.js'],
-    recorder: ['./js/recorder.js'].concat(glob.sync('./vendor/**/*.js')),
   },
   output: {
     filename: '[name].js',
@@ -38,10 +36,6 @@ module.exports = (env, options) => ({
         ],
       },
       {
-        test: /\.vue$/,
-        use: 'vue-loader',
-      },
-      {
         test: /\.(svg|woff|woff2|eot|ttf|json?)$/,
         use: [
           {
@@ -56,7 +50,6 @@ module.exports = (env, options) => ({
     ],
   },
   plugins: [
-    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({filename: '../css/[name].css'}),
     new CopyWebpackPlugin({patterns: [{from: 'static/', to: '../'}]}),
   ],

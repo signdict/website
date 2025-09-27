@@ -10,7 +10,7 @@
 #       import Ecto.Changeset
 #       import Ecto.Query
 #
-#       import SignDictWeb.Router.Helpers.Helpers
+#       import SignDictWeb.Router.Helpers
 #
 #       def assert_alert(page, text) do
 #         page

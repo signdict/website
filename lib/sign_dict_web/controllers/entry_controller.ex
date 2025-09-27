@@ -10,7 +10,7 @@ defmodule SignDictWeb.EntryController do
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
   alias SignDict.Video
-  alias SignDictWeb.Router.Helpers.Helpers
+  alias SignDictWeb.Router.Helpers
 
   def index(conn, params) do
     letter = params["letter"] || "A"

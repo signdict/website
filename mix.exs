@@ -7,7 +7,7 @@ defmodule SignDict.Mixfile do
       version: "0.0.#{committed_at()}",
       elixir: "~> 1.2",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -95,6 +95,7 @@ defmodule SignDict.Mixfile do
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:postgrex, "~> 0.21.1"},
       {:scrivener, "~> 2.7.2"},
+      {:scrivener_html, git: "https://github.com/getdizzie/scrivener_html"},
       {:scrivener_ecto, "~> 3.1.0"}
     ]
   end
