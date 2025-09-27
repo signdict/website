@@ -14,7 +14,7 @@
       </div>
 
       <p class="st-no-margin">
-        <%= link gettext("Forgot password?"), to: Router.Helpers.resset_password_path(@conn, :new) %> |
+        <%= link gettext("Forgot password?"), to: Router.Helpers.reset_password_path(@conn, :new) %> |
         <%= link gettext("Create new account"), to: Router.Helpers.user_path(@conn, :new) %>
       </p>
 
