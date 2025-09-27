@@ -4,7 +4,7 @@ defmodule SignDict.User do
   import Exgravatar
 
   use SignDictWeb, :model
-  use Arc.Ecto.Schema
+  use Waffle.Ecto.Schema
 
   alias Ecto.Changeset
   alias SignDictWeb.Avatar

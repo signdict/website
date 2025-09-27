@@ -1,6 +1,6 @@
 defmodule SignDictWeb.Avatar do
-  use Arc.Definition
-  use Arc.Ecto.Definition
+  use Waffle.Definition
+  use Waffle.Ecto.Definition
 
   @versions [:original, :thumb]
 

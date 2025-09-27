@@ -1,7 +1,7 @@
 defmodule SignDict.Video do
   use SignDictWeb, :model
   import StateMc.EctoSm
-  use Arc.Ecto.Schema
+  use Waffle.Ecto.Schema
 
   alias SignDict.Repo
   alias SignDict.Vote

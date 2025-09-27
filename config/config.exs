@@ -46,7 +46,7 @@ config :bugsnag,
   use_logger: false,
   exception_filter: SignDict.ExceptionFilter
 
-config :arc, storage: Arc.Storage.Local
+config :waffle, storage: Waffle.Storage.Local
 
 config :sign_dict, :upload_path, "./uploads"
 
