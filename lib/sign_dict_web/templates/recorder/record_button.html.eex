@@ -4,4 +4,4 @@
   </p>
 </noscript>
 
-<%= link gettext("Record new sign"), to: recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+<%= link gettext("Record new sign"), to: Router.Helpers.recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>

@@ -23,7 +23,7 @@
         <div class="sc-tags">
           <%= for list <- @lists do %>
             <span class="sc-tag">
-              <%= link list.name, to: list_path(@conn, :show, list) %>
+              <%= link list.name, to: Router.Helpers.list_path(@conn, :show, list) %>
             </span>
           <% end %>
         </div>
@@ -53,7 +53,7 @@
                   <i class="fa fa-chevron-up" aria-hidden="true"></i>
                 </span>
               <% @voted_video && @video.id == @voted_video.id -> %>
-                <%= form_for @conn, vote_path(@conn, :delete, @video), [method: :delete, as: :vote], fn _f -> %>
+                <%= form_for @conn, Router.Helpers.vote_path(@conn, :delete, @video), [method: :delete, as: :vote], fn _f -> %>
                   <div class="form-group">
                     <button type="submit" class="so-voting-box--vote-button so-voting-box--vote-button_selected">
                       <i class="fa fa-chevron-up" aria-label="<%= gettext("Don't vote this video up") %>"></i>
@@ -61,7 +61,7 @@
                   </div>
                 <% end %>
               <% true -> %>
-                <%= form_for @conn, vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
+                <%= form_for @conn, Router.Helpers.vote_path(@conn, :create, @video), [as: :vote], fn _f -> %>
                   <div class="form-group">
                     <button type="submit" class="so-voting-box--vote-button">
                       <i class="fa fa-chevron-up" aria-label="<%= gettext("Vote this video up") %>"></i>
@@ -80,7 +80,7 @@
             <div class="so-voting-box--explanation--text">
               <%= cond do %>
                 <% @current_user == nil -> %>
-                  <%= raw gettext("Please <a href='%{login_url}'>login</a> to vote for this video.", login_url: session_path(@conn, :new)) %>
+                  <%= raw gettext("Please <a href='%{login_url}'>login</a> to vote for this video.", login_url: Router.Helpers.session_path(@conn, :new)) %>
                 <% @voted_video && @video.id == @voted_video.id -> %>
                   <%= gettext("You voted for this video. You can remove your vote by clicking on the arrow.") %>
                 <% true -> %>
@@ -109,7 +109,7 @@
 
       <div class="o-grid o-grid--bottom o-grid--wrap o-grid--no-gutter so-video-details">
         <div class="o-grid__cell o-grid__cell--width-100">
-          <span class="so-video-details--label"><%= gettext("User") %></span> <%= link @video.user.name, to: user_path(@conn, :show, @video.user) %><br/>
+          <span class="so-video-details--label"><%= gettext("User") %></span> <%= link @video.user.name, to: Router.Helpers.user_path(@conn, :show, @video.user) %><br/>
         </div>
         <div class="o-grid__cell o-grid__cell--width-100">
           <span class="so-video-details--label">
@@ -156,7 +156,7 @@
                 <li class="so-video-list--item <%= if video.id == @video.id, do: "so-video-list--item_selected" %>">
                   <div class="o-grid o-grid--no-gutter">
                     <div class="o-grid__cell o-grid__cell--width-33 so-video-list--item--thumbnail">
-                      <a href='<%= entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
+                      <a href='<%= Router.Helpers.entry_video_path(@conn, :show, @entry, video.id) %>' aria-label='<%= gettext("Choose this variant") %>'>
                         <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
                         <i class="so-video-list--video-play" aria-hidden="true"></i>
                       </a>
@@ -164,7 +164,7 @@
                     <div class="o-grid__cell o-grid__cell--width-66 o-grid__cell--center">
                       <div class="so-video-list--details">
                         <div class="so-video-list--details--by">
-                          <%= gettext("by") %> <%= link video.user.name, to: user_path(@conn, :show, video.user) %><br/>
+                          <%= gettext("by") %> <%= link video.user.name, to: Router.Helpers.user_path(@conn, :show, video.user) %><br/>
                         </div>
                         <div class="so-video-list--details--date">
                           <%= relative_date(video.inserted_at, past_text: gettext("${time} ago")) %>
@@ -189,7 +189,7 @@
             <p class="so-video-list--details--add-video--text">
               <%= gettext("Know another variation for this word? You do? Please help us and record it with your webcam.") %>
             </p>
-            <%= link gettext("Record new video"), to: recorder_path(@conn, :index, @video.entry_id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
+            <%= link gettext("Record new video"), to: Router.Helpers.recorder_path(@conn, :index, @video.entry_id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>
           </div>
         </div>
       </div>

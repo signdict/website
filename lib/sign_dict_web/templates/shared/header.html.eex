@@ -8,7 +8,7 @@
 <meta name="description" content="<%= gettext("SignDict - A sign language dictionary") %>">
 <meta name="author" content="SignDict">
 
-<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+<link rel="stylesheet" href="<%= Router.Helpers.static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
 
 <link rel="apple-touch-icon-precomposed" href="/favicon_152.png">
@@ -17,5 +17,5 @@
 <link href="https://cdn.jwplayer.com" rel="preconnect" crossorigin>
 
 <%= if is_nil(assigns[:appjs]) || assigns[:appjs] do %>
-  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  <script src="<%= Router.Helpers.static_path(@conn, "/js/app.js") %>"></script>
 <% end %>

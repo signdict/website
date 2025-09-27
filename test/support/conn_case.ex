@@ -25,8 +25,6 @@ defmodule SignDict.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import SignDictWeb.Router.Helpers
-
       # The default endpoint for testing
       @endpoint SignDictWeb.Endpoint
 

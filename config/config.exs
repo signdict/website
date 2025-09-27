@@ -77,18 +77,6 @@ config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
 
 config :sign_dict, :queue, library: Exq
 
-config :sign_dict, :newsletter, subscriber: ExChimp.List
-
-config :sign_dict, :recaptcha, library: Recaptcha
-
-config :ex_chimp, api_key: "yourapikeyhere-us12"
-
-# these keys only work for localhost
-config :recaptcha,
-  public_key: "6Lf3OloUAAAAAI4CYsojC7vmbpxmuq8U0nrxtkj9",
-  secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P",
-  json_library: Jason
-
 config :phoenix, :json_library, Jason
 
 config :ua_inspector,

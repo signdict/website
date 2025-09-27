@@ -1,5 +1,7 @@
 defmodule SignDictWeb.BlazeHelpers do
-  use Phoenix.HTML
+  import Phoenix.HTML
+  import Phoenix.HTML.Form
+  use PhoenixHTMLHelpers
 
   def nav_active_class(conn, path) do
     current_path = Path.join(["/" | conn.path_info])

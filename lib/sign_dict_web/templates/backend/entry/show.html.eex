@@ -17,7 +17,7 @@
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("Language") %></strong></div>
-    <div class="o-grid__cell"><%= link SignDict.Language.name(@entry.language), to: backend_language_path(@conn, :show, @entry.language) %></div>
+    <div class="o-grid__cell"><%= link SignDict.Language.name(@entry.language), to:  Router.Helpers.backend_language_path(@conn, :show, @entry.language) %></div>
   </div>
 </div>
 
@@ -26,14 +26,14 @@
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("Domains") %></strong></div>
     <div class="o-grid__cell">
       <%= for domain <- @entry.domains do %>
-        <%= link domain.domain, to: backend_domain_path(@conn, :show, domain) %>
+        <%= link domain.domain, to: Router.Helpers.backend_domain_path(@conn, :show, domain) %>
       <% end %>
     </div>
   </div>
 </div>
 
 <p>
-  <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, @entry), class: "c-button" %>
+  <%= link gettext("Edit"), to: Router.Helpers.backend_entry_path(@conn, :edit, @entry), class: "c-button" %>
 </p>
 
 <h2 class="c-heading"><%= gettext("Videos") %></h2>
@@ -41,5 +41,5 @@
 <%= render SignDictWeb.Backend.SharedView, "videos_table.html", conn: @conn, videos: @entry.videos %>
 
 <p>
-  <%= link gettext("New video"), to: backend_entry_video_path(@conn, :new, @entry.id), class: "c-button c-button--info" %>
+  <%= link gettext("New video"), to: Router.Helpers.backend_entry_video_path(@conn, :new, @entry.id), class: "c-button c-button--info" %>
 </p>

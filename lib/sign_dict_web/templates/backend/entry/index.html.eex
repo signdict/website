@@ -19,10 +19,9 @@
   <div class="o-grid__cell">
     <%= render SignDictWeb.Backend.SharedView, "entries_table.html", conn: @conn, entries: @entries %>
 
-    <%= pagination_links @entries, filter: @params["filter"] %>
 
     <p>
-      <%= link gettext("New entry"), to: backend_entry_path(@conn, :new), class: "c-button c-button--info" %>
+      <%= link gettext("New entry"), to: Router.Helpers.backend_entry_path(@conn, :new), class: "c-button c-button--info" %>
     </p>
   </div>
 </div>

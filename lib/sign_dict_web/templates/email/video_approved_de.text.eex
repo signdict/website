@@ -4,7 +4,7 @@ Dein Video für "<%= @entry.text %>" wurde nun freigegeben 🎉.
 
 Zum Video:
 
-<%= entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+<%=  Router.Helpers.entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
 
 Danke, dass du uns hilfst, das Wörterbuch weiter zu vervollständigen.
 

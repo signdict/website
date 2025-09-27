@@ -23,13 +23,13 @@
 <%= for entry <- @result.entries do %>
   <div class="o-grid o-grid--wrap">
     <div class="o-grid__cell o-grid__cell--width-30">
-      <a href="<%= entry_path(@conn, :show, entry) %>">
+      <a href="<%= Router.Helpers.entry_path(@conn, :show, entry) %>">
         <%= img_tag(entry.current_video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
       </a>
     </div>
     <div class="o-grid__cell">
       <h2>
-        <%= link entry.text, to: entry_path(@conn, :show, entry), class: "so-search-result--link" %>
+        <%= link entry.text, to: Router.Helpers.entry_path(@conn, :show, entry), class: "so-search-result--link" %>
       </h2>
 
       <%= if String.length(entry.description) > 0 do %>
@@ -39,9 +39,6 @@
   </div>
 <% end %>
 
-<%= if @result.total_pages > 1 do %>
-  <%= pagination_links @result,  q: @conn.params["q"]%>
-<% end %>
 
 <div class="o-grid o-grid--wrap">
   <div class="o-grid__cell">
@@ -49,7 +46,7 @@
       <%= gettext("Missing an entry? Do you know how to sign it? Please add that sign using your webcam.") %>
     </p>
     <p>
-      <%= link gettext("Record a new entry"), to: suggestion_path(@conn, :index, word: @conn.params["q"]), class: "sc-button sc-button--small" %>
+      <%= link gettext("Record a new entry"), to: Router.Helpers.suggestion_path(@conn, :index, word: @conn.params["q"]), class: "sc-button sc-button--small" %>
     </p>
   </div>
 </div>

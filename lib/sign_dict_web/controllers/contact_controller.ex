@@ -3,8 +3,6 @@ defmodule SignDictWeb.ContactController do
   alias SignDictWeb.Email
   alias SignDictWeb.Mailer
 
-  @recaptcha Application.get_env(:sign_dict, :recaptcha)[:library]
-
   def new(conn, _params) do
     email = user_email(conn.assigns)
 
@@ -23,13 +21,7 @@ defmodule SignDictWeb.ContactController do
   def create(conn, params) do
     %{"contact" => %{"email" => email, "content" => content}} = params
 
-    case @recaptcha.verify(params["g-recaptcha-response"]) do
-      {:ok, _response} ->
-        send_email(conn, email, content)
-
-      {:error, _errors} ->
-        show_error(conn, email, content)
-    end
+    send_email(conn, email, content)
   end
 
   defp send_email(conn, email, content) do

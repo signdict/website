@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.LanguageController do
   use SignDictWeb, :controller
+  
   alias SignDict.Language
 
   plug :load_and_authorize_resource, model: Language, except: :index
@@ -21,7 +22,7 @@ defmodule SignDictWeb.Backend.LanguageController do
       {:ok, _language} ->
         conn
         |> put_flash(:info, gettext("Language created successfully."))
-        |> redirect(to: backend_language_path(conn, :index))
+        |> redirect(to:  Router.Helpers.backend_language_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -46,7 +47,7 @@ defmodule SignDictWeb.Backend.LanguageController do
       {:ok, language} ->
         conn
         |> put_flash(:info, gettext("Language updated successfully."))
-        |> redirect(to: backend_language_path(conn, :show, language))
+        |> redirect(to:  Router.Helpers.backend_language_path(conn, :show, language))
 
       {:error, changeset} ->
         render(conn, "edit.html", language: language, changeset: changeset)
@@ -58,6 +59,6 @@ defmodule SignDictWeb.Backend.LanguageController do
 
     conn
     |> put_flash(:info, gettext("Language deleted successfully."))
-    |> redirect(to: backend_language_path(conn, :index))
+    |> redirect(to:  Router.Helpers.backend_language_path(conn, :index))
   end
 end

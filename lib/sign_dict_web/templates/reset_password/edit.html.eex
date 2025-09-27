@@ -2,7 +2,7 @@
   <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
     <h2><%= gettext("Change your password") %></h2>
 
-    <%= form_for @conn, reset_password_path(@conn, :update), [method: :put, as: :user, class: "password-reset-form"], fn f -> %>
+    <%= form_for @conn, Router.Helpers.resset_password_path(@conn, :update), [method: :put, as: :user, class: "password-reset-form"], fn f -> %>
       <%= hidden_input f, :password_reset_unencrypted, value: @password_reset_unencrypted %>
       <%= hidden_input f, :email, value: @email %>
 

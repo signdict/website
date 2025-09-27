@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.ListController do
   use SignDictWeb, :controller
+
   alias SignDict.List
 
   plug :load_and_authorize_resource, model: List, except: :index
@@ -21,7 +22,7 @@ defmodule SignDictWeb.Backend.ListController do
       {:ok, _list} ->
         conn
         |> put_flash(:info, gettext("List created successfully."))
-        |> redirect(to: backend_list_path(conn, :index))
+        |> redirect(to: Router.Helpers.backend_list_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -48,7 +49,7 @@ defmodule SignDictWeb.Backend.ListController do
       {:ok, list} ->
         conn
         |> put_flash(:info, gettext("List updated successfully."))
-        |> redirect(to: backend_list_path(conn, :show, list))
+        |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list))
 
       {:error, changeset} ->
         render(conn, "edit.html", list: list, changeset: changeset)
@@ -60,7 +61,7 @@ defmodule SignDictWeb.Backend.ListController do
 
     conn
     |> put_flash(:info, gettext("List deleted successfully."))
-    |> redirect(to: backend_list_path(conn, :index))
+    |> redirect(to: Router.Helpers.backend_list_path(conn, :index))
   end
 
   defp load_lists(conn, params) do

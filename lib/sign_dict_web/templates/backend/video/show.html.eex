@@ -15,10 +15,10 @@
     <div class="o-grid__cell">
       <div class="b-video-actions">
         <%= if SignDict.Video.can_publish?(@video) do %>
-          <%= button(gettext("Approve video"), to: backend_review_path(@conn, :approve_video, @video.id), class: "c-button") %>
+          <%= button(gettext("Approve video"), to: Router.Helpers.backend_review_path(@conn, :approve_video, @video.id), class: "c-button") %>
         <% end %>
         <%= if SignDict.Video.can_reject?(@video) do %>
-          <%= form_for SignDict.Video.changeset(@video), backend_review_path(@conn, :reject_video, @video.id), fn f -> %>
+          <%= form_for SignDict.Video.changeset(@video), Router.Helpers.backend_review_path(@conn, :reject_video, @video.id), fn f -> %>
 
             <div class="o-form-element">
               <%= label f, :rejection_reason, gettext("Rejection reason"), class: "c-label" %>
@@ -37,14 +37,14 @@
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("Entry") %></strong></div>
-    <div class="o-grid__cell"><%= link SignDict.Entry.to_string(@video.entry), to: backend_entry_path(@conn, :show, @video.entry) %></div>
+    <div class="o-grid__cell"><%= link SignDict.Entry.to_string(@video.entry), to: Router.Helpers.backend_entry_path(@conn, :show, @video.entry) %></div>
   </div>
 </div>
 
 <div class="o-container--small">
   <div class="o-grid">
     <div class="o-grid__cell o-grid__cell--width-30"><strong><%= gettext("User") %></strong></div>
-    <div class="o-grid__cell"><%= link @video.user.name, to: backend_user_path(@conn, :show, @video.user) %></div>
+    <div class="o-grid__cell"><%= link @video.user.name, to: Router.Helpers.backend_user_path(@conn, :show, @video.user) %></div>
   </div>
 </div>
 
@@ -121,5 +121,5 @@
 </div>
 
 <p>
-  <%= link gettext("Edit"), to: backend_entry_video_path(@conn, :edit, @video.entry_id, @video), class: "c-button" %>
+  <%= link gettext("Edit"), to: Router.Helpers.backend_entry_video_path(@conn, :edit, @video.entry_id, @video), class: "c-button" %>
 </p>

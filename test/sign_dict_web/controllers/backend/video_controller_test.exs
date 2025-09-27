@@ -42,7 +42,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_video_path(conn, :new, entry().id))
+      |> get(backend_Routes.entry_video_path(conn, :new, entry().id))
 
     assert html_response(conn, 200) =~ "New video"
   end
@@ -53,9 +53,9 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_entry_video_path(conn, :create, current_entry.id), video: @valid_attrs)
+      |> post(backend_Routes.entry_video_path(conn, :create, current_entry.id), video: @valid_attrs)
 
-    assert redirected_to(conn) == backend_entry_path(conn, :show, current_entry.id)
+    assert redirected_to(conn) == backend_Routes.entry_path(conn, :show, current_entry.id)
     assert Repo.get_by(Video, @valid_attrs)
   end
 
@@ -63,7 +63,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_entry_video_path(conn, :create, entry().id), video: @invalid_attrs)
+      |> post(backend_Routes.entry_video_path(conn, :create, entry().id), video: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "New video"
   end
@@ -74,7 +74,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_video_path(conn, :show, video.entry_id, video))
+      |> get(backend_Routes.entry_video_path(conn, :show, video.entry_id, video))
 
     assert html_response(conn, 200) =~ "Video"
   end
@@ -83,7 +83,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_video_path(conn, :show, entry().id, -1))
+      |> get(backend_Routes.entry_video_path(conn, :show, entry().id, -1))
 
     assert conn.status == 404
   end
@@ -94,7 +94,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_video_path(conn, :edit, video.entry_id, video))
+      |> get(backend_Routes.entry_video_path(conn, :edit, video.entry_id, video))
 
     assert html_response(conn, 200) =~ "Edit video"
   end
@@ -105,9 +105,9 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_entry_video_path(conn, :update, video.entry_id, video), video: @valid_attrs)
+      |> put(backend_Routes.entry_video_path(conn, :update, video.entry_id, video), video: @valid_attrs)
 
-    assert redirected_to(conn) == backend_entry_video_path(conn, :show, video.entry.id, video)
+    assert redirected_to(conn) == backend_Routes.entry_video_path(conn, :show, video.entry.id, video)
     assert Repo.get_by(Video, @valid_attrs)
   end
 
@@ -118,7 +118,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
       conn
       |> guardian_login(insert(:admin_user))
       |> put(
-        backend_entry_video_path(conn, :update, video.entry_id, video),
+        backend_Routes.entry_video_path(conn, :update, video.entry_id, video),
         video: @invalid_attrs
       )
 
@@ -131,7 +131,7 @@ defmodule SignDictWeb.Backend.VideoControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(backend_entry_video_path(conn, :delete, video.entry_id, video))
+      |> delete(backend_Routes.entry_video_path(conn, :delete, video.entry_id, video))
 
     assert redirected_to(conn) == backend_video_path(conn, :index)
     refute Repo.get(Video, video.id)

@@ -19,13 +19,13 @@
 <%= for video <- @videos do %>
     <tr class="c-table__row">
       <td class="c-table__cell">
-        <%= link img_tag(video.thumbnail_url, class: "o-image"), to: backend_entry_video_path(@conn, :show, video.entry_id, video) %>
+        <%= link img_tag(video.thumbnail_url, class: "o-image"), to: Router.Helpers.backend_entry_video_path(@conn, :show, video.entry_id, video) %>
       </td>
       <%= if Ecto.assoc_loaded?(video.entry) do %>
-        <td class="c-table__cell"><%= link video.entry.text, to: backend_entry_path(@conn, :show, video.entry) %></td>
+        <td class="c-table__cell"><%= link video.entry.text, to: Router.Helpers.backend_entry_path(@conn, :show, video.entry) %></td>
       <% end %>
       <%= if Ecto.assoc_loaded?(video.user) do %>
-        <td class="c-table__cell"><%= link video.user.name, to: backend_user_path(@conn, :show, video.user) %></td>
+        <td class="c-table__cell"><%= link video.user.name, to: Router.Helpers.backend_user_path(@conn, :show, video.user) %></td>
       <% end %>
       <td class="c-table__cell"><%= video.state %></td>
       <td class="c-table__cell"><%= video.copyright %></td>
@@ -39,9 +39,9 @@
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">
           <div class="o-grid__cell t-action-buttons">
-            <%= link gettext("Show"), to: backend_entry_video_path(@conn, :show, video.entry_id, video), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Edit"), to: backend_entry_video_path(@conn, :edit, video.entry_id, video), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Delete"), to: backend_entry_video_path(@conn, :delete, video.entry_id, video), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+            <%= link gettext("Show"), to: Router.Helpers.backend_entry_video_path(@conn, :show, video.entry_id, video), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: Router.Helpers.backend_entry_video_path(@conn, :edit, video.entry_id, video), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: Router.Helpers.backend_entry_video_path(@conn, :delete, video.entry_id, video), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
           </div>
         </div>
       </td>

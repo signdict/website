@@ -1,4 +1,4 @@
 <h1 class="c-heading"><%= gettext("Edit entry") %></h1>
 
 <%= render "form.html", changeset: @changeset, languages: @languages,
-                        action: backend_entry_path(@conn, :update, @entry) %>
+                        action: Router.Helpers.backend_entry_path(@conn, :update, @entry) %>

@@ -14,7 +14,6 @@ defmodule SignDict.User do
 
   @all_flags ~w(recording)
   @roles ~w(user admin editor statistic)
-  @subscriber Application.get_env(:sign_dict, :newsletter)[:subscriber]
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "users" do
@@ -269,9 +268,9 @@ defmodule SignDict.User do
   end
 
   def subscribe_to_newsletter(user) do
-    @subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email, %{
-      "FULL_NAME" => user.name
-    })
+    # @subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email, %{
+    #   "FULL_NAME" => user.name
+    # })
   end
 
   def has_flag?(user, _flag) when is_nil(user) do

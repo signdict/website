@@ -6,37 +6,37 @@
       </h1>
 
       <div class="so-entry-index__letter-links">
-        <%= link "A", to: entry_path(@conn, :index, letter: "A") %>
-        <%= link "B", to: entry_path(@conn, :index, letter: "B") %>
-        <%= link "C", to: entry_path(@conn, :index, letter: "C") %>
-        <%= link "D", to: entry_path(@conn, :index, letter: "D") %>
-        <%= link "E", to: entry_path(@conn, :index, letter: "E") %>
-        <%= link "F", to: entry_path(@conn, :index, letter: "F") %>
-        <%= link "G", to: entry_path(@conn, :index, letter: "G") %>
-        <%= link "H", to: entry_path(@conn, :index, letter: "H") %>
-        <%= link "I", to: entry_path(@conn, :index, letter: "I") %>
-        <%= link "J", to: entry_path(@conn, :index, letter: "J") %>
-        <%= link "K", to: entry_path(@conn, :index, letter: "K") %>
-        <%= link "L", to: entry_path(@conn, :index, letter: "L") %>
-        <%= link "M", to: entry_path(@conn, :index, letter: "M") %>
-        <%= link "N", to: entry_path(@conn, :index, letter: "N") %>
-        <%= link "O", to: entry_path(@conn, :index, letter: "O") %>
-        <%= link "P", to: entry_path(@conn, :index, letter: "P") %>
-        <%= link "Q", to: entry_path(@conn, :index, letter: "Q") %>
-        <%= link "R", to: entry_path(@conn, :index, letter: "R") %>
-        <%= link "S", to: entry_path(@conn, :index, letter: "S") %>
-        <%= link "T", to: entry_path(@conn, :index, letter: "T") %>
-        <%= link "U", to: entry_path(@conn, :index, letter: "U") %>
-        <%= link "V", to: entry_path(@conn, :index, letter: "V") %>
-        <%= link "W", to: entry_path(@conn, :index, letter: "W") %>
-        <%= link "X", to: entry_path(@conn, :index, letter: "X") %>
-        <%= link "Y", to: entry_path(@conn, :index, letter: "Y") %>
-        <%= link "Z", to: entry_path(@conn, :index, letter: "Z") %>
-        <%= link "0-9", to: entry_path(@conn, :index, letter: "0-9") %>
+        <%= link "A", to: Router.Helpers.entry_path(@conn, :index, letter: "A") %>
+        <%= link "B", to: Router.Helpers.entry_path(@conn, :index, letter: "B") %>
+        <%= link "C", to: Router.Helpers.entry_path(@conn, :index, letter: "C") %>
+        <%= link "D", to: Router.Helpers.entry_path(@conn, :index, letter: "D") %>
+        <%= link "E", to: Router.Helpers.entry_path(@conn, :index, letter: "E") %>
+        <%= link "F", to: Router.Helpers.entry_path(@conn, :index, letter: "F") %>
+        <%= link "G", to: Router.Helpers.entry_path(@conn, :index, letter: "G") %>
+        <%= link "H", to: Router.Helpers.entry_path(@conn, :index, letter: "H") %>
+        <%= link "I", to: Router.Helpers.entry_path(@conn, :index, letter: "I") %>
+        <%= link "J", to: Router.Helpers.entry_path(@conn, :index, letter: "J") %>
+        <%= link "K", to: Router.Helpers.entry_path(@conn, :index, letter: "K") %>
+        <%= link "L", to: Router.Helpers.entry_path(@conn, :index, letter: "L") %>
+        <%= link "M", to: Router.Helpers.entry_path(@conn, :index, letter: "M") %>
+        <%= link "N", to: Router.Helpers.entry_path(@conn, :index, letter: "N") %>
+        <%= link "O", to: Router.Helpers.entry_path(@conn, :index, letter: "O") %>
+        <%= link "P", to: Router.Helpers.entry_path(@conn, :index, letter: "P") %>
+        <%= link "Q", to: Router.Helpers.entry_path(@conn, :index, letter: "Q") %>
+        <%= link "R", to: Router.Helpers.entry_path(@conn, :index, letter: "R") %>
+        <%= link "S", to: Router.Helpers.entry_path(@conn, :index, letter: "S") %>
+        <%= link "T", to: Router.Helpers.entry_path(@conn, :index, letter: "T") %>
+        <%= link "U", to: Router.Helpers.entry_path(@conn, :index, letter: "U") %>
+        <%= link "V", to: Router.Helpers.entry_path(@conn, :index, letter: "V") %>
+        <%= link "W", to: Router.Helpers.entry_path(@conn, :index, letter: "W") %>
+        <%= link "X", to: Router.Helpers.entry_path(@conn, :index, letter: "X") %>
+        <%= link "Y", to: Router.Helpers.entry_path(@conn, :index, letter: "Y") %>
+        <%= link "Z", to: Router.Helpers.entry_path(@conn, :index, letter: "Z") %>
+        <%= link "0-9", to: Router.Helpers.entry_path(@conn, :index, letter: "0-9") %>
       </div>
 
       <p>
-        <%= raw gettext("Feeling adventurous? Try <a href='%{random}'>a random entry</a>.", random: feeling_lucky_path(@conn, :index)) %>
+        <%= raw gettext("Feeling adventurous? Try <a href='%{random}'>a random entry</a>.", random: Router.Helpers.feeling_lucky_path(@conn, :index)) %>
       </p>
     </div>
   </div>
@@ -53,13 +53,13 @@
   <%= for entry <- @entries.entries do %>
     <div class="o-grid o-grid--wrap">
       <div class="o-grid__cell o-grid__cell--width-30">
-        <a href="<%= entry_path(@conn, :show, entry) %>">
+        <a href="<%= Router.Helpers.entry_path(@conn, :show, entry) %>">
           <%= img_tag(entry.current_video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
         </a>
       </div>
       <div class="o-grid__cell">
         <h2>
-          <%= link entry.text, to: entry_path(@conn, :show, entry), class: "so-search-result--link" %>
+          <%= link entry.text, to: Router.Helpers.entry_path(@conn, :show, entry), class: "so-search-result--link" %>
         </h2>
 
         <%= if entry.description && String.length(entry.description) > 0 do %>
@@ -69,7 +69,4 @@
     </div>
   <% end %>
 
-  <%= if @entries.total_pages > 1 do %>
-    <%= pagination_links @entries, letter: @letter %>
-  <% end %>
 </div>

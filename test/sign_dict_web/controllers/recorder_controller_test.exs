@@ -8,7 +8,7 @@ defmodule SignDict.RecorderControllerTest do
     test "it redirects when entry is not found", %{conn: conn} do
       conn =
         conn
-        |> get(recorder_path(conn, :index, 1_111_111_111))
+        |> get(Routes.recorder_path(conn, :index, 1_111_111_111))
 
       assert redirected_to(conn) == "/"
     end
@@ -18,7 +18,7 @@ defmodule SignDict.RecorderControllerTest do
 
       conn =
         conn
-        |> get(recorder_path(conn, :index, entry.id))
+        |> get(Routes.recorder_path(conn, :index, entry.id))
 
       assert html_response(conn, 200) =~ "Welcome"
     end
@@ -30,7 +30,7 @@ defmodule SignDict.RecorderControllerTest do
 
       conn =
         conn
-        |> get(recorder_path(conn, :new, entry.id))
+        |> get(Routes.recorder_path(conn, :new, entry.id))
 
       assert html_response(conn, 200) =~ "data-entry-id=\"#{entry.id}\""
     end

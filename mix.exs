@@ -37,7 +37,7 @@ defmodule SignDict.Mixfile do
   def application do
     [
       mod: {SignDict, [env: Mix.env()]},
-      extra_applications: [:canada, :elixir_make, :exq, :exq_ui, :recaptcha]
+      extra_applications: [:canada, :elixir_make, :exq, :exq_ui]
     ]
   end
 
@@ -64,39 +64,38 @@ defmodule SignDict.Mixfile do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.6.1", only: [:dev, :test]},
       {:distillery, "~> 2.1.1", runtime: false},
-      {:ex_chimp, "~> 0.1.0"},
       {:ex_machina, "~> 2.1"},
       {:excoveralls, "~> 0.6", only: :test},
       {:exgravatar, "~> 2.0.0"},
-      {:exq_ui, "~> 0.11.0"},
-      {:exq, "~> 0.11"},
+      {:exq_ui, "~> 0.17"},
+      {:exq, "~> 0.21"},
       {:gettext, "~> 0.13"},
       {:guardian, "~> 2.2.0"},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.13"},
-      {:phoenix_html, "~> 2.6"},
+      {:phoenix_html, "~> 4.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix, "~> 1.4.1"},
-      {:plug, "~> 1.13.3"},
-      {:recaptcha, "~> 3.0.0"},
-      {:scrivener_ecto, "~> 2.7.0"},
-      {:scrivener_html, "~> 1.7"},
+      {:phoenix_pubsub, "~> 2.1"},
+      {:phoenix_view, "~> 2.0.4"},
+      {:phoenix, "~> 1.7.0"},
+      {:plug, "~> 1.15.0"},
       {:secure_random, "~> 0.5"},
       {:state_mc, github: "bitboxer/state_mc"},
       {:timex, "~> 3.6"},
-      {:wallaby, "~> 0.30.1", only: :test},
-      {:jason, "~> 1.1"},
-      {:briefly, "~> 0.3"},
+      # {:wallaby, "~> 0.30.1", only: :test},
+      {:jason, "~> 1.4"},
+      {:briefly, "~> 0.5"},
       {:tzdata, "~> 1.1.0"},
       {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false},
-      {:httpoison, "~> 1.4"},
-      {:downstream, "~> 1.1.0"},
+      {:httpoison, "~> 2.2.3"},
       {:ua_inspector, "~> 3.0"},
       {:csv, "~> 2.3"},
-      {:poison, "~> 3.1.0"},
-      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
+      {:poison, "~> 5.0"},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:postgrex, "~> 0.21.1"},
+      {:scrivener, "~> 2.7.2"},
+      {:scrivener_ecto, "~> 3.1.0"}
     ]
   end
 

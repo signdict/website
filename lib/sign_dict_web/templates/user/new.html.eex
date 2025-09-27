@@ -6,7 +6,7 @@
       <%= gettext("We are happy that you want to help. Please enter your details below so that we can create your account.") %>
     </p>
 
-    <%= form_for @changeset, user_path(@conn, :create), [class: "user-form"], fn f -> %>
+    <%= form_for @changeset, Router.Helpers.user_path(@conn, :create), [class: "user-form"], fn f -> %>
       <%= if @changeset.action do %>
         <div class="sc-alert sc-alert--error">
           <%= gettext("Oops, something went wrong! Please check the errors below.") %>
@@ -43,12 +43,6 @@
           <%= gettext("user.want_newsletter") %>
         </label>
       </div>
-
-      <%= if Application.get_env(:sign_dict, :environment) != :test do %>
-        <%= raw Recaptcha.Template.display(hl: Gettext.get_locale(SignDictWeb.Gettext), noscript: true) %>
-      <% else %>
-        <input type="hidden" name="g-recaptcha-response" value="working" />
-      <% end %>
 
       <div class="sc-actions">
         <%= submit gettext("Register"), class: "sc-button" %>

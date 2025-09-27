@@ -23,7 +23,7 @@
 
 <%= if Canada.Can.can? @current_user, :edit, @list do %>
   <p>
-    <%= link gettext("Edit"), to: backend_list_path(@conn, :edit, @list), class: "c-button" %>
+    <%= link gettext("Edit"), to: Router.Helpers.backend_list_path(@conn, :edit, @list), class: "c-button" %>
   </p>
 <% end %>
 
@@ -46,7 +46,7 @@
           <%= entry.id %>
         </td>
         <td class="c-table__cell">
-          <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: backend_entry_path(@conn, :show, entry) %>
+          <%= link img_tag(entry.current_video.thumbnail_url, class: "o-image"), to: Router.Helpers.backend_entry_path(@conn, :show, entry) %>
         </td>
         <td class="c-table__cell">
           <%= list_entry.entry.text %>
@@ -55,19 +55,19 @@
           <%= if @list.sort_order == "manual" do %>
             <%= if position > 0 do %>
               <span>
-                <%= link "▲", to: backend_list_list_entry_path(@conn, :move_up, @list, list_entry), method: :post, class: "c-button u-xsmall" %>
+                <%= link "▲", to: Router.Helpers.backend_list_list_entry_path(@conn, :move_up, @list, list_entry), method: :post, class: "c-button u-xsmall" %>
                 &nbsp;
               </span>
             <% end %>
             <%= if position < length(@list_entries) - 1 do %>
               <span>
-                <%= link "▼", to: backend_list_list_entry_path(@conn, :move_down, @list, list_entry), method: :post, class: "c-button u-xsmall " %>
+                <%= link "▼", to: Router.Helpers.backend_list_list_entry_path(@conn, :move_down, @list, list_entry), method: :post, class: "c-button u-xsmall " %>
                 &nbsp;
               </span>
             <% end %>
           <% end %>
           <span>
-            <%= link gettext("Delete"), to: backend_list_list_entry_path(@conn, :delete, @list, list_entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+            <%= link gettext("Delete"), to: Router.Helpers.backend_list_list_entry_path(@conn, :delete, @list, list_entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
           </span>
         </td>
       </tr>
@@ -77,7 +77,7 @@
 
 <div class="o-container--small">
   <div class="st-margin-top st-margin-bottom">
-    <%= form_for SignDict.ListEntry.changeset(%SignDict.ListEntry{}), backend_list_list_entry_path(@conn, :create, @list) , fn f -> %>
+    <%= form_for SignDict.ListEntry.changeset(%SignDict.ListEntry{}), Router.Helpers.backend_list_list_entry_path(@conn, :create, @list) , fn f -> %>
       <div class="o-grid">
         <div class="o-grid__cell o-grid__cell--width-60">
           <%= label f, :entry_id, gettext("Entry"), class: "c-label" %>

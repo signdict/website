@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.UserController do
   use SignDictWeb, :controller
+
   alias SignDict.User
   alias SignDict.Video
 
@@ -22,7 +23,7 @@ defmodule SignDictWeb.Backend.UserController do
       {:ok, _user} ->
         conn
         |> put_flash(:info, gettext("User created successfully."))
-        |> redirect(to: backend_user_path(conn, :index))
+        |> redirect(to: Router.Helpers.backend_user_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -55,7 +56,7 @@ defmodule SignDictWeb.Backend.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, gettext("User updated successfully."))
-        |> redirect(to: backend_user_path(conn, :show, user))
+        |> redirect(to: Router.Helpers.backend_user_path(conn, :show, user))
 
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
@@ -67,7 +68,7 @@ defmodule SignDictWeb.Backend.UserController do
 
     conn
     |> put_flash(:info, gettext("User deleted successfully."))
-    |> redirect(to: backend_user_path(conn, :index))
+    |> redirect(to: Router.Helpers.backend_user_path(conn, :index))
   end
 
   defp load_user_list(conn, params) do

@@ -2,6 +2,7 @@ defmodule SignDictWeb.FeelingLuckyController do
   @moduledoc """
   """
   use SignDictWeb, :controller
+  
 
   alias SignDict.Entry
 
@@ -9,7 +10,7 @@ defmodule SignDictWeb.FeelingLuckyController do
     entry = load_entry(conn.host)
 
     if entry != nil do
-      redirect(conn, to: entry_path(conn, :show, entry))
+      redirect(conn, to: Router.Helpers.entry_path(conn, :show, entry))
     else
       redirect(conn, to: "/")
     end

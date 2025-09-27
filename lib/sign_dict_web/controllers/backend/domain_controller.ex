@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.DomainController do
   use SignDictWeb, :controller
+
   alias SignDict.Domain
   alias SignDict.Entry
 
@@ -22,7 +23,7 @@ defmodule SignDictWeb.Backend.DomainController do
       {:ok, _domain} ->
         conn
         |> put_flash(:info, gettext("Domain created successfully."))
-        |> redirect(to: backend_domain_path(conn, :index))
+        |> redirect(to: Router.Helpers.backend_domain_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -57,7 +58,7 @@ defmodule SignDictWeb.Backend.DomainController do
       {:ok, domain} ->
         conn
         |> put_flash(:info, gettext("Domain updated successfully."))
-        |> redirect(to: backend_domain_path(conn, :show, domain))
+        |> redirect(to: Router.Helpers.backend_domain_path(conn, :show, domain))
 
       {:error, changeset} ->
         render(conn, "edit.html", domain: domain, changeset: changeset)
@@ -69,7 +70,7 @@ defmodule SignDictWeb.Backend.DomainController do
 
     conn
     |> put_flash(:info, gettext("Domain deleted successfully."))
-    |> redirect(to: backend_domain_path(conn, :index))
+    |> redirect(to: Router.Helpers.backend_domain_path(conn, :index))
   end
 
   defp load_domain_list(conn, params) do

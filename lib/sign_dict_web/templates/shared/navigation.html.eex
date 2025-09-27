@@ -24,12 +24,12 @@
         <%= if @current_user do %>
           <%= if Canada.Can.can? @current_user, :show_backend, %{} do %>
             <li>
-              <%= link "Admin", to: backend_dashboard_path(@conn, :index), data: [turbolinks: "false"] %>
+              <%= link "Admin", to: Router.Helpers.backend_dashboard_path(@conn, :index), data: [turbolinks: "false"] %>
             </li>
           <% end %>
 
           <li>
-            <%= form_tag(session_path(@conn, :delete, @current_user), method: :delete) %>
+            <%= form_tag(Router.Helpers.session_path(@conn, :delete, @current_user), method: :delete) %>
               <input type="submit" value="<%= gettext("Sign out") %>" class='sc-link so-navigation__menu-item--logout' />
             </form>
           </li>
@@ -43,16 +43,16 @@
           </li>
 
           <li class="so-navigation__menu-item--user">
-            <a href="<%= user_path(@conn, :show, @current_user) %>"><%= img_tag SignDict.User.avatar_url(@current_user), alt: gettext("The avatar image of this user"), class: "so-navigation__user-avatar" %><span class="so-navigation__user-name"><%= @current_user.name %></span></a>
+            <a href="<%= Router.Helpers.user_path(@conn, :show, @current_user) %>"><%= img_tag SignDict.User.avatar_url(@current_user), alt: gettext("The avatar image of this user"), class: "so-navigation__user-avatar" %><span class="so-navigation__user-name"><%= @current_user.name %></span></a>
           </li>
 
         <% else %>
           <li>
-            <%= link gettext("Register"), to: user_path(@conn, :new) %>
+            <%= link gettext("Register"), to: Router.Helpers.user_path(@conn, :new) %>
           </li>
 
           <li>
-            <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+            <%= link gettext("Sign in"), to: Router.Helpers.session_path(@conn, :new) %>
           </li>
 
           <li>

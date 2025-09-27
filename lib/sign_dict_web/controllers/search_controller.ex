@@ -1,5 +1,6 @@
 defmodule SignDictWeb.SearchController do
   use SignDictWeb, :controller
+  
 
   alias SignDict.Entry
 
@@ -17,7 +18,7 @@ defmodule SignDictWeb.SearchController do
       end
 
     if perfect_match?(params["q"], result.entries) do
-      redirect(conn, to: entry_path(conn, :show, List.first(result.entries)))
+      redirect(conn, to: Router.Helpers.entry_path(conn, :show, List.first(result.entries)))
     else
       render(
         conn,

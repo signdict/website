@@ -22,14 +22,14 @@ defmodule SignDictWeb.GuardianErrorHandler do
   def auth_error(conn, {:unauthenticated, _reason}, _opts) do
     conn
     |> put_flash(:error, gettext("Authentication required"))
-    |> redirect(to: session_path(conn, :new))
+    |> redirect(to: Router.Helpers.session_path(conn, :new))
     |> halt
   end
 
   def auth_error(conn, {:already_authenticated, _reason}, _opts) do
     conn
     |> put_flash(:error, gettext("Already authenticated"))
-    |> redirect(to: session_path(conn, :new))
+    |> redirect(to: Router.Helpers.session_path(conn, :new))
     |> halt
   end
 

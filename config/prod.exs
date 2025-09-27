@@ -79,9 +79,6 @@ config :bugsnag,
   use_logger: true,
   api_key: System.get_env("BUGSNAG_API_KEY")
 
-config :sign_dict, :newsletter, subscriber: ExChimp.List
-config :ex_chimp, api_key: System.get_env("MAILCHIMP_API_KEY")
-
 config :sign_dict, SignDictWeb.Mailer,
   adapter: Bamboo.SMTPAdapter,
   server: "smtp.mailbox.org",
@@ -101,10 +98,6 @@ config :sign_dict, :wps_importer,
   domain: System.get_env("WPS_IMPORT_DOMAIN")
 
 config :sign_dict, :wps_sign_importer, url: System.get_env("WPS_SIGN_IMPORT_ROOM")
-
-config :recaptcha,
-  public_key: {:system, "RECAPTCHA_PUBLIC_KEY"},
-  secret: {:system, "RECAPTCHA_PRIVATE_KEY"}
 
 config :ua_inspector,
   database_path: System.get_env("UA_INSPECTOR_PATH")

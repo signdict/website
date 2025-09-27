@@ -2,6 +2,7 @@ defmodule SignDictWeb.SuggestionController do
   @moduledoc """
   """
   use SignDictWeb, :controller
+  
 
   alias SignDict.Domain
   alias SignDict.Suggestions
@@ -23,7 +24,7 @@ defmodule SignDictWeb.SuggestionController do
       {:ok, _suggestion} ->
         conn
         |> put_flash(:info, gettext("Thanks for suggesting a new entry."))
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: Router.Helpers.page_path(conn, :index))
 
       {:error, changeset} ->
         conn

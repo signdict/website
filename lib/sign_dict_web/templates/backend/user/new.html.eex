@@ -1,4 +1,4 @@
 <h1 class="c-heading"><%= gettext("New user") %></h1>
 
 <%= render "form.html", changeset: @changeset,
-                        action: backend_user_path(@conn, :create) %>
+                        action: Router.Helpers.backend_user_path(@conn, :create) %>

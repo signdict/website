@@ -36,7 +36,7 @@ defmodule SignDictWeb do
 
       import Canary.Plugs
 
-      import SignDictWeb.Router.Helpers
+      alias SignDictWeb.Router
       import SignDictWeb.Gettext
       import SignDictWeb.Helpers.LayoutHelper
     end
@@ -55,9 +55,11 @@ defmodule SignDictWeb do
         ]
 
       # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+      use PhoenixHTMLHelpers
 
-      import SignDictWeb.Router.Helpers
+      alias SignDictWeb.Router
       import SignDictWeb.ErrorHelpers
       import SignDictWeb.BlazeHelpers
       import SignDictWeb.Gettext
@@ -68,7 +70,7 @@ defmodule SignDictWeb do
 
   def router do
     quote do
-      use Phoenix.Router
+      use Phoenix.Router, helpers: true
     end
   end
 

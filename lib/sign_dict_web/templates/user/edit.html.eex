@@ -1,6 +1,6 @@
 <div class="o-grid">
   <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
-    <%= form_for @changeset, user_path(@conn, :update, @user), [class: "user-form", multipart: true], fn f -> %>
+    <%= form_for @changeset, Router.Helpers.user_path(@conn, :update, @user), [class: "user-form", multipart: true], fn f -> %>
       <%= if @changeset.action do %>
         <div class="sc-alert sc-alert--error">
           <%= gettext("Oops, something went wrong! Please check the errors below.") %>

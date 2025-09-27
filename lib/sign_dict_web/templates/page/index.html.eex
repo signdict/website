@@ -14,7 +14,7 @@
           </p>
           <p class='so-landing--banner--stats'>
             <%= raw(gettext("<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users.",
-                  signs: @sign_count, link: entry_path(@conn, :index)
+                  signs: @sign_count, link: Router.Helpers.entry_path(@conn, :index)
              )) %>
           </p>
         </div>

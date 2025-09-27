@@ -14,7 +14,7 @@ defmodule SignDict.FeelingLuckyControllerTest do
         |> Entry.update_current_video()
 
       conn = get(conn, feeling_lucky_path(conn, :index))
-      assert redirected_to(conn) == entry_path(conn, :show, entry)
+      assert redirected_to(conn) == Routes.entry_path(conn, :show, entry)
     end
 
     test "it returns nil if no entry is present", %{conn: conn} do

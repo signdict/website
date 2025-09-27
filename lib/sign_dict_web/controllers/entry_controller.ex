@@ -2,6 +2,7 @@ defmodule SignDictWeb.EntryController do
   @moduledoc """
   """
   use SignDictWeb, :controller
+  
 
   alias SignDict.Domain
   alias SignDict.Entry
@@ -9,7 +10,7 @@ defmodule SignDictWeb.EntryController do
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
   alias SignDict.Video
-  alias SignDictWeb.Router.Helpers
+  alias SignDictWeb.Router.Helpers.Helpers
 
   def index(conn, params) do
     letter = params["letter"] || "A"
@@ -81,7 +82,7 @@ defmodule SignDictWeb.EntryController do
     entry = Entry.find_by_changeset(changeset)
 
     if entry do
-      redirect(conn, to: recorder_path(conn, :index, entry.id))
+      redirect(conn, to: Router.Helpers.recorder_path(conn, :index, entry.id))
     else
       create_entry(conn, changeset)
     end
@@ -91,7 +92,7 @@ defmodule SignDictWeb.EntryController do
     case Repo.insert(changeset) do
       {:ok, entry} ->
         conn
-        |> redirect(to: recorder_path(conn, :index, entry.id))
+        |> redirect(to: Router.Helpers.recorder_path(conn, :index, entry.id))
 
       {:error, changeset} ->
         languages = Repo.all(Language)
@@ -112,7 +113,7 @@ defmodule SignDictWeb.EntryController do
   defp render_entry(%{conn: conn, entry: entry, video: video})
        when is_nil(video) and not is_nil(entry) do
     conn
-    |> redirect(to: entry_path(conn, :show, entry))
+    |> redirect(to: Router.Helpers.entry_path(conn, :show, entry))
   end
 
   defp render_entry(%{
@@ -160,7 +161,7 @@ defmodule SignDictWeb.EntryController do
       |> String.replace("-", " ")
 
     conn
-    |> redirect(to: search_path(conn, :index, q: query))
+    |> redirect(to: Router.Helpers.search_path(conn, :index, q: query))
   end
 
   defp add_lists_for_entry(%{entry: entry} = params) when is_nil(entry) do

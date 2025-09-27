@@ -7,4 +7,4 @@
 <%= render "form.html", changeset: @changeset,
                         languages: @languages,
                         text: @text,
-                        action: entry_path(@conn, :create) %>
+                        action: Router.Helpers.entry_path(@conn, :create) %>

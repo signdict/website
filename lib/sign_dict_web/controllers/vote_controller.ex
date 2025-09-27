@@ -1,5 +1,6 @@
 defmodule SignDictWeb.VoteController do
   use SignDictWeb, :controller
+  
 
   plug Guardian.Plug.EnsureAuthenticated, error_handler: SignDictWeb.GuardianErrorHandler
 
@@ -13,12 +14,12 @@ defmodule SignDictWeb.VoteController do
       {:ok, _vote} ->
         conn
         |> put_flash(:info, gettext("Thanks for voting!"))
-        |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+        |> redirect(to: Router.Helpers.entry_video_path(conn, :show, video.entry, video))
 
       {:error, _changeset} ->
         conn
         |> put_flash(:error, gettext("Sadly your voting failed."))
-        |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+        |> redirect(to: Router.Helpers.entry_video_path(conn, :show, video.entry, video))
     end
   end
 
@@ -29,6 +30,6 @@ defmodule SignDictWeb.VoteController do
 
     conn
     |> put_flash(:info, gettext("You vote was reverted successfully"))
-    |> redirect(to: entry_video_path(conn, :show, video.entry, video))
+    |> redirect(to: Router.Helpers.entry_video_path(conn, :show, video.entry, video))
   end
 end

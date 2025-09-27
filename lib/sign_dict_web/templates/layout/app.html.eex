@@ -34,7 +34,7 @@
 
     <div class="sc-main o-container o-container--medium">
       <main role="main">
-        <%= render @view_module, @view_template, assigns %>
+        <%= @inner_content %>
       </main>
     </div>
 

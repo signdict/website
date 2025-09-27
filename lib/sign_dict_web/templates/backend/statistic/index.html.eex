@@ -5,5 +5,5 @@
 <p><%= gettext("This will include all suggestions made by users.") %></p>
 
 <p>
-  <%= link gettext("Download CSV"), to: backend_csv_export_suggestions_path(@conn, :show), class: "c-button", download: "statistic_suggestions.csv" %>
+  <%= link gettext("Download CSV"), to: Router.Helpers.backend_csv_export_suggestions_path(@conn, :show), class: "c-button", download: "statistic_suggestions.csv" %>
 </p>

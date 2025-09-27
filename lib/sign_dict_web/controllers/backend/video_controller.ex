@@ -35,7 +35,7 @@ defmodule SignDictWeb.Backend.VideoController do
       {:ok, _video} ->
         conn
         |> put_flash(:info, "Video created successfully.")
-        |> redirect(to: backend_entry_path(conn, :show, entry_id))
+        |> redirect(to: Router.Helpers.backend_entry_path(conn, :show, entry_id))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset, entry_id: entry_id)
@@ -62,7 +62,7 @@ defmodule SignDictWeb.Backend.VideoController do
 
         conn
         |> put_flash(:info, "Video updated successfully.")
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video))
+        |> redirect(to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video))
 
       {:error, changeset} ->
         render(conn, "edit.html", video: video, changeset: changeset, entry_id: entry_id)
@@ -76,6 +76,6 @@ defmodule SignDictWeb.Backend.VideoController do
 
     conn
     |> put_flash(:info, "Video deleted successfully.")
-    |> redirect(to: backend_video_path(conn, :index))
+    |> redirect(to: Router.Helpers.backend_video_path(conn, :index))
   end
 end

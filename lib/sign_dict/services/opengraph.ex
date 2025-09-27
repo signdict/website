@@ -32,7 +32,6 @@ end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
   import SignDictWeb.Gettext
-  import SignDictWeb.Router.Helpers
 
   def to_metadata(entry, video) do
     %{
@@ -49,7 +48,8 @@ defimpl SignDict.Services.OpenGraph, for: SignDict.Entry do
       "twitter:site" => "@SignDict",
       "twitter:description" => description(entry, video),
       "twitter:image" => video.thumbnail_url,
-      "twitter:player" => secure_url(embed_video_url(SignDictWeb.Endpoint, :show, entry, video)),
+      "twitter:player" =>
+        secure_url(Router.Helpers.embed_video_url(SignDictWeb.Endpoint, :show, entry, video)),
       "twitter:player:width" => 480,
       "twitter:player:height" => 350
     }

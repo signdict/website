@@ -4,7 +4,7 @@
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell">
           <h1 class="so-footer--sponsorheader">
-            <%= link gettext("Supporter"), to: page_path(@conn, :supporter) %>
+            <%= link gettext("Supporter"), to: Router.Helpers.page_path(@conn, :supporter) %>
           </h1>
           <p>
             <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.svg" alt="<%= gettext("Logo Wishlephant") %>"/></a>
@@ -17,7 +17,7 @@
                 ), to: "https://github.com/users/bitboxer/sponsorship" %>
           </p>
           <p class="so-footer--sponsorabout">
-            <%= link gettext("The complete list of supporters."), to: page_path(@conn, :supporter) %>
+            <%= link gettext("The complete list of supporters."), to: Router.Helpers.page_path(@conn, :supporter) %>
           </p>
         </div>
       </div>
