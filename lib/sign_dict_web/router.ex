@@ -66,10 +66,6 @@ defmodule SignDictWeb.Router do
     resources "/users", UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/list", ListController, only: [:show]
-    resources "/suggestion", SuggestionController, only: [:index, :create]
-
-    get "/recorder/:entry_id", RecorderController, :index
-    get "/recorder/new/:entry_id", RecorderController, :new
 
     get "/email_confirmation", EmailConfirmationController, :update
 

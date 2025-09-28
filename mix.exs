@@ -71,7 +71,6 @@ defmodule SignDict.Mixfile do
       {:exq, "~> 0.21"},
       {:gettext, "~> 0.13"},
       {:guardian, "~> 2.2.0"},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.13"},
       {:phoenix_html, "~> 4.0"},
@@ -96,7 +95,8 @@ defmodule SignDict.Mixfile do
       {:postgrex, "~> 0.21.1"},
       {:scrivener, "~> 2.7.2"},
       {:scrivener_html, git: "https://github.com/getdizzie/scrivener_html"},
-      {:scrivener_ecto, "~> 3.1.0"}
+      {:scrivener_ecto, "~> 3.1.0"},
+      {:mix_test_interactive, "~> 5.0", only: :dev, runtime: false}
     ]
   end
 

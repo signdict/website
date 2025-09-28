@@ -1,7 +1,0 @@
-<noscript>
-  <p class="sc-alert sc-alert--success" role="alert">
-    <%= gettext("You need to enable Javascript for this to work.") %>
-  </p>
-</noscript>
-
-<%= link gettext("Record new sign"), to: Router.Helpers.recorder_path(@conn, :new, @entry.id), class: "sc-button sc-button--small", data: [turbolinks: "false"] %>

@@ -3,8 +3,8 @@ default: start
 start:
 	mix phx.server
 
-run-test:
-		mix test.watch
+test:
+		mix test.interactive
 
 check:
 		mix check
