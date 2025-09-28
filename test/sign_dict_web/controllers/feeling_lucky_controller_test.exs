@@ -13,12 +13,12 @@ defmodule SignDict.FeelingLuckyControllerTest do
         insert(:entry_with_videos)
         |> Entry.update_current_video()
 
-      conn = get(conn, feeling_lucky_path(conn, :index))
-      assert redirected_to(conn) == Routes.entry_path(conn, :show, entry)
+      conn = get(conn, SignDictWeb.Router.Helpers.feeling_lucky_path(conn, :index))
+      assert redirected_to(conn) == SignDictWeb.Router.Helpers.entry_path(conn, :show, entry)
     end
 
     test "it returns nil if no entry is present", %{conn: conn} do
-      conn = get(conn, feeling_lucky_path(conn, :index))
+      conn = get(conn, SignDictWeb.Router.Helpers.feeling_lucky_path(conn, :index))
       assert redirected_to(conn) == "/"
     end
 
@@ -26,7 +26,7 @@ defmodule SignDict.FeelingLuckyControllerTest do
       domain = insert(:domain, domain: "example.com")
       insert(:entry_with_current_video, text: "Apple", domains: [domain])
 
-      conn = get(conn, feeling_lucky_path(conn, :index))
+      conn = get(conn, SignDictWeb.Router.Helpers.feeling_lucky_path(conn, :index))
       assert redirected_to(conn) == "/"
     end
   end
