@@ -15,15 +15,15 @@ defmodule SignDictWeb.Backend.ListControllerTest do
   }
 
   test "it redirects when no user logged in", %{conn: conn} do
-    conn = get(conn, backend_list_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
+    conn = get(conn, SignDictWeb.Router.Helpers.backend_list_path(conn, :index))
+    assert redirected_to(conn) == SignDictWeb.Router.Helpers.session_path(conn, :new)
   end
 
   test "it redirects when non admin user logged in", %{conn: conn} do
     conn =
       conn
       |> guardian_login(insert(:user))
-      |> get(backend_list_path(conn, :index))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :index))
 
     assert redirected_to(conn, 302) == "/"
   end
@@ -32,7 +32,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_list_path(conn, :index))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :index))
 
     assert html_response(conn, 200) =~ "Listing lists"
   end
@@ -41,7 +41,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_list_path(conn, :new))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :new))
 
     assert html_response(conn, 200) =~ "New list"
   end
@@ -50,9 +50,9 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_list_path(conn, :create), list: @valid_attrs)
+      |> post(SignDictWeb.Router.Helpers.backend_list_path(conn, :create), list: @valid_attrs)
 
-    assert redirected_to(conn) == backend_list_path(conn, :index)
+    assert redirected_to(conn) == SignDictWeb.Router.Helpers.backend_list_path(conn, :index)
     assert Repo.get_by(List, name: "some content")
   end
 
@@ -60,7 +60,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_list_path(conn, :create), list: @invalid_attrs)
+      |> post(SignDictWeb.Router.Helpers.backend_list_path(conn, :create), list: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "New list"
   end
@@ -71,7 +71,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_list_path(conn, :show, list))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :show, list))
 
     assert html_response(conn, 200) =~ "List"
   end
@@ -80,7 +80,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_list_path(conn, :show, 999_999))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :show, 999_999))
 
     assert conn.status == 404
   end
@@ -91,7 +91,7 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_list_path(conn, :edit, list))
+      |> get(SignDictWeb.Router.Helpers.backend_list_path(conn, :edit, list))
 
     assert html_response(conn, 200) =~ "Edit list"
   end
@@ -102,9 +102,17 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_list_path(conn, :update, list), list: @valid_attrs)
+      |> put(SignDictWeb.Router.Helpers.backend_list_path(conn, :update, list),
+        list: @valid_attrs
+      )
 
-    assert redirected_to(conn) == backend_list_path(conn, :show, Repo.get(SignDict.List, list.id))
+    assert redirected_to(conn) ==
+             SignDictWeb.Router.Helpers.backend_list_path(
+               conn,
+               :show,
+               Repo.get(SignDict.List, list.id)
+             )
+
     assert Repo.get_by(List, name: "some content")
   end
 
@@ -114,7 +122,9 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_list_path(conn, :update, list), list: @invalid_attrs)
+      |> put(SignDictWeb.Router.Helpers.backend_list_path(conn, :update, list),
+        list: @invalid_attrs
+      )
 
     assert html_response(conn, 200) =~ "Edit list"
   end
@@ -125,9 +135,9 @@ defmodule SignDictWeb.Backend.ListControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(backend_list_path(conn, :delete, list))
+      |> delete(SignDictWeb.Router.Helpers.backend_list_path(conn, :delete, list))
 
-    assert redirected_to(conn) == backend_list_path(conn, :index)
+    assert redirected_to(conn) == SignDictWeb.Router.Helpers.backend_list_path(conn, :index)
     refute Repo.get(List, list.id)
   end
 end

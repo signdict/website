@@ -16,7 +16,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> get(backend_review_path(conn, :index))
+        |> get(SignDictWeb.Router.Helpers.backend_review_path(conn, :index))
 
       assert html_response(conn, 200)
       assert [video.id] == Enum.map(conn.assigns.videos.entries, fn x -> x.id end)
@@ -30,10 +30,10 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> post(backend_review_path(conn, :approve_video, video.id))
+        |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
 
       assert redirected_to(conn) ==
-               backend_Routes.entry_video_path(conn, :show, video.entry_id, video.id)
+               SignDictWeb.Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
 
       assert get_flash(conn, :info) == "Video approved"
       assert Repo.get(Video, video.id).state == "published"
@@ -44,7 +44,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       conn
       |> guardian_login(insert(:editor_user))
-      |> post(backend_review_path(conn, :approve_video, video.id))
+      |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
 
       entry = Repo.get(Entry, video.entry_id)
       assert entry.current_video_id == video.id
@@ -56,10 +56,10 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> post(backend_review_path(conn, :approve_video, video.id))
+        |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
 
       assert redirected_to(conn) ==
-               backend_Routes.entry_video_path(conn, :show, video.entry_id, video.id)
+               SignDictWeb.Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
 
       assert get_flash(conn, :error) == "Video could not be approved"
       assert Repo.get(Video, video.id).state == "uploaded"
@@ -70,7 +70,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       conn
       |> guardian_login(insert(:editor_user))
-      |> post(backend_review_path(conn, :approve_video, video.id))
+      |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
 
       assert_email_delivered_with(
         subject: "Your video was approved :)",
@@ -84,7 +84,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       conn
       |> guardian_login(insert(:editor_user))
-      |> post(backend_review_path(conn, :approve_video, video.id))
+      |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
 
       assert_email_delivered_with(
         subject: "Dein Video wurde freigegeben :)",
@@ -100,12 +100,12 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> put(backend_review_path(conn, :reject_video, video.id), %{
+        |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
           video: %{rejection_reason: "wrong sign"}
         })
 
       assert redirected_to(conn) ==
-               backend_Routes.entry_video_path(conn, :show, video.entry_id, video.id)
+               SignDictWeb.Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
 
       assert get_flash(conn, :info) == "Video rejected"
       video = Repo.get(Video, video.id)
@@ -119,12 +119,12 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> put(backend_review_path(conn, :reject_video, video.id), %{
+        |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
           video: %{rejection_reason: "wrong sign"}
         })
 
       assert redirected_to(conn) ==
-               backend_Routes.entry_video_path(conn, :show, video.entry_id, video.id)
+               SignDictWeb.Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
 
       assert get_flash(conn, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
@@ -136,12 +136,12 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
       conn =
         conn
         |> guardian_login(insert(:editor_user))
-        |> put(backend_review_path(conn, :reject_video, video.id), %{
+        |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
           video: %{rejection_reason: ""}
         })
 
       assert redirected_to(conn) ==
-               backend_Routes.entry_video_path(conn, :show, video.entry_id, video.id)
+               SignDictWeb.Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
 
       assert get_flash(conn, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
@@ -152,7 +152,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       conn
       |> guardian_login(insert(:editor_user))
-      |> put(backend_review_path(conn, :reject_video, video.id), %{
+      |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
         video: %{rejection_reason: "wrong sign"}
       })
 
@@ -168,7 +168,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       conn
       |> guardian_login(insert(:editor_user))
-      |> put(backend_review_path(conn, :reject_video, video.id), %{
+      |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
         video: %{rejection_reason: "wrong sign"}
       })
 

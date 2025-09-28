@@ -15,7 +15,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       conn =
         conn
         |> get(
-          email_confirmation_path(
+          SignDictWeb.Router.Helpers.email_confirmation_path(
             conn,
             :update,
             email: "notfound@example.com",
@@ -37,7 +37,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       conn =
         conn
         |> get(
-          email_confirmation_path(
+          SignDictWeb.Router.Helpers.email_confirmation_path(
             conn,
             :update,
             email: "confirm-2@example.com",
@@ -61,7 +61,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       conn =
         conn
         |> get(
-          email_confirmation_path(
+          SignDictWeb.Router.Helpers.email_confirmation_path(
             conn,
             :update,
             email: "confirm-3@example.com",
@@ -84,7 +84,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
       conn =
         conn
         |> get(
-          email_confirmation_path(
+          SignDictWeb.Router.Helpers.email_confirmation_path(
             conn,
             :update,
             email: "confirm-3@example.com",

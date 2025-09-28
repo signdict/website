@@ -7,7 +7,7 @@ defmodule SignDictWeb.Api.CurrentUserControllerTest do
 
   describe "show/2" do
     test "renders an empty hash if user is not logged in", %{conn: conn} do
-      conn = get(conn, api_current_user_path(conn, :show))
+      conn = get(conn, SignDictWeb.Router.Helpers.api_current_user_path(conn, :show))
       body = json_response(conn, 200)
       assert body == %{}
     end
@@ -18,7 +18,7 @@ defmodule SignDictWeb.Api.CurrentUserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> get(api_current_user_path(conn, :show))
+        |> get(SignDictWeb.Router.Helpers.api_current_user_path(conn, :show))
 
       body = json_response(conn, 200)
 
