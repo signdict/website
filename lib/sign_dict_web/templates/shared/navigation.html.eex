@@ -48,14 +48,6 @@
 
         <% else %>
           <li>
-            <%= link gettext("Register"), to: Router.Helpers.user_path(@conn, :new) %>
-          </li>
-
-          <li>
-            <%= link gettext("Sign in"), to: Router.Helpers.session_path(@conn, :new) %>
-          </li>
-
-          <li>
             <%= if Gettext.get_locale(SignDictWeb.Gettext) == "de" do %>
               <a href="?locale=en" data-turbolinks="false">English</a>
             <% else %>

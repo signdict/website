@@ -8,7 +8,6 @@
           </h1>
           <p>
             <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.svg" alt="<%= gettext("Logo Wishlephant") %>"/></a>
-            <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
             <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
           </p>
           <p class="so-footer--sponsorabout">

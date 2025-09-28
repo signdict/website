@@ -22,17 +22,6 @@
 
       <div class="o-grid o-grid--wrap so-supporter-box">
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
-          <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
-        </div>
-        <div class="o-grid__cell">
-          <p>
-            <%= gettext("supporter_rrbone") %>
-          </p>
-        </div>
-      </div>
-
-      <div class="o-grid o-grid--wrap so-supporter-box">
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
           <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
         </div>
         <div class="o-grid__cell">

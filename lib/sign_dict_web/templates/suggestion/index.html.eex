@@ -7,22 +7,14 @@
       <h1><%= gettext("Suggest a new word!") %></h1>
 
       <p>
-        <%= gettext("SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:")%>
-      </p>
-
-      <h2>
-        <%= gettext("Add the video yourself")%>
-      </h2>
-
-      <p>
-        <%= raw gettext("You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>.", login_url: Router.Helpers.entry_path(@conn, :new, text: @conn.params["word"])) %>
+        <%= gettext("SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great!")%>
       </p>
 
       <h2>
         <%= gettext("Suggest the word")%>
-      </h2>
+      </h2> 
 
-      <p><%= gettext("You cannot sign the word? No problem, just add it here and someone will sign it for you:")%></p>
+      <p><%= gettext("Just add it here and someone will sign it for you:")%></p>
 
       <%= form_for @changeset, Router.Helpers.suggestion_path(@conn, :create), fn f -> %>
         <%= if @changeset.action do %>

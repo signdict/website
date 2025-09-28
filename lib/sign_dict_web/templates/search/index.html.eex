@@ -39,14 +39,3 @@
   </div>
 <% end %>
 
-
-<div class="o-grid o-grid--wrap">
-  <div class="o-grid__cell">
-    <p>
-      <%= gettext("Missing an entry? Do you know how to sign it? Please add that sign using your webcam.") %>
-    </p>
-    <p>
-      <%= link gettext("Record a new entry"), to: Router.Helpers.suggestion_path(@conn, :index, word: @conn.params["q"]), class: "sc-button sc-button--small" %>
-    </p>
-  </div>
-</div>
