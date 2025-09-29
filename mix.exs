@@ -59,7 +59,7 @@ defmodule SignDict.Mixfile do
       {:bcrypt_elixir, "~> 3.0.0"},
       {:bootleg, "~> 0.7", runtime: false},
       {:bugsnag, "~> 3.0.0"},
-      {:plugsnag, "~> 1.6.0"},
+      {:plugsnag, "~> 1.7.2"},
       {:canary, "~> 1.1.0"},
       {:comeonin, "~> 5.3.1"},
       {:plug_cowboy, "~> 2.0"},
