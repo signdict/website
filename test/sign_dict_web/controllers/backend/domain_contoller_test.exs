@@ -21,7 +21,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:user))
-      |> get(backend_domain_path(conn, :index))
+      |> get(Helpers.backend_domain_path(conn, :index))
 
     assert redirected_to(conn, 302) == "/"
   end
@@ -30,7 +30,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_domain_path(conn, :index))
+      |> get(Helpers.backend_domain_path(conn, :index))
 
     assert html_response(conn, 200) =~ "Listing domains"
   end

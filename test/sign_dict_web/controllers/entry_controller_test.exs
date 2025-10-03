@@ -32,12 +32,12 @@ defmodule SignDict.EntryControllerTest do
 
     test "it redirects to search if the id could not be found", %{conn: conn} do
       conn = get(conn, Routes.entry_path(conn, :show, "99999-nach-hause"))
-      assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
+      assert redirected_to(conn) == Routes.search_path(conn, :index, q: "nach hause")
     end
 
     test "it redirect to the search if no number is in the id", %{conn: conn} do
       conn = get(conn, Routes.entry_path(conn, :show, "nach-hause"))
-      assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
+      assert redirected_to(conn) == Routes.search_path(conn, :index, q: "nach hause")
     end
 
     test "it redirect if the entry does not have any videos and no video id is given", %{

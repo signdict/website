@@ -27,7 +27,7 @@ defmodule SignDictWeb.ContactControllerTest do
       conn =
         conn
         |> post(
-          contact_path(
+          Helpers.contact_path(
             conn,
             :create,
             %{
@@ -51,7 +51,7 @@ defmodule SignDictWeb.ContactControllerTest do
         conn
         |> guardian_login(insert(:user))
         |> post(
-          contact_path(
+          Helpers.contact_path(
             conn,
             :create,
             %{

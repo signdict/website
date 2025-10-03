@@ -21,6 +21,7 @@ defmodule SignDict.ConnCase do
       use Phoenix.ConnTest
 
       alias SignDict.Repo
+      alias SignDictWeb.Router.Helpers
       import Ecto
       import Ecto.Changeset
       import Ecto.Query

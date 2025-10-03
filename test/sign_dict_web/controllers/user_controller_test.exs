@@ -15,7 +15,7 @@ defmodule SignDict.UserControllerTest do
 
   describe "new/2" do
     test "renders form for new resources", %{conn: conn} do
-      conn = get(conn, user_path(conn, :new))
+      conn = get(conn, Helpers.user_path(conn, :new))
       assert html_response(conn, 200) =~ "Email"
     end
   end
@@ -23,7 +23,7 @@ defmodule SignDict.UserControllerTest do
   describe "create/2" do
     test "creates a user with valid form data", %{conn: conn} do
       conn =
-        post(conn, user_path(conn, :create), %{
+        post(conn, Helpers.user_path(conn, :create), %{
           "user" => @valid_attrs,
           "g-recaptcha-response" => "working"
         })
@@ -34,7 +34,7 @@ defmodule SignDict.UserControllerTest do
 
     test "does not creates a user with valid form data and invalid recaptcha", %{conn: conn} do
       conn =
-        post(conn, user_path(conn, :create), %{
+        post(conn, Helpers.user_path(conn, :create), %{
           "user" => @valid_attrs,
           "g-recaptcha-response" => "wrong"
         })
@@ -45,7 +45,7 @@ defmodule SignDict.UserControllerTest do
 
     test "does not create resource and renders errors when data is invalid", %{conn: conn} do
       conn =
-        post(conn, user_path(conn, :create), %{
+        post(conn, Helpers.user_path(conn, :create), %{
           "user" => @invalid_attrs,
           "g-recaptcha-response" => "working"
         })
@@ -54,7 +54,7 @@ defmodule SignDict.UserControllerTest do
     end
 
     test "it sends an email to confirm the user email address", %{conn: conn} do
-      post(conn, user_path(conn, :create), %{
+      post(conn, Helpers.user_path(conn, :create), %{
         "user" => @valid_attrs,
         "g-recaptcha-response" => "working"
       })
@@ -68,7 +68,7 @@ defmodule SignDict.UserControllerTest do
     test "it does not register newsletter if user does not want it", %{conn: conn} do
       post(
         conn,
-        user_path(conn, :create),
+        Helpers.user_path(conn, :create),
         %{
           "user" => Map.merge(@valid_attrs, %{want_newsletter: false}),
           "g-recaptcha-response" => "working"
@@ -82,7 +82,7 @@ defmodule SignDict.UserControllerTest do
     test "it registers the user to the newsletter if wanted", %{conn: conn} do
       post(
         conn,
-        user_path(conn, :create),
+        Helpers.user_path(conn, :create),
         %{
           "user" => Map.merge(@valid_attrs, %{want_newsletter: true}),
           "g-recaptcha-response" => "working"
@@ -97,7 +97,7 @@ defmodule SignDict.UserControllerTest do
   describe "show/2" do
     test "it shows the user even if logged out", %{conn: conn} do
       user = insert(:user)
-      conn = get(conn, user_path(conn, :show, user))
+      conn = get(conn, Helpers.user_path(conn, :show, user))
       assert html_response(conn, 200) =~ user.name
     end
 
@@ -106,7 +106,7 @@ defmodule SignDict.UserControllerTest do
       video_a = insert(:video_with_entry)
       video_b = insert(:video_with_entry, %{user: video_a.user})
       _video_c = insert(:video_with_entry, %{user: video_a.user, state: "uploaded"})
-      conn = get(conn, user_path(conn, :show, video_a.user))
+      conn = get(conn, Helpers.user_path(conn, :show, video_a.user))
       assert html_response(conn, 200) =~ video_a.user.name
       assert conn.assigns.videos.total_entries == 2
 
@@ -118,7 +118,7 @@ defmodule SignDict.UserControllerTest do
       domain = insert(:domain, domain: "example.com")
       entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
 
-      conn = get(conn, user_path(conn, :show, entry.current_video.user))
+      conn = get(conn, Helpers.user_path(conn, :show, entry.current_video.user))
       assert html_response(conn, 200) =~ entry.current_video.user.name
 
       assert conn.assigns.videos.total_entries == 0
@@ -132,14 +132,14 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(insert(:user))
-        |> get(SignDictWeb.Router.Helpers.backend_video_path(conn, :index))
+        |> get(Helpers.backend_video_path(conn, :index))
 
       assert redirected_to(conn, 302) == "/"
     end
 
     test "it redirects if user is not logged in", %{conn: conn} do
       user = insert(:user)
-      conn = get(conn, user_path(conn, :edit, user))
+      conn = get(conn, Helpers.user_path(conn, :edit, user))
       assert redirected_to(conn, 302) == "/"
     end
 
@@ -149,7 +149,7 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> get(SignDictWeb.Router.Helpers.user_path(conn, :edit, user))
+        |> get(Helpers.user_path(conn, :edit, user))
 
       assert html_response(conn, 200) =~ "Email"
     end
@@ -195,7 +195,9 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: %{email: "invalidemail"})
+        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user),
+          user: %{email: "invalidemail"}
+        )
 
       assert html_response(conn, 200) =~ "Email"
     end
