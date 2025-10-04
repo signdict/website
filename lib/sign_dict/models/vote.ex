@@ -1,6 +1,6 @@
 defmodule SignDict.Vote do
   use SignDictWeb, :model
-  import SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias SignDict.Repo
   alias SignDict.Vote

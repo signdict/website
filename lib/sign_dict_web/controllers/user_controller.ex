@@ -19,7 +19,7 @@ defmodule SignDictWeb.UserController do
     )
   end
 
-  def create(conn, params = %{"user" => user_params}) do
+  def create(conn, %{"user" => user_params}) do
     do_create(conn, user_params)
   end
 

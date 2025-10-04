@@ -1,6 +1,4 @@
 defmodule SignDictWeb.BlazeHelpers do
-  import Phoenix.HTML
-  import Phoenix.HTML.Form
   use PhoenixHTMLHelpers
 
   def nav_active_class(conn, path) do

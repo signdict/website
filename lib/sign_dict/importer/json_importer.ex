@@ -92,6 +92,7 @@ defmodule SignDict.Importer.JsonImporter do
     from(
       entry in Entry,
       join: domain in Domain,
+      on: true,
       where:
         entry.language_id == ^language.id and entry.text == ^text and
           entry.description == ^description and domain.id == ^domain.id
@@ -102,6 +103,7 @@ defmodule SignDict.Importer.JsonImporter do
     from(
       entry in Entry,
       join: domain in Domain,
+      on: true,
       where:
         entry.language_id == ^language.id and entry.text == ^text and
           (entry.description == "" or is_nil(entry.description)) and domain.id == ^domain.id

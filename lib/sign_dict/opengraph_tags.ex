@@ -1,12 +1,11 @@
 defmodule SignDict.OpengraphTags do
-  require SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias SignDictWeb.Router.Helpers
   alias Phoenix.HTML
-  alias SignDictWeb.Gettext
 
   def ogtags(conn, default_title) do
-    description = Gettext.gettext("A sign language dictionary")
+    description = gettext("A sign language dictionary")
     image_url = Helpers.url(conn) <> "/images/logo.png"
 
     ogtags =

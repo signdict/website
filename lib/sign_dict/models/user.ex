@@ -1,14 +1,12 @@
 defmodule SignDict.User do
-  require SignDictWeb.Gettext
-
   import Exgravatar
 
   use SignDictWeb, :model
   use Waffle.Ecto.Schema
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias Ecto.Changeset
   alias SignDictWeb.Avatar
-  alias SignDictWeb.Gettext
   alias SignDict.Repo
   alias SignDict.User
 
@@ -102,7 +100,7 @@ defmodule SignDict.User do
   def confirm_email_change(changeset) do
     cond do
       email_already_used?(changeset) ->
-        add_error(changeset, :email, Gettext.gettext("already used"))
+        add_error(changeset, :email, gettext("already used"))
 
       changeset.valid? && Changeset.fetch_change(changeset, :email) != :error ->
         do_confirm_email_change(changeset)

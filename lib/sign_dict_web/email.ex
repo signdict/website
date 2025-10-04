@@ -1,7 +1,7 @@
 defmodule SignDictWeb.Email do
   use Bamboo.Phoenix, view: SignDictWeb.EmailView
 
-  import SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias SignDict.Entry
   alias SignDict.Repo

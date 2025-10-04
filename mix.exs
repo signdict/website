@@ -69,7 +69,7 @@ defmodule SignDict.Mixfile do
       {:exgravatar, "~> 2.0.0"},
       {:exq_ui, "~> 0.17"},
       {:exq, "~> 0.21"},
-      {:gettext, "~> 0.13"},
+      {:gettext, "~> 0.26"},
       {:guardian, "~> 2.4.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.13"},

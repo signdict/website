@@ -3,9 +3,7 @@ defmodule SignDictWeb.EntryController do
   """
   use SignDictWeb, :controller
 
-  alias SignDict.Domain
   alias SignDict.Entry
-  alias SignDict.Language
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
   alias SignDict.Video

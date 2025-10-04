@@ -93,9 +93,6 @@ defmodule SignDictWeb.Router do
     get "/privacy", PageController, :privacy
     get "/supporter", PageController, :supporter
 
-    get "/contact", ContactController, :new
-    post "/contact", ContactController, :create
-
     get "/", PageController, :index
   end
 

@@ -2,7 +2,7 @@
   <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
     <h1><%= gettext("Sign in") %></h1>
 
-    <%= form_for @conn, Router.Helpers.session_path(@conn, :create), [as: :session, class: 'login-form'], fn f -> %>
+    <%= form_for @conn, Router.Helpers.session_path(@conn, :create), [as: :session, class: "login-form"], fn f -> %>
       <div>
         <%= label f, :email, gettext("user.email"), class: "sc-label" %>
         <%= text_input f, :email, placeholder: gettext("user.email"), class: "sc-input" %>

@@ -1,5 +1,5 @@
 defmodule SignDictWeb.Helpers.DateHelper do
-  import SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   def relative_date(datetime, opts \\ []) do
     defaults = [past_text: "${time}", now: Timex.now()]
