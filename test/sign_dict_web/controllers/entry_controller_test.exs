@@ -1,9 +1,8 @@
-defmodule SignDict.EntryControllerTest do
+defmodule SignDictWeb.EntryControllerTest do
   use SignDict.ConnCase
 
   import SignDict.Factory
 
-  alias SignDict.Entry
   alias SignDict.Vote
   alias SignDict.Video
 

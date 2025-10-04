@@ -37,13 +37,6 @@
         <%= error_tag f, :password_confirmation %>
       </div>
 
-      <div>
-        <label class="sc-field sc-field--choice">
-          <%= checkbox f, :want_newsletter %>
-          <%= gettext("user.want_newsletter") %>
-        </label>
-      </div>
-
       <div class="sc-actions">
         <%= submit gettext("Register"), class: "sc-button" %>
       </div>

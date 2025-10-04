@@ -383,24 +383,6 @@ defmodule SignDict.UserTest do
     end
   end
 
-  describe "subscribe_to_newsletter/1" do
-    test "It subscribes to the newsletter with the email" do
-      user = insert(:user, email: "elisa@example.com", name: "user name")
-      User.subscribe_to_newsletter(user)
-
-      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com",
-                       %{"FULL_NAME" => "user name"}}
-    end
-
-    test "It subscribes to the newsletter with the unconfirmed_email if email is not present" do
-      user = insert(:user, email: nil, unconfirmed_email: "elisa@example.com", name: "user name")
-      User.subscribe_to_newsletter(user)
-
-      assert_received {:mock_chimp, "f96556b89f", "elisa@example.com",
-                       %{"FULL_NAME" => "user name"}}
-    end
-  end
-
   describe "Phoenix.Param" do
     test "it creates a nice permalink for the user" do
       assert Phoenix.Param.to_param(%User{id: 1, name: "My name is my castle!"}) ==

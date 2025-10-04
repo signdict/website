@@ -19,8 +19,6 @@ defmodule SignDict.User do
   schema "users" do
     field(:email, :string)
 
-    field(:want_newsletter, :boolean, virtual: true)
-
     field(:password, :string, virtual: true)
     field(:password_confirmation, :string, virtual: true)
     field(:password_hash, :string)
@@ -93,8 +91,7 @@ defmodule SignDict.User do
       :password,
       :password_confirmation,
       :name,
-      :biography,
-      :want_newsletter
+      :biography
     ])
     |> validate_required([:email, :name, :password, :password_confirmation])
     |> validate_email
@@ -265,12 +262,6 @@ defmodule SignDict.User do
   defp generate_token do
     unencrypted_token = SecureRandom.urlsafe_base64(32)
     {unencrypted_token, Bcrypt.hash_pwd_salt(unencrypted_token)}
-  end
-
-  def subscribe_to_newsletter(user) do
-    # @subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email, %{
-    #   "FULL_NAME" => user.name
-    # })
   end
 
   def has_flag?(user, _flag) when is_nil(user) do

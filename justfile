@@ -4,7 +4,7 @@ start:
 	mix phx.server
 
 test:
-		mix test.interactive
+		mix test.interactive --clear
 
 check:
 		mix check

@@ -29,7 +29,6 @@
             <li><a href='http://blog.signdict.org'><%= gettext("Blog") %></a></li>
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/privacy'><%= gettext("Privacy") %></a></li>
-            <li><a href='/contact'><%= gettext("Contact") %></a></li>
           </ul>
         </div>
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--center">

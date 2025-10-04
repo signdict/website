@@ -60,27 +60,5 @@ defmodule SignDictWeb.Api.RegisterControllerTest do
         to: [{"user name", "elisa-register@example.com"}]
       )
     end
-
-    test "it does not register newsletter if user does not want it", %{conn: conn} do
-      post(
-        conn,
-        SignDictWeb.Router.Helpers.api_register_path(conn, :create),
-        user: Map.merge(@valid_attrs, %{want_newsletter: false})
-      )
-
-      refute_received {:mock_chimp, "f96556b89f", "elisa-register@example.com",
-                       %{"FULL_NAME" => "user name"}}
-    end
-
-    test "it registers the user to the newsletter if wanted", %{conn: conn} do
-      post(
-        conn,
-        SignDictWeb.Router.Helpers.api_register_path(conn, :create),
-        user: Map.merge(@valid_attrs, %{want_newsletter: true})
-      )
-
-      assert_received {:mock_chimp, "f96556b89f", "elisa-register@example.com",
-                       %{"FULL_NAME" => "user name"}}
-    end
   end
 end
