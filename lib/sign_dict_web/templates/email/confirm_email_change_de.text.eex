@@ -4,6 +4,6 @@ jemand hat versucht, die Email-Adresse deines Accounts bei SignDict auf
 diese Adresse zu ändern. Bitte klicke auf den unten stehenden Link um
 dies zu bestätigen:
 
-<%=  Router.Helpers.email.confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
+<%= SignDictWeb.Router.Helpers.email_confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
 
 Danke schön!

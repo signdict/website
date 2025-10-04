@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <%= link "Email-Adresse bestätigen", to:  Router.Helpers.email.confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, confirmation_token: @user.confirmation_token_unencrypted) %>
+  <%= link "Email-Adresse bestätigen", to: SignDictWeb.Router.Helpers.email_confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, confirmation_token: @user.confirmation_token_unencrypted) %>
 </p>
 
 <p>

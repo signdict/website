@@ -16,7 +16,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
   }
 
   test "it redirects when no language logged in", %{conn: conn} do
-    conn = get(conn, Helpers.backend_lanuage_path(conn, :index))
+    conn = get(conn, Helpers.backend_language_path(conn, :index))
     assert redirected_to(conn) == Helpers.session_path(conn, :new)
   end
 
@@ -24,7 +24,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:user))
-      |> get(Helpers.backend_lanuage_path(conn, :index))
+      |> get(Helpers.backend_language_path(conn, :index))
 
     assert redirected_to(conn, 302) == "/"
   end
@@ -33,7 +33,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(Helpers.backend_lanuage_path(conn, :index))
+      |> get(Helpers.backend_language_path(conn, :index))
 
     assert html_response(conn, 200) =~ "Listing languages"
   end
@@ -42,7 +42,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(Helpers.backend_lanuage_path(conn, :new))
+      |> get(Helpers.backend_language_path(conn, :new))
 
     assert html_response(conn, 200) =~ "New language"
   end
@@ -51,11 +51,11 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(Helpers.backend_lanuage_path(conn, :create),
+      |> post(Helpers.backend_language_path(conn, :create),
         language: @valid_attrs
       )
 
-    assert redirected_to(conn) == Helpers.backend_lanuage_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_language_path(conn, :index)
     assert Repo.get_by(Language, iso6393: "gsg2")
   end
 
@@ -63,7 +63,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(Helpers.backend_lanuage_path(conn, :create),
+      |> post(Helpers.backend_language_path(conn, :create),
         language: @invalid_attrs
       )
 
@@ -76,7 +76,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(Helpers.backend_lanuage_path(conn, :show, language))
+      |> get(Helpers.backend_language_path(conn, :show, language))
 
     assert html_response(conn, 200) =~ "Language"
   end
@@ -85,7 +85,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(Helpers.backend_lanuage_path(conn, :show, -1))
+      |> get(Helpers.backend_language_path(conn, :show, -1))
 
     assert conn.status == 404
   end
@@ -96,7 +96,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(Helpers.backend_lanuage_path(conn, :edit, language))
+      |> get(Helpers.backend_language_path(conn, :edit, language))
 
     assert html_response(conn, 200) =~ "Edit language"
   end
@@ -107,12 +107,12 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(Helpers.backend_lanuage_path(conn, :update, language),
+      |> put(Helpers.backend_language_path(conn, :update, language),
         language: @valid_attrs
       )
 
     assert redirected_to(conn) ==
-             Helpers.backend_lanuage_path(conn, :show, language)
+             Helpers.backend_language_path(conn, :show, language)
 
     assert Repo.get_by(Language, iso6393: "gsg2")
   end
@@ -123,7 +123,7 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(Helpers.backend_lanuage_path(conn, :update, language),
+      |> put(Helpers.backend_language_path(conn, :update, language),
         language: @invalid_attrs
       )
 
@@ -136,9 +136,9 @@ defmodule SignDictWeb.Backend.LanguageControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(Helpers.backend_lanuage_path(conn, :delete, language))
+      |> delete(Helpers.backend_language_path(conn, :delete, language))
 
-    assert redirected_to(conn) == Helpers.backend_lanuage_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_language_path(conn, :index)
     refute Repo.get(Language, language.id)
   end
 end

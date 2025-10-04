@@ -3,6 +3,6 @@ Hi <%= @user.name %>,
 someone tried to change the email address of your SignDict
 account. Please confirm this by clicking the link below:
 
-<%=  Router.Helpers.email.confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
+<%= SignDictWeb.Router.Helpers.email_confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
 
 Thank you!
