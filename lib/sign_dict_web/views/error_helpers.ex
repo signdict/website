@@ -3,8 +3,6 @@ defmodule SignDictWeb.ErrorHelpers do
   Conveniences for translating and building error messages.
   """
 
-  import Phoenix.HTML
-  import Phoenix.HTML.Form
   use PhoenixHTMLHelpers
 
   @doc """

@@ -30,6 +30,7 @@
   </tbody>
 </table>
 
+<%= pagination_links @domains %>
 
 <p>
   <%= link gettext("New domain"), to: Router.Helpers.backend_domain_path(@conn, :new), class: "c-button c-button--info" %>

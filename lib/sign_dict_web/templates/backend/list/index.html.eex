@@ -32,6 +32,7 @@
   </tbody>
 </table>
 
+<%= pagination_links @lists %>
 
 <p>
   <%= link gettext("New list"), to: Router.Helpers.backend_list_path(@conn, :new), class: "c-button c-button--info" %>

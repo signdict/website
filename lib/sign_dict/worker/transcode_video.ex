@@ -4,6 +4,7 @@ defmodule SignDict.Worker.TranscodeVideo do
 
   # 10 minutes
   @retry_upload 60 * 10
+  @environment Application.compile_env(:sign_dict, :environment)
 
   def perform(
         video_id,
@@ -30,7 +31,7 @@ defmodule SignDict.Worker.TranscodeVideo do
         Video.transcode(video)
 
       _ ->
-        if Application.get_env(:sign_dict, :environment) != :dev do
+        if @environment != :dev do
           exq.enqueue_in(Exq, "transcoder", @retry_upload, SignDict.Worker.TranscodeVideo, [
             video_id
           ])

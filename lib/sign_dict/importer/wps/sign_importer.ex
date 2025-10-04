@@ -7,6 +7,7 @@ defmodule SignDict.Importer.Wps.SignImporter do
   alias SignDict.Importer.Wps.UrlExtractor
 
   @default_start_time "2016-01-01T00:30:30+00:00"
+  @sign_importer Application.compile_env(:sign_dict, :wps_sign_importer)
 
   def import_json() do
     current_time = Timex.now()
@@ -31,7 +32,7 @@ defmodule SignDict.Importer.Wps.SignImporter do
   defp get_json(config) do
     with {:ok, res} <-
            HTTPoison.get(
-             add_time_to_url(Application.get_env(:sign_dict, :wps_sign_importer)[:url], config),
+             add_time_to_url(@sign_importer[:url], config),
              [Accept: "text/json", "User-Agent": "Mozilla/5.0 +signdict.org"],
              follow_redirect: true
            ) do

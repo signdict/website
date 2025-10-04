@@ -2,3 +2,4 @@
 
 <%= render SignDictWeb.Backend.SharedView, "videos_table.html", conn: @conn, videos: @videos.entries %>
 
+<%= pagination_links @videos %>

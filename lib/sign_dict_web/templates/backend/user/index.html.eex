@@ -37,6 +37,7 @@
   </tbody>
 </table>
 
+<%= pagination_links @users %>
 
 <p>
   <%= link gettext("New user"), to: Router.Helpers.backend_user_path(@conn, :new), class: "c-button c-button--info" %>

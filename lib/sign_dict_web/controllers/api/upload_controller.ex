@@ -4,6 +4,8 @@ defmodule SignDictWeb.Api.UploadController do
   alias SignDict.Video
   alias SignDict.Services.VideoImporter
 
+  @queue Application.compile_env(:sign_dict, :queue)
+
   def create(conn, %{
         "entry_id" => entry_id,
         "video" => fileupload,
@@ -17,7 +19,7 @@ defmodule SignDictWeb.Api.UploadController do
 
     case result do
       {:ok, video} ->
-        queue = Application.get_env(:sign_dict, :queue)[:library]
+        queue = @queue[:library]
         queue.enqueue(Exq, "transcoder", SignDict.Worker.PrepareVideo, [video.id])
         render(conn, video: video)
 

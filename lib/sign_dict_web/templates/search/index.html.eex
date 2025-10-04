@@ -39,3 +39,6 @@
   </div>
 <% end %>
 
+<%= if @result.total_pages > 1 do %>
+  <%= pagination_links @result,  q: @conn.params["q"]%>
+<% end %>

@@ -6,6 +6,8 @@ defmodule SignDict.Video do
   alias SignDict.Repo
   alias SignDict.Vote
 
+  @upload_path Application.compile_env(:sign_dict, :upload_path)
+
   @states [
     :created,
     :uploaded,
@@ -218,7 +220,7 @@ defmodule SignDict.Video do
 
   def file_path(file) do
     Path.join([
-      Application.get_env(:sign_dict, :upload_path),
+      @upload_path,
       "video_upload",
       file
     ])

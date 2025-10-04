@@ -11,6 +11,8 @@ defmodule SignDictWeb.EntryController do
   alias SignDict.Video
   alias SignDictWeb.Router.Helpers
 
+  @queue Application.compile_env(:sign_dict, :queue)
+
   def index(conn, params) do
     letter = params["letter"] || "A"
 
@@ -140,7 +142,7 @@ defmodule SignDictWeb.EntryController do
   defp refresh_sign_writings(params = %{entry: entry, videos: videos}) do
     if entry do
       if last_update_too_old?(entry) && at_least_one_video_has_no_sign_writing(videos) do
-        queue = Application.get_env(:sign_dict, :queue)[:library]
+        queue = @queue[:library]
         queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
       end
     end
