@@ -1,5 +1,5 @@
 defmodule SignDict.Services.CredentialVerifier do
-  import SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias SignDict.User
   alias SignDict.Repo

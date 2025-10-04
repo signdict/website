@@ -1,11 +1,10 @@
-.PHONY: default
-default: start ;
+default: start
 
 start:
 	mix phx.server
 
-run-test:
-		mix test.watch
+test:
+		mix test.interactive --clear
 
 check:
 		mix check

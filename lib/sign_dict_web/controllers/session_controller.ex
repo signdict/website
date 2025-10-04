@@ -21,7 +21,7 @@ defmodule SignDictWeb.SessionController do
         conn
         |> put_flash(:info, gettext("Successfully signed in"))
         |> Plug.sign_in(user)
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: Router.Helpers.page_path(conn, :index))
 
       {:error, _reason} ->
         conn

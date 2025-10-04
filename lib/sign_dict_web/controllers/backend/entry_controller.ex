@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.EntryController do
   use SignDictWeb, :controller
+
   alias SignDict.Entry
   alias SignDict.Language
 
@@ -29,7 +30,7 @@ defmodule SignDictWeb.Backend.EntryController do
       {:ok, _entry} ->
         conn
         |> put_flash(:info, gettext("Entry created successfully."))
-        |> redirect(to: backend_entry_path(conn, :index))
+        |> redirect(to: Router.Helpers.backend_entry_path(conn, :index))
 
       {:error, changeset} ->
         languages = Repo.all(Language)
@@ -62,7 +63,7 @@ defmodule SignDictWeb.Backend.EntryController do
       {:ok, entry} ->
         conn
         |> put_flash(:info, gettext("Entry updated successfully."))
-        |> redirect(to: backend_entry_path(conn, :show, entry))
+        |> redirect(to: Router.Helpers.backend_entry_path(conn, :show, entry))
 
       {:error, changeset} ->
         languages = Repo.all(Language)
@@ -75,7 +76,7 @@ defmodule SignDictWeb.Backend.EntryController do
 
     conn
     |> put_flash(:info, gettext("Entry deleted successfully."))
-    |> redirect(to: backend_entry_path(conn, :index))
+    |> redirect(to: Router.Helpers.backend_entry_path(conn, :index))
   end
 
   defp filter_entries(query, search) do

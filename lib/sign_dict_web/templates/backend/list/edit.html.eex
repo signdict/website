@@ -1,4 +1,4 @@
 <h1 class="c-heading"><%= gettext("Edit list") %></h1>
 
 <%= render "form.html", changeset: @changeset,
-                        action: backend_list_path(@conn, :update, @list) %>
+                        action: Router.Helpers.backend_list_path(@conn, :update, @list) %>

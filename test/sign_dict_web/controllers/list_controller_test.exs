@@ -18,7 +18,7 @@ defmodule SignDict.ListControllerTest do
       insert(:list_entry, list: list, sort_order: 3, entry: entry_3)
       insert(:list_entry, list: list, sort_order: 4, entry: entry_without_video)
 
-      conn = get(conn, list_path(conn, :show, list.id))
+      conn = get(conn, Helpers.list_path(conn, :show, list.id))
       assert html_response(conn, 200) =~ ~r/Cherry.*Banana.*Apple/s
       refute html_response(conn, 200) =~ ~r/Remove Me/
     end

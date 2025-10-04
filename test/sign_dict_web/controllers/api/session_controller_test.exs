@@ -10,7 +10,7 @@ defmodule SignDictWeb.Api.SessionControllerTest do
       insert(:user)
 
       conn =
-        post(conn, api_session_path(conn, :create), %{
+        post(conn, SignDictWeb.Router.Helpers.api_session_path(conn, :create), %{
           "email" => "elisa@example.com",
           "password" => "wrong_password"
         })
@@ -22,7 +22,7 @@ defmodule SignDictWeb.Api.SessionControllerTest do
       user = insert(:user)
 
       conn =
-        post(conn, api_session_path(conn, :create), %{
+        post(conn, SignDictWeb.Router.Helpers.api_session_path(conn, :create), %{
           "email" => user.email,
           "password" => "correct_password"
         })

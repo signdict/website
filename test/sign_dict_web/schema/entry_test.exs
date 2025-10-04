@@ -108,7 +108,7 @@ defmodule SignDict.Schema.EntryTest do
           "data" => %{"index" => nil},
           "errors" => [
             %{
-              "locations" => [%{"column" => 0, "line" => 2}],
+              "locations" => [%{"column" => 5, "line" => 2}],
               "message" => "Page must be >= 1",
               "path" => ["index"]
             }

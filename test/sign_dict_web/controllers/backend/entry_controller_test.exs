@@ -15,15 +15,15 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
   }
 
   test "it redirects when no entry logged in", %{conn: conn} do
-    conn = get(conn, backend_entry_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
+    conn = get(conn, Helpers.backend_entry_path(conn, :index))
+    assert redirected_to(conn) == Helpers.session_path(conn, :new)
   end
 
   test "it redirects when non admin entry logged in", %{conn: conn} do
     conn =
       conn
       |> guardian_login(insert(:user))
-      |> get(backend_entry_path(conn, :index))
+      |> get(Helpers.backend_entry_path(conn, :index))
 
     assert redirected_to(conn, 302) == "/"
   end
@@ -32,7 +32,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_path(conn, :index))
+      |> get(Helpers.backend_entry_path(conn, :index))
 
     assert html_response(conn, 200) =~ "Listing entries"
   end
@@ -41,7 +41,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_path(conn, :new))
+      |> get(Helpers.backend_entry_path(conn, :new))
 
     assert html_response(conn, 200) =~ "New entry"
   end
@@ -53,11 +53,11 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
       conn
       |> guardian_login(insert(:admin_user))
       |> post(
-        backend_entry_path(conn, :create),
+        Helpers.backend_entry_path(conn, :create),
         entry: Map.merge(@valid_attrs, %{language_id: langauge.id})
       )
 
-    assert redirected_to(conn) == backend_entry_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_entry_path(conn, :index)
     assert Repo.get_by(Entry, text: "house")
   end
 
@@ -65,7 +65,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_entry_path(conn, :create), entry: @invalid_attrs)
+      |> post(Helpers.backend_entry_path(conn, :create), entry: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "New entry"
   end
@@ -76,7 +76,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_path(conn, :show, entry))
+      |> get(Helpers.backend_entry_path(conn, :show, entry))
 
     assert html_response(conn, 200) =~ "Entry"
   end
@@ -85,7 +85,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_path(conn, :show, 999_999))
+      |> get(Helpers.backend_entry_path(conn, :show, 999_999))
 
     assert conn.status == 404
   end
@@ -96,7 +96,7 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_entry_path(conn, :edit, entry))
+      |> get(Helpers.backend_entry_path(conn, :edit, entry))
 
     assert html_response(conn, 200) =~ "Edit entry"
   end
@@ -107,10 +107,16 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_entry_path(conn, :update, entry), entry: @valid_attrs)
+      |> put(Helpers.backend_entry_path(conn, :update, entry),
+        entry: @valid_attrs
+      )
 
     assert redirected_to(conn) ==
-             backend_entry_path(conn, :show, Repo.get(SignDict.Entry, entry.id))
+             Helpers.backend_entry_path(
+               conn,
+               :show,
+               Repo.get(SignDict.Entry, entry.id)
+             )
 
     assert Repo.get_by(Entry, text: "house")
   end
@@ -121,7 +127,9 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_entry_path(conn, :update, entry), entry: @invalid_attrs)
+      |> put(Helpers.backend_entry_path(conn, :update, entry),
+        entry: @invalid_attrs
+      )
 
     assert html_response(conn, 200) =~ "Edit entry"
   end
@@ -132,9 +140,9 @@ defmodule SignDictWeb.Backend.EntryControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(backend_entry_path(conn, :delete, entry))
+      |> delete(Helpers.backend_entry_path(conn, :delete, entry))
 
-    assert redirected_to(conn) == backend_entry_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_entry_path(conn, :index)
     refute Repo.get(Entry, entry.id)
   end
 end

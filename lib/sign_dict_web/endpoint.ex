@@ -6,7 +6,7 @@ defmodule SignDictWeb.Endpoint do
     longpoll: false
   )
 
-  if Application.get_env(:sign_dict, :sql_sandbox) do
+  if Application.compile_env(:sign_dict, :sql_sandbox) do
     plug(Phoenix.Ecto.SQL.Sandbox)
   end
 
@@ -27,7 +27,7 @@ defmodule SignDictWeb.Endpoint do
   plug(
     Plug.Static,
     at: "/uploads",
-    from: Path.expand(Application.get_env(:sign_dict, :upload_path)),
+    from: Path.expand(Application.compile_env(:sign_dict, :upload_path)),
     gzip: false
   )
 

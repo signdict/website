@@ -1,4 +1,4 @@
 <h1 class="c-heading"><%= gettext("New language") %></h1>
 
 <%= render "form.html", changeset: @changeset,
-                        action: backend_language_path(@conn, :create) %>
+                        action:  Router.Helpers.backend_language_path(@conn, :create) %>

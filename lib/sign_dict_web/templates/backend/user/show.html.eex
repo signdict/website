@@ -39,7 +39,7 @@
 
 <%= if Canada.Can.can? @current_user, :edit, @user do %>
   <p>
-    <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, @user), class: "c-button" %>
+    <%= link gettext("Edit"), to: Router.Helpers.backend_user_path(@conn, :edit, @user), class: "c-button" %>
   </p>
 <% end %>
 
@@ -47,4 +47,3 @@
 
 <%= render SignDictWeb.Backend.SharedView, "videos_table.html", conn: @conn, videos: @videos.entries %>
 
-<%= pagination_links @videos %>

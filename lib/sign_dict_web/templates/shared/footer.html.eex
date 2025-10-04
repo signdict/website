@@ -4,20 +4,14 @@
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell">
           <h1 class="so-footer--sponsorheader">
-            <%= link gettext("Supporter"), to: page_path(@conn, :supporter) %>
+            <%= link gettext("Supporter"), to: Router.Helpers.page_path(@conn, :supporter) %>
           </h1>
           <p>
             <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.svg" alt="<%= gettext("Logo Wishlephant") %>"/></a>
-            <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
             <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
           </p>
           <p class="so-footer--sponsorabout">
-            <%= link gettext(
-                  "Love SignDict? Sponsor us to help cover the server costs."
-                ), to: "https://github.com/users/bitboxer/sponsorship" %>
-          </p>
-          <p class="so-footer--sponsorabout">
-            <%= link gettext("The complete list of supporters."), to: page_path(@conn, :supporter) %>
+            <%= link gettext("The complete list of supporters."), to: Router.Helpers.page_path(@conn, :supporter) %>
           </p>
         </div>
       </div>
@@ -28,14 +22,13 @@
     <div class="o-container o-container--medium">
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--about">
-          <%= gettext("SignDict is a sign language dictionary where everyone can participate") %>
+          <%= gettext("SignDict is a sign language dictionary") %>
         </div>
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-20@medium so-footer--links--center">
           <ul class="so-footer--links--list">
             <li><a href='http://blog.signdict.org'><%= gettext("Blog") %></a></li>
             <li><a href='/imprint'><%= gettext("Imprint") %></a></li>
             <li><a href='/privacy'><%= gettext("Privacy") %></a></li>
-            <li><a href='/contact'><%= gettext("Contact") %></a></li>
           </ul>
         </div>
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-30@medium so-footer--links--center">
@@ -48,7 +41,6 @@
         </div>
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-20@medium so-footer--links--social">
           <div class="so-footer--links--social--text">
-            <a href="//twitter.com/signdict" aria-label="<%= gettext("SignDict on Twitter") %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             <a href="//github.com/signdict" aria-label="<%= gettext("SignDict on Github") %>"><i class="fa fa-github" aria-hidden="true"></i></a>
           </div>
         </div>

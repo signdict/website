@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <%= link "Zum Video", to: entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+  <%= link "Zum Video", to:  Router.Helpers.entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
 </p>
 
 <p>

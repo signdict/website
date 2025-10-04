@@ -12,8 +12,8 @@
 
         <p>
           <%= link gettext("Search through SignDicts %{sign_count} signs >", sign_count: @sign_count), to: "/search" %><br/>
-          <%= link gettext("Complete your user profile >"), to: user_path(@conn, :edit, @current_user) %><br />
-          <%= link gettext("Add a new sign >"), to: entry_path(@conn, :new) %>
+          <%= link gettext("Complete your user profile >"), to: Router.Helpers.user_path(@conn, :edit, @current_user) %><br />
+          <%= link gettext("Add a new sign >"), to: Router.Helpers.entry_path(@conn, :new) %>
         </p>
       </div>
     </div>

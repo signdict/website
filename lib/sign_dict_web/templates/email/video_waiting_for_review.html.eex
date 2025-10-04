@@ -3,5 +3,5 @@
 </p>
 
 <p>
-  <%= link "Show video", to: backend_entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+  <%= link "Show video", to: SignDictWeb.Router.Helpers.backend_entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
 </p>

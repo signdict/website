@@ -14,11 +14,11 @@
 <%= for user <- @users.entries do %>
     <tr class="c-table__row">
       <td class="c-table__cell">
-        <%= link user.id, to: backend_user_path(@conn, :show, user) %>
+        <%= link user.id, to: Router.Helpers.backend_user_path(@conn, :show, user) %>
       </td>
       <td class="c-table__cell">
-        <%= link img_tag(SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, height: 32, style: "margin-right: 0.5em"), to: backend_user_path(@conn, :show, user) %>
-        <%= link user.email, to: backend_user_path(@conn, :show, user) %>
+        <%= link img_tag(SignDict.User.avatar_url(user), alt: gettext("The avatar image of this user"), width: 32, height: 32, style: "margin-right: 0.5em"), to: Router.Helpers.backend_user_path(@conn, :show, user) %>
+        <%= link user.email, to: Router.Helpers.backend_user_path(@conn, :show, user) %>
       </td>
       <td class="c-table__cell"><%= user.name %></td>
       <td class="c-table__cell"><%= user.role %></td>
@@ -26,9 +26,9 @@
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">
           <div class="o-grid__cell t-action-buttons">
-            <%= link gettext("Show"), to: backend_user_path(@conn, :show, user), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Edit"), to: backend_user_path(@conn, :edit, user), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Delete"), to: backend_user_path(@conn, :delete, user), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+            <%= link gettext("Show"), to: Router.Helpers.backend_user_path(@conn, :show, user), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: Router.Helpers.backend_user_path(@conn, :edit, user), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: Router.Helpers.backend_user_path(@conn, :delete, user), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
           </div>
         </div>
       </td>
@@ -40,5 +40,5 @@
 <%= pagination_links @users %>
 
 <p>
-  <%= link gettext("New user"), to: backend_user_path(@conn, :new), class: "c-button c-button--info" %>
+  <%= link gettext("New user"), to: Router.Helpers.backend_user_path(@conn, :new), class: "c-button c-button--info" %>
 </p>

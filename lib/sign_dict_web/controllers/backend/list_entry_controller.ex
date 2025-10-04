@@ -1,5 +1,6 @@
 defmodule SignDictWeb.Backend.ListEntryController do
   use SignDictWeb, :controller
+
   alias SignDict.ListEntry
 
   plug :load_and_authorize_resource, model: ListEntry, except: :index
@@ -14,12 +15,12 @@ defmodule SignDictWeb.Backend.ListEntryController do
       {:ok, _list} ->
         conn
         |> put_flash(:info, gettext("Entry added successfully."))
-        |> redirect(to: backend_list_path(conn, :show, list_id))
+        |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list_id))
 
       {:error, _changeset} ->
         conn
         |> put_flash(:error, gettext("Entry could not be added."))
-        |> redirect(to: backend_list_path(conn, :show, list_id))
+        |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list_id))
     end
   end
 
@@ -28,7 +29,7 @@ defmodule SignDictWeb.Backend.ListEntryController do
 
     conn
     |> put_flash(:info, gettext("List entry deleted successfully."))
-    |> redirect(to: backend_list_path(conn, :show, list_id))
+    |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list_id))
   end
 
   def move_up(conn, %{"list_id" => list_id}) do
@@ -36,7 +37,7 @@ defmodule SignDictWeb.Backend.ListEntryController do
 
     conn
     |> put_flash(:info, gettext("List entry moved up."))
-    |> redirect(to: backend_list_path(conn, :show, list_id))
+    |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list_id))
   end
 
   def move_down(conn, %{"list_id" => list_id}) do
@@ -44,6 +45,6 @@ defmodule SignDictWeb.Backend.ListEntryController do
 
     conn
     |> put_flash(:info, gettext("List entry moved down."))
-    |> redirect(to: backend_list_path(conn, :show, list_id))
+    |> redirect(to: Router.Helpers.backend_list_path(conn, :show, list_id))
   end
 end

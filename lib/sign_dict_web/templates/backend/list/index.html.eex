@@ -13,7 +13,7 @@
 <%= for list <- @lists.entries do %>
     <tr class="c-table__row">
       <td class="c-table__cell">
-        <%= link list.id, to: backend_list_path(@conn, :show, list) %>
+        <%= link list.id, to: Router.Helpers.backend_list_path(@conn, :show, list) %>
       </td>
       <td class="c-table__cell"><%= list.name %></td>
       <td class="c-table__cell"><%= list.type %></td>
@@ -21,9 +21,9 @@
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">
           <div class="o-grid__cell t-action-buttons">
-            <%= link gettext("Show"), to: backend_list_path(@conn, :show, list), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Edit"), to: backend_list_path(@conn, :edit, list), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Delete"), to: backend_list_path(@conn, :delete, list), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+            <%= link gettext("Show"), to: Router.Helpers.backend_list_path(@conn, :show, list), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to: Router.Helpers.backend_list_path(@conn, :edit, list), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to: Router.Helpers.backend_list_path(@conn, :delete, list), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
           </div>
         </div>
       </td>
@@ -35,5 +35,5 @@
 <%= pagination_links @lists %>
 
 <p>
-  <%= link gettext("New list"), to: backend_list_path(@conn, :new), class: "c-button c-button--info" %>
+  <%= link gettext("New list"), to: Router.Helpers.backend_list_path(@conn, :new), class: "c-button c-button--info" %>
 </p>

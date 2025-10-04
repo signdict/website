@@ -2,7 +2,7 @@
   <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--offset-15@small o-grid__cell--width-66@small">
     <h1><%= gettext("Sign in") %></h1>
 
-    <%= form_for @conn, session_path(@conn, :create), [as: :session, class: 'login-form'], fn f -> %>
+    <%= form_for @conn, Router.Helpers.session_path(@conn, :create), [as: :session, class: "login-form"], fn f -> %>
       <div>
         <%= label f, :email, gettext("user.email"), class: "sc-label" %>
         <%= text_input f, :email, placeholder: gettext("user.email"), class: "sc-input" %>
@@ -14,8 +14,8 @@
       </div>
 
       <p class="st-no-margin">
-        <%= link gettext("Forgot password?"), to: reset_password_path(@conn, :new) %> |
-        <%= link gettext("Create new account"), to: user_path(@conn, :new) %>
+        <%= link gettext("Forgot password?"), to: Router.Helpers.reset_password_path(@conn, :new) %> |
+        <%= link gettext("Create new account"), to: Router.Helpers.user_path(@conn, :new) %>
       </p>
 
       <div class="sc-actions">

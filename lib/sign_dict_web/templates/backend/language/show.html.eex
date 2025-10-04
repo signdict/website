@@ -29,5 +29,5 @@
 </div>
 
 <p>
-  <%= link gettext("Edit"), to: backend_language_path(@conn, :edit, @language), class: "c-button" %>
+  <%= link gettext("Edit"), to:  Router.Helpers.backend_language_path(@conn, :edit, @language), class: "c-button" %>
 </p>

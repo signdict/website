@@ -1,26 +1,21 @@
 defmodule SignDict.User do
-  require SignDictWeb.Gettext
-
   import Exgravatar
 
   use SignDictWeb, :model
-  use Arc.Ecto.Schema
+  use Waffle.Ecto.Schema
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias Ecto.Changeset
   alias SignDictWeb.Avatar
-  alias SignDictWeb.Gettext
   alias SignDict.Repo
   alias SignDict.User
 
   @all_flags ~w(recording)
   @roles ~w(user admin editor statistic)
-  @subscriber Application.get_env(:sign_dict, :newsletter)[:subscriber]
 
   @primary_key {:id, SignDict.Permalink, autogenerate: true}
   schema "users" do
     field(:email, :string)
-
-    field(:want_newsletter, :boolean, virtual: true)
 
     field(:password, :string, virtual: true)
     field(:password_confirmation, :string, virtual: true)
@@ -94,8 +89,7 @@ defmodule SignDict.User do
       :password,
       :password_confirmation,
       :name,
-      :biography,
-      :want_newsletter
+      :biography
     ])
     |> validate_required([:email, :name, :password, :password_confirmation])
     |> validate_email
@@ -106,7 +100,7 @@ defmodule SignDict.User do
   def confirm_email_change(changeset) do
     cond do
       email_already_used?(changeset) ->
-        add_error(changeset, :email, Gettext.gettext("already used"))
+        add_error(changeset, :email, gettext("already used"))
 
       changeset.valid? && Changeset.fetch_change(changeset, :email) != :error ->
         do_confirm_email_change(changeset)
@@ -266,12 +260,6 @@ defmodule SignDict.User do
   defp generate_token do
     unencrypted_token = SecureRandom.urlsafe_base64(32)
     {unencrypted_token, Bcrypt.hash_pwd_salt(unencrypted_token)}
-  end
-
-  def subscribe_to_newsletter(user) do
-    @subscriber.add_member("f96556b89f", :subscribed, user.email || user.unconfirmed_email, %{
-      "FULL_NAME" => user.name
-    })
   end
 
   def has_flag?(user, _flag) when is_nil(user) do

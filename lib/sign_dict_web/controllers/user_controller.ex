@@ -12,8 +12,6 @@ defmodule SignDictWeb.UserController do
 
   plug :load_and_authorize_resource, model: User
 
-  @recaptcha Application.get_env(:sign_dict, :recaptcha)[:library]
-
   def new(conn, _params) do
     render(conn, "new.html",
       changeset: User.register_changeset(%User{}),
@@ -21,15 +19,8 @@ defmodule SignDictWeb.UserController do
     )
   end
 
-  def create(conn, params = %{"user" => user_params}) do
-    case @recaptcha.verify(params["g-recaptcha-response"]) do
-      {:ok, _response} ->
-        do_create(conn, user_params)
-
-      {:error, _errors} ->
-        conn
-        |> redirect(to: user_path(conn, :new))
-    end
+  def create(conn, %{"user" => user_params}) do
+    do_create(conn, user_params)
   end
 
   defp do_create(conn, user_params) do
@@ -40,8 +31,6 @@ defmodule SignDictWeb.UserController do
 
     case result do
       {:ok, user} ->
-        if user.want_newsletter, do: User.subscribe_to_newsletter(user)
-
         conn
         |> sent_confirm_email(user)
         |> redirect(to: "/")
@@ -87,7 +76,7 @@ defmodule SignDictWeb.UserController do
         conn
         |> put_flash(:info, gettext("Updated successfully."))
         |> sent_confirm_email_change(user, changeset)
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: Router.Helpers.user_path(conn, :show, user))
 
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)

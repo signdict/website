@@ -3,13 +3,13 @@ defmodule SignDictWeb.EntryController do
   """
   use SignDictWeb, :controller
 
-  alias SignDict.Domain
   alias SignDict.Entry
-  alias SignDict.Language
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph
   alias SignDict.Video
   alias SignDictWeb.Router.Helpers
+
+  @queue Application.compile_env(:sign_dict, :queue)
 
   def index(conn, params) do
     letter = params["letter"] || "A"
@@ -69,41 +69,6 @@ defmodule SignDictWeb.EntryController do
     |> render_entry
   end
 
-  def new(conn, params) do
-    changeset = Entry.changeset(%Entry{})
-    languages = Repo.all(Language)
-    render(conn, "new.html", changeset: changeset, languages: languages, text: params["text"])
-  end
-
-  def create(conn, %{"entry" => entry_params}) do
-    domain = Domain.for(conn.host)
-    changeset = Entry.changeset(%Entry{domains: [domain]}, entry_params)
-    entry = Entry.find_by_changeset(changeset)
-
-    if entry do
-      redirect(conn, to: recorder_path(conn, :index, entry.id))
-    else
-      create_entry(conn, changeset)
-    end
-  end
-
-  defp create_entry(conn, changeset) do
-    case Repo.insert(changeset) do
-      {:ok, entry} ->
-        conn
-        |> redirect(to: recorder_path(conn, :index, entry.id))
-
-      {:error, changeset} ->
-        languages = Repo.all(Language)
-
-        render(conn, "new.html",
-          changeset: changeset,
-          languages: languages,
-          text: conn.params["text"]
-        )
-    end
-  end
-
   defp render_entry(%{conn: conn, videos: videos, entry: entry})
        when videos == [] and not is_nil(entry) do
     redirect_no_videos(conn)
@@ -112,7 +77,7 @@ defmodule SignDictWeb.EntryController do
   defp render_entry(%{conn: conn, entry: entry, video: video})
        when is_nil(video) and not is_nil(entry) do
     conn
-    |> redirect(to: entry_path(conn, :show, entry))
+    |> redirect(to: Router.Helpers.entry_path(conn, :show, entry))
   end
 
   defp render_entry(%{
@@ -160,7 +125,7 @@ defmodule SignDictWeb.EntryController do
       |> String.replace("-", " ")
 
     conn
-    |> redirect(to: search_path(conn, :index, q: query))
+    |> redirect(to: Router.Helpers.search_path(conn, :index, q: query))
   end
 
   defp add_lists_for_entry(%{entry: entry} = params) when is_nil(entry) do
@@ -175,7 +140,7 @@ defmodule SignDictWeb.EntryController do
   defp refresh_sign_writings(params = %{entry: entry, videos: videos}) do
     if entry do
       if last_update_too_old?(entry) && at_least_one_video_has_no_sign_writing(videos) do
-        queue = Application.get_env(:sign_dict, :queue)[:library]
+        queue = @queue[:library]
         queue.enqueue(Exq, "sign_writings", SignDict.Worker.RefreshSignWritings, [entry.id])
       end
     end

@@ -20,7 +20,7 @@
 
     <p>
       <%= if Canada.Can.can? @current_user, :edit, @user do %>
-        <%= link gettext("Edit"), to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Edit"), to: Router.Helpers.user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
       <% end %>
     </p>
 
@@ -38,13 +38,13 @@
     <%= for video <- @videos.entries do %>
       <div class="o-grid o-grid--wrap">
         <div class="o-grid__cell o-grid__cell--no-gutter o-grid__cell--width-30">
-          <a href="<%= entry_video_path(@conn, :show, video.entry, video) %>">
+          <a href="<%= Router.Helpers.entry_video_path(@conn, :show, video.entry, video) %>">
             <%= img_tag(video.thumbnail_url, class: "o-image", alt: gettext("Thumbnail for Video")) %>
           </a>
         </div>
         <div class="o-grid__cell">
           <h2>
-            <%= link video.entry.text, to: entry_video_path(@conn, :show, video.entry, video), class: "so-search-result--link" %>
+            <%= link video.entry.text, to: Router.Helpers.entry_video_path(@conn, :show, video.entry, video), class: "so-search-result--link" %>
           </h2>
 
           <%= if String.length(video.entry.description) > 0 do %>
@@ -59,3 +59,4 @@
     <% end %>
   </div>
 </div>
+

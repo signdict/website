@@ -27,8 +27,6 @@ defmodule SignDictWeb.Api.RegisterController do
   end
 
   defp send_user_mails(user) do
-    if user.want_newsletter, do: User.subscribe_to_newsletter(user)
-
     user
     |> Email.confirm_email()
     |> Mailer.deliver_later()

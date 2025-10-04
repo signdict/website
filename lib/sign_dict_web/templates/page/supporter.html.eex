@@ -22,17 +22,6 @@
 
       <div class="o-grid o-grid--wrap so-supporter-box">
         <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
-          <a href="https://www.rrbone.net"><img class="so-footer--sponsorlogo so-footer--rrbone" src="/images/logo-rrbone.svg" alt="<%= gettext("Logo rrone") %>"/></a>
-        </div>
-        <div class="o-grid__cell">
-          <p>
-            <%= gettext("supporter_rrbone") %>
-          </p>
-        </div>
-      </div>
-
-      <div class="o-grid o-grid--wrap so-supporter-box">
-        <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-50@medium">
           <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
         </div>
         <div class="o-grid__cell">
@@ -55,9 +44,6 @@
             <li><a href="https://github.com/signdict/website/blob/main/mix.exs"><%= gettext("All libraries we are using to develop SignDict") %></a></li>
             <li><a href="https://github.com/signdict/website/graphs/contributors"><%= gettext("All contributors.") %></a></li>
             <li><%= gettext("and YOU for reading this <3") %></li>
-            <li> <%= link gettext(
-                  "and YOU if you want to donate."
-                ), to: "https://github.com/users/bitboxer/sponsorship" %></li>
           </ul>
         </div>
       </div>

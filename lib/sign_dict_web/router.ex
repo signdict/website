@@ -1,6 +1,7 @@
 defmodule SignDictWeb.Router do
   use SignDictWeb, :router
   use Plugsnag
+
   @dialyzer {:no_return, {:__checks__, 0}}
 
   pipeline :locale do
@@ -47,7 +48,7 @@ defmodule SignDictWeb.Router do
     plug SignDictWeb.Plug.AllowedForBackend
   end
 
-  if Application.get_env(:sign_dict, :environment) == :dev do
+  if Application.compile_env(:sign_dict, :environment) == :dev do
     forward "/sent_emails", Bamboo.SentEmailViewerPlug
   end
 
@@ -65,10 +66,6 @@ defmodule SignDictWeb.Router do
     resources "/users", UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/list", ListController, only: [:show]
-    resources "/suggestion", SuggestionController, only: [:index, :create]
-
-    get "/recorder/:entry_id", RecorderController, :index
-    get "/recorder/new/:entry_id", RecorderController, :new
 
     get "/email_confirmation", EmailConfirmationController, :update
 
@@ -96,9 +93,6 @@ defmodule SignDictWeb.Router do
     get "/privacy", PageController, :privacy
     get "/supporter", PageController, :supporter
 
-    get "/contact", ContactController, :new
-    post "/contact", ContactController, :create
-
     get "/", PageController, :index
   end
 
@@ -108,22 +102,22 @@ defmodule SignDictWeb.Router do
     get "/welcome", PageController, :welcome
   end
 
-  pipeline :exq do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :put_secure_browser_headers
-    plug :browser_session
-    plug :auth
-    plug :backend
-    plug ExqUi.RouterPlug, namespace: "exq"
-  end
-
-  scope "/exq", ExqUi do
-    pipe_through :exq
-    forward "/", RouterPlug.Router, :index
-  end
-
+  # pipeline :exq do
+  #   plug :accepts, ["html"]
+  #   plug :fetch_session
+  #   plug :fetch_flash
+  #   plug :put_secure_browser_headers
+  #   plug :browser_session
+  #   plug :auth
+  #   plug :backend
+  #   plug ExqUi.RouterPlug, namespace: "exq"
+  # end
+  #
+  # scope "/exq", ExqUi do
+  #   pipe_through :exq
+  #   forward "/", RouterPlug.Router, :index
+  # end
+  #
   # Backend functions. Only accessible to
   # logged in users with the correct role.
   scope "/backend", SignDictWeb.Backend, as: :backend do

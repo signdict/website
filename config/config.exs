@@ -3,7 +3,7 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-use Mix.Config
+import Config
 
 # General application configuration
 config :sign_dict, ecto_repos: [SignDict.Repo]
@@ -13,7 +13,7 @@ config :sign_dict, SignDictWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
   render_errors: [view: SignDictWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SignDict.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: SignDict.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -46,7 +46,7 @@ config :bugsnag,
   use_logger: false,
   exception_filter: SignDict.ExceptionFilter
 
-config :arc, storage: Arc.Storage.Local
+config :waffle, storage: Waffle.Storage.Local
 
 config :sign_dict, :upload_path, "./uploads"
 
@@ -76,18 +76,6 @@ config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: 
 config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
 
 config :sign_dict, :queue, library: Exq
-
-config :sign_dict, :newsletter, subscriber: ExChimp.List
-
-config :sign_dict, :recaptcha, library: Recaptcha
-
-config :ex_chimp, api_key: "yourapikeyhere-us12"
-
-# these keys only work for localhost
-config :recaptcha,
-  public_key: "6Lf3OloUAAAAAI4CYsojC7vmbpxmuq8U0nrxtkj9",
-  secret: "6Lf3OloUAAAAAM_pi5EkVmR0ae8hJosURrBFZ76P",
-  json_library: Jason
 
 config :phoenix, :json_library, Jason
 

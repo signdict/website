@@ -107,6 +107,7 @@ defmodule SignDict.List do
     from(
       l in List,
       join: e in ListEntry,
+      on: true,
       where: l.id == e.list_id and e.entry_id == ^entry.id and l.type == ^type
     )
     |> Repo.all()

@@ -8,9 +8,7 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
   def fetch_for(entry, http_poison \\ HTTPoison) do
     result =
       http_poison.get!(
-        "https://server.delegs.de/delegseditor/signwritingeditor/signitems?word=#{
-          URI.encode(entry.text)
-        }"
+        "https://server.delegs.de/delegseditor/signwritingeditor/signitems?word=#{URI.encode(entry.text)}"
       )
 
     if result.status_code == 200 do
@@ -72,9 +70,7 @@ defmodule SignDict.Services.FetchDelegesDataForEntry do
   defp fetch_image(sign_writing, http_poison) do
     result =
       http_poison.get!(
-        "https://server.delegs.de/delegseditor/signwritingeditor/signimages?upperId=#{
-          sign_writing.deleges_id
-        }&lowerId=#{URI.encode(sign_writing.word)}&signlocale=DGS",
+        "https://server.delegs.de/delegseditor/signwritingeditor/signimages?upperId=#{sign_writing.deleges_id}&lowerId=#{URI.encode(sign_writing.word)}&signlocale=DGS",
         %{
           "If-Modified-Since" => last_modified_of(sign_writing)
         }

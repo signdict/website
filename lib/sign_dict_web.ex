@@ -29,6 +29,7 @@ defmodule SignDictWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: SignDictWeb
+      use Gettext, backend: SignDictWeb.Gettext
 
       alias SignDict.Repo
       import Ecto
@@ -36,8 +37,7 @@ defmodule SignDictWeb do
 
       import Canary.Plugs
 
-      import SignDictWeb.Router.Helpers
-      import SignDictWeb.Gettext
+      alias SignDictWeb.Router
       import SignDictWeb.Helpers.LayoutHelper
     end
   end
@@ -45,6 +45,7 @@ defmodule SignDictWeb do
   def view do
     quote do
       use Phoenix.View, root: "lib/sign_dict_web/templates", namespace: SignDictWeb
+      use Gettext, backend: SignDictWeb.Gettext
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -55,12 +56,13 @@ defmodule SignDictWeb do
         ]
 
       # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+      use PhoenixHTMLHelpers
 
-      import SignDictWeb.Router.Helpers
+      alias SignDictWeb.Router
       import SignDictWeb.ErrorHelpers
       import SignDictWeb.BlazeHelpers
-      import SignDictWeb.Gettext
       import SignDictWeb.Helpers.DateHelper
       import SignDictWeb.Helpers.LayoutHelper
     end
@@ -68,18 +70,18 @@ defmodule SignDictWeb do
 
   def router do
     quote do
-      use Phoenix.Router
+      use Phoenix.Router, helpers: true
     end
   end
 
   def channel do
     quote do
       use Phoenix.Channel
+      use Gettext, backend: SignDictWeb.Gettext
 
       alias SignDict.Repo
       import Ecto
       import Ecto.Query
-      import SignDictWeb.Gettext
     end
   end
 

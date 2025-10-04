@@ -7,7 +7,7 @@
 </p>
 
 <p>
-  <%= link "Open the video", to: entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
+  <%= link "Open the video", to:  Router.Helpers.entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
 </p>
 
 <p>

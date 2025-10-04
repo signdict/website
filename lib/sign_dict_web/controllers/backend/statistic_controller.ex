@@ -7,7 +7,7 @@ defmodule SignDictWeb.Backend.StatisticController do
     else
       conn
       |> put_flash(:info, gettext("You cannot view this page."))
-      |> redirect(to: backend_dashboard_path(conn, :index))
+      |> redirect(to: Router.Helpers.backend_dashboard_path(conn, :index))
     end
   end
 end

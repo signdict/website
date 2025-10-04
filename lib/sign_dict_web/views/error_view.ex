@@ -1,5 +1,6 @@
 defmodule SignDictWeb.ErrorView do
   use SignDictWeb, :view
+  use Gettext, backend: SignDictWeb.Gettext
 
   def render("404.html", _assigns) do
     gettext("Page not found")

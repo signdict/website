@@ -1,11 +1,13 @@
 defmodule SignDictWeb.Email do
   use Bamboo.Phoenix, view: SignDictWeb.EmailView
 
-  import SignDictWeb.Gettext
+  use Gettext, backend: SignDictWeb.Gettext
 
   alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.User
+
+  @gettext Application.compile_env(:sign_dict, SignDictWeb.Gettext)
 
   def contact_form(email, content) do
     base_email()
@@ -64,7 +66,7 @@ defmodule SignDictWeb.Email do
     video = video |> Repo.preload(:user) |> Repo.preload(:entry)
 
     locale =
-      video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
+      video.user.locale || @gettext[:default_locale]
 
     Gettext.with_locale(SignDictWeb.Gettext, locale, fn ->
       base_email()
@@ -81,7 +83,7 @@ defmodule SignDictWeb.Email do
     video = video |> Repo.preload(:user) |> Repo.preload(:entry)
 
     locale =
-      video.user.locale || Application.get_env(:sign_dict, SignDictWeb.Gettext)[:default_locale]
+      video.user.locale || @gettext[:default_locale]
 
     Gettext.with_locale(SignDictWeb.Gettext, locale, fn ->
       base_email()

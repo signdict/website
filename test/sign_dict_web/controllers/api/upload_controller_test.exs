@@ -38,7 +38,7 @@ defmodule SignDictWeb.Api.UploadControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> post(api_upload_path(conn, :create), %{
+        |> post(Helpers.api_upload_path(conn, :create), %{
           video: upload,
           entry_id: entry.id,
           start_time: 0,
@@ -75,7 +75,7 @@ defmodule SignDictWeb.Api.UploadControllerTest do
       conn =
         conn
         |> assign(:registered_user_id, user.id)
-        |> post(api_upload_path(conn, :create), %{
+        |> post(Helpers.api_upload_path(conn, :create), %{
           video: upload,
           entry_id: entry.id,
           start_time: 0,
@@ -111,7 +111,7 @@ defmodule SignDictWeb.Api.UploadControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> post(api_upload_path(conn, :create), %{
+        |> post(Helpers.api_upload_path(conn, :create), %{
           video: upload,
           entry_id: -1,
           start_time: 0,

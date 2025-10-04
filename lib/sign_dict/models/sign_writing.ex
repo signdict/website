@@ -1,6 +1,6 @@
 defmodule SignDict.SignWriting do
   use SignDictWeb, :model
-  use Arc.Ecto.Schema
+  use Waffle.Ecto.Schema
   import StateMc.EctoSm
 
   alias SignDict.Repo

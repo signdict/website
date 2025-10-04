@@ -13,7 +13,7 @@
   <tbody class="c-table__body">
 <%= for language <- @languages do %>
     <tr class="c-table__row">
-      <td class="c-table__cell"><%= link language.iso6393, to: backend_language_path(@conn, :show, language) %></td>
+      <td class="c-table__cell"><%= link language.iso6393, to:  Router.Helpers.backend_language_path(@conn, :show, language) %></td>
       <td class="c-table__cell"><%= language.short_name %></td>
       <td class="c-table__cell"><%= language.long_name %></td>
       <td class="c-table__cell"><%= language.default_locale %></td>
@@ -21,9 +21,9 @@
       <td class="c-table__cell">
         <div class="o-grid o-grid--no-gutter">
           <div class="o-grid__cell t-action-buttons">
-            <%= link gettext("Show"), to: backend_language_path(@conn, :show, language), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Edit"), to: backend_language_path(@conn, :edit, language), class: "c-button u-xsmall c-button--success" %>
-            <%= link gettext("Delete"), to: backend_language_path(@conn, :delete, language), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+            <%= link gettext("Show"), to:  Router.Helpers.backend_language_path(@conn, :show, language), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Edit"), to:  Router.Helpers.backend_language_path(@conn, :edit, language), class: "c-button u-xsmall c-button--success" %>
+            <%= link gettext("Delete"), to:  Router.Helpers.backend_language_path(@conn, :delete, language), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
           </div>
         </div>
       </td>
@@ -33,5 +33,5 @@
 </table>
 
 <p>
-  <%= link gettext("New language"), to: backend_language_path(@conn, :new), class: "c-button c-button--info" %>
+  <%= link gettext("New language"), to:  Router.Helpers.backend_language_path(@conn, :new), class: "c-button c-button--info" %>
 </p>

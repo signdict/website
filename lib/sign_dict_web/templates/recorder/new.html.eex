@@ -1,3 +1,0 @@
-<div id="app" data-entry-id="<%= @entry_id %>">
-  <router-view></router-view>
-</div>

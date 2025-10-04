@@ -27,12 +27,16 @@ defmodule SignDictWeb.Backend.ReviewController do
 
         conn
         |> put_flash(:info, gettext("Video approved"))
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+        |> redirect(
+          to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
+        )
 
       {:error, _video} ->
         conn
         |> put_flash(:error, gettext("Video could not be approved"))
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+        |> redirect(
+          to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
+        )
     end
   end
 
@@ -51,14 +55,18 @@ defmodule SignDictWeb.Backend.ReviewController do
 
         conn
         |> put_flash(:info, gettext("Video rejected"))
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+        |> redirect(
+          to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
+        )
 
       {:error, changeset} ->
         video = changeset.data
 
         conn
         |> put_flash(:error, gettext("Video could not be rejected"))
-        |> redirect(to: backend_entry_video_path(conn, :show, video.entry_id, video.id))
+        |> redirect(
+          to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video.id)
+        )
     end
   end
 

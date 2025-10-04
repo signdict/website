@@ -2,12 +2,13 @@ defmodule SignDict.Worker.PrepareVideo do
   alias SignDict.Repo
   alias SignDict.Video
 
-  @queue Application.get_env(:sign_dict, :queue)[:library]
+  @queue Application.compile_env(:sign_dict, :queue)[:library]
+  @environment Application.compile_env(:sign_dict, :environment)
 
   def perform(video_id, system \\ System) do
     convert_to_mp4(video_id, system)
 
-    if Application.get_env(:sign_dict, :environment) != :dev do
+    if @environment != :dev do
       @queue.enqueue(Exq, "transcoder", SignDict.Worker.TranscodeVideo, [video_id])
     end
   rescue

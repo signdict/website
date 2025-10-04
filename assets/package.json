@@ -13,7 +13,7 @@
     "detect-browser": "^5.3.0",
     "file-loader": "^6.2.0",
     "minimist": "^1.2.6",
-    "node-sass": "^7.0.1",
+    "node-sass": "^9.0.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "plyr": "^3.7.2",
@@ -23,10 +23,6 @@
     "i18next": "^22.4.10",
     "i18next-xhr-backend": "^3.2.2",
     "voo-i18n": "MattyRad/vue-i18n#feature/vue-2",
-    "vue": "^3.0.0",
-    "vue-resource": "^1.5.3",
-    "vue-router": "^3.5.4",
-    "vuex": "^3.6.2",
     "jsx-no-react": "^2.0.0"
   },
   "devDependencies": {

@@ -4,7 +4,7 @@
 
     <p><%= gettext("Enter your email address and we'll send you a link to reset your password.") %></p>
 
-    <%= form_for @conn, reset_password_path(@conn, :create), [as: :user, class: "password-reset-form"], fn f -> %>
+    <%= form_for @conn, Router.Helpers.reset_password_path(@conn, :create), [as: :user, class: "password-reset-form"], fn f -> %>
       <div>
         <%= label f, :email, gettext("user.email"), class: "sc-label" %>
         <%= email_input f, :email, placeholder: gettext("user.email"), class: "sc-input" %>

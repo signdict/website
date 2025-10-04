@@ -11,17 +11,17 @@
       <tbody class="c-table__body">
     <%= for entry <- @entries do %>
         <tr class="c-table__row">
-          <td class="c-table__cell"><%= link entry.text, to: backend_entry_path(@conn, :show, entry)  %></td>
+          <td class="c-table__cell"><%= link entry.text, to: Router.Helpers.backend_entry_path(@conn, :show, entry)  %></td>
           <td class="c-table__cell"><%= entry.description %></td>
           <td class="c-table__cell"><%= entry.type %></td>
-          <td class="c-table__cell"><%= link entry.language.short_name, to: backend_language_path(@conn, :show, entry.language) %></div>
+          <td class="c-table__cell"><%= link entry.language.short_name, to:  Router.Helpers.backend_language_path(@conn, :show, entry.language) %></div>
 
           <td class="c-table__cell">
             <div class="o-grid o-grid--no-gutter">
               <div class="o-grid__cell t-action-buttons">
-                <%= link gettext("Show"), to: backend_entry_path(@conn, :show, entry), class: "c-button u-xsmall c-button--success" %>
-                <%= link gettext("Edit"), to: backend_entry_path(@conn, :edit, entry), class: "c-button u-xsmall c-button--success" %>
-                <%= link gettext("Delete"), to: backend_entry_path(@conn, :delete, entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
+                <%= link gettext("Show"), to: Router.Helpers.backend_entry_path(@conn, :show, entry), class: "c-button u-xsmall c-button--success" %>
+                <%= link gettext("Edit"), to: Router.Helpers.backend_entry_path(@conn, :edit, entry), class: "c-button u-xsmall c-button--success" %>
+                <%= link gettext("Delete"), to: Router.Helpers.backend_entry_path(@conn, :delete, entry), method: :delete, data: [confirm: gettext("Are you sure?")], class: "c-button u-xsmall c-button--error" %>
               </div>
             </div>
           </td>

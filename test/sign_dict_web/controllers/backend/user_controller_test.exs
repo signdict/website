@@ -18,15 +18,15 @@ defmodule SignDictWeb.Backend.UserControllerTest do
   }
 
   test "it redirects when no user logged in", %{conn: conn} do
-    conn = get(conn, backend_user_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
+    conn = get(conn, Helpers.backend_user_path(conn, :index))
+    assert redirected_to(conn) == Helpers.session_path(conn, :new)
   end
 
   test "it redirects when non admin user logged in", %{conn: conn} do
     conn =
       conn
       |> guardian_login(insert(:user))
-      |> get(backend_user_path(conn, :index))
+      |> get(Helpers.backend_user_path(conn, :index))
 
     assert redirected_to(conn, 302) == "/"
   end
@@ -35,7 +35,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_user_path(conn, :index))
+      |> get(Helpers.backend_user_path(conn, :index))
 
     assert html_response(conn, 200) =~ "Listing users"
   end
@@ -44,7 +44,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_user_path(conn, :new))
+      |> get(Helpers.backend_user_path(conn, :new))
 
     assert html_response(conn, 200) =~ "New user"
   end
@@ -53,9 +53,9 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_user_path(conn, :create), user: @valid_attrs)
+      |> post(Helpers.backend_user_path(conn, :create), user: @valid_attrs)
 
-    assert redirected_to(conn) == backend_user_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_user_path(conn, :index)
     assert Repo.get_by(User, email: "homer@example.com")
   end
 
@@ -63,7 +63,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_user_path(conn, :create), user: @invalid_attrs)
+      |> post(Helpers.backend_user_path(conn, :create), user: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "New user"
   end
@@ -74,7 +74,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_user_path(conn, :show, user))
+      |> get(Helpers.backend_user_path(conn, :show, user))
 
     assert html_response(conn, 200) =~ user.name
   end
@@ -83,7 +83,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_user_path(conn, :show, 123_123_123))
+      |> get(Helpers.backend_user_path(conn, :show, 123_123_123))
 
     assert conn.status == 404
   end
@@ -94,7 +94,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_user_path(conn, :edit, user))
+      |> get(Helpers.backend_user_path(conn, :edit, user))
 
     assert html_response(conn, 200) =~ "Edit user"
   end
@@ -105,9 +105,11 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_user_path(conn, :update, user), user: @valid_attrs)
+      |> put(Helpers.backend_user_path(conn, :update, user), user: @valid_attrs)
 
-    assert redirected_to(conn) == backend_user_path(conn, :show, Repo.get(SignDict.User, user.id))
+    assert redirected_to(conn) ==
+             Helpers.backend_user_path(conn, :show, Repo.get(SignDict.User, user.id))
+
     assert Repo.get_by(User, email: "homer@example.com")
   end
 
@@ -117,7 +119,7 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_user_path(conn, :update, user), user: @invalid_attrs)
+      |> put(Helpers.backend_user_path(conn, :update, user), user: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "Edit user"
   end
@@ -128,9 +130,9 @@ defmodule SignDictWeb.Backend.UserControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(backend_user_path(conn, :delete, user))
+      |> delete(Helpers.backend_user_path(conn, :delete, user))
 
-    assert redirected_to(conn) == backend_user_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_user_path(conn, :index)
     refute Repo.get(User, user.id)
   end
 end

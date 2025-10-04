@@ -25,6 +25,6 @@
   </head>
 
   <body class='so-embed'>
-    <%= render @view_module, @view_template, assigns %>
+    <%= @inner_content %>
   </body>
 </html>

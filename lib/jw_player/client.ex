@@ -1,9 +1,11 @@
 defmodule JwPlayer.Client do
+  @jw_player Application.compile_env(:sign_dict, :jw_player)
+
   def sign_url(path, params \\ %{}) do
     default_map = %{
       api_nonce: Integer.to_string(Enum.random(10_000..99_999)),
       api_timestamp: Integer.to_string(DateTime.utc_now() |> DateTime.to_unix()),
-      api_key: Application.get_env(:sign_dict, :jw_player)[:api_key],
+      api_key: @jw_player[:api_key],
       api_format: "json"
     }
 
@@ -19,7 +21,7 @@ defmodule JwPlayer.Client do
   end
 
   defp do_sign_url(param_string) do
-    secret = Application.get_env(:sign_dict, :jw_player)[:api_secret]
+    secret = @jw_player[:api_secret]
 
     signature =
       :sha

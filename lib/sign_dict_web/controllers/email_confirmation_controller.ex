@@ -48,6 +48,6 @@ defmodule SignDictWeb.EmailConfirmationController do
 
   defp redirect_success(conn, false) do
     conn
-    |> redirect(to: page_path(conn, :welcome))
+    |> redirect(to: Router.Helpers.page_path(conn, :welcome))
   end
 end

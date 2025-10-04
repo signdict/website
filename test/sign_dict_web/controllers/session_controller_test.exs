@@ -1,10 +1,10 @@
-defmodule SignDict.SessionControllerTest do
+defmodule SignDictWeb.SessionControllerTest do
   use SignDict.ConnCase
   import SignDict.Factory
 
   describe "new/2" do
     test "renders form for new resources", %{conn: conn} do
-      conn = get(conn, session_path(conn, :new))
+      conn = get(conn, SignDictWeb.Router.Helpers.session_path(conn, :new))
       assert html_response(conn, 200) =~ "Email"
     end
   end
@@ -12,7 +12,9 @@ defmodule SignDict.SessionControllerTest do
   describe "create/2" do
     test "rerenders new.html if params are missing", %{conn: conn} do
       conn =
-        post(conn, session_path(conn, :create), %{"session" => %{"email" => "", "password" => ""}})
+        post(conn, SignDictWeb.Router.Helpers.session_path(conn, :create), %{
+          "session" => %{"email" => "", "password" => ""}
+        })
 
       assert html_response(conn, 200) =~ "Email"
     end
@@ -21,7 +23,7 @@ defmodule SignDict.SessionControllerTest do
       insert(:user)
 
       conn =
-        post(conn, session_path(conn, :create), %{
+        post(conn, SignDictWeb.Router.Helpers.session_path(conn, :create), %{
           "session" => %{"email" => "elisa@example.com", "password" => "wrong_password"}
         })
 
@@ -32,12 +34,13 @@ defmodule SignDict.SessionControllerTest do
       user = insert(:user)
 
       conn =
-        post(conn, session_path(conn, :create), %{
+        post(conn, SignDictWeb.Router.Helpers.session_path(conn, :create), %{
           "session" => %{"email" => user.email, "password" => "correct_password"}
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Successfully signed in"
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Successfully signed in"
     end
   end
 
@@ -48,9 +51,9 @@ defmodule SignDict.SessionControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> delete(session_path(conn, :delete, user))
+        |> delete(SignDictWeb.Router.Helpers.session_path(conn, :delete, user))
 
-      assert get_flash(conn, :info) == "Successfully signed out"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Successfully signed out"
       refute SignDict.Guardian.Plug.authenticated?(conn)
     end
   end

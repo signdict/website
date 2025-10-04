@@ -27,7 +27,7 @@ defmodule SignDict.EmbedControllerTest do
     end
 
     test "it shows an error when no video was found", %{conn: conn} do
-      conn = get(conn, embed_path(conn, :show, 99999))
+      conn = get(conn, Helpers.embed_path(conn, :show, 99999))
       assert html_response(conn, 200) =~ "Sorry, no sign was found"
     end
 
@@ -35,7 +35,7 @@ defmodule SignDict.EmbedControllerTest do
       conn: conn
     } do
       entry = insert(:entry)
-      conn = get(conn, embed_path(conn, :show, entry))
+      conn = get(conn, Helpers.embed_path(conn, :show, entry))
       assert html_response(conn, 200) =~ "Sorry, no sign was found"
     end
 
@@ -43,12 +43,12 @@ defmodule SignDict.EmbedControllerTest do
       conn: conn
     } do
       entry = insert(:entry)
-      conn = get(conn, embed_video_path(conn, :show, entry, 1))
+      conn = get(conn, SignDictWeb.Router.Helpers.embed_video_path(conn, :show, entry, 1))
       assert html_response(conn, 200) =~ "Sorry, no sign was found"
     end
 
     test "shows the highest voted video if no video is given", %{conn: conn, entry: entry} do
-      conn = get(conn, embed_path(conn, :show, entry))
+      conn = get(conn, Helpers.embed_path(conn, :show, entry))
       assert html_response(conn, 200) =~ "User 1"
     end
 
@@ -56,21 +56,23 @@ defmodule SignDict.EmbedControllerTest do
       conn: conn,
       entry: entry
     } do
-      conn = get(conn, embed_video_path(conn, :show, entry, 1_234_567_890))
-      assert redirected_to(conn) == embed_path(conn, :show, entry)
+      conn =
+        get(conn, SignDictWeb.Router.Helpers.embed_video_path(conn, :show, entry, 1_234_567_890))
+
+      assert redirected_to(conn) == Helpers.embed_path(conn, :show, entry)
     end
 
     test "shows the voted video if the user voted one", %{conn: conn, entry: entry, user_3: user} do
       conn =
         conn
         |> guardian_login(user)
-        |> get(embed_path(conn, :show, entry))
+        |> get(Helpers.embed_path(conn, :show, entry))
 
       assert html_response(conn, 200) =~ "User 2"
     end
 
     test "shows a specific video if given in the url", %{conn: conn, entry: entry, video_2: video} do
-      conn = get(conn, embed_video_path(conn, :show, entry, video))
+      conn = get(conn, SignDictWeb.Router.Helpers.embed_video_path(conn, :show, entry, video))
       assert html_response(conn, 200) =~ "User 2"
     end
   end

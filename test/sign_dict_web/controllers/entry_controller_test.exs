@@ -1,9 +1,8 @@
-defmodule SignDict.EntryControllerTest do
+defmodule SignDictWeb.EntryControllerTest do
   use SignDict.ConnCase
 
   import SignDict.Factory
 
-  alias SignDict.Entry
   alias SignDict.Vote
   alias SignDict.Video
 
@@ -31,49 +30,55 @@ defmodule SignDict.EntryControllerTest do
     end
 
     test "it redirects to search if the id could not be found", %{conn: conn} do
-      conn = get(conn, entry_path(conn, :show, "99999-nach-hause"))
-      assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
+      conn = get(conn, Helpers.entry_path(conn, :show, "99999-nach-hause"))
+      assert redirected_to(conn) == Helpers.search_path(conn, :index, q: "nach hause")
     end
 
     test "it redirect to the search if no number is in the id", %{conn: conn} do
-      conn = get(conn, entry_path(conn, :show, "nach-hause"))
-      assert redirected_to(conn) == search_path(conn, :index, q: "nach hause")
+      conn = get(conn, Helpers.entry_path(conn, :show, "nach-hause"))
+      assert redirected_to(conn) == Helpers.search_path(conn, :index, q: "nach hause")
     end
 
     test "it redirect if the entry does not have any videos and no video id is given", %{
       conn: conn
     } do
       entry = insert(:entry)
-      conn = get(conn, entry_path(conn, :show, entry))
+      conn = get(conn, Helpers.entry_path(conn, :show, entry))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "it redirect if the entry does not have any videos and a video id is given", %{
       conn: conn
     } do
       entry = insert(:entry)
-      conn = get(conn, entry_video_path(conn, :show, entry, 1))
+      conn = get(conn, Helpers.entry_video_path(conn, :show, entry, 1))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "it redirect if the entry does exist and a video id is given", %{conn: conn} do
-      conn = get(conn, entry_video_path(conn, :show, "131231312-entry", 1_234_567_890))
+      conn = get(conn, Helpers.entry_video_path(conn, :show, "131231312-entry", 1_234_567_890))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "redirects to the entry page if the linked video does not exist", %{
       conn: conn,
       entry: entry
     } do
-      conn = get(conn, entry_video_path(conn, :show, entry, 1_234_567_890))
-      assert redirected_to(conn) == entry_path(conn, :show, entry)
+      conn = get(conn, Helpers.entry_video_path(conn, :show, entry, 1_234_567_890))
+      assert redirected_to(conn) == Helpers.entry_path(conn, :show, entry)
     end
 
     test "shows the highest voted video if no video is given", %{conn: conn, entry: entry} do
-      conn = get(conn, entry_path(conn, :show, entry))
+      conn = get(conn, Helpers.entry_path(conn, :show, entry))
       assert html_response(conn, 200) =~ entry.description
       assert html_response(conn, 200) =~ entry.text
       assert html_response(conn, 200) =~ entry.type
@@ -84,7 +89,7 @@ defmodule SignDict.EntryControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> get(entry_path(conn, :show, entry))
+        |> get(Helpers.entry_path(conn, :show, entry))
 
       assert html_response(conn, 200) =~ entry.description
       assert html_response(conn, 200) =~ entry.text
@@ -93,7 +98,7 @@ defmodule SignDict.EntryControllerTest do
     end
 
     test "shows a specific video if given in the url", %{conn: conn, entry: entry, video_2: video} do
-      conn = get(conn, entry_video_path(conn, :show, entry, video))
+      conn = get(conn, Helpers.entry_video_path(conn, :show, entry, video))
       assert html_response(conn, 200) =~ entry.description
       assert html_response(conn, 200) =~ entry.text
       assert html_response(conn, 200) =~ entry.type
@@ -101,7 +106,7 @@ defmodule SignDict.EntryControllerTest do
     end
 
     test "enqueus sign_writing refresh if never run ", %{conn: conn, entry: entry} do
-      get(conn, entry_path(conn, :show, entry))
+      get(conn, Helpers.entry_path(conn, :show, entry))
       entry_id = entry.id
 
       assert_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
@@ -113,7 +118,7 @@ defmodule SignDict.EntryControllerTest do
       entry: entry,
       video_2: video
     } do
-      get(conn, entry_video_path(conn, :show, entry, video))
+      get(conn, Helpers.entry_video_path(conn, :show, entry, video))
       entry_id = entry.id
 
       assert_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
@@ -123,7 +128,7 @@ defmodule SignDict.EntryControllerTest do
     test "does not enque if younger than three days", %{conn: conn} do
       entry = insert(:entry, deleges_updated_at: Timex.shift(Timex.now(), days: -1))
 
-      get(conn, entry_path(conn, :show, entry))
+      get(conn, Helpers.entry_path(conn, :show, entry))
       entry_id = entry.id
 
       refute_received {:mock_exq, "sign_writings", SignDict.Worker.RefreshSignWritings,
@@ -154,7 +159,7 @@ defmodule SignDict.EntryControllerTest do
       })
       |> SignDict.Repo.update!()
 
-      get(conn, entry_path(conn, :show, entry))
+      get(conn, Helpers.entry_path(conn, :show, entry))
 
       entry_id = entry.id
 
@@ -166,88 +171,19 @@ defmodule SignDict.EntryControllerTest do
       domain = insert(:domain, domain: "example.com")
       entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
 
-      conn = get(conn, entry_path(conn, :show, entry))
-      assert redirected_to(conn) == search_path(conn, :index, q: "apple")
+      conn = get(conn, Helpers.entry_path(conn, :show, entry))
+      assert redirected_to(conn) == Helpers.search_path(conn, :index, q: "apple")
     end
 
     test "it redirects if entry is for other domain", %{conn: conn} do
       domain = insert(:domain, domain: "example.com")
       entry = insert(:entry_with_current_video, text: "Apple", domains: [domain])
 
-      conn = get(conn, entry_video_path(conn, :show, entry, entry.current_video_id))
+      conn = get(conn, Helpers.entry_video_path(conn, :show, entry, entry.current_video_id))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
-    end
-  end
 
-  describe "new/2" do
-    test "it renders the form", %{conn: conn} do
-      conn =
-        conn
-        |> get(entry_path(conn, :new))
-
-      assert html_response(conn, 200) =~ "Add new entry"
-    end
-  end
-
-  describe "create/2" do
-    test "it redirects to the record page if entry could be stored", %{conn: conn} do
-      language = SignDict.Factory.find_or_insert_language("DGS")
-      domain = insert(:domain)
-
-      conn =
-        conn
-        |> post(
-          entry_path(conn, :create),
-          entry: %{
-            text: "New Entry",
-            description: "New description",
-            type: "word",
-            language_id: language.id
-          }
-        )
-
-      entry = Repo.get_by!(Entry, text: "New Entry") |> Repo.preload(:domains)
-      assert entry.domains == [domain]
-      assert redirected_to(conn) == recorder_path(conn, :index, entry.id)
-    end
-
-    test "it redirects to an already existing page if the entry was already in the database", %{
-      conn: conn
-    } do
-      {:ok, language} = SignDict.Factory.find_or_build_language("DGS") |> Repo.insert()
-      entry = insert(:entry, text: "Another excelent entry", description: "", type: "word")
-
-      conn =
-        conn
-        |> post(
-          entry_path(conn, :create),
-          entry: %{
-            text: "Another excelent entry",
-            description: "",
-            type: "word",
-            language_id: language.id
-          }
-        )
-
-      assert redirected_to(conn) == recorder_path(conn, :index, entry.id)
-    end
-
-    test "it shows the form if the validation of the entry failed", %{conn: conn} do
-      insert(:domain)
-
-      conn =
-        conn
-        |> post(
-          entry_path(conn, :create),
-          entry: %{
-            text: "",
-            description: "",
-            type: "word"
-          }
-        )
-
-      assert html_response(conn, 200) =~ "Add new entry"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
   end
 
@@ -261,7 +197,7 @@ defmodule SignDict.EntryControllerTest do
 
       conn =
         conn
-        |> get(entry_path(conn, :index), letter: "S")
+        |> get(Helpers.entry_path(conn, :index), letter: "S")
 
       body = html_response(conn, 200)
       assert body =~ "Sloth"
@@ -280,7 +216,7 @@ defmodule SignDict.EntryControllerTest do
 
       conn =
         conn
-        |> get(entry_path(conn, :latest))
+        |> get(Helpers.entry_path(conn, :latest))
 
       body = html_response(conn, 200)
       assert Regex.match?(~r/entry.*sloth.*entry.*marmot/s, body)

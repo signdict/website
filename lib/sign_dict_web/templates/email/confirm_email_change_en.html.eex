@@ -8,7 +8,7 @@
 </p>
 
 <p>
-  <%= link "Confirm email address", to: email_confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
+  <%= link "Confirm email address", to: SignDictWeb.Router.Helpers.email_confirmation_url(SignDictWeb.Endpoint, :update, email: @user.unconfirmed_email, change: true, confirmation_token: @user.confirmation_token_unencrypted) %>
 </p>
 
 <p>
