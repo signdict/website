@@ -45,7 +45,9 @@ defmodule SignDictWeb.EntryControllerTest do
       entry = insert(:entry)
       conn = get(conn, Helpers.entry_path(conn, :show, entry))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "it redirect if the entry does not have any videos and a video id is given", %{
@@ -54,13 +56,17 @@ defmodule SignDictWeb.EntryControllerTest do
       entry = insert(:entry)
       conn = get(conn, Helpers.entry_video_path(conn, :show, entry, 1))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "it redirect if the entry does exist and a video id is given", %{conn: conn} do
       conn = get(conn, Helpers.entry_video_path(conn, :show, "131231312-entry", 1_234_567_890))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
 
     test "redirects to the entry page if the linked video does not exist", %{
@@ -175,7 +181,9 @@ defmodule SignDictWeb.EntryControllerTest do
 
       conn = get(conn, Helpers.entry_video_path(conn, :show, entry, entry.current_video_id))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Sorry, I could not find an entry for this."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
+               "Sorry, I could not find an entry for this."
     end
   end
 

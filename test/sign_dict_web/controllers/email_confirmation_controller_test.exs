@@ -24,7 +24,7 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
         )
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :error) == "Invalid confirmation link."
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Invalid confirmation link."
     end
 
     test "it renders an error if the token is wrong", %{conn: conn} do
@@ -46,7 +46,9 @@ defmodule SignDictWeb.EmailConfirmationControllerTest do
         )
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :error) == "Unable to confirm your email address."
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) ==
+               "Unable to confirm your email address."
     end
 
     test "it signs in the user and confirms the email address and redirects to welcome", %{

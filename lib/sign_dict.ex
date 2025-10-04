@@ -6,18 +6,27 @@ defmodule SignDict do
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, args) do
-    import Supervisor.Spec
-
     # Define workers and child supervisors to be supervised
     default_children = [
       # Start the Ecto repository
-      supervisor(SignDict.Repo, []),
+      {SignDict.Repo, []},
       # Start the endpoint when the application starts
-      supervisor(Endpoint, [])
+      {Endpoint, []},
       # Workers ->
       # worker(SignDict.WpsCronjob, [])
+
+      {Phoenix.PubSub, [name: SignDict.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
+    # 21:27:37.788 [warning] The :pubsub key in your SignDictWeb.Endpoint is deprecated.
+    #
+    # You must now start the pubsub in your application supervision tree.
+    # Go to lib/my_app/application.ex and add the following:
+    #
+    #
+    # Now, back in your config files in config/*, you can remove the :pubsub
+    # key and add the :pubsub_server key, with the PubSub name:
+    # pubsub_server: SignDict.PubSub
     children =
       case args do
         [env: :prod] ->

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :sign_dict, :environment, :test
 
@@ -11,7 +11,7 @@ config :sign_dict, SignDictWeb.Endpoint,
 config :sign_dict, :sql_sandbox, true
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :warning
 
 # Configure your database
 config :sign_dict, SignDict.Repo,

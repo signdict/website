@@ -40,7 +40,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
                  video.id
                )
 
-      assert get_flash(conn, :info) == "Video approved"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Video approved"
       assert Repo.get(Video, video.id).state == "published"
     end
 
@@ -71,7 +71,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
                  video.id
                )
 
-      assert get_flash(conn, :error) == "Video could not be approved"
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Video could not be approved"
       assert Repo.get(Video, video.id).state == "uploaded"
     end
 
@@ -122,7 +122,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
                  video.id
                )
 
-      assert get_flash(conn, :info) == "Video rejected"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Video rejected"
       video = Repo.get(Video, video.id)
       assert video.state == "rejected"
       assert video.rejection_reason == "wrong sign"
@@ -146,7 +146,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
                  video.id
                )
 
-      assert get_flash(conn, :error) == "Video could not be rejected"
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
     end
 
@@ -168,7 +168,7 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
                  video.id
                )
 
-      assert get_flash(conn, :error) == "Video could not be rejected"
+      assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
     end
 

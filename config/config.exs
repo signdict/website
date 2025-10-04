@@ -3,7 +3,7 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-use Mix.Config
+import Config
 
 # General application configuration
 config :sign_dict, ecto_repos: [SignDict.Repo]
@@ -13,7 +13,7 @@ config :sign_dict, SignDictWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
   render_errors: [view: SignDictWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SignDict.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: SignDict.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,

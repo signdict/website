@@ -1,4 +1,4 @@
-defmodule SignDict.SessionControllerTest do
+defmodule SignDictWeb.SessionControllerTest do
   use SignDict.ConnCase
   import SignDict.Factory
 
@@ -39,7 +39,8 @@ defmodule SignDict.SessionControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) == "Successfully signed in"
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Successfully signed in"
     end
   end
 
@@ -52,7 +53,7 @@ defmodule SignDict.SessionControllerTest do
         |> guardian_login(user)
         |> delete(SignDictWeb.Router.Helpers.session_path(conn, :delete, user))
 
-      assert get_flash(conn, :info) == "Successfully signed out"
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) == "Successfully signed out"
       refute SignDict.Guardian.Plug.authenticated?(conn)
     end
   end

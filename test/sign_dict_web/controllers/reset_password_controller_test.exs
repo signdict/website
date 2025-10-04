@@ -23,7 +23,7 @@ defmodule SignDict.ResetPasswordControllerTest do
 
     assert redirected_to(conn) == "/"
 
-    assert get_flash(conn, :info) ==
+    assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
              "You'll receive an email with instructions about how to reset your password in a few minutes."
 
     assert_email_delivered_with(
@@ -39,7 +39,7 @@ defmodule SignDict.ResetPasswordControllerTest do
 
     assert redirected_to(conn) == "/"
 
-    assert get_flash(conn, :info) ==
+    assert Phoenix.Flash.get(conn.assigns.flash, :info) ==
              "You'll receive an email with instructions about how to reset your password in a few minutes."
 
     assert_no_emails_delivered()
@@ -62,7 +62,9 @@ defmodule SignDict.ResetPasswordControllerTest do
       |> get(Helpers.reset_password_path(conn, :edit), %{})
 
     assert redirected_to(conn) == "/"
-    assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
+
+    assert Phoenix.Flash.get(conn.assigns.flash, :error) ==
+             "Invalid password reset link. Please try again."
   end
 
   test "fails to update if the token is wrong", %{conn: conn} do
@@ -71,7 +73,9 @@ defmodule SignDict.ResetPasswordControllerTest do
       |> put(Helpers.reset_password_path(conn, :update), %{})
 
     assert redirected_to(conn) == "/"
-    assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
+
+    assert Phoenix.Flash.get(conn.assigns.flash, :error) ==
+             "Invalid password reset link. Please try again."
   end
 
   test "fails to update if the password does not match confirmation", %{conn: conn, user: user} do
@@ -81,7 +85,7 @@ defmodule SignDict.ResetPasswordControllerTest do
         user: %{email: user.email, password_reset_unencrypted: "wrong"}
       })
 
-    assert get_flash(conn, :error) == "Unable to change your password"
+    assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Unable to change your password"
     assert html_response(conn, 200) =~ "Change your password"
   end
 
@@ -95,7 +99,7 @@ defmodule SignDict.ResetPasswordControllerTest do
         user: %{email: user.email, password_reset_unencrypted: "encryptedtoken"}
       })
 
-    assert get_flash(conn, :error) == "Unable to change your password"
+    assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Unable to change your password"
     assert html_response(conn, 200) =~ "Change your password"
   end
 end
