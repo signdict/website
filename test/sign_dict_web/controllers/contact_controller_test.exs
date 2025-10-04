@@ -9,7 +9,7 @@ defmodule SignDictWeb.ContactControllerTest do
       conn =
         conn
         |> post(
-          contact_path(
+          Helpers.contact_path(
             conn,
             :create,
             %{

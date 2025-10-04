@@ -9,7 +9,7 @@ defmodule SignDictWeb.Backend.StatisticControllerTest do
       conn =
         conn
         |> guardian_login(insert(:statistic_user))
-        |> get(backend_statistic_path(conn, :index))
+        |> get(Helpers.backend_statistic_path(conn, :index))
 
       assert html_response(conn, 200)
 
@@ -22,7 +22,7 @@ defmodule SignDictWeb.Backend.StatisticControllerTest do
       conn =
         conn
         |> guardian_login(insert(:user))
-        |> get(backend_statistic_path(conn, :index))
+        |> get(Helpers.backend_statistic_path(conn, :index))
 
       assert redirected_to(conn, 302) == "/"
     end

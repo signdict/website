@@ -1,6 +1,5 @@
 defmodule SignDictWeb.EmbedController do
   use SignDictWeb, :controller
-  
 
   alias SignDict.Services.EntryVideoLoader
   alias SignDict.Services.OpenGraph

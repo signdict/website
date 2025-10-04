@@ -21,12 +21,12 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
       conn
       |> guardian_login(insert(:admin_user))
       |> post(
-        SignDictWeb.Router.Helpers.backend_list_list_entry_path(conn, :create, list),
+        Helpers.backend_list_list_entry_path(conn, :create, list),
         list_entry: params
       )
 
     assert redirected_to(conn) ==
-             SignDictWeb.Router.Helpers.backend_list_path(conn, :show, list.id)
+             Helpers.backend_list_path(conn, :show, list.id)
 
     assert Repo.get_by(ListEntry, entry_id: entry.id, list_id: list.id)
   end
@@ -38,7 +38,7 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
 
     conn
     |> guardian_login(insert(:admin_user))
-    |> post(SignDictWeb.Router.Helpers.backend_list_list_entry_path(conn, :create, list),
+    |> post(Helpers.backend_list_list_entry_path(conn, :create, list),
       list_entry: params
     )
 
@@ -52,7 +52,7 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
       conn
       |> guardian_login(insert(:admin_user))
       |> delete(
-        SignDictWeb.Router.Helpers.backend_list_list_entry_path(
+        Helpers.backend_list_list_entry_path(
           conn,
           :delete,
           list_entry.list_id,
@@ -61,7 +61,7 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
       )
 
     assert redirected_to(conn) ==
-             SignDictWeb.Router.Helpers.backend_list_path(conn, :show, list_entry.list_id)
+             Helpers.backend_list_path(conn, :show, list_entry.list_id)
 
     refute Repo.get(ListEntry, list_entry.id)
   end
@@ -73,9 +73,7 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
 
     conn
     |> guardian_login(insert(:admin_user))
-    |> post(
-      SignDictWeb.Router.Helpers.backend_list_list_entry_path(conn, :move_up, list, list_entry_2)
-    )
+    |> post(Helpers.backend_list_list_entry_path(conn, :move_up, list, list_entry_2))
 
     assert Enum.map(List.entries(list), &{&1.id, &1.sort_order}) == [
              {list_entry_2.id, 1},
@@ -91,7 +89,7 @@ defmodule SignDictWeb.Backend.ListEntryControllerTest do
     conn
     |> guardian_login(insert(:admin_user))
     |> post(
-      SignDictWeb.Router.Helpers.backend_list_list_entry_path(
+      Helpers.backend_list_list_entry_path(
         conn,
         :move_down,
         list,

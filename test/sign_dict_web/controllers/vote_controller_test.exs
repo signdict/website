@@ -13,7 +13,7 @@ defmodule SignDict.VoteControllerTest do
       conn =
         build_conn()
         |> guardian_login(user)
-        |> post(vote_path(build_conn(), :create, video))
+        |> post(Helpers.vote_path(build_conn(), :create, video))
 
       assert Vote |> Repo.get_by(%{user_id: user.id, video_id: video.id})
       assert redirected_to(conn) == Routes.entry_video_path(conn, :show, video.entry, video)
@@ -26,7 +26,7 @@ defmodule SignDict.VoteControllerTest do
       conn =
         build_conn()
         |> guardian_login(user)
-        |> post(vote_path(build_conn(), :create, video))
+        |> post(Helpers.vote_path(build_conn(), :create, video))
 
       assert Vote |> Repo.aggregate(:count, :id) == 1
       assert redirected_to(conn) == Routes.entry_video_path(conn, :show, video.entry, video)
@@ -42,7 +42,7 @@ defmodule SignDict.VoteControllerTest do
       conn =
         build_conn()
         |> guardian_login(user)
-        |> post(vote_path(build_conn(), :create, video2))
+        |> post(Helpers.vote_path(build_conn(), :create, video2))
 
       query = from(v in Vote, where: v.user_id == ^user.id and v.video_id == ^video2.id)
       assert query |> Repo.aggregate(:count, :id) == 1
@@ -58,7 +58,7 @@ defmodule SignDict.VoteControllerTest do
       conn =
         build_conn()
         |> guardian_login(user)
-        |> delete(vote_path(build_conn(), :delete, video))
+        |> delete(Helpers.vote_path(build_conn(), :delete, video))
 
       refute Vote |> Repo.get(vote.id)
       assert redirected_to(conn) == Routes.entry_video_path(conn, :show, video.entry, video)
@@ -73,7 +73,7 @@ defmodule SignDict.VoteControllerTest do
       conn =
         build_conn()
         |> guardian_login(other_user)
-        |> delete(vote_path(build_conn(), :delete, video))
+        |> delete(Helpers.vote_path(build_conn(), :delete, video))
 
       assert Vote |> Repo.get_by(%{user_id: user.id, video_id: video.id})
       assert redirected_to(conn) == Routes.entry_video_path(conn, :show, video.entry, video)
@@ -83,17 +83,17 @@ defmodule SignDict.VoteControllerTest do
   describe "vote with logged out user" do
     test "does not create vote and redirect to login page" do
       video = insert(:video_with_entry)
-      conn = build_conn() |> post(vote_path(build_conn(), :create, video))
+      conn = build_conn() |> post(Helpers.vote_path(build_conn(), :create, video))
       refute Vote |> Repo.get_by(%{video_id: video.id})
-      assert redirected_to(conn) == session_path(conn, :new)
+      assert redirected_to(conn) == Helpers.session_path(conn, :new)
     end
 
     test "does not delete existing vote and redirect to login page" do
       video = insert(:video_with_entry)
       vote = insert(:vote, video: video)
-      conn = build_conn() |> post(vote_path(build_conn(), :delete, video))
+      conn = build_conn() |> post(Helpers.vote_path(build_conn(), :delete, video))
       assert Vote |> Repo.get(vote.id)
-      assert redirected_to(conn) == session_path(conn, :new)
+      assert redirected_to(conn) == Helpers.session_path(conn, :new)
     end
   end
 end

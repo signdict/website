@@ -56,7 +56,9 @@ defmodule SignDict.EmbedControllerTest do
       conn: conn,
       entry: entry
     } do
-      conn = get(conn, SignDictWeb.Router.Helpers.embed_video_path(conn, :show, entry, 1_234_567_890))
+      conn =
+        get(conn, SignDictWeb.Router.Helpers.embed_video_path(conn, :show, entry, 1_234_567_890))
+
       assert redirected_to(conn) == Routes.embed_path(conn, :show, entry)
     end
 

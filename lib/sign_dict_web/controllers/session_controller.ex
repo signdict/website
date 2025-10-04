@@ -2,7 +2,6 @@ defmodule SignDictWeb.SessionController do
   @moduledoc """
   """
   use SignDictWeb, :controller
-  
 
   alias SignDict.Guardian.Plug
 

@@ -11,7 +11,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "renders form for new resources", %{conn: conn} do
     conn =
       conn
-      |> get(reset_password_path(conn, :new))
+      |> get(Helpers.reset_password_path(conn, :new))
 
     assert html_response(conn, 200) =~ "Forgot your password?"
   end
@@ -19,7 +19,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "sends an email to the user if it exist", %{conn: conn, user: user} do
     conn =
       conn
-      |> post(reset_password_path(conn, :create), user: %{email: user.email})
+      |> post(Helpers.reset_password_path(conn, :create), user: %{email: user.email})
 
     assert redirected_to(conn) == "/"
 
@@ -35,7 +35,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "silently fails if the user does not exist", %{conn: conn} do
     conn =
       conn
-      |> post(reset_password_path(conn, :create), user: %{email: "wrong@example.com"})
+      |> post(Helpers.reset_password_path(conn, :create), user: %{email: "wrong@example.com"})
 
     assert redirected_to(conn) == "/"
 
@@ -48,7 +48,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "shows the password edit form", %{conn: conn, user: user} do
     conn =
       conn
-      |> get(reset_password_path(conn, :edit), %{
+      |> get(Helpers.reset_password_path(conn, :edit), %{
         email: user.email,
         password_reset_token: user.password_reset_unencrypted
       })
@@ -59,7 +59,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "redirects if email and token are missing", %{conn: conn} do
     conn =
       conn
-      |> get(reset_password_path(conn, :edit), %{})
+      |> get(Helpers.reset_password_path(conn, :edit), %{})
 
     assert redirected_to(conn) == "/"
     assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
@@ -68,7 +68,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "fails to update if the token is wrong", %{conn: conn} do
     conn =
       conn
-      |> put(reset_password_path(conn, :update), %{})
+      |> put(Helpers.reset_password_path(conn, :update), %{})
 
     assert redirected_to(conn) == "/"
     assert get_flash(conn, :error) == "Invalid password reset link. Please try again."
@@ -77,7 +77,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   test "fails to update if the password does not match confirmation", %{conn: conn, user: user} do
     conn =
       conn
-      |> put(reset_password_path(conn, :update), %{
+      |> put(Helpers.reset_password_path(conn, :update), %{
         user: %{email: user.email, password_reset_unencrypted: "wrong"}
       })
 
@@ -91,7 +91,7 @@ defmodule SignDict.ResetPasswordControllerTest do
   } do
     conn =
       conn
-      |> put(reset_password_path(conn, :update), %{
+      |> put(Helpers.reset_password_path(conn, :update), %{
         user: %{email: user.email, password_reset_unencrypted: "encryptedtoken"}
       })
 

@@ -13,8 +13,8 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
   }
 
   test "it redirects when no user logged in", %{conn: conn} do
-    conn = get(conn, backend_domain_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
+    conn = get(conn, Helpers.backend_domain_path(conn, :index))
+    assert redirected_to(conn) == Helpers.session_path(conn, :new)
   end
 
   test "it redirects when non admin user logged in", %{conn: conn} do
@@ -39,7 +39,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_domain_path(conn, :new))
+      |> get(Helpers.backend_domain_path(conn, :new))
 
     assert html_response(conn, 200) =~ "New domain"
   end
@@ -48,9 +48,9 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_domain_path(conn, :create), domain: @valid_attrs)
+      |> post(Helpers.backend_domain_path(conn, :create), domain: @valid_attrs)
 
-    assert redirected_to(conn) == backend_domain_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_domain_path(conn, :index)
     assert Repo.get_by(Domain, domain: "signdict")
   end
 
@@ -58,7 +58,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> post(backend_domain_path(conn, :create), domain: @invalid_attrs)
+      |> post(Helpers.backend_domain_path(conn, :create), domain: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "New domain"
   end
@@ -69,7 +69,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_domain_path(conn, :show, domain))
+      |> get(Helpers.backend_domain_path(conn, :show, domain))
 
     assert html_response(conn, 200) =~ domain.domain
   end
@@ -78,7 +78,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_domain_path(conn, :show, 123_123_123))
+      |> get(Helpers.backend_domain_path(conn, :show, 123_123_123))
 
     assert conn.status == 404
   end
@@ -89,7 +89,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> get(backend_domain_path(conn, :edit, domain))
+      |> get(Helpers.backend_domain_path(conn, :edit, domain))
 
     assert html_response(conn, 200) =~ "Edit domain"
   end
@@ -100,10 +100,10 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_domain_path(conn, :update, domain), domain: @valid_attrs)
+      |> put(Helpers.backend_domain_path(conn, :update, domain), domain: @valid_attrs)
 
     assert redirected_to(conn) ==
-             backend_domain_path(conn, :show, Repo.get(SignDict.Domain, domain.id))
+             Helpers.backend_domain_path(conn, :show, Repo.get(SignDict.Domain, domain.id))
 
     assert Repo.get_by(Domain, domain: "signdict")
   end
@@ -114,7 +114,7 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> put(backend_domain_path(conn, :update, domain), domain: @invalid_attrs)
+      |> put(Helpers.backend_domain_path(conn, :update, domain), domain: @invalid_attrs)
 
     assert html_response(conn, 200) =~ "Edit domain"
   end
@@ -125,9 +125,9 @@ defmodule SignDictWeb.Backend.DomainControllerTest do
     conn =
       conn
       |> guardian_login(insert(:admin_user))
-      |> delete(backend_domain_path(conn, :delete, domain))
+      |> delete(Helpers.backend_domain_path(conn, :delete, domain))
 
-    assert redirected_to(conn) == backend_domain_path(conn, :index)
+    assert redirected_to(conn) == Helpers.backend_domain_path(conn, :index)
     refute Repo.get(Domain, domain.id)
   end
 end

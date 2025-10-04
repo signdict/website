@@ -2,7 +2,6 @@ defmodule SignDictWeb.ListController do
   @moduledoc """
   """
   use SignDictWeb, :controller
-  
 
   alias SignDict.List
   alias SignDict.Services.OpenGraph

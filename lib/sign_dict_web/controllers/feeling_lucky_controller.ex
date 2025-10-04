@@ -2,7 +2,6 @@ defmodule SignDictWeb.FeelingLuckyController do
   @moduledoc """
   """
   use SignDictWeb, :controller
-  
 
   alias SignDict.Entry
 

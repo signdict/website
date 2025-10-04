@@ -1,6 +1,5 @@
 defmodule SignDictWeb.SearchController do
   use SignDictWeb, :controller
-  
 
   alias SignDict.Entry
 

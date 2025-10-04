@@ -1,6 +1,5 @@
 defmodule SignDictWeb.EmailConfirmationController do
   use SignDictWeb, :controller
-  
 
   alias SignDict.Guardian.Plug
   alias SignDict.Repo

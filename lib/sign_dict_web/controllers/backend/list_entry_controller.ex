@@ -1,6 +1,6 @@
 defmodule SignDictWeb.Backend.ListEntryController do
   use SignDictWeb, :controller
-  
+
   alias SignDict.ListEntry
 
   plug :load_and_authorize_resource, model: ListEntry, except: :index

@@ -62,7 +62,9 @@ defmodule SignDictWeb.Backend.VideoController do
 
         conn
         |> put_flash(:info, "Video updated successfully.")
-        |> redirect(to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video))
+        |> redirect(
+          to: Router.Helpers.backend_entry_video_path(conn, :show, video.entry_id, video)
+        )
 
       {:error, changeset} ->
         render(conn, "edit.html", video: video, changeset: changeset, entry_id: entry_id)

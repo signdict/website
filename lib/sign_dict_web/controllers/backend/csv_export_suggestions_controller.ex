@@ -1,6 +1,5 @@
 defmodule SignDictWeb.Backend.CSVExportSuggestionsController do
   use SignDictWeb, :controller
-  
 
   alias SignDict.Domain
 

@@ -162,7 +162,7 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(insert(:user))
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: @valid_attrs)
+        |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
 
       assert redirected_to(conn, 302) == "/"
     end
@@ -172,7 +172,7 @@ defmodule SignDict.UserControllerTest do
 
       conn =
         conn
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: @valid_attrs)
+        |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
 
       assert redirected_to(conn, 302) == "/"
     end
@@ -183,9 +183,11 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: @valid_attrs)
+        |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
 
-      assert redirected_to(conn) == user_path(conn, :show, Repo.get(SignDict.User, user.id))
+      assert redirected_to(conn) ==
+               Helpers.user_path(conn, :show, Repo.get(SignDict.User, user.id))
+
       assert Repo.get_by(SignDict.User, unconfirmed_email: "elisa@example.com")
     end
 
@@ -195,7 +197,7 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user),
+        |> patch(Helpers.user_path(conn, :update, user),
           user: %{email: "invalidemail"}
         )
 
@@ -207,7 +209,7 @@ defmodule SignDict.UserControllerTest do
 
       conn
       |> guardian_login(user)
-      |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: @valid_attrs)
+      |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
 
       assert_email_delivered_with(
         subject: "Please confirm the change of your email address",
@@ -221,9 +223,11 @@ defmodule SignDict.UserControllerTest do
       conn =
         conn
         |> guardian_login(user)
-        |> patch(SignDictWeb.Router.Helpers.user_path(conn, :update, user), user: @valid_attrs)
+        |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
 
-      assert redirected_to(conn) == user_path(conn, :show, Repo.get(SignDict.User, user.id))
+      assert redirected_to(conn) ==
+               Helpers.user_path(conn, :show, Repo.get(SignDict.User, user.id))
+
       user = Repo.get_by(SignDict.User, id: user.id)
       refute_delivered_email(SignDictWeb.Email.confirm_email_change(user))
     end

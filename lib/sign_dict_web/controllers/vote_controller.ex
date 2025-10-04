@@ -1,6 +1,5 @@
 defmodule SignDictWeb.VoteController do
   use SignDictWeb, :controller
-  
 
   plug Guardian.Plug.EnsureAuthenticated, error_handler: SignDictWeb.GuardianErrorHandler
 

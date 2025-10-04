@@ -2,7 +2,6 @@ defmodule SignDictWeb.EntryController do
   @moduledoc """
   """
   use SignDictWeb, :controller
-  
 
   alias SignDict.Domain
   alias SignDict.Entry
@@ -68,41 +67,6 @@ defmodule SignDictWeb.EntryController do
     |> add_lists_for_entry
     |> refresh_sign_writings
     |> render_entry
-  end
-
-  def new(conn, params) do
-    changeset = Entry.changeset(%Entry{})
-    languages = Repo.all(Language)
-    render(conn, "new.html", changeset: changeset, languages: languages, text: params["text"])
-  end
-
-  def create(conn, %{"entry" => entry_params}) do
-    domain = Domain.for(conn.host)
-    changeset = Entry.changeset(%Entry{domains: [domain]}, entry_params)
-    entry = Entry.find_by_changeset(changeset)
-
-    if entry do
-      redirect(conn, to: Router.Helpers.recorder_path(conn, :index, entry.id))
-    else
-      create_entry(conn, changeset)
-    end
-  end
-
-  defp create_entry(conn, changeset) do
-    case Repo.insert(changeset) do
-      {:ok, entry} ->
-        conn
-        |> redirect(to: Router.Helpers.recorder_path(conn, :index, entry.id))
-
-      {:error, changeset} ->
-        languages = Repo.all(Language)
-
-        render(conn, "new.html",
-          changeset: changeset,
-          languages: languages,
-          text: conn.params["text"]
-        )
-    end
   end
 
   defp render_entry(%{conn: conn, videos: videos, entry: entry})
