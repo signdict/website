@@ -27,7 +27,7 @@ As database it uses [PostgreSQL](http://postgresql.org).
 
 After you installed everything, the setup is as follows:
 
-### Mac instructions:
+### Mac instructions
 
 ```bash
 mix ua_inspector.download
@@ -37,7 +37,7 @@ cd assets/ && yarn install && cd ..
 mix phx.server
 ```
 
-### Linux instructions:
+### Linux instructions
 
 Note: If you run into postgres password authentication errors, check out [this blogpost for help](https://juwondaniel.wordpress.com/2016/09/23/solve-mix-ecto-create-postgresql-password-issue-with-phoenix/).
 
@@ -49,32 +49,6 @@ sudo npm install -g yarn
 cd assets/ && yarn install && cd ..
 mix phx.server
 ```
-
-### Docker instructions:
-
-First, make the PostgreSQL and redis servers point to the docker services. Change `hostname: "localhost"` to `hostname: "db"` in `config/dev.exs`, and add `host: "redis"` to the `:exq` section in `config/config.exs`.
-
-Then run
-
-```bash
-docker-compose up
-```
-
-to install all dependencies and start the PostgreSQL, redis and web server services (including code reloading). The website is available at http://localhost:4000.
-
-With that you have a running system and a default admin user called
-`admin@example.com` with the password `thepasswordisalie`.
-
-Before you contribute code, please make sure to read the [CONTRIBUTING.md](CONTRIBUTING.md)
-
-In development mode `Bamboo` will not sent emails. Instead you can see what
-would have been sent out here: `http://localhost:4000/sent_emails`
-
-This project is using [yarn](http://yarnjs.com/) for javascript dependency management.
-
-You can also use the included `Procfile` to start redis and the phoenix server at
-the same time. Install `foreman` with `gem install foreman` and execute `foreman start`
-to have both started automatically.
 
 ### How to run the suite
 
