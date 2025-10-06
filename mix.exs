@@ -89,7 +89,7 @@ defmodule SignDict.Mixfile do
       {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 2.2.3"},
       {:ua_inspector, "~> 3.0"},
-      {:csv, "~> 2.3"},
+      {:csv, "~> 3.2"},
       {:poison, "~> 5.0"},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:postgrex, "~> 0.21.1"},
