@@ -60,7 +60,7 @@ defmodule SignDict.Mixfile do
       {:bugsnag, "~> 3.0.0"},
       {:plugsnag, "~> 1.6.0"},
       {:canary, "~> 1.2.0"},
-      {:comeonin, "~> 5.3.1"},
+      {:comeonin, "~> 5.5.1"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.6.1", only: [:dev, :test]},
       {:distillery, "~> 2.1.1", runtime: false},
