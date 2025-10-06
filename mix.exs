@@ -62,7 +62,7 @@ defmodule SignDict.Mixfile do
       {:canary, "~> 1.2.0"},
       {:comeonin, "~> 5.5.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.6.1", only: [:dev, :test]},
+      {:credo, "~> 1.7.12", only: [:dev, :test]},
       {:distillery, "~> 2.1.1", runtime: false},
       {:ex_machina, "~> 2.1"},
       {:excoveralls, "~> 0.6", only: :test},
