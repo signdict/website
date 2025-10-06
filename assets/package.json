@@ -18,7 +18,7 @@
     "phoenix_html": "file:../deps/phoenix_html",
     "plyr": "^3.7.2",
     "sass-loader": "^12.6.0",
-    "stimulus": "^3.0.1",
+    "stimulus": "^3.2.2",
     "turbolinks": "^5.2.0",
     "i18next": "^22.4.10",
     "i18next-xhr-backend": "^3.2.2",
