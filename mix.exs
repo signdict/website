@@ -56,7 +56,7 @@ defmodule SignDict.Mixfile do
       {:waffle_ecto, "~> 0.0.12"},
       {:bamboo_smtp, "~> 3.1.3"},
       {:bamboo, "~> 1.7.1"},
-      {:bcrypt_elixir, "~> 3.0.0"},
+      {:bcrypt_elixir, "~> 3.3.2"},
       {:bugsnag, "~> 3.0.0"},
       {:plugsnag, "~> 1.6.0"},
       {:canary, "~> 1.2.0"},
