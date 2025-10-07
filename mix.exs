@@ -78,7 +78,7 @@ defmodule SignDict.Mixfile do
       {:phoenix_pubsub, "~> 2.1"},
       {:phoenix_view, "~> 2.0.4"},
       {:phoenix, "~> 1.7.0"},
-      {:plug, "~> 1.15.0"},
+      {:plug, "~> 1.18.1"},
       {:secure_random, "~> 0.5"},
       {:state_mc, github: "bitboxer/state_mc"},
       {:timex, "~> 3.6"},
