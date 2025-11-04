@@ -6,14 +6,7 @@
 import Config
 
 # General application configuration
-config :sign_dict, ecto_repos: [SignDict.Repo]
-
-# Configures the endpoint
-config :sign_dict, SignDictWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "wxZpIUhB1jFBI2uxI2r6HOJUEwVgQ3rYGqtXS2ODZq0fQNC9lNbFOy7IFVr9T7M4",
-  render_errors: [view: SignDictWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: SignDict.PubSub
+config :sign_dict, SignDictWeb.Endpoint, generators: [timestamp_type: :utc_datetime]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -84,4 +77,4 @@ config :ua_inspector,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env()}.exs"
+import_config "#{config_env()}.exs"
