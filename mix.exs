@@ -51,7 +51,7 @@ defmodule SignDict.Mixfile do
   defp deps do
     [
       {:absinthe_plug, "~> 1.5.9"},
-      {:absinthe, "1.7.10"},
+      {:absinthe, "1.8.0"},
       {:waffle, "~> 1.1.9"},
       {:waffle_ecto, "~> 0.0.12"},
       {:bamboo_smtp, "~> 3.1.3"},
