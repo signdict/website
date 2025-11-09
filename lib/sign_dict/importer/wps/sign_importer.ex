@@ -1,15 +1,14 @@
 defmodule SignDict.Importer.Wps.SignImporter do
   import Ecto.Query
 
-  alias SignDict.Repo
-  alias SignDict.Video
   alias SignDict.Importer.ImporterConfig
   alias SignDict.Importer.Wps.UrlExtractor
+  alias SignDict.Repo
+  alias SignDict.Video
 
   @default_start_time "2016-01-01T00:30:30+00:00"
-  @sign_importer Application.compile_env(:sign_dict, :wps_sign_importer)
 
-  def import_json() do
+  def import_json do
     current_time = Timex.now()
     config = find_or_create_config()
     json = get_json(config)
@@ -30,9 +29,11 @@ defmodule SignDict.Importer.Wps.SignImporter do
   end
 
   defp get_json(config) do
+    sign_importer = Application.get_env(:sign_dict, :wps_sign_importer)
+
     with {:ok, res} <-
            HTTPoison.get(
-             add_time_to_url(@sign_importer[:url], config),
+             add_time_to_url(sign_importer[:url], config),
              [Accept: "text/json", "User-Agent": "Mozilla/5.0 +signdict.org"],
              follow_redirect: true
            ) do

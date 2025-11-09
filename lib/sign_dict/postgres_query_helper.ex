@@ -4,7 +4,6 @@ defmodule SignDict.PostgresQueryHelper do
     |> String.replace(~r/\W/u, " ")
     |> String.split()
     |> Enum.filter(fn word -> String.length(word) > 0 end)
-    |> Enum.map(fn word -> "#{word}:*" end)
-    |> Enum.join("&")
+    |> Enum.map_join("&", fn word -> "#{word}:*" end)
   end
 end

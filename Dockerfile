@@ -12,8 +12,8 @@
 #   - Ex: hexpm/elixir:1.18.4-erlang-27.3.4.3-debian-bullseye-20251020-slim
 #
 ARG ELIXIR_VERSION=1.18.4
-ARG OTP_VERSION=27.3.4.3
-ARG DEBIAN_VERSION=bullseye-20251020-slim
+ARG OTP_VERSION=27.3.4.5
+ARG DEBIAN_VERSION=bullseye-20251103-slim
 
 ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
 ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
@@ -40,8 +40,13 @@ COPY mix.exs mix.lock ./
 # We need the ref for the version number
 COPY .git .git
 
-RUN mix deps.get --only $MIX_ENV
+# copy compile-time config files before we compile dependencies
+# to ensure any relevant config change will trigger the dependencies
+# to be re-compiled.
 RUN mkdir config
+COPY config/config.exs config/${MIX_ENV}.exs config/
+
+RUN mix deps.get --only $MIX_ENV
 
 # Install nvm + Node.js + Yarn
 ENV NVM_DIR=/root/.nvm
@@ -56,10 +61,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | b
 # Make node and yarn available in PATH
 ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-# copy compile-time config files before we compile dependencies
-# to ensure any relevant config change will trigger the dependencies
-# to be re-compiled.
-COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
 COPY priv priv
@@ -84,11 +85,11 @@ RUN mix phx.digest
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/
 
-COPY rel rel
-RUN mix release
-
 # Download UA Inspector files
 RUN mix ua_inspector.download --force
+
+COPY rel rel
+RUN mix release
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
@@ -111,7 +112,6 @@ RUN chown nobody /app
 # set runner ENV
 ENV MIX_ENV="prod"
 
-
 # Only copy the final release from the build stage
 COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/sign_dict ./
 
@@ -121,5 +121,5 @@ USER nobody
 # advised to add an init process such as tini via `apt-get install`
 # above and adding an entrypoint. See https://github.com/krallin/tini for details
 # ENTRYPOINT ["/tini", "--"]
-
-CMD ["/app/bin/server"]
+#
+CMD ["sh", "/app/bin/entrypoint"]
