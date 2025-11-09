@@ -122,16 +122,20 @@ defmodule SignDict.Mixfile do
   end
 
   def committed_at do
-    File.read!(".git/HEAD")
-    |> String.trim()
-    |> case do
-      "ref: " <> ref ->
-        Path.join(".git", ref)
-        |> File.read!()
-        |> String.trim()
+    if System.get_env("SOURCE_COMMIT") do
+      System.get_env("SOURCE_COMMIT")
+    else
+      File.read!(".git/HEAD")
+      |> String.trim()
+      |> case do
+        "ref: " <> ref ->
+          Path.join(".git", ref)
+          |> File.read!()
+          |> String.trim()
 
-      commit ->
-        String.trim(commit)
+        commit ->
+          String.trim(commit)
+      end
     end
   end
 end
