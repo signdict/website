@@ -96,7 +96,8 @@ if config_env() == :prod do
     database_path: Application.app_dir(:sign_dict, "priv/ua_inspector")
 
   redis_host = System.get_env("REDIS_HOST") || "localhost"
-  config :exq, host: redis_host
+  redis_password = System.get_env("REDIS_PASSWORD") || nil
+  config :exq, host: redis_host, password: redis_password
 
   # ## SSL Support
   #
