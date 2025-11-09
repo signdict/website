@@ -28,6 +28,11 @@ defmodule SignDictWeb.EntryController do
     )
   end
 
+  def new(conn, _params) do
+    conn
+    |> redirect(to: "/")
+  end
+
   def latest(conn, params) do
     domain = conn.host
 
