@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+echo "Migrating database --->"
+/app/bin/migrate
+echo "Starting server --->"
+/app/bin/server start

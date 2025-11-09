@@ -1,9 +1,9 @@
 defmodule SignDict.Services.Blank do
-  def is_blank?(nil) do
+  def blank?(nil) do
     true
   end
 
-  def is_blank?(string) do
+  def blank?(string) do
     str_len =
       string
       |> String.trim()

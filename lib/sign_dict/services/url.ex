@@ -2,8 +2,6 @@ defmodule SignDict.Services.Url do
   alias SignDict.Entry
   alias SignDict.Video
 
-  @endpoint Application.compile_env(:sign_dict, SignDictWeb.Endpoint)
-
   def base_url_from_conn(%Plug.Conn{scheme: scheme, host: host, port: port}) do
     protocol =
       if scheme == :http do
@@ -39,7 +37,8 @@ defmodule SignDict.Services.Url do
   end
 
   defp host(domain) do
-    "https://#{domain || @endpoint[:url][:host]}"
+    endpoint = Application.get_env(:sign_dict, SignDictWeb.Endpoint)
+    "https://#{domain || endpoint[:url][:host]}"
   end
 
   defp video_url(domain, entry = %Entry{}, video = %Video{}) do

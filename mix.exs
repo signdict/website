@@ -4,7 +4,7 @@ defmodule SignDict.Mixfile do
   def project do
     [
       app: :sign_dict,
-      version: "0.0.#{committed_at()}",
+      version: "0.0.1-#{committed_at()}",
       elixir: "~> 1.2",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
@@ -38,6 +38,12 @@ defmodule SignDict.Mixfile do
     [
       mod: {SignDict, [env: Mix.env()]},
       extra_applications: [:canada, :elixir_make, :exq, :exq_ui]
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [precommit: :test]
     ]
   end
 
@@ -110,11 +116,22 @@ defmodule SignDict.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end
 
   def committed_at do
-    System.cmd("git", ~w[log -1 --date=short --pretty=format:%ct]) |> elem(0)
+    File.read!(".git/HEAD")
+    |> String.trim()
+    |> case do
+      "ref: " <> ref ->
+        Path.join(".git", ref)
+        |> File.read!()
+        |> String.trim()
+
+      commit ->
+        String.trim(commit)
+    end
   end
 end

@@ -1,11 +1,13 @@
 defmodule JwPlayer.Client do
-  @jw_player Application.compile_env(:sign_dict, :jw_player)
+  defp jw_player do
+    Application.get_env(:sign_dict, :jw_player)
+  end
 
   def sign_url(path, params \\ %{}) do
     default_map = %{
       api_nonce: Integer.to_string(Enum.random(10_000..99_999)),
       api_timestamp: Integer.to_string(DateTime.utc_now() |> DateTime.to_unix()),
-      api_key: @jw_player[:api_key],
+      api_key: jw_player()[:api_key],
       api_format: "json"
     }
 
@@ -21,7 +23,7 @@ defmodule JwPlayer.Client do
   end
 
   defp do_sign_url(param_string) do
-    secret = @jw_player[:api_secret]
+    secret = jw_player()[:api_secret]
 
     signature =
       :sha
@@ -35,10 +37,12 @@ defmodule JwPlayer.Client do
   defp generate_query_string(params) do
     params
     |> sorted_keys
-    |> Enum.map(fn key ->
-      "#{key}=#{params[key]}"
-    end)
-    |> Enum.join("&")
+    |> Enum.map_join(
+      "&",
+      fn key ->
+        "#{key}=#{params[key]}"
+      end
+    )
   end
 
   def sorted_keys(params) do
