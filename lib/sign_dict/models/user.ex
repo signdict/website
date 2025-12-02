@@ -111,13 +111,19 @@ defmodule SignDict.User do
   end
 
   defp do_confirm_email_change(changeset) do
-    {unencrypted_token, encrypted_token} = generate_token()
+    case Changeset.fetch_change(changeset, :email) do
+      {:ok, email} ->
+        {unencrypted_token, encrypted_token} = generate_token()
 
-    changeset
-    |> put_change(:unconfirmed_email, changeset.changes[:email])
-    |> put_change(:confirmation_token, encrypted_token)
-    |> put_change(:confirmation_token_unencrypted, unencrypted_token)
-    |> delete_change(:email)
+        changeset
+        |> put_change(:unconfirmed_email, email)
+        |> put_change(:confirmation_token, encrypted_token)
+        |> put_change(:confirmation_token_unencrypted, unencrypted_token)
+        |> delete_change(:email)
+
+      :error ->
+        changeset
+    end
   end
 
   defp email_already_used?(changeset) do

@@ -11,440 +11,588 @@ msgstr ""
 "Language: de\n"
 
 #: lib/sign_dict_web/auth/guardian_error_handler.ex:24
+#, elixir-autogen
 msgid "Authentication required"
 msgstr "Anmeldung benötigt"
 
-#: lib/sign_dict_web/views/error_view.ex:9
+#: lib/sign_dict_web/views/error_view.ex:10
+#, elixir-autogen
 msgid "Internal server error"
 msgstr "Interner Serverfehler"
 
 #: lib/sign_dict/services/credential_verifier.ex:15
-#: lib/sign_dict/services/credential_verifier.ex:26 lib/sign_dict_web/controllers/session_controller.ex:28
+#: lib/sign_dict/services/credential_verifier.ex:26
+#: lib/sign_dict_web/controllers/session_controller.ex:28
+#, elixir-autogen
 msgid "Invalid email address or password"
 msgstr "Ungültige Email-Adresse oder Passwort"
 
 #: lib/sign_dict_web/templates/session/new.html.eex:22
+#, elixir-autogen
 msgid "Log in"
 msgstr "Anmelden"
 
 #: lib/sign_dict_web/templates/backend/domain/form.html.eex:4
-#: lib/sign_dict_web/templates/backend/entry/form.html.eex:4 lib/sign_dict_web/templates/backend/language/form.html.eex:4
-#: lib/sign_dict_web/templates/backend/list/form.html.eex:4 lib/sign_dict_web/templates/backend/user/form.html.eex:4
-#: lib/sign_dict_web/templates/backend/video/form.html.eex:4 lib/sign_dict_web/templates/entry/form.html.eex:4
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:30 lib/sign_dict_web/templates/user/edit.html.eex:6
+#: lib/sign_dict_web/templates/backend/entry/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/language/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/list/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/user/form.html.eex:4
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:4
+#: lib/sign_dict_web/templates/entry/form.html.eex:4
+#: lib/sign_dict_web/templates/user/edit.html.eex:6
 #: lib/sign_dict_web/templates/user/new.html.eex:12
+#, elixir-autogen
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte überprüfe die markierten Felder."
 
-#: lib/sign_dict_web/views/error_view.ex:5
+#: lib/sign_dict_web/views/error_view.ex:6
+#, elixir-autogen
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
 #: lib/sign_dict_web/controllers/session_controller.ex:14
+#, elixir-autogen
 msgid "Please fill in an email address and password"
 msgstr "Bitte fülle das Formular aus"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:20
-#: lib/sign_dict_web/controllers/user_controller.ex:52 lib/sign_dict_web/templates/layout/backend.html.eex:34
-#: lib/sign_dict_web/templates/shared/navigation.html.eex:51 lib/sign_dict_web/templates/user/new.html.eex:3
-#: lib/sign_dict_web/templates/user/new.html.eex:54
+#: lib/sign_dict_web/controllers/user_controller.ex:18
+#: lib/sign_dict_web/controllers/user_controller.ex:41
+#: lib/sign_dict_web/templates/layout/backend.html.eex:34
+#: lib/sign_dict_web/templates/user/new.html.eex:3
+#: lib/sign_dict_web/templates/user/new.html.eex:41
+#, elixir-autogen
 msgid "Register"
 msgstr "Registrieren"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:35
-#: lib/sign_dict_web/templates/session/new.html.eex:3 lib/sign_dict_web/templates/shared/navigation.html.eex:55
+#: lib/sign_dict_web/templates/session/new.html.eex:3
+#, elixir-autogen
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:32
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:33
+#, elixir-autogen
 msgid "Sign out"
 msgstr "Abmelden"
 
 #: lib/sign_dict_web/controllers/session_controller.ex:22
+#, elixir-autogen
 msgid "Successfully signed in"
 msgstr "Erfolgreich angemeldet"
 
 #: lib/sign_dict_web/controllers/session_controller.ex:36
+#, elixir-autogen
 msgid "Successfully signed out"
 msgstr "Erfolgreich abgemeldet"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:38
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:35 lib/sign_dict_web/templates/user/edit.html.eex:32
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:35
+#: lib/sign_dict_web/templates/user/edit.html.eex:32
+#, elixir-autogen
 msgid "user.biography"
 msgstr "Biographie"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:9
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:7 lib/sign_dict_web/templates/backend/user/show.html.eex:14
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:9 lib/sign_dict_web/templates/reset_password/new.html.eex:10
-#: lib/sign_dict_web/templates/session/new.html.eex:7 lib/sign_dict_web/templates/session/new.html.eex:8
-#: lib/sign_dict_web/templates/user/edit.html.eex:11 lib/sign_dict_web/templates/user/edit.html.eex:12
-#: lib/sign_dict_web/templates/user/new.html.eex:23 lib/sign_dict_web/templates/user/new.html.eex:24
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:7
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:14
+#: lib/sign_dict_web/templates/reset_password/new.html.eex:9
+#: lib/sign_dict_web/templates/reset_password/new.html.eex:10
+#: lib/sign_dict_web/templates/session/new.html.eex:7
+#: lib/sign_dict_web/templates/session/new.html.eex:8
+#: lib/sign_dict_web/templates/user/edit.html.eex:11
+#: lib/sign_dict_web/templates/user/edit.html.eex:12
+#: lib/sign_dict_web/templates/user/new.html.eex:23
+#: lib/sign_dict_web/templates/user/new.html.eex:24
+#, elixir-autogen
 msgid "user.email"
 msgstr "Email"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:21
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:8 lib/sign_dict_web/templates/user/edit.html.eex:17
-#: lib/sign_dict_web/templates/user/edit.html.eex:18 lib/sign_dict_web/templates/user/new.html.eex:17
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:8
+#: lib/sign_dict_web/templates/user/edit.html.eex:17
+#: lib/sign_dict_web/templates/user/edit.html.eex:18
+#: lib/sign_dict_web/templates/user/new.html.eex:17
 #: lib/sign_dict_web/templates/user/new.html.eex:18
+#, elixir-autogen
 msgid "user.name"
 msgstr "Name"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:49
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:10 lib/sign_dict_web/templates/reset_password/edit.html.eex:11
-#: lib/sign_dict_web/templates/session/new.html.eex:12 lib/sign_dict_web/templates/session/new.html.eex:13
-#: lib/sign_dict_web/templates/user/edit.html.eex:46 lib/sign_dict_web/templates/user/edit.html.eex:47
-#: lib/sign_dict_web/templates/user/new.html.eex:29 lib/sign_dict_web/templates/user/new.html.eex:30
+#: lib/sign_dict_web/templates/reset_password/edit.html.eex:10
+#: lib/sign_dict_web/templates/reset_password/edit.html.eex:11
+#: lib/sign_dict_web/templates/session/new.html.eex:12
+#: lib/sign_dict_web/templates/session/new.html.eex:13
+#: lib/sign_dict_web/templates/user/edit.html.eex:46
+#: lib/sign_dict_web/templates/user/edit.html.eex:47
+#: lib/sign_dict_web/templates/user/new.html.eex:29
+#: lib/sign_dict_web/templates/user/new.html.eex:30
+#, elixir-autogen
 msgid "user.password"
 msgstr "Passwort"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:55
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:15 lib/sign_dict_web/templates/reset_password/edit.html.eex:16
-#: lib/sign_dict_web/templates/user/edit.html.eex:52 lib/sign_dict_web/templates/user/edit.html.eex:53
-#: lib/sign_dict_web/templates/user/new.html.eex:35 lib/sign_dict_web/templates/user/new.html.eex:36
+#: lib/sign_dict_web/templates/reset_password/edit.html.eex:15
+#: lib/sign_dict_web/templates/reset_password/edit.html.eex:16
+#: lib/sign_dict_web/templates/user/edit.html.eex:52
+#: lib/sign_dict_web/templates/user/edit.html.eex:53
+#: lib/sign_dict_web/templates/user/new.html.eex:35
+#: lib/sign_dict_web/templates/user/new.html.eex:36
+#, elixir-autogen
 msgid "user.password_confirmation"
 msgstr "Passwort bestätigen"
 
 #: lib/sign_dict_web/templates/reset_password/edit.html.eex:20
+#, elixir-autogen
 msgid "Change my password"
 msgstr "Passwort ändern"
 
 #: lib/sign_dict_web/templates/reset_password/edit.html.eex:3
+#, elixir-autogen
 msgid "Change your password"
 msgstr "Passwort ändern"
 
 #: lib/sign_dict_web/templates/reset_password/new.html.eex:5
+#, elixir-autogen
 msgid "Enter your email address and we'll send you a link to reset your password."
 msgstr "Gebe deine Email-Adresse ein und wir senden dir einen Link zum zurücksetzen des Passwortes."
 
 #: lib/sign_dict_web/templates/session/new.html.eex:17
+#, elixir-autogen
 msgid "Forgot password?"
 msgstr "Passwort vergessen?"
 
 #: lib/sign_dict_web/templates/reset_password/new.html.eex:3
+#, elixir-autogen
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
 #: lib/sign_dict_web/auth/guardian_error_handler.ex:17
+#, elixir-autogen
 msgid "Sadly you are not allowed to do this"
 msgstr "Leider darfst du dies nicht."
 
 #: lib/sign_dict_web/templates/reset_password/new.html.eex:14
+#, elixir-autogen
 msgid "Send password reset instructions"
 msgstr "Passwort-Link verschicken"
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:39
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:70
+#, elixir-autogen
 msgid "Invalid password reset link. Please try again."
 msgstr "Ungültiger Passwort-Link. Bitte versuche es erneut."
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:55
+#, elixir-autogen
 msgid "Password successfully changed"
 msgstr "Passwort erfolgreich geändert"
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:60
+#, elixir-autogen
 msgid "Unable to change your password"
 msgstr "Leider konnte das Passwort nicht geändert werden"
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:20
+#, elixir-autogen
 msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
 msgstr "Du bekommst innerhalb der nächsten Minuten eine Email mit einem Link zum zurücksetzen des Passwortes."
 
-#: lib/sign_dict_web/email.ex:46
+#: lib/sign_dict_web/email.ex:48
+#, elixir-autogen
 msgid "Your password reset link"
 msgstr "Dein Passwort Link"
 
-#: lib/sign_dict_web/plugs/allowed_for_backend.ex:14
+#: lib/sign_dict_web/plugs/allowed_for_backend.ex:15
+#, elixir-autogen
 msgid "You are not allowed to do this."
 msgstr "Leider darfst du dies nicht."
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:8
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:10 lib/sign_dict_web/templates/backend/list/index.html.eex:9
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:38 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:15 lib/sign_dict_web/templates/backend/user/index.html.eex:10
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:10
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:9
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:38
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:8
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:15
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:10
+#, elixir-autogen
 msgid "Actions"
 msgstr "Aktionen"
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44 lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:26
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:26
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#, elixir-autogen
 msgid "Delete"
 msgstr "Löschen"
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:23
-#: lib/sign_dict_web/templates/backend/domain/show.html.eex:5 lib/sign_dict_web/templates/backend/entry/show.html.eex:36
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:25 lib/sign_dict_web/templates/backend/language/show.html.eex:32
-#: lib/sign_dict_web/templates/backend/list/index.html.eex:25 lib/sign_dict_web/templates/backend/list/show.html.eex:26
-#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:23 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:43
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:30 lib/sign_dict_web/templates/backend/user/show.html.eex:42
-#: lib/sign_dict_web/templates/backend/video/show.html.eex:124 lib/sign_dict_web/templates/user/show.html.eex:23
+#: lib/sign_dict_web/templates/backend/domain/show.html.eex:5
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:36
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:25
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:32
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:25
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:26
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:23
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:43
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:30
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:42
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:124
+#: lib/sign_dict_web/templates/user/show.html.eex:23
+#, elixir-autogen
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:1
+#, elixir-autogen
 msgid "Listing users"
 msgstr "Alle Nutzer"
 
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:43
 #: lib/sign_dict_web/templates/backend/user/new.html.eex:1
+#, elixir-autogen
 msgid "New user"
 msgstr "Neuer Nutzer"
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:22
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:24 lib/sign_dict_web/templates/backend/list/index.html.eex:24
-#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:22 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:42
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:24
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:22
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:42
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:29
+#, elixir-autogen
 msgid "Show"
 msgstr "Anzeigen"
 
 #: lib/sign_dict_web/templates/backend/domain/form.html.eex:15
-#: lib/sign_dict_web/templates/backend/entry/form.html.eex:33 lib/sign_dict_web/templates/backend/language/form.html.eex:33
-#: lib/sign_dict_web/templates/backend/list/form.html.eex:33 lib/sign_dict_web/templates/backend/user/form.html.eex:62
+#: lib/sign_dict_web/templates/backend/entry/form.html.eex:33
+#: lib/sign_dict_web/templates/backend/language/form.html.eex:33
+#: lib/sign_dict_web/templates/backend/list/form.html.eex:33
+#: lib/sign_dict_web/templates/backend/user/form.html.eex:62
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:45
+#, elixir-autogen
 msgid "Submit"
 msgstr "Absenden"
 
-#: lib/sign_dict_web/controllers/backend/user_controller.ex:24
+#: lib/sign_dict_web/controllers/backend/user_controller.ex:25
+#, elixir-autogen
 msgid "User created successfully."
 msgstr "Nutzer erfolgreich angelegt."
 
-#: lib/sign_dict_web/controllers/backend/user_controller.ex:69
+#: lib/sign_dict_web/controllers/backend/user_controller.ex:70
+#, elixir-autogen
 msgid "User deleted successfully."
 msgstr "Nutzer erfolgreich gelöscht."
 
-#: lib/sign_dict_web/controllers/backend/user_controller.ex:57
+#: lib/sign_dict_web/controllers/backend/user_controller.ex:58
+#, elixir-autogen
 msgid "User updated successfully."
 msgstr "Nutzer erfolgreich aktualisiert."
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:27
-#: lib/sign_dict_web/templates/backend/user/index.html.eex:9 lib/sign_dict_web/templates/backend/user/show.html.eex:21
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:9
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:21
+#, elixir-autogen
 msgid "user.role"
 msgstr "Rolle"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:46
+#, elixir-autogen
 msgid "Users"
 msgstr "Nutzer"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:39
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:46 lib/sign_dict_web/templates/layout/backend.html.eex:52
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:46
+#: lib/sign_dict_web/templates/layout/backend.html.eex:52
+#, elixir-autogen
 msgid "Videos"
 msgstr "Videos"
 
 #: lib/sign_dict_web/templates/backend/dashboard/index.html.eex:1
+#, elixir-autogen
 msgid "Welcome to the dashboard"
 msgstr "Willkommen im Dashboard"
 
 #: lib/sign_dict_web/templates/user/edit.html.eex:59
+#, elixir-autogen
 msgid "Update"
 msgstr "Speichern"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:88
+#: lib/sign_dict_web/controllers/user_controller.ex:77
+#, elixir-autogen
 msgid "Updated successfully."
 msgstr "Erfolgreich gespeichert"
 
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:20
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:7 lib/sign_dict_web/templates/shared/navigation.html.eex:46
-#: lib/sign_dict_web/templates/user/edit.html.eex:25 lib/sign_dict_web/templates/user/show.html.eex:3
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:7
+#: lib/sign_dict_web/templates/shared/navigation.html.eex:46
+#: lib/sign_dict_web/templates/user/edit.html.eex:25
+#: lib/sign_dict_web/templates/user/show.html.eex:3
+#, elixir-autogen
 msgid "The avatar image of this user"
 msgstr "Das Bild des Nutzers"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:15
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:5 lib/sign_dict_web/templates/user/edit.html.eex:23
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:5
+#: lib/sign_dict_web/templates/user/edit.html.eex:23
+#, elixir-autogen
 msgid "user.avatar"
 msgstr "Profilbild"
 
-#: lib/sign_dict_web/controllers/backend/language_controller.ex:23
+#: lib/sign_dict_web/controllers/backend/language_controller.ex:24
+#, elixir-autogen
 msgid "Language created successfully."
 msgstr "Sprache erfolgreich angelegt."
 
-#: lib/sign_dict_web/controllers/backend/language_controller.ex:60
+#: lib/sign_dict_web/controllers/backend/language_controller.ex:61
+#, elixir-autogen
 msgid "Language deleted successfully."
 msgstr "Sprache erfolgreich gelöscht."
 
-#: lib/sign_dict_web/controllers/backend/language_controller.ex:48
+#: lib/sign_dict_web/controllers/backend/language_controller.ex:49
+#, elixir-autogen
 msgid "Language updated successfully."
 msgstr "Sprache erfolgreich aktualisiert."
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:62
+#, elixir-autogen
 msgid "Languages"
 msgstr "Sprachen"
 
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:36
 #: lib/sign_dict_web/templates/backend/language/new.html.eex:1
+#, elixir-autogen
 msgid "New language"
 msgstr "Neue Sprache"
 
 #: lib/sign_dict_web/templates/backend/language/form.html.eex:27
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:9 lib/sign_dict_web/templates/backend/language/show.html.eex:26
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:9
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:26
+#, elixir-autogen
 msgid "language.default_locale"
 msgstr "Standard Sprache der Weboberfläche"
 
 #: lib/sign_dict_web/templates/backend/language/form.html.eex:9
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:6 lib/sign_dict_web/templates/backend/language/show.html.eex:5
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:6
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:5
+#, elixir-autogen
 msgid "language.iso6393"
 msgstr "ISO 639-3"
 
 #: lib/sign_dict_web/templates/backend/language/form.html.eex:21
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:8 lib/sign_dict_web/templates/backend/language/show.html.eex:19
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:8
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:19
+#, elixir-autogen
 msgid "language.long_name"
 msgstr "Langer Name"
 
 #: lib/sign_dict_web/templates/backend/language/form.html.eex:15
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:7 lib/sign_dict_web/templates/backend/language/show.html.eex:12
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:7
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:12
+#, elixir-autogen
 msgid "language.short_name"
 msgstr "Abkürzung"
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:45
+#, elixir-autogen
 msgid "Only enter a password if you want to change it"
 msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
 
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:24
-#: lib/sign_dict_web/templates/backend/language/index.html.eex:26 lib/sign_dict_web/templates/backend/list/index.html.eex:26
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:70 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
-#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44 lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#: lib/sign_dict_web/templates/backend/language/index.html.eex:26
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:26
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:70
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:24
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:44
+#: lib/sign_dict_web/templates/backend/user/index.html.eex:31
+#, elixir-autogen
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:41
+#, elixir-autogen
 msgid "Dashboard"
 msgstr "Dashboad"
 
 #: lib/sign_dict_web/templates/backend/language/edit.html.eex:1
+#, elixir-autogen
 msgid "Edit language"
 msgstr "Bearbeite Sprache"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:19
-#: lib/sign_dict_web/templates/backend/language/show.html.eex:1 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:7
+#: lib/sign_dict_web/templates/backend/language/show.html.eex:1
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:7
+#, elixir-autogen
 msgid "Language"
 msgstr "Sprache"
 
 #: lib/sign_dict_web/templates/backend/user/edit.html.eex:1
+#, elixir-autogen
 msgid "Edit user"
 msgstr "Nutzer bearbeiten"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:1
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:83 lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:6
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:83
+#: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:6
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:39
+#, elixir-autogen
 msgid "Entry"
 msgstr "Eintrag"
 
 #: lib/sign_dict_web/templates/backend/language/index.html.eex:1
+#, elixir-autogen
 msgid "Listing languages"
 msgstr "Alle Sprachen"
 
 #: lib/sign_dict_web/templates/backend/review/index.html.eex:1
 #: lib/sign_dict_web/templates/backend/video/index.html.eex:1
+#, elixir-autogen
 msgid "Listing videos"
 msgstr "Alle Videos"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:44
+#, elixir-autogen
 msgid "New video"
 msgstr "Neues Video"
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:9
-#: lib/sign_dict_web/templates/backend/user/show.html.eex:1 lib/sign_dict_web/templates/backend/video/show.html.eex:46
-#: lib/sign_dict_web/templates/entry/show.html.eex:112
+#: lib/sign_dict_web/templates/backend/user/show.html.eex:1
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:46
+#: lib/sign_dict_web/templates/entry/show.html.eex:89
+#, elixir-autogen
 msgid "User"
 msgstr "Benutzer"
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:12
-#: lib/sign_dict_web/templates/backend/video/form.html.eex:15 lib/sign_dict_web/templates/backend/video/show.html.eex:67
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:15
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:67
+#, elixir-autogen
 msgid "video.copyright"
 msgstr "Urheberrecht"
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:13
-#: lib/sign_dict_web/templates/backend/video/form.html.eex:21 lib/sign_dict_web/templates/backend/video/show.html.eex:74
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:21
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:74
+#, elixir-autogen
 msgid "video.license"
 msgstr "Lizenz"
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:14
+#, elixir-autogen
 msgid "video.orignal_href"
 msgstr "Quelle"
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:11
-#: lib/sign_dict_web/templates/backend/video/form.html.eex:9 lib/sign_dict_web/templates/backend/video/show.html.eex:53
+#: lib/sign_dict_web/templates/backend/video/form.html.eex:9
+#: lib/sign_dict_web/templates/backend/video/show.html.eex:53
+#, elixir-autogen
 msgid "video.state"
 msgstr "Status"
 
 #: lib/sign_dict_web/templates/backend/domain/show.html.eex:9
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:30 lib/sign_dict_web/templates/layout/backend.html.eex:49
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:30
+#: lib/sign_dict_web/templates/layout/backend.html.eex:49
+#, elixir-autogen
 msgid "Entries"
 msgstr "Einträge"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:10
-#: lib/sign_dict_web/templates/shared/header.html.eex:1 lib/sign_dict_web/templates/shared/header.html.eex:3
+#: lib/sign_dict_web/templates/shared/header.html.eex:1
+#: lib/sign_dict_web/templates/shared/header.html.eex:3
+#, elixir-autogen
 msgid "SignDict"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/entry/index.html.eex:3
+#, elixir-autogen
 msgid "Listing entries"
 msgstr "Alle Einträge"
 
 #: lib/sign_dict_web/templates/backend/entry/index.html.eex:25
 #: lib/sign_dict_web/templates/backend/entry/new.html.eex:1
+#, elixir-autogen
 msgid "New entry"
 msgstr "Neuer Eintrag"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:9
-#: lib/sign_dict_web/templates/backend/list/show.html.eex:37 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:4
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:37
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:4
 #: lib/sign_dict_web/templates/entry/form.html.eex:9
+#, elixir-autogen
 msgid "entry.text"
 msgstr "Text"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:21
-#: lib/sign_dict_web/templates/backend/entry/show.html.eex:12 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:6
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:12
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:6
 #: lib/sign_dict_web/templates/entry/form.html.eex:24
+#, elixir-autogen
 msgid "entry.type"
 msgstr "Typ"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:15
-#: lib/sign_dict_web/templates/backend/entry/show.html.eex:5 lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:5
+#: lib/sign_dict_web/templates/backend/entry/show.html.eex:5
+#: lib/sign_dict_web/templates/backend/shared/entries_table.html.eex:5
 #: lib/sign_dict_web/templates/entry/form.html.eex:15
+#, elixir-autogen
 msgid "entry.description"
 msgstr "Beschreibung"
 
 #: lib/sign_dict_web/templates/backend/entry/edit.html.eex:1
+#, elixir-autogen
 msgid "Edit entry"
 msgstr "Eintrag bearbeiten"
 
-#: lib/sign_dict_web/controllers/backend/entry_controller.ex:31
+#: lib/sign_dict_web/controllers/backend/entry_controller.ex:32
+#, elixir-autogen
 msgid "Entry created successfully."
 msgstr "Eintrag erfolgreich angelegt."
 
-#: lib/sign_dict_web/controllers/backend/entry_controller.ex:64
+#: lib/sign_dict_web/controllers/backend/entry_controller.ex:65
+#, elixir-autogen
 msgid "Entry updated successfully."
 msgstr "Eintrag erfolgreich aktualisiert."
 
 #: lib/sign_dict_web/templates/backend/shared/videos_table.html.eex:4
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:1
+#, elixir-autogen
 msgid "Video"
 msgstr "Video"
 
 #: lib/sign_dict_web/templates/backend/entry/form.html.eex:27
 #: lib/sign_dict_web/templates/entry/form.html.eex:33
+#, elixir-autogen
 msgid "entry.language"
 msgstr "Sprache"
 
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:27
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:81
+#, elixir-autogen
 msgid "video.original_href"
 msgstr "Orignal URL"
 
-#: lib/sign_dict_web/controllers/backend/entry_controller.ex:77
+#: lib/sign_dict_web/controllers/backend/entry_controller.ex:78
+#, elixir-autogen
 msgid "Entry deleted successfully."
 msgstr "Eintrag erfolgreich gelöscht."
 
 #: lib/sign_dict/models/vote.ex:25
+#, elixir-autogen
 msgid "Only one vote per video and user"
 msgstr "Nur eine Abstimmung pro Video und Benutzer"
 
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:6
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:8
+#, elixir-autogen
 msgid "About SignDict"
 msgstr "Über SignDict"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:13
+#, elixir-autogen
 msgid "SignDict is an open dictionary for sign language. <strong>Everyone is invited to join in.</strong>"
 msgstr "SignDict ist ein offenes Wörterbuch für Gebärdensprache. <strong>Jede:r ist eingeladen mitzumachen.</strong>"
 
@@ -454,23 +602,29 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:74
+#, elixir-autogen
 msgid "Curious?"
 msgstr "Neugierig?"
 
 #: lib/sign_dict_web/controllers/page_controller.ex:12
-#: lib/sign_dict_web/templates/page/imprint.html.eex:3 lib/sign_dict_web/templates/shared/footer.html.eex:36
+#: lib/sign_dict_web/templates/page/imprint.html.eex:3
+#: lib/sign_dict_web/templates/shared/footer.html.eex:30
+#, elixir-autogen
 msgid "Imprint"
 msgstr "Impressum"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:45
+#, elixir-autogen
 msgid "Language barrier"
 msgstr "Sprachbarriere"
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:14
+#, elixir-autogen
 msgid "Logo Bundesministerium für Bildung und Forschung"
 msgstr "Logo Bundesministerium für Bildung und Forschung"
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:13
+#, elixir-autogen
 msgid "Logo Prototype Fund"
 msgstr "Logo Prototype Fund"
 
@@ -479,17 +633,21 @@ msgstr "Logo Prototype Fund"
 msgid "Logo rrone"
 msgstr "Logo rrone"
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:36
-#: lib/sign_dict_web/templates/shared/footer.html.eex:12
+#: lib/sign_dict_web/templates/page/supporter.html.eex:25
+#: lib/sign_dict_web/templates/shared/footer.html.eex:11
+#, elixir-autogen
 msgid "Logo zweitag"
 msgstr "Logo zweitag"
 
 #: lib/sign_dict_web/controllers/search_controller.ex:16
-#: lib/sign_dict_web/templates/page/index.html.eex:33 lib/sign_dict_web/templates/shared/searchbar.html.eex:12
+#: lib/sign_dict_web/templates/page/index.html.eex:33
+#: lib/sign_dict_web/templates/shared/searchbar.html.eex:12
+#, elixir-autogen
 msgid "Search"
 msgstr "Suche"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:49
+#, elixir-autogen
 msgid "SignDict believes..."
 msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gesellschaft ist. Um die Integration von gehörlosen Menschen zu fördern, bieten wir ein lebendiges Gebärdensprach-Wörterbuch, das jeden einlädt mitzumachen."
 
@@ -497,7 +655,8 @@ msgstr "SignDict glaubt, dass Kommunikation der Schlüssel zu einer offenen Gese
 msgid "SignDict is a sign language dictionary where everyone can participate"
 msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:52
+#: lib/sign_dict_web/templates/shared/footer.html.eex:44
+#, elixir-autogen
 msgid "SignDict on Github"
 msgstr "SignDict auf Github"
 
@@ -506,66 +665,83 @@ msgid "SignDict on Twitter"
 msgstr "SignDict auf Twitter"
 
 #: lib/sign_dict_web/controllers/page_controller.ex:39
-#: lib/sign_dict_web/templates/page/supporter.html.eex:4 lib/sign_dict_web/templates/shared/footer.html.eex:7
+#: lib/sign_dict_web/templates/page/supporter.html.eex:4
+#: lib/sign_dict_web/templates/shared/footer.html.eex:7
+#, elixir-autogen
 msgid "Supporter"
 msgstr "Unterstützer"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:30
 #: lib/sign_dict_web/templates/shared/searchbar.html.eex:7
+#, elixir-autogen
 msgid "Enter word to search"
 msgstr "Wort nach dem gesucht werden soll"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:58
+#, elixir-autogen
 msgid "A hand with a speech bubble"
 msgstr "Eine Hand mit einer Sprechblase"
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:35
+#: lib/sign_dict_web/templates/shared/footer.html.eex:29
+#, elixir-autogen
 msgid "Blog"
 msgstr "Blog"
 
 #: lib/sign_dict_web/templates/embed/show.html.eex:2
-#: lib/sign_dict_web/templates/page/index.html.eex:8 lib/sign_dict_web/templates/page/welcome.html.eex:5
+#: lib/sign_dict_web/templates/page/index.html.eex:8
+#: lib/sign_dict_web/templates/page/welcome.html.eex:5
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:5
+#, elixir-autogen
 msgid "SignDict Logo"
 msgstr "SignDict Logo"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:69
+#, elixir-autogen
 msgid "Two hands waving"
 msgstr "Zwei winkende Hände"
 
 #: lib/sign_dict_web/templates/session/new.html.eex:18
+#, elixir-autogen
 msgid "Create new account"
 msgstr "Ein neues Nutzerkonto anlegen"
 
 #: lib/sign_dict_web/templates/user/new.html.eex:6
+#, elixir-autogen
 msgid "We are happy that you want to help. Please enter your details below so that we can create your account."
 msgstr "Wir freuen uns, dass du mitmachen möchtest. Bitte gib uns doch ein paar Informationen über dich, damit wir dein Benutzerkonto erstellen können."
 
 #: lib/sign_dict_web/templates/page/welcome.html.eex:15
+#, elixir-autogen
 msgid "Complete your user profile >"
 msgstr "Dein Nutzerprofil vervollständigen >"
 
 #: lib/sign_dict_web/templates/page/welcome.html.eex:14
+#, elixir-autogen
 msgid "Search through SignDicts %{sign_count} signs >"
 msgstr "SignDicts %{sign_count} Gebärden durchsuchen >"
 
 #: lib/sign_dict_web/templates/page/welcome.html.eex:7
+#, elixir-autogen
 msgid "Welcome, %{username}!"
 msgstr "Willkommen, %{username}!"
 
 #: lib/sign_dict_web/templates/page/welcome.html.eex:10
+#, elixir-autogen
 msgid "Your account was created. Here are a few things you can do now:"
 msgstr "Dein Benutzerkonto ist eingerichtet. Hier sind einige Vorschläge, wie du auf SignDict loslegen kannst:"
 
 #: lib/sign_dict_web/templates/user/edit.html.eex:39
+#, elixir-autogen
 msgid "Change Password"
 msgstr "Password ändern"
 
 #: lib/sign_dict_web/templates/user/edit.html.eex:33
+#, elixir-autogen
 msgid "Please describe yourself"
 msgstr "Bitte beschreibe dich ein bisschen"
 
 #: lib/sign_dict_web/templates/user/edit.html.eex:43
+#, elixir-autogen
 msgid "You only need to enter your password here if you want to change it. Otherwise keep it empty."
 msgstr "Du musst hier nur dein Passwort eintragen, wenn du es ändern willst. Ansonsten kannst du diese Felder leer lassen."
 
@@ -574,30 +750,36 @@ msgid "Search in SignDict..."
 msgstr "SignDict durchsuchen..."
 
 #: lib/sign_dict_web/templates/user/show.html.eex:16
+#, elixir-autogen
 msgid "This user doesn't have a bio yet"
 msgstr "Dieser Nutzer hat noch keine Biographie."
 
 #: lib/sign_dict_web/templates/user/show.html.eex:33
+#, elixir-autogen
 msgid "Uploaded videos"
 msgstr "Videos hochgeladen"
 
 #: lib/sign_dict_web/templates/user/show.html.eex:9
+#, elixir-autogen
 msgid "User since %{since}"
 msgstr "Dabei seit %{since}"
 
 #: lib/sign_dict_web/views/helpers/date_helper.ex:32
+#, elixir-autogen
 msgid "one day"
 msgid_plural "%{count} days"
 msgstr[0] "einem Tag"
 msgstr[1] "%{count} Tagen"
 
 #: lib/sign_dict_web/views/helpers/date_helper.ex:25
+#, elixir-autogen
 msgid "one month"
 msgid_plural "%{count} months"
 msgstr[0] "einem Monat"
 msgstr[1] "%{count} Monaten"
 
 #: lib/sign_dict_web/views/helpers/date_helper.ex:18
+#, elixir-autogen
 msgid "one year"
 msgid_plural "%{count} years"
 msgstr[0] "einem Jahr"
@@ -605,15 +787,18 @@ msgstr[1] "%{count} Jahren"
 
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:39
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:105
+#, elixir-autogen
 msgid "video.thumbnail_url"
 msgstr "Vorschaubild"
 
 #: lib/sign_dict_web/templates/backend/video/form.html.eex:33
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:92
+#, elixir-autogen
 msgid "video.video_url"
 msgstr "Video"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:184
+#: lib/sign_dict_web/templates/entry/show.html.eex:161
+#, elixir-autogen
 msgid "No other variations"
 msgstr "Keine weiteren Variationen"
 
@@ -622,33 +807,42 @@ msgid "Variations »%{entry}«"
 msgstr "Varianten »%{entry}«"
 
 #: lib/sign_dict_web/views/helpers/date_helper.ex:36
+#, elixir-autogen
 msgid "today"
 msgstr "heute"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:170
+#: lib/sign_dict_web/templates/entry/show.html.eex:147
+#, elixir-autogen
 msgid "${time} ago"
 msgstr "Vor ${time}"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:116
+#: lib/sign_dict_web/templates/entry/show.html.eex:93
+#, elixir-autogen
 msgid "Date of upload"
 msgstr "Uploaddatum"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:167
+#: lib/sign_dict_web/templates/entry/show.html.eex:144
+#, elixir-autogen
 msgid "by"
 msgstr "von"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:123
+#: lib/sign_dict_web/templates/entry/show.html.eex:100
+#, elixir-autogen
 msgid "Source"
 msgstr "Quelle"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:159
+#: lib/sign_dict_web/templates/entry/show.html.eex:136
+#, elixir-autogen
 msgid "Choose this variant"
 msgstr "Diese Variante wählen"
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:57
-#: lib/sign_dict_web/templates/entry/latest.html.eex:16 lib/sign_dict_web/templates/entry/show.html.eex:160
-#: lib/sign_dict_web/templates/list/show.html.eex:13 lib/sign_dict_web/templates/search/index.html.eex:27
+#: lib/sign_dict_web/templates/entry/latest.html.eex:16
+#: lib/sign_dict_web/templates/entry/show.html.eex:137
+#: lib/sign_dict_web/templates/list/show.html.eex:13
+#: lib/sign_dict_web/templates/search/index.html.eex:27
 #: lib/sign_dict_web/templates/user/show.html.eex:42
+#, elixir-autogen
 msgid "Thumbnail for Video"
 msgstr "Vorschaubild des Videos"
 
@@ -656,27 +850,33 @@ msgstr "Vorschaubild des Videos"
 msgid "Does this video show the sign you know for this word? If yes, please vote by clicking on the up arrow."
 msgstr "Zeigt dieses Video die von dir benutzte Gebärde für das Wort? Wenn ja, dann stimme für dies ab mit klick auf den Pfeil."
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:59
+#: lib/sign_dict_web/templates/entry/show.html.eex:42
+#, elixir-autogen
 msgid "Don't vote this video up"
 msgstr "Nicht für dieses Video stimmen"
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:67
+#: lib/sign_dict_web/templates/entry/show.html.eex:50
+#, elixir-autogen
 msgid "Vote this video up"
 msgstr "Für dieses Video stimmen."
 
-#: lib/sign_dict_web/templates/entry/show.html.eex:85
+#: lib/sign_dict_web/templates/entry/show.html.eex:64
+#, elixir-autogen
 msgid "You voted for this video. You can remove your vote by clicking on the arrow."
 msgstr "Du hast für dieses Video gestimmt. Mit klicken auf dem Pfeil kannst du dies zurück nehmen."
 
 #: lib/sign_dict_web/controllers/vote_controller.ex:31
+#, elixir-autogen
 msgid "You vote was reverted successfully"
 msgstr "Deine Stimme für dieses Video wurde zurück genommen."
 
 #: lib/sign_dict_web/controllers/vote_controller.ex:20
+#, elixir-autogen
 msgid "Sadly your voting failed."
 msgstr "Leider hat das abstimmen nicht funktioniert."
 
 #: lib/sign_dict_web/controllers/vote_controller.ex:15
+#, elixir-autogen
 msgid "Thanks for voting!"
 msgstr "Danke für deine Stimme."
 
@@ -705,49 +905,60 @@ msgid "The email was sent."
 msgstr "Die Email wurde abgesendet."
 
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:118
+#, elixir-autogen
 msgid "video.metadata"
 msgstr "Metadata"
 
 #: lib/sign_dict_web/controllers/page_controller.ex:26
+#, elixir-autogen
 msgid "About"
 msgstr "Über"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:77
+#: lib/sign_dict_web/controllers/user_controller.ex:66
+#, elixir-autogen
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
 #: lib/sign_dict_web/controllers/session_controller.ex:15
 #: lib/sign_dict_web/controllers/session_controller.ex:29
+#, elixir-autogen
 msgid "Login"
 msgstr "Anmelden"
 
-#: lib/sign_dict_web/email.ex:13
+#: lib/sign_dict_web/email.ex:15
+#, elixir-autogen
 msgid "New message via contact form"
 msgstr "Neue Nachricht via Kontakt-Formular"
 
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:10
 #: lib/sign_dict_web/controllers/reset_password_controller.ex:33
+#, elixir-autogen
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
 #: lib/sign_dict_web/controllers/search_controller.ex:13
+#, elixir-autogen
 msgid "Search results for %{query}"
 msgstr "Suchergebnisse für %{query}"
 
 #: lib/sign_dict_web/controllers/embed_controller.ex:41
-#: lib/sign_dict_web/controllers/entry_controller.ex:139
+#: lib/sign_dict_web/controllers/entry_controller.ex:109
+#, elixir-autogen
 msgid "Sign for %{sign}"
 msgstr "Gebärde für %{sign}"
 
 #: lib/sign_dict_web/templates/shared/header.html.eex:8
+#, elixir-autogen
 msgid "SignDict - A sign language dictionary"
 msgstr "SignDict - Ein Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:65
+#: lib/sign_dict_web/controllers/user_controller.ex:54
+#, elixir-autogen
 msgid "User %{user}"
 msgstr "Nutzer %{user}"
 
 #: lib/sign_dict_web/controllers/page_controller.ex:19
+#, elixir-autogen
 msgid "Welcome"
 msgstr "Willkommen"
 
@@ -756,34 +967,42 @@ msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:65
+#, elixir-autogen
 msgid "Worker Queue"
 msgstr ""
 
 #: lib/sign_dict_web/templates/search/index.html.eex:17
+#, elixir-autogen
 msgid "Please enter a word in the field above to search for signs."
 msgstr "Bitte gebe ein Wort in das Suchfeld ein um nach Gebärden zu suchen."
 
-#: lib/sign_dict_web/templates/shared/footer.html.eex:20
+#: lib/sign_dict_web/templates/shared/footer.html.eex:14
+#, elixir-autogen
 msgid "The complete list of supporters."
 msgstr "Die komplette Liste an Unterstützern."
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:7
+#, elixir-autogen
 msgid "supporter_intro"
 msgstr "Dieses Projekt ist nicht kommerziell und alles steht unter Open Source Lizenzen. Der Quelltext nutzt die Mozilla Public License 2.0 und alle Videos sind unter einer Creative Commons Lizenz. Der Betrieb und die Entwicklung des Projektes kosten eine große Menge an Zeit und Ressourcen. Glücklicherweise haben einige Firmen und Privatpersonen geholfen, dieses Projekt zu realisieren. Hier findest du eine Liste mit allen Unterstützern:innen und was genau jede:r zum Projekt beigetragen hat."
 
 #: lib/sign_dict_web/templates/page/supporter.html.eex:18
+#, elixir-autogen
 msgid "supporter_prototype"
 msgstr "Der Prototype Fund hat dieses Projekt in die erste Förderrunde aufgenommen. Danke für das Vertrauen dafür. Danke auch an das BmBF für die Unterstützung des Prototypefundes. Ohne diese wäre dieses Projekt nicht möglich gewesen."
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:56
+#: lib/sign_dict_web/templates/page/supporter.html.eex:45
+#, elixir-autogen
 msgid "All contributors."
 msgstr "Allen Mitwirkenden."
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:55
+#: lib/sign_dict_web/templates/page/supporter.html.eex:44
+#, elixir-autogen
 msgid "All libraries we are using to develop SignDict"
 msgstr "Alle Bibliotheken, die wir für die Entwicklung von SignDict benutzen"
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:47
+#: lib/sign_dict_web/templates/page/supporter.html.eex:36
+#, elixir-autogen
 msgid "SignDict also wants to thank the following services and people:"
 msgstr "SignDict dankt auch folgenden Diensten und Menschen:"
 
@@ -795,90 +1014,112 @@ msgstr "weil Ihr immer für mich da seid."
 msgid "supporter_rrbone"
 msgstr "Dieser Dienst wird auf Servern von RRBone betrieben. Danke für die Bereitstellung der Server."
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:40
+#: lib/sign_dict_web/templates/page/supporter.html.eex:29
+#, elixir-autogen
 msgid "supporter_zweitag"
 msgstr "Zweitag hat freundlicherweise dieses sehr schicke Design entworfen und mir bei der Umsetzung mit Rat zur Seite gestanden."
 
-#: lib/sign_dict_web/templates/page/supporter.html.eex:57
+#: lib/sign_dict_web/templates/page/supporter.html.eex:46
+#, elixir-autogen
 msgid "and YOU for reading this <3"
 msgstr "und DIR für das Lesen dieser Liste <3"
 
 #: lib/sign_dict_web/templates/embed/show.html.eex:3
+#, elixir-autogen
 msgid "Details >"
 msgstr "Details >"
 
 #: lib/sign_dict_web/templates/embed/show_no_video.html.eex:7
+#, elixir-autogen
 msgid "Open SignDict"
 msgstr "Öffne SignDict"
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:153
+#: lib/sign_dict_web/controllers/entry_controller.ex:123
+#, elixir-autogen
 msgid "Sorry, I could not find an entry for this."
 msgstr "Entschuldigung, leider konnte ich diesen Eintrag nicht finden."
 
 #: lib/sign_dict_web/controllers/embed_controller.ex:22
 #: lib/sign_dict_web/controllers/embed_controller.ex:48
+#, elixir-autogen
 msgid "Sorry, no sign found"
 msgstr "Entschuldigung, keine Gebärde gefunden"
 
 #: lib/sign_dict_web/templates/embed/show_no_video.html.eex:3
+#, elixir-autogen
 msgid "Sorry, no sign was found"
 msgstr "Entschuldigung, es wurde keine Gebärde gefunden"
 
-#: lib/sign_dict/opengraph_tags.ex:9
+#: lib/sign_dict/opengraph_tags.ex:8
+#, elixir-autogen
 msgid "A sign language dictionary"
 msgstr "Ein Gebärdensprach-Wörterbuch"
 
 #: lib/sign_dict/services/opengraph.ex:13
+#, elixir-autogen
 msgid "   %{user} is a user on SignDict, a sign language dictionary.\n"
 msgstr "%{user} ist ein Nutzer auf SignDict, einem Gebärdensprach-Wörterbuch"
 
-#: lib/sign_dict/services/opengraph.ex:84
+#: lib/sign_dict/services/opengraph.ex:86
+#, elixir-autogen
 msgid "by %{copyright}"
 msgstr "von %{copyright}"
 
-#: lib/sign_dict/services/opengraph.ex:60
+#: lib/sign_dict/services/opengraph.ex:62
+#, elixir-autogen
 msgid "This video shows the sign of \"%{sign}\". See more Signs on SignDict.org,\nyour sign language dictionary.\nLicense: %{license} %{copyright}\n"
 msgstr "Dieses Video zeigt die Gebärde für \"%{sign}\". Weitere Gebärden findest du auf SignDict.org, deinem Gebärdensprach-Wörterbuch.\nLizenz: %{license} %{copyright}\n"
 
-#: lib/sign_dict/services/opengraph.ex:78
+#: lib/sign_dict/services/opengraph.ex:80
+#, elixir-autogen
 msgid "by %{copyright} - %{username}"
 msgstr "von %{copyright} - %{username}"
 
 #: lib/sign_dict_web/controllers/page_controller.ex:33
-#: lib/sign_dict_web/templates/page/privacy_de.html.eex:3 lib/sign_dict_web/templates/page/privacy_en.html.eex:3
-#: lib/sign_dict_web/templates/shared/footer.html.eex:37
+#: lib/sign_dict_web/templates/page/privacy_de.html.eex:3
+#: lib/sign_dict_web/templates/page/privacy_en.html.eex:3
+#: lib/sign_dict_web/templates/shared/footer.html.eex:31
+#, elixir-autogen
 msgid "Privacy"
 msgstr "Datenschutz"
 
 #: lib/sign_dict_web/controllers/email_confirmation_controller.ex:19
+#, elixir-autogen
 msgid "Invalid confirmation link."
 msgstr "Ungültiger Link zum bestätigen der Email-Adresse"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:117
+#: lib/sign_dict_web/controllers/user_controller.ex:106
+#, elixir-autogen
 msgid "Please click on the link in the email we just sent to confirm your account."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um dein Konto zu bestätigen."
 
-#: lib/sign_dict_web/email.ex:26
+#: lib/sign_dict_web/email.ex:28
+#, elixir-autogen
 msgid "Please confirm your email address"
 msgstr "Bitte bestätige deine Email-Adresse"
 
 #: lib/sign_dict_web/controllers/email_confirmation_controller.ex:38
+#, elixir-autogen
 msgid "Unable to confirm your email address."
 msgstr "Leider kann deine Email-Adresse nicht bestätigt werden."
 
-#: lib/sign_dict/models/user.ex:109
+#: lib/sign_dict/models/user.ex:103
+#, elixir-autogen
 msgid "already used"
 msgstr "wird schon benutzt"
 
-#: lib/sign_dict_web/controllers/user_controller.ex:130
+#: lib/sign_dict_web/controllers/user_controller.ex:119
+#, elixir-autogen
 msgid "Please click on the link in the email we just sent to confirm the change of your email."
 msgstr "Bitte klicke auf den Link in der Email, die wir dir gerade zugesendet haben, um die neue Email-Adresse zu bestätigen."
 
-#: lib/sign_dict_web/email.ex:38
+#: lib/sign_dict_web/email.ex:40
+#, elixir-autogen
 msgid "Please confirm the change of your email address"
 msgstr "Bitte bestätige die Änderung deiner Email-Adresse"
 
 #: lib/sign_dict_web/controllers/email_confirmation_controller.ex:45
+#, elixir-autogen
 msgid "Your new email address is now confirmed."
 msgstr "Deine neue Email-Adresse ist nun bestätigt."
 
@@ -888,6 +1129,7 @@ msgstr "Ja, ich will den Newsletter abonnieren."
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:33
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:28
+#, elixir-autogen
 msgid "user.flags"
 msgstr "Feature flags"
 
@@ -896,10 +1138,12 @@ msgid "Record new video"
 msgstr "Neues Video aufnehmen"
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:53
+#, elixir-autogen
 msgid "Review Queue"
 msgstr "Neue Videos"
 
 #: lib/sign_dict_web/controllers/backend/review_controller.ex:29
+#, elixir-autogen
 msgid "Video approved"
 msgstr "Video freigegeben"
 
@@ -907,39 +1151,48 @@ msgstr "Video freigegeben"
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr "Du kennst eine andere Variante für dieses Wort? Bitte hilf uns und nehme diese mit deiner Webcam auf."
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:34
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:36
+#, elixir-autogen
 msgid "Video could not be approved"
 msgstr "Video konnte nicht freigegeben werden"
 
 #: lib/sign_dict_web/templates/entry/new.html.eex:1
+#, elixir-autogen
 msgid "Add new entry"
 msgstr "Neuen Eintrag hinzufügen"
 
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:18
+#, elixir-autogen
 msgid "Approve video"
 msgstr "Video freigeben"
 
 #: lib/sign_dict_web/views/entry_view.ex:16
+#, elixir-autogen
 msgid "entry.type.example"
 msgstr "Beispielsatz"
 
 #: lib/sign_dict_web/views/entry_view.ex:15
+#, elixir-autogen
 msgid "entry.type.phrase"
 msgstr "Redensart / Phrase"
 
 #: lib/sign_dict_web/views/entry_view.ex:14
+#, elixir-autogen
 msgid "entry.type.word"
 msgstr "Wort"
 
 #: lib/sign_dict_web/templates/entry/form.html.eex:17
+#, elixir-autogen
 msgid "If you want to create another entry for another meaning of a word, please describe the meaning in a little bit more detail here."
 msgstr "Wenn du einen Eintrag mit einer anderen Bedeutung für einen schon bestehen anlegen willst, beschreibe diesen kurz hier um beide Einträge unterscheiden zu können."
 
 #: lib/sign_dict_web/templates/entry/form.html.eex:40
+#, elixir-autogen
 msgid "Create entry"
 msgstr "Eintrag anlegen"
 
 #: lib/sign_dict_web/templates/entry/new.html.eex:4
+#, elixir-autogen
 msgid "You think an entry is missing? Feel free do add it here. After entering the text you will be able to record the sign for it in the next step."
 msgstr "Du denkst ein Eintrag fehlt? Dann trage diesen gerne hier ein. Nachdem du den Text eingegeben hast, wirst du im nächsten Schritt die Möglichkeit haben, die Gebärde aufzunehmen."
 
@@ -948,15 +1201,18 @@ msgid "Missing an entry? Do you know how to sign it? Then please add it with the
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen Bitte mit Hilfe deiner Webcam hinzu."
 
 #: lib/sign_dict_web/controllers/entry_controller.ex:27
-#: lib/sign_dict_web/templates/shared/footer.html.eex:44
+#: lib/sign_dict_web/templates/shared/footer.html.eex:37
+#, elixir-autogen
 msgid "All entries"
 msgstr "Alle Einträge"
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:49
+#, elixir-autogen
 msgid "Browse results for %{letter}"
 msgstr "Alle Einträge für %{letter}"
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:5
+#, elixir-autogen
 msgid "Browse through SignDict"
 msgstr "Alle Einträge"
 
@@ -965,47 +1221,58 @@ msgid "Sorry, I couldn't find the entry for which you wanted to record a sign."
 msgstr "Leider konnte ich den Eintrag nicht finden, zudem du eine Gebärde aufnehmen wolltest."
 
 #: lib/sign_dict_web/templates/page/welcome.html.eex:16
+#, elixir-autogen
 msgid "Add a new sign >"
 msgstr "Eine neue Gebärde hinzufügen >"
 
-#: lib/sign_dict_web/email.ex:72
+#: lib/sign_dict_web/email.ex:74
+#, elixir-autogen
 msgid "Your video was approved :)"
 msgstr "Dein Video wurde freigegeben :)"
 
 #: lib/sign_dict_web/templates/entry/index.html.eex:39
+#, elixir-autogen
 msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
 msgstr "Abenteuerlustig? Dann schau dir doch einen <a href='%{random}'>zufälligen Eintrag an</a>."
 
 #: lib/sign_dict_web/templates/page/not_supported.html.eex:6
+#, elixir-autogen
 msgid "The webcam recording functionality uses relatively new features and currently\nonly Chrome and Firefox support them. Please make sure you have the latest version of Chrome or Firefox\ninstalled. It is also not possible to record with a tablet or\nyour phone. You need to have a laptop. I hope this will change in the future,\nbut that depends on the browser manufacturers.\n"
 msgstr "Die Webcam-Aufnahme benötigt relativ neue Funktionen und momentan werden diese nur vom Chrome- und Firefox-Browser unterstützt. Bitte stelle sicher das du die neueste Version von Chrome oder Firefox installiert hast. Es ist desweiteren nicht möglich, mit einem Tablet oder deinem Telefon aufzunehmen. Du brauchst einen Laptop. Ich hoffe dies ändert sich in Zukunft, aber dies hängt von den Browser-Herstellern ab."
 
 #: lib/sign_dict_web/controllers/page_controller.ex:47
 #: lib/sign_dict_web/templates/page/not_supported.html.eex:3
+#, elixir-autogen
 msgid "Your browser is not supported"
 msgstr "Dein Webbrowser wird nicht unterstützt"
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:60
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:66
+#, elixir-autogen
 msgid "Video could not be rejected"
 msgstr "Das Video konnte nicht abgelehnt werden"
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:53
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:57
+#, elixir-autogen
 msgid "Video rejected"
 msgstr "Video abgelehnt"
 
-#: lib/sign_dict_web/email.ex:89
+#: lib/sign_dict_web/email.ex:91
+#, elixir-autogen
 msgid "Your video was rejected"
 msgstr "Dein Video wurde abgelehnt"
 
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:29
+#, elixir-autogen
 msgid "Reject video"
 msgstr "Video ablehnen"
 
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:24
+#, elixir-autogen
 msgid "Rejection reason"
 msgstr "Ablehnungsgrund"
 
-#: lib/sign_dict_web/controllers/entry_controller.ex:135
+#: lib/sign_dict_web/controllers/entry_controller.ex:105
+#, elixir-autogen
 msgid "Watch this sign for \"%{sign}\" on @signdict"
 msgstr "Schau dir diese Gebärde für \"%{sign}\" auf @signdict an"
 
@@ -1022,10 +1289,12 @@ msgid "Sorry, but you need the latest Chrome Browser for recording right now."
 msgstr "Leider brauchst du einen aktuellen Chrome Browser für die Aufnahmefunktion."
 
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:6
+#, elixir-autogen
 msgid "user.id"
 msgstr "ID"
 
 #: lib/sign_dict_web/templates/page/index.html.eex:52
+#, elixir-autogen
 msgid "Our mission: to help in understanding each other."
 msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
 
@@ -1033,369 +1302,397 @@ msgstr "Einander gemeinsam verstehen: Das ist unsere Mission."
 msgid "So far %{humans} humans have added <a href=\"%{link}\">%{signs} signs</a>"
 msgstr "Aktuell haben %{humans} Menschen <a href=\"%{link}\">%{signs} Gebärden</a> beigetragen"
 
-#: lib/sign_dict_web/controllers/backend/list_controller.ex:23
+#: lib/sign_dict_web/controllers/backend/list_controller.ex:24
+#, elixir-autogen
 msgid "List created successfully."
 msgstr "Liste erfolgreich angelegt."
 
-#: lib/sign_dict_web/controllers/backend/list_controller.ex:62
+#: lib/sign_dict_web/controllers/backend/list_controller.ex:63
+#, elixir-autogen
 msgid "List deleted successfully."
 msgstr "Liste erfolgreich gelöscht."
 
-#: lib/sign_dict_web/controllers/backend/list_controller.ex:50
+#: lib/sign_dict_web/controllers/backend/list_controller.ex:51
+#, elixir-autogen
 msgid "List updated successfully."
 msgstr "Liste erfolgreich aktualisiert."
 
 #: lib/sign_dict_web/templates/layout/backend.html.eex:56
+#, elixir-autogen
 msgid "Lists"
 msgstr "Listen"
 
 #: lib/sign_dict_web/templates/backend/list/index.html.eex:1
+#, elixir-autogen
 msgid "Listing lists"
 msgstr "Alle Listen"
 
 #: lib/sign_dict_web/templates/backend/list/index.html.eex:38
 #: lib/sign_dict_web/templates/backend/list/new.html.eex:1
+#, elixir-autogen
 msgid "New list"
 msgstr "Neue Liste"
 
 #: lib/sign_dict_web/templates/backend/list/index.html.eex:6
+#, elixir-autogen
 msgid "list.id"
 msgstr "ID"
 
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:9
 #: lib/sign_dict_web/templates/backend/list/index.html.eex:7
+#, elixir-autogen
 msgid "list.name"
 msgstr "Name"
 
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:21
-#: lib/sign_dict_web/templates/backend/list/index.html.eex:8 lib/sign_dict_web/templates/backend/list/show.html.eex:5
+#: lib/sign_dict_web/templates/backend/list/index.html.eex:8
+#: lib/sign_dict_web/templates/backend/list/show.html.eex:5
+#, elixir-autogen
 msgid "list.type"
 msgstr "Typ"
 
 #: lib/sign_dict_web/templates/backend/list/edit.html.eex:1
+#, elixir-autogen
 msgid "Edit list"
 msgstr "Liste bearbeiten"
 
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:1
+#, elixir-autogen
 msgid "List"
 msgstr "Liste"
 
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:15
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:19
+#, elixir-autogen
 msgid "list.description"
 msgstr "Beschreibung"
 
 #: lib/sign_dict_web/templates/backend/list/form.html.eex:27
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:12
+#, elixir-autogen
 msgid "list.sort_order"
 msgstr "Sortierung"
 
-#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:16
+#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:17
+#, elixir-autogen
 msgid "Entry added successfully."
 msgstr "Eintrag erfolgreich hinzugefügt"
 
-#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:21
+#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:22
+#, elixir-autogen
 msgid "Entry could not be added."
 msgstr "Eintrag konnte nicht hinzugefügt werden."
 
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:35
+#, elixir-autogen
 msgid "ID"
 msgstr "Id"
 
-#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:30
+#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:31
+#, elixir-autogen
 msgid "List entry deleted successfully."
 msgstr "Listeneintrag erfolgreich gelöscht."
 
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:36
+#, elixir-autogen
 msgid "Thumbnail"
 msgstr "Vorschaubild"
 
-#: lib/sign_dict/services/opengraph.ex:99
+#: lib/sign_dict/services/opengraph.ex:101
+#, elixir-autogen
 msgid "   %{list} is a collection of signs in SignDict, a sign language dictionary.\n"
 msgstr "%{list} ist eine Sammlung von Gebärden auf SignDict, einem Gebärdensprach-Wörterbuch."
 
 #: lib/sign_dict_web/controllers/list_controller.ex:22
+#, elixir-autogen
 msgid "List \"%{name}\""
 msgstr "Liste \"%{name}\""
 
-#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:46
+#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:47
+#, elixir-autogen
 msgid "List entry moved down."
 msgstr "Listeneintrage nach unten verschoben."
 
-#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:38
+#: lib/sign_dict_web/controllers/backend/list_entry_controller.ex:39
+#, elixir-autogen
 msgid "List entry moved up."
 msgstr "Listeneintrag nach oben verschoben."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/index.html.eex:83
+#, elixir-format, elixir-autogen
 msgid "Open the german documentation"
 msgstr "Zur Dokumentation"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/index.html.eex:77
+#, elixir-format, elixir-autogen
 msgid "Want to learn more about sign language?"
 msgstr "Willst du mehr über Gebärdensprache lernen?"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/index.html.eex:80
+#, elixir-format, elixir-autogen
 msgid "We offer a nice introduction to sign language in german."
 msgstr "Zum Beispiel über das <a href='http://docs.signdict.org/dgs/4_fingeralphabet/'>Fingeralphabet</a>, <a href='http://docs.signdict.org/babysign/1_einleitung/'>Babysign</a> oder die deutsche Gebärdensprache? Großartig. Genau dafür haben wir unser <a href='http://docs.signdict.org'>Dokumentations-Projekt</a>."
 
-#, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:46
+#: lib/sign_dict_web/templates/shared/footer.html.eex:39
+#, elixir-format, elixir-autogen
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#, elixir-format
 #: lib/sign_dict_web/auth/guardian_error_handler.ex:31
+#, elixir-format, elixir-autogen
 msgid "Already authenticated"
 msgstr "Schon angemeldet"
 
-#, elixir-format
 #: lib/sign_dict_web/controllers/contact_controller.ex:46
+#, elixir-format
 msgid "The recaptcha was wrong, email not sent."
 msgstr "Der Recaptcha war falsch, Email nicht versendet."
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:211
+#: lib/sign_dict_web/templates/entry/show.html.eex:182
+#, elixir-format, elixir-autogen
 msgid "Some variations of this entry using <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr "Einige Beispiele dieses Eintrages in <a href='https://delegs.de/gebaerdenschrift/'>GebärdenSchrift</a>:"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:200
+#: lib/sign_dict_web/templates/entry/show.html.eex:171
+#, elixir-format, elixir-autogen
 msgid "SignWriting"
 msgstr "GebärdenSchrift"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:233
+#: lib/sign_dict_web/templates/entry/show.html.eex:204
+#, elixir-format, elixir-autogen
 msgid "Thanks to <a href='https://delegs.de/'>delegs</a> for offering this service."
 msgstr "Danke an <a href='https://delegs.de'>delegs</a> für diesen Service."
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:222
+#: lib/sign_dict_web/templates/entry/show.html.eex:193
+#, elixir-format, elixir-autogen
 msgid "Click here if this image is wrong"
 msgstr ""
 
-#, elixir-format
 #: lib/sign_dict_web/templates/shared/footer.html.eex:10
+#, elixir-format, elixir-autogen
 msgid "Logo Wishlephant"
 msgstr ""
 
-#, elixir-format
-#: lib/sign_dict_web/templates/shared/footer.html.eex:45
+#: lib/sign_dict_web/templates/shared/footer.html.eex:38
+#, elixir-format, elixir-autogen
 msgid "New videos"
 msgstr "Neue Videos"
 
-#, elixir-format
-#: lib/sign_dict_web/controllers/entry_controller.ex:48
+#: lib/sign_dict_web/controllers/entry_controller.ex:53
 #: lib/sign_dict_web/templates/entry/latest.html.eex:5
+#, elixir-format, elixir-autogen
 msgid "Recently created videos"
 msgstr "Zuletzt angelegte Videos"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/shared/footer.html.eex:15
+#, elixir-format
 msgid "Love SignDict? Sponsor us to help cover the server costs."
 msgstr "Du magst SignDict? Unterstütze uns um die Serverkosten zu bezahlen."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/supporter.html.eex:58
+#, elixir-format
 msgid "and YOU if you want to donate."
 msgstr "und DU wenn du spenden möchtest."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/index.html.eex:30
 #: lib/sign_dict_web/templates/shared/searchbar.html.eex:7
+#, elixir-format, elixir-autogen
 msgid "Search a word to see the GSL sign"
 msgstr "Suche ein Wort um die Gebärde in DGS zu sehen"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:142
+#: lib/sign_dict_web/templates/entry/show.html.eex:119
+#, elixir-format, elixir-autogen
 msgid "License"
 msgstr "Lizenz"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/show.html.eex:1
+#, elixir-format, elixir-autogen
 msgid "Domain"
 msgstr ""
 
-#, elixir-format
-#: lib/sign_dict_web/controllers/backend/domain_controller.ex:24
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:25
+#, elixir-format, elixir-autogen
 msgid "Domain created successfully."
 msgstr "Eintrag erfolgreich angelegt."
 
-#, elixir-format
-#: lib/sign_dict_web/controllers/backend/domain_controller.ex:71
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:72
+#, elixir-format, elixir-autogen
 msgid "Domain deleted successfully."
 msgstr "Eintrag erfolgreich gelöscht."
 
-#, elixir-format
-#: lib/sign_dict_web/controllers/backend/domain_controller.ex:59
+#: lib/sign_dict_web/controllers/backend/domain_controller.ex:60
+#, elixir-format, elixir-autogen
 msgid "Domain updated successfully."
 msgstr "Eintrag erfolgreich aktualisiert."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:26
 #: lib/sign_dict_web/templates/layout/backend.html.eex:43
+#, elixir-format, elixir-autogen
 msgid "Domains"
 msgstr "Domains"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/edit.html.eex:1
+#, elixir-format, elixir-autogen
 msgid "Edit domain"
 msgstr "Domain bearbeiten"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:1
+#, elixir-format, elixir-autogen
 msgid "Listing domains"
 msgstr "Alle Videos"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:36
 #: lib/sign_dict_web/templates/backend/domain/new.html.eex:1
+#, elixir-format, elixir-autogen
 msgid "New domain"
 msgstr "Neue Domain"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/form.html.eex:9
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:7
+#, elixir-format, elixir-autogen
 msgid "domain.domain"
 msgstr "Domainname"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/domain/index.html.eex:6
+#, elixir-format, elixir-autogen
 msgid "domain.id"
 msgstr "ID"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:1
 #: lib/sign_dict_web/templates/layout/backend.html.eex:59
+#, elixir-format, elixir-autogen
 msgid "Statistic"
 msgstr "Statistik"
 
-#, elixir-format
 #: lib/sign_dict_web/controllers/backend/csv_export_suggestions_controller.ex:11
 #: lib/sign_dict_web/controllers/backend/statistic_controller.ex:9
+#, elixir-format, elixir-autogen
 msgid "You cannot view this page."
 msgstr "Du darfst diese Seite nicht sehen."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:3
+#, elixir-format, elixir-autogen
 msgid "Suggestions"
 msgstr "Vorschläge"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:5
+#, elixir-format, elixir-autogen
 msgid "This will include all suggestions made by users."
 msgstr "Diese Datei behinhaltet alle Vorschläge von Nutzer:innen"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:8
+#, elixir-format, elixir-autogen
 msgid "Download CSV"
 msgstr "CSV runterladen"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:14
+#, elixir-format
 msgid "Add the video yourself"
 msgstr "Füge das Video selber hinzu"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:43
+#, elixir-format
 msgid "Please describe the word or use it in a sentence. This helps us to find the right sign."
 msgstr "Bitte beschreibe das Wort in einem Satz. Dies Hilft uns, die richtige Gebärde zu finden."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:50
+#, elixir-format
 msgid "Send"
 msgstr "Absenden"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:7
+#, elixir-format
 msgid "Suggest a new word!"
 msgstr "Ein neues Wort vorschlagen!"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:22
+#, elixir-format
 msgid "Suggest the word"
 msgstr "Ein Wort vorschlagen"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:25
+#, elixir-format
 msgid "You cannot sign the word? No problem, just add it here and someone will sign it for you:"
 msgstr "Du kannst das Wort nicht gebärden? Kein Problem, schlag es hier vor und jemand anderes wird es für dich gebärden:"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:41
+#, elixir-format
 msgid "suggestion.description"
 msgstr "Beschreibung"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:35
+#, elixir-format
 msgid "suggestion.word"
 msgstr "Wort"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:10
+#, elixir-format
 msgid "SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:"
 msgstr "SignDict ist ein offenes Wörterbuch. Jede:r kann helfen, es besser zu machen. Du vermisst einen Eintrag und willst helfen? Großartig! Es gibt zwei Wege dafür:"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/suggestion/index.html.eex:18
+#, elixir-format
 msgid "You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>."
 msgstr "Du kannst das fehlende Wort gebärden und besitzt eine Webcam? Füge das Wort selber hinzu <a href=\"%{login_url}\">auf dieser Seite</a>."
 
-#, elixir-format
 #: lib/sign_dict_web/controllers/suggestion_controller.ex:30
+#, elixir-format
 msgid "There were problems saving your entry"
 msgstr "Es gab Probleme beim Absenden deines Vorschlages"
 
-#, elixir-format
 #: lib/sign_dict_web/controllers/suggestion_controller.ex:25
+#, elixir-format
 msgid "Thanks for suggesting a new entry."
 msgstr "Danke für deinen Vorschlag."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/page/index.html.eex:16
+#, elixir-format, elixir-autogen
 msgid "<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users."
 msgstr "<a href=\"%{link}\">%{signs} Gebärden</a> wurden von tollen Nutzer:innen hinzugefügt."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/search/index.html.eex:5
+#, elixir-format, elixir-autogen
 msgid "One search result for"
 msgid_plural "%{count} search results for"
 msgstr[0] "Ein Suchergebnis für"
 msgstr[1] "%{count} Suchergebnisse für"
 
-#, elixir-format
 #: lib/sign_dict_web/templates/search/index.html.eex:49
+#, elixir-format
 msgid "Missing an entry? Do you know how to sign it? Please add that sign using your webcam."
 msgstr "Fehlt ein Eintrag? Weißt du, wie dieser gebärdet wird? Dann füge diesen bitte mit Hilfe deiner Webcam hinzu."
 
-#, elixir-format
 #: lib/sign_dict_web/templates/search/index.html.eex:52
+#, elixir-format
 msgid "Record a new entry"
 msgstr "Wort vorschlagen"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:203
+#: lib/sign_dict_web/templates/entry/show.html.eex:174
+#, elixir-format, elixir-autogen
 msgid "This entry written in <a href='https://delegs.de/gebaerdenschrift/'>SignWriting</a>:"
 msgstr "Dieser Eintrag in <a href='https://delegs.de/gebaerdenschrift/'>GebärdenSchrift</a>:"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:152
+#: lib/sign_dict_web/templates/entry/show.html.eex:129
+#, elixir-format, elixir-autogen
 msgid "Variations for »%{entry}«"
 msgstr "Varianten für »%{entry}«"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:131
+#: lib/sign_dict_web/templates/entry/show.html.eex:108
+#, elixir-format, elixir-autogen
 msgid "Download"
 msgstr "Download"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:133
+#: lib/sign_dict_web/templates/entry/show.html.eex:110
+#, elixir-format, elixir-autogen
 msgid "MP4-File"
 msgstr "MP4-Datei"
 
-#, elixir-format
-#: lib/sign_dict_web/templates/entry/show.html.eex:95
+#: lib/sign_dict_web/templates/entry/show.html.eex:72
+#, elixir-format, elixir-autogen
 msgid "Advertisement"
 msgstr "Werbung"
+
+#: lib/sign_dict_web/templates/shared/footer.html.eex:25
+#, elixir-autogen, elixir-format, fuzzy
+msgid "SignDict is a sign language dictionary"
+msgstr "SignDict ist ein Gebärdensprach-Wörterbuch bei dem jede:r mitmachen kann."
