@@ -16,7 +16,7 @@
     "node-sass": "^9.0.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
-    "plyr": "^3.7.2",
+    "plyr": "^3.8.4",
     "sass-loader": "^16.0.6",
     "stimulus": "^3.2.2",
     "turbolinks": "^5.2.0",
