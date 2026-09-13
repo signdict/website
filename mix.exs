@@ -118,21 +118,27 @@ defmodule SignDict.Mixfile do
     ]
   end
 
+  # Coolify passes SOURCE_COMMIT to the build, locally we read it from .git.
+  # Fall back to "unknown" so the build never fails without git information.
   def committed_at do
-    if System.get_env("SOURCE_COMMIT") do
-      System.get_env("SOURCE_COMMIT")
-    else
-      File.read!(".git/HEAD")
-      |> String.trim()
-      |> case do
-        "ref: " <> ref ->
-          Path.join(".git", ref)
-          |> File.read!()
-          |> String.trim()
+    case System.get_env("SOURCE_COMMIT") do
+      commit when commit not in [nil, ""] -> commit
+      _ -> commit_from_git() || "unknown"
+    end
+  end
 
-        commit ->
-          String.trim(commit)
-      end
+  defp commit_from_git do
+    case File.read(".git/HEAD") do
+      {:ok, "ref: " <> ref} -> read_git_file(Path.join(".git", String.trim(ref)))
+      {:ok, commit} -> String.trim(commit)
+      _ -> nil
+    end
+  end
+
+  defp read_git_file(path) do
+    case File.read(path) do
+      {:ok, content} -> String.trim(content)
+      _ -> nil
     end
   end
 end
