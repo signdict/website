@@ -1,6 +1,5 @@
 defmodule SignDictWeb.Backend.CSVExportSuggestionsControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   import SignDict.Factory
   alias SignDict.Suggestions

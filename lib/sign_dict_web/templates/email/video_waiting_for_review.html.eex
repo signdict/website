@@ -1,7 +1,0 @@
-<p>
-  There was a new video added for <%= @entry.text %> 🚀.
-</p>
-
-<p>
-  <%= link "Show video", to: SignDictWeb.Router.Helpers.backend_entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>
-</p>

@@ -5,8 +5,6 @@ defmodule SignDict.Worker.CheckVideoStatus do
   # 10 minutes, 20 minutes, 30 minutes
   @recheck_transcoder_result_time [60 * 10, 60 * 20, 60 * 30]
 
-  alias SignDictWeb.Email
-  alias SignDictWeb.Mailer
   alias SignDict.Entry
   alias SignDict.Repo
   alias SignDict.Video
@@ -79,11 +77,6 @@ defmodule SignDict.Worker.CheckVideoStatus do
 
   defp mark_video_to_review(video) do
     {:ok, video} = Video.wait_for_review(video)
-
-    video
-    |> Email.video_waiting_for_review()
-    |> Mailer.deliver_later()
-
     video
   end
 end

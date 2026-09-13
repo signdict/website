@@ -18,7 +18,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
         original_href: "https://delegs.de/",
         metadata: %{
           source_json: %{
-            "videoUrl" => "http://localhost:8081/videos/Zug.mp4",
+            "videoUrl" => "http://localhost:8345/videos/Zug.mp4",
             "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Zug"
@@ -31,7 +31,7 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
         state: "uploaded",
         external_id: "123123123:12",
         auto_publish: true,
-        video_url: "http://localhost:8081/videos/Zug.mp4"
+        video_url: "http://localhost:8345/videos/Zug.mp4"
       })
 
       {:ok, entry: entry, user: user}
@@ -47,8 +47,8 @@ defmodule SignDict.Importer.Wps.SignImporterTest do
       assert video.metadata["source_sign_json"] ==
                %{
                  "documentId" => "4347009787320352:59",
-                 "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
-                 "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+                 "gebaerdenSchriftUrl" => ["http://localhost:8345/images/russland.png"],
+                 "videoUrl" => ["http://localhost:8345/videos/Zug.mp4"],
                  "metadata" => %{
                    "Anwendungsbereich:" => ["Akademie", "Schule"],
                    "Aufnahmedatum:" => "2019-09-23 00:00:00",

@@ -72,16 +72,6 @@ if config_env() == :prod do
     use_logger: true,
     api_key: System.get_env("BUGSNAG_API_KEY")
 
-  config :sign_dict, SignDictWeb.Mailer,
-    adapter: Bamboo.SMTPAdapter,
-    server: "smtp.mailbox.org",
-    port: 465,
-    username: "mail@signdict.org",
-    password: System.get_env("SMTP_PASSWORD"),
-    tls: :if_available,
-    ssl: true,
-    retries: 1
-
   config :sign_dict, :jw_player,
     api_key: System.get_env("JW_PLAYER_API_KEY"),
     api_secret: System.get_env("JW_PLAYER_API_SECRET")
@@ -130,22 +120,4 @@ if config_env() == :prod do
   #       force_ssl: [hsts: true]
   #
   # Check `Plug.SSL` for all available options in `force_ssl`.
-
-  # ## Configuring the mailer
-  #
-  # In production you need to configure the mailer to use a different adapter.
-  # Here is an example configuration for Mailgun:
-  #
-  #     config :sign_dict, SignDict.Mailer,
-  #       adapter: Swoosh.Adapters.Mailgun,
-  #       api_key: System.get_env("MAILGUN_API_KEY"),
-  #       domain: System.get_env("MAILGUN_DOMAIN")
-  #
-  # Most non-SMTP adapters require an API client. Swoosh supports Req, Hackney,
-  # and Finch out-of-the-box. This configuration is typically done at
-  # compile-time in your config/prod.exs:
-  #
-  #     config :swoosh, :api_client, Swoosh.ApiClient.Req
-  #
-  # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end

@@ -1,11 +1,9 @@
 defmodule SignDictWeb.Backend.ReviewControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   import SignDict.Factory
 
   alias SignDict.Entry
-  alias SignDict.User
   alias SignDict.Video
 
   describe "index/2" do
@@ -73,33 +71,6 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Video could not be approved"
       assert Repo.get(Video, video.id).state == "uploaded"
-    end
-
-    test "it sends the user an information about the approval", %{conn: conn} do
-      video = insert(:video_with_entry, state: "waiting_for_review")
-
-      conn
-      |> guardian_login(insert(:editor_user))
-      |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
-
-      assert_email_delivered_with(
-        subject: "Your video was approved :)",
-        to: [{video.user.name, video.user.email}]
-      )
-    end
-
-    test "it sends the user an information in german if the users locale is de", %{conn: conn} do
-      video = insert(:video_with_entry, state: "waiting_for_review")
-      User.changeset(video.user, %{locale: "de"}) |> Repo.update()
-
-      conn
-      |> guardian_login(insert(:editor_user))
-      |> post(SignDictWeb.Router.Helpers.backend_review_path(conn, :approve_video, video.id))
-
-      assert_email_delivered_with(
-        subject: "Dein Video wurde freigegeben :)",
-        to: [{video.user.name, video.user.email}]
-      )
     end
   end
 
@@ -170,37 +141,6 @@ defmodule SignDictWeb.Backend.ReviewControllerTest do
 
       assert Phoenix.Flash.get(conn.assigns.flash, :error) == "Video could not be rejected"
       assert Repo.get(Video, video.id).state == "uploaded"
-    end
-
-    test "it sends the user an information about the rejection", %{conn: conn} do
-      video = insert(:video_with_entry, state: "waiting_for_review")
-
-      conn
-      |> guardian_login(insert(:editor_user))
-      |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
-        video: %{rejection_reason: "wrong sign"}
-      })
-
-      assert_email_delivered_with(
-        subject: "Your video was rejected",
-        to: [{video.user.name, video.user.email}]
-      )
-    end
-
-    test "it sends the user an information in german if the users locale is de", %{conn: conn} do
-      video = insert(:video_with_entry, state: "waiting_for_review")
-      User.changeset(video.user, %{locale: "de"}) |> Repo.update()
-
-      conn
-      |> guardian_login(insert(:editor_user))
-      |> put(SignDictWeb.Router.Helpers.backend_review_path(conn, :reject_video, video.id), %{
-        video: %{rejection_reason: "wrong sign"}
-      })
-
-      assert_email_delivered_with(
-        subject: "Dein Video wurde abgelehnt",
-        to: [{video.user.name, video.user.email}]
-      )
     end
   end
 end

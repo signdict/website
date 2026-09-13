@@ -1,5 +1,0 @@
-There was a new video added for <%= @entry.text %> 🚀.
-
-You can find it here:
-
-<%= SignDictWeb.Router.Helpers.backend_entry_video_url(SignDictWeb.Endpoint, :show, @entry.id, @video.id) %>

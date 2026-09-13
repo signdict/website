@@ -3,9 +3,6 @@ defmodule SignDictWeb.UserController do
   """
   use SignDictWeb, :controller
 
-  alias Ecto.Changeset
-  alias SignDictWeb.Email
-  alias SignDictWeb.Mailer
   alias SignDict.Services.OpenGraph
   alias SignDict.User
   alias SignDict.Video
@@ -30,9 +27,9 @@ defmodule SignDictWeb.UserController do
       |> Repo.insert()
 
     case result do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
-        |> sent_confirm_email(user)
+        |> put_flash(:info, gettext("Your account was created. You can now sign in."))
         |> redirect(to: "/")
 
       {:error, changeset} ->
@@ -75,7 +72,6 @@ defmodule SignDictWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, gettext("Updated successfully."))
-        |> sent_confirm_email_change(user, changeset)
         |> redirect(to: Router.Helpers.user_path(conn, :show, user))
 
       {:error, changeset} ->
@@ -93,35 +89,5 @@ defmodule SignDictWeb.UserController do
         preload: :entry
 
     Repo.paginate(query, params)
-  end
-
-  defp sent_confirm_email(conn, user) do
-    user
-    |> Email.confirm_email()
-    |> Mailer.deliver_later()
-
-    conn
-    |> put_flash(
-      :info,
-      gettext("Please click on the link in the email we just sent to confirm your account.")
-    )
-  end
-
-  defp sent_confirm_email_change(conn, user, changeset) do
-    if Changeset.fetch_change(changeset, :unconfirmed_email) != :error do
-      user
-      |> Email.confirm_email_change()
-      |> Mailer.deliver_later()
-
-      conn
-      |> put_flash(
-        :info,
-        gettext(
-          "Please click on the link in the email we just sent to confirm the change of your email."
-        )
-      )
-    else
-      conn
-    end
   end
 end

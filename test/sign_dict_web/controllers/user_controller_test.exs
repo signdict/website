@@ -1,6 +1,5 @@
 defmodule SignDict.UserControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   import SignDict.Factory
 
@@ -28,7 +27,7 @@ defmodule SignDict.UserControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert Repo.get_by(SignDict.User, unconfirmed_email: "elisa@example.com")
+      assert Repo.get_by(SignDict.User, email: "elisa@example.com")
     end
 
     test "does not create resource and renders errors when data is invalid", %{conn: conn} do
@@ -38,17 +37,6 @@ defmodule SignDict.UserControllerTest do
         })
 
       assert html_response(conn, 200) =~ "Email"
-    end
-
-    test "it sends an email to confirm the user email address", %{conn: conn} do
-      post(conn, Helpers.user_path(conn, :create), %{
-        "user" => @valid_attrs
-      })
-
-      assert_email_delivered_with(
-        subject: "Please confirm your email address",
-        to: [{"user name", "elisa@example.com"}]
-      )
     end
   end
 
@@ -146,7 +134,7 @@ defmodule SignDict.UserControllerTest do
       assert redirected_to(conn) ==
                Helpers.user_path(conn, :show, Repo.get(SignDict.User, user.id))
 
-      assert Repo.get_by(SignDict.User, unconfirmed_email: "elisa@example.com")
+      assert Repo.get_by(SignDict.User, email: "elisa@example.com")
     end
 
     test "rerenders the forms if you had errors", %{conn: conn} do
@@ -160,34 +148,6 @@ defmodule SignDict.UserControllerTest do
         )
 
       assert html_response(conn, 200) =~ "Email"
-    end
-
-    test "it sends an email to confirm the changed user email address", %{conn: conn} do
-      user = insert(:user, email: "another@example.com")
-
-      conn
-      |> guardian_login(user)
-      |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
-
-      assert_email_delivered_with(
-        subject: "Please confirm the change of your email address",
-        to: [{"user name", "elisa@example.com"}]
-      )
-    end
-
-    test "it does not sent an email if the user did not change", %{conn: conn} do
-      user = insert(:user, email: "elisa@example.com")
-
-      conn =
-        conn
-        |> guardian_login(user)
-        |> patch(Helpers.user_path(conn, :update, user), user: @valid_attrs)
-
-      assert redirected_to(conn) ==
-               Helpers.user_path(conn, :show, Repo.get(SignDict.User, user.id))
-
-      user = Repo.get_by(SignDict.User, id: user.id)
-      refute_delivered_email(SignDictWeb.Email.confirm_email_change(user))
     end
   end
 end

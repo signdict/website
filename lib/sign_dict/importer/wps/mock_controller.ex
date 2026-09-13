@@ -32,7 +32,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-02-01] ->
         success(conn, [
           %{
-            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "videoUrl" => ["http://localhost:8345/videos/Zug.mp4"],
             "documentId" => "123123123:12",
             "metadata" => %{
               "Fachbegriff" => "Rechnen"
@@ -43,7 +43,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-03-01] ->
         success(conn, [
           %{
-            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "videoUrl" => ["http://localhost:8345/videos/Zug.mp4"],
             "documentId" => "123123123:12",
             "gebaerdenSchriftUrl" => [],
             "metadata" => %{
@@ -66,7 +66,7 @@ defmodule SignDict.Importer.Wps.MockController do
       ~D[2020-06-01] ->
         success(conn, [
           %{
-            "videoUrl" => ["http://localhost:8081/videos/Another.mp4"],
+            "videoUrl" => ["http://localhost:8345/videos/Another.mp4"],
             "documentId" => "123123123:12",
             "gebaerdenSchriftUrl" => [],
             "metadata" => %{
@@ -78,9 +78,9 @@ defmodule SignDict.Importer.Wps.MockController do
       _ ->
         success(conn, [
           %{
-            "videoUrl" => ["http://localhost:8081/videos/Zug.mp4"],
+            "videoUrl" => ["http://localhost:8345/videos/Zug.mp4"],
             "documentId" => "4347009787320352:59",
-            "gebaerdenSchriftUrl" => ["http://localhost:8081/images/russland.png"],
+            "gebaerdenSchriftUrl" => ["http://localhost:8345/images/russland.png"],
             "metadata" => %{
               "Fachbegriff" => "Zug",
               "Filmproduzent:" => "Jung-Woo Kim",

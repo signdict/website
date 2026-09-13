@@ -1,6 +1,5 @@
 defmodule SignDict.ListControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   import SignDict.Factory
 

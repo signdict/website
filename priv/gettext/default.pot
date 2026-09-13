@@ -27,7 +27,7 @@ msgstr ""
 msgid "Invalid email address or password"
 msgstr ""
 
-#: lib/sign_dict_web/templates/session/new.html.eex:22
+#: lib/sign_dict_web/templates/session/new.html.eex:21
 #, elixir-autogen
 msgid "Log in"
 msgstr ""
@@ -55,8 +55,8 @@ msgstr ""
 msgid "Please fill in an email address and password"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:18
-#: lib/sign_dict_web/controllers/user_controller.ex:41
+#: lib/sign_dict_web/controllers/user_controller.ex:15
+#: lib/sign_dict_web/controllers/user_controller.ex:38
 #: lib/sign_dict_web/templates/layout/backend.html.eex:34
 #: lib/sign_dict_web/templates/user/new.html.eex:3
 #: lib/sign_dict_web/templates/user/new.html.eex:41
@@ -96,8 +96,6 @@ msgstr ""
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:9
 #: lib/sign_dict_web/templates/backend/user/index.html.eex:7
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:14
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:9
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:10
 #: lib/sign_dict_web/templates/session/new.html.eex:7
 #: lib/sign_dict_web/templates/session/new.html.eex:8
 #: lib/sign_dict_web/templates/user/edit.html.eex:11
@@ -119,8 +117,6 @@ msgid "user.name"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:49
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:10
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:11
 #: lib/sign_dict_web/templates/session/new.html.eex:12
 #: lib/sign_dict_web/templates/session/new.html.eex:13
 #: lib/sign_dict_web/templates/user/edit.html.eex:46
@@ -132,8 +128,6 @@ msgid "user.password"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:55
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:15
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:16
 #: lib/sign_dict_web/templates/user/edit.html.eex:52
 #: lib/sign_dict_web/templates/user/edit.html.eex:53
 #: lib/sign_dict_web/templates/user/new.html.eex:35
@@ -142,65 +136,9 @@ msgstr ""
 msgid "user.password_confirmation"
 msgstr ""
 
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:20
-#, elixir-autogen
-msgid "Change my password"
-msgstr ""
-
-#: lib/sign_dict_web/templates/reset_password/edit.html.eex:3
-#, elixir-autogen
-msgid "Change your password"
-msgstr ""
-
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:5
-#, elixir-autogen
-msgid "Enter your email address and we'll send you a link to reset your password."
-msgstr ""
-
-#: lib/sign_dict_web/templates/session/new.html.eex:17
-#, elixir-autogen
-msgid "Forgot password?"
-msgstr ""
-
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:3
-#, elixir-autogen
-msgid "Forgot your password?"
-msgstr ""
-
 #: lib/sign_dict_web/auth/guardian_error_handler.ex:17
 #, elixir-autogen
 msgid "Sadly you are not allowed to do this"
-msgstr ""
-
-#: lib/sign_dict_web/templates/reset_password/new.html.eex:14
-#, elixir-autogen
-msgid "Send password reset instructions"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:39
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:70
-#, elixir-autogen
-msgid "Invalid password reset link. Please try again."
-msgstr ""
-
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:55
-#, elixir-autogen
-msgid "Password successfully changed"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:60
-#, elixir-autogen
-msgid "Unable to change your password"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:20
-#, elixir-autogen
-msgid "You'll receive an email with instructions about how to reset your password in a few minutes."
-msgstr ""
-
-#: lib/sign_dict_web/email.ex:48
-#, elixir-autogen
-msgid "Your password reset link"
 msgstr ""
 
 #: lib/sign_dict_web/plugs/allowed_for_backend.ex:15
@@ -322,7 +260,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:77
+#: lib/sign_dict_web/controllers/user_controller.ex:74
 #, elixir-autogen
 msgid "Updated successfully."
 msgstr ""
@@ -700,7 +638,7 @@ msgstr ""
 msgid "Two hands waving"
 msgstr ""
 
-#: lib/sign_dict_web/templates/session/new.html.eex:18
+#: lib/sign_dict_web/templates/session/new.html.eex:17
 #, elixir-autogen
 msgid "Create new account"
 msgstr ""
@@ -914,7 +852,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:66
+#: lib/sign_dict_web/controllers/user_controller.ex:63
 #, elixir-autogen
 msgid "Edit profile"
 msgstr ""
@@ -923,17 +861,6 @@ msgstr ""
 #: lib/sign_dict_web/controllers/session_controller.ex:29
 #, elixir-autogen
 msgid "Login"
-msgstr ""
-
-#: lib/sign_dict_web/email.ex:15
-#, elixir-autogen
-msgid "New message via contact form"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:10
-#: lib/sign_dict_web/controllers/reset_password_controller.ex:33
-#, elixir-autogen
-msgid "Reset password"
 msgstr ""
 
 #: lib/sign_dict_web/controllers/search_controller.ex:13
@@ -952,7 +879,7 @@ msgstr ""
 msgid "SignDict - A sign language dictionary"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/user_controller.ex:54
+#: lib/sign_dict_web/controllers/user_controller.ex:51
 #, elixir-autogen
 msgid "User %{user}"
 msgstr ""
@@ -1083,44 +1010,9 @@ msgstr ""
 msgid "Privacy"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/email_confirmation_controller.ex:19
-#, elixir-autogen
-msgid "Invalid confirmation link."
-msgstr ""
-
-#: lib/sign_dict_web/controllers/user_controller.ex:106
-#, elixir-autogen
-msgid "Please click on the link in the email we just sent to confirm your account."
-msgstr ""
-
-#: lib/sign_dict_web/email.ex:28
-#, elixir-autogen
-msgid "Please confirm your email address"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/email_confirmation_controller.ex:38
-#, elixir-autogen
-msgid "Unable to confirm your email address."
-msgstr ""
-
-#: lib/sign_dict/models/user.ex:103
+#: lib/sign_dict/models/user.ex:95
 #, elixir-autogen
 msgid "already used"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/user_controller.ex:119
-#, elixir-autogen
-msgid "Please click on the link in the email we just sent to confirm the change of your email."
-msgstr ""
-
-#: lib/sign_dict_web/email.ex:40
-#, elixir-autogen
-msgid "Please confirm the change of your email address"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/email_confirmation_controller.ex:45
-#, elixir-autogen
-msgid "Your new email address is now confirmed."
 msgstr ""
 
 #: lib/sign_dict_web/templates/user/new.html.eex:43
@@ -1142,7 +1034,7 @@ msgstr ""
 msgid "Review Queue"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:29
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:26
 #, elixir-autogen
 msgid "Video approved"
 msgstr ""
@@ -1151,7 +1043,7 @@ msgstr ""
 msgid "Know another variation for this word? You do? Please help us and record it with your webcam."
 msgstr ""
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:36
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:33
 #, elixir-autogen
 msgid "Video could not be approved"
 msgstr ""
@@ -1225,11 +1117,6 @@ msgstr ""
 msgid "Add a new sign >"
 msgstr ""
 
-#: lib/sign_dict_web/email.ex:74
-#, elixir-autogen
-msgid "Your video was approved :)"
-msgstr ""
-
 #: lib/sign_dict_web/templates/entry/index.html.eex:39
 #, elixir-autogen
 msgid "Feeling adventurous? Try <a href='%{random}'>a random entry</a>."
@@ -1246,19 +1133,14 @@ msgstr ""
 msgid "Your browser is not supported"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:66
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:61
 #, elixir-autogen
 msgid "Video could not be rejected"
 msgstr ""
 
-#: lib/sign_dict_web/controllers/backend/review_controller.ex:57
+#: lib/sign_dict_web/controllers/backend/review_controller.ex:52
 #, elixir-autogen
 msgid "Video rejected"
-msgstr ""
-
-#: lib/sign_dict_web/email.ex:91
-#, elixir-autogen
-msgid "Your video was rejected"
 msgstr ""
 
 #: lib/sign_dict_web/templates/backend/video/show.html.eex:29
@@ -1695,4 +1577,9 @@ msgstr ""
 #: lib/sign_dict_web/templates/shared/footer.html.eex:25
 #, elixir-autogen, elixir-format
 msgid "SignDict is a sign language dictionary"
+msgstr ""
+
+#: lib/sign_dict_web/controllers/user_controller.ex:32
+#, elixir-autogen, elixir-format
+msgid "Your account was created. You can now sign in."
 msgstr ""

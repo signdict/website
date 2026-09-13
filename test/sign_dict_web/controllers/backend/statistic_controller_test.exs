@@ -1,6 +1,5 @@
 defmodule SignDictWeb.Backend.StatisticControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   import SignDict.Factory
 

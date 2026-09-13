@@ -1,6 +1,5 @@
 defmodule SignDictWeb.Api.RegisterControllerTest do
   use SignDict.ConnCase
-  use Bamboo.Test, shared: true
 
   alias SignDict.User
 
@@ -20,7 +19,7 @@ defmodule SignDictWeb.Api.RegisterControllerTest do
           user: @valid_attrs
         )
 
-      user = Repo.get_by(SignDict.User, unconfirmed_email: "elisa-register@example.com")
+      user = Repo.get_by(SignDict.User, email: "elisa-register@example.com")
       json = json_response(conn, 200)
       assert Plug.Conn.get_session(conn, :registered_user_id) == user.id
 
@@ -50,15 +49,6 @@ defmodule SignDictWeb.Api.RegisterControllerTest do
                  "password_confirmation" => "can't be blank"
                }
              }
-    end
-
-    test "it sends an email to confirm the user email address", %{conn: conn} do
-      post(conn, SignDictWeb.Router.Helpers.api_register_path(conn, :create), user: @valid_attrs)
-
-      assert_email_delivered_with(
-        subject: "Please confirm your email address",
-        to: [{"user name", "elisa-register@example.com"}]
-      )
     end
   end
 end

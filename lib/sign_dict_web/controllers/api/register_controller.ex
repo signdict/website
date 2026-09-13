@@ -1,8 +1,6 @@
 defmodule SignDictWeb.Api.RegisterController do
   use SignDictWeb, :controller
 
-  alias SignDictWeb.Email
-  alias SignDictWeb.Mailer
   alias SignDict.User
 
   def create(conn, %{"user" => user_params}) do
@@ -13,8 +11,6 @@ defmodule SignDictWeb.Api.RegisterController do
 
     case result do
       {:ok, user} ->
-        send_user_mails(user)
-
         conn
         |> put_session(:registered_user_id, user.id)
         |> render(user: user)
@@ -24,11 +20,5 @@ defmodule SignDictWeb.Api.RegisterController do
         |> put_status(400)
         |> render(errors: changeset.errors)
     end
-  end
-
-  defp send_user_mails(user) do
-    user
-    |> Email.confirm_email()
-    |> Mailer.deliver_later()
   end
 end

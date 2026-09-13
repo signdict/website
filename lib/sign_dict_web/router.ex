@@ -47,10 +47,6 @@ defmodule SignDictWeb.Router do
     plug SignDictWeb.Plug.AllowedForBackend
   end
 
-  if Application.compile_env(:sign_dict, :environment) == :dev do
-    forward "/sent_emails", Bamboo.SentEmailViewerPlug
-  end
-
   scope "/", SignDictWeb do
     pipe_through [:embed, :browser_session, :locale]
 
@@ -65,13 +61,6 @@ defmodule SignDictWeb.Router do
     resources "/users", UserController, except: [:delete]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/list", ListController, only: [:show]
-
-    get "/email_confirmation", EmailConfirmationController, :update
-
-    get "/password/new", ResetPasswordController, :new
-    post "/password/new", ResetPasswordController, :create
-    get "/password/edit", ResetPasswordController, :edit
-    put "/password", ResetPasswordController, :update
 
     resources "/entry", EntryController, only: [:index, :show, :new, :create] do
       get "/video/:video_id", EntryController, :show, as: :video

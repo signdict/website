@@ -38,15 +38,6 @@ config :sign_dict, SignDictWeb.Endpoint,
   pubsub_server: SignDict.PubSub,
   live_view: [signing_salt: "BxiN0kuF"]
 
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
-config :sign_dict, SignDictWeb.Mailer, adapter: Bamboo.LocalAdapter
-
 # Configures Elixir's Logger
 config :logger, :default_formatter,
   format: "$time $metadata[$level] $message\n",
@@ -103,9 +94,9 @@ config :sign_dict, :jw_player,
   api_key: "API_KEY",
   api_secret: "API_SECRET"
 
-config :sign_dict, :wps_importer, url: "http://localhost:8081/pi_json", domain: "test.local"
+config :sign_dict, :wps_importer, url: "http://localhost:8345/pi_json", domain: "test.local"
 
-config :sign_dict, :wps_sign_importer, url: "http://localhost:8081/sign_writing"
+config :sign_dict, :wps_sign_importer, url: "http://localhost:8345/sign_writing"
 
 config :sign_dict, :queue, library: Exq
 
