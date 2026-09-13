@@ -43,7 +43,7 @@ defmodule SignDictWeb.Router do
   end
 
   pipeline :backend do
-    plug :put_layout, {SignDictWeb.LayoutView, :backend}
+    plug :put_layout, html: {SignDictWeb.LayoutView, :backend}
     plug SignDictWeb.Plug.AllowedForBackend
   end
 

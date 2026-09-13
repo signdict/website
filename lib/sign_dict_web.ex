@@ -28,7 +28,7 @@ defmodule SignDictWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: SignDictWeb
+      use Phoenix.Controller, layouts: [html: SignDictWeb.LayoutView]
       use Gettext, backend: SignDictWeb.Gettext
 
       alias SignDict.Repo
