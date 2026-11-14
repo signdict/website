@@ -26,7 +26,6 @@ config :sign_dict, SignDictWeb.Endpoint,
     # Enable IPv6 and bind on all interfaces.
     # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
     # See the documentation on https://hexdocs.pm/bandit/Bandit.html#t:options/0
-    # foERROR! the application :sign_dict has a different value set for key SignDictWeb.Endpoint during runtime compared to compile time. Since this application environment entry was marked as compile time, this difference can lead to different behavior than expected:r details about using IPv6 vs IPv4 and loopback vs public addresses.
     ip: {0, 0, 0, 0, 0, 0, 0, 0},
     port: "4000"
   ],
