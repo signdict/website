@@ -7,7 +7,7 @@
             <%= link gettext("Supporter"), to: Router.Helpers.page_path(@conn, :supporter) %>
           </h1>
           <p>
-            <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.svg" alt="<%= gettext("Logo Wishlephant") %>"/></a>
+            <a href="https://wishlephant.com"><img class="so-footer--sponsorlogo so-footer--wishlephant" src="/images/logo-wishlephant.png" alt="<%= gettext("Logo Wishlephant") %>"/></a>
             <a href="https://zweitag.de"><img class="so-footer--sponsorlogo so-footer--zweitag" src="/images/logo-zweitag.png" alt="<%= gettext("Logo zweitag") %>"/></a>
           </p>
           <p class="so-footer--sponsorabout">
