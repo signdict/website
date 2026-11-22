@@ -1015,10 +1015,6 @@ msgstr "Datenschutz"
 msgid "already used"
 msgstr "wird schon benutzt"
 
-#: lib/sign_dict_web/templates/user/new.html.eex:43
-msgid "user.want_newsletter"
-msgstr "Ja, ich will den Newsletter abonnieren."
-
 #: lib/sign_dict_web/templates/backend/user/form.html.eex:33
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:28
 #, elixir-autogen

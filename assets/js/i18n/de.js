@@ -22,7 +22,6 @@ export default {
   Email: 'Email',
   Password: 'Passwort',
   'Confirm password': 'Passwort bestätigen',
-  'Yes, I want to subscribe to the newsletter': 'Ja, ich will den Newsletter abonnieren.',
   Register: 'Registrieren',
   'Thank you for uploading your video. It will be published after a review within the next 48 hours.':
     'Danke für das Hochladen deines Videos. Es wird nach einer Überprüfung von uns in den nächsten 48 Stunden freigeschaltet.',

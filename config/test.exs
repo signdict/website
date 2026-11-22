@@ -43,8 +43,6 @@ config :sign_dict, SignDictWeb.Gettext, default_locale: "en"
 
 config :sign_dict, :upload_path, "./test/uploads"
 
-config :sign_dict, :newsletter, subscriber: SignDict.MockChimp
-
 config :sign_dict, :queue, library: SignDict.MockExq
 
 config :sign_dict, :jw_player,

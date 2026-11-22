@@ -11,7 +11,7 @@ With the crowdsourcing approach we can create the most accurate
 and largest German sign language dictionary together.
 
 **You want to help?** Awesome. Scroll through the issues, open a new one, join our [Gitter Community](https://gitter.im/signdict/Lobby) or just send
-a short notice using the [contact form](https://signdict.org/contact). We are happy about every person who wants to help.
+a short notice via email to [bodo@tasche.me](mailto:bodo@tasche.me). We are happy about every person who wants to help.
 
 We also offer an [API](https://github.com/signdict/website/wiki/API).
 
