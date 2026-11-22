@@ -41,7 +41,7 @@ defmodule SignDictWeb.EntryController do
         join: entry in assoc(video, :entry),
         join: domain in assoc(entry, :domains),
         where: video.state == ^"published" and domain.domain == ^domain,
-        order_by: [desc: video.inserted_at],
+        order_by: [desc: video.inserted_at, desc: video.id],
         preload: :entry
       )
 

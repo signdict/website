@@ -189,8 +189,14 @@ defmodule SignDictWeb.EntryControllerTest do
 
   describe "index/2" do
     test "it shows only entries for a certain letter", %{conn: conn} do
-      insert(:entry_with_current_video, text: "Sloth")
+      sloth = insert(:entry_with_current_video, text: "Sloth")
       insert(:entry_with_current_video, text: "Marmot")
+
+      one_hour_ago = NaiveDateTime.add(NaiveDateTime.utc_now(), -3600, :second)
+
+      SignDict.Video
+      |> where(entry_id: ^sloth.id)
+      |> Repo.update_all(set: [inserted_at: one_hour_ago])
 
       domain = insert(:domain, domain: "example.com")
       insert(:entry_with_current_video, text: "Snake", domains: [domain])
@@ -208,8 +214,14 @@ defmodule SignDictWeb.EntryControllerTest do
 
   describe "latest/2" do
     test "it shows newest videos first", %{conn: conn} do
-      insert(:entry_with_current_video, text: "Sloth")
+      sloth = insert(:entry_with_current_video, text: "Sloth")
       insert(:entry_with_current_video, text: "Marmot")
+
+      one_hour_ago = NaiveDateTime.add(NaiveDateTime.utc_now(), -3600, :second)
+
+      SignDict.Video
+      |> where(entry_id: ^sloth.id)
+      |> Repo.update_all(set: [inserted_at: one_hour_ago])
 
       domain = insert(:domain, domain: "example.com")
       insert(:entry_with_current_video, text: "Snake", domains: [domain])
@@ -219,8 +231,8 @@ defmodule SignDictWeb.EntryControllerTest do
         |> get(Helpers.entry_path(conn, :latest))
 
       body = html_response(conn, 200)
-      assert Regex.match?(~r/entry.*sloth.*entry.*marmot/s, body)
-      refute Regex.match?(~r/marmot.*sloth/s, body)
+      assert Regex.match?(~r/entry.*marmot.*entry.*sloth/s, body)
+      refute Regex.match?(~r/sloth.*marmot/s, body)
       refute body =~ "Snake"
     end
   end
