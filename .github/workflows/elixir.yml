@@ -31,7 +31,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.8.1
