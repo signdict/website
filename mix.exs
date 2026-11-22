@@ -95,7 +95,7 @@ defmodule SignDict.Mixfile do
       {:csv, "~> 3.2"},
       {:poison, "~> 6.0"},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
-      {:postgrex, "~> 0.21.1"},
+      {:postgrex, "~> 0.22.4"},
       {:scrivener, "~> 2.7.2"},
       {:scrivener_html, git: "https://github.com/getdizzie/scrivener_html"},
       {:scrivener_ecto, "~> 3.1.0"},
