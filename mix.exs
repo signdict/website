@@ -5,7 +5,7 @@ defmodule SignDict.Mixfile do
     [
       app: :sign_dict,
       version: "0.0.1-#{committed_at()}",
-      elixir: "~> 1.2",
+      elixir: "~> 1.20",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       build_embedded: Mix.env() == :prod,
@@ -37,7 +37,7 @@ defmodule SignDict.Mixfile do
   def application do
     [
       mod: {SignDict, [env: Mix.env()]},
-      extra_applications: [:canada, :elixir_make, :exq, :exq_ui]
+      extra_applications: [:canada, :elixir_make, :exq]
     ]
   end
 
@@ -57,40 +57,38 @@ defmodule SignDict.Mixfile do
   defp deps do
     [
       {:absinthe_plug, "~> 1.5.9"},
-      {:absinthe, "1.8.0"},
-      {:waffle, "~> 1.1.9"},
-      {:waffle_ecto, "~> 0.0.12"},
+      {:absinthe, "~> 1.12"},
+      {:waffle, "~> 2.1"},
+      {:waffle_ecto, "~> 0.1"},
       {:bcrypt_elixir, "~> 3.3.2"},
       {:bugsnag, "~> 3.0.0"},
-      {:plugsnag, "~> 1.6.0"},
+      {:plugsnag, "~> 1.7"},
       {:canary, "~> 1.2.0"},
       {:comeonin, "~> 5.5.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.7.12", only: [:dev, :test]},
-      {:distillery, "~> 2.1.1", runtime: false},
+      {:credo, "~> 1.7.19", only: [:dev, :test]},
       {:ex_machina, "~> 2.1"},
       {:excoveralls, "~> 0.6", only: :test},
       {:exgravatar, "~> 2.0.0"},
-      {:exq_ui, "~> 0.17"},
       {:exq, "~> 0.21"},
-      {:gettext, "~> 0.26"},
-      {:guardian, "~> 2.4.0"},
+      {:gettext, "~> 1.0"},
+      {:guardian, "~> 2.5"},
       {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.13"},
+      {:ecto_sql, "~> 3.14"},
       {:phoenix_html, "~> 4.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 2.1"},
       {:phoenix_view, "~> 2.0.4"},
-      {:phoenix, "~> 1.7.0"},
-      {:plug, "~> 1.18.1"},
+      {:phoenix, "~> 1.8"},
+      {:plug, "~> 1.20"},
       {:state_mc, github: "bitboxer/state_mc"},
-      {:timex, "~> 3.6"},
+      {:timex, "~> 4.0"},
       # {:wallaby, "~> 0.30.1", only: :test},
       {:jason, "~> 1.4"},
       {:briefly, "~> 0.5"},
-      {:tzdata, "~> 1.1.0"},
+      {:tzdata, "~> 1.2"},
       {:ex_check, ">= 0.0.0", only: [:dev, :test], runtime: false},
-      {:httpoison, "~> 2.3.0"},
+      {:httpoison, "~> 3.0"},
       {:ua_inspector, "~> 3.0"},
       {:csv, "~> 3.2"},
       {:poison, "~> 6.0"},
@@ -99,7 +97,12 @@ defmodule SignDict.Mixfile do
       {:scrivener, "~> 2.7.2"},
       {:scrivener_html, git: "https://github.com/getdizzie/scrivener_html"},
       {:scrivener_ecto, "~> 3.1.0"},
-      {:mix_test_interactive, "~> 5.0", only: :dev, runtime: false}
+      # ua_inspector still declares hackney ~> 1.0; it downloads through
+      # SignDict.Services.UAInspectorDownloader instead, so hackney 4 is safe.
+      {:hackney, "~> 4.12", override: true},
+      # poison (needed by bugsnag) declares decimal ~> 2.1 but works with decimal 3
+      {:decimal, "~> 3.1", override: true},
+      {:mix_test_interactive, "~> 6.0", only: :dev, runtime: false}
     ]
   end
 

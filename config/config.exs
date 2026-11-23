@@ -78,6 +78,7 @@ config :scrivener_html,
   view_style: :bootstrap
 
 config :exq,
+  url: "redis://127.0.0.1:6379",
   scheduler_enable: true,
   queues: [
     # the transcoder queue is rate limited by jw_player => only 1 worker
@@ -86,8 +87,6 @@ config :exq,
     {"sign_writings", 1}
   ],
   json_library: Jason
-
-config :exq_ui, server: false
 
 config :sign_dict, :jw_player,
   api_key: "API_KEY",
@@ -100,7 +99,8 @@ config :sign_dict, :wps_sign_importer, url: "http://localhost:8345/sign_writing"
 config :sign_dict, :queue, library: Exq
 
 config :ua_inspector,
-  database_path: "priv/ua_inspector"
+  database_path: "priv/ua_inspector",
+  downloader_adapter: SignDict.Services.UAInspectorDownloader
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

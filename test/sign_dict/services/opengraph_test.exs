@@ -5,7 +5,7 @@ defmodule SignDict.Services.OpenGraphTest do
 
   test "it generates metadata for users" do
     user = insert(:user)
-    result = SignDict.Services.OpenGraph.to_metadata(user)
+    result = SignDict.Services.OpenGraph.to_metadata(user, %{})
 
     assert result["og:description"] ==
              "Jane Smith is a user on SignDict, a sign language dictionary."
@@ -82,7 +82,7 @@ defmodule SignDict.Services.OpenGraphTest do
   test "it generates metadata for lists" do
     list = insert(:list)
 
-    result = SignDict.Services.OpenGraph.to_metadata(list)
+    result = SignDict.Services.OpenGraph.to_metadata(list, %{})
 
     assert result == %{
              "og:description" =>

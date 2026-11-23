@@ -1,5 +1,5 @@
-import de from './de'
-import en from './en'
+import de from './de';
+import en from './en';
 
 export let locales = [
   {
@@ -11,9 +11,10 @@ export let locales = [
     value: 'de',
     name: 'German',
     native: 'Deutsch',
-  }
-]
+  },
+];
 
 export default {
-  de, en
-}
+  de,
+  en,
+};

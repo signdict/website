@@ -1,30 +1,21 @@
-# Find eligible builder and runner images on Docker Hub. We use Ubuntu/Debian
-# instead of Alpine to avoid DNS resolution issues in production.
+# Builder: the official Elixir image (https://hub.docker.com/_/elixir). Its
+# `<elixir>-otp-<major>-slim` tags are rebuilt for every OTP patch release and
+# are based on Debian (currently trixie).
+# Runner: plain Debian (https://hub.docker.com/_/debian). Keep it on the same
+# Debian release as the builder so the compiled NIFs (bcrypt, quic) match the
+# runner's glibc/OpenSSL.
 #
-# https://hub.docker.com/r/hexpm/elixir/tags?page=1&name=ubuntu
-# https://hub.docker.com/_/ubuntu?tab=tags
-#
-# This file is based on these images:
-#
-#   - https://hub.docker.com/r/hexpm/elixir/tags - for the build image
-#   - https://hub.docker.com/_/debian?tab=tags&page=1&name=bookworm-20260824-slim - for the release image
-#   - https://pkgs.org/ - resource for finding needed packages
-#   - Ex: hexpm/elixir:1.18.4-erlang-27.3.4.16-debian-bookworm-20260824-slim
-#
-ARG ELIXIR_VERSION=1.18.4
-ARG OTP_VERSION=27.3.4.16
-ARG DEBIAN_VERSION=bookworm-20260824-slim
-# The runner can use a newer bookworm snapshot than the builder (hexpm/elixir
-# doesn't publish every snapshot). Keep both on the same Debian release.
-ARG RUNNER_DEBIAN_VERSION=bookworm-20261104-slim
+ARG ELIXIR_VERSION=1.20.5
+ARG OTP_MAJOR=29
+ARG RUNNER_DEBIAN_VERSION=trixie-20261104-slim
 
-ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
+ARG BUILDER_IMAGE="elixir:${ELIXIR_VERSION}-otp-${OTP_MAJOR}-slim"
 ARG RUNNER_IMAGE="debian:${RUNNER_DEBIAN_VERSION}"
 
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git curl \
+RUN apt-get update -y && apt-get install -y build-essential git curl libssl-dev \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # prepare build dir
@@ -52,12 +43,12 @@ RUN mix deps.get --only $MIX_ENV
 ENV NVM_DIR=/root/.nvm
 ENV NODE_VERSION=26.13.1
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash \
   && . "$NVM_DIR/nvm.sh" \
   && nvm install $NODE_VERSION \
   && nvm use $NODE_VERSION \
   && ln -s "$NVM_DIR/versions/node/$(nvm version $NODE_VERSION)" "$NVM_DIR/current" \
-  && npm install -g yarn
+  && npm install -g yarn@1.22.22
 
 # Make node and yarn available in PATH
 ENV PATH=$NVM_DIR/current/bin:$PATH
@@ -72,7 +63,7 @@ COPY assets assets
 
 # compile assets
 # RUN mix assets.deploy
-RUN cd assets && yarn install && yarn deploy
+RUN cd assets && yarn install --frozen-lockfile && yarn deploy
 
 # Compile the release
 RUN mix compile
@@ -95,7 +86,7 @@ FROM ${RUNNER_IMAGE}
 
 RUN apt-get update -y && \
   apt-get upgrade -y && \
-  apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates curl imagemagick wget \
+  apt-get install -y libstdc++6 openssl libncurses6 libsctp1 locales ca-certificates curl imagemagick wget \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale

@@ -10,7 +10,7 @@ class Player {
   playPressed = false;
 
   constructor() {
-    document.addEventListener('turbolinks:load', () => {
+    document.addEventListener('turbo:load', () => {
       const videos = document.getElementsByTagName('video');
       if (videos.length > 0) {
         this.addPlyr(videos[0]);
@@ -18,7 +18,7 @@ class Player {
         this.addKeyListener(videos[0]);
       }
     });
-    document.addEventListener('turbolinks:before-visit', () => {
+    document.addEventListener('turbo:before-visit', () => {
       this.playerInstance && this.playerInstance.destroy();
       this.removeKeyListener();
     });

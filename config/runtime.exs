@@ -86,8 +86,16 @@ if config_env() == :prod do
     database_path: Application.app_dir(:sign_dict, "priv/ua_inspector")
 
   redis_host = System.get_env("REDIS_HOST") || "localhost"
-  redis_password = System.get_env("REDIS_PASSWORD") || nil
-  config :exq, host: redis_host, password: redis_password
+
+  # exq is configured with a URL because with host/password it always passes
+  # `password: nil` to redix, which redix rejects when no password is set.
+  redis_userinfo =
+    case System.get_env("REDIS_PASSWORD") do
+      password when password in [nil, ""] -> ""
+      password -> ":" <> URI.encode(password, &URI.char_unreserved?/1) <> "@"
+    end
+
+  config :exq, url: "redis://#{redis_userinfo}#{redis_host}:6379"
 
   # ## SSL Support
   #

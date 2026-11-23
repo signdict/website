@@ -1,19 +1,14 @@
 import i18next from 'i18next';
-import I18nXHR from 'i18next-xhr-backend';
 import i18nDE from './i18n/de.js';
 import i18nEN from './i18n/en.js';
 
-const i18n = i18next.use(I18nXHR).init(
+// All translations are bundled, so no backend plugin is needed to load them.
+const i18n = i18next.init(
   {
     fallbackLng: 'en',
-    whitelist: ['en', 'de'],
+    supportedLngs: ['en', 'de'],
     lng: document.documentElement.lang,
-    preload: [document.documentElement.lang],
     debug: false,
-    detection: {
-      order: ['htmlTag'],
-      lookupQuerystring: 'lang',
-    },
     resources: {
       en: {
         translation: i18nEN,

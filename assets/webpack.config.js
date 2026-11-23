@@ -1,24 +1,37 @@
 const path = require('path');
-const glob = require('glob');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// CSS parsing, extraction and minification as well as copying static files
+// and JS minification are all built into webpack 5 (>= 5.111), so no
+// css-loader, mini-css-extract-plugin, copy-webpack-plugin or minimizer
+// plugins are needed.
 module.exports = (env, options) => ({
   devtool: 'source-map',
-  optimization: {
-    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})],
+  experiments: {
+    css: true,
   },
   entry: {
-    app: ['./js/app.js'].concat(glob.sync('./vendor/**/*.js')),
-    backend: ['./js/backend.js'],
+    app: './js/app.js',
+    backend: './js/backend.js',
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, '../priv/static/js'),
+    path: path.resolve(__dirname, '../priv/static'),
+    filename: 'js/[name].js',
+    cssFilename: 'css/[name].css',
+    copy: 'static',
+  },
+  resolve: {
+    // Resolve Phoenix's JS packages (e.g. phoenix_html) from the Elixir deps,
+    // so they always match the hex versions in mix.lock.
+    modules: ['node_modules', path.resolve(__dirname, '../deps')],
   },
   module: {
+    parser: {
+      'css/auto': {
+        // Leave url() references untouched; fonts and images are copied
+        // from static/ and referenced by their final path.
+        url: false,
+      },
+    },
     rules: [
       {
         test: /\.js$/,
@@ -28,29 +41,12 @@ module.exports = (env, options) => ({
         },
       },
       {
-        test: /\.s?css$/,
-        use: [
-          {loader: MiniCssExtractPlugin.loader},
-          {loader: 'css-loader', options: {url: false}},
-          {loader: 'sass-loader'},
-        ],
-      },
-      {
-        test: /\.(svg|woff|woff2|eot|ttf|json?)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: '../fonts',
-            },
-          },
-        ],
+        // Plain .css files (e.g. plyr's stylesheet) are handled by webpack's
+        // built-in css/auto rule; only Sass needs a loader.
+        test: /\.scss$/,
+        use: ['sass-loader'],
+        type: 'css/auto',
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({filename: '../css/[name].css'}),
-    new CopyWebpackPlugin({patterns: [{from: 'static/', to: '../'}]}),
-  ],
 });

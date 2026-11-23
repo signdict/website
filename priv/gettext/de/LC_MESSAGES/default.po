@@ -57,20 +57,20 @@ msgstr "Bitte fülle das Formular aus"
 
 #: lib/sign_dict_web/controllers/user_controller.ex:15
 #: lib/sign_dict_web/controllers/user_controller.ex:38
-#: lib/sign_dict_web/templates/layout/backend.html.eex:34
+#: lib/sign_dict_web/templates/layout/backend.html.eex:35
 #: lib/sign_dict_web/templates/user/new.html.eex:3
 #: lib/sign_dict_web/templates/user/new.html.eex:41
 #, elixir-autogen
 msgid "Register"
 msgstr "Registrieren"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:35
+#: lib/sign_dict_web/templates/layout/backend.html.eex:36
 #: lib/sign_dict_web/templates/session/new.html.eex:3
 #, elixir-autogen
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:32
+#: lib/sign_dict_web/templates/layout/backend.html.eex:33
 #: lib/sign_dict_web/templates/shared/navigation.html.eex:33
 #, elixir-autogen
 msgid "Sign out"
@@ -238,14 +238,14 @@ msgstr "Nutzer erfolgreich aktualisiert."
 msgid "user.role"
 msgstr "Rolle"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:46
+#: lib/sign_dict_web/templates/layout/backend.html.eex:47
 #, elixir-autogen
 msgid "Users"
 msgstr "Nutzer"
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:39
 #: lib/sign_dict_web/templates/backend/user/show.html.eex:46
-#: lib/sign_dict_web/templates/layout/backend.html.eex:52
+#: lib/sign_dict_web/templates/layout/backend.html.eex:53
 #, elixir-autogen
 msgid "Videos"
 msgstr "Videos"
@@ -296,7 +296,7 @@ msgstr "Sprache erfolgreich gelöscht."
 msgid "Language updated successfully."
 msgstr "Sprache erfolgreich aktualisiert."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:62
+#: lib/sign_dict_web/templates/layout/backend.html.eex:63
 #, elixir-autogen
 msgid "Languages"
 msgstr "Sprachen"
@@ -351,7 +351,7 @@ msgstr "Du brauchst das Passwort nur eingeben, wenn du dies ändern willst"
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:41
+#: lib/sign_dict_web/templates/layout/backend.html.eex:42
 #, elixir-autogen
 msgid "Dashboard"
 msgstr "Dashboad"
@@ -433,12 +433,12 @@ msgstr "Status"
 
 #: lib/sign_dict_web/templates/backend/domain/show.html.eex:9
 #: lib/sign_dict_web/templates/backend/list/show.html.eex:30
-#: lib/sign_dict_web/templates/layout/backend.html.eex:49
+#: lib/sign_dict_web/templates/layout/backend.html.eex:50
 #, elixir-autogen
 msgid "Entries"
 msgstr "Einträge"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:10
+#: lib/sign_dict_web/templates/layout/backend.html.eex:11
 #: lib/sign_dict_web/templates/shared/header.html.eex:1
 #: lib/sign_dict_web/templates/shared/header.html.eex:3
 #, elixir-autogen
@@ -893,11 +893,6 @@ msgstr "Willkommen"
 msgid "Please <a href='%{login_url}'>login</a> to vote for this video."
 msgstr "Bitte <a href='%{login_url}'>melde dich an</a>, um für dieses Video zu stimmen."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:65
-#, elixir-autogen
-msgid "Worker Queue"
-msgstr ""
-
 #: lib/sign_dict_web/templates/search/index.html.eex:17
 #, elixir-autogen
 msgid "Please enter a word in the field above to search for signs."
@@ -1025,7 +1020,7 @@ msgstr "Feature flags"
 msgid "Record new video"
 msgstr "Neues Video aufnehmen"
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:53
+#: lib/sign_dict_web/templates/layout/backend.html.eex:54
 #, elixir-autogen
 msgid "Review Queue"
 msgstr "Neue Videos"
@@ -1054,17 +1049,17 @@ msgstr "Neuen Eintrag hinzufügen"
 msgid "Approve video"
 msgstr "Video freigeben"
 
-#: lib/sign_dict_web/views/entry_view.ex:16
+#: lib/sign_dict_web/views/entry_view.ex:14
 #, elixir-autogen
 msgid "entry.type.example"
 msgstr "Beispielsatz"
 
-#: lib/sign_dict_web/views/entry_view.ex:15
+#: lib/sign_dict_web/views/entry_view.ex:13
 #, elixir-autogen
 msgid "entry.type.phrase"
 msgstr "Redensart / Phrase"
 
-#: lib/sign_dict_web/views/entry_view.ex:14
+#: lib/sign_dict_web/views/entry_view.ex:12
 #, elixir-autogen
 msgid "entry.type.word"
 msgstr "Wort"
@@ -1195,7 +1190,7 @@ msgstr "Liste erfolgreich gelöscht."
 msgid "List updated successfully."
 msgstr "Liste erfolgreich aktualisiert."
 
-#: lib/sign_dict_web/templates/layout/backend.html.eex:56
+#: lib/sign_dict_web/templates/layout/backend.html.eex:57
 #, elixir-autogen
 msgid "Lists"
 msgstr "Listen"
@@ -1404,7 +1399,7 @@ msgid "Domain updated successfully."
 msgstr "Eintrag erfolgreich aktualisiert."
 
 #: lib/sign_dict_web/templates/backend/entry/show.html.eex:26
-#: lib/sign_dict_web/templates/layout/backend.html.eex:43
+#: lib/sign_dict_web/templates/layout/backend.html.eex:44
 #, elixir-format, elixir-autogen
 msgid "Domains"
 msgstr "Domains"
@@ -1437,7 +1432,7 @@ msgid "domain.id"
 msgstr "ID"
 
 #: lib/sign_dict_web/templates/backend/statistic/index.html.eex:1
-#: lib/sign_dict_web/templates/layout/backend.html.eex:59
+#: lib/sign_dict_web/templates/layout/backend.html.eex:60
 #, elixir-format, elixir-autogen
 msgid "Statistic"
 msgstr "Statistik"

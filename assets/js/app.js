@@ -1,7 +1,5 @@
-// We need to import the CSS so that webpack will load it.
-// The MiniCssExtractPlugin is used to separate it out into
-// its own CSS file.
-import css from '../css/app.scss';
+// Import the CSS so webpack emits it as css/app.css.
+import '../css/app.scss';
 
 import 'phoenix_html';
 import 'babel-polyfill';
@@ -19,8 +17,10 @@ if (window.Element && !Element.prototype.closest) {
   };
 }
 
-import Turbolinks from 'turbolinks';
-Turbolinks.start();
+import * as Turbo from '@hotwired/turbo';
+// Like Turbolinks, only handle link navigation: forms submit normally, so
+// controllers can keep re-rendering them with a 200 on validation errors.
+Turbo.config.forms.mode = 'off';
 
 import {detect} from 'detect-browser';
 window.browser = detect();
