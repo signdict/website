@@ -1,11 +1,11 @@
 defprotocol SignDict.Services.OpenGraph do
-  def to_metadata(model, sub_model \\ %{})
+  def to_metadata(model, sub_model)
 end
 
 defimpl SignDict.Services.OpenGraph, for: SignDict.User do
   use Gettext, backend: SignDictWeb.Gettext
 
-  def to_metadata(user, _sub_model \\ %{}) do
+  def to_metadata(user, _sub_model) do
     thumbnail_url = SignDict.User.avatar_url(user)
 
     description =
@@ -95,7 +95,7 @@ end
 defimpl SignDict.Services.OpenGraph, for: SignDict.List do
   use Gettext, backend: SignDictWeb.Gettext
 
-  def to_metadata(list, _sub_model \\ %{}) do
+  def to_metadata(list, _sub_model) do
     description =
       String.trim(
         gettext(

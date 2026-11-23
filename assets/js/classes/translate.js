@@ -1,4 +1,4 @@
-import translations from "../i18n/map"
+import translations from '../i18n/map';
 
 function translate(string) {
   let locale = document.documentElement.lang;

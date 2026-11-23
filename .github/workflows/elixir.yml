@@ -17,8 +17,8 @@ jobs:
 
     strategy:
       matrix:
-        elixir: [1.18.4]
-        otp: [27.3.4]
+        elixir: [1.20.5]
+        otp: [29.1.2]
         node: [26.13.1]
         redis: [8]
 
@@ -39,7 +39,7 @@ jobs:
           redis-version: ${{ matrix.redis }}
 
       - name: Setup elixir
-        uses: erlef/setup-elixir@v1
+        uses: erlef/setup-beam@v1
         with:
           elixir-version: ${{ matrix.elixir }} # Define the elixir version [required]
           otp-version: ${{ matrix.otp }} # Define the OTP version [required]
@@ -60,6 +60,9 @@ jobs:
           mix local.rebar --force
           mix local.hex --force
           mix deps.get
+
+      - name: Check Elixir formatting
+        run: mix format --check-formatted
 
       - name: Retrieve PLT Cache
         uses: actions/cache@v6
@@ -89,5 +92,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Install javascript dependencies
+        run: cd assets && yarn install --frozen-lockfile
+
+      - name: Check javascript formatting
+        run: cd assets && yarn format:check
+
       - name: Build javascript bundle
-        run: cd assets && yarn install && yarn deploy
+        run: cd assets && yarn deploy

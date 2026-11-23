@@ -1,6 +1,4 @@
 defmodule SignDictWeb.EntryView do
-  require SignDictWeb.Gettext
-
   import Scrivener.HTML
 
   use SignDictWeb, :view

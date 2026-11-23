@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="turbo-prefetch" content="false">
 
     <title><%= gettext("SignDict") %></title>
     <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">
@@ -60,9 +61,6 @@
           <% end %>
           <%= if Canada.Can.can?(@current_user, "show", %SignDict.Language{}) do %>
             <%= nav_active_link @conn, gettext("Languages"),  Router.Helpers.backend_language_path(@conn, :index) %>
-          <% end %>
-          <%= if Canada.Can.can?(@current_user, "show_queue", %{}) do %>
-            <a class="c-nav__item" href="/exq" data-turbolinks="false"><%= gettext("Worker Queue") %></a>
           <% end %>
         </nav>
       </div>

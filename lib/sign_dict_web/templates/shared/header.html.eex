@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="<%= gettext("SignDict - A sign language dictionary") %>">
 <meta name="author" content="SignDict">
+<meta name="turbo-prefetch" content="false">
 
 <link rel="stylesheet" href="<%= Router.Helpers.static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="https://unpkg.com/blaze@3.2.2">

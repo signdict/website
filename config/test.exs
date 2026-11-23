@@ -33,10 +33,6 @@ config :bcrypt_elixir, log_rounds: 4
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# Enable helpful, but potentially expensive runtime checks
-config :phoenix_live_view,
-  enable_expensive_runtime_checks: true
-
 # Using english locale for tests, this makes it
 # easier for non german speaking people
 config :sign_dict, SignDictWeb.Gettext, default_locale: "en"

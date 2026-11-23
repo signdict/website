@@ -18,7 +18,7 @@ defmodule SignDictWeb.ListController do
       list: list,
       entries: entries,
       searchbar: true,
-      ogtags: OpenGraph.to_metadata(list),
+      ogtags: OpenGraph.to_metadata(list, %{}),
       title: gettext("List \"%{name}\"", name: list.name)
     )
   end

@@ -47,7 +47,7 @@ defmodule SignDictWeb.UserController do
       user: user,
       searchbar: true,
       videos: load_videos(conn.host, user, params),
-      ogtags: OpenGraph.to_metadata(conn.assigns.user),
+      ogtags: OpenGraph.to_metadata(conn.assigns.user, %{}),
       title: gettext("User %{user}", user: conn.assigns.user.name)
     )
   end
