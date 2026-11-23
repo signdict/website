@@ -19,7 +19,7 @@ jobs:
       matrix:
         elixir: [1.18.4]
         otp: [27.3.4]
-        node: [22.18.0]
+        node: [26.13.1]
         redis: [8]
 
     env:

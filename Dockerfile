@@ -50,16 +50,17 @@ RUN mix deps.get --only $MIX_ENV
 
 # Install nvm + Node.js + Yarn
 ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSION=20.10.0
+ENV NODE_VERSION=26.13.1
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
   && . "$NVM_DIR/nvm.sh" \
   && nvm install $NODE_VERSION \
   && nvm use $NODE_VERSION \
+  && ln -s "$NVM_DIR/versions/node/$(nvm version $NODE_VERSION)" "$NVM_DIR/current" \
   && npm install -g yarn
 
 # Make node and yarn available in PATH
-ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+ENV PATH=$NVM_DIR/current/bin:$PATH
 
 RUN mix deps.compile
 
@@ -71,10 +72,7 @@ COPY assets assets
 
 # compile assets
 # RUN mix assets.deploy
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-RUN . $HOME/.nvm/nvm.sh && nvm install 24
-RUN . $HOME/.nvm/nvm.sh && npm install -g yarn
-RUN . $HOME/.nvm/nvm.sh && cd assets && yarn install && yarn deploy
+RUN cd assets && yarn install && yarn deploy
 
 # Compile the release
 RUN mix compile
