@@ -35,6 +35,9 @@ jobs:
           tags: signdict:scan
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          # Always rebuild the runner stage so `apt-get upgrade` picks up the
+          # latest Debian security fixes instead of reusing a stale cached layer.
+          no-cache-filters: runner
 
       - name: Scan image (SARIF for Security tab)
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
