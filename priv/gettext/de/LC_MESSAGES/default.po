@@ -1458,66 +1458,6 @@ msgstr "Diese Datei behinhaltet alle Vorschläge von Nutzer:innen"
 msgid "Download CSV"
 msgstr "CSV runterladen"
 
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:14
-#, elixir-format
-msgid "Add the video yourself"
-msgstr "Füge das Video selber hinzu"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:43
-#, elixir-format
-msgid "Please describe the word or use it in a sentence. This helps us to find the right sign."
-msgstr "Bitte beschreibe das Wort in einem Satz. Dies Hilft uns, die richtige Gebärde zu finden."
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:50
-#, elixir-format
-msgid "Send"
-msgstr "Absenden"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:7
-#, elixir-format
-msgid "Suggest a new word!"
-msgstr "Ein neues Wort vorschlagen!"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:22
-#, elixir-format
-msgid "Suggest the word"
-msgstr "Ein Wort vorschlagen"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:25
-#, elixir-format
-msgid "You cannot sign the word? No problem, just add it here and someone will sign it for you:"
-msgstr "Du kannst das Wort nicht gebärden? Kein Problem, schlag es hier vor und jemand anderes wird es für dich gebärden:"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:41
-#, elixir-format
-msgid "suggestion.description"
-msgstr "Beschreibung"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:35
-#, elixir-format
-msgid "suggestion.word"
-msgstr "Wort"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:10
-#, elixir-format
-msgid "SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:"
-msgstr "SignDict ist ein offenes Wörterbuch. Jede:r kann helfen, es besser zu machen. Du vermisst einen Eintrag und willst helfen? Großartig! Es gibt zwei Wege dafür:"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:18
-#, elixir-format
-msgid "You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>."
-msgstr "Du kannst das fehlende Wort gebärden und besitzt eine Webcam? Füge das Wort selber hinzu <a href=\"%{login_url}\">auf dieser Seite</a>."
-
-#: lib/sign_dict_web/controllers/suggestion_controller.ex:30
-#, elixir-format
-msgid "There were problems saving your entry"
-msgstr "Es gab Probleme beim Absenden deines Vorschlages"
-
-#: lib/sign_dict_web/controllers/suggestion_controller.ex:25
-#, elixir-format
-msgid "Thanks for suggesting a new entry."
-msgstr "Danke für deinen Vorschlag."
-
 #: lib/sign_dict_web/templates/page/index.html.eex:16
 #, elixir-format, elixir-autogen
 msgid "<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users."

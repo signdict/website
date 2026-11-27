@@ -1458,66 +1458,6 @@ msgstr ""
 msgid "Download CSV"
 msgstr ""
 
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:14
-#, elixir-format
-msgid "Add the video yourself"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:43
-#, elixir-format
-msgid "Please describe the word or use it in a sentence. This helps us to find the right sign."
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:50
-#, elixir-format
-msgid "Send"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:7
-#, elixir-format
-msgid "Suggest a new word!"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:22
-#, elixir-format
-msgid "Suggest the word"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:25
-#, elixir-format
-msgid "You cannot sign the word? No problem, just add it here and someone will sign it for you:"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:41
-#, elixir-format
-msgid "suggestion.description"
-msgstr "Description"
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:35
-#, elixir-format
-msgid "suggestion.word"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:10
-#, elixir-format
-msgid "SignDict is an open sign dictionary, everyone can help to make it better. You are missing an entry and want to help? Great! There are two ways to do so:"
-msgstr ""
-
-#: lib/sign_dict_web/templates/suggestion/index.html.eex:18
-#, elixir-format
-msgid "You can sign the missing word and own a webcam? Add the word yourself on <a href=\"%{login_url}\">this page</a>."
-msgstr ""
-
-#: lib/sign_dict_web/controllers/suggestion_controller.ex:30
-#, elixir-format
-msgid "There were problems saving your entry"
-msgstr ""
-
-#: lib/sign_dict_web/controllers/suggestion_controller.ex:25
-#, elixir-format
-msgid "Thanks for suggesting a new entry."
-msgstr ""
-
 #: lib/sign_dict_web/templates/page/index.html.eex:16
 #, elixir-format, elixir-autogen
 msgid "<a href=\"%{link}\">%{signs} signs</a> have been added by awesome users."
