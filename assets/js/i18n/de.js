@@ -48,7 +48,7 @@ export default {
     'Leider ist etwas schief gelaufen und wir können die Aufnahme nicht starten: ',
   More: 'Mehr',
   SearchController: {
-    WordNotFound: 'Leider konnte das Wort nicht gefunden werden. Bitte <a href="{{where}}">schlage es hier vor</a>.',
+    WordNotFound: 'Leider konnte das Wort nicht gefunden werden.',
   },
   'Copy URL': 'URL kopieren',
 };

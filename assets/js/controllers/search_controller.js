@@ -178,27 +178,11 @@ export default class extends Controller {
     }
   };
 
-  raw = (string) => {
-    const htmlCollection = new DOMParser().parseFromString(string, 'text/html').body.childNodes;
-    const array = [].slice.call(htmlCollection);
-    return array;
-  };
-
   showHint = () => {
     this.currentResults = [];
     const searchPopup = this.findOrCreatePopup();
     searchPopup.innerHTML = '';
-    render(
-      <div className="so-search-hints--empty">
-        {this.raw(
-          i18next.t('SearchController.WordNotFound', {
-            where: '/suggestion?word=' + encodeURIComponent(this.element.value),
-            interpolation: {escapeValue: false},
-          })
-        )}
-      </div>,
-      searchPopup
-    );
+    render(<div className="so-search-hints--empty">{i18next.t('SearchController.WordNotFound')}</div>, searchPopup);
     if (this.element == document.activeElement) {
       this.showPopup();
     }
